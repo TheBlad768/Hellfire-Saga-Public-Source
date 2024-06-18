@@ -1,0 +1,109 @@
+{
+    "Flex": 2,
+    "name": "",
+    "node": "84c690a5-c1d8-46be-af32-241833068bc2",
+    "objects": [
+        {
+            "uuid": "dff7d959-27f5-4c18-94d9-de8e0124f028",
+            "format": "Sonic 3&K Object.js",
+            "name": "Arthur",
+            "palettes": [
+                {
+                    "path": "Palette\\1.bin",
+                    "length": 1
+                },
+                {
+                    "path": "Palette\\1.bin",
+                    "length": 1
+                },
+                {
+                    "path": "Palette\\1.bin",
+                    "length": 1
+                },
+                {
+                    "path": "..\\..\\Sonic\\Palettes\\Sonic.bin",
+                    "length": 1
+                }
+            ],
+            "art": {
+                "path": "Uncompressed Art\\arthur.bin",
+                "compression": "Uncompressed",
+                "offset": 0
+            },
+            "mappings": {
+                "path": "Object data\\Map - Arthur.asm",
+                "label": "SME_OAZDa"
+            },
+            "dplcs": {
+                "enabled": true,
+                "path": "Object data\\DPLC - Arthur.asm",
+                "label": "DPLC_Arthur"
+            }
+        },
+        {
+            "name": "Arthur Extra",
+            "children": [
+                {
+                    "uuid": "84c690a5-c1d8-46be-af32-241833068bc2",
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Arthur's palette",
+                    "palettes": [
+                        {
+                            "path": "Palette\\1.bin",
+                            "length": 1
+                        },
+                        {
+                            "path": "",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "Kosinski-M art\\Arthur.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Object data\\Map - Weapon.asm",
+                        "label": "Obj_Arthur_Mapp"
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    }
+                },
+                {
+                    "uuid": "280e84c6-90a5-41d8-a6be-af3224183306",
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Sonic's palette",
+                    "palettes": [
+                        {
+                            "path": "..\\..\\Sonic\\Palettes\\Sonic.bin",
+                            "length": 1
+                        },
+                        {
+                            "path": "Palette\\1.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "Kosinski-M art\\Arthur.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Object data\\Map - Weapon.asm",
+                        "label": "Obj_Arthur_Mapp"
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    }
+                }
+            ],
+            "isDirectory": true,
+            "expanded": true
+        }
+    ]
+}

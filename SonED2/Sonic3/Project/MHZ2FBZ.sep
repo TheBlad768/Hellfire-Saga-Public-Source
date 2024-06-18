@@ -1,0 +1,70 @@
+Type: Level
+
+Zone ID:    7
+Act ID:     0
+
+Object Def: objdef\skobj
+Object Palette: objdef\skobj1.pcx
+
+8x8 Compression:      5
+Num 8x8 Pages:        2
+8x8 Tiles Page 0:     ..\Levels\MHZ\Tile\8\0.bin
+8x8 Tiles Page 1:     ..\Levels\MHZ\Tile\8\FBZShip.bin
+
+16x16 Compression:    1
+Num 16x16 Pages:      2
+Page0 8x8 Page:       0
+16x16 Tiles Page 0:   ..\Levels\MHZ\Tile\16\0.bin
+Page1 8x8 Page:       0
+16x16 Tiles Page 1:   ..\Levels\MHZ\Tile\16\FBZShip.bin
+
+Metatile Size:        128
+128x128 Compression:  1
+Num 128x128 Pages:    2
+Page0 16x16 Page:     0
+128x128 Tiles Page 0: ..\Levels\MHZ\Tile\128\0.bin
+Page1 16x16 Page:     0
+128x128 Tiles Page 1: ..\Levels\MHZ\Tile\128\FBZShip.bin
+
+Layout Format:        2
+Layout Compression:   0
+BG 128x128 Page:      0
+Level Layout:         ..\Levels\MHZ\Layout\FBZShip.bin
+
+Objects Format:       4
+Objects:              ..\Levels\MHZ\Obj\2.bin
+Rings Format:         2
+Objects:              ..\Levels\MHZ\Rng\2.bin
+Misc Format:          0
+Num Start Positions:  2
+Start Position 0:     ..\Levels\MHZ\Start\Sonic\2.bin
+Start Position 1:     ..\Levels\MHZ\Start\Knuckles\2.bin
+
+Palettes-
+
+Number of files: 2
+
+  Palette 0-
+
+   Start index:        0
+   Number of entries: 16
+   File:              ..\Palettes\SK\SonTail.bin
+
+  Palette 1-
+
+   Start index:       16
+   Number of entries: 48
+   File:              ..\Levels\MHZ\Pal\2.bin
+
+Collision Map Format:    0
+Collision Array:         ..\Collisn\SK\HMaps.bin
+Rotated Collision Array: ..\Collisn\SK\HMapsR.bin
+Angle Array:             ..\Collisn\SK\Angles.bin
+
+Collision Index Format:      3
+Collision Index Compression: 0
+Collision Index: ..\Levels\MHZ\Collisn\1.bin
+
+Game Name: Sonic 3
+
+-EOF-

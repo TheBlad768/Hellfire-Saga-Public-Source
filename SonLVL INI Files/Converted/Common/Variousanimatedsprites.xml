@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Namespace="SonED2.ZoneCommon" TypeName="Variousanimatedsprites" Language="cs" Name="Various animated sprites" Image="Image1" RememberState="false" Debug="false" xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromBitmap id="Image1" filename="Sprites/s3objsprite3-16.png" />
+    <ImageFromBitmap id="Image2" filename="Sprites/s3objsprite3-15.png" />
+  </Images>
+  <Properties>
+    <BitsProperty name="Property1" type="Enum1" startbit="0" length="1" />
+  </Properties>
+  <Enums>
+    <Enum name="Enum1">
+      <EnumMember name="Round flame - AIZ2" />
+      <EnumMember name="Tall flame - AIZ2" />
+    </Enum>
+  </Enums>
+  <Display>
+    <DisplayOption>
+      <Condition property="Property1" value="Round flame - AIZ2" />
+      <ImageRef image="Image1">
+        <Offset X="-7" Y="-11" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Tall flame - AIZ2" />
+      <ImageRef image="Image2">
+        <Offset X="-8" Y="-14" />
+      </ImageRef>
+    </DisplayOption>
+  </Display>
+</ObjDef>

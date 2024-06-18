@@ -1,0 +1,69 @@
+Type: Level
+
+Zone ID:    3
+Act ID:     5
+
+Object Def: ..\objdef\kcobj
+Object Palette: ..\objdef\kcobj1.pcx
+
+8x8 Compression:      3
+Num 8x8 Pages:        3
+8x8 Tiles Page 0:     ..\..\Levels\TTZ\8x8\0_Boss.bin
+8x8 Tiles Page 1:     ..\..\Levels\TTZ\8x8\2_15MN.bin
+8x8 Tiles Page 2:     ..\..\Levels\TTZ\8x8\3_5MN.bin
+
+16x16 Compression:    2
+Num 16x16 Pages:      3
+Page0 8x8 Page:       0
+16x16 Tiles Page 0:   ..\..\Levels\TTZ\16x16\0_Boss.bin
+Page2 8x8 Page:       1
+16x16 Tiles Page 1:   ..\..\Levels\TTZ\16x16\2_15MN.bin
+Page3 8x8 Page:       1
+16x16 Tiles Page 2:   ..\..\Levels\TTZ\16x16\3_5MN.bin
+
+Metatile Size:        128
+128x128 Compression:  2
+Num 128x128 Pages:    3
+Page0 16x16 Page:     0
+128x128 Tiles Page 0: ..\..\Levels\TTZ\128x128\0_Boss.bin
+Page2 16x16 Page:     1
+128x128 Tiles Page 1: ..\..\Levels\TTZ\128x128\2_15MN.bin
+Page3 16x16 Page:     1
+128x128 Tiles Page 2: ..\..\Levels\TTZ\128x128\3_5MN.bin
+
+Layout Format:        3
+Layout Compression:   2
+FG Size:              ..\..\Levels\TTZ\FG\SizeBoss.bin
+FG Level Layout:      ..\..\Levels\TTZ\FG\Boss.bin
+BG 128x128 Page:      1
+BG Size:              ..\..\Levels\TTZ\BG\Size06MN.bin
+BG Level Layout:      ..\..\Levels\TTZ\BG\5MS.bin
+
+Objects Format:       0
+Rings Format:         0
+Misc Format:          0
+Num Start Positions:  1
+Start Position 0:     ..\..\Levels\TTZ\FG\PlStBoss.bin
+
+Palettes-
+
+ Number of files: 1
+
+  Palette 1-
+
+   Start index:       0
+   Number of entries: 64
+   File:              ..\..\Levels\TTZ\Pal\BossS.bin
+
+Collision Map Format:    1
+Collision Array:         ..\..\Collisn\HMaps.bin
+Rotated Collision Array: ..\..\Collisn\HMapsR.bin
+Angle Array:             ..\..\Collisn\Angles.bin
+
+Collision Index Format:      4
+Collision Index Compression: 0
+Collision Index: ..\..\Levels\TTZ\Collisn\Boss.bin
+
+Game Name: Chaotix
+
+-EOF-

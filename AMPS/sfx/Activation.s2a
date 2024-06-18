@@ -1,0 +1,99 @@
+	sHeaderInit
+	sHeaderPrio	$80
+	sHeaderCh	$03
+
+	sHeaderSFX	$80, ctFM4, Sound_Activation_FM4,	$FA, $04
+	sHeaderSFX	$80, ctFM5, Sound_Activation_FM5,	$00, $04
+	sHeaderSFX	$80, ctPSG3, Sound_Activation_PSG3,	$00, $00
+
+; FM4 Data
+Sound_Activation_FM4:
+	sVoice		$3F
+	dc.b nF4, $03, nRst, $01
+	sVoice		$40
+	sModAMPS	$01, $01, $0E, $FF
+
+Sound_Activation_Loop01:
+	dc.b nCs3, $0B
+	saVol		$04
+	sLoop		$00, $08, Sound_Activation_Loop01
+	sStop
+
+; FM5 Data
+Sound_Activation_FM5:
+	sVoice		$41
+	dc.b nF0, $03, nRst, $01
+
+Sound_Activation_Loop00:
+	dc.b nC1, $0B
+	saVol		$04
+	sLoop		$00, $08, Sound_Activation_Loop00
+	sStop
+
+; PSG3 Data
+Sound_Activation_PSG3:
+	sNoisePSG	$E7
+	dc.b nC3, $03, nRst, $01
+	sModAMPS	$00, $02, $FE, $FF
+
+Sound_Activation_Loop02:
+	dc.b nG5, $0B
+	saVol		$08
+	sLoop		$00, $08, Sound_Activation_Loop02
+	sStop
+
+Sound_Activation_Voices:
+;	Voice $00
+;	$3D
+;	$1E, $7D, $3F, $0C, 	$1F, $1F, $1F, $1F, 	$1F, $1F, $1F, $1F
+;	$10, $00, $00, $00, 	$0E, $0F, $0F, $0F, 	$0E, $87, $88, $88
+	spAlgorithm	$05
+	spFeedback	$07
+	spDetune	$01, $03, $07, $00
+	spMultiple	$0E, $0F, $0D, $0C
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$1F, $1F, $1F, $1F
+	spDecayRt	$10, $00, $00, $00
+	spSustainLv	$00, $00, $00, $00
+	spReleaseRt	$0E, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$0E, $08, $07, $08
+
+;	Voice $01
+;	$3C
+;	$75, $24, $19, $30, 	$1F, $1F, $1F, $1F, 	$1F, $1F, $15, $1F
+;	$0F, $00, $01, $00, 	$0F, $0F, $2F, $0F, 	$08, $80, $10, $80
+	spAlgorithm	$04
+	spFeedback	$07
+	spDetune	$07, $01, $02, $03
+	spMultiple	$05, $09, $04, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$1F, $15, $1F, $1F
+	spDecayRt	$0F, $01, $00, $00
+	spSustainLv	$00, $02, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$08, $10, $00, $00
+
+;	Voice $02
+;	$38
+;	$02, $20, $22, $64, 	$1F, $1F, $1F, $1F, 	$1F, $1F, $1F, $1F
+;	$1B, $10, $10, $00, 	$0F, $0F, $0F, $0F, 	$1D, $10, $02, $80
+	spAlgorithm	$00
+	spFeedback	$07
+	spDetune	$00, $02, $02, $06
+	spMultiple	$02, $02, $00, $04
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$1F, $1F, $1F, $1F
+	spDecayRt	$1B, $10, $10, $00
+	spSustainLv	$00, $00, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1D, $02, $10, $00
+

@@ -1,0 +1,630 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Sonic the Hedgehog 2 (Rev 01) TitleCard Names Injector File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;
+; Setup Directives ;
+;;;;;;;;;;;;;;;;;;;;
+
+MaxSize	$400000				;Maximum Genesis ROM size
+
+Dispose	$0147BA	$014C6C			;Titlecard Map Data
+Dispose	$0157A4	$015820			;Titlecard Art Data Load Routine
+Dispose	$015820	$0158E8			;Titlecard Art Load Data
+
+
+;;;;;;;;;;;;;;;;
+; Data Defines ;
+;;;;;;;;;;;;;;;;
+
+;;;
+;Letter Graphics Load Data
+;;;
+
+Define	TCLoad_A	$0004
+Define	TCLoad_B	$0404
+Define	TCLoad_C	$0804
+Define	TCLoad_D	$0C04
+Define	TCLoad_F	$1004
+Define	TCLoad_G	$1404
+Define	TCLoad_H	$1804
+Define	TCLoad_I	$1C02
+Define	TCLoad_J	$1E04
+Define	TCLoad_K	$2204
+Define	TCLoad_L	$2604
+Define	TCLoad_M	$2A06
+Define	TCLoad_P	$3004
+Define	TCLoad_Q	$3404
+Define	TCLoad_R	$3804
+Define	TCLoad_S	$3C04
+Define	TCLoad_T	$4004
+Define	TCLoad_U	$4404
+Define	TCLoad_V	$4804
+Define	TCLoad_W	$4C06
+Define	TCLoad_X	$5204
+Define	TCLoad_Y	$5604
+Define	TCLoad_.	$5A02
+Define	TCLoad_End	$FFFF
+
+;;;
+;Letter Graphics Tile Size Data
+;;;
+
+Define	TCTileSize_A	$04
+Define	TCTileSize_B	$04
+Define	TCTileSize_C	$04
+Define	TCTileSize_D	$04
+Define	TCTileSize_F	$04
+Define	TCTileSize_G	$04
+Define	TCTileSize_H	$04
+Define	TCTileSize_I	$02
+Define	TCTileSize_J	$04
+Define	TCTileSize_K	$04
+Define	TCTileSize_L	$04
+Define	TCTileSize_M	$06
+Define	TCTileSize_P	$04
+Define	TCTileSize_Q	$04
+Define	TCTileSize_R	$04
+Define	TCTileSize_S	$04
+Define	TCTileSize_T	$04
+Define	TCTileSize_U	$04
+Define	TCTileSize_V	$04
+Define	TCTileSize_W	$06
+Define	TCTileSize_X	$04
+Define	TCTileSize_Y	$04
+Define	TCTileSize_.	$02
+
+;;;
+;Letter Graphics VRAM Tile Offset Data
+;;;
+
+Define TCTilePos_E	$580
+Define TCTilePos_N	$584
+Define TCTilePos_O	$588
+Define TCTilePos_Z	$58C
+
+Define TCCustomStart	$5DE
+
+Define TCTilePos_EHZ_M	TCCustomStart
+Define TCTilePos_EHZ_R	TCTilePos_EHZ_M + TCTileSize_M
+Define TCTilePos_EHZ_A	TCTilePos_EHZ_R + TCTileSize_R
+Define TCTilePos_EHZ_L	TCTilePos_EHZ_A + TCTileSize_A
+Define TCTilePos_EHZ_D	TCTilePos_EHZ_L + TCTileSize_L
+Define TCTilePos_EHZ_H	TCTilePos_EHZ_D + TCTileSize_D
+Define TCTilePos_EHZ_I	TCTilePos_EHZ_H + TCTileSize_H
+
+Define TCTilePos_01_M	TCCustomStart				;Same as EHZ
+Define TCTilePos_01_R	TCTilePos_01_M + TCTileSize_M
+Define TCTilePos_01_A	TCTilePos_01_R + TCTileSize_R
+Define TCTilePos_01_L	TCTilePos_01_A + TCTileSize_A
+Define TCTilePos_01_D	TCTilePos_01_L + TCTileSize_L
+Define TCTilePos_01_H	TCTilePos_01_D + TCTileSize_D
+Define TCTilePos_01_I	TCTilePos_01_H + TCTileSize_H
+
+Define TCTilePos_WZ_M	TCCustomStart				;Same as EHZ
+Define TCTilePos_WZ_R	TCTilePos_WZ_M + TCTileSize_M
+Define TCTilePos_WZ_A	TCTilePos_WZ_R + TCTileSize_R
+Define TCTilePos_WZ_L	TCTilePos_WZ_A + TCTileSize_A
+Define TCTilePos_WZ_D	TCTilePos_WZ_L + TCTileSize_L
+Define TCTilePos_WZ_H	TCTilePos_WZ_D + TCTileSize_D
+Define TCTilePos_WZ_I	TCTilePos_WZ_H + TCTileSize_H
+
+Define TCTilePos_03_M	TCCustomStart				;Same as EHZ
+Define TCTilePos_03_R	TCTilePos_03_M + TCTileSize_M
+Define TCTilePos_03_A	TCTilePos_03_R + TCTileSize_R
+Define TCTilePos_03_L	TCTilePos_03_A + TCTileSize_A
+Define TCTilePos_03_D	TCTilePos_03_L + TCTileSize_L
+Define TCTilePos_03_H	TCTilePos_03_D + TCTileSize_D
+Define TCTilePos_03_I	TCTilePos_03_H + TCTileSize_H
+
+Define TCTilePos_09_M	TCCustomStart				;Same as EHZ
+Define TCTilePos_09_R	TCTilePos_09_M + TCTileSize_M
+Define TCTilePos_09_A	TCTilePos_09_R + TCTileSize_R
+Define TCTilePos_09_L	TCTilePos_09_A + TCTileSize_A
+Define TCTilePos_09_D	TCTilePos_09_L + TCTileSize_L
+Define TCTilePos_09_H	TCTilePos_09_D + TCTileSize_D
+Define TCTilePos_09_I	TCTilePos_09_H + TCTileSize_H
+
+Define TCTilePos_MTZ4_M	TCCustomStart
+Define TCTilePos_MTZ4_T	TCTilePos_MTZ4_M + TCTileSize_M
+Define TCTilePos_MTZ4_R	TCTilePos_MTZ4_T + TCTileSize_T
+Define TCTilePos_MTZ4_P	TCTilePos_MTZ4_R + TCTileSize_R
+Define TCTilePos_MTZ4_L	TCTilePos_MTZ4_P + TCTileSize_P
+Define TCTilePos_MTZ4_I	TCTilePos_MTZ4_L + TCTileSize_L
+Define TCTilePos_MTZ4_S	TCTilePos_MTZ4_I + TCTileSize_I
+
+Define TCTilePos_MTZ5_M	TCCustomStart
+Define TCTilePos_MTZ5_T	TCTilePos_MTZ4_M + TCTileSize_M
+Define TCTilePos_MTZ5_R	TCTilePos_MTZ4_T + TCTileSize_T
+Define TCTilePos_MTZ5_P	TCTilePos_MTZ4_R + TCTileSize_R
+Define TCTilePos_MTZ5_L	TCTilePos_MTZ4_P + TCTileSize_P
+Define TCTilePos_MTZ5_I	TCTilePos_MTZ4_L + TCTileSize_L
+Define TCTilePos_MTZ5_S	TCTilePos_MTZ4_I + TCTileSize_I
+
+Define TCTilePos_HTZ_H	TCCustomStart
+Define TCTilePos_HTZ_I	TCTilePos_HTZ_H + TCTileSize_H
+Define TCTilePos_HTZ_L	TCTilePos_HTZ_I + TCTileSize_I
+Define TCTilePos_HTZ_T	TCTilePos_HTZ_L + TCTileSize_L
+Define TCTilePos_HTZ_P	TCTilePos_HTZ_T + TCTileSize_T
+
+Define TCTilePos_HPZ_H	TCCustomStart
+Define TCTilePos_HPZ_I	TCTilePos_HPZ_H + TCTileSize_H
+Define TCTilePos_HPZ_D	TCTilePos_HPZ_I + TCTileSize_I
+Define TCTilePos_HPZ_P	TCTilePos_HPZ_D + TCTileSize_D
+Define TCTilePos_HPZ_A	TCTilePos_HPZ_P + TCTileSize_P
+Define TCTilePos_HPZ_L	TCTilePos_HPZ_A + TCTileSize_A
+Define TCTilePos_HPZ_C	TCTilePos_HPZ_L + TCTileSize_L
+
+Define TCTilePos_OOZ_I	TCCustomStart
+Define TCTilePos_OOZ_L	TCTilePos_OOZ_I + TCTileSize_I
+Define TCTilePos_OOZ_C	TCTilePos_OOZ_L + TCTileSize_L
+Define TCTilePos_OOZ_A	TCTilePos_OOZ_C + TCTileSize_C
+
+Define TCTilePos_MCZ_M	TCCustomStart
+Define TCTilePos_MCZ_Y	TCTilePos_MCZ_M + TCTileSize_M
+Define TCTilePos_MCZ_S	TCTilePos_MCZ_Y + TCTileSize_Y
+Define TCTilePos_MCZ_T	TCTilePos_MCZ_S + TCTileSize_S
+Define TCTilePos_MCZ_I	TCTilePos_MCZ_T + TCTileSize_T
+Define TCTilePos_MCZ_C	TCTilePos_MCZ_I + TCTileSize_I
+Define TCTilePos_MCZ_A	TCTilePos_MCZ_C + TCTileSize_C
+Define TCTilePos_MCZ_V	TCTilePos_MCZ_A + TCTileSize_A
+
+Define TCTilePos_CNZ_C	TCCustomStart
+Define TCTilePos_CNZ_A	TCTilePos_CNZ_C + TCTileSize_C
+Define TCTilePos_CNZ_S	TCTilePos_CNZ_A + TCTileSize_A
+Define TCTilePos_CNZ_I	TCTilePos_CNZ_S + TCTileSize_S
+Define TCTilePos_CNZ_G	TCTilePos_CNZ_I + TCTileSize_I
+Define TCTilePos_CNZ_H	TCTilePos_CNZ_G + TCTileSize_G
+Define TCTilePos_CNZ_T	TCTilePos_CNZ_H + TCTileSize_H
+
+Define TCTilePos_CPZ_C	TCCustomStart
+Define TCTilePos_CPZ_H	TCTilePos_CPZ_C + TCTileSize_C
+Define TCTilePos_CPZ_M	TCTilePos_CPZ_H + TCTileSize_H
+Define TCTilePos_CPZ_I	TCTilePos_CPZ_M + TCTileSize_M
+Define TCTilePos_CPZ_A	TCTilePos_CPZ_I + TCTileSize_I
+Define TCTilePos_CPZ_L	TCTilePos_CPZ_A + TCTileSize_A
+Define TCTilePos_CPZ_P	TCTilePos_CPZ_L + TCTileSize_L
+Define TCTilePos_CPZ_T	TCTilePos_CPZ_P + TCTileSize_P
+
+Define TCTilePos_ARZ_A	TCCustomStart
+Define TCTilePos_ARZ_Q	TCTilePos_ARZ_A + TCTileSize_A
+Define TCTilePos_ARZ_U	TCTilePos_ARZ_Q + TCTileSize_Q
+Define TCTilePos_ARZ_T	TCTilePos_ARZ_U + TCTileSize_U
+Define TCTilePos_ARZ_I	TCTilePos_ARZ_T + TCTileSize_T
+Define TCTilePos_ARZ_C	TCTilePos_ARZ_I + TCTileSize_I
+Define TCTilePos_ARZ_R	TCTilePos_ARZ_C + TCTileSize_C
+
+Define TCTilePos_SCZ_S	TCCustomStart
+Define TCTilePos_SCZ_K	TCTilePos_SCZ_S + TCTileSize_S
+Define TCTilePos_SCZ_Y	TCTilePos_SCZ_K + TCTileSize_K
+Define TCTilePos_SCZ_C	TCTilePos_SCZ_Y + TCTileSize_Y
+Define TCTilePos_SCZ_H	TCTilePos_SCZ_C + TCTileSize_C
+Define TCTilePos_SCZ_A	TCTilePos_SCZ_H + TCTileSize_H
+
+Define TCTilePos_WFZ_W	TCCustomStart
+Define TCTilePos_WFZ_I	TCTilePos_WFZ_W + TCTileSize_W
+Define TCTilePos_WFZ_G	TCTilePos_WFZ_I + TCTileSize_I
+Define TCTilePos_WFZ_F	TCTilePos_WFZ_G + TCTileSize_G
+Define TCTilePos_WFZ_R	TCTilePos_WFZ_F + TCTileSize_F
+Define TCTilePos_WFZ_T	TCTilePos_WFZ_R + TCTileSize_R
+Define TCTilePos_WFZ_S	TCTilePos_WFZ_T + TCTileSize_T
+
+Define TCTilePos_DEZ_D	TCCustomStart
+Define TCTilePos_DEZ_A	TCTilePos_DEZ_D + TCTileSize_D
+Define TCTilePos_DEZ_T	TCTilePos_DEZ_A + TCTileSize_A
+Define TCTilePos_DEZ_H	TCTilePos_DEZ_T + TCTileSize_T
+Define TCTilePos_DEZ_G	TCTilePos_DEZ_H + TCTileSize_H
+
+;;;
+;Map Settings
+;;;
+
+Define	MPHigh		$8000
+Define	MWidth8		$0000
+Define	MWidth16	$0004
+Define	MWidth24	$0008
+Define	MWidth32	$000A
+Define	MHeight8	$0000
+Define	MHeight16	$0001
+Define	MHeight24	$0002
+Define	MHeight32	$0003
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Manual Settings Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg TCardLoading Big_Endian
+
+	;;;
+	;Loading Code
+	;;;
+
+	NDJ1:		WORD	$4EF9, $0000, $14DE
+	NDJ2:		WORD	$4EF9, $0000, $14F0
+	TCardLoad:	include	"Misc/TCLoad.bin"
+	NDGT1:		WORD	NDJ1-NDGT1
+			include	"Misc/TCLoad2.bin"
+	NDGT2:		WORD	NDJ2-NDGT2
+	TCardLoad2:	include	"Misc/TCLoad3.bin"
+
+	;;;
+	;Load data offsets for each zone
+	;;;
+
+	BYTE	TCLoad_EHZ-TCLoad_Start
+	BYTE	TCLoad_01-TCLoad_Start
+	BYTE	TCLoad_WZ-TCLoad_Start
+	BYTE	TCLoad_03-TCLoad_Start
+	BYTE	TCLoad_MTZ4-TCLoad_Start
+	BYTE	TCLoad_MTZ5-TCLoad_Start
+	BYTE	TCLoad_WFZ-TCLoad_Start
+	BYTE	TCLoad_HTZ-TCLoad_Start
+	BYTE	TCLoad_HPZ-TCLoad_Start
+	BYTE	TCLoad_09-TCLoad_Start
+	BYTE	TCLoad_OOZ-TCLoad_Start
+	BYTE	TCLoad_MCZ-TCLoad_Start
+	BYTE	TCLoad_CNZ-TCLoad_Start
+	BYTE	TCLoad_CPZ-TCLoad_Start
+	BYTE	TCLoad_DEZ-TCLoad_Start
+	BYTE	TCLoad_ARZ-TCLoad_Start
+	BYTE	TCLoad_SCZ-TCLoad_Start
+	BYTE	0
+
+	;;;
+	;Load Data
+	;;;
+
+	TCLoad_Start:
+	TCLoad_EHZ:	WORD	TCLoad_M, TCLoad_R, TCLoad_A, TCLoad_L, TCLoad_D, TCLoad_H, TCLoad_I, TCLoad_End		;Same as EHZ
+	TCLoad_01:	WORD	TCLoad_M, TCLoad_R, TCLoad_A, TCLoad_L, TCLoad_D, TCLoad_H, TCLoad_I, TCLoad_End		;Same as EHZ
+	TCLoad_WZ:	WORD	TCLoad_M, TCLoad_R, TCLoad_A, TCLoad_L, TCLoad_D, TCLoad_H, TCLoad_I, TCLoad_End		;Same as EHZ
+	TCLoad_03:	WORD	TCLoad_M, TCLoad_R, TCLoad_A, TCLoad_L, TCLoad_D, TCLoad_H, TCLoad_I, TCLoad_End		;Same as EHZ
+	TCLoad_09:	WORD	TCLoad_M, TCLoad_R, TCLoad_A, TCLoad_L, TCLoad_D, TCLoad_H, TCLoad_I, TCLoad_End		;Same as EHZ
+	TCLoad_MTZ4:	WORD	TCLoad_M, TCLoad_T, TCLoad_R, TCLoad_P, TCLoad_L, TCLoad_I, TCLoad_S, TCLoad_End
+	TCLoad_MTZ5:	WORD	TCLoad_M, TCLoad_T, TCLoad_R, TCLoad_P, TCLoad_L, TCLoad_I, TCLoad_S, TCLoad_End		;Same as MTZ4
+	TCLoad_HTZ:	WORD	TCLoad_H, TCLoad_I, TCLoad_L, TCLoad_T, TCLoad_P, TCLoad_End
+	TCLoad_HPZ:	WORD	TCLoad_H, TCLoad_I, TCLoad_D, TCLoad_P, TCLoad_A, TCLoad_L, TCLoad_C, TCLoad_End
+	TCLoad_OOZ:	WORD	TCLoad_I, TCLoad_L, TCLoad_C, TCLoad_A, TCLoad_End
+	TCLoad_MCZ:	WORD	TCLoad_M, TCLoad_Y, TCLoad_S, TCLoad_T, TCLoad_I, TCLoad_C, TCLoad_A, TCLoad_V, TCLoad_End
+	TCLoad_CNZ: 	WORD	TCLoad_C, TCLoad_A, TCLoad_S, TCLoad_I, TCLoad_G, TCLoad_H, TCLoad_T, TCLoad_End
+	TCLoad_CPZ: 	WORD	TCLoad_C, TCLoad_H, TCLoad_M, TCLoad_I, TCLoad_A, TCLoad_L, TCLoad_P, TCLoad_T, TCLoad_End
+	TCLoad_ARZ:	WORD	TCLoad_A, TCLoad_Q, TCLoad_U, TCLoad_T, TCLoad_I, TCLoad_C, TCLoad_R, TCLoad_End
+	TCLoad_SCZ:	WORD	TCLoad_S, TCLoad_K, TCLoad_Y, TCLoad_C, TCLoad_H, TCLoad_A, TCLoad_End
+	TCLoad_WFZ:	WORD	TCLoad_W, TCLoad_I, TCLoad_G, TCLoad_F, TCLoad_R, TCLoad_T, TCLoad_S, TCLoad_End
+	TCLoad_DEZ: 	WORD	TCLoad_D, TCLoad_A, TCLoad_T, TCLoad_H, TCLoad_G, TCLoad_End
+
+EndSeg
+
+StartSeg TCardMapData Big_Endian
+
+   	WORD	TCMap_EHZ-TCardMapData
+	WORD	TCMap_01-TCardMapData
+	WORD	TCMap_WZ-TCardMapData
+	WORD	TCMap_03-TCardMapData
+	WORD	TCMap_MTZ4-TCardMapData
+	WORD	TCMap_MTZ5-TCardMapData
+	WORD	TCMap_WFZ-TCardMapData
+	WORD	TCMap_HTZ-TCardMapData
+	WORD	TCMap_HPZ-TCardMapData
+	WORD	TCMap_09-TCardMapData
+	WORD	TCMap_OOZ-TCardMapData
+	WORD	TCMap_MCZ-TCardMapData
+	WORD	TCMap_CNZ-TCardMapData
+	WORD	TCMap_CPZ-TCardMapData
+	WORD	TCMap_DEZ-TCardMapData
+	WORD	TCMap_ARZ-TCardMapData
+	WORD	TCMap_SCZ-TCardMapData
+	WORD	TCMap_Zone-TCardMapData
+	WORD	TCMap_Act1-TCardMapData
+	WORD	TCMap_Act2-TCardMapData
+	WORD	TCMap_Act3-TCardMapData
+	WORD	TCMap_SonicTheHedgehog-TCardMapData
+	WORD	TCMap_PointedEdges-TCardMapData
+
+	TCMap_EHZ:
+	     	WORD	11
+		WORD	MWidth16 + MHeight16,     TCTilePos_E + MPHigh,     TCTilePos_E / 2 + MPHigh, $FFC3
+		WORD	MWidth24 + MHeight16, TCTilePos_EHZ_M + MPHigh, TCTilePos_EHZ_M / 2 + MPHigh, $FFD0
+		WORD	MWidth16 + MHeight16,     TCTilePos_E + MPHigh,     TCTilePos_E / 2 + MPHigh, $FFE8
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_R + MPHigh, TCTilePos_EHZ_R / 2 + MPHigh, $FFF8
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_A + MPHigh, TCTilePos_EHZ_A / 2 + MPHigh,     8
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_L + MPHigh, TCTilePos_EHZ_L / 2 + MPHigh,   $18
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_D + MPHigh, TCTilePos_EHZ_D / 2 + MPHigh,   $28
+
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_H + MPHigh, TCTilePos_EHZ_H / 2 + MPHigh,   $48
+		WORD	 MWidth8 + MHeight16, TCTilePos_EHZ_I + MPHigh, TCTilePos_EHZ_I / 2 + MPHigh,   $58
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_L + MPHigh, TCTilePos_EHZ_L / 2 + MPHigh,   $60
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_L + MPHigh, TCTilePos_EHZ_L / 2 + MPHigh,   $70
+
+	TCMap_01:							;Same as EHZ
+	     	WORD	11
+		WORD	MWidth16 + MHeight16,     TCTilePos_E + MPHigh,     TCTilePos_E / 2 + MPHigh, $FFC3
+		WORD	MWidth24 + MHeight16, TCTilePos_EHZ_M + MPHigh, TCTilePos_EHZ_M / 2 + MPHigh, $FFD0
+		WORD	MWidth16 + MHeight16,     TCTilePos_E + MPHigh,     TCTilePos_E / 2 + MPHigh, $FFE8
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_R + MPHigh, TCTilePos_EHZ_R / 2 + MPHigh, $FFF8
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_A + MPHigh, TCTilePos_EHZ_A / 2 + MPHigh,     8
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_L + MPHigh, TCTilePos_EHZ_L / 2 + MPHigh,   $18
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_D + MPHigh, TCTilePos_EHZ_D / 2 + MPHigh,   $28
+
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_H + MPHigh, TCTilePos_EHZ_H / 2 + MPHigh,   $48
+		WORD	 MWidth8 + MHeight16, TCTilePos_EHZ_I + MPHigh, TCTilePos_EHZ_I / 2 + MPHigh,   $58
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_L + MPHigh, TCTilePos_EHZ_L / 2 + MPHigh,   $60
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_L + MPHigh, TCTilePos_EHZ_L / 2 + MPHigh,   $70
+
+	TCMap_WZ:							;Same as EHZ
+	     	WORD	11
+		WORD	MWidth16 + MHeight16,     TCTilePos_E + MPHigh,     TCTilePos_E / 2 + MPHigh, $FFC3
+		WORD	MWidth24 + MHeight16, TCTilePos_EHZ_M + MPHigh, TCTilePos_EHZ_M / 2 + MPHigh, $FFD0
+		WORD	MWidth16 + MHeight16,     TCTilePos_E + MPHigh,     TCTilePos_E / 2 + MPHigh, $FFE8
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_R + MPHigh, TCTilePos_EHZ_R / 2 + MPHigh, $FFF8
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_A + MPHigh, TCTilePos_EHZ_A / 2 + MPHigh,     8
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_L + MPHigh, TCTilePos_EHZ_L / 2 + MPHigh,   $18
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_D + MPHigh, TCTilePos_EHZ_D / 2 + MPHigh,   $28
+
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_H + MPHigh, TCTilePos_EHZ_H / 2 + MPHigh,   $48
+		WORD	 MWidth8 + MHeight16, TCTilePos_EHZ_I + MPHigh, TCTilePos_EHZ_I / 2 + MPHigh,   $58
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_L + MPHigh, TCTilePos_EHZ_L / 2 + MPHigh,   $60
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_L + MPHigh, TCTilePos_EHZ_L / 2 + MPHigh,   $70
+
+	TCMap_03:							;Same as EHZ
+	     	WORD	11
+		WORD	MWidth16 + MHeight16,     TCTilePos_E + MPHigh,     TCTilePos_E / 2 + MPHigh, $FFC3
+		WORD	MWidth24 + MHeight16, TCTilePos_EHZ_M + MPHigh, TCTilePos_EHZ_M / 2 + MPHigh, $FFD0
+		WORD	MWidth16 + MHeight16,     TCTilePos_E + MPHigh,     TCTilePos_E / 2 + MPHigh, $FFE8
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_R + MPHigh, TCTilePos_EHZ_R / 2 + MPHigh, $FFF8
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_A + MPHigh, TCTilePos_EHZ_A / 2 + MPHigh,     8
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_L + MPHigh, TCTilePos_EHZ_L / 2 + MPHigh,   $18
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_D + MPHigh, TCTilePos_EHZ_D / 2 + MPHigh,   $28
+
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_H + MPHigh, TCTilePos_EHZ_H / 2 + MPHigh,   $48
+		WORD	 MWidth8 + MHeight16, TCTilePos_EHZ_I + MPHigh, TCTilePos_EHZ_I / 2 + MPHigh,   $58
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_L + MPHigh, TCTilePos_EHZ_L / 2 + MPHigh,   $60
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_L + MPHigh, TCTilePos_EHZ_L / 2 + MPHigh,   $70
+
+	TCMap_09:							;Same as EHZ
+	     	WORD	11
+		WORD	MWidth16 + MHeight16,     TCTilePos_E + MPHigh,     TCTilePos_E / 2 + MPHigh, $FFC3
+		WORD	MWidth24 + MHeight16, TCTilePos_EHZ_M + MPHigh, TCTilePos_EHZ_M / 2 + MPHigh, $FFD0
+		WORD	MWidth16 + MHeight16,     TCTilePos_E + MPHigh,     TCTilePos_E / 2 + MPHigh, $FFE8
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_R + MPHigh, TCTilePos_EHZ_R / 2 + MPHigh, $FFF8
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_A + MPHigh, TCTilePos_EHZ_A / 2 + MPHigh,     8
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_L + MPHigh, TCTilePos_EHZ_L / 2 + MPHigh,   $18
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_D + MPHigh, TCTilePos_EHZ_D / 2 + MPHigh,   $28
+
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_H + MPHigh, TCTilePos_EHZ_H / 2 + MPHigh,   $48
+		WORD	 MWidth8 + MHeight16, TCTilePos_EHZ_I + MPHigh, TCTilePos_EHZ_I / 2 + MPHigh,   $58
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_L + MPHigh, TCTilePos_EHZ_L / 2 + MPHigh,   $60
+		WORD	MWidth16 + MHeight16, TCTilePos_EHZ_L + MPHigh, TCTilePos_EHZ_L / 2 + MPHigh,   $70
+
+	TCMap_MTZ4:
+	     	WORD	10
+		WORD	MWidth24 + MHeight16, TCTilePos_MTZ4_M + MPHigh, TCTilePos_MTZ4_M / 2 + MPHigh, $FFE0
+		WORD	MWidth16 + MHeight16,      TCTilePos_E + MPHigh,      TCTilePos_E / 2 + MPHigh, $FFF8
+		WORD	MWidth16 + MHeight16, TCTilePos_MTZ4_T + MPHigh, TCTilePos_MTZ4_T / 2 + MPHigh,     8
+		WORD	MWidth16 + MHeight16, TCTilePos_MTZ4_R + MPHigh, TCTilePos_MTZ4_R / 2 + MPHigh,   $18
+		WORD	MWidth16 + MHeight16,      TCTilePos_O + MPHigh,      TCTilePos_O / 2 + MPHigh,   $28
+		WORD	MWidth16 + MHeight16, TCTilePos_MTZ4_P + MPHigh, TCTilePos_MTZ4_P / 2 + MPHigh,   $38
+		WORD	MWidth16 + MHeight16,      TCTilePos_O + MPHigh,      TCTilePos_O / 2 + MPHigh,   $48
+		WORD	MWidth16 + MHeight16, TCTilePos_MTZ4_L + MPHigh, TCTilePos_MTZ4_L / 2 + MPHigh,   $58
+		WORD	 MWidth8 + MHeight16, TCTilePos_MTZ4_I + MPHigh, TCTilePos_MTZ4_I / 2 + MPHigh,   $68
+		WORD	MWidth16 + MHeight16, TCTilePos_MTZ4_S + MPHigh, TCTilePos_MTZ4_S / 2 + MPHigh,   $70
+
+	TCMap_MTZ5:							;Same as MTZ5
+	     	WORD	10
+		WORD	MWidth24 + MHeight16, TCTilePos_MTZ5_M + MPHigh, TCTilePos_MTZ5_M / 2 + MPHigh, $FFE0
+		WORD	MWidth16 + MHeight16,      TCTilePos_E + MPHigh,      TCTilePos_E / 2 + MPHigh, $FFF8
+		WORD	MWidth16 + MHeight16, TCTilePos_MTZ5_T + MPHigh, TCTilePos_MTZ5_T / 2 + MPHigh,     8
+		WORD	MWidth16 + MHeight16, TCTilePos_MTZ5_R + MPHigh, TCTilePos_MTZ5_R / 2 + MPHigh,   $18
+		WORD	MWidth16 + MHeight16,      TCTilePos_O + MPHigh,      TCTilePos_O / 2 + MPHigh,   $28
+		WORD	MWidth16 + MHeight16, TCTilePos_MTZ5_P + MPHigh, TCTilePos_MTZ5_P / 2 + MPHigh,   $38
+		WORD	MWidth16 + MHeight16,      TCTilePos_O + MPHigh,      TCTilePos_O / 2 + MPHigh,   $48
+		WORD	MWidth16 + MHeight16, TCTilePos_MTZ5_L + MPHigh, TCTilePos_MTZ5_L / 2 + MPHigh,   $58
+		WORD	 MWidth8 + MHeight16, TCTilePos_MTZ5_I + MPHigh, TCTilePos_MTZ5_I / 2 + MPHigh,   $68
+		WORD	MWidth16 + MHeight16, TCTilePos_MTZ5_S + MPHigh, TCTilePos_MTZ5_S / 2 + MPHigh,   $70
+
+	TCMap_HTZ:
+	     	WORD	 7
+		WORD	MWidth16 + MHeight16, TCTilePos_HTZ_H + MPHigh, TCTilePos_HTZ_H / 2 + MPHigh,     8
+		WORD	 MWidth8 + MHeight16, TCTilePos_HTZ_I + MPHigh, TCTilePos_HTZ_I / 2 + MPHigh,   $18
+		WORD	MWidth16 + MHeight16, TCTilePos_HTZ_L + MPHigh, TCTilePos_HTZ_L / 2 + MPHigh,   $20
+		WORD	MWidth16 + MHeight16, TCTilePos_HTZ_L + MPHigh, TCTilePos_HTZ_L / 2 + MPHigh,   $30
+
+		WORD	MWidth16 + MHeight16, TCTilePos_HTZ_T + MPHigh, TCTilePos_HTZ_T / 2 + MPHigh,   $51
+		WORD	MWidth16 + MHeight16,     TCTilePos_O + MPHigh,     TCTilePos_O / 2 + MPHigh,   $60
+		WORD	MWidth16 + MHeight16, TCTilePos_HTZ_P + MPHigh, TCTilePos_HTZ_P / 2 + MPHigh,   $70
+
+	TCMap_HPZ:
+	     	WORD	12
+		WORD	MWidth16 + MHeight16, TCTilePos_HPZ_H + MPHigh, TCTilePos_HPZ_H / 2 + MPHigh, $FFB8
+		WORD	 MWidth8 + MHeight16, TCTilePos_HPZ_I + MPHigh, TCTilePos_HPZ_I / 2 + MPHigh, $FFC8
+		WORD	MWidth16 + MHeight16, TCTilePos_HPZ_D + MPHigh, TCTilePos_HPZ_D / 2 + MPHigh, $FFD0
+		WORD	MWidth16 + MHeight16, TCTilePos_HPZ_D + MPHigh, TCTilePos_HPZ_D / 2 + MPHigh, $FFE0
+		WORD	MWidth16 + MHeight16,     TCTilePos_E + MPHigh,     TCTilePos_E / 2 + MPHigh, $FFF0
+		WORD	MWidth16 + MHeight16,     TCTilePos_N + MPHigh,     TCTilePos_N / 2 + MPHigh,    0
+
+		WORD	MWidth16 + MHeight16, TCTilePos_HPZ_P + MPHigh, TCTilePos_HPZ_P / 2 + MPHigh,  $20
+		WORD	MWidth16 + MHeight16, TCTilePos_HPZ_A + MPHigh, TCTilePos_HPZ_A / 2 + MPHigh,  $30
+		WORD	MWidth16 + MHeight16, TCTilePos_HPZ_L + MPHigh, TCTilePos_HPZ_L / 2 + MPHigh,  $40
+		WORD	MWidth16 + MHeight16, TCTilePos_HPZ_A + MPHigh, TCTilePos_HPZ_A / 2 + MPHigh,  $50
+		WORD	MWidth16 + MHeight16, TCTilePos_HPZ_C + MPHigh, TCTilePos_HPZ_C / 2 + MPHigh,  $60
+		WORD	MWidth16 + MHeight16,     TCTilePos_E + MPHigh,     TCTilePos_E / 2 + MPHigh,  $70
+
+	TCMap_OOZ:
+	     	WORD	 8
+		WORD	MWidth16 + MHeight16,     TCTilePos_O + MPHigh,     TCTilePos_O / 2 + MPHigh, $FFFB
+		WORD	 MWidth8 + MHeight16, TCTilePos_OOZ_I + MPHigh, TCTilePos_OOZ_I / 2 + MPHigh,    $B
+		WORD	MWidth16 + MHeight16, TCTilePos_OOZ_L + MPHigh, TCTilePos_OOZ_L / 2 + MPHigh,  $13
+
+		WORD	MWidth16 + MHeight16,     TCTilePos_O + MPHigh,     TCTilePos_O / 2 + MPHigh,  $33
+		WORD	MWidth16 + MHeight16, TCTilePos_OOZ_C + MPHigh, TCTilePos_OOZ_C / 2 + MPHigh,  $43
+		WORD	MWidth16 + MHeight16,     TCTilePos_E + MPHigh,     TCTilePos_E / 2 + MPHigh,  $53
+		WORD	MWidth16 + MHeight16, TCTilePos_OOZ_A + MPHigh, TCTilePos_OOZ_A / 2 + MPHigh,  $60
+		WORD	MWidth16 + MHeight16,     TCTilePos_N + MPHigh,     TCTilePos_N / 2 + MPHigh,  $70
+
+	TCMap_MCZ:
+	     	WORD	10
+		WORD	MWidth24 + MHeight16, TCTilePos_MCZ_M + MPHigh, TCTilePos_MCZ_M / 2 + MPHigh, $FFD0
+		WORD	MWidth16 + MHeight16, TCTilePos_MCZ_Y + MPHigh, TCTilePos_MCZ_Y / 2 + MPHigh, $FFE8
+		WORD	MWidth16 + MHeight16, TCTilePos_MCZ_S + MPHigh, TCTilePos_MCZ_S / 2 + MPHigh, $FFF8
+		WORD	MWidth16 + MHeight16, TCTilePos_MCZ_T + MPHigh, TCTilePos_MCZ_T / 2 + MPHigh,     8
+		WORD	 MWidth8 + MHeight16, TCTilePos_MCZ_I + MPHigh, TCTilePos_MCZ_I / 2 + MPHigh,   $18
+		WORD	MWidth16 + MHeight16, TCTilePos_MCZ_C + MPHigh, TCTilePos_MCZ_C / 2 + MPHigh,   $20
+
+		WORD	MWidth16 + MHeight16, TCTilePos_MCZ_C + MPHigh, TCTilePos_MCZ_C / 2 + MPHigh,   $41
+		WORD	MWidth16 + MHeight16, TCTilePos_MCZ_A + MPHigh, TCTilePos_MCZ_A / 2 + MPHigh,   $50
+		WORD	MWidth16 + MHeight16, TCTilePos_MCZ_V + MPHigh, TCTilePos_MCZ_V / 2 + MPHigh,   $60
+		WORD	MWidth16 + MHeight16,     TCTilePos_E + MPHigh,     TCTilePos_E / 2 + MPHigh,   $70
+
+	TCMap_CNZ:
+	     	WORD	11
+		WORD	MWidth16 + MHeight16, TCTilePos_CNZ_C + MPHigh, TCTilePos_CNZ_C / 2 + MPHigh, $FFD1
+		WORD	MWidth16 + MHeight16, TCTilePos_CNZ_A + MPHigh, TCTilePos_CNZ_A / 2 + MPHigh, $FFE0
+		WORD	MWidth16 + MHeight16, TCTilePos_CNZ_S + MPHigh, TCTilePos_CNZ_S / 2 + MPHigh, $FFF0
+		WORD	 MWidth8 + MHeight16, TCTilePos_CNZ_I + MPHigh, TCTilePos_CNZ_I / 2 + MPHigh,     0
+		WORD	MWidth16 + MHeight16,     TCTilePos_N + MPHigh,     TCTilePos_N / 2 + MPHigh,     8
+		WORD	MWidth16 + MHeight16,     TCTilePos_O + MPHigh,     TCTilePos_O / 2 + MPHigh,   $18
+
+		WORD	MWidth16 + MHeight16,     TCTilePos_N + MPHigh,     TCTilePos_N / 2 + MPHigh,   $38
+		WORD	 MWidth8 + MHeight16, TCTilePos_CNZ_I + MPHigh, TCTilePos_CNZ_I / 2 + MPHigh,   $48
+		WORD	MWidth16 + MHeight16, TCTilePos_CNZ_G + MPHigh, TCTilePos_CNZ_G / 2 + MPHigh,   $50
+		WORD	MWidth16 + MHeight16, TCTilePos_CNZ_H + MPHigh, TCTilePos_CNZ_H / 2 + MPHigh,   $60
+		WORD	MWidth16 + MHeight16, TCTilePos_CNZ_T + MPHigh, TCTilePos_CNZ_T / 2 + MPHigh,   $70
+
+	TCMap_CPZ:
+	     	WORD	13
+		WORD	MWidth16 + MHeight16, TCTilePos_CPZ_C + MPHigh, TCTilePos_CPZ_C / 2 + MPHigh, $FFA4
+		WORD	MWidth16 + MHeight16, TCTilePos_CPZ_H + MPHigh, TCTilePos_CPZ_H / 2 + MPHigh, $FFB4
+		WORD	MWidth16 + MHeight16,     TCTilePos_E + MPHigh,     TCTilePos_E / 2 + MPHigh, $FFC4
+		WORD	MWidth24 + MHeight16, TCTilePos_CPZ_M + MPHigh, TCTilePos_CPZ_M / 2 + MPHigh, $FFD1
+		WORD	 MWidth8 + MHeight16, TCTilePos_CPZ_I + MPHigh, TCTilePos_CPZ_I / 2 + MPHigh, $FFE9
+		WORD	MWidth16 + MHeight16, TCTilePos_CPZ_C + MPHigh, TCTilePos_CPZ_C / 2 + MPHigh, $FFF1
+		WORD	MWidth16 + MHeight16, TCTilePos_CPZ_A + MPHigh, TCTilePos_CPZ_A / 2 + MPHigh,     0
+		WORD	MWidth16 + MHeight16, TCTilePos_CPZ_L + MPHigh, TCTilePos_CPZ_L / 2 + MPHigh,   $10
+
+		WORD	MWidth16 + MHeight16, TCTilePos_CPZ_P + MPHigh, TCTilePos_CPZ_P / 2 + MPHigh,   $31
+		WORD	MWidth16 + MHeight16, TCTilePos_CPZ_L + MPHigh, TCTilePos_CPZ_L / 2 + MPHigh,   $41
+		WORD	MWidth16 + MHeight16, TCTilePos_CPZ_A + MPHigh, TCTilePos_CPZ_A / 2 + MPHigh,   $50
+		WORD	MWidth16 + MHeight16,     TCTilePos_N + MPHigh,     TCTilePos_N / 2 + MPHigh,   $60
+		WORD	MWidth16 + MHeight16, TCTilePos_CPZ_T + MPHigh, TCTilePos_CPZ_T / 2 + MPHigh,   $70
+
+	TCMap_ARZ:
+	     	WORD	11
+		WORD	MWidth16 + MHeight16, TCTilePos_ARZ_A + MPHigh, TCTilePos_ARZ_A / 2 + MPHigh, $FFD2
+		WORD	MWidth16 + MHeight16, TCTilePos_ARZ_Q + MPHigh, TCTilePos_ARZ_Q / 2 + MPHigh, $FFE2
+		WORD	MWidth16 + MHeight16, TCTilePos_ARZ_U + MPHigh, TCTilePos_ARZ_U / 2 + MPHigh, $FFF2
+		WORD	MWidth16 + MHeight16, TCTilePos_ARZ_A + MPHigh, TCTilePos_ARZ_A / 2 + MPHigh,     0
+		WORD	MWidth16 + MHeight16, TCTilePos_ARZ_T + MPHigh, TCTilePos_ARZ_T / 2 + MPHigh,   $10
+		WORD	 MWidth8 + MHeight16, TCTilePos_ARZ_I + MPHigh, TCTilePos_ARZ_I / 2 + MPHigh,   $20
+		WORD	MWidth16 + MHeight16, TCTilePos_ARZ_C + MPHigh, TCTilePos_ARZ_C / 2 + MPHigh,   $28
+
+		WORD	MWidth16 + MHeight16, TCTilePos_ARZ_R + MPHigh, TCTilePos_ARZ_R / 2 + MPHigh,   $48
+		WORD	MWidth16 + MHeight16, TCTilePos_ARZ_U + MPHigh, TCTilePos_ARZ_U / 2 + MPHigh,   $58
+		WORD	 MWidth8 + MHeight16, TCTilePos_ARZ_I + MPHigh, TCTilePos_ARZ_I / 2 + MPHigh,   $68
+		WORD	MWidth16 + MHeight16,     TCTilePos_N + MPHigh,     TCTilePos_N / 2 + MPHigh,   $70
+
+	TCMap_SCZ:
+	     	WORD	 8
+		WORD	MWidth16 + MHeight16, TCTilePos_SCZ_S + MPHigh, TCTilePos_SCZ_S / 2 + MPHigh, $FFF0
+		WORD	MWidth16 + MHeight16, TCTilePos_SCZ_K + MPHigh, TCTilePos_SCZ_K / 2 + MPHigh,     0
+		WORD	MWidth16 + MHeight16, TCTilePos_SCZ_Y + MPHigh, TCTilePos_SCZ_Y / 2 + MPHigh,   $10
+
+		WORD	MWidth16 + MHeight16, TCTilePos_SCZ_C + MPHigh, TCTilePos_SCZ_C / 2 + MPHigh,   $30
+		WORD	MWidth16 + MHeight16, TCTilePos_SCZ_H + MPHigh, TCTilePos_SCZ_H / 2 + MPHigh,   $40
+		WORD	MWidth16 + MHeight16, TCTilePos_SCZ_A + MPHigh, TCTilePos_SCZ_A / 2 + MPHigh,   $50
+		WORD	MWidth16 + MHeight16, TCTilePos_SCZ_S + MPHigh, TCTilePos_SCZ_S / 2 + MPHigh,   $60
+		WORD	MWidth16 + MHeight16,     TCTilePos_E + MPHigh,     TCTilePos_E / 2 + MPHigh,   $70
+
+	TCMap_WFZ:
+	     	WORD	12
+		WORD	MWidth24 + MHeight16, TCTilePos_WFZ_W + MPHigh, TCTilePos_WFZ_W / 2 + MPHigh, $FFB1
+		WORD	 MWidth8 + MHeight16, TCTilePos_WFZ_I + MPHigh, TCTilePos_WFZ_I / 2 + MPHigh, $FFC8
+		WORD	MWidth16 + MHeight16,     TCTilePos_N + MPHigh,     TCTilePos_N / 2 + MPHigh, $FFD0
+		WORD	MWidth16 + MHeight16, TCTilePos_WFZ_G + MPHigh, TCTilePos_WFZ_G / 2 + MPHigh, $FFE0
+
+		WORD	MWidth16 + MHeight16, TCTilePos_WFZ_F + MPHigh, TCTilePos_WFZ_F / 2 + MPHigh,     1
+		WORD	MWidth16 + MHeight16,     TCTilePos_O + MPHigh,     TCTilePos_O / 2 + MPHigh,   $10
+		WORD	MWidth16 + MHeight16, TCTilePos_WFZ_R + MPHigh, TCTilePos_WFZ_R / 2 + MPHigh,   $20
+		WORD	MWidth16 + MHeight16, TCTilePos_WFZ_T + MPHigh, TCTilePos_WFZ_T / 2 + MPHigh,   $30
+		WORD	MWidth16 + MHeight16, TCTilePos_WFZ_R + MPHigh, TCTilePos_WFZ_R / 2 + MPHigh,   $40
+		WORD	MWidth16 + MHeight16,     TCTilePos_E + MPHigh,     TCTilePos_E / 2 + MPHigh,   $50
+		WORD	MWidth16 + MHeight16, TCTilePos_WFZ_S + MPHigh, TCTilePos_WFZ_S / 2 + MPHigh,   $5F
+		WORD	MWidth16 + MHeight16, TCTilePos_WFZ_S + MPHigh, TCTilePos_WFZ_S / 2 + MPHigh,   $6F
+
+	TCMap_DEZ:
+	     	WORD	 8
+		WORD	MWidth16 + MHeight16, TCTilePos_DEZ_D + MPHigh, TCTilePos_DEZ_D / 2 + MPHigh, $FFF2
+		WORD	MWidth16 + MHeight16,     TCTilePos_E + MPHigh,     TCTilePos_E / 2 + MPHigh,     2
+		WORD	MWidth16 + MHeight16, TCTilePos_DEZ_A + MPHigh, TCTilePos_DEZ_A / 2 + MPHigh,   $10
+		WORD	MWidth16 + MHeight16, TCTilePos_DEZ_T + MPHigh, TCTilePos_DEZ_T / 2 + MPHigh,   $20
+		WORD	MWidth16 + MHeight16, TCTilePos_DEZ_H + MPHigh, TCTilePos_DEZ_H / 2 + MPHigh,   $30
+
+		WORD	MWidth16 + MHeight16,     TCTilePos_E + MPHigh,     TCTilePos_E / 2 + MPHigh,   $51
+		WORD	MWidth16 + MHeight16, TCTilePos_DEZ_G + MPHigh, TCTilePos_DEZ_G / 2 + MPHigh,   $60
+		WORD	MWidth16 + MHeight16, TCTilePos_DEZ_G + MPHigh, TCTilePos_DEZ_G / 2 + MPHigh,   $70
+
+	TCMap_Zone:
+	     	WORD	 4
+		WORD	MWidth16 + MHeight16,     TCTilePos_Z + MPHigh,     TCTilePos_Z / 2 + MPHigh,     1
+		WORD	MWidth16 + MHeight16,     TCTilePos_O + MPHigh,     TCTilePos_O / 2 + MPHigh,   $10
+		WORD	MWidth16 + MHeight16,     TCTilePos_N + MPHigh,     TCTilePos_N / 2 + MPHigh,   $20
+		WORD	MWidth16 + MHeight16,     TCTilePos_E + MPHigh,     TCTilePos_E / 2 + MPHigh,   $30
+
+	TCMap_Act1:
+	     	WORD	 1
+		WORD	MWidth16 + MHeight32,$A590,$A2C8,    0
+		WORD	MWidth32 + MHeight16,$A598,$A2CC,    0
+
+	TCMap_Act2:
+     		WORD	 1
+		WORD	MWidth32 + MHeight16,$A598,$A2CC,    0
+
+	TCMap_Act3:
+	     	WORD	 1
+		WORD	MWidth32 + MHeight16,$A5A4,$A2D2,    0
+
+	TCMap_SonicTheHedgehog:
+	     	WORD	 5
+		WORD	MWidth32 + MHeight32, $85B0, $82D8, $FFB8
+		WORD	MWidth32 + MHeight32, $85B8, $82DC, $FFD8
+		WORD	MWidth32 + MHeight32, $85C0, $82E0, $FFF8
+		WORD	MWidth32 + MHeight32, $85C8, $82E4,   $18
+		WORD	MWidth16 + MHeight16, $85D0, $82E8,   $38
+
+	TCMap_PointedEdges:
+	     	WORD	 7
+		WORD	$9000 + MWidth8 + MHeight32, $85D4, $82EA,     0
+		WORD	$B000 + MWidth8 + MHeight32, $85D4, $82EA,     0
+		WORD	$D000 + MWidth8 + MHeight32, $85D4, $82EA,     0
+		WORD	$F000 + MWidth8 + MHeight32, $85D4, $82EA,     0
+		WORD	$1000 + MWidth8 + MHeight32, $85D4, $82EA,     0
+		WORD	$3000 + MWidth8 + MHeight32, $85D4, $82EA,     0
+		WORD	$5000 + MWidth8 + MHeight32, $85D4, $82EA,     0
+
+EndSeg
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; General Reference Replacement Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Big_Endian $003EF0
+
+	DWORD TCardLoad2
+
+EndSeg
+
+StartSeg Big_Endian $00784C
+
+	DWORD TCardLoad
+
+EndSeg
+
+StartSeg Big_Endian $013C82
+
+	DWORD TCardMapData
+
+EndSeg

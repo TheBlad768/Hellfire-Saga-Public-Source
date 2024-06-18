@@ -1,0 +1,21 @@
+Sound_6F_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$02
+	sHeaderSFX	$80, ctFM2, Sound_6F_CB_FM2, $00, $06
+	sHeaderSFX	$80, ctFM4, Sound_6F_CB_FM4, $00, $06
+
+; FM3 Data
+Sound_6F_CB_FM2:
+	sVoice		$2C
+	dc.b nBb0, $05
+	sJump		Sound_6F_CB_Loop00	; saves us a bit of CPU time
+
+; FM4 Data
+Sound_6F_CB_FM4:
+	sVoice		$2C
+
+Sound_6F_CB_Loop00:
+	dc.b nAb0, $09, nBb0, $07, nAb0, $09, nBb0, $07
+	sCont		Sound_6F_CB_Loop00
+	sStop

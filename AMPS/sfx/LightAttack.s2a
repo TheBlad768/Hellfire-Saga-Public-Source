@@ -1,0 +1,11 @@
+Sound_45_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$80, ctFM5, Sound_45_FM5, $00, $05
+
+; FM5 Data
+Sound_45_FM5:
+	sVoice		pLightAttack
+	dc.b nEb3, $1B
+	sStop

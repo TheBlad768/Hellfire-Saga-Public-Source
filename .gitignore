@@ -1,0 +1,25 @@
+desktop.ini
+*.gen
+*.lst
+*.log
+*.bak
+*.sh
+*.[ph]
+SonLVL INI Files/dllcache/*
+SonLVL INI Files/*.sls
+SonLVL/*
+SonMapEd/SonMapEdData/*
+SonMapEd/SonMapEdData/mappings_0.bin
+SonMapEd/SonMapEdData/palette_0.bin
+SonMapEd/SonMapEdData/sprite_converted.bmp
+SonMapEd/SonMapEdData/status_0.bin
+SonMapEd/SonMapEdData/temp.bin
+SonMapEd/SonMapEdData/temp_kens_bug_workaround.bin
+SonMapEd/SonMapEdData/tiles_0.bin
+Flex2
+Fractal/Includes/*.asm
+Fractal/Includes/*.dat
+Fractal/Songs/.cache/
+Fractal/Samples/.cache/
+Fractal/Code/.idea/Code.iml
+_ParametersDev.asm

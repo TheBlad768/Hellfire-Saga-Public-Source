@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Namespace="SonED2.Zone6" TypeName="MovingBridgeLBZ" Language="cs" Name="Moving Bridge - LBZ" Image="Image1" RememberState="false" Debug="false" xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromBitmap id="Image1" filename="Sprites/s3objsprite2-11.png" />
+  </Images>
+  <Properties>
+    <BitsProperty name="Property1" type="Enum1" startbit="0" length="4" />
+    <BitsProperty name="Property2" type="Enum2" startbit="4" length="3" />
+  </Properties>
+  <Enums>
+    <Enum name="Enum1">
+      <EnumMember name="Moves when trigger 0 is destroyed" />
+      <EnumMember name="Moves when trigger 1 is destroyed" />
+      <EnumMember name="Moves when trigger 2 is destroyed" />
+      <EnumMember name="Moves when trigger 3 is destroyed" />
+      <EnumMember name="Moves when trigger 4 is destroyed" />
+      <EnumMember name="Moves when trigger 5 is destroyed" />
+      <EnumMember name="Moves when trigger 6 is destroyed" />
+      <EnumMember name="Moves when trigger 7 is destroyed" />
+      <EnumMember name="Moves when trigger 8 is destroyed" />
+      <EnumMember name="Moves when trigger 9 is destroyed" />
+      <EnumMember name="Moves when trigger A is destroyed" />
+      <EnumMember name="Moves when trigger B is destroyed" />
+      <EnumMember name="Moves when trigger C is destroyed" />
+      <EnumMember name="Moves when trigger D is destroyed" />
+      <EnumMember name="Moves when trigger E is destroyed" />
+      <EnumMember name="Moves when trigger F is destroyed" />
+    </Enum>
+    <Enum name="Enum2">
+      <EnumMember name="Vertical Right To Horizontal Down When Trigger Set" />
+      <EnumMember name="Horizontal Down to Vertical Right When Trigger Set" />
+      <EnumMember name="Vertical Left To Horizontal Down When Trigger Set" />
+      <EnumMember name="Horizontal Down to Vertical Left When Trigger Set" />
+      <EnumMember name="Horizontal Down to Vertical Right When Trigger Not Set" />
+      <EnumMember name="Vertical Right to Horizontal Down When Trigger Not Set" />
+      <EnumMember name="Horizontal Down to Vertical Left When Trigger Not Set" />
+      <EnumMember name="Vertical Left to Horizontal Down When Trigger Not Set" />
+    </Enum>
+  </Enums>
+  <Display>
+    <DisplayOption>
+      <Condition property="Property2" value="Vertical Right To Horizontal Down When Trigger Set" />
+      <ImageRef image="Image1">
+        <Offset X="64" Y="-64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="64" Y="-48" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="64" Y="-32" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="64" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="64" Y="16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="64" Y="32" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="64" Y="48" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="Horizontal Down to Vertical Right When Trigger Set" />
+      <ImageRef image="Image1">
+        <Offset X="-64" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-48" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-16" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="16" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="32" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="48" Y="64" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="Vertical Left To Horizontal Down When Trigger Set" />
+      <ImageRef image="Image1">
+        <Offset X="-80" Y="-64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-80" Y="-48" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-80" Y="-32" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-80" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-80" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-80" Y="16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-80" Y="32" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-80" Y="48" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="Horizontal Down to Vertical Left When Trigger Set" />
+      <ImageRef image="Image1">
+        <Offset X="-64" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-48" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-16" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="16" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="32" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="48" Y="64" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="Horizontal Down to Vertical Right When Trigger Not Set" />
+      <ImageRef image="Image1">
+        <Offset X="-64" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-48" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-16" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="16" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="32" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="48" Y="64" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="Vertical Right to Horizontal Down When Trigger Not Set" />
+      <ImageRef image="Image1">
+        <Offset X="64" Y="-64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="64" Y="-48" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="64" Y="-32" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="64" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="64" Y="16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="64" Y="32" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="64" Y="48" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="Horizontal Down to Vertical Left When Trigger Not Set" />
+      <ImageRef image="Image1">
+        <Offset X="-64" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-48" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-16" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="16" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="32" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="48" Y="64" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="Vertical Left to Horizontal Down When Trigger Not Set" />
+      <ImageRef image="Image1">
+        <Offset X="-80" Y="-64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-80" Y="-48" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-80" Y="-32" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-80" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-80" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-80" Y="16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-80" Y="32" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-80" Y="48" />
+      </ImageRef>
+    </DisplayOption>
+  </Display>
+</ObjDef>

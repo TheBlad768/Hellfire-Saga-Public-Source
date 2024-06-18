@@ -1,0 +1,580 @@
+<head>
+<title>Knuckles' Chaotix JU/(5) ROMulan Package</title>
+</head>
+<body>
+<b><center>Knuckles' Chaotix JU/(5) ROMulan Package</center></b><br>
+<br>
+The files contained herein are for use with <a href="http://stealth.hapisan.com/ROMulan">ROMulan</a> and <a href="http://stealth.hapisan.com/SonED">SonED2</a>, to provide a means of editing the levels of the Japanese/USA-region (region code "5") release of Knuckles' Chaotix.<br>
+<br>
+Please visit the <a href="http://stealth.hapisan.com/Forum">official forum</a> for discussion on mods made using this package, to submit additions to the scripts, or to report any errors in the official distribution.<br>
+<br>
+
+<li><b><a href="#Setup">Setup and Basic Usage</a></b><br>
+<br>
+<li><b><a href="#Files">File Listing</a></b><br>
+<br>
+<li><b><a href="#Notes">Game Notes</a></b><br>
+<ul>
+ <li><a href="#SharedData">Tile Paging and Shared Level Data</a><br>
+ <li><a href="#Animated">Animated Tiles and Palettes</a><br>
+ <li><a href="#CrossingPaths">Loops, Crossing Paths, and Plane Priority</a><br>
+ <li><a href="#LevelBoundaries">Level Boundaries</a><br>
+ <li><a href="#DynamicLevelChanges">Dynamic Level Changes</a><br>
+ <li><a href="#BossArena">Boss Arenas</a><br>
+ <li><a href="#Emulators">Emulator Compatibility with Modified Game</a><br>
+</ul>
+<li><b><a href="#Options">Special Options</a></b><br>
+<ul>
+ <li><a href="#Playlist">Level Music Playlist</a><br>
+ <li><a href="#Codes">Cheat Codes</a><br>
+</ul>
+
+<br>
+<br><a name="Setup">
+<b>Setup and Basic Usage</b>
+<ul>
+ This script set is "<b>non-destructive</b>". This means that the input game file will never need to be restored, as the Injection process never modifies it. Thus, all changes are applied to a clean copy of the game, and saved to a different file.
+ The only time any of the initial steps will need to be repeated is if the separated data files have become corrupt, in which case, the Split will need to be performed again.<br>
+ <br>
+ <br>
+ <b>One-Time Setup Steps</b>
+ <ul>
+  <li>Unpack all files from this archive into their own folder. <i>The full path name of this folder must not contain any spaces</i><br>
+  <li>Place in the same folder a copy of the <b>Japanese/USA-region (code "5") release of Knuckles' Chaotix</b> and give it the filename "<b>kc.bin</b>"<br>
+  <li>Run the included Batch File "<b>split.txt</b>" using ROMulan or SonED2's built-in ROMulan functionality  to retrieve the game's data<br>
+ </ul>
+ <br>
+ <br>
+ <b>Every Time Level Editing Steps</b>
+ <ul>
+  <li>Using SonED2's <b>"Open Project" option</b> in the "File" menu, navigate to the <b>"Projects" folder</b> included with this fileset and open any of the included Project Files to edit its corresponding level<br>
+  <li>Make any changes using SonED2 as described in its own documentation<br>
+  <li>Use SonED2's <b>"Save Project" option</b> by selecting it in the "File" menu or pressing <b>F3</b> to save the changes to their respective files (<i>This is important as the edited data is SonED2-internal; ROMulan expects to find all necessary data in the files listed by the injector script</i>)<br>
+  <br>
+  <i>Be aware that modifying some levels' Tilesets will effectively modify the tilesets of certain other levels, but not all levels within the same zone. See the "<a href="#Notes">Game Notes</a>" section for more information.</i>
+ </ul>
+ <br>
+ <br>
+ <b>Other Modifications</b><br>
+ <ul>
+  <li>With the proper knowledge of the game, other changes can be made by modifying the two Batch Files and/or the Injector File "<b>injmain.txt</b>" as described by the ROMulan documentation. For relevant information, see the "<a href="#Notes">Game Notes</a>" section.<br>
+  <li>Some game settings are already available for modification in the Injector File "<b>inopts.txt</b>". See the "<a href="#Options">Special Options</a>" section for details.<br>
+ </ul>
+ <br>
+ <br>
+ <b>Every Time Finalization Steps</b>
+ <ul>
+  <li>Run the included Batch File "<b>inject.txt</b>" using ROMulan or SonED2's built-in ROMulan functionality to inject the changes into the game<br>
+  <li>The file "<b>inject.bin</b>" will have been created and placed in the same folder as the "inject.txt" script. The process is now complete<br>
+ </ul>
+</ul>
+
+<br>
+<br><a name="Files">
+<b>File Listing</b>
+<ul>
+ This section provides a complete listing of the folders and files included with this package, each with a brief description. Note that other files and folders will also appear in this folder after "split.txt" has been run, which belong to the data that was extracted from the game.<br>
+ <br>
+ <li><b>/Project</b> - This is the primary folder containing Object Listing Files and a full set of SonED2 Standard Level Project Files for Knuckles' Chaotix, based on the data created by "split.txt"</a>
+	<br><br>
+	<ul>
+        <li><b>/AAZ</b> - A full set of Project Files for "Amazing Arena"</a>
+	<br><br>
+        <ul><table>
+        <tr><td nowrap><li><b>1D.sep</b></td><td> - </td><td>Amazing Arena Act 1 Day</td></tr>
+        <tr><td nowrap><li><b>1M.sep</b></td><td> - </td><td>Amazing Arena Act 1 Morning</td></tr>
+        <tr><td nowrap><li><b>1N.sep</b></td><td> - </td><td>Amazing Arena Act 1 Night</td></tr>
+        <tr><td nowrap><li><b>1S.sep</b></td><td> - </td><td>Amazing Arena Act 1 Sunset</td></tr>
+        <tr><td nowrap><li><b>2D.sep</b></td><td> - </td><td>Amazing Arena Act 2 Day</td></tr>
+        <tr><td nowrap><li><b>2M.sep</b></td><td> - </td><td>Amazing Arena Act 2 Morning</td></tr>
+        <tr><td nowrap><li><b>2N.sep</b></td><td> - </td><td>Amazing Arena Act 2 Night</td></tr>
+        <tr><td nowrap><li><b>2S.sep</b></td><td> - </td><td>Amazing Arena Act 2 Sunset</td></tr>
+        <tr><td nowrap><li><b>3D.sep</b></td><td> - </td><td>Amazing Arena Act 3 Day</td></tr>
+        <tr><td nowrap><li><b>3M.sep</b></td><td> - </td><td>Amazing Arena Act 3 Morning</td></tr>
+        <tr><td nowrap><li><b>3N.sep</b></td><td> - </td><td>Amazing Arena Act 3 Night</td></tr>
+        <tr><td nowrap><li><b>3S.sep</b></td><td> - </td><td>Amazing Arena Act 3 Sunset</td></tr>
+        <tr><td nowrap><li><b>4D.sep</b></td><td> - </td><td>Amazing Arena Act 4 Day</td></tr>
+        <tr><td nowrap><li><b>4M.sep</b></td><td> - </td><td>Amazing Arena Act 4 Morning</td></tr>
+        <tr><td nowrap><li><b>4N.sep</b></td><td> - </td><td>Amazing Arena Act 4 Night</td></tr>
+        <tr><td nowrap><li><b>4S.sep</b></td><td> - </td><td>Amazing Arena Act 4 Sunset</td></tr>
+        <tr><td nowrap><li><b>5D.sep</b></td><td> - </td><td>Amazing Arena Act 5 Day</td></tr>
+        <tr><td nowrap><li><b>5M.sep</b></td><td> - </td><td>Amazing Arena Act 5 Morning</td></tr>
+        <tr><td nowrap><li><b>5N.sep</b></td><td> - </td><td>Amazing Arena Act 5 Night</td></tr>
+        <tr><td nowrap><li><b>5S.sep</b></td><td> - </td><td>Amazing Arena Act 5 Sunset</td></tr>
+        </table></ul>
+	<br><br>
+
+        <li><b>/BBZ</b> - A full set of Project Files for "Botanic Base"</a>
+	<br><br>
+        <ul><table>
+        <tr><td nowrap><li><b>1D.sep</b></td><td> - </td><td>Botanic Base Act 1 Day</td></tr>
+        <tr><td nowrap><li><b>1M.sep</b></td><td> - </td><td>Botanic Base Act 1 Morning</td></tr>
+        <tr><td nowrap><li><b>1N.sep</b></td><td> - </td><td>Botanic Base Act 1 Night</td></tr>
+        <tr><td nowrap><li><b>1S.sep</b></td><td> - </td><td>Botanic Base Act 1 Sunset</td></tr>
+        <tr><td nowrap><li><b>2D.sep</b></td><td> - </td><td>Botanic Base Act 2 Day</td></tr>
+        <tr><td nowrap><li><b>2M.sep</b></td><td> - </td><td>Botanic Base Act 2 Morning</td></tr>
+        <tr><td nowrap><li><b>2N.sep</b></td><td> - </td><td>Botanic Base Act 2 Night</td></tr>
+        <tr><td nowrap><li><b>2S.sep</b></td><td> - </td><td>Botanic Base Act 2 Sunset</td></tr>
+        <tr><td nowrap><li><b>3D.sep</b></td><td> - </td><td>Botanic Base Act 3 Day</td></tr>
+        <tr><td nowrap><li><b>3M.sep</b></td><td> - </td><td>Botanic Base Act 3 Morning</td></tr>
+        <tr><td nowrap><li><b>3N.sep</b></td><td> - </td><td>Botanic Base Act 3 Night</td></tr>
+        <tr><td nowrap><li><b>3S.sep</b></td><td> - </td><td>Botanic Base Act 3 Sunset</td></tr>
+        <tr><td nowrap><li><b>4D.sep</b></td><td> - </td><td>Botanic Base Act 4 Day</td></tr>
+        <tr><td nowrap><li><b>4M.sep</b></td><td> - </td><td>Botanic Base Act 4 Morning</td></tr>
+        <tr><td nowrap><li><b>4N.sep</b></td><td> - </td><td>Botanic Base Act 4 Night</td></tr>
+        <tr><td nowrap><li><b>4S.sep</b></td><td> - </td><td>Botanic Base Act 4 Sunset</td></tr>
+        <tr><td nowrap><li><b>5D.sep</b></td><td> - </td><td>Botanic Base Act 5 Day</td></tr>
+        <tr><td nowrap><li><b>5M.sep</b></td><td> - </td><td>Botanic Base Act 5 Morning</td></tr>
+        <tr><td nowrap><li><b>5N.sep</b></td><td> - </td><td>Botanic Base Act 5 Night</td></tr>
+        <tr><td nowrap><li><b>5S.sep</b></td><td> - </td><td>Botanic Base Act 5 Sunset</td></tr>
+        </table></ul>
+	<br><br>
+
+        <li><b>/Entrance</b> - A full set of Project Files for "World Entrance"</a>
+	<br><br>
+        <ul><table>
+        <tr><td nowrap><li><b>1D.sep</b></td><td> - </td><td>World Entrance Day</td></tr>
+        <tr><td nowrap><li><b>1M.sep</b></td><td> - </td><td>World Entrance Morning</td></tr>
+        <tr><td nowrap><li><b>1N.sep</b></td><td> - </td><td>World Entrance Night</td></tr>
+        <tr><td nowrap><li><b>1S.sep</b></td><td> - </td><td>World Entrance Sunset</td></tr>
+        <tr><td nowrap><li><b>EndBoss.sep</b></td><td> - </td><td>Final Boss</td></tr>
+        </table></ul>
+	<br><br>
+
+        <li><b>/Intro</b> - A full set of Project Files for the introductory levels</a>
+	<br><br>
+        <ul><table>
+        <tr><td nowrap><li><b>1D.sep</b></td><td> - </td><td>Intro Cutscene Level and Intro Level 1 Day</td></tr>
+        <tr><td nowrap><li><b>1M.sep</b></td><td> - </td><td>Intro Cutscene Level and Intro Level 1 Morning</td></tr>
+        <tr><td nowrap><li><b>1N.sep</b></td><td> - </td><td>Intro Cutscene Level and Intro Level 1 Night</td></tr>
+        <tr><td nowrap><li><b>1S.sep</b></td><td> - </td><td>Intro Cutscene Level and Intro Level 1 Sunset</td></tr>
+        <tr><td nowrap><li><b>2D.sep</b></td><td> - </td><td>Intro Level 2 Day</td></tr>
+        <tr><td nowrap><li><b>2M.sep</b></td><td> - </td><td>Intro Level 2 Morning</td></tr>
+        <tr><td nowrap><li><b>2N.sep</b></td><td> - </td><td>Intro Level 2 Night</td></tr>
+        <tr><td nowrap><li><b>2S.sep</b></td><td> - </td><td>Intro Level 2 Sunset</td></tr>
+        <tr><td nowrap><li><b>3D.sep</b></td><td> - </td><td>Intro Level 3 Day</td></tr>
+        <tr><td nowrap><li><b>3M.sep</b></td><td> - </td><td>Intro Level 3 Morning</td></tr>
+        <tr><td nowrap><li><b>3N.sep</b></td><td> - </td><td>Intro Level 3 Night</td></tr>
+        <tr><td nowrap><li><b>3S.sep</b></td><td> - </td><td>Intro Level 3 Sunset</td></tr>
+        <tr><td nowrap><li><b>4D.sep</b></td><td> - </td><td>Intro Level 4 Day</td></tr>
+        <tr><td nowrap><li><b>4M.sep</b></td><td> - </td><td>Intro Level 4 Morning</td></tr>
+        <tr><td nowrap><li><b>4N.sep</b></td><td> - </td><td>Intro Level 4 Night</td></tr>
+        <tr><td nowrap><li><b>4S.sep</b></td><td> - </td><td>Intro Level 4 Sunset</td></tr>
+        <tr><td nowrap><li><b>5D.sep</b></td><td> - </td><td>Intro Level 5 Day</td></tr>
+        <tr><td nowrap><li><b>5M.sep</b></td><td> - </td><td>Intro Level 5 Morning</td></tr>
+        <tr><td nowrap><li><b>5N.sep</b></td><td> - </td><td>Intro Level 5 Night</td></tr>
+        <tr><td nowrap><li><b>5S.sep</b></td><td> - </td><td>Intro Level 5 Sunset</td></tr>
+        </table></ul>
+	<br><br>
+
+        <li><b>/MMZ</b> - A full set of Project Files for "Marina Madness"</a>
+	<br><br>
+        <ul><table>
+        <tr><td nowrap><li><b>1D.sep</b></td><td> - </td><td>Marina Madness Act 1 Day</td></tr>
+        <tr><td nowrap><li><b>1M.sep</b></td><td> - </td><td>Marina Madness Act 1 Morning</td></tr>
+        <tr><td nowrap><li><b>1N.sep</b></td><td> - </td><td>Marina Madness Act 1 Night</td></tr>
+        <tr><td nowrap><li><b>1S.sep</b></td><td> - </td><td>Marina Madness Act 1 Sunset</td></tr>
+        <tr><td nowrap><li><b>2D.sep</b></td><td> - </td><td>Marina Madness Act 2 Day</td></tr>
+        <tr><td nowrap><li><b>2M.sep</b></td><td> - </td><td>Marina Madness Act 2 Morning</td></tr>
+        <tr><td nowrap><li><b>2N.sep</b></td><td> - </td><td>Marina Madness Act 2 Night</td></tr>
+        <tr><td nowrap><li><b>2S.sep</b></td><td> - </td><td>Marina Madness Act 2 Sunset</td></tr>
+        <tr><td nowrap><li><b>3D.sep</b></td><td> - </td><td>Marina Madness Act 3 Day</td></tr>
+        <tr><td nowrap><li><b>3M.sep</b></td><td> - </td><td>Marina Madness Act 3 Morning</td></tr>
+        <tr><td nowrap><li><b>3N.sep</b></td><td> - </td><td>Marina Madness Act 3 Night</td></tr>
+        <tr><td nowrap><li><b>3S.sep</b></td><td> - </td><td>Marina Madness Act 3 Sunset</td></tr>
+        <tr><td nowrap><li><b>4D.sep</b></td><td> - </td><td>Marina Madness Act 4 Day</td></tr>
+        <tr><td nowrap><li><b>4M.sep</b></td><td> - </td><td>Marina Madness Act 4 Morning</td></tr>
+        <tr><td nowrap><li><b>4N.sep</b></td><td> - </td><td>Marina Madness Act 4 Night</td></tr>
+        <tr><td nowrap><li><b>4S.sep</b></td><td> - </td><td>Marina Madness Act 4 Sunset</td></tr>
+        <tr><td nowrap><li><b>5D.sep</b></td><td> - </td><td>Marina Madness Act 5 Day</td></tr>
+        <tr><td nowrap><li><b>5M.sep</b></td><td> - </td><td>Marina Madness Act 5 Morning</td></tr>
+        <tr><td nowrap><li><b>5N.sep</b></td><td> - </td><td>Marina Madness Act 5 Night</td></tr>
+        <tr><td nowrap><li><b>5S.sep</b></td><td> - </td><td>Marina Madness Act 5 Sunset</td></tr>
+        </table></ul>
+	<br><br>
+
+        <li><b>/objdef</b> - Object Listing Files and supporting graphics files that define the Objects used Knuckles' Chaotix for SonED2's Object Editor</a>
+	<br><br>
+        <ul><table>
+        <tr><td nowrap><li><b>kcobj.lst</b></td><td> - </td><td>Object Listing File, which defines Object descriptions, setting data, and in-editor graphic displays</td></tr>
+        <tr><td nowrap><li><b>kcobj1.pcx</b></td><td> - </td><td>Graphic file containing some of the global Object graphics</td></tr>
+        </table></ul>
+	<br><br>
+
+        <li><b>/SSZ</b> - A full set of Project Files for "Speed Slider"</a>
+	<br><br>
+        <ul><table>
+        <tr><td nowrap><li><b>1D.sep</b></td><td> - </td><td>Speed Slider Act 1 Day</td></tr>
+        <tr><td nowrap><li><b>1M.sep</b></td><td> - </td><td>Speed Slider Act 1 Morning</td></tr>
+        <tr><td nowrap><li><b>1N.sep</b></td><td> - </td><td>Speed Slider Act 1 Night</td></tr>
+        <tr><td nowrap><li><b>1S.sep</b></td><td> - </td><td>Speed Slider Act 1 Sunset</td></tr>
+        <tr><td nowrap><li><b>2D.sep</b></td><td> - </td><td>Speed Slider Act 2 Day</td></tr>
+        <tr><td nowrap><li><b>2M.sep</b></td><td> - </td><td>Speed Slider Act 2 Morning</td></tr>
+        <tr><td nowrap><li><b>2N.sep</b></td><td> - </td><td>Speed Slider Act 2 Night</td></tr>
+        <tr><td nowrap><li><b>2S.sep</b></td><td> - </td><td>Speed Slider Act 2 Sunset</td></tr>
+        <tr><td nowrap><li><b>3D.sep</b></td><td> - </td><td>Speed Slider Act 3 Day</td></tr>
+        <tr><td nowrap><li><b>3M.sep</b></td><td> - </td><td>Speed Slider Act 3 Morning</td></tr>
+        <tr><td nowrap><li><b>3N.sep</b></td><td> - </td><td>Speed Slider Act 3 Night</td></tr>
+        <tr><td nowrap><li><b>3S.sep</b></td><td> - </td><td>Speed Slider Act 3 Sunset</td></tr>
+        <tr><td nowrap><li><b>4D.sep</b></td><td> - </td><td>Speed Slider Act 4 Day</td></tr>
+        <tr><td nowrap><li><b>4M.sep</b></td><td> - </td><td>Speed Slider Act 4 Morning</td></tr>
+        <tr><td nowrap><li><b>4N.sep</b></td><td> - </td><td>Speed Slider Act 4 Night</td></tr>
+        <tr><td nowrap><li><b>4S.sep</b></td><td> - </td><td>Speed Slider Act 4 Sunset</td></tr>
+        <tr><td nowrap><li><b>5D.sep</b></td><td> - </td><td>Speed Slider Act 5 Day</td></tr>
+        <tr><td nowrap><li><b>5M.sep</b></td><td> - </td><td>Speed Slider Act 5 Morning</td></tr>
+        <tr><td nowrap><li><b>5N.sep</b></td><td> - </td><td>Speed Slider Act 5 Night</td></tr>
+        <tr><td nowrap><li><b>5S.sep</b></td><td> - </td><td>Speed Slider Act 5 Sunset</td></tr>
+        <tr><td nowrap><li><b>BossD.sep</b></td><td> - </td><td>Speed Slider Boss Area Day</td></tr>
+        <tr><td nowrap><li><b>BossM.sep</b></td><td> - </td><td>Speed Slider Boss Area Morning</td></tr>
+        <tr><td nowrap><li><b>BossN.sep</b></td><td> - </td><td>Speed Slider Boss Area Night</td></tr>
+        <tr><td nowrap><li><b>BossS.sep</b></td><td> - </td><td>Speed Slider Boss Area Sunset</td></tr>
+        </table></ul>
+	<br><br>
+
+        <li><b>/Training</b> - A full set of Project Files for the Training Levels</a>
+	<br><br>
+        <ul><table>
+        <tr><td nowrap><li><b>1D.sep</b></td><td> - </td><td>Training Level 1 Day</td></tr>
+        <tr><td nowrap><li><b>1M.sep</b></td><td> - </td><td>Training Level 1 Morning</td></tr>
+        <tr><td nowrap><li><b>1N.sep</b></td><td> - </td><td>Training Level 1 Night</td></tr>
+        <tr><td nowrap><li><b>1S.sep</b></td><td> - </td><td>Training Level 1 Sunset</td></tr>
+        <tr><td nowrap><li><b>2D.sep</b></td><td> - </td><td>Training Level 2 Day</td></tr>
+        <tr><td nowrap><li><b>2M.sep</b></td><td> - </td><td>Training Level 2 Morning</td></tr>
+        <tr><td nowrap><li><b>2N.sep</b></td><td> - </td><td>Training Level 2 Night</td></tr>
+        <tr><td nowrap><li><b>2S.sep</b></td><td> - </td><td>Training Level 2 Sunset</td></tr>
+        <tr><td nowrap><li><b>3D.sep</b></td><td> - </td><td>Training Level 3 Day</td></tr>
+        <tr><td nowrap><li><b>3M.sep</b></td><td> - </td><td>Training Level 3 Morning</td></tr>
+        <tr><td nowrap><li><b>3N.sep</b></td><td> - </td><td>Training Level 3 Night</td></tr>
+        <tr><td nowrap><li><b>3S.sep</b></td><td> - </td><td>Training Level 3 Sunset</td></tr>
+        <tr><td nowrap><li><b>4D.sep</b></td><td> - </td><td>Training Level 4 Day</td></tr>
+        <tr><td nowrap><li><b>4M.sep</b></td><td> - </td><td>Training Level 4 Morning</td></tr>
+        <tr><td nowrap><li><b>4N.sep</b></td><td> - </td><td>Training Level 4 Night</td></tr>
+        <tr><td nowrap><li><b>4S.sep</b></td><td> - </td><td>Training Level 4 Sunset</td></tr>
+        </table></ul>
+	<br><br>
+
+        <li><b>/TTZ</b> - A full set of Project Files for "Techno Tower"</a>
+	<br><br>
+        <ul><table>
+        <tr><td nowrap><li><b>1D.sep</b></td><td> - </td><td>Techno Tower Act 1 Day</td></tr>
+        <tr><td nowrap><li><b>1M.sep</b></td><td> - </td><td>Techno Tower Act 1 Morning</td></tr>
+        <tr><td nowrap><li><b>1N.sep</b></td><td> - </td><td>Techno Tower Act 1 Night</td></tr>
+        <tr><td nowrap><li><b>1S.sep</b></td><td> - </td><td>Techno Tower Act 1 Sunset</td></tr>
+        <tr><td nowrap><li><b>2D.sep</b></td><td> - </td><td>Techno Tower Act 2 Day</td></tr>
+        <tr><td nowrap><li><b>2M.sep</b></td><td> - </td><td>Techno Tower Act 2 Morning</td></tr>
+        <tr><td nowrap><li><b>2N.sep</b></td><td> - </td><td>Techno Tower Act 2 Night</td></tr>
+        <tr><td nowrap><li><b>2S.sep</b></td><td> - </td><td>Techno Tower Act 2 Sunset</td></tr>
+        <tr><td nowrap><li><b>3D.sep</b></td><td> - </td><td>Techno Tower Act 3 Day</td></tr>
+        <tr><td nowrap><li><b>3M.sep</b></td><td> - </td><td>Techno Tower Act 3 Morning</td></tr>
+        <tr><td nowrap><li><b>3N.sep</b></td><td> - </td><td>Techno Tower Act 3 Night</td></tr>
+        <tr><td nowrap><li><b>3S.sep</b></td><td> - </td><td>Techno Tower Act 3 Sunset</td></tr>
+        <tr><td nowrap><li><b>4D.sep</b></td><td> - </td><td>Techno Tower Act 4 Day</td></tr>
+        <tr><td nowrap><li><b>4M.sep</b></td><td> - </td><td>Techno Tower Act 4 Morning</td></tr>
+        <tr><td nowrap><li><b>4N.sep</b></td><td> - </td><td>Techno Tower Act 4 Night</td></tr>
+        <tr><td nowrap><li><b>4S.sep</b></td><td> - </td><td>Techno Tower Act 4 Sunset</td></tr>
+        <tr><td nowrap><li><b>5D.sep</b></td><td> - </td><td>Techno Tower Act 5 Day</td></tr>
+        <tr><td nowrap><li><b>5M.sep</b></td><td> - </td><td>Techno Tower Act 5 Morning</td></tr>
+        <tr><td nowrap><li><b>5N.sep</b></td><td> - </td><td>Techno Tower Act 5 Night</td></tr>
+        <tr><td nowrap><li><b>5S.sep</b></td><td> - </td><td>Techno Tower Act 5 Sunset</td></tr>
+        <tr><td nowrap><li><b>BossD.sep</b></td><td> - </td><td>Techno Tower Boss Area Day</td></tr>
+        <tr><td nowrap><li><b>BossM.sep</b></td><td> - </td><td>Techno Tower Boss Area Morning</td></tr>
+        <tr><td nowrap><li><b>BossN.sep</b></td><td> - </td><td>Techno Tower Boss Area Night</td></tr>
+        <tr><td nowrap><li><b>BossS.sep</b></td><td> - </td><td>Techno Tower Boss Area Sunset</td></tr>
+        </table></ul>
+	<br><br>
+
+        <li><b>/Tutorial</b> - A full set of Project Files for the Tutorial Levels</a>
+	<br><br>
+        <ul><table>
+        <tr><td nowrap><li><b>1.sep</b></td><td> - </td><td>Tutorial Level 1</td></tr>
+        <tr><td nowrap><li><b>2.sep</b></td><td> - </td><td>Tutorial Level 2</td></tr>
+        <tr><td nowrap><li><b>3.sep</b></td><td> - </td><td>Tutorial Level 3</td></tr>
+        <tr><td nowrap><li><b>4.sep</b></td><td> - </td><td>Tutorial Level 4</td></tr>
+        <tr><td nowrap><li><b>5.sep</b></td><td> - </td><td>Tutorial Level 5</td></tr>
+        <tr><td nowrap><li><b>6.sep</b></td><td> - </td><td>Tutorial Level 6</td></tr>
+        <tr><td nowrap><li><b>7.sep</b></td><td> - </td><td>Tutorial Level 7</td></tr>
+        </table></ul>
+	<br><br>
+
+	</ul>
+
+                   <table>
+                   <tr><td nowrap><b><li>fixheadr.exe</b></td><td> - </td><td>This program is used to correct the size and checksum header information after Injection.</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>inject.txt</b></td><td> - </td><td>This is the "Batch File" that is used to perform input data conversions and initiate Injection.</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>injmain.txt</b></td><td> - </td><td>This is the "Injector File" that contains the information for placing the modified data back into the game file</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>posfix.exe</b></td><td> - </td><td>This program is used to convert Chaotix initial screen position data into proper Player Start Locations for use with SonED2.</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>split.txt</b></td><td> - </td><td>This is the "Batch File" that is used to split data from the game file and perform output data conversions</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>objyadj.txt</b></td><td> - </td><td>This program is used to adjust the Y positions in Object Layout Data for y-looping levels so that Objects are placed within the normal level area and may be used properly with SonED2</td></tr>
+                   </table>
+
+	</ul>
+
+<br>
+<br><a name="Notes">
+<b>Game Notes</b>
+<ul><a name="SharedData">
+ <b>Tile Paging and Shared Level Data</b><br>
+ <br>
+ <ul>
+  This game makes use of "Tile Paging", a system where a level's full Tileset is broken up into multiple "Pages" that can be swapped out during gameplay or shared between levels.<br>
+  <br>
+  The shared Tile Pages (and occasionally, certain other data) used in this game are used erratically- Pages are shared between acts and times-of-day in a way that is specifically tailored to the way that the commercial release of the game game was built; there is no generic pattern that can easily be worked with (such as "all acts within a zone always use the same Page 0 for Daytime Tiles").<br>
+  <br>
+  When modifying tilesets for this game, it is important to know which levels will be affected by the modifications. The following information provides details on using either of the two listed filetypes to determine how the data is currently paged and shared, and how to modify the structure so that the paging and sharing will better suit any specific modifications:<br>
+  <br>
+  <ul>
+   <b><li>Project Files</b><br>
+   <br>
+   <ul>
+    Check the Project File for the level being edited. The naming system for the data files includes descriptions of their use:<br>
+    <br>
+    <li>Acts number 0, 1, 2, 3, 4, 5, and 6<br>
+    <li>Times of day are in order of "M", "D", "S", and "N"<br>
+    <br>
+    As an example, the name "15MN.bin" means that this data is used in acts spanning 1 through 5, and times of day spanning Morning through Night.<br>
+   </ul>
+   <br>
+   <b><li>Injector File</b><br>
+   <br>
+   <ul>
+    Check the pointers listings in the Injector File "injmain.txt" by searching for the following data:<br>
+    <br>
+    <li>"<b>LevelTile_Ptrs</b>" - References pointers to the 8x8 Tile Page loading data<br>
+    <br>
+    <ul>
+     This data is laid out in the following format:<br>
+     <br>
+     <ul>
+      <ul>
+<pre>DWORD TilesPage0
+DWORD TilesPage1
+DWORD 0
+DWORD TilesPage2
+DWORD TilesPage3
+DWORD $FFFFFFFF</pre>
+      </ul>
+      <br>
+                   <table>
+                   <tr><td nowrap><b><li>TilesPage?</b></td><td> - </td><td>The name of the label immediately preceding the 8x8 Tile data to load for the given page</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>0</b></td><td> - </td><td>Terminates loading for the "Foreground" Pages and begins loading for the "Background" Pages</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>$FFFFFFFF</b></td><td> - </td><td>Terminates the tileset</td></tr>
+                   </table>
+     <br>
+     </ul>
+     Any number of Pages can be loaded for each of the Foreground or Background. If the "0" is omitted, the Background does not use its own Pages (it shares Tile Pages with the Foreground). The "$FFFFFFFF" cannot be omitted.
+    </ul>
+
+    <br>
+    <li>"<b>Level_Index</b>"- References pointers to the 16x16 Block Page, 128x128 Chunk Page, and Level Layout loading data<br>
+    <br>
+    <ul>
+     This data is laid out in the following format:<br>
+     <br>
+     <ul>
+      <ul>
+<pre>DWORD BlocksPage0
+DWORD BlocksPage1+LastPage
+DWORD BlocksPage2
+DWORD BlocksPage3+LastPage
+DWORD ChunksPage0
+DWORD ChunksPage1+LastPage
+DWORD ChunksPage2
+DWORD ChunksPage3+LastPage
+DWORD FGLayout
+DWORD BGLayout</pre>
+      </ul>
+      <br>
+                   <table>
+                   <tr><td nowrap><b><li>BlocksPage?</b></td><td> - </td><td>The name of the label immediately preceding the 16x16 Block data to load for the given page</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>ChunksPage?</b></td><td> - </td><td>The name of the label immediately preceding the 128x128 Chunk data to load for the given page</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>??Layout</b></td><td> - </td><td>The names of the labels immediately preceding the Foreground layout data and Background layout data, respectively</td></tr>
+                   </table>
+     </ul>
+     <br>
+     Any number of Block and Chunk Pages can be loaded for each of the Foreground and Background. If the Background should not load its own Block or Chunk pages, and should instead share Pages with the Foreground, "+NoNewLayer" should be added to the line (as in "BlocksPage1+LastPage+NoNewLayer").
+     <br>
+    </ul>
+
+    <br>
+    <li>"<b>LevSize_Data</b>"- References pointers to the level initial camera (and Player Start) position, layout size, and scroll boundaries<br>
+    <br>
+    <ul>
+     This data is laid out in the following format:<br>
+     <br>
+     <ul>
+      <ul>
+<pre>include	"PlaneStart.bin"
+include	"PlaneSize.bin"
+WORD	X2
+WORD	X1
+WORD	Y2
+WORD	Y1
+</pre>
+      </ul>
+      <br>
+                   <table>
+                   <tr><td nowrap><b><li>"PlaneStart.bin"</b></td><td> - </td><td>The path and filename of the data file containing the initial screen start location for the level. Also serves to generate Player Start position</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>"PlaneSize.bin"</b></td><td> - </td><td>The path and filename of the data file containing the map layout dimensions for the level</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>X2</b></td><td> - </td><td>The maximum X position that the screen can scroll to within this level during gameplay</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>X1</b></td><td> - </td><td>The minimum X position that the screen can scroll to within this level during gameplay</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>Y2</b></td><td> - </td><td>The maximum Y position that the screen can scroll to within this level during gameplay</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>Y1</b></td><td> - </td><td>The minimum Y position that the screen can scroll to within this level during gameplay</td></tr>
+                   </table>
+     </ul>
+    </ul>
+
+    <br>
+    <li>"<b>MD_Palette_Index</b>"- References pointers to the level palette data<br>
+    <br>
+    <ul>
+     This data is laid out in the following format:<br>
+     <br>
+     <ul>
+      <ul>
+<pre>include	"Pal.bin"
+</pre>
+      </ul>
+      <br>
+                   <table>
+                   <tr><td nowrap><b><li>"Pal.bin"</b></td><td> - </td><td>The path and filename of the data file containing the level's palette colors</td></tr>
+                   </table>
+     </ul>
+    </ul>
+
+    <br>
+    <li>"<b>Solid_Index</b>"- References pointers to the collision index data<br>
+    <br>
+    <ul>
+     This data is laid out in the following format:<br>
+     <br>
+     <ul>
+      <ul>
+<pre>include	"Solid.bin"
+</pre>
+      </ul>
+      <br>
+                   <table>
+                   <tr><td nowrap><b><li>"Solid.bin"</b></td><td> - </td><td>The path and filename of the data file containing the level's collision index data</td></tr>
+                   </table>
+     </ul>
+    </ul>
+
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="Animated">
+ <b>Animated Tiles and Palettes</b><br>
+ <br>
+ <ul>
+  Certain Tiles and Palette entries are animated/cycled during gameplay. This behavior is not accounted for in the current script set version; these animations and the data that they use are not available for editing. Any modifications to these Tile or Palette entries will be overridden by these animations during gameplay.<br>
+  <br>
+  In this game, the Tile data contains number and/or special character graphics at these positions, which is what will be displayed in SonED2.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="CrossingPaths">
+ <b>Loops, Crossing Paths, and Plane Priority</b><br>
+ <br>
+ <ul>
+  This game uses a two-path collision system, and so, it supports level paths that cross freely by means of a "Path Swapper Object".<br>
+  <br>
+  However, unlike other 2D Sonic the Hedgehog games, the player sprites are handled by the 32x, and 32x graphics may only be drawn either above all Megadrive/Genesis graphics, or below all Megadrive/Genesis graphics.
+  This means that the player cannot be placed between Plane A and Plane B, or between High and Low Tile Priorities. In effect, the Player must be displayed above all level graphics to be seen at all, and can never go "behind" anything that is not also a 32x sprite.<br>
+  <br>
+  In short, while standard loops and other path crosses are technically possible, they will not look right in cases where part of the level should be overlapping the player.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="LevelBoundaries">
+ <b>Level Boundaries</b><br>
+ <br>
+ <ul>
+  For the most part, Level Boundaries (the area within which the screen is allowed to scroll across the level during gameplay) are not dynamically altered in this game, meaning that the initial (and persistent) settings can be modified.<br>
+  <br>
+  See the "<b>LevSize_Data</b>" description in the "Tile Paging and Shared Level Data" section above for editing information.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="DynamicLevelChanges">
+ <b>Dynamic Level Changes</b><br>
+ <br>
+ <ul>
+  Certain levels are hardcoded to change certain aspects of the level during gameplay, most notably palettes.
+  This behavior is not accounted for in the current script set version; the data loaded mid-level is not available for editing, and there is no support for modifying or cancelling the events.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="BossArena">
+ <b>Boss Arenas</b><br>
+ <br>
+ <ul>
+  Boss events are triggered by standard Objects, which are movable in SonED2's Object Editor, but be aware that moving them or modifying the surrounding area could cause undesireable results in some cases.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="Emulators">
+ <b>Emulator Compatibility with Modified Game</b><br>
+ <br>
+ <ul>
+  This game uses a special timing mode of the 32x that emulators must support in order to run the game correctly. If the emulator is not using the correct mode, there may be severe graphical errors and crashes.<br>
+  <br>
+  Some emulators, such as Kega, only enter this mode when they realize that they are running this game, which is handled by performing a checksum on the game and comparing it to the known checksum of an unmodified version.
+  Modifying the game changes the checksum, and thus, renders it unrecognizeable.<br>
+  <br>
+  To correctly play the modified game in Kega, use the <b>"Set Config..."</b> option in the <b>"Options" menu</b>. Once the config window appears, select the <b>"32x" tab</b>, and search for <b>a checkbox that reads "Fast 32x Timing"</b>. <i>This box must be checked</i> in order for the game to behave correctly. <i>This option only exists in newer Kega releases.</i>
+ </ul>
+</ul>
+
+<br>
+<br><a name="Options">
+<b>Special Options</b>
+<ul><a name="Playlist">
+ <b>Level Music Playlist</b><br>
+ <br>
+ <ul>
+  The "<b>Level Music Playlist</b>" section of "<b>inopts.txt</b>" specifies which songs play for which Zones.<br>
+  <br>
+  Within the list, find the entry that corresponds with the desired Zone, and replace the existing value with the ID number of the music that should be played for the Zone.<br>
+  <br>
+  The ID numbers entered in this section must be calculated by counting their positions in the Sound Test Menu, with "--- SOUND  TEST ---" being 0, "DOOR INTO SUMMER" being 1, etc.<br>
+ </ul>
+
+ <br>
+ <br><a name="Codes">
+ <b>Cheat Codes</b><br>
+ <br>
+ <ul>
+  The "<b>Cheat Codes</b>" section of "<b>inopts.txt</b>" defines the "Color Test" settings that must be entered to activate the game's Cheat Codes.<br>
+  <br>
+  The "<b>Code_LevelSelectDebug</b>" section defines the settings that must be entered to activate both the Level Select menu and Debug Mode. This code is input using the first and second color entries on the left side.<br>
+  <br>
+  The "<b>Code_AmyInSoundTest</b>" section defines the settings that must be entered to cause Amy to appear on the Sound Test screen. This code is input using the second and third color entries on the left side.<br>
+  <br>
+  The values that must be entered in this section represent the four-digit value that appears at the top-left of the screen, not the three color components that are being directly modified. The first and second entries for each code in this section correspond directly with the first and second color entries used for the code, as described above.<br>
+ </ul>
+</ul>
+
+</body>
+</html>

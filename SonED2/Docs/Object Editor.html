@@ -1,0 +1,341 @@
+<html>
+<head>
+<title>SonED2 Object Editor</title>
+</head>
+<body>
+<b><center>SonED2 Object Editor</center></b><br>
+<br>
+The Object Editor is used for editing the layout and properties of the Objects within the
+normal gameplay levels. Objects are placed within levels by full X and Y
+pixel offsets (coordinates), and also contain a type value and one or more
+property values/bitfields, as well as a few generic flags, all of which
+determine how the Object is displayed and how it behaves. The images and
+descriptions displayed in the editor are set up through "Object Listing Files",
+which tell the editor how each Object should be represented graphically, and
+how its properties should be displayed and manipulated by the editing keys.
+Those files may be altered and expanded upon as described by their own documentation.<br>
+<br>
+The following features are available in this editor:<br>
+<ul>
+<li><a href="#Status">Status</a><br>
+<li><a href="#Moving">Moving an Object</a><br>
+<li><a href="#Adding">Adding an Object</a><br>
+<li><a href="#Removing">Removing an Object</a><br>
+<li><a href="#Type">Selecting Object Type</a><br>
+<li><a href="#Property">Object Properties</a><br>
+<li><a href="#Bitfields">Object Bitfields</a><br>
+<li><a href="#Flags">Common Object Flags</a><br>
+<li><a href="#Flags2">Sonic CD Time Flags</a><br>
+<li><a href="#Editors">Other Editor Modes</a><br>
+<li><a href="#Scroll">Altering scroll speed</a><br>
+<li><a href="#Grid">Altering Grid Size</a><br>
+<li><a href="#Viewing">Viewing Controls</a><br>
+<br>
+<a name="Status">
+<b>Status</b><br>
+<ul>
+<br>
+The Status Display appears at the upper-left corner of the editor and displays certain general level and editor
+information, as well as information about any Object that the mouse cursor is hovering over.<br>
+<br>
+This display may be toggled off and back on by pressing "<b>Tab</b>".<br>
+<br>
+<ul>
+<table border="0">
+<tr>
+<td colspan = 3><b>The status display always shows the following information:</b></td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Screen Position</b></td><td> - </td><td>The X and Y world position of the top-left corner of the screen,
+                  shown in hex as with the in-game debug modes</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Plane Size</b></td><td> - </td><td>The Width and Height of level plane A, measured in chunks,
+             shown in hex</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Solid ???</b></td><td> - </td><td>This entry describes which of the two solidity paths is being
+            drawn over the level, and whether or not the corresponding angle
+            values are shown</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Objects ???</b></td><td> - </td><td>This entry describes how the Objects are currently being
+              displayed relative to the high/low planes of the level</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Scroll Speed</b></td><td> - </td><td>The number of pixels that the screen will move when the arrow
+               keys are used for scrolling</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Snap-To-Grid</b></td><td> - </td><td>This value is the Object grid size. Objects being moved by the
+               cursor will only move in steps of this many pixels. This is
+               useful for making sure certain Objects are aligned properly</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Total ???</b></td><td> - </td><td>These are the total number of each type of Object that are placed
+            within the level. "Objs" refers to standard game Objects within
+            the Object Placement list, "Rings" refers to Ring Objects placed
+            within the Ring Placement list (if the game stores them separately from normal Objects), and "Misc" refers
+            to special type Objects that reside in their own listings (such
+            as Sonic 2's Casino Night Zone bumpers). When using Sonic 2 Rings Layout format, whose entries define groups of Rings
+            as opposed to Sonic 3's one-ring-per-entry format, the "Total" value listed for "Rings" refers to the total number of list entries/Ring groups, not the total number of individual rings</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr><tr><td> </td></tr><tr><td> </td></tr><tr><td> </td></tr><tr><td> </td></tr>
+<td colspan = 3><b>The following status elements are only available when the cursor is hovering
+over an Object:</b></td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Object Position</b></td><td> - </td><td>This is the Object's position in the level, expressed in
+                  hex</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<td nowrap><b><li>Object Type ID</b></td><td> - </td><td>These are the full byte values of the Object type, its
+                 "Parameter"/"Property" value, and its flags value</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<td nowrap><b><li>Object Type</b></td><td> - </td><td>This is a small text description of the Object's type</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<td nowrap><b><li>Bits</b></td><td> - </td><td>This is a bitfield representation of the "Parameter"/"Property" value</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<td nowrap><b><li>Param Field ?</b></td><td> - </td><td>If bitfields are defined for this Object type by the <a href="Object Listing Files.html">Object
+                Listing file</a>, these fields are displayed as binary representations of the bitfield's current value, and a short text description of the meaning of
+                the meaning of that value</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<td nowrap><b><li>Draw Dir</b></td><td> - </td><td>Describes the direction in which the Object will be drawn (whether
+           it is mirrored and/or flipped). This does not apply to Chaotix-style Objects, which do not have a directional setting</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<td nowrap><b><li>Unknown Flag</b></td><td> - </td><td>This flag appears in Sonic 2 type games. This entry specifies
+               whether this flag is on or off, but in an unmodified game it has no function</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<td nowrap><b><li>Remember Sprite State</b></td><td> - </td><td>If this flag is on, certain special changes made to an Object
+                        during gameplay (such as destroying a badnik) will be recorded and will not be reset until the level
+                        itself resets.
+                        If it is off, the Object will return to its starting
+                        state when it leaves the screen, even if it was designed to have a persistent state. This does not apply to Sonic 3 and Chaotix style Objects, which reserve space for "remembering" all Objects rather than flagging only some to be</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr><tr><td> </td></tr><tr><td> </td></tr><tr><td> </td></tr><tr><td> </td></tr>
+<td colspan = 3><b>The following status elements are only available when the cursor is hovering
+over a Ring, if the game stores Rings separately from normal Objects (Sonic 2 and Sonic 3):</b></td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Object Position</b></td><td> - </td><td>This is the Ring's position in the level, expressed in
+                  hex as in the game. In the case of a Ring set, this is the position of the first Ring in the set</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Ring ???</b></td><td> - </td><td>In the case of Sonic 2, this entry specifies whether the Ring Object is a row or a column,
+           and how many Rings it will create. Sonic 3 only uses single-Ring placement, so in that case, this entry will only say "Ring"</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<td nowrap><b><li>Size Value</b></td><td> - </td><td>In the case of Sonic 2, this is the property value stored in the Ring layout data that
+             causes the effect described by the above information. Because Sonic 3 does not use Ring sets, this entry does not appear when editing Sonic 3 Ring data</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr><tr><td> </td></tr><tr><td> </td></tr><tr><td> </td></tr><tr><td> </td></tr>
+<td colspan = 3><b>The following status elements are only available when the cursor is hovering
+over a "misc" Object:</b></td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Object Position</b></td><td> - </td><td>This is the Object's position in the level, expressed in
+                  hex as in the game</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>???</b></td><td> - </td><td>This text describes the type of "Misc" Object</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<td nowrap><b><li>Type Value</b></td><td> - </td><td>This is the property value assigned to the Object</td>
+</tr>
+</table>
+</ul>
+</ul>
+
+<br>
+<br>
+<a name="Moving">
+<b>Moving an Object</b><br>
+<ul><br>To move an Object that already exists, <b>click and drag</b> the
+                   Object to its new location. The Object will move along
+                   the grid set up by the "Snap-To-Grid" seting. If that
+                   setting is 1, the Object will move freely<br>
+                   <br>
+                   To move the Object one pixel-unit at a time using the
+                   keyboard, <b>hover over the Object</b> with the cursor,
+                   <b>hold ctrl</b> and <b>press the arrow key</b> that
+                   corresponds with the desired direction. The hotkey repeat
+                   timer applies to this method, and this method also ignores
+                   the "Snap-To-Grid" setting</ul>
+
+<br>
+<br>
+<a name="Adding">
+<b>Adding an Object</b><br>
+<ul><br>To create a new Object, <b>double-left-click</b> any empty
+                   position in a level, and a "null" Object will appear, which
+                   can be changed into any other type of Object<br>
+                   <br>
+                   To create a new Ring, <b>double-right-click</b> any empty position
+                   in the level<br>
+                   <br>
+                   To create a new "Misc" Object, <b>hold Ctrl while double-left-clicking</b> any empty position
+                   in the level</ul>
+<br>
+<br>
+<a name="Removing">
+<b>Removing an Object</b><br>
+<ul><br>To remove an Object of any type from the level,
+                     <b>double-right-click</b> it, and it will be destroyed</ul>
+<br>
+<br>
+<a name="Type">
+<b>Selecting Object Type</b><br>
+<ul><br>To select the type of an Object by using the Object Type
+                        Selection List, <b>double-left-click</b> the desired Object. When the
+                        list appears, scroll to the description of the desired
+                        Object type and left-click. To exit the list without
+                        changing the Object's type, right-click instead</ul>
+<br>
+<br>
+<a name="Property">
+<b>Object Properties</b><br>
+<ul><br>Object properties may be directly altered by whole value by
+                    using the following keys:<br><br>
+
+                    <ul><table>
+                    <tr><td><b>A/Z</b></td><td> - </td><td>Object Type</td></tr>
+                    <tr><td><b>S/X</b></td><td> - </td><td>Object "Property"</td></tr>
+                    <tr><td><b>D/C</b></td><td> - </td><td>Object Flags</td></tr>
+                    </table></ul><br>
+                    Pressing these keys alone changes the value by 1, but holding
+                    ctrl will change the value by 16</ul>
+<br>
+<br>
+<a name="Bitfields">
+<b>Object Bitfields</b><br>
+<ul><br>When an Object's "Property" value is actually a group of smaller values
+                   stored in a single byte, it can be broken into "bitfields" representing
+                   each individual value. There can be up to 8 bitfields depending
+                   on how large each one is. To modify the value in a bitfield,
+                   press its corresponding <b>number key</b> (the field's ID + 1, IE:
+                   field 0's key is 1) to add 1. <b>Hold Ctrl</b> while pressing the key
+                   to subtract 1<br>
+                   <br>
+                   When no bitfields are defined for the Object type within the Object Listing File,
+                   these keys will correspond to each individual bit in the full Property value<br>
+                   <br>
+                   When working with Sonic Crackers/Knuckles' Chaotix, <b>holding Shift</b> while pressing
+                   the number key will allow access to the upper 8 bits, or the 9th bitfield and above</ul>
+<br>
+<br>
+<a name="Flags">
+<b>Common Object Flags</b><br>
+<ul><br>All Objects have 4 generic flags, which are slightly different from
+               game to game:<br>
+               <br>
+               <li>Sonic 1 and Sonic CD use two for drawing direction. "Remember Object State" is stored elsewhere<br>
+               <li>Sonic 2 uses three of them. One for "Remember Object State", and two for draw direction<br>
+               <li>Sonic 3 uses two of them for drawing direction, it does not use a "Remember Object State" flag<br>
+               <li>Sonic Crackers and Knuckles' Chaotix do not use draw direction or "Remember Object State" settings<br>
+               <br>
+               To change the drawing direction of an Object,
+               press <b>9</b>. <b>Holding Ctrl</b> will cycle through in reverse.
+               To modify the "Remember Object State" flag, which
+               causes destroyed Objects to stay destroyed, press <b>0</b>. To modify the
+               "Unknown" flag, <b>hold Ctrl while pressing 0</b></ul>
+<br>
+<br>
+<a name="Flags2">
+<b>Sonic CD Time Flags</b><br>
+<ul><br>Sonic CD assigns three additional flags to each Object, which determine whether or not they show up in each of
+               the three time periods (past, present, or good/bad future). When these types of Objects are loaded, the
+               Project File requires an additional setting that determines the default time period viewing flag to be
+               set when the editor is started, the idea being that one project exists for each time period, and only
+               Objects that will appear in that time period during gameplay will appear in the editor by default. The
+               editor may, however, be instructed to display Objects for a different time period, or more than one time period
+               at a time. The following keys control the time period(s) assigned to an Object, and the time period(s) whose
+               Objects will be displayed in the editor:<br><br>
+                    <ul><table>
+                    <tr><td><b>Shift+1</b></td><td> - </td><td>Toggle editor display for "Present" (A)</td></tr>
+                    <tr><td><b>Shift+2</b></td><td> - </td><td>Toggle editor display for "Past" (B)</td></tr>
+                    <tr><td><b>Shift+3</b></td><td> - </td><td>Toggle editor display for "Future" (C/D)</td></tr>
+                    <tr><td><b>Shift+4</b></td><td> - </td><td>Toggle Object flag for "Present" (A)</td></tr>
+                    <tr><td><b>Shift+5</b></td><td> - </td><td>Toggle Object flag for "Past" (B)</td></tr>
+                    <tr><td><b>Shift+6</b></td><td> - </td><td>Toggle Object flag for "Future" (C/D)</td></tr>
+                    </table></ul><br>
+               Remember that, when an Object's time period flags are modified, if it is not flagged for one of the
+               time periods that the editor is currently set to display, the Object will immediately "Disappear". The
+               Object still exists within the Object Layout data, however, and will appear in any of the other time periods
+               that it is flagged for. To "bring the Object back", the editor must be set to view any of the time periods
+               for which the Object is still flagged. Objects must be flagged for at least one time period; any one time
+               period flag may not be disabled unless at least one other flag is enabled.</ul>
+<br>
+<br>
+<a name="Editors">
+<b>Other Editor Modes</b><br>
+<ul><br>The "Editors" menu has options to switch to any of the other
+              editing modes available to a project using this editor.
+              The following keys also have the same effect:<br><br>
+
+              <ul><table>
+              <tr><td><b>L</b></td><td> - </td><td>Level Editor Plane A (foreground)</td></tr>
+              <tr><td><b>P</b></td><td> - </td><td>Level Editor Plane B (background)</td></tr>
+              <tr><td><b>K</b></td><td> - </td><td>Level Editor Clipboard</td></tr>
+              <tr><td><b>I</b></td><td> - </td><td>Tile Editor</td></tr>
+              </table></ul>
+</ul>
+
+<br>
+<br>
+<a name="Scroll">
+<b>Altering scroll speed</b><br>
+<ul><br>The <b>H</b> and <b>N</b> keys increase and decrease the number of
+                        pixels that the screen will scroll when using the
+                        arrow keys or moving the mouse to the screen edges
+                        while in full-screen mode</ul>
+<br>
+<br>
+<a name="Grid">
+<b>Altering Grid Size</b><br>
+<ul><br>The <b>J</b> and <b>M</b> keys increase and decrease the size of the
+                     Object "Snap-To" grid</ul>
+<br>
+<br>
+<a name="Viewing">
+<b>Viewing Controls</b><br>
+<ul><br>The following keys affect other viewing options:<br><br>
+                   <ul><table>
+                   <tr><td><b>Q</b></td><td> - </td><td>Disable Solidity viewing</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td><b>W</b></td><td> - </td><td>Display Solidity Path 0 Over Level</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td><b>E</b></td><td> - </td><td>Display Solidity Path 1 Over Level (for games that support two-path collision)</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td><b>R</b></td><td> - </td><td>Toggle angle view when viewing solidity path</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td><b>T</b></td><td> - </td><td>Change Object viewing status:<ul>
+                       <li>Disabled
+                       <li>Below High Plane (Game View, some Objects "hidden" by the foreground)
+                       <li>Above High Plane (All Objects on top, total visibility)</ul></td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td><b>Y</b></td><td> - </td><td>Toggles the "Low" plane on or off</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td><b>U</b></td><td> - </td><td>Toggles the "High" plane on or off</td></tr>
+                   </table></ul>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,770 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Sonic the Hedgehog 2 (Rev 01) Main Injector File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;
+; Setup Directives ;
+;;;;;;;;;;;;;;;;;;;;
+
+MaxSize	$400000				;Maximum Genesis ROM size
+
+Dispose	$002782	$003384			;Palette Pointers and Data
+Dispose	$01781A	$017AA2			;CNZ Special Bumper Object Layout Data
+Dispose	$01802A	$018888			;CNZ 2P Mode Object Layout Data
+Dispose	$044E50	$045A80			;Solidity Index Lists
+Dispose	$045A80	$049714			;Level Layout Offsets and Data
+Dispose	$094E74	$0CA904			;Level Tile, Block, and Metatile Data
+Dispose	$0E4280	$0E4300			;Padding
+Dispose	$0E4300	$0E66D8			;Ring Layout Offsets and Data
+Dispose	$0E66D8	$0E6800			;Padding
+Dispose	$0E6800	$0EBD6A			;Sprite Layout Offsets and Data
+Dispose	$0EBD6A	$0EC000			;Padding
+Dispose	$0ED04C	$0ED100			;Padding
+Dispose	$0F1E76	$0F1E8C			;Padding
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Tile Patching Disable Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Big_Endian $004EDC	;Disable the patching of HTZ Tile Data
+	WORD	$4E71, $4E71
+EndSeg
+
+StartSeg Big_Endian $004EF8	;Disable the patching of WFZ Tile Data
+	WORD	$4E71, $4E71
+EndSeg
+
+StartSeg Big_Endian $00E408	;Disable the patching of HTZ Block Data
+	WORD	$4E71, $4E71
+EndSeg
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; General Reference Replacement Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Big_Endian $002714
+
+	DWORD PalPointers
+
+EndSeg
+
+StartSeg Big_Endian $002730
+
+	DWORD PalPointers
+
+EndSeg
+
+StartSeg Big_Endian $002748
+
+	DWORD PalPointers
+
+EndSeg
+
+StartSeg Big_Endian $002766
+
+	DWORD PalPointers
+
+EndSeg
+
+StartSeg Big_Endian $00E46E
+
+	DWORD Level_Index
+
+EndSeg
+
+StartSeg Big_Endian $00E4B0
+
+	DWORD Level_Index
+
+EndSeg
+
+StartSeg Big_Endian $017AC6
+
+	DWORD ObjPos_Index
+
+EndSeg
+
+StartSeg Big_Endian $0172D0
+
+	DWORD RingPos_Index
+
+EndSeg
+
+StartSeg Big_Endian $0173D4
+
+	DWORD CNZBumpers1
+
+EndSeg
+
+StartSeg Big_Endian $0173E0
+
+	DWORD CNZBumpers2
+
+EndSeg
+
+StartSeg Big_Endian $017AE0
+
+	DWORD CNZ1Objs_2P
+
+EndSeg
+
+StartSeg Big_Endian $017AEC
+
+	DWORD CNZ2Objs_2P
+
+EndSeg
+
+;;;;;;;;;;;;;;;;;;;;;;;
+; Fixed Data Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Big_Endian $042D50	;Replace the Angle Array
+
+		include	"Collisn/AngleMap.bin"
+
+EndSeg
+
+StartSeg Big_Endian $042E50	;Replace the normal-oriented Height Maps
+
+		include	"Collisn/HMaps.bin"
+
+EndSeg
+
+StartSeg Big_Endian $043E50	;Replace the rotated Height Maps
+
+		include	"Collisn/HMapsR.bin"
+
+EndSeg
+
+StartSeg ColPointers Big_Endian $0049E8	;Replace the Collision Index Pointers
+
+;;;
+;Path 0
+;;;
+
+	DWORD Col0_EHZ		;00
+	DWORD Col0_01		;01
+	DWORD Col0_WZ		;02
+	DWORD Col0_03		;03
+	DWORD Col0_MTZ4		;04
+	DWORD Col0_MTZ5		;05
+	DWORD Col0_WFZ		;06
+	DWORD Col0_HTZ		;07
+	DWORD Col0_HPZ		;08
+	DWORD Col0_09		;09
+	DWORD Col0_OOZ		;0A
+	DWORD Col0_MCZ		;0B
+	DWORD Col0_CNZ		;0C
+	DWORD Col0_CPZ		;0D
+	DWORD Col0_DEZ		;0E
+	DWORD Col0_ARZ		;0F
+	DWORD Col0_SCZ		;10
+
+;;;
+;Path 1
+;;;
+
+	DWORD Col1_EHZ		;00
+	DWORD Col1_01		;01
+	DWORD Col1_WZ		;02
+	DWORD Col1_03		;03
+	DWORD Col1_MTZ4		;04
+	DWORD Col1_MTZ5		;05
+	DWORD Col1_WFZ		;06
+	DWORD Col1_HTZ		;07
+	DWORD Col1_HPZ		;08
+	DWORD Col1_09		;09
+	DWORD Col1_OOZ		;0A
+	DWORD Col1_MCZ		;0B
+	DWORD Col1_CNZ		;0C
+	DWORD Col1_CPZ		;0D
+	DWORD Col1_DEZ		;0E
+	DWORD Col1_ARZ		;0F
+	DWORD Col1_SCZ		;10
+
+EndSeg
+
+StartSeg Big_Endian $00C1D0	;Replace the Level Start Position Array
+
+	include "Levels/00_EHZ/Start/1.bin", "Levels/00_EHZ/Start/2.bin"
+	include "Levels/01/Start/1.bin",     "Levels/01/Start/2.bin"
+	include "Levels/02_WZ/Start/1.bin",  "Levels/02_WZ/Start/2.bin"
+	include "Levels/03/Start/1.bin",     "Levels/03/Start/2.bin"
+	include "Levels/04_MTZ/Start/1.bin", "Levels/04_MTZ/Start/2.bin"
+	include "Levels/05_MTZ/Start/1.bin", "Levels/05_MTZ/Start/2.bin"
+	include "Levels/06_WFZ/Start/1.bin", "Levels/06_WFZ/Start/2.bin"
+	include "Levels/07_HTZ/Start/1.bin", "Levels/07_HTZ/Start/2.bin"
+	include "Levels/08_HPZ/Start/1.bin", "Levels/08_HPZ/Start/2.bin"
+	include "Levels/09/Start/1.bin",     "Levels/09/Start/2.bin"
+	include "Levels/0A_OOZ/Start/1.bin", "Levels/0A_OOZ/Start/2.bin"
+	include "Levels/0B_MCZ/Start/1.bin", "Levels/0B_MCZ/Start/2.bin"
+	include "Levels/0C_CNZ/Start/1.bin", "Levels/0C_CNZ/Start/2.bin"
+	include "Levels/0D_CPZ/Start/1.bin", "Levels/0D_CPZ/Start/2.bin"
+	include "Levels/0E_DEZ/Start/1.bin", "Levels/0E_DEZ/Start/2.bin"
+	include "Levels/0F_ARZ/Start/1.bin", "Levels/0F_ARZ/Start/2.bin"
+	include "Levels/10_SCZ/Start/1.bin", "Levels/10_SCZ/Start/2.bin"
+
+EndSeg
+
+StartSeg MainLoadBlocks Big_Endian $042594	;Replace the Main Level Load Array
+
+	;00
+	DWORD $4000000+Tile_EHZ			;TilesPtr     + (PLC1 * 10^6)
+	DWORD $5000000+Block_EHZ		;BlocksPtr    + (PLC2 * 10^6)
+	DWORD $4000000+Meta_EHZ			;MetatilesPtr + (Pal  * 10^6)
+
+	;01
+	DWORD $6000000+Tile_01
+	DWORD $7000000+Block_01
+	DWORD $5000000+Meta_01
+
+	;02
+	DWORD $8000000+Tile_WZ
+	DWORD $9000000+Block_WZ
+	DWORD $6000000+Meta_WZ
+
+	;03
+	DWORD $A000000+Tile_03
+	DWORD $B000000+Block_03
+	DWORD $7000000+Meta_03
+
+	;04
+	DWORD $C000000+Tile_MTZ4
+	DWORD $D000000+Block_MTZ4
+	DWORD $8000000+Meta_MTZ4
+
+	;05
+	DWORD $C000000+Tile_MTZ5
+	DWORD $D000000+Block_MTZ5
+	DWORD $8000000+Meta_MTZ5
+
+	;06
+	DWORD $10000000+Tile_WFZ
+	DWORD $11000000+Block_WFZ
+	DWORD $A000000+Meta_WFZ
+
+	;07
+	DWORD $12000000+Tile_HTZ
+	DWORD $13000000+Block_HTZ
+	DWORD $B000000+Meta_HTZ
+
+	;08
+	DWORD $14000000+Tile_HPZ
+	DWORD $15000000+Block_HPZ
+	DWORD $C000000+Meta_HPZ
+
+	;09
+	DWORD $16000000+Tile_09
+	DWORD $17000000+Block_09
+	DWORD $D000000+Meta_09
+
+	;0A
+	DWORD $18000000+Tile_OOZ
+	DWORD $19000000+Block_OOZ
+	DWORD $E000000+Meta_OOZ
+
+	;0B
+	DWORD $1A000000+Tile_MCZ
+	DWORD $1B000000+Block_MCZ
+	DWORD $F000000+Meta_MCZ
+
+	;0C
+	DWORD $1C000000+Tile_CNZ
+	DWORD $1D000000+Block_CNZ
+	DWORD $10000000+Meta_CNZ
+
+	;0D
+	DWORD $1E000000+Tile_CPZ
+	DWORD $1F000000+Block_CPZ
+	DWORD $11000000+Meta_CPZ
+
+	;0E
+	DWORD $20000000+Tile_DEZ
+	DWORD $21000000+Block_DEZ
+	DWORD $12000000+Meta_DEZ
+
+	;0F
+	DWORD $22000000+Tile_ARZ
+	DWORD $23000000+Block_ARZ
+	DWORD $13000000+Meta_ARZ
+
+	;10
+	DWORD $24000000+Tile_SCZ
+	DWORD $25000000+Block_SCZ
+	DWORD $14000000+Meta_SCZ
+
+EndSeg
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Moveable Data Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg PalPointers Big_Endian
+
+	DWORD Pal_SEGA		;00
+	 WORD $FB00
+	 WORD $1F
+	DWORD Pal_Title		;01
+	 WORD $FB20
+	 WORD 7
+	DWORD Pal_02		;02
+	 WORD $FB00
+	 WORD $1F
+	DWORD Pal_BGND		;03
+	 WORD $FB00
+	 WORD $F
+	DWORD Pal_EHZ		;04
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_05		;05
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_WZ		;06
+	 WORD $FB20s
+	 WORD $17
+	DWORD Pal_07		;07
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_MTZ4		;08
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_MTZ5		;09
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_WFZ		;0A
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_HTZ		;0B
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_HPZ		;0C
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_0D		;0D
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_OOZ		;0E
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_MCZ		;0F
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_CNZ		;10
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_CPZ		;11
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_DEZ		;12
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_ARZ		;13
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_SCZ		;14
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_HPZ_U		;15
+	 WORD $FB00
+	 WORD $1F
+	DWORD Pal_CPZ_U		;16
+	 WORD $FB00
+	 WORD $1F
+	DWORD Pal_ARZ_U		;17
+	 WORD $FB00
+	 WORD $1F
+	DWORD Pal_SS		;18
+	 WORD $FB00
+	 WORD $17
+	DWORD Pal_19		;19
+	 WORD $FB20
+	 WORD 7
+	DWORD Pal_1A		;1A
+	 WORD $FB20
+	 WORD 7
+	DWORD Pal_SS1		;1B
+	 WORD $FB60
+	 WORD 7
+	DWORD Pal_SS2		;1C
+	 WORD $FB60
+	 WORD 7
+	DWORD Pal_SS3		;1D
+	 WORD $FB60
+	 WORD 7
+	DWORD Pal_SS4		;1E
+	 WORD $FB60
+	 WORD 7
+	DWORD Pal_SS5		;1F
+	 WORD $FB60
+	 WORD 7
+	DWORD Pal_SS6		;20
+	 WORD $FB60
+	 WORD 7
+	DWORD Pal_SS7		;21
+	 WORD $FB60
+	 WORD 7
+	DWORD Pal_SS2P1		;22
+	 WORD $FB60
+	 WORD 7
+	DWORD Pal_SS2P2		;23
+	 WORD $FB60
+	 WORD 7
+	DWORD Pal_SS2P3		;24
+	 WORD $FB60
+	 WORD 7
+	DWORD Pal_OOZ_B		;25
+	 WORD $FB20
+	 WORD 7
+	DWORD Pal_Menu		;26
+	 WORD $FB00
+	 WORD $1F
+	DWORD Pal_SSResult	;27
+	 WORD $FB00
+	 WORD $1F
+
+	Pal_SEGA:	include	"Palettes/Sega.bin"
+	Pal_Title:	include	"Palettes/Title/Screen.bin"
+	Pal_02:		include	"Palettes/Pal02.bin"
+	Pal_BGND:	include	"Palettes/MenuBG.bin"
+	Pal_EHZ:	include	"Levels/00_EHZ/Pal/Main.bin"
+	Pal_05:		include	"Levels/01/Pal/Main.bin"		;EHZ
+	Pal_07:		include	"Levels/03/Pal/Main.bin"		;EHZ
+	Pal_0D:		include	"Levels/09/Pal/Main.bin"		;EHZ
+	Pal_WZ:		include	"Levels/02_WZ/Pal/Main.bin"
+	Pal_MTZ4:	include	"Levels/04_MTZ/Pal/Main.bin"
+	Pal_MTZ5:	include	"Levels/05_MTZ/Pal/Main.bin"
+	Pal_WFZ:	include	"Levels/06_WFZ/Pal/Main.bin"
+	Pal_HTZ:	include	"Levels/07_HTZ/Pal/Main.bin"
+	Pal_HPZ:	include	"Levels/08_HPZ/Pal/Main.bin"
+	Pal_HPZ_U:	include	"Levels/08_HPZ/Pal/Water.bin"
+	Pal_OOZ:	include	"Levels/0A_OOZ/Pal/Main.bin"
+	Pal_MCZ:	include	"Levels/0B_MCZ/Pal/Main.bin"
+	Pal_CNZ:	include	"Levels/0C_CNZ/Pal/Main.bin"
+	Pal_CPZ:	include	"Levels/0D_CPZ/Pal/Main.bin"
+	Pal_CPZ_U:	include	"Levels/0D_CPZ/Pal/Water.bin"
+	Pal_DEZ:	include	"Levels/0E_DEZ/Pal/Main.bin"
+	Pal_ARZ:	include	"Levels/0F_ARZ/Pal/Main.bin"
+	Pal_ARZ_U:	include	"Levels/0F_ARZ/Pal/Water.bin"
+	Pal_SCZ:	include	"Levels/10_SCZ/Pal/Main.bin"
+	Pal_WFZ:	include	"Levels/06_WFZ/Pal/Main.bin"		;SCZ
+	Pal_19:		include	"Palettes/Pal19.bin"
+	Pal_1A:		include	"Palettes/Pal1A.bin"
+	Pal_OOZ_B:	include	"Levels/0A_OOZ/Pal/Boss.bin"
+	Pal_Menu:	include	"Palettes/Menu.bin"
+	Pal_SS:		include	"SStage/Pal/Main.bin"
+	Pal_SS1:	include	"SStage/Pal/1.bin"
+	Pal_SS2:	include	"SStage/Pal/2.bin"
+	Pal_SS3:	include	"SStage/Pal/3.bin"
+	Pal_SS4:	include	"SStage/Pal/4.bin"
+	Pal_SS5:	include	"SStage/Pal/5.bin"
+	Pal_SS6:	include	"SStage/Pal/6.bin"
+	Pal_SS7:	include	"SStage/Pal/7.bin"
+	Pal_SS2P1:	include	"SStage/Pal/2p_1.bin"
+	Pal_SS2P2:	include	"SStage/Pal/2p_2.bin"
+	Pal_SS2P3:	include	"SStage/Pal/2p_3.bin"
+	Pal_SSResult:	include	"SStage/Pal/Results.bin"
+
+EndSeg
+
+StartSeg Big_Endian
+
+	Tile_EHZ:	include	"Levels/00_EHZ/Tile/8.bin"
+	Tile_01:	include	"Levels/01/Tile/8.bin"			;EHZ
+	Tile_WZ:	include	"Levels/02_WZ/Tile/8.bin"		;EHZ
+	Tile_03:	include	"Levels/03/Tile/8.bin"			;EHZ
+	Tile_09:	include	"Levels/09/Tile/8.bin"			;EHZ
+	Tile_HTZ:	include	"Levels/07_HTZ/Tile/8C/Pri.bin"		;EHZ (Patched)
+	Tile_MTZ4:	include	"Levels/04_MTZ/Tile/8.bin"
+	Tile_MTZ5:	include	"Levels/05_MTZ/Tile/8.bin"
+	Tile_OOZ:	include	"Levels/0A_OOZ/Tile/8.bin"
+	Tile_HPZ:	include	"Levels/08_HPZ/Tile/8.bin"		;OOZ
+	Tile_MCZ:	include	"Levels/0B_MCZ/Tile/8.bin"
+	Tile_CNZ:	include	"Levels/0C_CNZ/Tile/8.bin"
+	Tile_CPZ:	include	"Levels/0D_CPZ/Tile/8.bin"
+	Tile_DEZ:	include	"Levels/0E_DEZ/Tile/8.bin"		;CPZ
+	Tile_ARZ:	include	"Levels/0F_ARZ/Tile/8.bin"
+	Tile_SCZ:	include	"Levels/10_SCZ/Tile/8.bin"
+	Tile_WFZ:	include	"Levels/06_WFZ/Tile/8.bin"		;SCZ (Patched)
+
+EndSeg
+
+StartSeg Big_Endian
+
+	Block_EHZ:	include	"Levels/00_EHZ/Tile/16.bin"
+	Block_01:	include	"Levels/01/Tile/16.bin"			;EHZ
+	Block_WZ:	include	"Levels/02_WZ/Tile/16.bin"		;EHZ
+	Block_03:	include	"Levels/03/Tile/16.bin"			;EHZ
+	Block_09:	include	"Levels/09/Tile/16.bin"			;EHZ
+	Block_HTZ:	include	"Levels/07_HTZ/Tile/16.bin"
+	Block_MTZ4:	include	"Levels/04_MTZ/Tile/16.bin"
+	Block_MTZ5:	include	"Levels/05_MTZ/Tile/16.bin"
+	Block_OOZ:	include	"Levels/0A_OOZ/Tile/16.bin"
+	Block_HPZ:	include	"Levels/08_HPZ/Tile/16.bin"		;OOZ
+	Block_MCZ:	include	"Levels/0B_MCZ/Tile/16.bin"
+	Block_CNZ:	include	"Levels/0C_CNZ/Tile/16.bin"
+	Block_CPZ:	include	"Levels/0D_CPZ/Tile/16.bin"
+	Block_DEZ:	include	"Levels/0E_DEZ/Tile/16.bin"		;CPZ
+	Block_ARZ:	include	"Levels/0F_ARZ/Tile/16.bin"
+	Block_SCZ:	include	"Levels/10_SCZ/Tile/16.bin"
+	Block_WFZ:	include	"Levels/06_WFZ/Tile/16.bin"		;SCZ
+
+EndSeg
+
+StartSeg Big_Endian
+
+	Meta_EHZ:	include	"Levels/00_EHZ/Tile/128.bin"
+	Meta_01:	include	"Levels/01/Tile/128.bin"		;EHZ
+	Meta_WZ:	include	"Levels/02_WZ/Tile/128.bin"		;EHZ
+	Meta_03:	include	"Levels/03/Tile/128.bin"		;EHZ
+	Meta_09:	include	"Levels/09/Tile/128.bin"		;EHZ
+	Meta_HTZ:	include	"Levels/07_HTZ/Tile/128.bin"		;EHZ
+	Meta_MTZ4:	include	"Levels/04_MTZ/Tile/128.bin"
+	Meta_MTZ5:	include	"Levels/05_MTZ/Tile/128.bin"
+	Meta_OOZ:	include	"Levels/0A_OOZ/Tile/128.bin"
+	Meta_HPZ:	include	"Levels/08_HPZ/Tile/128.bin"		;OOZ
+	Meta_MCZ:	include	"Levels/0B_MCZ/Tile/128.bin"
+	Meta_CNZ:	include	"Levels/0C_CNZ/Tile/128.bin"
+	Meta_CPZ:	include	"Levels/0D_CPZ/Tile/128.bin"
+	Meta_DEZ:	include	"Levels/0E_DEZ/Tile/128.bin"
+	Meta_ARZ:	include	"Levels/0F_ARZ/Tile/128.bin"
+	Meta_SCZ:	include	"Levels/10_SCZ/Tile/128.bin"
+	Meta_WFZ:	include	"Levels/06_WFZ/Tile/128.bin"		;SCZ
+
+EndSeg
+
+
+;;;
+;Collision Indexes
+;;;
+
+StartSeg Big_Endian
+	Col0_EHZ:	include	"Levels/00_EHZ/Collisn/0.bin"
+	Col1_EHZ:	include	"Levels/00_EHZ/Collisn/1.bin"
+	Col0_01:	include	"Levels/01/Collisn/0.bin"
+	Col1_01:	include	"Levels/01/Collisn/1.bin"
+	Col0_WZ:	include	"Levels/02_WZ/Collisn/0.bin"
+	Col1_WZ:	include	"Levels/02_WZ/Collisn/1.bin"
+	Col0_03:	include	"Levels/03/Collisn/0.bin"
+	Col1_03:	include	"Levels/03/Collisn/1.bin"
+	Col0_MTZ4:	include	"Levels/04_MTZ/Collisn/0.bin"
+	Col1_MTZ4:	include	"Levels/04_MTZ/Collisn/1.bin"
+	Col0_MTZ5:	include	"Levels/05_MTZ/Collisn/0.bin"
+	Col1_MTZ5:	include	"Levels/05_MTZ/Collisn/1.bin"
+	Col0_WFZ:	include	"Levels/06_WFZ/Collisn/0.bin"
+	Col1_WFZ:	include	"Levels/06_WFZ/Collisn/1.bin"
+	Col0_HTZ:	include	"Levels/07_HTZ/Collisn/0.bin"
+	Col1_HTZ:	include	"Levels/07_HTZ/Collisn/1.bin"
+	Col0_HPZ:	include	"Levels/08_HPZ/Collisn/0.bin"
+	Col1_HPZ:	include	"Levels/08_HPZ/Collisn/1.bin"
+	Col0_09:	include	"Levels/09/Collisn/0.bin"
+	Col1_09:	include	"Levels/09/Collisn/1.bin"
+	Col0_OOZ:	include	"Levels/0A_OOZ/Collisn/0.bin"
+	Col1_OOZ:	include	"Levels/0A_OOZ/Collisn/1.bin"
+	Col0_MCZ:	include	"Levels/0B_MCZ/Collisn/0.bin"
+	Col1_MCZ:	include	"Levels/0B_MCZ/Collisn/1.bin"
+	Col0_CNZ:	include	"Levels/0C_CNZ/Collisn/0.bin"
+	Col1_CNZ:	include	"Levels/0C_CNZ/Collisn/1.bin"
+	Col0_CPZ:	include	"Levels/0D_CPZ/Collisn/0.bin"
+	Col1_CPZ:	include	"Levels/0D_CPZ/Collisn/1.bin"
+	Col0_DEZ:	include	"Levels/0E_DEZ/Collisn/0.bin"
+	Col1_DEZ:	include	"Levels/0E_DEZ/Collisn/1.bin"
+	Col0_ARZ:	include	"Levels/0F_ARZ/Collisn/0.bin"
+	Col1_ARZ:	include	"Levels/0F_ARZ/Collisn/1.bin"
+	Col0_SCZ:	include	"Levels/10_SCZ/Collisn/0.bin"
+	Col1_SCZ:	include	"Levels/10_SCZ/Collisn/1.bin"
+EndSeg
+
+
+StartSeg Level_Index Big_Endian
+
+	WORD Layout_EHZ1-Level_Index,   Layout_EHZ2-Level_Index
+	WORD Layout_01_1-Level_Index,   Layout_01_2-Level_Index
+	WORD Layout_WZ1-Level_Index,    Layout_WZ2-Level_Index
+	WORD Layout_03_1-Level_Index,   Layout_03_2-Level_Index
+	WORD Layout_MTZ4_1-Level_Index, Layout_MTZ4_2-Level_Index
+	WORD Layout_MTZ5_1-Level_Index, Layout_MTZ5_2-Level_Index
+	WORD Layout_WFZ1-Level_Index,   Layout_WFZ2-Level_Index
+	WORD Layout_HTZ1-Level_Index,   Layout_HTZ2-Level_Index
+	WORD Layout_HPZ1-Level_Index,   Layout_HPZ2-Level_Index
+	WORD Layout_09_1-Level_Index,   Layout_09_2-Level_Index
+	WORD Layout_OOZ1-Level_Index,   Layout_OOZ2-Level_Index
+	WORD Layout_MCZ1-Level_Index,   Layout_MCZ2-Level_Index
+	WORD Layout_CNZ1-Level_Index,   Layout_CNZ2-Level_Index
+	WORD Layout_CPZ1-Level_Index,   Layout_CPZ2-Level_Index
+	WORD Layout_DEZ1-Level_Index,   Layout_DEZ2-Level_Index
+	WORD Layout_ARZ1-Level_Index,   Layout_ARZ2-Level_Index
+	WORD Layout_SCZ1-Level_Index,   Layout_SCZ2-Level_Index
+
+	Layout_EHZ1:	include	"Levels/00_EHZ/Layout/1.bin"
+	Layout_EHZ2:	include	"Levels/00_EHZ/Layout/2.bin"
+	Layout_01_1:	include	"Levels/01/Layout/1.bin"		;EHZ1
+	Layout_01_2:	include	"Levels/01/Layout/2.bin"		;EHZ1
+	Layout_WZ1:	include	"Levels/02_WZ/Layout/1.bin"		;EHZ1
+	Layout_WZ2:	include	"Levels/02_WZ/Layout/2.bin"		;EHZ1
+	Layout_03_1:	include	"Levels/03/Layout/1.bin"		;EHZ1
+	Layout_03_2:	include	"Levels/03/Layout/2.bin"		;EHZ1
+	Layout_MTZ4_1:	include	"Levels/04_MTZ/Layout/1.bin"
+	Layout_MTZ4_2:	include	"Levels/04_MTZ/Layout/2.bin"
+	Layout_MTZ5_1:	include	"Levels/05_MTZ/Layout/1.bin"
+	Layout_MTZ5_2:	include	"Levels/05_MTZ/Layout/2.bin"		;MTZ2_1
+	Layout_WFZ1:	include	"Levels/06_WFZ/Layout/1.bin"
+	Layout_WFZ2:	include	"Levels/06_WFZ/Layout/2.bin"		;WFZ1
+	Layout_HTZ1:	include	"Levels/07_HTZ/Layout/1.bin"
+	Layout_HTZ2:	include	"Levels/07_HTZ/Layout/2.bin"
+	Layout_HPZ1:	include	"Levels/08_HPZ/Layout/1.bin"		;OOZ1
+	Layout_HPZ2:	include	"Levels/08_HPZ/Layout/2.bin"		;OOZ1
+	Layout_09_1:	include	"Levels/09/Layout/1.bin"		;EHZ1
+	Layout_09_2:	include	"Levels/09/Layout/2.bin"		;EHZ1
+	Layout_OOZ1:	include	"Levels/0A_OOZ/Layout/1.bin"
+	Layout_OOZ2:	include	"Levels/0A_OOZ/Layout/2.bin"
+	Layout_MCZ1:	include	"Levels/0B_MCZ/Layout/1.bin"
+	Layout_MCZ2:	include	"Levels/0B_MCZ/Layout/2.bin"
+	Layout_CNZ1:	include	"Levels/0C_CNZ/Layout/1.bin"
+	Layout_CNZ2:	include	"Levels/0C_CNZ/Layout/2.bin"
+	Layout_CPZ1:	include	"Levels/0D_CPZ/Layout/1.bin"
+	Layout_CPZ2:	include	"Levels/0D_CPZ/Layout/2.bin"
+	Layout_DEZ1:	include	"Levels/0E_DEZ/Layout/1.bin"
+	Layout_DEZ2:	include	"Levels/0E_DEZ/Layout/2.bin"		;DEZ1
+	Layout_ARZ1:	include	"Levels/0F_ARZ/Layout/1.bin"
+	Layout_ARZ2:	include	"Levels/0F_ARZ/Layout/2.bin"
+	Layout_SCZ1:	include	"Levels/10_SCZ/Layout/1.bin"
+	Layout_SCZ2:	include	"Levels/10_SCZ/Layout/2.bin"		;SCZ1
+
+EndSeg
+
+StartSeg RingPos_Index Big_Endian
+
+	WORD Rings_EHZ1-RingPos_Index,   Rings_EHZ2-RingPos_Index
+	WORD Rings_01_1-RingPos_Index,   Rings_01_2-RingPos_Index
+	WORD Rings_WZ1-RingPos_Index,    Rings_WZ2-RingPos_Index
+	WORD Rings_03_1-RingPos_Index,   Rings_03_2-RingPos_Index
+	WORD Rings_MTZ4_1-RingPos_Index, Rings_MTZ4_2-RingPos_Index
+	WORD Rings_MTZ5_1-RingPos_Index, Rings_MTZ5_2-RingPos_Index
+	WORD Rings_WFZ1-RingPos_Index,   Rings_WFZ2-RingPos_Index
+	WORD Rings_HTZ1-RingPos_Index,   Rings_HTZ2-RingPos_Index
+	WORD Rings_HPZ1-RingPos_Index,   Rings_HPZ2-RingPos_Index
+	WORD Rings_09_1-RingPos_Index,   Rings_09_2-RingPos_Index
+	WORD Rings_OOZ1-RingPos_Index,   Rings_OOZ2-RingPos_Index
+	WORD Rings_MCZ1-RingPos_Index,   Rings_MCZ2-RingPos_Index
+	WORD Rings_CNZ1-RingPos_Index,   Rings_CNZ2-RingPos_Index
+	WORD Rings_CPZ1-RingPos_Index,   Rings_CPZ2-RingPos_Index
+	WORD Rings_DEZ1-RingPos_Index,   Rings_DEZ2-RingPos_Index
+	WORD Rings_ARZ1-RingPos_Index,   Rings_ARZ2-RingPos_Index
+	WORD Rings_SCZ1-RingPos_Index,   Rings_SCZ2-RingPos_Index
+
+	Rings_EHZ1:	include	"Levels/00_EHZ/Rng/1.bin"
+	Rings_EHZ2:	include	"Levels/00_EHZ/Rng/2.bin"
+	Rings_01_1:	include	"Levels/01/Rng/1.bin"
+	Rings_01_2:	include	"Levels/01/Rng/2.bin"
+	Rings_WZ1:	include	"Levels/02_WZ/Rng/1.bin"
+	Rings_WZ2:	include	"Levels/02_WZ/Rng/2.bin"
+	Rings_03_1:	include	"Levels/03/Rng/1.bin"
+	Rings_03_2:	include	"Levels/03/Rng/2.bin"
+	Rings_MTZ4_1:	include	"Levels/04_MTZ/Rng/1.bin"
+	Rings_MTZ4_2:	include	"Levels/04_MTZ/Rng/2.bin"
+	Rings_MTZ5_1:	include	"Levels/05_MTZ/Rng/1.bin"
+	Rings_MTZ5_2:	include	"Levels/05_MTZ/Rng/2.bin"
+	Rings_WFZ1:	include	"Levels/06_WFZ/Rng/1.bin"
+	Rings_WFZ2:	include	"Levels/06_WFZ/Rng/2.bin"
+	Rings_HTZ1:	include	"Levels/07_HTZ/Rng/1.bin"
+	Rings_HTZ2:	include	"Levels/07_HTZ/Rng/2.bin"
+	Rings_HPZ1:	include	"Levels/08_HPZ/Rng/1.bin"
+	Rings_HPZ2:	include	"Levels/08_HPZ/Rng/2.bin"
+	Rings_09_1:	include	"Levels/09/Rng/1.bin"
+	Rings_09_2:	include	"Levels/09/Rng/2.bin"
+	Rings_OOZ1:	include	"Levels/0A_OOZ/Rng/1.bin"
+	Rings_OOZ2:	include	"Levels/0A_OOZ/Rng/2.bin"
+	Rings_MCZ1:	include	"Levels/0B_MCZ/Rng/1.bin"
+	Rings_MCZ2:	include	"Levels/0B_MCZ/Rng/2.bin"
+	Rings_CNZ1:	include	"Levels/0C_CNZ/Rng/1.bin"
+	Rings_CNZ2:	include	"Levels/0C_CNZ/Rng/2.bin"
+	Rings_CPZ1:	include	"Levels/0D_CPZ/Rng/1.bin"
+	Rings_CPZ2:	include	"Levels/0D_CPZ/Rng/2.bin"
+	Rings_DEZ1:	include	"Levels/0E_DEZ/Rng/1.bin"
+	Rings_DEZ2:	include	"Levels/0E_DEZ/Rng/2.bin"
+	Rings_ARZ1:	include	"Levels/0F_ARZ/Rng/1.bin"
+	Rings_ARZ2:	include	"Levels/0F_ARZ/Rng/2.bin"
+	Rings_SCZ1:	include	"Levels/10_SCZ/Rng/1.bin"
+	Rings_SCZ2:	include	"Levels/10_SCZ/Rng/2.bin"
+
+EndSeg
+
+StartSeg ObjPos_Index Big_Endian
+
+	WORD Objects_EHZ1-ObjPos_Index,   Objects_EHZ2-ObjPos_Index
+	WORD Objects_01_1-ObjPos_Index,   Objects_01_2-ObjPos_Index
+	WORD Objects_WZ1-ObjPos_Index,    Objects_WZ2-ObjPos_Index
+	WORD Objects_03_1-ObjPos_Index,   Objects_03_2-ObjPos_Index
+	WORD Objects_MTZ4_1-ObjPos_Index, Objects_MTZ4_2-ObjPos_Index
+	WORD Objects_MTZ5_1-ObjPos_Index, Objects_MTZ5_2-ObjPos_Index
+	WORD Objects_WFZ1-ObjPos_Index,   Objects_WFZ2-ObjPos_Index
+	WORD Objects_HTZ1-ObjPos_Index,   Objects_HTZ2-ObjPos_Index
+	WORD Objects_HPZ1-ObjPos_Index,   Objects_HPZ2-ObjPos_Index
+	WORD Objects_09_1-ObjPos_Index,   Objects_09_2-ObjPos_Index
+	WORD Objects_OOZ1-ObjPos_Index,   Objects_OOZ2-ObjPos_Index
+	WORD Objects_MCZ1-ObjPos_Index,   Objects_MCZ2-ObjPos_Index
+	WORD Objects_CNZ1-ObjPos_Index,   Objects_CNZ2-ObjPos_Index
+	WORD Objects_CPZ1-ObjPos_Index,   Objects_CPZ2-ObjPos_Index
+	WORD Objects_DEZ1-ObjPos_Index,   Objects_DEZ2-ObjPos_Index
+	WORD Objects_ARZ1-ObjPos_Index,   Objects_ARZ2-ObjPos_Index
+	WORD Objects_SCZ1-ObjPos_Index,   Objects_SCZ2-ObjPos_Index
+
+			WORD $FFFF, $0000, $0000			;Object position data prefix
+	Objects_EHZ1:	include	"Levels/00_EHZ/Obj/1.bin"
+	Objects_EHZ2:	include	"Levels/00_EHZ/Obj/2.bin"
+	Objects_01_1:	include	"Levels/01/Obj/1.bin"
+	Objects_01_2:	include	"Levels/01/Obj/2.bin"
+	Objects_WZ1:	include	"Levels/02_WZ/Obj/1.bin"
+	Objects_WZ2:	include	"Levels/02_WZ/Obj/2.bin"
+	Objects_03_1:	include	"Levels/03/Obj/1.bin"
+	Objects_03_2:	include	"Levels/03/Obj/2.bin"
+	Objects_MTZ4_1:	include	"Levels/04_MTZ/Obj/1.bin"
+	Objects_MTZ4_2:	include	"Levels/04_MTZ/Obj/2.bin"
+	Objects_MTZ5_1:	include	"Levels/05_MTZ/Obj/1.bin"
+	Objects_MTZ5_2:	include	"Levels/05_MTZ/Obj/2.bin"
+	Objects_WFZ1:	include	"Levels/06_WFZ/Obj/1.bin"
+	Objects_WFZ2:	include	"Levels/06_WFZ/Obj/2.bin"
+	Objects_HTZ1:	include	"Levels/07_HTZ/Obj/1.bin"
+	Objects_HTZ2:	include	"Levels/07_HTZ/Obj/2.bin"
+	Objects_HPZ1:	include	"Levels/08_HPZ/Obj/1.bin"
+	Objects_HPZ2:	include	"Levels/08_HPZ/Obj/2.bin"
+	Objects_09_1:	include	"Levels/09/Obj/1.bin"
+	Objects_09_2:	include	"Levels/09/Obj/2.bin"
+	Objects_OOZ1:	include	"Levels/0A_OOZ/Obj/1.bin"
+	Objects_OOZ2:	include	"Levels/0A_OOZ/Obj/2.bin"
+	Objects_MCZ1:	include	"Levels/0B_MCZ/Obj/1.bin"
+	Objects_MCZ2:	include	"Levels/0B_MCZ/Obj/2.bin"
+	Objects_CNZ1:	include	"Levels/0C_CNZ/Obj/1.bin"
+	Objects_CNZ2:	include	"Levels/0C_CNZ/Obj/2.bin"
+	Objects_CPZ1:	include	"Levels/0D_CPZ/Obj/1.bin"
+	Objects_CPZ2:	include	"Levels/0D_CPZ/Obj/2.bin"
+	Objects_DEZ1:	include	"Levels/0E_DEZ/Obj/1.bin"
+	Objects_DEZ2:	include	"Levels/0E_DEZ/Obj/2.bin"
+	Objects_ARZ1:	include	"Levels/0F_ARZ/Obj/1.bin"
+	Objects_ARZ2:	include	"Levels/0F_ARZ/Obj/2.bin"
+	Objects_SCZ1:	include	"Levels/10_SCZ/Obj/1.bin"
+	Objects_SCZ2:	include	"Levels/10_SCZ/Obj/2.bin"
+
+EndSeg
+
+StartSeg Big_Endian
+
+	WORD	$0000, $0000				;Bumper position data prefix
+	CNZBumpers1:	include	"Levels/0C_CNZ/Obj/Bump1.bin"
+	CNZBumpers2:	include	"Levels/0C_CNZ/Obj/Bump2.bin"
+
+EndSeg
+
+StartSeg Big_Endian
+
+	WORD	$FFFF, $0000, $0000			;Object position data prefix
+	CNZ1Objs_2P:	include	"Levels/0C_CNZ/Obj/2P_1.bin"
+	CNZ2Objs_2P:	include	"Levels/0C_CNZ/Obj/2P_2.bin"
+
+EndSeg

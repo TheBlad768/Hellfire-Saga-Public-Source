@@ -1,0 +1,2241 @@
+Snd_OpeningTheme_Header:
+	sHeaderInit
+	sHeaderTempo	$0100
+	sHeaderCh	$06, $00
+	sHeaderDAC	Snd_OpeningTheme_DAC
+	sHeaderDAC	Snd_OpeningTheme_DAC,	$04
+	sHeaderFM	Snd_OpeningTheme_FM1,	$00, $FC
+	sHeaderFM	Snd_OpeningTheme_FM3,	$00, $FC		; AF: SFX now use FM2
+	sHeaderFM	Snd_OpeningTheme_FM2,	$00, $FC
+	sHeaderFM	Snd_OpeningTheme_FM4,	$00, $FC
+	sHeaderFM	Snd_OpeningTheme_FM5,	$00, $FC
+	sHeaderFM	Snd_OpeningTheme_FM6,	$00, $FC
+
+;	Voice $00
+;	$3C
+;	$71, $72, $30, $31, 	$5D, $1C, $5E, $5E, 	$05, $0A, $03, $0C
+;	$00, $03, $00, $03, 	$40, $87, $80, $A7, 	$1C, $00, $0A, $00
+	spAlgorithm	$04
+	spFeedback	$07
+	spDetune	$07, $03, $07, $03
+	spMultiple	$01, $00, $02, $01
+	spRateScale	$01, $01, $00, $01
+	spAttackRt	$1D, $1E, $1C, $1E
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$05, $03, $0A, $0C
+	spDecayRt	$00, $00, $03, $03
+	spSustainLv	$04, $08, $08, $0A
+	spReleaseRt	$00, $00, $07, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1C, $0A, $00, $00
+
+;	Voice $01
+;	$3A
+;	$06, $73, $01, $01, 	$1F, $5F, $5F, $5F, 	$19, $10, $04, $0A
+;	$01, $01, $02, $00, 	$22, $D2, $C2, $F3, 	$4C, $1A, $25, $00
+	spAlgorithm	$02
+	spFeedback	$07
+	spDetune	$00, $00, $07, $00
+	spMultiple	$06, $01, $03, $01
+	spRateScale	$00, $01, $01, $01
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$19, $04, $10, $0A
+	spDecayRt	$01, $02, $01, $00
+	spSustainLv	$02, $0C, $0D, $0F
+	spReleaseRt	$02, $02, $02, $03
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$4C, $25, $1A, $00
+
+;	Voice $02
+;	$3A
+;	$00, $03, $00, $00, 	$9F, $9C, $5B, $4D, 	$06, $05, $1F, $03
+;	$00, $00, $00, $00, 	$11, $55, $03, $06, 	$21, $25, $1F, $00
+	spAlgorithm	$02
+	spFeedback	$07
+	spDetune	$00, $00, $00, $00
+	spMultiple	$00, $00, $03, $00
+	spRateScale	$02, $01, $02, $01
+	spAttackRt	$1F, $1B, $1C, $0D
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$06, $1F, $05, $03
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$01, $00, $05, $00
+	spReleaseRt	$01, $03, $05, $06
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$21, $1F, $25, $00
+
+;	Voice $03
+;	$04
+;	$31, $03, $22, $30, 	$12, $12, $12, $12, 	$01, $01, $01, $01
+;	$01, $01, $01, $01, 	$14, $15, $14, $15, 	$21, $00, $21, $00
+	spAlgorithm	$04
+	spFeedback	$00
+	spDetune	$03, $02, $00, $03
+	spMultiple	$01, $02, $03, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$12, $12, $12, $12
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$01, $01, $01, $01
+	spDecayRt	$01, $01, $01, $01
+	spSustainLv	$01, $01, $01, $01
+	spReleaseRt	$04, $04, $05, $05
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$21, $21, $00, $00
+
+; FM1 Data
+Snd_OpeningTheme_FM1:
+	sVoice		$00
+	saVol		$0C
+	sPan		spCenter, $00
+	dc.b nC2, $14, nRst, $02, nC2, $14, nRst, $02
+	saVol		$07
+	dc.b nC2, $09, nRst, $02
+	saVol		$F9
+	dc.b nC2, $09, nRst, $02, nC2, $14, nRst, $02, nC2, $14, nRst, $02
+	dc.b nC2, $1F, nRst, $02, nC2, $09, nRst, $02, nF2, $09, nRst, $02
+	dc.b nA2, $09, nRst, $02, nC2, $14, nRst, $02, nC2, $14, nRst, $02
+	saVol		$07
+	dc.b nC2, $09, nRst, $02
+	saVol		$F9
+	dc.b nC2, $09, nRst, $02, nC2, $14, nRst, $02, nC2, $14, nRst, $02
+	dc.b nC2, $1F, nRst, $02, nFs2, $09, nRst, $02, nA2, $09, nRst, $02
+	dc.b nC3, $09, nRst, $02, nC2, $14, nRst, $02
+
+Snd_OpeningTheme_Jump05:
+	dc.b nC2, $14, nRst, $01, nC2, $0A, nRst, $02, nC2, $09, nRst, $02
+	dc.b nC2, $15, nRst, $01, nC2, $15
+
+Snd_OpeningTheme_Loop0A:
+	dc.b nRst, $01, nC2, $0A
+	sLoop		$00, $03, Snd_OpeningTheme_Loop0A
+	dc.b nRst, $01, nC2, $09
+
+Snd_OpeningTheme_Loop0B:
+	dc.b nRst, $02, nC2, $14
+	sLoop		$00, $03, Snd_OpeningTheme_Loop0B
+	dc.b nRst, $02, nC2, $09, nRst, $02, nC2, $09, nRst, $02, nC2, $14
+	dc.b nRst, $02, nC2, $14, nRst, $02, nC2, $15, nRst, $01
+	saVol		$07
+	dc.b nC2, $0A, nRst, $01
+	saVol		$F9
+	dc.b nC2, $0A, nRst, $01, nFs2, $0A, nRst, $01, nC2, $09, nRst, $02
+	dc.b nC2, $14, nRst, $02, nC2, $14, nRst, $02, nC2, $09, nRst, $02
+	dc.b nC2, $0A, nRst, $01, nC2, $15, nRst, $02, nC2, $14
+
+Snd_OpeningTheme_Loop0C:
+	dc.b nRst, $02, nC2, $09
+	sLoop		$00, $04, Snd_OpeningTheme_Loop0C
+
+Snd_OpeningTheme_Loop0D:
+	dc.b nRst, $02, nC2, $14
+	sLoop		$00, $03, Snd_OpeningTheme_Loop0D
+	dc.b nRst, $02, nC2, $09, nRst, $02, nC2, $09, nRst, $02, nC2, $14
+	dc.b nRst, $02, nD2, $14, nRst, $02, nC2, $09, nRst, $02, nD2, $09
+	dc.b nRst, $02, nEb2, $15, nRst, $02, nD2, $09, nRst, $02, nEb2, $0A
+	dc.b nRst, $01, nAb2, $15, nRst, $02, nAb2, $15, nRst, $02
+	saVol		$07
+	dc.b nAb2, $09, nRst, $02
+	saVol		$F9
+	dc.b nAb2, $0A, nRst, $02, nFs2, $14, nRst, $02, nF2, $15, nRst, $02
+	dc.b nFs2, $09, nRst, $02, nF2, $09, nRst, $02, nE2, $14, nRst, $02
+	dc.b nBb2, $09, nRst, $02, nE2, $09, nRst, $02, nEb2, $14, nRst, $02
+	dc.b nBb2, $09, nRst, $02, nEb2, $09, nRst, $02, nCs2, $14, nRst, $02
+	dc.b nEb2, $09, nRst, $02, nCs2, $09, nRst, $03, nC2, $14, nRst, $02
+	dc.b nCs2, $09, nRst, $02, nC2, $09, nRst, $02, nB1, $09, nRst, $01
+	dc.b nB1, $0A, nRst, $01, nB2, $15, nRst, $01, nBb2, $15, nRst, $02
+	dc.b nBb1, $14, nRst, $02, nBb2, $09, nRst, $02, nBb2, $09, nRst, $02
+	dc.b nBb2, $15, nRst, $01, nBb2, $15, nRst, $02, nBb1, $14, nRst, $02
+	dc.b nBb2, $09, nRst, $03, nBb2, $08, nRst, $03, nBb2, $14, nRst, $02
+	dc.b nBb2, $14, nRst, $02, nBb1, $15, nRst, $01, nBb2, $0A, nRst, $02
+	dc.b nBb2, $09, nRst, $02, nBb2, $14, nRst, $02, nBb2, $14, nRst, $02
+	dc.b nBb1, $15, nRst, $02, nBb2, $09, nRst, $02, nBb2, $09, nRst, $02
+	dc.b nBb2, $14, nRst, $02, nC2, $14, nRst, $03
+	sPan		spCenter, $00
+	sJump		Snd_OpeningTheme_Jump05
+
+; FM2 Data
+Snd_OpeningTheme_FM2:
+	sVoice		$01
+	saVol		$14
+	sPan		spCenter, $00
+
+Snd_OpeningTheme_Loop07:
+	dc.b nC5, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nG5, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nEb6, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nG6, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	sLoop		$00, $02, Snd_OpeningTheme_Loop07
+
+Snd_OpeningTheme_Loop08:
+	dc.b nC5, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nA5, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nF6, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nA6, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	sLoop		$00, $02, Snd_OpeningTheme_Loop08
+	dc.b nC5, $05, nRst, $01
+	saVol		$07
+	dc.b sHold, nRst
+
+Snd_OpeningTheme_Loop09:
+	saVol		$08
+	dc.b sHold, $02
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nBb5, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nG6, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nBb6, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nC5, $05
+	saVol		$07
+	dc.b nRst, $02
+	sLoop		$00, $02, Snd_OpeningTheme_Loop09
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nA5, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nFs6, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nA6, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nC5, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nA5, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nFs6, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nA6, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$F0
+	dc.b nC5, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nC5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nG5, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nG5
+	saVol		$05
+	dc.b nRst
+
+Snd_OpeningTheme_Jump04:
+	saVol		$FA
+	dc.b nEb6, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nEb6
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nG6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nG6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nC5, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nC5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nG5, $03, nRst, $01
+	saVol		$05
+	dc.b sHold, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nG5, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nEb6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nEb6
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nG6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nG6
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nC5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nC5
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nA5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nA5
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nF6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nF6
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nA6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nA6
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nC5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nC5
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nA5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nA5, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nF6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nF6, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nA6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nA6, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nC5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nC5, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nBb5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb5, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nG6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nG6, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nBb6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$F7
+	dc.b nBb6, $02
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nC5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$F7
+	dc.b nC5, $02
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$F7
+	dc.b nBb5, $02
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nG6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$F7
+	dc.b nG6, $02
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$F7
+	dc.b nBb6, $02
+	saVol		$05
+	dc.b nRst, $03
+	saVol		$FA
+	dc.b nC5
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$F7
+	dc.b nC5, $02
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b sHold, $01, nA5, $03
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$05
+	dc.b sHold, $03
+	saVol		$F7
+	dc.b nA5, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nFs6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nFs6, $01, nRst
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$FA
+	dc.b nA6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nA6
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nC5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nC5
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nA5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nA5
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nFs6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nFs6
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nA6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nA6, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nC5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nC5, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nG5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nG5, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nEb6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nEb6, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nG6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nG6, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nC5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nC5, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nG5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nG5
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nEb6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nEb6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nG6, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nG6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nC5, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nC5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nA5, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nA5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nF6, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nF6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nA6, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nA6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nC5, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nC5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nA5, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nA5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nF6, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nF6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nA6, $03, nRst, $01
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$05
+	dc.b sHold, $02
+	saVol		$F7
+	dc.b nA6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nC5, $04
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$05
+	dc.b sHold, $02
+	saVol		$F7
+	dc.b nC5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb5, $04
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$05
+	dc.b sHold, $02
+	saVol		$F7
+	dc.b nBb5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nFs6, $04
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$05
+	dc.b sHold, $02
+	saVol		$F7
+	dc.b nFs6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb6, $04
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$05
+	dc.b sHold, $02
+	saVol		$F7
+	dc.b nBb6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nC5, $04
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$05
+	dc.b sHold, $02
+	saVol		$F7
+	dc.b nC5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb5, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nFs6, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nFs6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb6, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nD5, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nD5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb5, $04
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$05
+	dc.b sHold, $02
+	saVol		$F7
+	dc.b nBb5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nFs6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$F7
+	dc.b nFs6, $02
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb6, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nEb5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nEb5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb5, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nFs6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$F7
+	dc.b nFs6, $02
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb6
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b sHold, $01, nAb5, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nAb5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nEb6, $04
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$05
+	dc.b sHold, $02
+	saVol		$F7
+	dc.b nEb6
+	saVol		$05
+	dc.b nRst, $03
+	saVol		$FA
+	dc.b nB6
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nB6, $01
+	saVol		$05
+	dc.b nRst, $03
+	saVol		$FA
+	dc.b nEb7
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nEb7
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nAb5, $03, nRst, $01
+	saVol		$05
+	dc.b sHold, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nAb5
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nEb6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nEb6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nB6, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nB6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nEb7, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nEb7, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nAb5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nAb5
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nEb6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nEb6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nAb6, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nAb6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nB6, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nB6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nD5, $04
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$05
+	dc.b sHold, $02
+	saVol		$F7
+	dc.b nD5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nD6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$F7
+	dc.b nD6, $02
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nAb6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nAb6, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nD7, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nD7, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nEb5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nEb5, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nBb5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb5, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nEb6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nEb6, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nBb6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb6, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nEb5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nEb5, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nBb5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb5, $01
+	saVol		$05
+	dc.b nRst, $03
+	saVol		$FA
+	dc.b nFs6
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$F7
+	dc.b nFs6, $02
+	saVol		$05
+	dc.b nRst, $03
+	saVol		$FA
+	dc.b nBb6
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb6, $01
+	saVol		$05
+	dc.b nRst, $03
+	saVol		$FA
+	dc.b nC5
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nC5, $01, nRst
+	saVol		$05
+	dc.b sHold, $02
+	saVol		$FA
+	dc.b nBb5, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nFs6, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nFs6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb6, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nB4, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nB4
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nAb5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nAb5
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nFs6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nFs6
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nBb6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb6
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nBb4, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb4
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nF5, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nF5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb5, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nF6, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nF6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb4, $04
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$05
+	dc.b sHold, $02
+	saVol		$F7
+	dc.b nBb4
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nF5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$F7
+	dc.b nF5, $02
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb5, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nF6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nF6
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nBb4, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb4
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nF5, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nF5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb5, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nF6, $04
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$05
+	dc.b sHold, $02
+	saVol		$F7
+	dc.b sHold, $01, sHold, nF6
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nBb4, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb4, $01
+	saVol		$05
+	dc.b nRst, $03
+	saVol		$FA
+	dc.b nF5
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nF5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb5, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nF6, $04
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$05
+	dc.b sHold, $02
+	saVol		$F7
+	dc.b nF6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb4, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$F7
+	dc.b nBb4, $02
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nF5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nF5, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nBb5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb5
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nD6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nD6
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nBb4, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb4
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nF5, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nF5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb5, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nD6, $04
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$05
+	dc.b sHold, $02
+	saVol		$F7
+	dc.b nD6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb4, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$F7
+	dc.b nBb4, $02
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nF5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nF5, $01
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FA
+	dc.b nBb5, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb5
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FA
+	dc.b nD6, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nD6
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb4, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nBb4
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nF5, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nF5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nBb5, $04
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$05
+	dc.b sHold, $02
+	saVol		$F7
+	dc.b nBb5
+	saVol		$05
+	dc.b nRst
+	saVol		$FA
+	dc.b nD6, $04
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$05
+	dc.b sHold, $02
+	saVol		$F7
+	dc.b nD6
+	saVol		$05
+	dc.b nRst, $03
+	saVol		$FA
+	dc.b nC5
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nC5, $01
+	saVol		$05
+	dc.b nRst, $03
+	saVol		$FA
+	dc.b nG5
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F7
+	dc.b nG5, $01, nRst
+	saVol		$05
+	dc.b sHold, $02
+	sPan		spCenter, $00
+	sJump		Snd_OpeningTheme_Jump04
+
+; FM3 Data
+Snd_OpeningTheme_FM3:
+	sVoice		$01
+	saVol		$18
+	sPan		spCenter, $00
+	dc.b nC5, $04
+	saVol		$07
+	dc.b nRst, $01
+	saVol		$08
+	dc.b sHold, $02
+	saVol		$F1
+	dc.b nC5, $06
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, $01
+	saVol		$07
+	dc.b sHold, $02
+	saVol		$EA
+	ssDetune	$FE
+	dc.b nG5, $06
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, $01
+	saVol		$07
+	dc.b sHold, $02
+	saVol		$EA
+	dc.b nEb6, $06
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, $01
+	saVol		$07
+	dc.b sHold, $02
+	saVol		$EA
+	dc.b nG6, $06
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, $01
+	saVol		$07
+	dc.b sHold, $02
+	saVol		$EA
+	ssDetune	$00
+	dc.b nC5, $06
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, $01
+	saVol		$07
+	dc.b sHold, $02
+	saVol		$EA
+	ssDetune	$FE
+	dc.b nG5, $06
+	saVol		$07
+	dc.b nRst, $01
+	saVol		$08
+	dc.b sHold, $02
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nEb6, $06
+	saVol		$07
+	dc.b nRst, $01
+	saVol		$08
+	dc.b sHold, $02
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nG6, $06
+	saVol		$07
+	dc.b nRst, $01
+	saVol		$08
+	dc.b sHold, $02
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	ssDetune	$00
+	dc.b nC5, $06
+	saVol		$07
+	dc.b nRst, $01
+	saVol		$08
+	dc.b sHold, $02
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	ssDetune	$FE
+	dc.b nA5, $06
+	saVol		$07
+	dc.b nRst, $01
+	saVol		$08
+	dc.b sHold, $02
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nF6, $06
+	saVol		$07
+	dc.b nRst, $01
+	saVol		$08
+	dc.b sHold, $02
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nA6, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	ssDetune	$00
+	dc.b nC5, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	ssDetune	$FE
+	dc.b nA5, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nF6, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, $03
+	saVol		$07
+	dc.b sHold, $01
+	saVol		$EA
+	dc.b nA6, $05, nRst, $01
+	saVol		$07
+	dc.b sHold, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, $01
+	saVol		$EA
+	ssDetune	$00
+	dc.b nC5, $06
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, $01
+	saVol		$07
+	dc.b sHold, $02
+	saVol		$EA
+	ssDetune	$FE
+	dc.b nBb5, $06
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, $01
+	saVol		$07
+	dc.b sHold, $02
+	saVol		$EA
+	dc.b nG6, $06
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, $01
+	saVol		$07
+	dc.b sHold, $02
+	saVol		$EA
+	dc.b nBb6, $06
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, $01
+	saVol		$07
+	dc.b sHold, $02
+	saVol		$EA
+	ssDetune	$00
+	dc.b nC5, $06
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, $01
+	saVol		$07
+	dc.b sHold, $02
+	saVol		$EA
+	ssDetune	$FE
+	dc.b nBb5, $06
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, $01
+	saVol		$07
+	dc.b sHold, $02
+	saVol		$EA
+	dc.b nG6, $06
+	saVol		$07
+	dc.b nRst, $01
+	saVol		$08
+	dc.b sHold, $02
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nBb6, $06
+	saVol		$07
+	dc.b nRst, $01
+	saVol		$08
+	dc.b sHold, $02
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	ssDetune	$00
+	dc.b nC5, $06
+	saVol		$07
+	dc.b nRst, $01
+	saVol		$08
+	dc.b sHold, $02
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	ssDetune	$FE
+	dc.b nA5, $06
+	saVol		$07
+	dc.b nRst, $01
+	saVol		$08
+	dc.b sHold, $02
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nFs6, $06
+	saVol		$07
+	dc.b nRst, $01
+	saVol		$08
+	dc.b sHold, $02
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nA6, $06
+	saVol		$07
+	dc.b nRst, $01
+	saVol		$08
+	dc.b sHold, $02
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	ssDetune	$00
+	dc.b nC5, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	ssDetune	$FE
+	dc.b nA5, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nFs6, $05
+	saVol		$07
+	dc.b nRst, $02
+	saVol		$08
+	dc.b sHold, nRst
+	saVol		$07
+	dc.b sHold, nRst
+	saVol		$EA
+	dc.b nA6
+	saVol		$07
+	dc.b nRst
+	sVoice		$02
+	saVol		$FA
+	sPan		spLeft, $00
+	ssDetune	$00
+	dc.b nEb5, $16
+
+Snd_OpeningTheme_Jump03:
+	dc.b sHold, nEb5, $41, nRst, $01, nF5, $55, nRst, $03, nG5, $54, nRst
+	dc.b $05, nFs5, sHold, nG5, $06, sHold, nFs5, $05, sHold, nG5
+
+Snd_OpeningTheme_Loop03:
+	dc.b sHold, nFs5, $06, sHold, nG5, $05
+	sLoop		$00, $03, Snd_OpeningTheme_Loop03
+	dc.b sHold, nFs5, $06, sHold, nG5, $04, nRst, $01, nD5, $14, nRst, $02
+	dc.b nEb5, $54, nRst, $04, nF5, $57, nRst, $02, nFs5, $54, nRst, $04
+
+Snd_OpeningTheme_Loop04:
+	dc.b nF5, $05, sHold, nFs5, $06, sHold
+	sLoop		$00, $02, Snd_OpeningTheme_Loop04
+	dc.b nF5
+
+Snd_OpeningTheme_Loop05:
+	dc.b sHold, nFs5, $05, sHold, nF5, $06
+	sLoop		$00, $02, Snd_OpeningTheme_Loop05
+	dc.b sHold, nFs5, $06, sHold, nF5, $05, sHold, nFs5, $06, sHold, nF5, sHold
+	dc.b nFs5, sHold, nF5, $05, sHold, nFs5, $04, nRst, $02, nAb5, $7F, sHold
+	dc.b $5E, nRst, $03, nBb5, $56, nRst, $02, nB5, $14, nRst, $01, nBb5
+	dc.b $15, nRst, $01
+
+Snd_OpeningTheme_Loop06:
+	dc.b nBb5, $7F, sHold, $30, nRst, $04
+	sLoop		$00, $02, Snd_OpeningTheme_Loop06
+	dc.b nEb5, $16
+	sPan		spLeft, $00
+	sJump		Snd_OpeningTheme_Jump03
+
+; FM4 Data
+Snd_OpeningTheme_FM4:
+	sVoice		$02
+	saVol		$19
+	sPan		spLeft, $00
+	dc.b nEb5, $54, nRst, $04, nF5, $54, nRst, $04, nG5, $54, nRst, $04
+	dc.b nFs5, $4D, nRst, $0B, nG5, $16
+
+Snd_OpeningTheme_Jump02:
+	dc.b sHold, nG5, $41, nRst, $01, nA5, $55, nRst, $04, nBb5, $54, nRst
+	dc.b $04, nA5, $05, sHold, nBb5, $06, sHold, nA5, $05, sHold, nBb5
+
+Snd_OpeningTheme_Loop00:
+	dc.b sHold, nA5, $06, sHold, nBb5, $05
+	sLoop		$00, $05, Snd_OpeningTheme_Loop00
+	dc.b sHold, nA5, $06, sHold, nBb5, $03, nRst, $02, nG5, $54, nRst, $04
+	dc.b nA5, $57, nRst, $02, nBb5, $54, nRst, $04
+
+Snd_OpeningTheme_Loop01:
+	dc.b nA5, $05, sHold, nBb5, $06, sHold
+	sLoop		$00, $02, Snd_OpeningTheme_Loop01
+	dc.b nA5, $06
+
+Snd_OpeningTheme_Loop02:
+	dc.b sHold, nBb5, $06, sHold, nA5, $05
+	sLoop		$00, $03, Snd_OpeningTheme_Loop02
+	dc.b sHold, nBb5, $06, sHold, nA5, $06, sHold, nBb5, sHold, nA5, $05, sHold
+	dc.b nBb5, $04, nRst, $02, nB5, $7F, sHold, $06, nRst, $02, nD6, $2A
+	dc.b nRst, $03, nEb6, $7F, sHold, $03, nRst, $02, nD6, $14, nRst, $01
+	dc.b nEb6, $15, nRst, $01, nEb6, $7F, sHold, $30, nRst, $04, nD6, $7F
+	dc.b sHold, $28, nRst, $0C, nG5, $16
+	sPan		spLeft, $00
+	sJump		Snd_OpeningTheme_Jump02
+
+; FM5 Data
+Snd_OpeningTheme_FM5:
+	sVoice		$02
+	saVol		$1D
+	sPan		spCenter, $00
+	ssDetune	$FE
+	dc.b nEb5, $58, nRst, $03, nF5, $55, nRst, $04, nG5, $54, nRst, $03
+	dc.b nFs5, $4A, nRst, $0B
+	sVoice		$03
+	saVol		$62
+	dc.b $16
+
+Snd_OpeningTheme_Jump01:
+	dc.b sHold, nFs5, $14, nRst, $02
+	saVol		$96
+	dc.b nG4, $14, nRst, $02
+	ssDetune	$00
+	dc.b nC4, $3D, nRst, $05
+	ssDetune	$FE
+	dc.b nD4, $08
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$F6
+	dc.b nEb4, $08
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$05
+	dc.b sHold, $02
+	saVol		$F6
+	dc.b nF4, $3D, nRst, $06, nEb4
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $03
+	saVol		$F6
+	dc.b nD4, $06
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $03
+	saVol		$F6
+	ssDetune	$00
+	dc.b nC4, $5F, nRst, $24
+	saVol		$6A
+	dc.b $16
+	saVol		$96
+	ssDetune	$FE
+	dc.b nG4, $11, nRst, $06
+	ssDetune	$00
+	dc.b nC4, $3B, nRst, $06
+	ssDetune	$FE
+	dc.b nD4, $07
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $03
+	saVol		$F6
+	dc.b nEb4, $07
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F6
+	dc.b nF4, $3C, nRst, $06, nEb4, $07
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F6
+	dc.b nF4, $07
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F6
+	dc.b nFs4, $6E, nRst, $02
+	saVol		$6A
+	dc.b $2D
+	saVol		$96
+	dc.b nEb5, $15, nRst, $02, nAb4, $3D, nRst, $06, nBb4, $07
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F6
+	ssDetune	$FD
+	dc.b nB4, $07
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F6
+	ssDetune	$FE
+	dc.b nBb4, $1F, nRst, $02, nAb4, $1C, nRst, $06, nFs4, $07
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$05
+	dc.b sHold, $03
+	saVol		$F6
+	dc.b nF4, $07
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F6
+	dc.b nFs4, $3C, nRst, $06, nF4, $07
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$F6
+	dc.b nEb4, $08
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$F6
+	dc.b nD4, $20, nRst, $02, nEb4, $7F, sHold, $2F, nRst, $04, nD4
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FB
+	ssDetune	$00
+	dc.b nC4, $03
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FB
+	ssDetune	$FE
+	dc.b nD4, $7F, sHold, $1A, nRst, $04
+	saVol		$6A
+	dc.b $16
+	sPan		spCenter, $00
+	ssDetune	$FE
+	sJump		Snd_OpeningTheme_Jump01
+
+; FM6 Data
+Snd_OpeningTheme_FM6:
+	sVoice		$02
+	saVol		$1A
+	sPan		spCenter, $00
+	dc.b nG4, $54, nRst, $04, nA4, $54, nRst, $04, nBb4, $54, nRst, $04
+	dc.b nA4, $4D, nRst, $0B
+	sVoice		$03
+	saVol		$65
+	dc.b sHold, $16
+
+Snd_OpeningTheme_Jump00:
+	saVol		$91
+	dc.b nG4, $10, nRst, $06, nC4, $3D, nRst, $05, nD4, $08
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$F6
+	dc.b nEb4, $08
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$F6
+	dc.b nF4, $3D, nRst, $06, nEb4, $07
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$05
+	dc.b sHold, $03
+	saVol		$F6
+	dc.b nD4, $06
+	saVol		$04
+	dc.b nRst, $01
+	saVol		$01
+	dc.b sHold, nRst
+	saVol		$05
+	dc.b sHold, $03
+	saVol		$F6
+	dc.b nC4, $5F, nRst, $25
+	saVol		$6F
+	dc.b $15
+	saVol		$91
+	dc.b nG4, $11, nRst, $06, nC4, $3C, nRst, $06, nD4, $06
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F6
+	dc.b nEb4, $07
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F6
+	dc.b nF4, $3D, nRst, $06, nEb4, $07
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F6
+	dc.b nF4, $07
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F6
+	dc.b nFs4, $7F, sHold, $05, nRst, $02
+	saVol		$6F
+	dc.b $17
+	saVol		$91
+	dc.b nEb5, $10, nRst, $06, nAb4, $3E, nRst, $06, nBb4, $07
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F6
+	dc.b nB4, $07
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F6
+	dc.b nBb4, $1F, nRst, $03, nAb4, $1B, nRst, $06, nFs4, $07
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$05
+	dc.b sHold, $03
+	saVol		$F6
+	dc.b nF4, $07
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$05
+	dc.b sHold, $03
+	saVol		$F6
+	dc.b nFs4, $3C, nRst, $06, nF4, $07
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F6
+	dc.b nEb4, $07
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$05
+	dc.b sHold, nRst
+	saVol		$F6
+	dc.b nD4, $1F, nRst, $01, nEb4, $7F, sHold, $30, nRst, $04, nD4
+	saVol		$05
+	dc.b nRst, $01
+	saVol		$FB
+	dc.b nC4, $04
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FB
+	dc.b nD4, $7F, sHold, $30, nRst, $04
+	saVol		$6F
+	dc.b $16
+	sPan		spCenter, $00
+	sJump		Snd_OpeningTheme_Jump00
+
+; DAC Data
+Snd_OpeningTheme_DAC:
+	sStop

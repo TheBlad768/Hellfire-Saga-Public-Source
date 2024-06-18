@@ -1,0 +1,32 @@
+{
+    "Flex": 2,
+    "name": "",
+    "node": "ea66c64f-d971-4f61-aac3-7eb5ce32d0e0",
+    "objects": [
+        {
+            "uuid": "ea66c64f-d971-4f61-aac3-7eb5ce32d0e0",
+            "format": "Sonic 3&K Object.js",
+            "name": "Monitor",
+            "palettes": [
+                {
+                    "path": "..\\Sonic\\Palettes\\Sonic.bin",
+                    "length": 1
+                }
+            ],
+            "art": {
+                "path": "KosinskiM Art\\Monitors.bin",
+                "compression": "Kosinski-M",
+                "offset": 0
+            },
+            "mappings": {
+                "path": "Object Data\\Map - Monitor.asm",
+                "label": "MAP_MONITOR"
+            },
+            "dplcs": {
+                "enabled": false,
+                "path": "",
+                "label": ""
+            }
+        }
+    ]
+}

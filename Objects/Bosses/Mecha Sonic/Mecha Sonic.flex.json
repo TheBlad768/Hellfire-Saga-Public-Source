@@ -1,0 +1,27 @@
+{
+    "Flex": 2,
+    "name": "",
+    "node": "f2ee07d4-245e-4da5-b937-89eff5daa829",
+    "objects": [
+        {
+            "uuid": "f2ee07d4-245e-4da5-b937-89eff5daa829",
+            "format": "Sonic 3&K Object.js",
+            "name": "object",
+            "palettes": [],
+            "art": {
+                "path": "Uncompressed Art\\MechaSonic.bin",
+                "compression": "Uncompressed",
+                "offset": 0
+            },
+            "mappings": {
+                "path": "Object data\\Map - Mecha Demon.asm",
+                "label": ""
+            },
+            "dplcs": {
+                "enabled": true,
+                "path": "Object data\\DPLC - Mecha Demon.asm",
+                "label": ""
+            }
+        }
+    ]
+}

@@ -1,0 +1,597 @@
+;;;;;;;;;;;;;;;;;;;;;;;;
+; 8x8 Highlighted Font ;
+;;;;;;;;;;;;;;;;;;;;;;;;
+
+Font Art Filename: yfont.tga
+
+;Font Type List-
+; 1- Full ASCII Set                       0 - 255
+; 2- Numbers/Letters (caps/lower)        48 -  57,  65 -  90,  97 - 122
+; 3- Numbers/Letters (caps only)         48 -  57,  65 -  90
+; 4- Numbers Only                        48 -  57
+; 5- Numbers/Symbol/Letters (caps/lower) 33 - 126
+; 6- Numbers/Symbol/Letters (caps  only) 33 -  96, 123 - 126
+; 7- Hex                                 48 -  57,  65 -  70
+
+Font Type: 5
+
+;Char 0x20 (SPACE)-
+    XOFF in file: 000
+    YOFF in file: 000
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+
+;Char 0x21 ('!')-
+    XOFF in file: $28
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x22 ('"')-
+    XOFF in file: $30
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x23 ('#')-
+    XOFF in file: $38
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x24 ('$')-
+    XOFF in file: $40
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x25 ('%')-
+    XOFF in file: $48
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x26 ('&')-
+    XOFF in file: $50
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x27 (''')-
+    XOFF in file: $58
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x28 ('(')-
+    XOFF in file: $60
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x29 (')')-
+    XOFF in file: $68
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x2A ('*')-
+    XOFF in file: $70
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x2B ('+')-
+    XOFF in file: $78
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x2C (',')-
+    XOFF in file: $80
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x2D ('-')-
+    XOFF in file: $88
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x2E ('.')-
+    XOFF in file: $90
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x2F ('/')-
+    XOFF in file: $98
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+
+;Char 0x30 ('0')-
+    XOFF in file: $A0
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x31 ('1')-
+    XOFF in file: $A8
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x32 ('2')-
+    XOFF in file: $B0
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x33 ('3')-
+    XOFF in file: $B8
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x34 ('4')-
+    XOFF in file: $C0
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x35 ('5')-
+    XOFF in file: $C8
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x36 ('6')-
+    XOFF in file: $D0
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x37 ('7')-
+    XOFF in file: $D8
+    YOFF in file: $08
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x38 ('8')-
+    XOFF in file: $00
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x39 ('9')-
+    XOFF in file: $08
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+
+;Char 0x3A (':')-
+    XOFF in file: $10
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x3B (';')-
+    XOFF in file: $18
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x3C ('<')-
+    XOFF in file: $20
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x3D ('=')-
+    XOFF in file: $28
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x3E ('>')-
+    XOFF in file: $30
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x3F ('?')-
+    XOFF in file: $38
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x40 ('@')-
+    XOFF in file: $40
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+
+;Char 0x41 ('A')-
+    XOFF in file: $48
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x42 ('B')-
+    XOFF in file: $50
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x43 ('C')-
+    XOFF in file: $58
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x44 ('D')-
+    XOFF in file: $60
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x45 ('E')-
+    XOFF in file: $68
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x46 ('F')-
+    XOFF in file: $70
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x47 ('G')-
+    XOFF in file: $78
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x48 ('H')-
+    XOFF in file: $80
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x49 ('I')-
+    XOFF in file: $88
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x4A ('J')-
+    XOFF in file: $90
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x4B ('K')-
+    XOFF in file: $98
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x4C ('L')-
+    XOFF in file: $A0
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x4D ('M')-
+    XOFF in file: $A8
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x4E ('N')-
+    XOFF in file: $B0
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x4F ('O')-
+    XOFF in file: $B8
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x50 ('P')-
+    XOFF in file: $C0
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x51 ('Q')-
+    XOFF in file: $C8
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x52 ('R')-
+    XOFF in file: $D0
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x53 ('S')-
+    XOFF in file: $D8
+    YOFF in file: $10
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x54 ('T')-
+    XOFF in file: $00
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x55 ('U')-
+    XOFF in file: $08
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x56 ('V')-
+    XOFF in file: $10
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x57 ('W')-
+    XOFF in file: $18
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x58 ('X')-
+    XOFF in file: $20
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x59 ('Y')-
+    XOFF in file: $28
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x5A ('Z')-
+    XOFF in file: $30
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+
+;Char 0x5B ('[')-
+    XOFF in file: $38
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x5C ('\')-
+    XOFF in file: $40
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x5D (']')-
+    XOFF in file: $48
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x5E ('^')-
+    XOFF in file: $50
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x5F ('_')-
+    XOFF in file: $58
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x60 ('`')-
+    XOFF in file: $60
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+
+;Char 0x61 ('a')-
+    XOFF in file: $68
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x62 ('b')-
+    XOFF in file: $70
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x63 ('c')-
+    XOFF in file: $78
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x64 ('d')-
+    XOFF in file: $80
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x65 ('e')-
+    XOFF in file: $88
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x66 ('f')-
+    XOFF in file: $90
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x67 ('g')-
+    XOFF in file: $98
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x68 ('h')-
+    XOFF in file: $A0
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x69 ('i')-
+    XOFF in file: $A8
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x6A ('j')-
+    XOFF in file: $B0
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x6B ('k')-
+    XOFF in file: $B8
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x6C ('l')-
+    XOFF in file: $C0
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x6D ('m')-
+    XOFF in file: $C8
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x6E ('n')-
+    XOFF in file: $D0
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x6F ('o')-
+    XOFF in file: $D8
+    YOFF in file: $18
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x70 ('p')-
+    XOFF in file: $00
+    YOFF in file: $20
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x71 ('q')-
+    XOFF in file: $08
+    YOFF in file: $20
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x72 ('r')-
+    XOFF in file: $10
+    YOFF in file: $20
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x73 ('s')-
+    XOFF in file: $18
+    YOFF in file: $20
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x74 ('t')-
+    XOFF in file: $20
+    YOFF in file: $20
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x75 ('u')-
+    XOFF in file: $28
+    YOFF in file: $20
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x76 ('v')-
+    XOFF in file: $30
+    YOFF in file: $20
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x77 ('w')-
+    XOFF in file: $38
+    YOFF in file: $20
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x78 ('x')-
+    XOFF in file: $40
+    YOFF in file: $20
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x79 ('y')-
+    XOFF in file: $48
+    YOFF in file: $20
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x7A ('z')-
+    XOFF in file: $50
+    YOFF in file: $20
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+
+;Char 0x7B ('{')-
+    XOFF in file: $58
+    YOFF in file: $20
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x7C ('|')-
+    XOFF in file: $60
+    YOFF in file: $20
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x7D ('}')-
+    XOFF in file: $68
+    YOFF in file: $20
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+;Char 0x7E ('~')-
+    XOFF in file: $70
+    YOFF in file: $20
+           Width: 008
+          Height: 008
+ YOFF from DrawY:-008
+
+
+-EOF-

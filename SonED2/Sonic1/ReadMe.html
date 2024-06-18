@@ -1,0 +1,384 @@
+<head>
+<title>Sonic the Hedgehog Rev 0 ROMulan Package</title>
+</head>
+<body>
+<b><center>Sonic the Hedgehog Rev 0 ROMulan Package</center></b><br>
+<br>
+The files contained herein are for use with <a href="http://stealth.hapisan.com/ROMulan">ROMulan</a> and <a href="http://stealth.hapisan.com/SonED">SonED2</a>, to provide a means of editing the levels and Special Stages of Revision 0 of "Sonic the Hedgehog".<br>
+<br>
+Please visit the <a href="http://stealth.hapisan.com/Forum">official forum</a> for discussion on mods made using this package, to submit additions to the scripts, or to report any errors in the official distribution.<br>
+<br>
+
+<li><b><a href="#Setup">Setup and Basic Usage</a></b><br>
+<br>
+<li><b><a href="#Files">File Listing</a></b><br>
+<br>
+<li><b><a href="#Notes">Game Notes</a></b><br>
+<ul>
+ <li><a href="#SharedData">Tile Paging and Shared Level Data</a><br>
+ <li><a href="#Animated">Animated Tiles and Palettes</a><br>
+ <li><a href="#CrossingPaths">Loops and Crossing Paths</a><br>
+ <li><a href="#SpinTunnels">Spin Tunnels</a><br>
+ <li><a href="#LevelBoundaries">Level Boundaries</a><br>
+ <li><a href="#Current">Labyrinth Zone Current Tunnels</a><br>
+ <li><a href="#Water">Fixed and Dynamic Water Heights</a><br>
+ <li><a href="#BossArena">Boss Arenas</a><br>
+</ul>
+<li><b><a href="#Options">Special Options</a></b><br>
+<ul>
+ <li><a href="#Playlist">Level Music Playlist</a><br>
+ <li><a href="#Boundaries">Level Boundaries</a><br>
+ <li><a href="#LoopIDs">Loop and Spin Tunnel Chunk IDs</a><br>
+ <li><a href="#LevelOrder">Starting Level and Level Progression Order</a><br>
+ <li><a href="#Codes">Cheat Codes</a><br>
+</ul>
+<li><b><a href="#TitleCard">Level TitleCard Names</a></b><br>
+
+<br>
+<br>
+<br><a name="Setup">
+<b>Setup and Basic Usage</b>
+<ul>
+ This script set is "<b>non-destructive</b>". This means that the input game files will never need to be restored, as the Injection process never modifies them. Thus, all changes are applied to a clean copy of the game, and saved to a different file.
+ The only time any of the initial steps will need to be repeated is if the separated data files have become corrupt, in which case, the Split will need to be performed again.<br>
+ <br>
+ <br>
+ <b>One-Time Setup Steps</b>
+ <ul>
+  <li>Unpack all files from this archive into their own folder. <i>The full path name of this folder must not contain any spaces</i><br>
+  <li>Place in the same folder a copy of Revision 0 of "<b>Sonic the Hedgehog</b>" and give it the filename "<b>sonic.bin</b>"<br>
+  <li>Run the included Batch File "<b>split.txt</b>" using ROMulan or SonED2's built-in ROMulan functionality  to retrieve the game's data<br>
+ </ul>
+ <br>
+ <br>
+ <b>Every Time Level Editing Steps</b>
+ <ul>
+  <li>Using SonED2's <b>"Open Project" option</b> in the "File" menu, navigate to the <b>"Projects" folder</b> included with this fileset and open any of the included Project Files to edit its corresponding level<br>
+  <li>Make any changes using SonED2 as described in its own documentation<br>
+  <li>Use SonED2's <b>"Save Project" option</b> by selecting it in the "File" menu or pressing <b>F3</b> to save the changes to their respective files (<i>This is important as the edited data is SonED2-internal; ROMulan expects to find all necessary data in the files listed by the injector script</i>)<br>
+ </ul>
+ <br>
+ <br>
+ <b>Other Modifications</b><br>
+ <ul>
+  <li>With the proper knowledge of the game, other changes can be made by modifying the two Batch Files and/or the Injector File "<b>inmain.txt</b>" as described by the ROMulan documentation. For relevant information, see the "<a href="#Notes">Game Notes</a>" section.<br>
+  <li>Some game settings are already available for modification in the Injector File "<b>inopts.txt</b>". See the "<a href="#Options">Special Options</a>" section for details.<br>
+  <li>The names of the Zones as presented on the "TitleCards" may be modified through the Injector File "<b>incard.txt</b>". See the "<a href="#TitleCard">Level TitleCard Names</a>" section for details.<br>
+ </ul>
+ <br>
+ <br>
+ <b>Every Time Finalization Steps</b>
+ <ul>
+  <li>Run the included Batch File "<b>inject.txt</b>" using ROMulan or SonED2's built-in ROMulan functionality to inject the changes into the game<br>
+  <li>The file "<b>inject.bin</b>" will have been created and placed in the same folder as the "inject.txt" script. The process is now complete<br>
+ </ul>
+</ul>
+
+<br>
+<br><a name="Files">
+<b>File Listing</b>
+<ul>
+ This section provides a complete listing of the folders and files included with this package, each with a brief description. Note that other files and folders will also appear in this folder after "split.txt" has been run, which belong to the data that was extracted from the game.<br>
+ <br>
+ <li><b>/Project</b> - This is the primary folder containing Object Listing Files and a full set of SonED2 Standard Level and Sonic 1 Special Stage Project Files for Sonic the Hedgehog, based on the data created by "split.txt"</a><br>
+	<br>
+        <ul>
+        <li><b>/objdef</b> - Object Listing Files and supporting graphics files that define the Objects used in Sonic the Hedgehog for SonED2's Object and Sonic 1 Special Stage Editors</a><br>
+	<br>
+        <ul><table>
+        <tr><td nowrap><li><b>s1obj.lst</b></td><td> - </td><td>Object Listing File, which defines Object descriptions, setting data, and in-editor graphic displays</td></tr>
+        <tr><td nowrap><li><b>s1obj1.pcx</b></td><td> - </td><td>Graphic file containing some of the global Object graphics</td></tr>
+        <tr><td nowrap><li><b>s1obj2.pcx</b></td><td> - </td><td>Graphic file containing some of the Object graphics for Green Hill Zone</td></tr>
+        <tr><td nowrap><li><b>s1obj3.pcx</b></td><td> - </td><td>Graphic file containing some of the Object graphics for Marble Zone</td></tr>
+        <tr><td nowrap><li><b>s1obj4.pcx</b></td><td> - </td><td>Graphic file containing more Object graphics for Marble Zone</td></tr>
+        <tr><td nowrap><li><b>s1obj5.pcx</b></td><td> - </td><td>Graphic file containing some of the Object graphics for Spring Yard Zone</td></tr>
+        <tr><td nowrap><li><b>ssobj.lst</b></td><td> - </td><td>Sonic 1 Special Stage Object Listing File, which defines Map "Object" descriptions and in-editor graphic displays</td></tr>
+        <tr><td nowrap><li><b>ssobj1.pcx</b></td><td> - </td><td>Graphic file containing the Sonic 1 Special Stage Map "Object" graphics</td></tr>
+        </table></ul>
+	<br>
+        <table>
+        <tr><td nowrap><li><b>end.sep</b></td><td> - </td><td>Ending GHZ Scene (Good)</td></tr>
+        <tr><td nowrap><li><b>end2.sep</b></td><td> - </td><td>Ending GHZ Scene (Bad)</td></tr>
+        <tr><td nowrap><li><b>fz.sep</b></td><td> - </td><td>Final Zone</td></tr>
+        <tr><td nowrap><li><b>ghz1.sep</b></td><td> - </td><td>Green Hill Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>ghz2.sep</b></td><td> - </td><td>Green Hill Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>ghz3.sep</b></td><td> - </td><td>Green Hill Zone Act 3</td></tr>
+        <tr><td nowrap><li><b>lz1.sep</b></td><td> - </td><td>Labyrinth Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>lz2.sep</b></td><td> - </td><td>Labyrinth Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>lz3.sep</b></td><td> - </td><td>Labyrinth Zone Act 3</td></tr>
+        <tr><td nowrap><li><b>mz1.sep</b></td><td> - </td><td>Marble Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>mz2.sep</b></td><td> - </td><td>Marble Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>mz3.sep</b></td><td> - </td><td>Marble Zone Act 3</td></tr>
+        <tr><td nowrap><li><b>sbz1.sep</b></td><td> - </td><td>Scrap Brain Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>sbz2.sep</b></td><td> - </td><td>Scrap Brain Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>sbz3.sep</b></td><td> - </td><td>Scrap Brain Zone Act 3</td></tr>
+        <tr><td nowrap><li><b>slz1.sep</b></td><td> - </td><td>Star Light Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>slz2.sep</b></td><td> - </td><td>Star Light Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>slz3.sep</b></td><td> - </td><td>Star Light Zone Act 3</td></tr>
+        <tr><td nowrap><li><b>ss1.sep</b></td><td> - </td><td>Special Stage 1</td></tr>
+        <tr><td nowrap><li><b>ss2.sep</b></td><td> - </td><td>Special Stage 2</td></tr>
+        <tr><td nowrap><li><b>ss3.sep</b></td><td> - </td><td>Special Stage 3</td></tr>
+        <tr><td nowrap><li><b>ss4.sep</b></td><td> - </td><td>Special Stage 4</td></tr>
+        <tr><td nowrap><li><b>ss5.sep</b></td><td> - </td><td>Special Stage 5</td></tr>
+        <tr><td nowrap><li><b>ss6.sep</b></td><td> - </td><td>Special Stage 6</td></tr>
+        <tr><td nowrap><li><b>syz1.sep</b></td><td> - </td><td>Spring Yard Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>syz2.sep</b></td><td> - </td><td>Spring Yard Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>syz3.sep</b></td><td> - </td><td>Spring Yard Zone Act 3</td></tr>
+        </table>
+	<br><br>
+	</ul>
+
+                   <table>
+                   <tr><td nowrap><b><li>fixheadr.exe</b></td><td> - </td><td>This program is used to correct the size and checksum header information after Injection</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>incard.txt</b></td><td> - </td><td>This is the "Injector File" that contains modifiable information for setting up the "Title Cards" that provide Zone names</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>inject.txt</b></td><td> - </td><td>This is the "Batch File" that is used to initiate Injection</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>injmain.txt</b></td><td> - </td><td>This is the "Injector File" that contains the information for placing the modified data back into the game file</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>inopts.txt</b></td><td> - </td><td>This is the "Injector File" that contains various modifiable options for the game</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>split.txt</b></td><td> - </td><td>This is the "Batch File" that is used to split data from the game file</td></tr>
+                   </table>
+
+	</ul>
+
+<br>
+<br><a name="Notes">
+<b>Game Notes</b>
+<ul><a name="SharedData">
+ <b>Tile Paging and Shared Level Data</b><br>
+ <br>
+ <ul>
+  One Zone of this game makes use of "Tile Paging", a system where a level's full Tileset is broken up into multiple "Pages" that can be swapped out during gameplay or shared between levels. This Zone is Green Hill Zone, which uses two Pages for its 8x8 Tiles, and shares Page 0 with the Title Screen.<br>
+  <br>
+  Tiles are shared between every Act of any one Zone. Modifying them for one Act will modify them for every other Act within the same Zone.<br>
+  <br>
+  Data-wise, "Scrap Brain Zone Act 3" is actually Labyrinth Zone Act 4. The same Tile data (but not the palette data) that is used for Labyrinth Zone is also loaded for Scrap Brain Zone Act 3.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="Animated">
+ <b>Animated Tiles and Palettes</b><br>
+ <br>
+ <ul>
+  Certain Tiles and Palette entries are animated/cycled during gameplay. This behavior is not accounted for in the current script set version; these animations and the data that they use are not available for editing. Any modifications to these Tile or Palette entries will be overridden by these animations during gameplay.<br>
+  <br>
+  In this game, these Tiles use greater IDs than the last stored Tile within the Tile data, so they will be displayed in SonED2 as an "X" inside of a square (the "invalid Tile" marker).<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="CrossingPaths">
+ <b>Loops and Crossing Paths</b><br>
+ <br>
+ <ul>
+  This game uses a one-path collision system, meaning that Chunks within the level layout must be actively changed during gameplay to accomplish Loops. Other crossing path types are not supported by this game's specific implementation.<br>
+  <br>
+  Each Zone in this game can be given two Chunk IDs to define as "Loops". These Chunks <i>must</i> be followed immediately by a visibly-identical copy, with the original having solidity filled in on the right half, and the copy having solidity filled in on the left half (For example, if Chunks 4 and 8 are "Loop" Chunks, they must be made solid on the right side, and must also have copies in Chunks 5 and 9, made solid on the left side). The original and copy are swapped back and forth in-game depending on which side the player is moving toward them from.<br>
+  <br>
+  When placing these Chunks into the Level Layout, they <i>must</i> be "flagged". This can be accomplished in SonED2 by hovering over the Chunk within the Level Layout and pressing spacebar. The Status view will then add the word "(Loop)" to the displayed Chunk ID. When "grabbing" a Chunk from the layout that has already been "flagged", drawing that Chunk to the layout will automatically draw it as "flagged".<br>
+  <br>
+  If the Chunk IDs for "Loops" in a modified level are not the same as the IDs used in the unmodified level, the "<b><a href="#LoopIDs">Loop and Spin Tunnel Chunk IDs</a></b>" section of "<b>inopts.txt</b>" must be updated.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="SpinTunnels">
+ <b>Spin Tunnels</b><br>
+ <br>
+ <ul>
+  Each Zone in this game can be given two Chunk IDs to define as "Spin Tunnels". These Chunks will force the player to spin, and apply rightward velocity if he decelerates to 0 while still in collision with the Chunk.<br>
+  <br>
+  If the Chunk IDs for "Spin Tunnels" in a modified level are not the same as the IDs used in the unmodified level, the "<b><a href="#LoopIDs">Loop and Spin Tunnel Chunk IDs</a></b>" section of "<b>inopts.txt</b>" must be updated.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="LevelBoundaries">
+ <b>Level Boundaries</b><br>
+ <br>
+ <ul>
+  Upper and lower Level Boundaries (the area within which the screen is allowed to scroll across the level during gameplay) are dynamically changed during gameplay in many cases, however, the leftmost and rightmost boundaries are not.<br>
+  <br>
+  Initial (and persistent) horizontal level start and end settings for each level can be changed by modifying the "<b><a href="#Boundaries">Level Size Array</b></a>" section in "<b>inopts.txt</b>".<br>
+  <br>
+  Dynamically-altered vertical Level Boundaries are not accounted for in the current script set version; the level positions at which they are triggered, and the new settings that each of them applies are not available for editing.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="Current">
+ <b>Labyrinth Zone Current Tunnels</b><br>
+ <br>
+ <ul>
+  The Current Tunnels that carry the player along in Labyrinth Zone are triggered by hardcoded player position tests. This is not accounted for in the current script set version; the level areas that are regarded as Current Tunnels are not available for editing.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="Water">
+ <b>Fixed and Dynamic Water Heights</b><br>
+ <br>
+ <ul>
+  The current script set version does not support affecting "water"; Which levels do and don't contain water, the Y position of the water at level start, the events that change the Y position of the water, and the Y positions that the water is moved to are not available for editing.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="BossArena">
+ <b>Boss Arenas</b><br>
+ <br>
+ <ul>
+  Boss events are triggered by hardcoded player position tests, and the Boss Objects themselves test for and set absolute positions within the level. This is not accounted for in the current script set version; the level positions at which the Boss is triggered and the position values used by the Boss Object for movement are not available for editing.<br>
+  <br>
+  The level can, however, be made to end before the Boss area by decreasing the corresponding XEnd setting within the "<b><a href="#Boundaries">Level Size Array</b></a>" section in "<b>inopts.txt</b>", and placing a Signpost Object at the new "end" location.<br>
+ </ul>
+</ul>
+
+<br>
+<br><a name="Options">
+<b>Special Options</b>
+<ul><a name="Playlist">
+ <b>Level Music Playlist</b><br>
+ <br>
+ <ul>
+  The "<b>Level Music Playlist</b>" and "<b>Secondary Music Playlist</b>" sections of "<b>inopts.txt</b>" specify which songs play for which Zones.<br>
+  <br>
+  Both lists must be modified for the change to be complete. Within each list, find the entry that corresponds with the desired Zone, and replace the existing value with the ID number of the music that should be played for the Zone.<br>
+  <br>
+  The ID numbers entered in this section are the Song Numbers as they appear in the game's Sound Test.<br>
+  <br>
+  <i>Note: The "Secondary Music Playlist" <b>does not and should not</b> contain a "Final Zone" entry.</i><br>
+ </ul>
+
+ <br>
+ <br><a name="Boundaries">
+ <b>Level Boundaries</b><br>
+ <br>
+ <ul>
+  The "<b>Level Size Array</b>" section of "<b>inopts.txt</b>" contains the listing that defines the initial Level Boundaries (the area within which the screen is allowed to scroll across the level during gameplay) for each level.<br>
+  <br>
+  Each Zone entry is laid out in the following manner:<br>
+     <ul>
+      <ul>
+<pre>WORD	4, XStart, XEnd, YStart, YEnd, $60</pre>
+      </ul>
+                   <table>
+                   <tr><td nowrap><b><li>4</b></td><td> - </td><td>This entry is unused, but required</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>XStart</b></td><td> - </td><td>The leftmost world position that the screen is allowed to scroll to within the level. This value is only overridden by Boss Arenas.</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>XEnd</b></td><td> - </td><td>The rightmost world position that the screen is allowed to scroll to within the level. This value is only overridden by Boss Arenas.</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>YStart</b></td><td> - </td><td>The uppermost world position that the screen is allowed to scroll to within the level. This value is generally overridden throughout gameplay by dynamic screen relocation.</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>YEnd</b></td><td> - </td><td>The lowermost world position that the screen is allowed to scroll to within the level. This value is generally overridden throughout gameplay by dynamic screen relocation.</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>$60</b></td><td> - </td><td>This entry is unused, but required</td></tr>
+                   </table>
+     <br>
+     </ul>
+ <b>Level Y Looping</b> can be achieved by entering "<b>YLoop</b>" into the "<b>YStart</b>" field, but for this to work, the level must be exactly $800 pixels (8 Chunks) in height, and the level must not be affected by dynamic Y boundary changes that will override this setting.<br>
+ </ul>
+
+ <br>
+ <br><a name="LoopIDs">
+ <b>Loop and Spin Tunnel Chunk IDs</b><br>
+ <br>
+ <ul>
+  The "<b>Loop and Spin Tunnel Chunk IDs</b>" section of "<b>inopts.txt</b>" defines the Chunks that act as Loops and Spin Tunnels for each Zone.<br>
+  <br>
+  Each Zone entry is laid out in the following manner:<br>
+     <ul>
+      <ul>
+<pre>	BYTE Loop1+LoopFlag, Loop2+LoopFlag, Tunnel1, Tunnel2</pre>
+      </ul>
+                   <table>
+                   <tr><td nowrap><b><li>Loop1</b></td><td> - </td><td>The ID number of a Chunk to define as a "Loop". This can only be a standard Loop, not a "P"-shaped Loop.</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>Loop2</b></td><td> - </td><td>The ID number of a Chunk to define as a "Loop". This can be a standard loop, or a "P"-shaped Loop (as seen in Star Light Zone).</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>Tunnel1</b></td><td> - </td><td>This is the ID number of a Chunk to define as a "Spin Tunnel".</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>Tunnel2</b></td><td> - </td><td>This is the ID number of a Chunk to define as a "Spin Tunnel".</td></tr>
+                   </table>
+     <br>
+     </ul>
+ The value "<b>LoopFlag</b>" <i>must</i> be added to both "Loop" entries.<br>
+ <br>
+ When no Loop Chunk exists, or when only one Loop Chunk is desired, unused entries should be filled with "<b>NoLoop</b>".<br>
+ <br>
+ When no Spin Tunnel Chunk exists, or when only one Spin Tunnel Chunk is desired, unused entries should be filled with "<b>NoTunnel</b>".<br>
+ </ul>
+
+ <br>
+ <br><a name="LevelOrder">
+ <b>Starting Level and Level Progression Order</b><br>
+ <br>
+ <ul>
+  The "<b>Starting Level</b>" section of "<b>inopts.txt</b>" determines the level on which the game starts, after pressing Start on the TitleScreen.<br>
+  <br>
+  To change the Starting Level, find the line containing the comment "<b>Zone and Act to go to when starting a new game</b>", and change the two values to reflect the Zone and Act IDs of the desired level.<br>
+  <br>
+  The "<b>"Next Level" array</b>" section of "<b>inopts.txt</b>" determines the order in which the levels are presented during gameplay.<br>
+  <br>
+  This list is not laid out in the order in which the levels will be played, but rather, contains an entry for each level in the game in order of Zone and Act ID. The level defined by the entry will be played after the level that corresponds with the entry has been completed (Ex: The first entry in the list corresponds with Green Hill Zone Act 1. The data in the entry specifies that Green Hill Zone Act 2 will be played after Green Hill Zone Act 1 is complete).<br>
+  <br>
+  The Zone and Act name "Defines" that are listed in the "<b>Data Defines</b>" section can be used for either of these settings.
+ </ul>
+
+ <br>
+ <br><a name="Codes">
+ <b>Cheat Codes</b><br>
+ <br>
+ <ul>
+  The "<b>Cheat Codes</b>" section of "<b>inopts.txt</b>" defines the buttonpresses that are required to activate the game's Cheat Codes.<br>
+  <br>
+  The Cheat Codes are defined by entering the names of any of the "<b>Input State Bits</b>" "Defines" in any order, any number of times.<br>
+  <br>
+  The last buttonpress in the code must be followed by "<b>, Code_End, Code_End2</b>" to mark the end.<br>
+  <br>
+  To effectively disable the code, insert "<b>Input_Invalid</b>" as a "buttonpress" within the code.<br>
+ </ul>
+
+</ul>
+
+
+<br>
+<br><a name="TitleCard">
+<b>Level TitleCard Names</b>
+<ul>
+ The "<b>TCardMapData</b>" segment in "<b>incard.txt</b>" contains the standard Sonic 1 Sprite Mappings data that make up the Zone names and other TitleCard elements.<br>
+ <br>
+ As all available letters (there is no J, Q, V, W, or X) are loaded into VRAM every time, changing the names presented by the TitleCard is as simple as changing each mapping to call on the desired letter art.<br>
+ <br>
+ Each mapping starts with a "<b>BYTE</b>" that defines the number of entries that it contains. The entries themselves are formatted as follows:<br>
+<br>
+     <ul>
+      <ul>
+<pre>BYTE	YOff, MWidth?? + MHeight??, 0, TCTilePos_?, XOff</pre>
+      </ul>
+      <br>
+                   <table>
+                   <tr><td nowrap><b><li>YOff</b></td><td> - </td><td>The Y offset from the TitleCard's position at which this letter should be placed. Generally, this should remain "$F8".</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>MWidth?? + MHeight??</b></td><td> - </td><td>Add together the names of the Width and Height "Defines" that describe the pixel size of the desired letter.</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>0</b></td><td> - </td><td>This value should remain "0".</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>TCTilePos_?</b></td><td> - </td><td>The name of the "Define" that corresponds with the desired letter.</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>XOff</b></td><td> - </td><td>The X offset from the TitleCard's position at which this letter should be placed.</td></tr>
+                   </table>
+     </ul>
+ <br>
+ The "Defines" used for these entries are listed at the top of the file.<br>
+ <br>
+ To effectively insert a space "character", simply use the "<b>XOff</b>" entry to place the character after the "space" farther away from the one before.
+</ul>
+
+</body>
+</html>

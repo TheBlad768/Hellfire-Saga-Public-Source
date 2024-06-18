@@ -1,0 +1,26 @@
+Sound_299_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$02
+	sHeaderSFX	$80, ctFM4, Sound_299_FM4, $00, $04
+	sHeaderSFX	$80, ctFM5, Sound_299_FM5, $00, $0C
+
+; FM4 Data
+Sound_299_FM4:
+	sVoice		$22
+
+Sound_299_Loop01:
+	dc.b nB5, $02, nFs5, $02, nC5, $02
+	saVol		$03
+	sLoop		$00, $02, Sound_299_Loop01
+	sStop
+
+; FM5 Data
+Sound_299_FM5:
+	sVoice		$22
+
+Sound_299_Loop00:
+	dc.b nB5, $02, nFs5, $02, nC5, $02
+	saVol		$03
+	sLoop		$00, $02, Sound_299_Loop00
+	sStop

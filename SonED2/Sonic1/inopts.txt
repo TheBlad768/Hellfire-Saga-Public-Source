@@ -1,0 +1,273 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Sonic the Hedgehog (Rev 00)  Options Injector File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;
+; Setup Directives ;
+;;;;;;;;;;;;;;;;;;;;
+
+MaxSize	$400000				;Maximum Genesis ROM size
+
+Dispose	$0033A4	$0033B0			;Cheat Codes Data
+
+
+;;;;;;;;;;;;;;;;
+; Data Defines ;
+;;;;;;;;;;;;;;;;
+
+Define	Zone_GHZ	$00		;Zone ID Names
+Define	Zone_LZ		$01
+Define	Zone_MZ		$02
+Define	Zone_SLZ	$03
+Define	Zone_SYZ	$04
+Define	Zone_SBZ	$05
+Define	Zone_End	$06
+
+Define	Act1		$00		;Act ID Names
+Define	Act2		$01
+Define	Act3		$02
+Define	Act4		$03
+
+Define	YLoop		$FF00		;Create Y-looping level (when used as Y Start, and Y End is $800)
+
+Define  LoopFlag        $80
+Define  NoLoop          $7F
+Define  NoTunnel        $7F
+
+Define	Input_Up	$01		;Input State Bits (for cheat codes, etc)
+Define	Input_Down	$02
+Define	Input_Left	$04
+Define	Input_Right	$08
+Define	Input_B		$10
+Define	Input_C		$20
+Define	Input_A		$40
+Define	Input_Start	$80
+Define	Input_Invalid	$FF		;Substituting this Define for any keypress will effectively disable the code
+
+Define	Code_End	$00		;Cheat Code Terminator
+Define	Code_End2	$FF
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Manual Settings Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;Game Header Information
+;;;
+
+StartSeg Big_Endian $000100 $8E
+
+	String	"SEGA MEGA DRIVE "					;Console Name
+	String	"(C)SEGA 1991.APR"					;Copyright Date
+	String  "SONIC THE               HEDGEHOG                "	;Domestic Game Name
+	String  "SONIC THE               HEDGEHOG                "	;Foreign Game Name
+	String	"GM 00001009-00"					;Game Serial Number
+
+EndSeg
+
+;;;
+;Level Music Playlist
+;;;
+
+StartSeg Big_Endian $00379A
+
+	BYTE	$81	;GHZ
+	BYTE	$82	; LZ
+	BYTE	$83	; MZ
+	BYTE	$84	;SLZ
+	BYTE	$85	;SYZ
+	BYTE	$86	;SBZ
+	BYTE	$8D	; FZ
+
+EndSeg
+
+;;
+;Secondary Music Playlist (when invincibility wears off)
+;;
+
+StartSeg Big_Endian $012CC8
+
+	BYTE	$81	;GHZ
+	BYTE	$82	; LZ
+	BYTE	$83	; MZ
+	BYTE	$84	;SLZ
+	BYTE	$85	;SYZ
+	BYTE	$86	;SBZ
+
+EndSeg
+
+;;;
+;Level Size Array
+;;;
+
+StartSeg Big_Endian $005F1C
+
+	WORD	4,     0, $24BF,     0, $300, $60	;GHZ1
+	WORD	4,     0, $1EBF,     0, $300, $60	;GHZ2
+	WORD	4,     0, $2960,     0, $300, $60	;GHZ3
+	WORD	4,     0, $2ABF,     0, $300, $60	;GHZ4
+	WORD	4,     0, $19BF,     0, $530, $60	; LZ1
+	WORD	4,     0, $10AF,     0, $720, $60	; LZ2
+	WORD	4,     0, $202F, YLoop, $800, $60	; LZ3
+	WORD	4,     0, $20BF,     0, $720, $60	; LZ4 (SBZ 3)
+	WORD	4,     0, $17BF,     0, $1D0, $60	; MZ1
+	WORD	4,     0, $17BF,     0, $520, $60	; MZ2
+	WORD	4,     0, $1800,     0, $720, $60	; MZ3
+	WORD	4,     0, $16BF,     0, $720, $60	; MZ4
+	WORD	4,     0, $1FBF,     0, $640, $60	;SLZ1
+	WORD	4,     0, $1FBF,     0, $640, $60	;SLZ2
+	WORD	4,     0, $2000,     0, $6C0, $60	;SLZ3
+	WORD	4,     0, $3EC0,     0, $720, $60	;SLZ4
+	WORD	4,     0, $22C0,     0, $420, $60	;SYZ1
+	WORD	4,     0, $28C0,     0, $520, $60	;SYZ2
+	WORD	4,     0, $2C00,     0, $620, $60	;SYZ2
+	WORD	4,     0, $2EC0,     0, $620, $60	;SYZ2
+	WORD	4,     0, $21C0,     0, $720, $60	;SBZ1
+	WORD	4,     0, $1E40, YLoop, $800, $60	;SBZ2
+	WORD	4, $2080, $2460,  $510, $510, $60	;SBZ3 (FZ)
+	WORD	4,     0, $3EC0,     0, $720, $60	;SBZ4
+	WORD	4,     0, $500,   $110, $110, $60	;End1
+	WORD	4,     0, $DC0,   $110, $110, $60	;End2
+	WORD	4,     0, $2FFF,     0, $320, $60	;End3
+	WORD	4,     0, $2FFF,     0, $320, $60	;End4
+
+EndSeg
+
+;;;
+;Loop and Spin Tunnel Chunk IDs
+;;;
+
+StartSeg Big_Endian $6182
+
+	BYTE $35+LoopFlag,       NoLoop,      $1F,      $20	;GHZ
+	BYTE       NoLoop,       NoLoop, NoTunnel, NoTunnel	;LZ
+	BYTE       NoLoop,       NoLoop, NoTunnel, NoTunnel	;MZ
+	BYTE $2A+LoopFlag, $34+LoopFlag, NoTunnel, NoTunnel	;SLZ
+	BYTE       NoLoop,       NoLoop, NoTunnel, NoTunnel	;SYZ
+	BYTE       NoLoop,       NoLoop, NoTunnel, NoTunnel	;SBZ
+	BYTE       NoLoop,       NoLoop, NoTunnel, NoTunnel	;End
+
+EndSeg
+
+;;;
+;Enable Loop and Tunnel Chunks for All Zones
+;;;
+
+StartSeg Big_Endian $13916
+
+	WORD	$4E71, $4E71, $4E71, $4E71, $4E71, $4E71, $4E71, $4E71
+
+EndSeg
+
+;;;
+;Disable Unused Special Loop Chunk Test
+;;;
+
+StartSeg Big_Endian $149A8
+
+	WORD	$4E71, $4E71, $4E71, $4E71, $4E71
+
+EndSeg
+
+;;;
+;Starting Level
+;;;
+
+StartSeg SetStartingLevel Big_Endian
+
+	TS_FirstLevel:
+		 WORD	$31FC
+		 BYTE	Zone_GHZ, Act1		;Zone and Act to go to when starting a new game
+		 WORD	$FE10
+
+		 WORD	$11FC, $000C, $F600
+
+		 WORD	$4E75
+
+	LS_SetLevel:
+		 WORD	$0240, $3FFF
+		 WORD	$31C0, $FE10
+		 WORD	$11FC, $000C, $F600
+		 WORD	$4EF9, $0000, $3348
+
+EndSeg
+
+;;;
+;"Next Level" array
+;;;
+
+StartSeg Big_Endian $00C6F4
+
+	BYTE	Zone_GHZ, Act2		;From GHZ Act 1
+	BYTE	Zone_GHZ, Act3		;From GHZ Act 2
+	BYTE	Zone_MZ,  Act1		;From GHZ Act 3
+	BYTE	Zone_GHZ, Act1		;From GHZ Act 4
+	BYTE	Zone_LZ,  Act2		;From  LZ Act 1
+	BYTE	Zone_LZ,  Act3		;From  LZ Act 2
+	BYTE	Zone_SLZ, Act1		;From  LZ Act 3
+	BYTE	Zone_SBZ, Act3		;From  LZ Act 4
+	BYTE	Zone_MZ,  Act2		;From  MZ Act 1
+	BYTE	Zone_MZ,  Act3		;From  MZ Act 2
+	BYTE	Zone_SYZ, Act1		;From  MZ Act 3
+	BYTE	Zone_GHZ, Act1		;From  MZ Act 4
+	BYTE	Zone_SLZ, Act2		;From SLZ Act 1
+	BYTE	Zone_SLZ, Act3		;From SLZ Act 2
+	BYTE	Zone_SBZ, Act1		;From SLZ Act 3
+	BYTE	Zone_GHZ, Act1		;From SLZ Act 4
+	BYTE	Zone_SYZ, Act2		;From SYZ Act 1
+	BYTE	Zone_SYZ, Act3		;From SYZ Act 2
+	BYTE	Zone_LZ,  Act1		;From SYZ Act 3
+	BYTE	Zone_GHZ, Act1		;From SYZ Act 4
+	BYTE	Zone_SBZ, Act2		;From SBZ Act 1
+	BYTE	Zone_LZ,  Act4		;From SBZ Act 2
+	BYTE	Zone_GHZ, Act1		;From SBZ Act 3
+	BYTE	Zone_GHZ, Act1		;From SBZ Act 4
+
+EndSeg
+
+;;;
+;Cheat Codes
+;;;
+
+StartSeg Big_Endian
+
+	Code_LevelSelect_J:	BYTE	Input_Up, Input_Down, Input_Left, Input_Right, Code_End, Code_End2
+	Code_LevelSelect_US:	BYTE	Input_Up, Input_Down, Input_Left, Input_Right, Code_End, Code_End2
+	;;;
+	;Debug Mode has no code data; it expects level select code to have been input after pressing C four times
+	;;;
+
+EndSeg
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; General Reference Replacement Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Big_Endian $0031BE
+
+	DWORD Code_LevelSelect_US
+
+EndSeg
+
+StartSeg Big_Endian $0031C6
+
+	DWORD Code_LevelSelect_J
+
+EndSeg
+
+StartSeg Big_Endian $00333A
+
+	 WORD	$4EF9
+	DWORD	LS_SetLevel
+
+	 WORD	$4E71
+
+	 WORD	$4EB9
+	DWORD	TS_FirstLevel
+
+EndSeg

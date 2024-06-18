@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Namespace="SonED2.Zone6" TypeName="FloatingplatformLBZ" Language="cs" Name="Floating platform - LBZ" Image="Image1" RememberState="false" Debug="false" xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromBitmap id="Image1" filename="Sprites/s3objsprite2-2.png" />
+    <ImageFromBitmap id="Image2" filename="Sprites/s3objsprite2-18.png" />
+  </Images>
+  <Properties>
+    <BitsProperty name="Property1" type="Enum1" startbit="0" length="4" />
+    <BitsProperty name="Property2" type="Enum2" startbit="7" length="1" />
+  </Properties>
+  <Enums>
+    <Enum name="Enum1">
+      <EnumMember name="Stationary" />
+      <EnumMember name="Moves left and right" />
+      <EnumMember name="Moves left and right over a larger range" />
+      <EnumMember name="Moves up and down" />
+      <EnumMember name="Moves up and down over a larger range" />
+      <EnumMember name="Moves diagonally up and right" />
+      <EnumMember name="Moves diagonally down and right" />
+      <EnumMember name="Doesn't sink when stood on" />
+      <EnumMember name="Moves in a clockwise rectangle" />
+      <EnumMember name="Moves in a larger clockwise rectangle" />
+      <EnumMember name="Moves in an even larger clockwise rectangle" />
+      <EnumMember name="Moves in the largest clockwise rectangle" />
+      <EnumMember name="Moves left and right over a very large range" />
+      <EnumMember name="Falls when stood on" />
+      <EnumMember name="Invalid" />
+      <EnumMember name="Invalid2" />
+    </Enum>
+    <Enum name="Enum2">
+      <EnumMember name="Normal Platform" />
+      <EnumMember name="Special Slope Platform" />
+    </Enum>
+  </Enums>
+  <Display>
+    <DisplayOption>
+      <Condition property="Property2" value="Normal Platform" />
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="-8" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="Special Slope Platform" />
+      <ImageRef image="Image2">
+        <Offset X="-32" Y="-8" />
+      </ImageRef>
+    </DisplayOption>
+  </Display>
+</ObjDef>

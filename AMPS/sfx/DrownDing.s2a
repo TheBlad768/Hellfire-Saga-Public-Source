@@ -1,0 +1,11 @@
+Sound_A9_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$80, ctFM5, Sound_A9_FM5, $0C, $08
+
+; FM5 Data
+Sound_A9_FM5:
+	sVoice		pDrownDing
+	dc.b nA4, $08, nA4, $25
+	sStop

@@ -1,0 +1,54 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Sonic CD for PC (DirectX Version) DLL52D.DLL Injector File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Little_Endian $19C24 $2
+
+		include "R5/Obj/XStart2D.bin"
+
+EndSeg
+
+StartSeg Little_Endian $19C26 $2
+
+		include "R5/Obj/YStart2D.bin"
+
+EndSeg
+
+StartSeg Little_Endian $19318 $400
+
+		include "R5/Pal/PC/2D/0_1.bin"
+		include "R5/Pal/PC/2D/2.bin"
+		include "R5/Pal/PC/2D/3.bin"
+		include "R5/Pal/PC/2D/4.bin"
+		include "R5/Pal/PC/2D/5.bin"
+		include "R5/Pal/PC/2D/6.bin"
+
+EndSeg
+
+StartSeg Little_Endian $19C60 $C38
+
+		include "R5/Obj/2.bin" Swap16
+
+EndSeg
+
+StartSeg Little_Endian $1A8A0 $2508
+
+		include "R5/Col/Ang2D.bin"
+		include "R5/Col/HM2D.bin"
+		BYTE	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+		include "R5/Col/HMR2D.bin"
+		BYTE	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+		include "R5/Col/Idx2D.bin"
+
+EndSeg
+
+StartSeg Little_Endian $1CDC8 $400
+
+		include "R5/FGPC/2D.bin"
+		include "R5/BGPC/2D.bin"
+
+EndSeg
+
+

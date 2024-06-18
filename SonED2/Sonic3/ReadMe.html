@@ -1,0 +1,391 @@
+<head>
+<title>Sonic the Hedgehog 3 & Knuckles ROMulan Package</title>
+</head>
+<body>
+<b><center>Sonic the Hedgehog 3 & Knuckles ROMulan Package</center></b><br>
+<br>
+The files contained herein are for use with <a href="http://stealth.hapisan.com/ROMulan">ROMulan</a> and <a href="http://stealth.hapisan.com/SonED">SonED2</a>, to provide a means of editing the levels of "Sonic the Hedgehog 3 & Knuckles".<br>
+<br>
+Please visit the <a href="http://stealth.hapisan.com/Forum">official forum</a> for discussion on mods made using this package, to submit additions to the scripts, or to report any errors in the official distribution.<br>
+<br>
+
+<li><b><a href="#Setup">Setup and Basic Usage</a></b><br>
+<br>
+<li><b><a href="#Files">File Listing</a></b><br>
+<br>
+<li><b><a href="#Notes">Game Notes</a></b><br>
+<ul>
+ <li><a href="#SharedData">Tile Paging and Shared Level Data</a><br>
+ <li><a href="#Animated">Animated Tiles and Palettes</a><br>
+ <li><a href="#CrossingPaths">Crossing Paths and Plane Priority</a><br>
+ <li><a href="#SpinTunnels">Spin Tunnels</a><br>
+ <li><a href="#LevelBoundaries">Level Boundaries</a><br>
+ <li><a href="#Water">Fixed and Dynamic Water Heights</a><br>
+ <li><a href="#DynamicLevelChanges">Dynamic Level Changes</a><br>
+ <li><a href="#BossArena">Boss Arenas</a><br>
+ <li><a href="#TitleCard">Level TitleCard Names</a><br>
+</ul>
+<li><b><a href="#Options">Special Options</a></b><br>
+<ul>
+ <li><a href="#Playlist">Level Music Playlist</a><br>
+ <li><a href="#Boundaries">Level Boundaries</a><br>
+ <li><a href="#Codes">Cheat Codes</a><br>
+ <ul>
+  <li><a href="#Vine">Vine and Pulley</a><br>
+  <li><a href="#Title">Titlescreen</a><br>
+ </ul>
+</ul>
+
+<br>
+<br><a name="Setup">
+<b>Setup and Basic Usage</b>
+<ul>
+ This script set is "<b>non-destructive</b>". This means that the input game files will never need to be restored, as the Injection process never modifies them. Thus, all changes are applied to a clean copy of the game, and saved to a different file.
+ The only time any of the initial steps will need to be repeated is if the separated data files have become corrupt, in which case, the Split will need to be performed again.<br>
+ <br>
+ <br>
+ <b>One-Time Setup Steps</b>
+ <ul>
+  <li>Unpack all files from this archive into their own folder. <i>The full path name of this folder must not contain any spaces</i><br>
+  <li>Place in the same folder copies of <b>"Sonic the Hedgehog 3" and "Sonic & Knuckles"</b> (<i>not "Sonic 3 & Knuckles"</i>), and give them the filenames "<b>s3.bin</b>" and "<b>sk.bin</b>", respectively<br>
+  <li>Run the included Batch File "<b>3ksplit.txt</b>" using ROMulan or SonED2's built-in ROMulan functionality  to retrieve the game's data<br>
+ </ul>
+ <br>
+ <br>
+ <b>Every Time Level Editing Steps</b>
+ <ul>
+  <li>Using SonED2's <b>"Open Project" option</b> in the "File" menu, navigate to the <b>"Projects" folder</b> included with this fileset and open any of the included Project Files to edit its corresponding level<br>
+  <li>Make any changes using SonED2 as described in its own documentation<br>
+  <li>Use SonED2's <b>"Save Project" option</b> by selecting it in the "File" menu or pressing <b>F3</b> to save the changes to their respective files (<i>This is important as the edited data is SonED2-internal; ROMulan expects to find all necessary data in the files listed by the injector script</i>)<br>
+  <br>
+  <i>Be aware that this script set does not currently support editing Tilesets. See the "<a href="#Notes">Game Notes</a>" section for more information.</i>
+ </ul>
+ <br>
+ <br>
+ <b>Other Modifications</b><br>
+ <ul>
+  <li>With the proper knowledge of the game, other changes can be made by modifying the two Batch Files and/or the Injector File "<b>inmain.txt</b>" as described by the ROMulan documentation. For relevant information, see the "<a href="#Notes">Game Notes</a>" section.<br>
+  <li>Some game settings are already available for modification in the Injector File "<b>3kinopts.txt</b>". See the "<a href="#Options">Special Options</a>" section for details.<br>
+ </ul>
+ <br>
+ <br>
+ <b>Every Time Finalization Steps</b>
+ <ul>
+  <li>Run the included Batch File "<b>3kinject.txt</b>" using ROMulan or SonED2's built-in ROMulan functionality to inject the changes into the game<br>
+  <li>The file "<b>inject.bin</b>" will have been created and placed in the same folder as the "3kinject.txt" script. The process is now complete<br>
+ </ul>
+</ul>
+
+<br>
+<br><a name="Files">
+<b>File Listing</b>
+<ul>
+ This section provides a complete listing of the folders and files included with this package, each with a brief description. Note that other files and folders will also appear in this folder after "split.txt" has been run, which belong to the data that was extracted from the game.<br>
+ <br>
+ <li><b>/_dlls</b> - DLLs used by "derecmp.exe" for data compression and decompression</a><br>
+ <br>
+ <ul><table>
+  <tr><td nowrap><li><b>Enigma.dll</b></td><td> - </td><td>DLL used by "derecmp.exe", containing functions for compressing and decompressing data with the "Enigma" format</td></tr>
+  <tr><td nowrap><li><b>Kosinski.dll</b></td><td> - </td><td>DLL used by "derecmp.exe", containing functions for compressing and decompressing data with the "Kosinski" format</td></tr>
+  <tr><td nowrap><li><b>Nemesis.dll</b></td><td> - </td><td>DLL used by "derecmp.exe", containing functions for compressing and decompressing data with the "Nemesis" format</td></tr>
+  </table>
+  <br><br>
+ </ul>
+
+ <li><b>/incomplete</b> - ROMulan files with incomplete support for additional data</a><br>
+ <br>
+ <ul><table>
+  <tr><td nowrap><li><b>3kintil.txt</b></td><td> - </td><td>An Injector File that deals with Tilesets. It is incomplete in that there are many more Tileset location references within the game that it does not correct, and thus, many places where the game will crash because the old data pointers will have been made invalid</td></tr>
+  <tr><td nowrap><li><b>ksplitp.txt</b></td><td> - </td><td>A Batch File for extracting several of the special Palettes that aren't loaded by the standard Palette Load List</td></tr>
+  </table>
+  <br><br>
+ </ul>
+
+ <li><b>/Project</b> - This is the primary folder containing Object Listing Files and a full set of SonED2 Standard Level Project Files for "Sonic 3 & Knuckles", based on the data created by "3split.txt" and "ksplit.txt", both of which are run by "3ksplit.txt"</a>
+	<br><br>
+	<ul>
+
+        <li><b>/objdef</b> - Object Listing Files and supporting graphics files that define the Objects used in "Sonic 3 & Knuckles" for SonED2's Object Editor</a>
+	<br><br>
+        <ul><table>
+        <tr><td nowrap><li><b>s3obj.lst</b></td><td> - </td><td>Object Listing File, which defines Object descriptions, setting data, and in-editor graphic displays for Objects used in "Sonic 3"</td></tr>
+        <tr><td nowrap><li><b>s3obj1.pcx</b></td><td> - </td><td>Graphic file containing some of the global Object graphics for "Sonic 3"</td></tr>
+        <tr><td nowrap><li><b>s3obj2.pcx</b></td><td> - </td><td>Graphic file containing some of the Object graphics for Angel Island Zone</td></tr>
+        <tr><td nowrap><li><b>s3obj6.pcx</b></td><td> - </td><td>Graphic file containing some of the Object graphics for Launch Base Zone</td></tr>
+        <tr><td nowrap><li><b>skobj.lst</b></td><td> - </td><td>Object Listing File, which defines Object descriptions, setting data, and in-editor graphic displays for Objects used in "Sonic & Knuckles"</td></tr>
+        <tr><td nowrap><li><b>skobj1.pcx</b></td><td> - </td><td>Graphic file containing some of the global Object graphics for "Sonic & Knuckles"</td></tr>
+        <tr><td nowrap><li><b>skobj2.pcx</b></td><td> - </td><td>Graphic file containing some of the global Object graphics for Mushroom Hill Zone</td></tr>
+        <tr><td nowrap><li><b>ssobj.lst</b></td><td> - </td><td>Sonic 1 Special Stage Object Listing File, which defines Map "Object" descriptions and in-editor graphic displays for the Slots Bonus Stage</td></tr>
+        <tr><td nowrap><li><b>ssobj1.pcx</b></td><td> - </td><td>Graphic file containing the Sonic 1 Special Stage Map "Object" graphics for the Slots Bonus Stage</td></tr>
+        </table></ul>
+
+	<br>
+        <table>
+        <tr><td nowrap><li><b>AIZ1.sep</b></td><td> - </td><td>Angel Island Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>AIZ2.sep</b></td><td> - </td><td>Angel Island Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>AIZ2Ship.sep</b></td><td> - </td><td>Angel Island Zone Act 2 (Ship Bombing Sequence)</td></tr>
+        <tr><td nowrap><li><b>AIZIntro.sep</b></td><td> - </td><td>Angel Island Zone Act 1 (Intro Sequence)</td></tr>
+        <tr><td nowrap><li><b>ALZ.sep</b></td><td> - </td><td>Azure Lake Zone</td></tr>
+        <tr><td nowrap><li><b>BPZ.sep</b></td><td> - </td><td>Balloon Park Zone</td></tr>
+        <tr><td nowrap><li><b>CGZ.sep</b></td><td> - </td><td>Chrome Gadget Zone</td></tr>
+        <tr><td nowrap><li><b>CNZ1.sep</b></td><td> - </td><td>Carnival Night Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>CNZ2.sep</b></td><td> - </td><td>Carnival Night Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>DDZ.sep</b></td><td> - </td><td>The Doomsday Zone</td></tr>
+        <tr><td nowrap><li><b>DEZ1.sep</b></td><td> - </td><td>Death Egg Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>DEZ2.sep</b></td><td> - </td><td>Death Egg Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>DEZBoss.sep</b></td><td> - </td><td>Death Egg Zone "Final Boss"</td></tr>
+        <tr><td nowrap><li><b>DPZ.sep</b></td><td> - </td><td>Desert Palace Zone</td></tr>
+        <tr><td nowrap><li><b>EMZ.sep</b></td><td> - </td><td>Endless Mine Zone</td></tr>
+        <tr><td nowrap><li><b>FBZ1.sep</b></td><td> - </td><td>Flying Battery Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>FBZ2.sep</b></td><td> - </td><td>Flying Battery Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>Gumball.sep</b></td><td> - </td><td>Gumball Bonus Stage</td></tr>
+        <tr><td nowrap><li><b>HCZ1.sep</b></td><td> - </td><td>Hydrocity Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>HCZ2.sep</b></td><td> - </td><td>Hydrocity Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>HPZ.sep</b></td><td> - </td><td>Hidden Palace Zone</td></tr>
+        <tr><td nowrap><li><b>HPMini.sep</b></td><td> - </td><td>Hidden Palace Zone (Emerald Shrine)</td></tr>
+        <tr><td nowrap><li><b>ICZ1.sep</b></td><td> - </td><td>Ice Cap Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>ICZ2.sep</b></td><td> - </td><td>Ice Cap Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>LBZ1.sep</b></td><td> - </td><td>Launch Base Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>LBZ2.sep</b></td><td> - </td><td>Launch Base Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>LBZ2DEZ.sep</b></td><td> - </td><td>Launch Base Zone Act 2 (Death Egg Launch)</td></tr>
+        <tr><td nowrap><li><b>LRZ1.sep</b></td><td> - </td><td>Lava Reef Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>LRZ2.sep</b></td><td> - </td><td>Lava Reef Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>LRZBoss.sep</b></td><td> - </td><td>Lava Reef Zone Boss Area</td></tr>
+        <tr><td nowrap><li><b>MGZ1.sep</b></td><td> - </td><td>Marble Garden Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>MGZ2.sep</b></td><td> - </td><td>Marble Garden Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>MGZ2Quak.sep</b></td><td> - </td><td>Marble Garden Zone Act 2 (Earthquake Section)</td></tr>
+        <tr><td nowrap><li><b>MHZ1.sep</b></td><td> - </td><td>Mushroom Hill Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>MHZ2.sep</b></td><td> - </td><td>Mushroom Hill Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>MHZ2FBZ.sep</b></td><td> - </td><td>Mushroom Hill Zone Act 2 (Flying Battery Sequence)</td></tr>
+        <tr><td nowrap><li><b>Pachinko.sep</b></td><td> - </td><td>Pachinko Bonus Stage</td></tr>
+        <tr><td nowrap><li><b>Slots.sep</b></td><td> - </td><td>Slots Bonus Stage (Background)</td></tr>
+        <tr><td nowrap><li><b>SlotsMap.sep</b></td><td> - </td><td>Slots Bonus Stage (S1 Rotating Special Stage Map)</td></tr>
+        <tr><td nowrap><li><b>SOZ1.sep</b></td><td> - </td><td>Sandopolis Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>SOZ2.sep</b></td><td> - </td><td>Sandopolis Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>SSZ1.sep</b></td><td> - </td><td>Sky Sanctuary Zone (Sonic/Tails)</td></tr>
+        <tr><td nowrap><li><b>SSZ1DEZ.sep</b></td><td> - </td><td>Sky Sanctuary Zone (Sonic/Tails Death Egg Launch)</td></tr>
+        <tr><td nowrap><li><b>SSZ2.sep</b></td><td> - </td><td>Sky Sanctuary Zone (Knuckles)</td></tr>
+        </table>
+	<br><br>
+	</ul>
+
+                   <table>
+                   <tr><td nowrap><b><li>3kinject.txt</b></td><td> - </td><td>This is the "Batch File" that is used to perform input data conversions and initiate Injection for "Sonic 3 & Knuckles"</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>3kinmain.txt</b></td><td> - </td><td>This is the "Injector File" that contains the information for placing the modified data back into the game file for "Sonic 3 & Knuckles"</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>3kinmrg.txt</b></td><td> - </td><td>This is the "Injector File" that combines "Sonic 3" and "Sonic & Knuckles" to form "Sonic 3 & Knuckles", and modifies the header so that emulators will recognize the SRAM support</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>3kinopt.txt</b></td><td> - </td><td>This is the "Injector File" that contains various modifiable options for "Sonic 3 & Knuckles"</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>3ksplit.txt</b></td><td> - </td><td>This is the "Batch File" that calls on both "3split.txt" and "ksplit.txt" to perform a complete "Sonic 3 & Knuckles" split</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>3split.txt</b></td><td> - </td><td>This is the "Batch File" that is used to split data from the "Sonic 3" game file and perform output data conversions</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>derecmp.exe</b></td><td> - </td><td>This program is used for decompressing and recompressing "Sonic & Knuckles" and "Blue Spheres" Special Stage Layout Data</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>fixheadr.exe</b></td><td> - </td><td>This program is used to correct the size and checksum header information after Injection</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>ksplit.txt</b></td><td> - </td><td>This is the "Batch File" that is used to split data from the "Sonic & Knuckles" game file and perform output data conversions</td></tr>
+                   </table>
+
+	</ul>
+
+<br>
+<br><a name="Notes">
+<b>Game Notes</b>
+<ul><a name="SharedData">
+ <b>Tile Paging and Shared Level Data</b><br>
+ <br>
+ <ul>
+  Most levels in this game make use of "Tile Paging", a system where a level's full Tileset is broken up into multiple "Pages" that can be swapped out during gameplay or shared between levels.<br>
+  <br>
+  Generally, Tilesets are used such that "Page 0" is shared between the two acts of a Zone, while "Page 1" or above is unique to each Act.<br>
+  <br>
+  New Tilesets are swapped in frequently during gameplay by Dynamic Level Change Events. Because modifying these events is not supported by the current script set, modifying the Tilesets is also not supported.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="Animated">
+ <b>Animated Tiles and Palettes</b><br>
+ <br>
+ <ul>
+  Certain Tiles and Palette entries are animated/cycled during gameplay. This behavior is not accounted for in the current script set version; these animations and the data that they use are not available for editing. Any modifications to these Tile or Palette entries will be overridden by these animations during gameplay.<br>
+  <br>
+  In this game, the Tile data contains number and/or special character graphics at these positions, which is what will be displayed in SonED2.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="CrossingPaths">
+ <b>Loops, Crossing Paths, and Plane Priority</b><br>
+ <br>
+ <ul>
+  This game uses a two-path collision system, and so, it supports level paths that cross freely by means of a "Path Swapper Object".<br>
+  <br>
+  These Objects can be used to cause the player to switch back and forth between collision with "Path 0" and "Path 1", which may be viewed and edited independently in SonED2.<br>
+  <br>
+  The same Objects may also change the player's "priority", causing him to be displayed either in front of or behind the "High" level plane for effects such as loops or other path crosses that overlap the player, or even walls that can be crossed both from in front and behind.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="SpinTunnels">
+ <b>Spin Tunnels</b><br>
+ <br>
+ <ul>
+  This game uses a "Spin Tunnel Object" to achieve forced-spin tunnels.<br>
+  <br>
+  These Objects will cause the player to enter a spinning state that prevents jumping or standing up, and which will apply horizontal velocity in the direction that he is facing if he decelerates to 0, until he crosses another Object of the same type that is set to disable this mode.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="LevelBoundaries">
+ <b>Level Boundaries</b><br>
+ <br>
+ <ul>
+  For the most part, Level Boundaries (the area within which the screen is allowed to scroll across the level during gameplay) are not dynamically altered in this game, meaning that the initial (and persistent) settings can be modified.<br>
+  <br>
+  Notable exceptions include-<br>
+  <br><ul>
+                   <table>
+                   <tr><td nowrap><b><li>Angel Island Zone</b></td><td> - </td><td>"YEnd" is changed several times throughout the level, depending on X location and the current player character.</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>Carnival Night Zone Act 2</b></td><td> - </td><td>The "YStart" value stored in the table is lower to prevent Tails or Knuckles from ascending the elevator shaft. "YStart" is moved to the top of the level upon exiting that area.</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>Mushroom Hill Zone Act 1</b></td><td> - </td><td>The "XStart" location is set by level events both to cut off the earlier section of the level in Sonic and Knuckles alone, and to prevent Sonic/Tails from entering Knuckles' starting area by walking off the cliff hidden to the left.</td></tr>
+                   </table>
+  </ul><br>
+  Other settings for each level can be changed by modifying the "<b><a href="#Boundaries">Level Size Array</b></a>" section in "<b>3kinopts.txt</b>".<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="Water">
+ <b>Fixed and Dynamic Water Heights</b><br>
+ <br>
+ <ul>
+  The current script set version does not support affecting "water"; Which levels do and don't contain water, the Y position of the water at level start, the events that change the Y position of the water, and the Y positions that the water is moved to are not available for editing.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="DynamicLevelChanges">
+ <b>Dynamic Level Changes</b><br>
+ <br>
+ <ul>
+  Certain hardcoded level events change certain aspects of the level during gameplay. This mostly affects Tilesets and Palettes, but also includes certain level areas in Zones such as Launch Base Zone and Flying Battery Zone.
+  This behavior is not accounted for in the current script set version; most of the data loaded mid-level is not available for editing, and there is no support for modifying or cancelling the events.<br>
+  <br>
+  For this reason, the current script set does not contain support for modifying Tilesets; any changes made within the editor will not be stored back into the game.<br>
+  <br>
+  The "<b>incomplete</b>" folder contains two files that deal partially with certain currently-unsupported data:<br>
+  <br><ul>
+  <li><b>3kintil.txt</b> - An Injector File that deals with Tilesets. It is incomplete in that there are many more Tileset location references within the game that it does not correct, and thus, many places where the game will crash because the old data pointers will have been made invalid<br>
+  <li><b>ksplitp.txt</b> - A Batch File for extracting several of the special Palettes that aren't loaded by the standard Palette Load List<br>
+  </ul><br>
+  These files may be enhanced and added into the usable script set with the proper information.<br>
+  <br>
+  Several other Level Events make editing the levels of this game less flexible. These events and their triggers are not available for editing in the current script set version, so if they shouldn't appear in the modified level, they must be avoided with clever level design.
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="BossArena">
+ <b>Boss Arenas</b><br>
+ <br>
+ <ul>
+  Most boss events are triggered by standard Objects, which are movable in SonED2's Object Editor, but be aware that moving them or modifying the surrounding area could cause undesireable results in some cases.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="TitleCard">
+ <b>Level TitleCard Names</b><br>
+ <br>
+ <ul>
+  The letter art for the Titlecards in this game are stored as individual sets for each Zone, rather than using a complete character set as in previous games.<br>
+  <br>
+  The current script set version does not support the editing of Titlecards for this game.<br>
+ </ul>
+
+</ul>
+
+<br>
+<br><a name="Options">
+<b>Special Options</b>
+<ul><a name="Playlist">
+ <b>Level Music Playlist</b><br>
+ <br>
+ <ul>
+  The "<b>Level Music Playlist</b>" section of "<b>3kinopts.txt</b>" specifies which songs play for which Zones.<br>
+  <br>
+  Within the list, find the entry that corresponds with the desired Zone, and replace the existing values with the ID numbers of the music that should be played for each act within the Zone.<br>
+  <br>
+  The ID numbers entered in this section are the Song Numbers as they appear in the game's Sound Test.<br>
+ </ul>
+
+ <br>
+ <br><a name="Boundaries">
+ <b>Level Boundaries</b><br>
+ <br>
+ <ul>
+  The "<b>Level Size Array</b>" section of "<b>3kinopts.txt</b>" contains the listing that defines the initial Level Boundaries (the area within which the screen is allowed to scroll across the level during gameplay) for each level.<br>
+  <br>
+  Each Zone entry is laid out in the following manner:<br>
+     <ul>
+      <ul>
+<pre>WORD	XStart, XEnd, YStart, YEnd</pre>
+      </ul>
+                   <table>
+                   <tr><td nowrap><b><li>XStart</b></td><td> - </td><td>The leftmost world position that the screen is allowed to scroll to within the level</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>XEnd</b></td><td> - </td><td>The rightmost world position that the screen is allowed to scroll to within the level</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>YStart</b></td><td> - </td><td>The uppermost world position that the screen is allowed to scroll to within the level</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>YEnd</b></td><td> - </td><td>The lowermost world position that the screen is allowed to scroll to within the level</td></tr>
+                   </table>
+     <br>
+     </ul>
+ <b>Level Y Looping</b> can be achieved by entering "<b>YLoop</b>" into the "<b>YStart</b>" field, but for this to work, the level must be either $800 pixels (16 Chunks) or $1000 pixels (32 Chunks) in height, and the level must not be affected by dynamic Y boundary changes that will override this setting.<br>
+ </ul>
+
+ <br>
+ <br><a name="Codes">
+ <b>Cheat Codes</b><br>
+ <br>
+ <ul><a name="Vine">
+  <b>Vine and Pulley</b><br>
+  <br>
+  <ul>
+   The "<b>Cheat Codes</b>" section of "<b>3kinopts.txt</b>" defines the buttonpresses that are required to activate the game's Cheat Codes from the Angel Island Zone Swinging Vine Object, and the Mushroom Hill Zone Pulley Lift Object.<br>
+   <br>
+   The Cheat Codes are defined by entering the names of any of the "<b>Input State Bits</b>" "Defines" in any order, any number of times.<br>
+   <br>
+   The last buttonpress in the code must be followed by "<b>, Code_End</b>" to mark the end.<br>
+   <br>
+   To effectively disable either code, insert "<b>Input_Invalid</b>" as a "buttonpress" within the code.<br>
+   <br>
+   <i>These codes may not excede 9 buttonpresses, due to the way they are accessed by the program code.</i><br>
+   <br>
+  </ul><a name="Title">
+ <b>Titlescreen</b><br>
+ <br>
+ <ul>
+   The "<b>S3K Titlescreen Cheat Code</b>" section of "<b>3kinopts.txt</b>" allows the re-activation of the Sonic 3 style Titlescreen Cheat Code input.<br>
+   <br>
+   To reactivate the Titlescreen Chat Code, remove the semicolons (";") from each line in the section to un-comment the two Segments, so that they will be active. The code defined by the "Code_TSLevelSelectDebug" can then be altered as desired, and can be input during the intro sequence and while on the Titlescreen menu.<br>
+   <br>
+   To again deactivate this code, place semicolons (";") in front of each line in this section to comment out the two Segments.<br>
+   <br>
+   <i>This code may contain as many buttonpresses as desired.</i><br>
+  </ul>
+
+</ul>
+
+
+</body>
+</html>

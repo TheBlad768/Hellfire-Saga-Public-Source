@@ -1,0 +1,2877 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Sonic CD for PC (DirectX Version) Batch Extraction File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+; 2011-05-19 - Stealth - Replaced Microsoft "EXPAND.EXE" for Win64 compatibility
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+SrcPath "../"
+;GetPath "Please select the folder contianing soniccd.exe"
+;SrcPath "#Got"
+
+DestPath "./"
+;GetPath "Please select the destination folder for the data"
+;DestPath "#Got"
+
+MakePath "R1"
+MakePath "R1/8"
+MakePath "R1/8U"
+MakePath "R1/16"
+MakePath "R1/16U"
+MakePath "R1/256"
+MakePath "R1/FG"
+MakePath "R1/FGPC"
+MakePath "R1/BG"
+MakePath "R1/BGPC"
+MakePath "R1/Pal"
+MakePath "R1/Pal/1A"
+MakePath "R1/Pal/1B"
+MakePath "R1/Pal/1C"
+MakePath "R1/Pal/1D"
+MakePath "R1/Pal/2A"
+MakePath "R1/Pal/2B"
+MakePath "R1/Pal/2C"
+MakePath "R1/Pal/2D"
+MakePath "R1/Pal/3C"
+MakePath "R1/Pal/3D"
+MakePath "R1/Pal/PC"
+MakePath "R1/Pal/PC/1A"
+MakePath "R1/Pal/PC/1B"
+MakePath "R1/Pal/PC/1C"
+MakePath "R1/Pal/PC/1D"
+MakePath "R1/Pal/PC/2A"
+MakePath "R1/Pal/PC/2B"
+MakePath "R1/Pal/PC/2C"
+MakePath "R1/Pal/PC/2D"
+MakePath "R1/Pal/PC/3C"
+MakePath "R1/Pal/PC/3D"
+MakePath "R1/Obj"
+MakePath "R1/Col"
+
+MakePath "R3"
+MakePath "R3/8"
+MakePath "R3/8U"
+MakePath "R3/16"
+MakePath "R3/16U"
+MakePath "R3/256"
+MakePath "R3/FG"
+MakePath "R3/FGPC"
+MakePath "R3/BG"
+MakePath "R3/BGPC"
+MakePath "R3/Pal"
+MakePath "R3/Pal/1A"
+MakePath "R3/Pal/1B"
+MakePath "R3/Pal/1C"
+MakePath "R3/Pal/1D"
+MakePath "R3/Pal/2A"
+MakePath "R3/Pal/2B"
+MakePath "R3/Pal/2C"
+MakePath "R3/Pal/2D"
+MakePath "R3/Pal/3C"
+MakePath "R3/Pal/3D"
+MakePath "R3/Pal/PC"
+MakePath "R3/Pal/PC/1A"
+MakePath "R3/Pal/PC/1B"
+MakePath "R3/Pal/PC/1C"
+MakePath "R3/Pal/PC/1D"
+MakePath "R3/Pal/PC/2A"
+MakePath "R3/Pal/PC/2B"
+MakePath "R3/Pal/PC/2C"
+MakePath "R3/Pal/PC/2D"
+MakePath "R3/Pal/PC/3C"
+MakePath "R3/Pal/PC/3D"
+MakePath "R3/Obj"
+MakePath "R3/Col"
+
+MakePath "R4"
+MakePath "R4/8"
+MakePath "R4/8U"
+MakePath "R4/16"
+MakePath "R4/16U"
+MakePath "R4/256"
+MakePath "R4/FG"
+MakePath "R4/FGPC"
+MakePath "R4/BG"
+MakePath "R4/BGPC"
+MakePath "R4/Pal"
+MakePath "R4/Pal/1A"
+MakePath "R4/Pal/1B"
+MakePath "R4/Pal/1C"
+MakePath "R4/Pal/1D"
+MakePath "R4/Pal/2A"
+MakePath "R4/Pal/2B"
+MakePath "R4/Pal/2C"
+MakePath "R4/Pal/2D"
+MakePath "R4/Pal/3C"
+MakePath "R4/Pal/3D"
+MakePath "R4/Pal/PC"
+MakePath "R4/Pal/PC/1A"
+MakePath "R4/Pal/PC/1B"
+MakePath "R4/Pal/PC/1C"
+MakePath "R4/Pal/PC/1D"
+MakePath "R4/Pal/PC/2A"
+MakePath "R4/Pal/PC/2B"
+MakePath "R4/Pal/PC/2C"
+MakePath "R4/Pal/PC/2D"
+MakePath "R4/Pal/PC/3C"
+MakePath "R4/Pal/PC/3D"
+MakePath "R4/Obj"
+MakePath "R4/Col"
+
+MakePath "R5"
+MakePath "R5/8"
+MakePath "R5/8U"
+MakePath "R5/16"
+MakePath "R5/16U"
+MakePath "R5/256"
+MakePath "R5/FG"
+MakePath "R5/FGPC"
+MakePath "R5/BG"
+MakePath "R5/BGPC"
+MakePath "R5/Pal"
+MakePath "R5/Pal/1A"
+MakePath "R5/Pal/1B"
+MakePath "R5/Pal/1C"
+MakePath "R5/Pal/1D"
+MakePath "R5/Pal/2A"
+MakePath "R5/Pal/2B"
+MakePath "R5/Pal/2C"
+MakePath "R5/Pal/2D"
+MakePath "R5/Pal/3C"
+MakePath "R5/Pal/3D"
+MakePath "R5/Pal/PC"
+MakePath "R5/Pal/PC/1A"
+MakePath "R5/Pal/PC/1B"
+MakePath "R5/Pal/PC/1C"
+MakePath "R5/Pal/PC/1D"
+MakePath "R5/Pal/PC/2A"
+MakePath "R5/Pal/PC/2B"
+MakePath "R5/Pal/PC/2C"
+MakePath "R5/Pal/PC/2D"
+MakePath "R5/Pal/PC/3C"
+MakePath "R5/Pal/PC/3D"
+MakePath "R5/Obj"
+MakePath "R5/Col"
+
+MakePath "R6"
+MakePath "R6/8"
+MakePath "R6/8U"
+MakePath "R6/16"
+MakePath "R6/16U"
+MakePath "R6/256"
+MakePath "R6/FG"
+MakePath "R6/FGPC"
+MakePath "R6/BG"
+MakePath "R6/BGPC"
+MakePath "R6/Pal"
+MakePath "R6/Pal/1A"
+MakePath "R6/Pal/1B"
+MakePath "R6/Pal/1C"
+MakePath "R6/Pal/1D"
+MakePath "R6/Pal/2A"
+MakePath "R6/Pal/2B"
+MakePath "R6/Pal/2C"
+MakePath "R6/Pal/2D"
+MakePath "R6/Pal/3C"
+MakePath "R6/Pal/3D"
+MakePath "R6/Pal/PC"
+MakePath "R6/Pal/PC/1A"
+MakePath "R6/Pal/PC/1B"
+MakePath "R6/Pal/PC/1C"
+MakePath "R6/Pal/PC/1D"
+MakePath "R6/Pal/PC/2A"
+MakePath "R6/Pal/PC/2B"
+MakePath "R6/Pal/PC/2C"
+MakePath "R6/Pal/PC/2D"
+MakePath "R6/Pal/PC/3C"
+MakePath "R6/Pal/PC/3D"
+MakePath "R6/Obj"
+MakePath "R6/Col"
+
+MakePath "R7"
+MakePath "R7/8"
+MakePath "R7/8U"
+MakePath "R7/16"
+MakePath "R7/16U"
+MakePath "R7/256"
+MakePath "R7/FG"
+MakePath "R7/FGPC"
+MakePath "R7/BG"
+MakePath "R7/BGPC"
+MakePath "R7/Pal"
+MakePath "R7/Pal/1A"
+MakePath "R7/Pal/1B"
+MakePath "R7/Pal/1C"
+MakePath "R7/Pal/1D"
+MakePath "R7/Pal/2A"
+MakePath "R7/Pal/2B"
+MakePath "R7/Pal/2C"
+MakePath "R7/Pal/2D"
+MakePath "R7/Pal/3C"
+MakePath "R7/Pal/3D"
+MakePath "R7/Pal/PC"
+MakePath "R7/Pal/PC/1A"
+MakePath "R7/Pal/PC/1B"
+MakePath "R7/Pal/PC/1C"
+MakePath "R7/Pal/PC/1D"
+MakePath "R7/Pal/PC/2A"
+MakePath "R7/Pal/PC/2B"
+MakePath "R7/Pal/PC/2C"
+MakePath "R7/Pal/PC/2D"
+MakePath "R7/Pal/PC/3C"
+MakePath "R7/Pal/PC/3D"
+MakePath "R7/Obj"
+MakePath "R7/Col"
+
+MakePath "R8"
+MakePath "R8/8"
+MakePath "R8/8U"
+MakePath "R8/16"
+MakePath "R8/16U"
+MakePath "R8/256"
+MakePath "R8/FG"
+MakePath "R8/FGPC"
+MakePath "R8/BG"
+MakePath "R8/BGPC"
+MakePath "R8/Pal"
+MakePath "R8/Pal/1A"
+MakePath "R8/Pal/1B"
+MakePath "R8/Pal/1C"
+MakePath "R8/Pal/1D"
+MakePath "R8/Pal/2A"
+MakePath "R8/Pal/2B"
+MakePath "R8/Pal/2C"
+MakePath "R8/Pal/2D"
+MakePath "R8/Pal/3C"
+MakePath "R8/Pal/3D"
+MakePath "R8/Pal/PC"
+MakePath "R8/Pal/PC/1A"
+MakePath "R8/Pal/PC/1B"
+MakePath "R8/Pal/PC/1C"
+MakePath "R8/Pal/PC/1D"
+MakePath "R8/Pal/PC/2A"
+MakePath "R8/Pal/PC/2B"
+MakePath "R8/Pal/PC/2C"
+MakePath "R8/Pal/PC/2D"
+MakePath "R8/Pal/PC/3C"
+MakePath "R8/Pal/PC/3D"
+MakePath "R8/Obj"
+MakePath "R8/Col"
+
+
+LoadFile	"R1/11A/DLL11A.DLL"
+Extract  $10A97    $2 "R1/Obj/XStart1A.bin"
+Extract  $10A9C    $2 "R1/Obj/YStart1A.bin"
+WorkPath "#Dest/R1"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1A.bin" "Obj/YStart1A.bin" "Obj/Start1A.bin"
+Extract  $18A70  $100 "R1/Pal/PC/1A/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/0_1.bin" "Pal/1A/0_1.bin"
+Extract  $18B70  $100 "R1/Pal/PC/1A/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/2.bin"   "Pal/1A/2.bin"
+Extract  $18C70   $40 "R1/Pal/PC/1A/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/3.bin"   "Pal/1A/3.bin"
+Extract  $18CB0   $C0 "R1/Pal/PC/1A/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/5.bin"   "Pal/1A/5.bin"
+Extract  $18D70   $C0 "R1/Pal/PC/1A/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/4.bin"   "Pal/1A/4.bin"
+Extract  $18E30   $C0 "R1/Pal/PC/1A/Ex.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/Ex.bin"  "Pal/1A/Ex.bin"
+;Extract  $19818  $F90 "R1/Obj/1A.bin" Swap16
+Extract  $19818  $F90 "R1/Obj/1.bin" Swap16
+Extract  $1A958  $100 "R1/Col/Ang1A.bin"
+Extract  $1AA58 $1000 "R1/Col/HM1A.bin"
+Extract  $1BA68 $1000 "R1/Col/HMR1A.bin"
+Extract  $1CA78  $3E8 "R1/Col/Idx1A.bin"
+Extract  $1CE60  $200 "R1/FGPC/1A.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1A.bin" "FG/1A.bin"
+Extract  $1D060  $200 "R1/BGPC/1A.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1A.bin" "BG/1A.bin"
+
+Copy     "R1/11A/Map11A.bin" "R1/256/1A.bin" Swap16
+
+Copy     "R1/11A/T11A.map" "R1/16U/1A.bin" Swap16
+
+WorkPath "#src/R1/11A"
+Extern   "#Batch/msexpand" "tcmp11a.cm_"
+LoadFile	"R1/11A/tcmp11a.cm"
+Extract  $C98 $6400 "R1/8U/1A.bin"
+
+
+LoadFile "R1/11B/DLL11B.DLL"
+Extract  $11E22    $2 "R1/Obj/XStart1B.bin"
+Extract  $11E2F    $2 "R1/Obj/YStart1B.bin"
+WorkPath "#Dest/R1"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1B.bin" "Obj/YStart1B.bin" "Obj/Start1B.bin"
+Extract  $19598  $100 "R1/Pal/PC/1B/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/0_1.bin" "Pal/1B/0_1.bin"
+Extract  $19698  $100 "R1/Pal/PC/1B/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/2.bin"   "Pal/1B/2.bin"
+Extract  $19798   $40 "R1/Pal/PC/1B/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/3.bin"   "Pal/1B/3.bin"
+Extract  $197D8   $C0 "R1/Pal/PC/1B/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/5.bin"   "Pal/1B/5.bin"
+Extract  $19898   $C0 "R1/Pal/PC/1B/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/4.bin"   "Pal/1B/4.bin"
+;Extract  $18268  $F90 "R1/Obj/1B.bin" Swap16
+Extract  $19FD8  $100 "R1/Col/Ang1B.bin"
+Extract  $1A0D8 $1000 "R1/Col/HM1B.bin"
+Extract  $1B0E8 $1000 "R1/Col/HMR1B.bin"
+Extract  $1C0F8  $3E8 "R1/Col/Idx1B.bin"
+Extract  $1C4E0  $200 "R1/FGPC/1B.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1B.bin" "FG/1B.bin"
+Extract  $1C6E0  $200 "R1/BGPC/1B.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1B.bin" "BG/1B.bin"
+
+Copy     "R1/11B/Map11B.bin" "R1/256/1B.bin" Swap16
+
+Copy     "R1/11B/T11B.map" "R1/16U/1B.bin" Swap16
+
+WorkPath "#src/R1/11B"
+Extern   "#Batch/msexpand" "tcmp11b.cm_"
+LoadFile "R1/11B/tcmp11b.cm"
+Extract  $BF4 $5EE0 "R1/8U/1B.bin"
+
+
+LoadFile "R1/11C/DLL11C.DLL"
+Extract  $110F4    $2 "R1/Obj/XStart1C.bin"
+Extract  $110FD    $2 "R1/Obj/YStart1C.bin"
+WorkPath "#Dest/R1"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1C.bin" "Obj/YStart1C.bin" "Obj/Start1C.bin"
+Extract  $1B990  $100 "R1/Pal/PC/1C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/0_1.bin" "Pal/1C/0_1.bin"
+Extract  $1BA90  $100 "R1/Pal/PC/1C/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/2.bin"   "Pal/1C/2.bin"
+Extract  $1BB90   $40 "R1/Pal/PC/1C/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/3.bin"   "Pal/1C/3.bin"
+Extract  $1BBD0   $C0 "R1/Pal/PC/1C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/4.bin"   "Pal/1C/4.bin"
+Extract  $1BC90   $40 "R1/Pal/PC/1C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/5.bin"   "Pal/1C/5.bin"
+;Extract  $17BC8  $F90 "R1/Obj/1C.bin" Swap16
+Extract  $18B60  $100 "R1/Col/Ang1C.bin"
+Extract  $18C60 $1000 "R1/Col/HM1C.bin"
+Extract  $19C70 $1000 "R1/Col/HMR1C.bin"
+Extract  $1AC80  $3E8 "R1/Col/Idx1C.bin"
+Extract  $1B068  $200 "R1/FGPC/1C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1C.bin" "FG/1C.bin"
+Extract  $1B268  $200 "R1/BGPC/1C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1C.bin" "BG/1C.bin"
+
+Copy     "R1/11C/Map11C.bin" "R1/256/1C.bin" Swap16
+
+Copy     "R1/11C/T11C.map" "R1/16U/1C.bin" Swap16
+
+WorkPath "#src/R1/11C"
+Extern   "#Batch/msexpand" "tcmp11c.cm_"
+LoadFile "R1/11C/tcmp11c.cm"
+Extract  $BE8 $5E80 "R1/8U/1C.bin"
+
+
+LoadFile "R1/11D/DLL11D.DLL"
+Extract  $117A4    $2 "R1/Obj/XStart1D.bin"
+Extract  $117AD    $2 "R1/Obj/YStart1D.bin"
+WorkPath "#Dest/R1"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1D.bin" "Obj/YStart1D.bin" "Obj/Start1D.bin"
+Extract  $1B8E8  $100 "R1/Pal/PC/1D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/0_1.bin" "Pal/1D/0_1.bin"
+Extract  $1B9E8  $100 "R1/Pal/PC/1D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/2.bin"   "Pal/1D/2.bin"
+Extract  $1BAE8   $40 "R1/Pal/PC/1D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/3.bin"   "Pal/1D/3.bin"
+Extract  $1BB28   $C0 "R1/Pal/PC/1D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/4.bin"   "Pal/1D/4.bin"
+Extract  $1BBE8   $40 "R1/Pal/PC/1D/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/5.bin"   "Pal/1D/5.bin"
+;Extract  $17B38  $F90 "R1/Obj/1D.bin" Swap16
+Extract  $18F80  $100 "R1/Col/Ang1D.bin"
+Extract  $19080 $1000 "R1/Col/HM1D.bin"
+Extract  $1A090 $1000 "R1/Col/HMR1D.bin"
+Extract  $1B0A0  $3E8 "R1/Col/Idx1D.bin"
+Extract  $1B488  $200 "R1/FGPC/1D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1D.bin" "FG/1D.bin"
+Extract  $1B688  $200 "R1/BGPC/1D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1D.bin" "BG/1D.bin"
+
+Copy     "R1/11D/Map11D.bin" "R1/256/1D.bin" Swap16
+
+Copy     "R1/11D/T11D.map" "R1/16U/1D.bin" Swap16
+
+WorkPath "#src/R1/11D"
+Extern   "#Batch/msexpand" "tcmp11d.cm_"
+LoadFile "R1/11D/tcmp11d.cm"
+Extract  $C50 $61C0 "R1/8U/1D.bin"
+
+
+LoadFile "R1/12A/DLL12A.DLL"
+Extract  $11D04    $2 "R1/Obj/XStart2A.bin"
+Extract  $11D0D    $2 "R1/Obj/YStart2A.bin"
+WorkPath "#Dest/R1"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2A.bin" "Obj/YStart2A.bin" "Obj/Start2A.bin"
+Extract  $17DE8  $100 "R1/Pal/PC/2A/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/0_1.bin" "Pal/2A/0_1.bin"
+Extract  $17EE8  $100 "R1/Pal/PC/2A/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/2.bin"   "Pal/2A/2.bin"
+Extract  $17FE8   $40 "R1/Pal/PC/2A/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/3.bin"   "Pal/2A/3.bin"
+Extract  $18028   $C0 "R1/Pal/PC/2A/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/5.bin"   "Pal/2A/5.bin"
+Extract  $180E8   $C0 "R1/Pal/PC/2A/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/4.bin"   "Pal/2A/4.bin"
+Extract  $182A8   $C0 "R1/Pal/PC/2A/Ex.bin"				;Unused
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/Ex.bin"  "Pal/2A/Ex.bin"
+;Extract  $18D88  $F48 "R1/Obj/2A.bin" Swap16
+Extract  $18D88  $F48 "R1/Obj/2.bin" Swap16
+Extract  $19CD8  $100 "R1/Col/Ang2A.bin"
+Extract  $19DD8 $1000 "R1/Col/HM2A.bin"
+Extract  $1ADE8 $1000 "R1/Col/HMR2A.bin"
+Extract  $1BDF8  $3E8 "R1/Col/Idx2A.bin"
+Extract  $1C1E0  $200 "R1/FGPC/2A.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2A.bin" "FG/2A.bin"
+Extract  $1C3E0  $200 "R1/BGPC/2A.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2A.bin" "BG/2A.bin"
+
+Copy     "R1/12A/Map12A.bin" "R1/256/2A.bin" Swap16
+
+Copy     "R1/12A/T12A.map" "R1/16U/2A.bin" Swap16
+
+WorkPath "#src/R1/12A"
+Extern   "#Batch/msexpand" "tcmp12a.cm_"
+LoadFile "R1/12A/tcmp12a.cm"
+Extract  $CC4 $6560 "R1/8U/2A.bin"
+
+
+LoadFile "R1/12B/DLL12B.DLL"
+Extract  $18B18    $2 "R1/Obj/XStart2B.bin"
+Extract  $18B1A    $2 "R1/Obj/YStart2B.bin"
+WorkPath "#Dest/R1"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2B.bin" "Obj/YStart2B.bin" "Obj/Start2B.bin"
+Extract  $181F0  $100 "R1/Pal/PC/2B/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/0_1.bin" "Pal/2B/0_1.bin"
+Extract  $182F0  $100 "R1/Pal/PC/2B/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/2.bin"   "Pal/2B/2.bin"
+Extract  $183F0   $40 "R1/Pal/PC/2B/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/3.bin"   "Pal/2B/3.bin"
+Extract  $18430   $C0 "R1/Pal/PC/2B/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/5.bin"   "Pal/2B/5.bin"
+Extract  $184F0   $C0 "R1/Pal/PC/2B/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/4.bin"   "Pal/2B/4.bin"
+;Extract  $18B58  $F48 "R1/Obj/2B.bin" Swap16
+Extract  $19AA8  $100 "R1/Col/Ang2B.bin"
+Extract  $19BA8 $1000 "R1/Col/HM2B.bin"
+Extract  $1ABB8 $1000 "R1/Col/HMR2B.bin"
+Extract  $1BBC8  $3E8 "R1/Col/Idx2B.bin"
+Extract  $1BFB0  $200 "R1/FGPC/2B.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2B.bin" "FG/2B.bin"
+Extract  $1C1B0  $200 "R1/BGPC/2B.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2B.bin" "BG/2B.bin"
+
+Copy     "R1/12B/Map12B.bin" "R1/256/2B.bin" Swap16
+
+Copy     "R1/12B/T12B.map" "R1/16U/2B.bin" Swap16
+
+WorkPath "#src/R1/12B"
+Extern   "#Batch/msexpand" "tcmp12b.cm_"
+LoadFile "R1/12B/tcmp12b.cm"
+Extract  $C8C $63A0 "R1/8U/2B.bin"
+
+
+LoadFile "R1/12C/DLL12C.DLL"
+Extract  $11584    $2 "R1/Obj/XStart2C.bin"
+Extract  $1158D    $2 "R1/Obj/YStart2C.bin"
+WorkPath "#Dest/R1"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2C.bin" "Obj/YStart2C.bin" "Obj/Start2C.bin"
+Extract  $17B88  $100 "R1/Pal/PC/2C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/0_1.bin" "Pal/2C/0_1.bin"
+Extract  $17C88  $100 "R1/Pal/PC/2C/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/2.bin"   "Pal/2C/2.bin"
+Extract  $17D88   $40 "R1/Pal/PC/2C/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/3.bin"   "Pal/2C/3.bin"
+Extract  $17DC8   $C0 "R1/Pal/PC/2C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/4.bin"   "Pal/2C/4.bin"
+Extract	 $17E88   $40 "R1/Pal/PC/2C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/5.bin"   "Pal/2C/5.bin"
+;Extract  $18488  $F48 "R1/Obj/2C.bin" Swap16
+Extract  $193D8  $100 "R1/Col/Ang2C.bin"
+Extract  $194D8 $1000 "R1/Col/HM2C.bin"
+Extract  $1A4E8 $1000 "R1/Col/HMR2C.bin"
+Extract  $1B4F8  $3E8 "R1/Col/Idx2C.bin"
+Extract  $1B8E0  $200 "R1/FGPC/2C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2C.bin" "FG/2C.bin"
+Extract  $1BAE0  $200 "R1/BGPC/2C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2C.bin" "BG/2C.bin"
+
+Copy     "R1/12C/Map12C.bin" "R1/256/2C.bin" Swap16
+
+Copy     "R1/12C/T12C.map" "R1/16U/2C.bin" Swap16
+
+WorkPath "#src/R1/12C"
+Extern   "#Batch/msexpand" "tcmp12c.cm_"
+LoadFile "R1/12C/tcmp12c.cm"
+Extract  $C78 $6300 "R1/8U/2C.bin"
+
+
+LoadFile "R1/12D/DLL12D.DLL"
+Extract  $11604    $2 "R1/Obj/XStart2D.bin"
+Extract  $1160D    $2 "R1/Obj/YStart2D.bin"
+WorkPath "#Dest/R1"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2D.bin" "Obj/YStart2D.bin" "Obj/Start2D.bin"
+Extract	 $17C88  $100 "R1/Pal/PC/2D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/0_1.bin" "Pal/2D/0_1.bin"
+Extract	 $17D88  $100 "R1/Pal/PC/2D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/2.bin"   "Pal/2D/2.bin"
+Extract	 $17E88   $40 "R1/Pal/PC/2D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/3.bin"   "Pal/2D/3.bin"
+Extract	 $17EC8   $C0 "R1/Pal/PC/2D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/4.bin"   "Pal/2D/4.bin"
+Extract	 $17F88   $40 "R1/Pal/PC/2D/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/5.bin"   "Pal/2D/5.bin"
+;Extract  $18490  $F48 "R1/Obj/2D.bin" Swap16
+Extract  $193E0  $100 "R1/Col/Ang2D.bin"
+Extract  $194E0 $1000 "R1/Col/HM2D.bin"
+Extract  $1A4F0 $1000 "R1/Col/HMR2D.bin"
+Extract  $1B500  $3E8 "R1/Col/Idx2D.bin"
+Extract  $1B8E8  $200 "R1/FGPC/2D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2D.bin" "FG/2D.bin"
+Extract  $1BAE8  $200 "R1/BGPC/2D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2D.bin" "BG/2D.bin"
+
+Copy     "R1/12D/Map12D.bin" "R1/256/2D.bin" Swap16
+
+Copy     "R1/12D/T12D.map" "R1/16U/2D.bin" Swap16
+
+WorkPath "#src/R1/12D"
+Extern   "#Batch/msexpand" "tcmp12d.cm_"
+LoadFile "R1/12D/tcmp12d.cm"
+Extract  $CD0 $65C0 "R1/8U/2D.bin"
+
+
+LoadFile "R1/13C/DLL13C.DLL"
+Extract  $19E60    $2 "R1/Obj/XStart3C.bin"
+Extract  $19E62    $2 "R1/Obj/YStart3C.bin"
+WorkPath "#Dest/R1"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart3C.bin" "Obj/YStart3C.bin" "Obj/Start3C.bin"
+Extract  $198B8  $100 "R1/Pal/PC/3C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/0_1.bin" "Pal/3C/0_1.bin"
+Extract  $199B8  $100 "R1/Pal/PC/3C/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/2.bin"   "Pal/3C/2.bin"
+Extract  $19AB8   $40 "R1/Pal/PC/3C/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/3.bin"   "Pal/3C/3.bin"
+Extract  $19AF8   $C0 "R1/Pal/PC/3C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/4.bin"   "Pal/3C/4.bin"
+Extract  $19BB8   $40 "R1/Pal/PC/3C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/5.bin"   "Pal/3C/5.bin"
+;Extract  $19E98  $1F0 "R1/Obj/3C.bin" Swap16
+Extract  $19E98  $1F0 "R1/Obj/3.bin" Swap16
+Extract  $1A090  $100 "R1/Col/Ang3C.bin"
+Extract  $1A190 $1000 "R1/Col/HM3C.bin"
+Extract  $1B1A0 $1000 "R1/Col/HMR3C.bin"
+Extract  $1C1B0  $3E8 "R1/Col/Idx3C.bin"
+Extract  $1C598  $200 "R1/FGPC/3C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/3C.bin" "FG/3C.bin"
+Extract  $1C798  $200 "R1/BGPC/3C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/3C.bin" "BG/3C.bin"
+
+Copy     "R1/13C/Map13C.bin" "R1/256/3C.bin" Swap16
+
+Copy     "R1/13C/T13C.map" "R1/16U/3C.bin" Swap16
+
+WorkPath "#src/R1/13C"
+Extern   "#Batch/msexpand" "tcmp13c.cm_"
+LoadFile "R1/13C/tcmp13c.cm"
+Extract  $C78 $6300 "R1/8U/3C.bin"
+
+
+LoadFile "R1/13D/DLL13D.DLL"
+Extract  $1A018    $2 "R1/Obj/XStart3D.bin"
+Extract  $1A01A    $2 "R1/Obj/YStart3D.bin"
+WorkPath "#Dest/R1"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart3D.bin" "Obj/YStart3D.bin" "Obj/Start3D.bin"
+Extract  $19A40  $100 "R1/Pal/PC/3D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/0_1.bin" "Pal/3D/0_1.bin"
+Extract  $19B40  $100 "R1/Pal/PC/3D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/2.bin"   "Pal/3D/2.bin"
+Extract  $19C40   $40 "R1/Pal/PC/3D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/3.bin"   "Pal/3D/3.bin"
+Extract  $19C80   $C0 "R1/Pal/PC/3D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/4.bin"   "Pal/3D/4.bin"
+Extract  $19D40   $40 "R1/Pal/PC/3D/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/5.bin"   "Pal/3D/5.bin"
+;Extract  $1C950  $1F0 "R1/Obj/3D.bin" Swap16
+Extract  $1A038  $100 "R1/Col/Ang3D.bin"
+Extract  $1A138 $1000 "R1/Col/HM3D.bin"
+Extract  $1B148 $1000 "R1/Col/HMR3D.bin"
+Extract  $1C158  $3E8 "R1/Col/Idx3D.bin"
+Extract  $1C540  $200 "R1/FGPC/3D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/3D.bin" "FG/3D.bin"
+Extract  $1C740  $200 "R1/BGPC/3D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/3D.bin" "BG/3D.bin"
+
+Copy     "R1/13D/Map13D.bin" "R1/256/3D.bin" Swap16
+
+Copy     "R1/13D/T13D.map" "R1/16U/3D.bin" Swap16
+
+WorkPath "#src/R1/13D"
+Extern   "#Batch/msexpand" "tcmp13d.cm_"
+LoadFile "R1/13D/tcmp13d.cm"
+Extract  $CD0 $65C0 "R1/8U/3D.bin"
+
+
+WorkPath "#dest/R1"
+Extern   "#Batch/derecmp" "nc" "8U" "8"
+Extern   "#Batch/derecmp" "nc" "16U" "16"
+
+
+LoadFile "R3/31A/DLL31A.DLL"
+Extract  $11B98    $2 "R3/Obj/XStart1A.bin"
+Extract  $11B9F    $2 "R3/Obj/YStart1A.bin"
+WorkPath "#Dest/R3"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1A.bin" "Obj/YStart1A.bin" "Obj/Start1A.bin"
+Extract  $1BB98  $100 "R3/Pal/PC/1A/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/0_1.bin" "Pal/1A/0_1.bin"
+Extract  $1BC98  $100 "R3/Pal/PC/1A/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/2.bin"   "Pal/1A/2.bin"
+Extract  $1BD98   $40 "R3/Pal/PC/1A/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/3.bin"   "Pal/1A/3.bin"
+Extract  $1BDD8   $C0 "R3/Pal/PC/1A/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/4.bin"   "Pal/1A/4.bin"
+Extract  $1BE98   $C0 "R3/Pal/PC/1A/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/5.bin"   "Pal/1A/5.bin"
+;Extract  $1C098 $1030 "R3/Obj/1A.bin" Swap16
+Extract  $1C098 $1030 "R3/Obj/1.bin" Swap16
+Extract  $18AF8  $100 "R3/Col/Ang1A.bin"
+Extract  $18BF8 $1000 "R3/Col/HM1A.bin"
+Extract  $19C08 $1000 "R3/Col/HMR1A.bin"
+Extract  $1AC18  $3E8 "R3/Col/Idx1A.bin"
+Extract  $1B000  $200 "R3/FGPC/1A.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1A.bin" "FG/1A.bin"
+Extract  $1B200  $200 "R3/BGPC/1A.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1A.bin" "BG/1A.bin"
+
+Copy     "R3/31A/Map31A.bin" "R3/256/1A.bin" Swap16
+
+Copy     "R3/31A/T31A.map" "R3/16U/1A.bin" Swap16
+
+WorkPath "#src/R3/31A"
+Extern   "#Batch/msexpand" "tcmp31a.cm_"
+LoadFile "R3/31A/tcmp31a.cm"
+Extract  $B00 $5740 "R3/8U/1A.bin"
+
+
+LoadFile "R3/31B/DLL31B.DLL"
+Extract  $11EA8    $2 "R3/Obj/XStart1B.bin"
+Extract  $11EAF    $2 "R3/Obj/YStart1B.bin"
+WorkPath "#Dest/R3"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1B.bin" "Obj/YStart1B.bin" "Obj/Start1B.bin"
+Extract  $19E50  $100 "R3/Pal/PC/1B/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/0_1.bin" "Pal/1B/0_1.bin"
+Extract  $19F50  $100 "R3/Pal/PC/1B/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/2.bin"   "Pal/1B/2.bin"
+Extract  $1A050   $40 "R3/Pal/PC/1B/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/3.bin"   "Pal/1B/3.bin"
+Extract  $1A090   $C0 "R3/Pal/PC/1B/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/4.bin"   "Pal/1B/4.bin"
+;Extract  $17CA0 $1030 "R3/Obj/1B.bin" Swap16
+Extract  $1A338  $100 "R3/Col/Ang1B.bin"
+Extract  $1A438 $1000 "R3/Col/HM1B.bin"
+Extract  $1B448 $1000 "R3/Col/HMR1B.bin"
+Extract  $1C458  $3E8 "R3/Col/Idx1B.bin"
+Extract  $1C840  $200 "R3/FGPC/1B.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1B.bin" "FG/1B.bin"
+Extract  $1CA40  $200 "R3/BGPC/1B.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1B.bin" "BG/1B.bin"
+
+Copy     "R3/31B/Map31B.bin" "R3/256/1B.bin" Swap16
+
+Copy     "R3/31B/T31B.map" "R3/16U/1B.bin" Swap16
+
+WorkPath "#src/R3/31B"
+Extern   "#Batch/msexpand" "tcmp31b.cm_"
+LoadFile "R3/31B/tcmp31b.cm"
+Extract  $AF8 $5700 "R3/8U/1B.bin"
+
+
+LoadFile "R3/31C/DLL31C.DLL"
+Extract  $123B8    $2 "R3/Obj/XStart1C.bin"
+Extract  $123BF    $2 "R3/Obj/YStart1C.bin"
+WorkPath "#Dest/R3"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1C.bin" "Obj/YStart1C.bin" "Obj/Start1C.bin"
+Extract  $19E38  $100 "R3/Pal/PC/1C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/0_1.bin" "Pal/1C/0_1.bin"
+Extract  $19F38  $100 "R3/Pal/PC/1C/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/2.bin"   "Pal/1C/2.bin"
+Extract  $1A038   $40 "R3/Pal/PC/1C/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/3.bin"   "Pal/1C/3.bin"
+Extract  $1A078   $C0 "R3/Pal/PC/1C/7.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/7.bin"   "Pal/1C/7.bin"
+Extract  $1A138   $C0 "R3/Pal/PC/1C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/4.bin"   "Pal/1C/4.bin"
+Extract  $1A1F8   $40 "R3/Pal/PC/1C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/5.bin"   "Pal/1C/5.bin"
+Extract  $1A238   $40 "R3/Pal/PC/1C/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/6.bin"   "Pal/1C/6.bin"
+;Extract  $17EA0 $1030 "R3/Obj/1C.bin" Swap16
+Extract  $1A448  $100 "R3/Col/Ang1C.bin"
+Extract  $1A548 $1000 "R3/Col/HM1C.bin"
+Extract  $1B558 $1000 "R3/Col/HMR1C.bin"
+Extract  $1C568  $3E8 "R3/Col/Idx1C.bin"
+Extract  $1C950  $200 "R3/FGPC/1C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1C.bin" "FG/1C.bin"
+Extract  $1CB50  $200 "R3/BGPC/1C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1C.bin" "BG/1C.bin"
+
+Copy     "R3/31C/Map31C.bin" "R3/256/1C.bin" Swap16
+
+Copy     "R3/31C/T31C.map" "R3/16U/1C.bin" Swap16
+
+WorkPath "#src/R3/31C"
+Extern   "#Batch/msexpand" "tcmp31c.cm_"
+LoadFile "R3/31C/tcmp31c.cm"
+Extract  $AA4 $5460 "R3/8U/1C.bin"
+
+
+LoadFile "R3/31D/DLL31D.DLL"
+Extract  $11F68    $2 "R3/Obj/XStart1D.bin"
+Extract  $11F6F    $2 "R3/Obj/YStart1D.bin"
+WorkPath "#Dest/R3"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1D.bin" "Obj/YStart1D.bin" "Obj/Start1D.bin"
+Extract  $19EA8  $100 "R3/Pal/PC/1D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/0_1.bin" "Pal/1D/0_1.bin"
+Extract  $19FA8  $100 "R3/Pal/PC/1D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/2.bin"   "Pal/1D/2.bin"
+Extract  $1A0A8   $40 "R3/Pal/PC/1D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/3.bin"   "Pal/1D/3.bin"
+Extract  $1A0E8   $C0 "R3/Pal/PC/1D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/4.bin"   "Pal/1D/4.bin"
+Extract  $1A1A8   $40 "R3/Pal/PC/1D/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/5.bin"   "Pal/1D/5.bin"
+Extract  $1A1E8   $40 "R3/Pal/PC/1D/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/6.bin"   "Pal/1D/6.bin"
+;Extract  $17EA0 $1030 "R3/Obj/1D.bin" Swap16
+Extract  $1A3F0  $100 "R3/Col/Ang1D.bin"
+Extract  $1A4F0 $1000 "R3/Col/HM1D.bin"
+Extract  $1B500 $1000 "R3/Col/HMR1D.bin"
+Extract  $1C510  $3E8 "R3/Col/Idx1D.bin"
+Extract  $1C8F8  $200 "R3/FGPC/1D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1D.bin" "FG/1D.bin"
+Extract  $1CAF8  $200 "R3/BGPC/1D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1D.bin" "BG/1D.bin"
+
+Copy     "R3/31D/Map31D.bin" "R3/256/1D.bin" Swap16
+
+Copy     "R3/31D/T31D.map" "R3/16U/1D.bin" Swap16
+
+WorkPath "#src/R3/31D"
+Extern   "#Batch/msexpand" "tcmp31d.cm_"
+LoadFile "R3/31D/tcmp31d.cm"
+Extract  $B18 $5800 "R3/8U/1D.bin"
+
+
+LoadFile "R3/32A/DLL32A.DLL"
+Extract  $13408    $2 "R3/Obj/XStart2A.bin"
+Extract  $1340F    $2 "R3/Obj/YStart2A.bin"
+WorkPath "#Dest/R3"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2A.bin" "Obj/YStart2A.bin" "Obj/Start2A.bin"
+Extract  $18EA8  $100 "R3/Pal/PC/2A/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/0_1.bin" "Pal/2A/0_1.bin"
+Extract  $18FA8  $100 "R3/Pal/PC/2A/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/2.bin"   "Pal/2A/2.bin"
+Extract  $190A8   $40 "R3/Pal/PC/2A/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/3.bin"   "Pal/2A/3.bin"
+Extract  $190E8   $C0 "R3/Pal/PC/2A/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/4.bin"   "Pal/2A/4.bin"
+Extract  $191A8   $C0 "R3/Pal/PC/2A/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/5.bin"   "Pal/2A/5.bin"
+;Extract  $1A820  $E38 "R3/Obj/2A.bin" Swap16
+Extract  $1A820  $E38 "R3/Obj/2.bin" Swap16
+Extract  $1B660  $100 "R3/Col/Ang2A.bin"
+Extract  $1B760 $1000 "R3/Col/HM2A.bin"
+Extract  $1C770 $1000 "R3/Col/HMR2A.bin"
+Extract  $1D780  $3E8 "R3/Col/Idx2A.bin"
+Extract  $1DB68  $200 "R3/FGPC/2A.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2A.bin" "FG/2A.bin"
+Extract  $1DD68  $200 "R3/BGPC/2A.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2A.bin" "BG/2A.bin"
+
+Copy     "R3/32A/Map32A.bin" "R3/256/2A.bin" Swap16
+
+Copy     "R3/32A/T32A.map" "R3/16U/2A.bin" Swap16
+
+WorkPath "#src/R3/32A"
+Extern   "#Batch/msexpand" "tcmp32a.cm_"
+LoadFile "R3/32A/tcmp32a.cm"
+Extract  $B00 $5740 "R3/8U/2A.bin"
+
+
+LoadFile "R3/32B/DLL32B.DLL"
+Extract  $12228    $2 "R3/Obj/XStart2B.bin"
+Extract  $1222F    $2 "R3/Obj/YStart2B.bin"
+WorkPath "#Dest/R3"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2B.bin" "Obj/YStart2B.bin" "Obj/Start2B.bin"
+Extract  $19DF8  $100 "R3/Pal/PC/2B/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/0_1.bin" "Pal/2B/0_1.bin"
+Extract  $19EF8  $100 "R3/Pal/PC/2B/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/2.bin"   "Pal/2B/2.bin"
+Extract  $19FF8   $40 "R3/Pal/PC/2B/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/3.bin"   "Pal/2B/3.bin"
+Extract  $1A038   $C0 "R3/Pal/PC/2B/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/4.bin"   "Pal/2B/4.bin"
+;Extract  $18FB8  $E38 "R3/Obj/2B.bin" Swap16
+Extract  $1A2D0  $100 "R3/Col/Ang2B.bin"
+Extract  $1A3D0 $1000 "R3/Col/HM2B.bin"
+Extract  $1B3E0 $1000 "R3/Col/HMR2B.bin"
+Extract  $1C3F0  $3E8 "R3/Col/Idx2B.bin"
+Extract  $1C7D8  $200 "R3/FGPC/2B.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2B.bin" "FG/2B.bin"
+Extract  $1C9D8  $200 "R3/BGPC/2B.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2B.bin" "BG/2B.bin"
+
+Copy     "R3/32B/Map32B.bin" "R3/256/2B.bin" Swap16
+
+Copy     "R3/32B/T32B.map" "R3/16U/2B.bin" Swap16
+
+WorkPath "#src/R3/32B"
+Extern   "#Batch/msexpand" "tcmp32b.cm_"
+LoadFile "R3/32B/tcmp32b.cm"
+Extract  $B00 $5740 "R3/8U/2B.bin"
+
+
+LoadFile "R3/32C/DLL32C.DLL"
+Extract  $123F8    $2 "R3/Obj/XStart2C.bin"
+Extract  $123FF    $2 "R3/Obj/YStart2C.bin"
+WorkPath "#Dest/R3"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2C.bin" "Obj/YStart2C.bin" "Obj/Start2C.bin"
+Extract  $1A040  $100 "R3/Pal/PC/2C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/0_1.bin" "Pal/2C/0_1.bin"
+Extract  $1A140  $100 "R3/Pal/PC/2C/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/2.bin"   "Pal/2C/2.bin"
+Extract  $1A240   $40 "R3/Pal/PC/2C/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/3.bin"   "Pal/2C/3.bin"
+Extract  $1A280   $C0 "R3/Pal/PC/2C/7.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/7.bin"   "Pal/2C/7.bin"
+Extract  $1A340   $C0 "R3/Pal/PC/2C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/4.bin"   "Pal/2C/4.bin"
+Extract  $1A400   $40 "R3/Pal/PC/2C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/5.bin"   "Pal/2C/5.bin"
+Extract  $1A440   $40 "R3/Pal/PC/2C/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/6.bin"   "Pal/2C/6.bin"
+;Extract  $191B8  $E38 "R3/Obj/2C.bin" Swap16
+Extract  $1A790  $100 "R3/Col/Ang2C.bin"
+Extract  $1A890 $1000 "R3/Col/HM2C.bin"
+Extract  $1B8A0 $1000 "R3/Col/HMR2C.bin"
+Extract  $1C8B0  $3E8 "R3/Col/Idx2C.bin"
+Extract  $1CC98  $200 "R3/FGPC/2C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2C.bin" "FG/2C.bin"
+Extract  $1CE98  $200 "R3/BGPC/2C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2C.bin" "BG/2C.bin"
+
+Copy     "R3/32C/Map32C.bin" "R3/256/2C.bin" Swap16
+
+Copy     "R3/32C/T32C.map" "R3/16U/2C.bin" Swap16
+
+WorkPath "#src/R3/32C"
+Extern   "#Batch/msexpand" "tcmp32c.cm_"
+LoadFile "R3/32C/tcmp32c.cm"
+Extract  $AA4 $5460 "R3/8U/2C.bin"
+
+
+LoadFile "R3/32D/DLL32D.DLL"
+Extract  $12418    $2 "R3/Obj/XStart2D.bin"
+Extract  $1241F    $2 "R3/Obj/YStart2D.bin"
+WorkPath "#Dest/R3"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2D.bin" "Obj/YStart2D.bin" "Obj/Start2D.bin"
+Extract  $1A0B0  $100 "R3/Pal/PC/2D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/0_1.bin" "Pal/2D/0_1.bin"
+Extract  $1A1B0  $100 "R3/Pal/PC/2D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/2.bin"   "Pal/2D/2.bin"
+Extract  $1A2B0   $40 "R3/Pal/PC/2D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/3.bin"   "Pal/2D/3.bin"
+Extract  $1A2F0   $C0 "R3/Pal/PC/2D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/4.bin"   "Pal/2D/4.bin"
+Extract  $1A3B0   $40 "R3/Pal/PC/2D/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/5.bin"   "Pal/2D/5.bin"
+Extract  $1A3F0   $40 "R3/Pal/PC/2D/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/6.bin"   "Pal/2D/6.bin"
+;Extract  $191B8  $E38 "R3/Obj/2D.bin" Swap16
+Extract  $1A738  $100 "R3/Col/Ang2D.bin"
+Extract  $1A838 $1000 "R3/Col/HM2D.bin"
+Extract  $1B848 $1000 "R3/Col/HMR2D.bin"
+Extract  $1C858  $3E8 "R3/Col/Idx2D.bin"
+Extract  $1CC40  $200 "R3/FGPC/2D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2D.bin" "FG/2D.bin"
+Extract  $1CE40  $200 "R3/BGPC/2D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2D.bin" "BG/2D.bin"
+
+Copy     "R3/32D/Map32D.bin" "R3/256/2D.bin" Swap16
+
+Copy     "R3/32D/T32D.map" "R3/16U/2D.bin" Swap16
+
+WorkPath "#src/R3/32D"
+Extern   "#Batch/msexpand" "tcmp32d.cm_"
+LoadFile "R3/32D/tcmp32d.cm"
+Extract  $B18 $5800 "R3/8U/2D.bin"
+
+
+LoadFile "R3/33C/DLL33C.DLL"
+Extract  $13E34    $2 "R3/Obj/XStart3C.bin"
+Extract  $13E3D    $2 "R3/Obj/YStart3C.bin"
+WorkPath "#Dest/R3"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart3C.bin" "Obj/YStart3C.bin" "Obj/Start3C.bin"
+Extract  $1A800  $100 "R3/Pal/PC/3C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/0_1.bin" "Pal/3C/0_1.bin"
+Extract  $1A900  $100 "R3/Pal/PC/3C/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/2.bin"   "Pal/3C/2.bin"
+Extract  $1AA00   $40 "R3/Pal/PC/3C/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/3.bin"   "Pal/3C/3.bin"
+Extract  $1AA40   $C0 "R3/Pal/PC/3C/7.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/7.bin"   "Pal/3C/7.bin"
+Extract  $1AB00   $C0 "R3/Pal/PC/3C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/4.bin"   "Pal/3C/4.bin"
+Extract  $1ABC0   $40 "R3/Pal/PC/3C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/5.bin"   "Pal/3C/5.bin"
+Extract  $1AC00   $40 "R3/Pal/PC/3C/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/6.bin"   "Pal/3C/6.bin"
+;Extract  $1D638  $1F0 "R3/Obj/3C.bin" Swap16
+Extract  $1D638  $1F0 "R3/Obj/3.bin" Swap16
+Extract  $1AD20  $100 "R3/Col/Ang3C.bin"
+Extract  $1AE20 $1000 "R3/Col/HM3C.bin"
+Extract  $1BE30 $1000 "R3/Col/HMR3C.bin"
+Extract  $1CE40  $3E8 "R3/Col/Idx3C.bin"
+Extract  $1D228  $200 "R3/FGPC/3C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/3C.bin" "FG/3C.bin"
+Extract  $1D428  $200 "R3/BGPC/3C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/3C.bin" "BG/3C.bin"
+
+Copy     "R3/33C/Map33C.bin" "R3/256/3C.bin" Swap16
+
+Copy     "R3/33C/T33C.map" "R3/16U/3C.bin" Swap16
+
+WorkPath "#src/R3/33C"
+Extern   "#Batch/msexpand" "tcmp33c.cm_"
+LoadFile "R3/33C/tcmp33c.cm"
+Extract  $A8C $53A0 "R3/8U/3C.bin"
+
+
+LoadFile "R3/33D/DLL33D.DLL"
+Extract  $12104    $2 "R3/Obj/XStart3D.bin"
+Extract  $1210D    $2 "R3/Obj/YStart3D.bin"
+WorkPath "#Dest/R3"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart3D.bin" "Obj/YStart3D.bin" "Obj/Start3D.bin"
+Extract  $1A7E0  $100 "R3/Pal/PC/3D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/0_1.bin" "Pal/3D/0_1.bin"
+Extract  $1A8E0  $100 "R3/Pal/PC/3D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/2.bin"   "Pal/3D/2.bin"
+Extract  $1A9E0   $40 "R3/Pal/PC/3D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/3.bin"   "Pal/3D/3.bin"
+Extract  $1AA20   $C0 "R3/Pal/PC/3D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/4.bin"   "Pal/3D/4.bin"
+Extract  $1AAE0   $40 "R3/Pal/PC/3D/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/5.bin"   "Pal/3D/5.bin"
+Extract  $1AB20   $40 "R3/Pal/PC/3D/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/6.bin"   "Pal/3D/6.bin"
+;Extract  $1A530  $1F0 "R3/Obj/3D.bin" Swap16
+Extract  $1AE48  $100 "R3/Col/Ang3D.bin"
+Extract  $1AF48 $1000 "R3/Col/HM3D.bin"
+Extract  $1BF58 $1000 "R3/Col/HMR3D.bin"
+Extract  $1CF68  $3E8 "R3/Col/Idx3D.bin"
+Extract  $1D350  $200 "R3/FGPC/3D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/3D.bin" "FG/3D.bin"
+Extract  $1D550  $200 "R3/BGPC/3D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/3D.bin" "BG/3D.bin"
+
+Copy     "R3/33D/Map33D.bin" "R3/256/3D.bin" Swap16
+
+Copy     "R3/33D/T33D.map" "R3/16U/3D.bin" Swap16
+
+WorkPath "#src/R3/33D"
+Extern   "#Batch/msexpand" "tcmp33d.cm_"
+LoadFile "R3/33D/tcmp33d.cm"
+Extract  $AF8 $5700 "R3/8U/3D.bin"
+
+
+WorkPath "#dest/R3"
+Extern   "#Batch/derecmp" "nc" "8U" "8"
+Extern   "#Batch/derecmp" "nc" "16U" "16"
+
+
+LoadFile "R4/41A/DLL41A.DLL"
+Extract  $0C0EF    $2 "R4/Obj/XStart1A.bin"
+Extract  $0C0F4    $2 "R4/Obj/YStart1A.bin"
+WorkPath "#Dest/R4"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1A.bin" "Obj/YStart1A.bin" "Obj/Start1A.bin"
+Extract  $16658  $100 "R4/Pal/PC/1A/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/0_1.bin" "Pal/1A/0_1.bin"
+Extract  $16758  $100 "R4/Pal/PC/1A/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/2.bin"   "Pal/1A/2.bin"
+Extract  $16858   $40 "R4/Pal/PC/1A/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/3.bin"   "Pal/1A/3.bin"
+Extract  $16898   $C0 "R4/Pal/PC/1A/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/4.bin"   "Pal/1A/4.bin"
+;Extract  $173C8  $B48 "R4/Obj/1A.bin" Swap16
+Extract  $173C8  $B48 "R4/Obj/1.bin" Swap16
+Extract  $17F18  $100 "R4/Col/Ang1A.bin"
+Extract  $18018 $1000 "R4/Col/HM1A.bin"
+Extract  $19028 $1000 "R4/Col/HMR1A.bin"
+Extract  $1A038  $3E8 "R4/Col/Idx1A.bin"
+Extract  $1A420  $200 "R4/FGPC/1A.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1A.bin" "FG/1A.bin"
+Extract  $1A620  $200 "R4/BGPC/1A.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1A.bin" "BG/1A.bin"
+
+Copy     "R4/41A/Map41A.bin" "R4/256/1A.bin" Swap16
+
+Copy     "R4/41A/T41A.map" "R4/16U/1A.bin" Swap16
+
+WorkPath "#src/R4/41A"
+Extern   "#Batch/msexpand" "tcmp41a.cm_"
+LoadFile "R4/41A/tcmp41a.cm"
+Extract  $990 $4BC0 "R4/8U/1A.bin"
+
+
+LoadFile "R4/41B/DLL41B.DLL"
+Extract  $11894    $2 "R4/Obj/XStart1B.bin"
+Extract  $1190D    $2 "R4/Obj/YStart1B.bin"
+WorkPath "#Dest/R4"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1B.bin" "Obj/YStart1B.bin" "Obj/Start1B.bin"
+Extract  $18E38  $100 "R4/Pal/PC/1B/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/0_1.bin" "Pal/1B/0_1.bin"
+Extract  $18F38  $100 "R4/Pal/PC/1B/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/2.bin"   "Pal/1B/2.bin"
+Extract  $19038   $40 "R4/Pal/PC/1B/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/3.bin"   "Pal/1B/3.bin"
+Extract  $19078   $C0 "R4/Pal/PC/1B/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/4.bin"   "Pal/1B/4.bin"
+;Extract  $17088  $B48 "R4/Obj/1B.bin" Swap16
+Extract  $197D8  $100 "R4/Col/Ang1B.bin"
+Extract  $198D8 $1000 "R4/Col/HM1B.bin"
+Extract  $1A8E8 $1000 "R4/Col/HMR1B.bin"
+Extract  $1B8F8  $3E8 "R4/Col/Idx1B.bin"
+Extract  $1BCE0  $200 "R4/FGPC/1B.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1B.bin" "FG/1B.bin"
+Extract  $1BEE0  $200 "R4/BGPC/1B.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1B.bin" "BG/1B.bin"
+
+Copy     "R4/41B/Map41B.bin" "R4/256/1B.bin" Swap16
+
+Copy     "R4/41B/T41B.map" "R4/16U/1B.bin" Swap16
+
+WorkPath "#src/R4/41B"
+Extern   "#Batch/msexpand" "tcmp41b.cm_"
+LoadFile "R4/41B/tcmp41b.cm"
+Extract  $8F8 $4700 "R4/8U/1B.bin"
+
+
+LoadFile "R4/41C/DLL41C.DLL"
+Extract  $11684    $2 "R4/Obj/XStart1C.bin"
+Extract  $116FD    $2 "R4/Obj/YStart1C.bin"
+WorkPath "#Dest/R4"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1C.bin" "Obj/YStart1C.bin" "Obj/Start1C.bin"
+Extract  $18178  $100 "R4/Pal/PC/1C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/0_1.bin" "Pal/1C/0_1.bin"
+Extract  $18278  $100 "R4/Pal/PC/1C/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/2.bin"   "Pal/1C/2.bin"
+Extract  $18378   $40 "R4/Pal/PC/1C/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/3.bin"   "Pal/1C/3.bin"
+Extract  $183B8   $C0 "R4/Pal/PC/1C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/4.bin"   "Pal/1C/4.bin"
+Extract  $18478   $40 "R4/Pal/PC/1C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/3.bin"   "Pal/1C/5.bin"
+;Extract  $165C8  $B48 "R4/Obj/1C.bin" Swap16
+Extract  $18FF8  $100 "R4/Col/Ang1C.bin"
+Extract  $190F8 $1000 "R4/Col/HM1C.bin"
+Extract  $1A108 $1000 "R4/Col/HMR1C.bin"
+Extract  $1B118  $3E8 "R4/Col/Idx1C.bin"
+Extract  $1B500  $200 "R4/FGPC/1C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1C.bin" "FG/1C.bin"
+Extract  $1B700  $200 "R4/BGPC/1C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1C.bin" "BG/1C.bin"
+
+Copy     "R4/41C/Map41C.bin" "R4/256/1C.bin" Swap16
+
+Copy     "R4/41C/T41C.map" "R4/16U/1C.bin" Swap16
+
+WorkPath "#src/R4/41C"
+Extern   "#Batch/msexpand" "tcmp41c.cm_"
+LoadFile "R4/41C/tcmp41c.cm"
+Extract  $89C $4420 "R4/8U/1C.bin"
+
+
+LoadFile "R4/41D/DLL41D.DLL"
+Extract  $11684    $2 "R4/Obj/XStart1D.bin"
+Extract  $116FD    $2 "R4/Obj/YStart1D.bin"
+WorkPath "#Dest/R4"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1D.bin" "Obj/YStart1D.bin" "Obj/Start1D.bin"
+Extract  $18AE0  $100 "R4/Pal/PC/1D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/0_1.bin" "Pal/1D/0_1.bin"
+Extract  $18BE0  $100 "R4/Pal/PC/1D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/2.bin"   "Pal/1D/2.bin"
+Extract  $18CE0   $40 "R4/Pal/PC/1D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/3.bin"   "Pal/1D/3.bin"
+Extract  $18D20   $C0 "R4/Pal/PC/1D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/4.bin"   "Pal/1D/4.bin"
+Extract  $18DE0   $40 "R4/Pal/PC/1D/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/3.bin"   "Pal/1D/5.bin"
+;Extract  $165C8  $B48 "R4/Obj/1D.bin" Swap16
+Extract  $18F58  $100 "R4/Col/Ang1D.bin"
+Extract  $19058 $1000 "R4/Col/HM1D.bin"
+Extract  $1A068 $1000 "R4/Col/HMR1D.bin"
+Extract  $1B078  $3E8 "R4/Col/Idx1D.bin"
+Extract  $1B460  $200 "R4/FGPC/1D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1D.bin" "FG/1D.bin"
+Extract  $1B660  $200 "R4/BGPC/1D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1D.bin" "BG/1D.bin"
+
+Copy     "R4/41D/Map41D.bin" "R4/256/1D.bin" Swap16
+
+Copy     "R4/41D/T41D.map" "R4/16U/1D.bin" Swap16
+
+WorkPath "#src/R4/41D"
+Extern   "#Batch/msexpand" "tcmp41d.cm_"
+LoadFile "R4/41D/tcmp41d.cm"
+Extract  $8FC $4720 "R4/8U/1D.bin"
+
+
+LoadFile "R4/42A/DLL42A.DLL"
+Extract  $12CD4    $2 "R4/Obj/XStart2A.bin"
+Extract  $12D4D    $2 "R4/Obj/YStart2A.bin"
+WorkPath "#Dest/R4"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2A.bin" "Obj/YStart2A.bin" "Obj/Start2A.bin"
+Extract  $16F10  $100 "R4/Pal/PC/2A/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/0_1.bin" "Pal/2A/0_1.bin"
+Extract  $17010  $100 "R4/Pal/PC/2A/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/2.bin"   "Pal/2A/2.bin"
+Extract  $17110   $40 "R4/Pal/PC/2A/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/3.bin"   "Pal/2A/3.bin"
+Extract  $17150   $C0 "R4/Pal/PC/2A/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/4.bin"   "Pal/2A/4.bin"
+;Extract  $1C2F0  $D58 "R4/Obj/2A.bin" Swap16
+Extract  $1C2F0  $D58 "R4/Obj/2.bin" Swap16
+Extract  $18CD0  $100 "R4/Col/Ang2A.bin"
+Extract  $18DD0 $1000 "R4/Col/HM2A.bin"
+Extract  $19DE0 $1000 "R4/Col/HMR2A.bin"
+Extract  $1ADF0  $3E8 "R4/Col/Idx2A.bin"
+Extract  $1B1D8  $200 "R4/FGPC/2A.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2A.bin" "FG/2A.bin"
+Extract  $1B3D8  $200 "R4/BGPC/2A.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2A.bin" "BG/2A.bin"
+
+Copy     "R4/42A/Map42A.bin" "R4/256/2A.bin" Swap16
+
+Copy     "R4/42A/T42A.map" "R4/16U/2A.bin" Swap16
+
+WorkPath "#src/R4/42A"
+Extern   "#Batch/msexpand" "tcmp42a.cm_"
+LoadFile "R4/42A/tcmp42a.cm"
+Extract  $8BC $4520 "R4/8U/2A.bin"
+
+
+LoadFile "R4/42B/DLL42B.DLL"
+Extract  $12954    $2 "R4/Obj/XStart2B.bin"
+Extract  $129CD    $2 "R4/Obj/YStart2B.bin"
+WorkPath "#Dest/R4"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2B.bin" "Obj/YStart2B.bin" "Obj/Start2B.bin"
+Extract  $15B28  $100 "R4/Pal/PC/2B/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/0_1.bin" "Pal/2B/0_1.bin"
+Extract  $15C28  $100 "R4/Pal/PC/2B/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/2.bin"   "Pal/2B/2.bin"
+Extract  $15D28   $40 "R4/Pal/PC/2B/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/3.bin"   "Pal/2B/3.bin"
+Extract  $15D68   $C0 "R4/Pal/PC/2B/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/4.bin"   "Pal/2B/4.bin"
+;Extract  $16870  $D58 "R4/Obj/2B.bin" Swap16
+Extract  $18628  $100 "R4/Col/Ang2B.bin"
+Extract  $18728 $1000 "R4/Col/HM2B.bin"
+Extract  $19738 $1000 "R4/Col/HMR2B.bin"
+Extract  $1A748  $3E8 "R4/Col/Idx2B.bin"
+Extract  $1AB30  $200 "R4/FGPC/2B.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2B.bin" "FG/2B.bin"
+Extract  $1AD30  $200 "R4/BGPC/2B.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2B.bin" "BG/2B.bin"
+
+Copy     "R4/42B/Map42B.bin" "R4/256/2B.bin" Swap16
+
+Copy     "R4/42B/T42B.map" "R4/16U/2B.bin" Swap16
+
+WorkPath "#src/R4/42B"
+Extern   "#Batch/msexpand" "tcmp42b.cm_"
+LoadFile "R4/42B/tcmp42b.cm"
+Extract  $8F8 $4700 "R4/8U/2B.bin"
+
+
+LoadFile "R4/42C/DLL42C.DLL"
+Extract  $12174    $2 "R4/Obj/XStart2C.bin"
+Extract  $121ED    $2 "R4/Obj/YStart2C.bin"
+WorkPath "#Dest/R4"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2C.bin" "Obj/YStart2C.bin" "Obj/Start2C.bin"
+Extract  $18880  $100 "R4/Pal/PC/2C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/0_1.bin" "Pal/2C/0_1.bin"
+Extract  $18980  $100 "R4/Pal/PC/2C/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/2.bin"   "Pal/2C/2.bin"
+Extract  $18A80   $40 "R4/Pal/PC/2C/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/3.bin"   "Pal/2C/3.bin"
+Extract  $18AC0   $C0 "R4/Pal/PC/2C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/4.bin"   "Pal/2C/4.bin"
+Extract  $18B80   $40 "R4/Pal/PC/2C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/3.bin"   "Pal/2C/5.bin"
+;Extract  $19358  $D58 "R4/Obj/2C.bin" Swap16
+Extract  $1A0B8  $100 "R4/Col/Ang2C.bin"
+Extract  $1A1B8 $1000 "R4/Col/HM2C.bin"
+Extract  $1B1C8 $1000 "R4/Col/HMR2C.bin"
+Extract  $1C1D8  $3E8 "R4/Col/Idx2C.bin"
+Extract  $1C5C0  $200 "R4/FGPC/2C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2C.bin" "FG/2C.bin"
+Extract  $1C7C0  $200 "R4/BGPC/2C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2C.bin" "BG/2C.bin"
+
+Copy     "R4/42C/Map42C.bin" "R4/256/2C.bin" Swap16
+
+Copy     "R4/42C/T42C.map" "R4/16U/2C.bin" Swap16
+
+WorkPath "#src/R4/42C"
+Extern   "#Batch/msexpand" "tcmp42c.cm_"
+LoadFile "R4/42C/tcmp42c.cm"
+Extract  $89C $4420 "R4/8U/2C.bin"
+
+
+LoadFile "R4/42D/DLL42D.DLL"
+Extract  $12174    $2 "R4/Obj/XStart2D.bin"
+Extract  $121ED    $2 "R4/Obj/YStart2D.bin"
+WorkPath "#Dest/R4"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2D.bin" "Obj/YStart2D.bin" "Obj/Start2D.bin"
+Extract  $18468  $100 "R4/Pal/PC/2D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/0_1.bin" "Pal/2D/0_1.bin"
+Extract  $18568  $100 "R4/Pal/PC/2D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/2.bin"   "Pal/2D/2.bin"
+Extract  $18668   $40 "R4/Pal/PC/2D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/3.bin"   "Pal/2D/3.bin"
+Extract  $186A8   $C0 "R4/Pal/PC/2D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/4.bin"   "Pal/2D/4.bin"
+Extract  $18768   $40 "R4/Pal/PC/2D/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/3.bin"   "Pal/2D/5.bin"
+;Extract  $1CC10  $D58 "R4/Obj/2D.bin" Swap16
+Extract  $18850  $100 "R4/Col/Ang2D.bin"
+Extract  $18950 $1000 "R4/Col/HM2D.bin"
+Extract  $19960 $1000 "R4/Col/HMR2D.bin"
+Extract  $1A970  $3E8 "R4/Col/Idx2D.bin"
+Extract  $1AD58  $200 "R4/FGPC/2D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2D.bin" "FG/2D.bin"
+Extract  $1AF58  $200 "R4/BGPC/2D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2D.bin" "BG/2D.bin"
+
+Copy     "R4/42D/Map42D.bin" "R4/256/2D.bin" Swap16
+
+Copy     "R4/42D/T42D.map" "R4/16U/2D.bin" Swap16
+
+WorkPath "#src/R4/42D"
+Extern   "#Batch/msexpand" "tcmp42d.cm_"
+LoadFile "R4/42D/tcmp42d.cm"
+Extract  $920 $4840 "R4/8U/2D.bin"
+
+
+LoadFile "R4/43C/DLL43C.DLL"
+Extract  $0ED94    $2 "R4/Obj/XStart3C.bin"
+Extract  $0ED99    $2 "R4/Obj/YStart3C.bin"
+WorkPath "#Dest/R4"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart3C.bin" "Obj/YStart3C.bin" "Obj/Start3C.bin"
+Extract  $15860  $100 "R4/Pal/PC/3C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/0_1.bin" "Pal/3C/0_1.bin"
+Extract  $15960  $100 "R4/Pal/PC/3C/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/2.bin"   "Pal/3C/2.bin"
+Extract  $15A60   $40 "R4/Pal/PC/3C/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/3.bin"   "Pal/3C/3.bin"
+Extract  $15AA0   $C0 "R4/Pal/PC/3C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/4.bin"   "Pal/3C/4.bin"
+Extract  $15B60   $40 "R4/Pal/PC/3C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/3.bin"   "Pal/3C/5.bin"
+;Extract  $15DD8  $108 "R4/Obj/3C.bin" Swap16
+Extract  $15DD8  $108 "R4/Obj/3.bin" Swap16
+Extract  $16CF0  $100 "R4/Col/Ang3C.bin"
+Extract  $16DF0 $1000 "R4/Col/HM3C.bin"
+Extract  $17E00 $1000 "R4/Col/HMR3C.bin"
+Extract  $18E10  $3E8 "R4/Col/Idx3C.bin"
+Extract  $191F8  $200 "R4/FGPC/3C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/3C.bin" "FG/3C.bin"
+Extract  $193F8  $200 "R4/BGPC/3C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/3C.bin" "BG/3C.bin"
+
+Copy     "R4/43C/Map43C.bin" "R4/256/3C.bin" Swap16
+
+Copy     "R4/43C/T43C.map" "R4/16U/3C.bin" Swap16
+
+WorkPath "#src/R4/43C"
+Extern   "#Batch/msexpand" "tcmp43c.cm_"
+LoadFile "R4/43C/tcmp43c.cm"
+Extract  $89C $4420 "R4/8U/3C.bin"
+
+
+LoadFile "R4/43D/DLL43D.DLL"
+Extract  $11A94    $2 "R4/Obj/XStart3D.bin"
+Extract  $11ACF    $2 "R4/Obj/YStart3D.bin"
+WorkPath "#Dest/R4"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart3D.bin" "Obj/YStart3D.bin" "Obj/Start3D.bin"
+Extract  $17190  $100 "R4/Pal/PC/3D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/0_1.bin" "Pal/3D/0_1.bin"
+Extract  $17290  $100 "R4/Pal/PC/3D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/2.bin"   "Pal/3D/2.bin"
+Extract  $17390   $40 "R4/Pal/PC/3D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/3.bin"   "Pal/3D/3.bin"
+Extract  $173D0   $C0 "R4/Pal/PC/3D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/4.bin"   "Pal/3D/4.bin"
+Extract  $17490   $40 "R4/Pal/PC/3D/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/3.bin"   "Pal/3D/5.bin"
+;Extract  $15928  $108 "R4/Obj/3D.bin" Swap16
+Extract  $17618  $100 "R4/Col/Ang3D.bin"
+Extract  $17718 $1000 "R4/Col/HM3D.bin"
+Extract  $18728 $1000 "R4/Col/HMR3D.bin"
+Extract  $19738  $3E8 "R4/Col/Idx3D.bin"
+Extract  $19B20  $200 "R4/FGPC/3D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/3D.bin" "FG/3D.bin"
+Extract  $19D20  $200 "R4/BGPC/3D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/3D.bin" "BG/3D.bin"
+
+Copy     "R4/43D/Map43D.bin" "R4/256/3D.bin" Swap16
+
+Copy     "R4/43D/T43D.map" "R4/16U/3D.bin" Swap16
+
+WorkPath "#src/R4/43D"
+Extern   "#Batch/msexpand" "tcmp43d.cm_"
+LoadFile "R4/43D/tcmp43d.cm"
+Extract  $8FC $4720 "R4/8U/3D.bin"
+
+
+WorkPath "#dest/R4"
+Extern   "#Batch/derecmp" "nc" "8U" "8"
+Extern   "#Batch/derecmp" "nc" "16U" "16"
+
+
+LoadFile "R5/51A/DLL51A.DLL"
+Extract  $18B30    $2 "R5/Obj/XStart1A.bin"
+Extract  $18B32    $2 "R5/Obj/YStart1A.bin"
+WorkPath "#Dest/R5"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1A.bin" "Obj/YStart1A.bin" "Obj/Start1A.bin"
+Extract  $17E00  $100 "R5/Pal/PC/1A/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/0_1.bin" "Pal/1A/0_1.bin"
+Extract  $17F00  $100 "R5/Pal/PC/1A/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/2.bin"   "Pal/1A/2.bin"
+Extract  $18000   $40 "R5/Pal/PC/1A/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/3.bin"   "Pal/1A/3.bin"
+Extract  $18040   $C0 "R5/Pal/PC/1A/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/4.bin"   "Pal/1A/4.bin"
+Extract  $18100   $C0 "R5/Pal/PC/1A/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/5.bin"   "Pal/1A/5.bin"
+;Extract  $18B68  $E48 "R5/Obj/1A.bin" Swap16
+Extract  $18B68  $E48 "R5/Obj/1.bin" Swap16
+Extract  $199B8  $100 "R5/Col/Ang1A.bin"
+Extract  $19AB8 $1000 "R5/Col/HM1A.bin"
+Extract  $1AAC8 $1000 "R5/Col/HMR1A.bin"
+Extract  $1BAD8  $3E8 "R5/Col/Idx1A.bin"
+Extract  $1BEC0   $A8 "R5/BG/1A_Swap1.bin"
+Extract  $1BF68     8 "R5/BG/1A_Swap2.bin"
+Extract  $1BF80  $200 "R5/FGPC/1A.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1A.bin" "FG/1A.bin"
+Extract  $1C180  $200 "R5/BGPC/1A.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1A.bin" "BG/1A.bin"
+
+Copy     "R5/51A/Map51A.bin" "R5/256/1A.bin" Swap16
+
+Copy     "R5/51A/T51A.map" "R5/16U/1A.bin" Swap16
+
+WorkPath "#src/R5/51A"
+Extern   "#Batch/msexpand" "tcmp51a.cm_"
+LoadFile "R5/51A/tcmp51a.cm"
+Extract  $B50 $59C0 "R5/8U/1A.bin"
+
+
+LoadFile "R5/51B/DLL51B.DLL"
+Extract  $1A414    $2 "R5/Obj/XStart1B.bin"
+Extract  $1A416    $2 "R5/Obj/YStart1B.bin"
+WorkPath "#Dest/R5"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1B.bin" "Obj/YStart1B.bin" "Obj/Start1B.bin"
+Extract  $19F78  $100 "R5/Pal/PC/1B/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/0_1.bin" "Pal/1B/0_1.bin"
+Extract  $1A078  $100 "R5/Pal/PC/1B/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/2.bin"   "Pal/1B/2.bin"
+Extract  $1A178   $40 "R5/Pal/PC/1B/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/3.bin"   "Pal/1B/3.bin"
+Extract  $1A1B8   $C0 "R5/Pal/PC/1B/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/4.bin"   "Pal/1B/4.bin"
+Extract  $1A278   $C0 "R5/Pal/PC/1B/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/5.bin"   "Pal/1B/5.bin"
+;Extract  $17D58  $E48 "R5/Obj/1B.bin" Swap16
+Extract  $1A440  $100 "R5/Col/Ang1B.bin"
+Extract  $1A540 $1000 "R5/Col/HM1B.bin"
+Extract  $1B550 $1000 "R5/Col/HMR1B.bin"
+Extract  $1C560  $3E8 "R5/Col/Idx1B.bin"
+Extract  $1C948     8 "R5/BG/1B_Swap1.bin"
+Extract  $1C950     8 "R5/BG/1B_Swap2.bin"
+Extract  $1C968  $200 "R5/FGPC/1B.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1B.bin" "FG/1B.bin"
+Extract  $1CB68  $200 "R5/BGPC/1B.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1B.bin" "BG/1B.bin"
+
+Copy     "R5/51B/Map51B.bin" "R5/256/1B.bin" Swap16
+
+Copy     "R5/51B/T51B.map" "R5/16U/1B.bin" Swap16
+
+WorkPath "#src/R5/51B"
+Extern   "#Batch/msexpand" "tcmp51b.cm_"
+LoadFile "R5/51B/tcmp51b.cm"
+Extract  $B04 $5760 "R5/8U/1B.bin"
+
+
+LoadFile "R5/51C/DLL51C.DLL"
+Extract  $1A25C    $2 "R5/Obj/XStart1C.bin"
+Extract  $1A25E    $2 "R5/Obj/YStart1C.bin"
+WorkPath "#Dest/R5"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1C.bin" "Obj/YStart1C.bin" "Obj/Start1C.bin"
+Extract  $19D78  $100 "R5/Pal/PC/1C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/0_1.bin" "Pal/1C/0_1.bin"
+Extract  $19E78  $100 "R5/Pal/PC/1C/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/2.bin"   "Pal/1C/2.bin"
+Extract  $19F78   $40 "R5/Pal/PC/1C/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/3.bin"   "Pal/1C/3.bin"
+Extract  $19FB8   $C0 "R5/Pal/PC/1C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/4.bin"   "Pal/1C/4.bin"
+Extract  $1A078   $C0 "R5/Pal/PC/1C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/5.bin"   "Pal/1C/5.bin"
+Extract  $1A138   $40 "R5/Pal/PC/1C/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/6.bin"   "Pal/1C/6.bin"
+;Extract  $17C48  $E48 "R5/Obj/1C.bin" Swap16
+Extract  $1A288  $100 "R5/Col/Ang1C.bin"
+Extract  $1A388 $1000 "R5/Col/HM1C.bin"
+Extract  $1B398 $1000 "R5/Col/HMR1C.bin"
+Extract  $1C3A8  $3E8 "R5/Col/Idx1C.bin"
+Extract  $1C790     8 "R5/BG/1C_Swap1.bin"
+Extract  $1C798     8 "R5/BG/1C_Swap2.bin"
+Extract  $1C7B0  $200 "R5/FGPC/1C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1C.bin" "FG/1C.bin"
+Extract  $1C9B0  $200 "R5/BGPC/1C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1C.bin" "BG/1C.bin"
+
+Copy     "R5/51C/Map51C.bin" "R5/256/1C.bin" Swap16
+
+Copy     "R5/51C/T51C.map" "R5/16U/1C.bin" Swap16
+
+WorkPath "#src/R5/51C"
+Extern   "#Batch/msexpand" "tcmp51c.cm_"
+LoadFile "R5/51C/tcmp51c.cm"
+Extract  $AE4 $5660 "R5/8U/1C.bin"
+
+
+LoadFile "R5/51D/DLL51D.DLL"
+Extract  $1A65C    $2 "R5/Obj/XStart1D.bin"
+Extract  $1A65E    $2 "R5/Obj/YStart1D.bin"
+WorkPath "#Dest/R5"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1D.bin" "Obj/YStart1D.bin" "Obj/Start1D.bin"
+Extract  $1A178  $100 "R5/Pal/PC/1D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/0_1.bin" "Pal/1D/0_1.bin"
+Extract  $1A278  $100 "R5/Pal/PC/1D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/2.bin"   "Pal/1D/2.bin"
+Extract  $1A378   $40 "R5/Pal/PC/1D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/3.bin"   "Pal/1D/3.bin"
+Extract  $1A3B8   $C0 "R5/Pal/PC/1D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/4.bin"   "Pal/1D/4.bin"
+Extract  $1A478   $C0 "R5/Pal/PC/1D/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/5.bin"   "Pal/1D/5.bin"
+Extract  $1A538   $40 "R5/Pal/PC/1D/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/6.bin"   "Pal/1D/6.bin"
+;Extract  $18048  $E48 "R5/Obj/1D.bin" Swap16
+Extract  $1A688  $100 "R5/Col/Ang1D.bin"
+Extract  $1A788 $1000 "R5/Col/HM1D.bin"
+Extract  $1B798 $1000 "R5/Col/HMR1D.bin"
+Extract  $1C7A8  $3E8 "R5/Col/Idx1D.bin"
+Extract  $1CB90     8 "R5/BG/1D_Swap1.bin"
+Extract  $1CB98     8 "R5/BG/1D_Swap2.bin"
+Extract  $1CBB0  $200 "R5/FGPC/1D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1D.bin" "FG/1D.bin"
+Extract  $1CDB0  $200 "R5/BGPC/1D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1D.bin" "BG/1D.bin"
+
+Copy     "R5/51D/Map51D.bin" "R5/256/1D.bin" Swap16
+
+Copy     "R5/51D/T51D.map" "R5/16U/1D.bin" Swap16
+
+WorkPath "#src/R5/51D"
+Extern   "#Batch/msexpand" "tcmp51d.cm_"
+LoadFile "R5/51D/tcmp51d.cm"
+Extract  $AEC $56A0 "R5/8U/1D.bin"
+
+
+LoadFile "R5/52A/DLL52A.DLL"
+Extract  $1A214    $2 "R5/Obj/XStart2A.bin"
+Extract  $1A216    $2 "R5/Obj/YStart2A.bin"
+WorkPath "#Dest/R5"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2A.bin" "Obj/YStart2A.bin" "Obj/Start2A.bin"
+Extract  $17E00  $100 "R5/Pal/PC/2A/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/0_1.bin" "Pal/2A/0_1.bin"
+Extract  $17F00  $100 "R5/Pal/PC/2A/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/2.bin"   "Pal/2A/2.bin"
+Extract  $18000   $40 "R5/Pal/PC/2A/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/3.bin"   "Pal/2A/3.bin"
+Extract  $18040   $C0 "R5/Pal/PC/2A/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/4.bin"   "Pal/2A/4.bin"
+Extract  $18100   $C0 "R5/Pal/PC/2A/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/5.bin"   "Pal/2A/5.bin"
+;Extract  $1A250  $C38 "R5/Obj/2A.bin" Swap16
+Extract  $1A250  $C38 "R5/Obj/2.bin" Swap16
+Extract  $1AE90  $100 "R5/Col/Ang2A.bin"
+Extract  $1AF90 $1000 "R5/Col/HM2A.bin"
+Extract  $1BFA0 $1000 "R5/Col/HMR2A.bin"
+Extract  $1CFB0  $3E8 "R5/Col/Idx2A.bin"
+Extract  $1D398   $A8 "R5/BG/2A_Swap1.bin"
+Extract  $1D440     8 "R5/BG/2A_Swap2.bin"
+Extract  $1D458  $200 "R5/FGPC/2A.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2A.bin" "FG/2A.bin"
+Extract  $1D658  $200 "R5/BGPC/2A.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2A.bin" "BG/2A.bin"
+
+Copy     "R5/52A/Map52A.bin" "R5/256/2A.bin" Swap16
+
+Copy     "R5/52A/T52A.map" "R5/16U/2A.bin" Swap16
+
+WorkPath "#src/R5/52A"
+Extern   "#Batch/msexpand" "tcmp52a.cm_"
+LoadFile "R5/52A/tcmp52a.cm"
+Extract  $B50 $59C0 "R5/8U/2A.bin"
+
+
+LoadFile "R5/52B/DLL52B.DLL"
+Extract  $199DC    $2 "R5/Obj/XStart2B.bin"
+Extract  $199DE    $2 "R5/Obj/YStart2B.bin"
+WorkPath "#Dest/R5"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2B.bin" "Obj/YStart2B.bin" "Obj/Start2B.bin"
+Extract  $19118  $100 "R5/Pal/PC/2B/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/0_1.bin" "Pal/2B/0_1.bin"
+Extract  $19218  $100 "R5/Pal/PC/2B/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/2.bin"   "Pal/2B/2.bin"
+Extract  $19318   $40 "R5/Pal/PC/2B/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/3.bin"   "Pal/2B/3.bin"
+Extract  $19358   $C0 "R5/Pal/PC/2B/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/4.bin"   "Pal/2B/4.bin"
+Extract  $19418   $C0 "R5/Pal/PC/2B/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/5.bin"   "Pal/2B/5.bin"
+;Extract  $19A18  $C38 "R5/Obj/2B.bin" Swap16
+Extract  $1A658  $100 "R5/Col/Ang2B.bin"
+Extract  $1A758 $1000 "R5/Col/HM2B.bin"
+Extract  $1B768 $1000 "R5/Col/HMR2B.bin"
+Extract  $1C778  $3E8 "R5/Col/Idx2B.bin"
+Extract  $1CB60     8 "R5/BG/2B_Swap1.bin"
+Extract  $1CB68     8 "R5/BG/2B_Swap2.bin"
+Extract  $1CB80  $200 "R5/FGPC/2B.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2B.bin" "FG/2B.bin"
+Extract  $1CD80  $200 "R5/BGPC/2B.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2B.bin" "BG/2B.bin"
+
+Copy     "R5/52B/Map52B.bin" "R5/256/2B.bin" Swap16
+
+Copy     "R5/52B/T52B.map" "R5/16U/2B.bin" Swap16
+
+WorkPath "#src/R5/52B"
+Extern   "#Batch/msexpand" "tcmp52b.cm_"
+LoadFile "R5/52B/tcmp52b.cm"
+Extract  $B04 $5760 "R5/8U/2B.bin"
+
+
+LoadFile "R5/52C/DLL52C.DLL"
+Extract  $19824    $2 "R5/Obj/XStart2C.bin"
+Extract  $19826    $2 "R5/Obj/YStart2C.bin"
+WorkPath "#Dest/R5"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2C.bin" "Obj/YStart2C.bin" "Obj/Start2C.bin"
+Extract  $18F18  $100 "R5/Pal/PC/2C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/0_1.bin" "Pal/2C/0_1.bin"
+Extract  $19018  $100 "R5/Pal/PC/2C/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/2.bin"   "Pal/2C/2.bin"
+Extract  $19118   $40 "R5/Pal/PC/2C/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/3.bin"   "Pal/2C/3.bin"
+Extract  $19158   $C0 "R5/Pal/PC/2C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/4.bin"   "Pal/2C/4.bin"
+Extract  $19218   $C0 "R5/Pal/PC/2C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/5.bin"   "Pal/2C/5.bin"
+Extract  $192D8   $40 "R5/Pal/PC/2C/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/6.bin"   "Pal/2C/6.bin"
+;Extract  $19860  $C38 "R5/Obj/2C.bin" Swap16
+Extract  $1A4A0  $100 "R5/Col/Ang2C.bin"
+Extract  $1A5A0 $1000 "R5/Col/HM2C.bin"
+Extract  $1B5B0 $1000 "R5/Col/HMR2C.bin"
+Extract  $1C5C0  $3E8 "R5/Col/Idx2C.bin"
+Extract  $1C9A8     8 "R5/BG/2C_Swap1.bin"
+Extract  $1C9B0     8 "R5/BG/2C_Swap2.bin"
+Extract  $1C9C8  $200 "R5/FGPC/2C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2C.bin" "FG/2C.bin"
+Extract  $1CBC8  $200 "R5/BGPC/2C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2C.bin" "BG/2C.bin"
+
+Copy     "R5/52C/Map52C.bin" "R5/256/2C.bin" Swap16
+
+Copy     "R5/52C/T52C.map" "R5/16U/2C.bin" Swap16
+
+WorkPath "#src/R5/52C"
+Extern   "#Batch/msexpand" "tcmp52c.cm_"
+LoadFile "R5/52C/tcmp52c.cm"
+Extract  $AE4 $5660 "R5/8U/2C.bin"
+
+
+LoadFile "R5/52D/DLL52D.DLL"
+Extract  $19C24    $2 "R5/Obj/XStart2D.bin"
+Extract  $19C26    $2 "R5/Obj/YStart2D.bin"
+WorkPath "#Dest/R5"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2D.bin" "Obj/YStart2D.bin" "Obj/Start2D.bin"
+Extract  $19318  $100 "R5/Pal/PC/2D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/0_1.bin" "Pal/2D/0_1.bin"
+Extract  $19418  $100 "R5/Pal/PC/2D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/2.bin"   "Pal/2D/2.bin"
+Extract  $19518   $40 "R5/Pal/PC/2D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/3.bin"   "Pal/2D/3.bin"
+Extract  $19558   $C0 "R5/Pal/PC/2D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/4.bin"   "Pal/2D/4.bin"
+Extract  $19618   $C0 "R5/Pal/PC/2D/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/5.bin"   "Pal/2D/5.bin"
+Extract  $196D8   $40 "R5/Pal/PC/2D/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/6.bin"   "Pal/2D/6.bin"
+;Extract  $19C60  $C38 "R5/Obj/2D.bin" Swap16
+Extract  $1A8A0  $100 "R5/Col/Ang2D.bin"
+Extract  $1A9A0 $1000 "R5/Col/HM2D.bin"
+Extract  $1B9B0 $1000 "R5/Col/HMR2D.bin"
+Extract  $1C9C0  $3E8 "R5/Col/Idx2D.bin"
+Extract  $1CDA8     8 "R5/BG/2D_Swap1.bin"
+Extract  $1CDB0     8 "R5/BG/2D_Swap2.bin"
+Extract  $1CDC8  $200 "R5/FGPC/2D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2D.bin" "FG/2D.bin"
+Extract  $1CFC8  $200 "R5/BGPC/2D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2D.bin" "BG/2D.bin"
+
+Copy     "R5/52D/Map52D.bin" "R5/256/2D.bin" Swap16
+
+Copy     "R5/52D/T52D.map" "R5/16U/2D.bin" Swap16
+
+WorkPath "#src/R5/52D"
+Extern   "#Batch/msexpand" "tcmp52d.cm_"
+LoadFile "R5/52D/tcmp52d.cm"
+Extract  $AEC $56A0 "R5/8U/2D.bin"
+
+
+LoadFile "R5/53C/DLL53C.DLL"
+Extract  $16470    $2 "R5/Obj/XStart3C.bin"
+Extract  $16472    $2 "R5/Obj/YStart3C.bin"
+WorkPath "#Dest/R5"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart3C.bin" "Obj/YStart3C.bin" "Obj/Start3C.bin"
+Extract  $15F68  $100 "R5/Pal/PC/3C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/0_1.bin" "Pal/3C/0_1.bin"
+Extract  $16068  $100 "R5/Pal/PC/3C/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/2.bin"   "Pal/3C/2.bin"
+Extract  $16168   $40 "R5/Pal/PC/3C/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/3.bin"   "Pal/3C/3.bin"
+Extract  $161A8   $C0 "R5/Pal/PC/3C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/4.bin"   "Pal/3C/4.bin"
+Extract  $16268   $C0 "R5/Pal/PC/3C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/5.bin"   "Pal/3C/5.bin"
+Extract  $16328   $40 "R5/Pal/PC/3C/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/6.bin"   "Pal/3C/6.bin"
+;Extract  $164A8  $188 "R5/Obj/3C.bin" Swap16
+Extract  $164A8  $188 "R5/Obj/3.bin" Swap16
+Extract  $16638  $100 "R5/Col/Ang3C.bin"
+Extract  $16738 $1000 "R5/Col/HM3C.bin"
+Extract  $17748 $1000 "R5/Col/HMR3C.bin"
+Extract  $18758  $3E8 "R5/Col/Idx3C.bin"
+Extract  $18B40  $200 "R5/FGPC/3C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/3C.bin" "FG/3C.bin"
+Extract  $18D40  $200 "R5/BGPC/3C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/3C.bin" "BG/3C.bin"
+
+Copy     "R5/53C/Map53C.bin" "R5/256/3C.bin" Swap16
+
+Copy     "R5/53C/T53C.map" "R5/16U/3C.bin" Swap16
+
+WorkPath "#src/R5/53C"
+Extern   "#Batch/msexpand" "tcmp53c.cm_"
+LoadFile "R5/53C/tcmp53c.cm"
+Extract  $AE4 $5660 "R5/8U/3C.bin"
+
+
+LoadFile "R5/53D/DLL53D.DLL"
+Extract  $16F00    $2 "R5/Obj/XStart3D.bin"
+Extract  $16F02    $2 "R5/Obj/YStart3D.bin"
+WorkPath "#Dest/R5"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart3D.bin" "Obj/YStart3D.bin" "Obj/Start3D.bin"
+Extract  $169F8  $100 "R5/Pal/PC/3D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/0_1.bin" "Pal/3D/0_1.bin"
+Extract  $16AF8  $100 "R5/Pal/PC/3D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/2.bin"   "Pal/3D/2.bin"
+Extract  $16BF8   $40 "R5/Pal/PC/3D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/3.bin"   "Pal/3D/3.bin"
+Extract  $16C38   $C0 "R5/Pal/PC/3D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/4.bin"   "Pal/3D/4.bin"
+Extract  $16CF8   $C0 "R5/Pal/PC/3D/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/5.bin"   "Pal/3D/5.bin"
+Extract  $16DB8   $40 "R5/Pal/PC/3D/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/6.bin"   "Pal/3D/6.bin"
+;Extract  $16378  $188 "R5/Obj/3D.bin" Swap16
+Extract  $16F28  $100 "R5/Col/Ang3D.bin"
+Extract  $17028 $1000 "R5/Col/HM3D.bin"
+Extract  $18038 $1000 "R5/Col/HMR3D.bin"
+Extract  $19048  $3E8 "R5/Col/Idx3D.bin"
+Extract  $19430  $200 "R5/FGPC/3D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/3D.bin" "FG/3D.bin"
+Extract  $19630  $200 "R5/BGPC/3D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/3D.bin" "BG/3D.bin"
+
+Copy     "R5/53D/Map53D.bin" "R5/256/3D.bin" Swap16
+
+Copy     "R5/53D/T53D.map" "R5/16U/3D.bin" Swap16
+
+WorkPath "#src/R5/53D"
+Extern   "#Batch/msexpand" "tcmp53d.cm_"
+LoadFile "R5/53D/tcmp53d.cm"
+Extract  $AEC $56A0 "R5/8U/3D.bin"
+
+
+WorkPath "#dest/R5"
+Extern   "#Batch/derecmp" "nc" "8U" "8"
+Extern   "#Batch/derecmp" "nc" "16U" "16"
+
+
+LoadFile "R6/61A/DLL61A.DLL"
+Extract  $195E8    $2 "R6/Obj/XStart1A.bin"
+Extract  $195EA    $2 "R6/Obj/YStart1A.bin"
+WorkPath "#Dest/R6"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1A.bin" "Obj/YStart1A.bin" "Obj/Start1A.bin"
+Extract  $18C58  $100 "R6/Pal/PC/1A/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/0_1.bin" "Pal/1A/0_1.bin"
+Extract  $18D58  $100 "R6/Pal/PC/1A/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/2.bin"   "Pal/1A/2.bin"
+Extract  $18E58   $40 "R6/Pal/PC/1A/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/3.bin"   "Pal/1A/3.bin"
+Extract  $18E98   $C0 "R6/Pal/PC/1A/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/4.bin"   "Pal/1A/4.bin"
+Extract  $18F58   $C0 "R6/Pal/PC/1A/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/5.bin"   "Pal/1A/5.bin"
+;Extract  $19CA0  $E70 "R6/Obj/1A.bin" Swap16
+Extract  $19CA0  $E70 "R6/Obj/1.bin" Swap16
+Extract  $1AB18  $100 "R6/Col/Ang1A.bin"
+Extract  $1AC18 $1000 "R6/Col/HM1A.bin"
+Extract  $1BC28 $1000 "R6/Col/HMR1A.bin"
+Extract  $1CC38  $3E8 "R6/Col/Idx1A.bin"
+Extract  $1D020  $200 "R6/FGPC/1A.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1A.bin" "FG/1A.bin"
+Extract  $1D220  $200 "R6/BGPC/1A.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1A.bin" "BG/1A.bin"
+
+Copy     "R6/61A/Map61A.bin" "R6/256/1A.bin" Swap16
+
+Copy     "R6/61A/T61A.map" "R6/16U/1A.bin" Swap16
+
+WorkPath "#src/R6/61A"
+Extern   "#Batch/msexpand" "tcmp61a.cm_"
+LoadFile "R6/61A/tcmp61a.cm"
+Extract  $8D0 $45C0 "R6/8U/1A.bin"
+
+
+LoadFile "R6/61B/DLL61B.DLL"
+Extract  $19AF0    $2 "R6/Obj/XStart1B.bin"
+Extract  $19AF2    $2 "R6/Obj/YStart1B.bin"
+WorkPath "#Dest/R6"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1B.bin" "Obj/YStart1B.bin" "Obj/Start1B.bin"
+Extract  $19658  $100 "R6/Pal/PC/1B/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/0_1.bin" "Pal/1B/0_1.bin"
+Extract  $19758  $100 "R6/Pal/PC/1B/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/2.bin"   "Pal/1B/2.bin"
+Extract  $19858   $40 "R6/Pal/PC/1B/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/3.bin"   "Pal/1B/3.bin"
+Extract  $19898   $C0 "R6/Pal/PC/1B/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/4.bin"   "Pal/1B/4.bin"
+Extract  $19958   $C0 "R6/Pal/PC/1B/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/5.bin"   "Pal/1B/5.bin"
+;Extract  $1CA68  $E70 "R6/Obj/1B.bin" Swap16
+Extract  $1A150  $100 "R6/Col/Ang1B.bin"
+Extract  $1A250 $1000 "R6/Col/HM1B.bin"
+Extract  $1B260 $1000 "R6/Col/HMR1B.bin"
+Extract  $1C270  $3E8 "R6/Col/Idx1B.bin"
+Extract  $1C658  $200 "R6/FGPC/1B.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1B.bin" "FG/1B.bin"
+Extract  $1C858  $200 "R6/BGPC/1B.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1B.bin" "BG/1B.bin"
+
+Copy     "R6/61B/Map61B.bin" "R6/256/1B.bin" Swap16
+
+Copy     "R6/61B/T61B.map" "R6/16U/1B.bin" Swap16
+
+WorkPath "#src/R6/61B"
+Extern   "#Batch/msexpand" "tcmp61b.cm_"
+LoadFile "R6/61B/tcmp61b.cm"
+Extract  $960 $4A40 "R6/8U/1B.bin"
+
+
+LoadFile "R6/61C/DLL61C.DLL"
+Extract  $1AA90    $2 "R6/Obj/XStart1C.bin"
+Extract  $1AA92    $2 "R6/Obj/YStart1C.bin"
+WorkPath "#Dest/R6"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1C.bin" "Obj/YStart1C.bin" "Obj/Start1C.bin"
+Extract  $1A2B0  $100 "R6/Pal/PC/1C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/0_1.bin" "Pal/1C/0_1.bin"
+Extract  $1A3B0  $100 "R6/Pal/PC/1C/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/2.bin"   "Pal/1C/2.bin"
+Extract  $1A4B0   $40 "R6/Pal/PC/1C/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/3.bin"   "Pal/1C/3.bin"
+Extract  $1A4F0   $C0 "R6/Pal/PC/1C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/4.bin"   "Pal/1C/4.bin"
+Extract  $1A5B0   $C0 "R6/Pal/PC/1C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/5.bin"   "Pal/1C/5.bin"
+Extract  $1A670   $40 "R6/Pal/PC/1C/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/6.bin"   "Pal/1C/6.bin"
+Extract  $1A6B0  $140 "R6/Pal/PC/1C/BossCycl.bin"			;Unused
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/BossCycl.bin" "Pal/1C/BossCycl.bin"
+;Extract  $19298  $E70 "R6/Obj/1C.bin" Swap16
+Extract  $1AAB8  $100 "R6/Col/Ang1C.bin"
+Extract  $1ABB8 $1000 "R6/Col/HM1C.bin"
+Extract  $1BBC8 $1000 "R6/Col/HMR1C.bin"
+Extract  $1CBD8  $3E8 "R6/Col/Idx1C.bin"
+Extract  $1CFC0  $200 "R6/FGPC/1C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1C.bin" "FG/1C.bin"
+Extract  $1D1C0  $200 "R6/BGPC/1C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1C.bin" "BG/1C.bin"
+
+Copy     "R6/61C/Map61C.bin" "R6/256/1C.bin" Swap16
+
+Copy     "R6/61C/T61C.map" "R6/16U/1C.bin" Swap16
+
+WorkPath "#src/R6/61C"
+Extern   "#Batch/msexpand" "tcmp61c.cm_"
+LoadFile "R6/61C/tcmp61c.cm"
+Extract  $910 $47C0 "R6/8U/1C.bin"
+
+
+LoadFile "R6/61D/DLL61D.DLL"
+Extract  $1AAF0    $2 "R6/Obj/XStart1D.bin"
+Extract  $1AAF2    $2 "R6/Obj/YStart1D.bin"
+WorkPath "#Dest/R6"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1D.bin" "Obj/YStart1D.bin" "Obj/Start1D.bin"
+Extract  $1A2B0  $100 "R6/Pal/PC/1D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/0_1.bin" "Pal/1D/0_1.bin"
+Extract  $1A3B0  $100 "R6/Pal/PC/1D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/2.bin"   "Pal/1D/2.bin"
+Extract  $1A4B0   $40 "R6/Pal/PC/1D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/3.bin"   "Pal/1D/3.bin"
+Extract  $1A4F0   $C0 "R6/Pal/PC/1D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/4.bin"   "Pal/1D/4.bin"
+Extract  $1A5B0   $20 "R6/Pal/PC/1D/4_Ex.bin"			;???
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/4.bin"   "Pal/1D/4.bin"
+Extract  $1A5D0   $C0 "R6/Pal/PC/1D/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/5.bin"   "Pal/1D/5.bin"
+Extract  $1A690   $40 "R6/Pal/PC/1D/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/6.bin"   "Pal/1D/6.bin"
+Extract  $1A6D0  $140 "R6/Pal/PC/1D/BossCycl.bin"		;Unused
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/BossCycl.bin" "Pal/1D/BossCycl.bin"
+;Extract  $19298  $E70 "R6/Obj/1D.bin" Swap16
+Extract  $1AB18  $100 "R6/Col/Ang1D.bin"
+Extract  $1AC18 $1000 "R6/Col/HM1D.bin"
+Extract  $1BC28 $1000 "R6/Col/HMR1D.bin"
+Extract  $1CC38  $3E8 "R6/Col/Idx1D.bin"
+Extract  $1D020  $200 "R6/FGPC/1D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1D.bin" "FG/1D.bin"
+Extract  $1D220  $200 "R6/BGPC/1D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1D.bin" "BG/1D.bin"
+
+Copy     "R6/61D/Map61D.bin" "R6/256/1D.bin" Swap16
+
+Copy     "R6/61D/T61D.map" "R6/16U/1D.bin" Swap16
+
+WorkPath "#src/R6/61D"
+Extern   "#Batch/msexpand" "tcmp61d.cm_"
+LoadFile "R6/61D/tcmp61d.cm"
+Extract  $A70 $52C0 "R6/8U/1D.bin"
+
+
+LoadFile "R6/62A/DLL62A.DLL"
+Extract  $1D8DC    $2 "R6/Obj/XStart2A.bin"
+Extract  $1D8DE    $2 "R6/Obj/YStart2A.bin"
+WorkPath "#Dest/R6"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2A.bin" "Obj/YStart2A.bin" "Obj/Start2A.bin"
+Extract  $1D270  $100 "R6/Pal/PC/2A/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/0_1.bin" "Pal/2A/0_1.bin"
+Extract  $1D370  $100 "R6/Pal/PC/2A/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/2.bin"   "Pal/2A/2.bin"
+Extract  $1D470   $40 "R6/Pal/PC/2A/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/3.bin"   "Pal/2A/3.bin"
+Extract  $1D4B0   $C0 "R6/Pal/PC/2A/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/4.bin"   "Pal/2A/4.bin"
+Extract  $1D570   $C0 "R6/Pal/PC/2A/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/5.bin"   "Pal/2A/5.bin"
+;Extract  $19C58  $B38 "R6/Obj/2A.bin" Swap16
+Extract  $19C58  $B38 "R6/Obj/2.bin" Swap16
+Extract  $1A798  $100 "R6/Col/Ang2A.bin"
+Extract  $1A898 $1000 "R6/Col/HM2A.bin"
+Extract  $1B8A8 $1000 "R6/Col/HMR2A.bin"
+Extract  $1C8B8  $3E8 "R6/Col/Idx2A.bin"
+Extract  $1CCA0  $200 "R6/FGPC/2A.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2A.bin" "FG/2A.bin"
+Extract  $1CEA0  $200 "R6/BGPC/2A.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2A.bin" "BG/2A.bin"
+
+Copy     "R6/62A/Map62A.bin" "R6/256/2A.bin" Swap16
+
+Copy     "R6/62A/T62A.map" "R6/16U/2A.bin" Swap16
+
+WorkPath "#src/R6/62A"
+Extern   "#Batch/msexpand" "tcmp62a.cm_"
+LoadFile "R6/62A/tcmp62a.cm"
+Extract  $A48 $5180 "R6/8U/2A.bin"
+
+
+LoadFile "R6/62B/DLL62B.DLL"
+Extract  $1A548    $2 "R6/Obj/XStart2B.bin"
+Extract  $1A54A    $2 "R6/Obj/YStart2B.bin"
+WorkPath "#Dest/R6"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2B.bin" "Obj/YStart2B.bin" "Obj/Start2B.bin"
+Extract  $19B48  $100 "R6/Pal/PC/2B/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/0_1.bin" "Pal/2B/0_1.bin"
+Extract  $19C48  $100 "R6/Pal/PC/2B/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/2.bin"   "Pal/2B/2.bin"
+Extract  $19D48   $40 "R6/Pal/PC/2B/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/3.bin"   "Pal/2B/3.bin"
+Extract  $19D88   $C0 "R6/Pal/PC/2B/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/4.bin"   "Pal/2B/4.bin"
+Extract  $19E48   $C0 "R6/Pal/PC/2B/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/5.bin"   "Pal/2B/5.bin"
+;Extract  $1CE88  $B38 "R6/Obj/2B.bin" Swap16
+Extract  $1A570  $100 "R6/Col/Ang2B.bin"
+Extract  $1A670 $1000 "R6/Col/HM2B.bin"
+Extract  $1B680 $1000 "R6/Col/HMR2B.bin"
+Extract  $1C690  $3E8 "R6/Col/Idx2B.bin"
+Extract  $1CA78  $200 "R6/FGPC/2B.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2B.bin" "FG/2B.bin"
+Extract  $1CC78  $200 "R6/BGPC/2B.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2B.bin" "BG/2B.bin"
+
+Copy     "R6/62B/Map62B.bin" "R6/256/2B.bin" Swap16
+
+Copy     "R6/62B/T62B.map" "R6/16U/2B.bin" Swap16
+
+WorkPath "#src/R6/62B"
+Extern   "#Batch/msexpand" "tcmp62b.cm_"
+LoadFile "R6/62B/tcmp62b.cm"
+Extract  $9EC $4EA0 "R6/8U/2B.bin"
+
+
+LoadFile "R6/62C/DLL62C.DLL"
+Extract  $1D9AC    $2 "R6/Obj/XStart2C.bin"
+Extract  $1D9AE    $2 "R6/Obj/YStart2C.bin"
+WorkPath "#Dest/R6"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2C.bin" "Obj/YStart2C.bin" "Obj/Start2C.bin"
+Extract  $19A28  $100 "R6/Pal/PC/2C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/0_1.bin" "Pal/2C/0_1.bin"
+Extract  $19B28  $100 "R6/Pal/PC/2C/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/2.bin"   "Pal/2C/2.bin"
+Extract  $19C28   $40 "R6/Pal/PC/2C/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/3.bin"   "Pal/2C/3.bin"
+Extract  $19C68   $C0 "R6/Pal/PC/2C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/4.bin"   "Pal/2C/4.bin"
+Extract  $19D28   $C0 "R6/Pal/PC/2C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/5.bin"   "Pal/2C/5.bin"
+Extract  $19DE8   $40 "R6/Pal/PC/2C/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/6.bin"   "Pal/2C/6.bin"
+Extract  $19E28  $140 "R6/Pal/PC/2C/BossCycl.bin"		;Unused
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/BossCycl.bin" "Pal/2C/BossCycl.bin"
+;Extract  $1A4C8  $B38 "R6/Obj/2C.bin" Swap16
+Extract  $1B008  $100 "R6/Col/Ang2C.bin"
+Extract  $1B108 $1000 "R6/Col/HM2C.bin"
+Extract  $1C118 $1000 "R6/Col/HMR2C.bin"
+Extract  $1D128  $3E8 "R6/Col/Idx2C.bin"
+Extract  $1D510  $200 "R6/FGPC/2C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2C.bin" "FG/2C.bin"
+Extract  $1D710  $200 "R6/BGPC/2C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2C.bin" "BG/2C.bin"
+
+Copy     "R6/62C/Map62C.bin" "R6/256/2C.bin" Swap16
+
+Copy     "R6/62C/T62C.map" "R6/16U/2C.bin" Swap16
+
+WorkPath "#src/R6/62C"
+Extern   "#Batch/msexpand" "tcmp62c.cm_"
+LoadFile "R6/62C/tcmp62c.cm"
+Extract  $A90 $53C0 "R6/8U/2C.bin"
+
+
+LoadFile "R6/62D/DLL62D.DLL"
+Extract  $1A59C    $2 "R6/Obj/XStart2D.bin"
+Extract  $1A59E    $2 "R6/Obj/YStart2D.bin"
+WorkPath "#Dest/R6"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2D.bin" "Obj/YStart2D.bin" "Obj/Start2D.bin"
+Extract  $19938  $100 "R6/Pal/PC/2D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/0_1.bin" "Pal/2D/0_1.bin"
+Extract  $19A38  $100 "R6/Pal/PC/2D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/2.bin"   "Pal/2D/2.bin"
+Extract  $19B38   $40 "R6/Pal/PC/2D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/3.bin"   "Pal/2D/3.bin"
+Extract  $19B78   $C0 "R6/Pal/PC/2D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/4.bin"   "Pal/2D/4.bin"
+Extract  $19C38   $20 "R6/Pal/PC/2D/4_Ex.bin"			;Unused?
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/4.bin"   "Pal/2D/4.bin"
+Extract  $19C58   $C0 "R6/Pal/PC/2D/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/5.bin"   "Pal/2D/5.bin"
+Extract  $19D18   $40 "R6/Pal/PC/2D/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/6.bin"   "Pal/2D/6.bin"
+Extract  $19D58  $140 "R6/Pal/PC/2D/BossCycl.bin"		;Unused
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/BossCycl.bin" "Pal/2D/BossCycl.bin"
+;Extract  $1A5F0  $B38 "R6/Obj/2D.bin" Swap16
+Extract  $1B130  $100 "R6/Col/Ang2D.bin"
+Extract  $1B230 $1000 "R6/Col/HM2D.bin"
+Extract  $1C240 $1000 "R6/Col/HMR2D.bin"
+Extract  $1D250  $3E8 "R6/Col/Idx2D.bin"
+Extract  $1D638  $200 "R6/FGPC/2D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2D.bin" "FG/2D.bin"
+Extract  $1D838  $200 "R6/BGPC/2D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2D.bin" "BG/2D.bin"
+
+Copy     "R6/62D/Map62D.bin" "R6/256/2D.bin" Swap16
+
+Copy     "R6/62D/T62D.map" "R6/16U/2D.bin" Swap16
+
+WorkPath "#src/R6/62D"
+Extern   "#Batch/msexpand" "tcmp62d.cm_"
+LoadFile "R6/62D/tcmp62d.cm"
+Extract  $B10 $57C0 "R6/8U/2D.bin"
+
+
+LoadFile "R6/63C/DLL63C.DLL"
+Extract  $1A740    $2 "R6/Obj/XStart3C.bin"
+Extract  $1A742    $2 "R6/Obj/YStart3C.bin"
+WorkPath "#Dest/R6"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart3C.bin" "Obj/YStart3C.bin" "Obj/Start3C.bin"
+Extract  $198D8  $100 "R6/Pal/PC/3C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/0_1.bin" "Pal/3C/0_1.bin"
+Extract  $199D8  $100 "R6/Pal/PC/3C/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/2.bin"   "Pal/3C/2.bin"
+Extract  $19AD8   $40 "R6/Pal/PC/3C/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/3.bin"   "Pal/3C/3.bin"
+Extract  $19B18   $C0 "R6/Pal/PC/3C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/4.bin"   "Pal/3C/4.bin"
+Extract  $19BD8   $C0 "R6/Pal/PC/3C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/5.bin"   "Pal/3C/5.bin"
+Extract  $19C98   $40 "R6/Pal/PC/3C/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/6.bin"   "Pal/3C/6.bin"
+Extract  $19CD8  $140 "R6/Pal/PC/3C/BossCycl.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/BossCycl.bin" "Pal/3C/BossCycl.bin"
+;Extract  $1D080  $248 "R6/Obj/3C.bin" Swap16
+Extract  $1D080  $248 "R6/Obj/3.bin" Swap16
+Extract  $1A768  $100 "R6/Col/Ang3C.bin"
+Extract  $1A868 $1000 "R6/Col/HM3C.bin"
+Extract  $1B878 $1000 "R6/Col/HMR3C.bin"
+Extract  $1C888  $3E8 "R6/Col/Idx3C.bin"
+Extract  $1CC70  $200 "R6/FGPC/3C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/3C.bin" "FG/3C.bin"
+Extract  $1CE70  $200 "R6/BGPC/3C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/3C.bin" "BG/3C.bin"
+
+Copy     "R6/63C/Map63C.bin" "R6/256/3C.bin" Swap16
+
+Copy     "R6/63C/T63C.map" "R6/16U/3C.bin" Swap16
+
+WorkPath "#src/R6/63C"
+Extern   "#Batch/msexpand" "tcmp63c.cm_"
+LoadFile "R6/63C/tcmp63c.cm"
+Extract  $AA8 $5480 "R6/8U/3C.bin"
+
+
+LoadFile "R6/63D/DLL63D.DLL"
+Extract  $1AEF0    $2 "R6/Obj/XStart3D.bin"
+Extract  $1AEF2    $2 "R6/Obj/YStart3D.bin"
+WorkPath "#Dest/R6"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart3D.bin" "Obj/YStart3D.bin" "Obj/Start3D.bin"
+Extract  $1A638  $100 "R6/Pal/PC/3D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/0_1.bin" "Pal/3D/0_1.bin"
+Extract  $1A738  $100 "R6/Pal/PC/3D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/2.bin"   "Pal/3D/2.bin"
+Extract  $1A838   $40 "R6/Pal/PC/3D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/3.bin"   "Pal/3D/3.bin"
+Extract  $1A878   $C0 "R6/Pal/PC/3D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/4.bin"   "Pal/3D/4.bin"
+Extract  $1A938   $20 "R6/Pal/PC/3D/4_Ex.bin"			;Unused?
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/4.bin"   "Pal/3D/4.bin"
+Extract  $1A958   $C0 "R6/Pal/PC/3D/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/5.bin"   "Pal/3D/5.bin"
+Extract  $1AA18   $40 "R6/Pal/PC/3D/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/6.bin"   "Pal/3D/6.bin"
+Extract  $1AA58  $140 "R6/Pal/PC/3D/BossCycl.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/BossCycl.bin" "Pal/3D/BossCycl.bin"
+;Extract  $19E90  $248 "R6/Obj/3D.bin" Swap16
+Extract  $1B180  $100 "R6/Col/Ang3D.bin"
+Extract  $1B280 $1000 "R6/Col/HM3D.bin"
+Extract  $1C290 $1000 "R6/Col/HMR3D.bin"
+Extract  $1D2A0  $3E8 "R6/Col/Idx3D.bin"
+Extract  $1D688  $200 "R6/FGPC/3D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/3D.bin" "FG/3D.bin"
+Extract  $1D888  $200 "R6/BGPC/3D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/3D.bin" "BG/3D.bin"
+
+Copy     "R6/63D/Map63D.bin" "R6/256/3D.bin" Swap16
+
+Copy     "R6/63D/T63D.map" "R6/16U/3D.bin" Swap16
+
+WorkPath "#src/R6/63D"
+Extern   "#Batch/msexpand" "tcmp63d.cm_"
+LoadFile "R6/63D/tcmp63d.cm"
+Extract  $A6C $52A0 "R6/8U/3D.bin"
+
+
+WorkPath "#dest/R6"
+Extern   "#Batch/derecmp" "nc" "8U" "8"
+Extern   "#Batch/derecmp" "nc" "16U" "16"
+
+
+LoadFile "R7/71A/DLL71A.DLL"
+Extract  $0F017    $2 "R7/Obj/XStart1A.bin"
+Extract  $0F01C    $2 "R7/Obj/YStart1A.bin"
+WorkPath "#Dest/R7"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1A.bin" "Obj/YStart1A.bin" "Obj/Start1A.bin"
+Extract  $17638  $100 "R7/Pal/PC/1A/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/0_1.bin" "Pal/1A/0_1.bin"
+Extract  $17738   $40 "R7/Pal/PC/1A/2_3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/2_3.bin" "Pal/1A/2_3.bin"
+Extract  $17778   $C0 "R7/Pal/PC/1A/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/4.bin"   "Pal/1A/4.bin"
+Extract  $17838   $C0 "R7/Pal/PC/1A/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/5.bin"   "Pal/1A/5.bin"
+;Extract  $17FC8 $1408 "R7/Obj/1A.bin" Swap16
+Extract  $17FC8 $1408 "R7/Obj/1.bin" Swap16
+Extract  $193D8  $100 "R7/Col/Ang1A.bin"
+Extract  $194D8 $1000 "R7/Col/HM1A.bin"
+Extract  $1A4E8 $1000 "R7/Col/HMR1A.bin"
+Extract  $1B4F8  $3E8 "R7/Col/Idx1A.bin"
+Extract  $1B948  $200 "R7/FGPC/1A.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1A.bin" "FG/1A.bin"
+Extract  $1BB48  $200 "R7/BGPC/1A.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1A.bin" "BG/1A.bin"
+
+Copy     "R7/71A/Map71A.bin" "R7/256/1A.bin" Swap16
+
+Copy     "R7/71A/T71A.map" "R7/16U/1A.bin" Swap16
+
+WorkPath "#src/R7/71A"
+Extern   "#Batch/msexpand" "tcmp71a.cm_"
+LoadFile "R7/71A/tcmp71a.cm"
+Extract  $BA0 $5C40 "R7/8U/1A.bin"
+
+
+LoadFile "R7/71B/DLL71B.DLL"
+Extract  $11517    $2 "R7/Obj/XStart1B.bin"
+Extract  $1151C    $2 "R7/Obj/YStart1B.bin"
+WorkPath "#Dest/R7"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1B.bin" "Obj/YStart1B.bin" "Obj/Start1B.bin"
+Extract  $19528   $40 "R7/Pal/PC/1B/0_3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/0_3.bin" "Pal/1B/0_3.bin"
+Extract  $19568   $C0 "R7/Pal/PC/1B/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/4.bin"   "Pal/1B/4.bin"
+Extract  $19628   $C0 "R7/Pal/PC/1B/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/5.bin"   "Pal/1B/5.bin"
+;Extract  $17A28 $1408 "R7/Obj/1B.bin" Swap16
+Extract  $197C8  $100 "R7/Col/Ang1B.bin"
+Extract  $198C8 $1000 "R7/Col/HM1B.bin"
+Extract  $1A8D8 $1000 "R7/Col/HMR1B.bin"
+Extract  $1B8E8  $3E8 "R7/Col/Idx1B.bin"
+Extract  $1BCD0  $200 "R7/FGPC/1B.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1B.bin" "FG/1B.bin"
+Extract  $1BED0  $200 "R7/BGPC/1B.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1B.bin" "BG/1B.bin"
+
+Copy     "R7/71B/Map71B.bin" "R7/256/1B.bin" Swap16
+
+Copy     "R7/71B/T71B.map" "R7/16U/1B.bin" Swap16
+
+WorkPath "#src/R7/71B"
+Extern   "#Batch/msexpand" "tcmp71b.cm_"
+LoadFile "R7/71B/tcmp71b.cm"
+Extract  $BEC $5EA0 "R7/8U/1B.bin"
+
+
+LoadFile "R7/71C/DLL71C.DLL"
+Extract  $11507    $2 "R7/Obj/XStart1C.bin"
+Extract  $1150C    $2 "R7/Obj/YStart1C.bin"
+WorkPath "#Dest/R7"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1C.bin" "Obj/YStart1C.bin" "Obj/Start1C.bin"
+Extract  $19528  $100 "R7/Pal/PC/1C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/0_1.bin" "Pal/1C/0_1.bin"
+Extract  $19628   $40 "R7/Pal/PC/1C/2_3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/2_3.bin" "Pal/1C/2_3.bin"
+Extract  $19668   $C0 "R7/Pal/PC/1C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/4.bin"   "Pal/1C/4.bin"
+Extract  $19728   $C0 "R7/Pal/PC/1C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/5.bin"   "Pal/1C/5.bin"
+Extract  $197E8   $18 "R7/Pal/PC/1C/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/6.bin"   "Pal/1C/6.bin"
+;Extract  $17A28 $1408 "R7/Obj/1C.bin" Swap16
+Extract  $19838  $100 "R7/Col/Ang1C.bin"
+Extract  $19938 $1000 "R7/Col/HM1C.bin"
+Extract  $1A948 $1000 "R7/Col/HMR1C.bin"
+Extract  $1B958  $3E8 "R7/Col/Idx1C.bin"
+Extract  $1BD40  $200 "R7/FGPC/1C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1C.bin" "FG/1C.bin"
+Extract  $1BF40  $200 "R7/BGPC/1C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1C.bin" "BG/1C.bin"
+
+Copy     "R7/71C/Map71C.bin" "R7/256/1C.bin" Swap16
+
+Copy     "R7/71C/T71C.map" "R7/16U/1C.bin" Swap16
+
+WorkPath "#src/R7/71C"
+Extern   "#Batch/msexpand" "tcmp71c.cm_"
+LoadFile "R7/71C/tcmp71c.cm"
+Extract  $BE8 $5E80 "R7/8U/1C.bin"
+
+
+LoadFile "R7/71D/DLL71D.DLL"
+Extract  $11C67    $2 "R7/Obj/XStart1D.bin"
+Extract  $11C6C    $2 "R7/Obj/YStart1D.bin"
+WorkPath "#Dest/R7"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1D.bin" "Obj/YStart1D.bin" "Obj/Start1D.bin"
+Extract  $19D28  $100 "R7/Pal/PC/1D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/0_1.bin" "Pal/1D/0_1.bin"
+Extract  $19E28  $100 "R7/Pal/PC/1D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/2.bin"   "Pal/1D/2.bin"
+Extract  $19F28   $40 "R7/Pal/PC/1D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/3.bin"   "Pal/1D/3.bin"
+Extract  $19F68   $C0 "R7/Pal/PC/1D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/4.bin"   "Pal/1D/4.bin"
+Extract  $1A028   $18 "R7/Pal/PC/1D/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/6.bin"   "Pal/1D/6.bin"
+;Extract  $18228 $1408 "R7/Obj/1D.bin" Swap16
+Extract  $1A128  $100 "R7/Col/Ang1D.bin"
+Extract  $1A228 $1000 "R7/Col/HM1D.bin"
+Extract  $1B238 $1000 "R7/Col/HMR1D.bin"
+Extract  $1C248  $3E8 "R7/Col/Idx1D.bin"
+Extract  $1C698  $200 "R7/FGPC/1D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1D.bin" "FG/1D.bin"
+Extract  $1C898  $200 "R7/BGPC/1D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1D.bin" "BG/1D.bin"
+
+Copy     "R7/71D/Map71D.bin" "R7/256/1D.bin" Swap16
+
+Copy     "R7/71D/T71D.map" "R7/16U/1D.bin" Swap16
+
+WorkPath "#src/R7/71D"
+Extern   "#Batch/msexpand" "tcmp71d.cm_"
+LoadFile "R7/71D/tcmp71d.cm"
+Extract  $BF0 $5EC0 "R7/8U/1D.bin"
+
+
+LoadFile "R7/72A/DLL72A.DLL"
+Extract  $11727    $2 "R7/Obj/XStart2A.bin"
+Extract  $1172C    $2 "R7/Obj/YStart2A.bin"
+WorkPath "#Dest/R7"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2A.bin" "Obj/YStart2A.bin" "Obj/Start2A.bin"
+Extract  $17638  $100 "R7/Pal/PC/2A/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/0_1.bin" "Pal/2A/0_1.bin"
+Extract  $17738   $40 "R7/Pal/PC/2A/2_3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/2_3.bin" "Pal/2A/2_3.bin"
+Extract  $17778   $C0 "R7/Pal/PC/2A/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/4.bin"   "Pal/2A/4.bin"
+Extract  $17838   $C0 "R7/Pal/PC/2A/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/5.bin"   "Pal/2A/5.bin"
+;Extract  $186A0 $19B0 "R7/Obj/2A.bin" Swap16
+Extract  $186A0 $19B0 "R7/Obj/2.bin" Swap16
+Extract  $1A070  $100 "R7/Col/Ang2A.bin"
+Extract  $1A170 $1000 "R7/Col/HM2A.bin"
+Extract  $1B180 $1000 "R7/Col/HMR2A.bin"
+Extract  $1C190  $3E8 "R7/Col/Idx2A.bin"
+Extract  $1C5E0  $200 "R7/FGPC/2A.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2A.bin" "FG/2A.bin"
+Extract  $1C7E0  $200 "R7/BGPC/2A.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2A.bin" "BG/2A.bin"
+
+Copy     "R7/72A/Map72A.bin" "R7/256/2A.bin" Swap16
+
+Copy     "R7/72A/T72A.map" "R7/16U/2A.bin" Swap16
+
+WorkPath "#src/R7/72A"
+Extern   "#Batch/msexpand" "tcmp72a.cm_"
+LoadFile "R7/72A/tcmp72a.cm"
+Extract  $BA0 $5C40 "R7/8U/2A.bin"
+
+
+LoadFile "R7/72B/DLL72B.DLL"
+Extract  $11517    $2 "R7/Obj/XStart2B.bin"
+Extract  $1151C    $2 "R7/Obj/YStart2B.bin"
+WorkPath "#Dest/R7"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2B.bin" "Obj/YStart2B.bin" "Obj/Start2B.bin"
+Extract  $19AD0   $40 "R7/Pal/PC/2B/0_3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/0_3.bin" "Pal/2B/0_3.bin"
+Extract  $19B10   $C0 "R7/Pal/PC/2B/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/4.bin"   "Pal/2B/4.bin"
+Extract  $19BD0   $C0 "R7/Pal/PC/2B/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/5.bin"   "Pal/2B/5.bin"
+;Extract  $18118 $19B0 "R7/Obj/2B.bin" Swap16
+Extract  $19D70  $100 "R7/Col/Ang2B.bin"
+Extract  $19E70 $1000 "R7/Col/HM2B.bin"
+Extract  $1AE80 $1000 "R7/Col/HMR2B.bin"
+Extract  $1BE90  $3E8 "R7/Col/Idx2B.bin"
+Extract  $1C278  $200 "R7/FGPC/2B.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2B.bin" "FG/2B.bin"
+Extract  $1C478  $200 "R7/BGPC/2B.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2B.bin" "BG/2B.bin"
+
+Copy     "R7/72B/Map72B.bin" "R7/256/2B.bin" Swap16
+
+Copy     "R7/72B/T72B.map" "R7/16U/2B.bin" Swap16
+
+WorkPath "#src/R7/72B"
+Extern   "#Batch/msexpand" "tcmp72b.cm_"
+LoadFile "R7/72B/tcmp72b.cm"
+Extract  $BEC $5EA0 "R7/8U/2B.bin"
+
+
+LoadFile "R7/72C/DLL72C.DLL"
+Extract  $11507    $2 "R7/Obj/XStart2C.bin"
+Extract  $1150C    $2 "R7/Obj/YStart2C.bin"
+WorkPath "#Dest/R7"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2C.bin" "Obj/YStart2C.bin" "Obj/Start2C.bin"
+Extract  $19AD0  $100 "R7/Pal/PC/2C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/0_1.bin" "Pal/2C/0_1.bin"
+Extract  $19BD0   $40 "R7/Pal/PC/2C/2_3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/2_3.bin" "Pal/2C/2_3.bin"
+Extract  $19C10   $C0 "R7/Pal/PC/2C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/4.bin"   "Pal/2C/4.bin"
+Extract  $19CD0   $C0 "R7/Pal/PC/2C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/5.bin"   "Pal/2C/5.bin"
+Extract  $19D90   $18 "R7/Pal/PC/2C/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/6.bin"   "Pal/2C/6.bin"
+;Extract  $18118 $19B0 "R7/Obj/2C.bin" Swap16
+Extract  $19E90  $100 "R7/Col/Ang2C.bin"
+Extract  $19F90 $1000 "R7/Col/HM2C.bin"
+Extract  $1AFA0 $1000 "R7/Col/HMR2C.bin"
+Extract  $1BFB0  $3E8 "R7/Col/Idx2C.bin"
+Extract  $1C398  $200 "R7/FGPC/2C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2C.bin" "FG/2C.bin"
+Extract  $1C598  $200 "R7/BGPC/2C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2C.bin" "BG/2C.bin"
+
+Copy     "R7/72C/Map72C.bin" "R7/256/2C.bin" Swap16
+
+Copy     "R7/72C/T72C.map" "R7/16U/2C.bin" Swap16
+
+WorkPath "#src/R7/72C"
+Extern   "#Batch/msexpand" "tcmp72c.cm_"
+LoadFile "R7/72C/tcmp72c.cm"
+Extract  $BE8 $5E80 "R7/8U/2C.bin"
+
+
+LoadFile "R7/72D/DLL72D.DLL"
+Extract  $11C67    $2 "R7/Obj/XStart2D.bin"
+Extract  $11C6C    $2 "R7/Obj/YStart2D.bin"
+WorkPath "#Dest/R7"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2D.bin" "Obj/YStart2D.bin" "Obj/Start2D.bin"
+Extract  $1A2D0  $100 "R7/Pal/PC/2D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/0_1.bin" "Pal/2D/0_1.bin"
+Extract  $1A3D0  $100 "R7/Pal/PC/2D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/2.bin"   "Pal/2D/2.bin"
+Extract  $1A4D0   $40 "R7/Pal/PC/2D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/3.bin"   "Pal/2D/3.bin"
+Extract  $1A510   $C0 "R7/Pal/PC/2D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/4.bin"   "Pal/2D/4.bin"
+Extract  $1A5D0   $18 "R7/Pal/PC/2D/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/6.bin"   "Pal/2D/6.bin"
+;Extract  $18918 $19B0 "R7/Obj/2D.bin" Swap16
+Extract  $1A6D0  $100 "R7/Col/Ang2D.bin"
+Extract  $1A7D0 $1000 "R7/Col/HM2D.bin"
+Extract  $1B7E0 $1000 "R7/Col/HMR2D.bin"
+Extract  $1C7F0  $3E8 "R7/Col/Idx2D.bin"
+Extract  $1CC40  $200 "R7/FGPC/2D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2D.bin" "FG/2D.bin"
+Extract  $1CE40  $200 "R7/BGPC/2D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2D.bin" "BG/2D.bin"
+
+Copy     "R7/72D/Map72D.bin" "R7/256/2D.bin" Swap16
+
+Copy     "R7/72D/T72D.map" "R7/16U/2D.bin" Swap16
+
+WorkPath "#src/R7/72D"
+Extern   "#Batch/msexpand" "tcmp72d.cm_"
+LoadFile "R7/72D/tcmp72d.cm"
+Extract  $BEC $5EA0 "R7/8U/2D.bin"
+
+
+LoadFile "R7/73C/DLL73C.DLL"
+Extract  $0FB17    $2 "R7/Obj/XStart3C.bin"
+Extract  $0FB1C    $2 "R7/Obj/YStart3C.bin"
+WorkPath "#Dest/R7"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart3C.bin" "Obj/YStart3C.bin" "Obj/Start3C.bin"
+Extract  $18D50  $100 "R7/Pal/PC/3C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/0_1.bin" "Pal/3C/0_1.bin"
+Extract  $18E50   $40 "R7/Pal/PC/3C/2_3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/2_3.bin" "Pal/3C/2_3.bin"
+Extract  $18E90   $C0 "R7/Pal/PC/3C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/4.bin"   "Pal/3C/4.bin"
+Extract  $18F50   $C0 "R7/Pal/PC/3C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/5.bin"   "Pal/3C/5.bin"
+Extract  $19010   $18 "R7/Pal/PC/3C/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/6.bin"   "Pal/3C/6.bin"
+;Extract  $18A68  $278 "R7/Obj/3C.bin" Swap16
+Extract  $18A68  $278 "R7/Obj/3.bin" Swap16
+Extract  $19060  $100 "R7/Col/Ang3C.bin"
+Extract  $19160 $1000 "R7/Col/HM3C.bin"
+Extract  $1A170 $1000 "R7/Col/HMR3C.bin"
+Extract  $1B180  $3E8 "R7/Col/Idx3C.bin"
+Extract  $1B568  $200 "R7/FGPC/3C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/3C.bin" "FG/3C.bin"
+Extract  $1B768  $200 "R7/BGPC/3C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/3C.bin" "BG/3C.bin"
+
+Copy     "R7/73C/Map73C.bin" "R7/256/3C.bin" Swap16
+
+Copy     "R7/73C/T73C.map" "R7/16U/3C.bin" Swap16
+
+WorkPath "#src/R7/73C"
+Extern   "#Batch/msexpand" "tcmp73c.cm_"
+LoadFile "R7/73C/tcmp73c.cm"
+Extract  $BE8 $5E80 "R7/8U/3C.bin"
+
+
+LoadFile "R7/73D/DLL73D.DLL"
+Extract  $112C7    $2 "R7/Obj/XStart3D.bin"
+Extract  $112CC    $2 "R7/Obj/YStart3D.bin"
+WorkPath "#Dest/R7"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart3D.bin" "Obj/YStart3D.bin" "Obj/Start3D.bin"
+Extract  $192B8  $100 "R7/Pal/PC/3D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/0_1.bin" "Pal/3D/0_1.bin"
+Extract  $193B8  $100 "R7/Pal/PC/3D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/2.bin"   "Pal/3D/2.bin"
+Extract  $194B8   $40 "R7/Pal/PC/3D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/3.bin"   "Pal/3D/3.bin"
+Extract  $194F8   $C0 "R7/Pal/PC/3D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/4.bin"   "Pal/3D/4.bin"
+Extract  $195B8   $18 "R7/Pal/PC/3D/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/6.bin"   "Pal/3D/6.bin"
+;Extract  $18FD0  $278 "R7/Obj/3D.bin" Swap16
+Extract  $196B8  $100 "R7/Col/Ang3D.bin"
+Extract  $197B8 $1000 "R7/Col/HM3D.bin"
+Extract  $1A7C8 $1000 "R7/Col/HMR3D.bin"
+Extract  $1B7D8  $3E8 "R7/Col/Idx3D.bin"
+Extract  $1BC28  $200 "R7/FGPC/3D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/3D.bin" "FG/3D.bin"
+Extract  $1BE28  $200 "R7/BGPC/3D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/3D.bin" "BG/3D.bin"
+
+Copy     "R7/73D/Map73D.bin" "R7/256/3D.bin" Swap16
+
+Copy     "R7/73D/T73D.map" "R7/16U/3D.bin" Swap16
+
+WorkPath "#src/R7/73D"
+Extern   "#Batch/msexpand" "tcmp73d.cm_"
+LoadFile "R7/73D/tcmp73d.cm"
+Extract  $BEC $5EA0 "R7/8U/3D.bin"
+
+
+WorkPath "#dest/R7"
+Extern   "#Batch/derecmp" "nc" "8U" "8"
+Extern   "#Batch/derecmp" "nc" "16U" "16"
+
+
+LoadFile "R8/81A/DLL81A.DLL"
+Extract  $17F88    $2 "R8/Obj/XStart1A.bin"
+Extract  $17F8A    $2 "R8/Obj/YStart1A.bin"
+WorkPath "#Dest/R8"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1A.bin" "Obj/YStart1A.bin" "Obj/Start1A.bin"
+Extract  $172D8  $100 "R8/Pal/PC/1A/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/0_1.bin" "Pal/1A/0_1.bin"
+Extract  $173D8  $100 "R8/Pal/PC/1A/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/2.bin"   "Pal/1A/2.bin"
+Extract  $174D8   $40 "R8/Pal/PC/1A/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/3.bin"   "Pal/1A/3.bin"
+Extract  $17518   $C0 "R8/Pal/PC/1A/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/4.bin"   "Pal/1A/4.bin"
+Extract  $175D8   $C0 "R8/Pal/PC/1A/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1A/5.bin"   "Pal/1A/5.bin"
+;Extract  $17FC8  $8E8 "R8/Obj/1A.bin" Swap16
+Extract  $17FC8  $8E8 "R8/Obj/1.bin" Swap16
+Extract  $188B8  $100 "R8/Col/Ang1A.bin"
+Extract  $189B8 $1000 "R8/Col/HM1A.bin"
+Extract  $199C8 $1000 "R8/Col/HMR1A.bin"
+Extract  $1A9D8  $3E8 "R8/Col/Idx1A.bin"
+Extract  $1ADC0  $200 "R8/FGPC/1A.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1A.bin" "FG/1A.bin"
+Extract  $1AFC0  $200 "R8/BGPC/1A.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1A.bin" "BG/1A.bin"
+
+Copy     "R8/81A/Map81A.bin" "R8/256/1A.bin" Swap16
+
+Copy     "R8/81A/T81A.map" "R8/16U/1A.bin" Swap16
+
+WorkPath "#src/R8/81A"
+Extern   "#Batch/msexpand" "tcmp81a.cm_"
+LoadFile "R8/81A/tcmp81a.cm"
+Extract  $89C $4420 "R8/8U/1A.bin"
+
+
+LoadFile "R8/81B/DLL81B.DLL"
+Extract  $19030    $2 "R8/Obj/XStart1B.bin"
+Extract  $19032    $2 "R8/Obj/YStart1B.bin"
+WorkPath "#Dest/R8"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1B.bin" "Obj/YStart1B.bin" "Obj/Start1B.bin"
+Extract  $18B98  $100 "R8/Pal/PC/1B/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/0_1.bin" "Pal/1B/0_1.bin"
+Extract  $18C98  $100 "R8/Pal/PC/1B/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/2.bin"   "Pal/1B/2.bin"
+Extract  $18D98   $40 "R8/Pal/PC/1B/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/3.bin"   "Pal/1B/3.bin"
+Extract  $18DD8   $C0 "R8/Pal/PC/1B/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/4.bin"   "Pal/1B/4.bin"
+Extract  $18E98   $C0 "R8/Pal/PC/1B/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1B/5.bin"   "Pal/1B/5.bin"
+;Extract  $172A8  $8E8 "R8/Obj/1B.bin" Swap16
+Extract  $19070  $100 "R8/Col/Ang1B.bin"
+Extract  $19170 $1000 "R8/Col/HM1B.bin"
+Extract  $1A180 $1000 "R8/Col/HMR1B.bin"
+Extract  $1B190  $3E8 "R8/Col/Idx1B.bin"
+Extract  $1B578  $200 "R8/FGPC/1B.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1B.bin" "FG/1B.bin"
+Extract  $1B778  $200 "R8/BGPC/1B.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1B.bin" "BG/1B.bin"
+
+Copy     "R8/81B/Map81B.bin" "R8/256/1B.bin" Swap16
+
+Copy     "R8/81B/T81B.map" "R8/16U/1B.bin" Swap16
+
+WorkPath "#src/R8/81B"
+Extern   "#Batch/msexpand" "tcmp81b.cm_"
+LoadFile "R8/81B/tcmp81b.cm"
+Extract  $898 $4400 "R8/8U/1B.bin"
+
+
+LoadFile "R8/81C/DLL81C.DLL"
+Extract  $19438    $2 "R8/Obj/XStart1C.bin"
+Extract  $1943A    $2 "R8/Obj/YStart1C.bin"
+WorkPath "#Dest/R8"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1C.bin" "Obj/YStart1C.bin" "Obj/Start1C.bin"
+Extract  $18D50  $100 "R8/Pal/PC/1C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/0_1.bin" "Pal/1C/0_1.bin"
+Extract  $18E50  $100 "R8/Pal/PC/1C/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/2.bin"   "Pal/1C/2.bin"
+Extract  $18F50   $40 "R8/Pal/PC/1C/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/3.bin"   "Pal/1C/3.bin"
+Extract  $18F90   $C0 "R8/Pal/PC/1C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/4.bin"   "Pal/1C/4.bin"
+Extract  $19050   $C0 "R8/Pal/PC/1C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/5.bin"   "Pal/1C/5.bin"
+Extract  $19110   $C0 "R8/Pal/PC/1C/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/6.bin"   "Pal/1C/6.bin"
+Extract  $191D0   $40 "R8/Pal/PC/1C/8_9.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/8_9.bin" "Pal/1C/8_9.bin"
+Extract  $19210   $40 "R8/Pal/PC/1C/7.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/7.bin"   "Pal/1C/7.bin"
+Extract  $19250   $40 "R8/Pal/PC/1C/B.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1C/B.bin"   "Pal/1C/B.bin"
+;Extract  $174A8  $8E8 "R8/Obj/1C.bin" Swap16
+Extract  $19468  $100 "R8/Col/Ang1C.bin"
+Extract  $19568 $1000 "R8/Col/HM1C.bin"
+Extract  $1A578 $1000 "R8/Col/HMR1C.bin"
+Extract  $1B588  $3E8 "R8/Col/Idx1C.bin"
+Extract  $1B970  $200 "R8/FGPC/1C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1C.bin" "FG/1C.bin"
+Extract  $1BB70  $200 "R8/BGPC/1C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1C.bin" "BG/1C.bin"
+
+Copy     "R8/81C/Map81C.bin" "R8/256/1C.bin" Swap16
+
+Copy     "R8/81C/T81C.map" "R8/16U/1C.bin" Swap16
+
+WorkPath "#src/R8/81C"
+Extern   "#Batch/msexpand" "tcmp81c.cm_"
+LoadFile "R8/81C/tcmp81c.cm"
+Extract  $8F4 $46E0 "R8/8U/1C.bin"
+
+
+LoadFile "R8/81D/DLL81D.DLL"
+Extract  $19768    $2 "R8/Obj/XStart1D.bin"
+Extract  $1976A    $2 "R8/Obj/YStart1D.bin"
+WorkPath "#Dest/R8"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart1D.bin" "Obj/YStart1D.bin" "Obj/Start1D.bin"
+Extract  $19040  $100 "R8/Pal/PC/1D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/0_1.bin" "Pal/1D/0_1.bin"
+Extract  $19140  $100 "R8/Pal/PC/1D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/2.bin"   "Pal/1D/2.bin"
+Extract  $19240   $40 "R8/Pal/PC/1D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/3.bin"   "Pal/1D/3.bin"
+Extract  $19280   $C0 "R8/Pal/PC/1D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/4.bin"   "Pal/1D/4.bin"
+Extract  $19340   $C0 "R8/Pal/PC/1D/A.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/A.bin"   "Pal/1D/A.bin"
+Extract  $19400   $C0 "R8/Pal/PC/1D/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/5.bin"   "Pal/1D/5.bin"
+Extract  $194C0   $40 "R8/Pal/PC/1D/8.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/8.bin"   "Pal/1D/8.bin"
+Extract  $19500   $40 "R8/Pal/PC/1D/9.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/9.bin"   "Pal/1D/9.bin"
+Extract  $19540   $40 "R8/Pal/PC/1D/7.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/7.bin"   "Pal/1D/7.bin"
+Extract  $19580   $40 "R8/Pal/PC/1D/B.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/1D/B.bin"   "Pal/1D/B.bin"
+;Extract  $176A8  $8E8 "R8/Obj/1D.bin" Swap16
+Extract  $19798  $100 "R8/Col/Ang1D.bin"
+Extract  $19898 $1000 "R8/Col/HM1D.bin"
+Extract  $1A8A8 $1000 "R8/Col/HMR1D.bin"
+Extract  $1B8B8  $3E8 "R8/Col/Idx1D.bin"
+Extract  $1BCA0  $200 "R8/FGPC/1D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/1D.bin" "FG/1D.bin"
+Extract  $1BEA0  $200 "R8/BGPC/1D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/1D.bin" "BG/1D.bin"
+
+Copy     "R8/81D/Map81D.bin" "R8/256/1D.bin" Swap16
+
+Copy     "R8/81D/T81D.map" "R8/16U/1D.bin" Swap16
+
+WorkPath "#src/R8/81D"
+Extern   "#Batch/msexpand" "tcmp81d.cm_"
+LoadFile "R8/81D/tcmp81d.cm"
+Extract  $948 $4980 "R8/8U/1D.bin"
+
+
+LoadFile "R8/82A/DLL82A.DLL"
+Extract  $1E250    $2 "R8/Obj/XStart2A.bin"
+Extract  $1E252    $2 "R8/Obj/YStart2A.bin"
+WorkPath "#Dest/R8"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2A.bin" "Obj/YStart2A.bin" "Obj/Start2A.bin"
+Extract  $189C8  $100 "R8/Pal/PC/2A/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/0_1.bin" "Pal/2A/0_1.bin"
+Extract  $18AC8  $100 "R8/Pal/PC/2A/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/2.bin"   "Pal/2A/2.bin"
+Extract  $18BC8   $40 "R8/Pal/PC/2A/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/3.bin"   "Pal/2A/3.bin"
+Extract  $18C08   $C0 "R8/Pal/PC/2A/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/4.bin"   "Pal/2A/4.bin"
+Extract  $18CC8   $C0 "R8/Pal/PC/2A/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2A/5.bin"   "Pal/2A/5.bin"
+;Extract  $19728  $D98 "R8/Obj/2A.bin" Swap16
+Extract  $19728  $D98 "R8/Obj/2.bin" Swap16
+Extract  $1A4C8  $100 "R8/Col/Ang2A.bin"
+Extract  $1A5C8 $1000 "R8/Col/HM2A.bin"
+Extract  $1B5D8 $1000 "R8/Col/HMR2A.bin"
+Extract  $1C5E8  $3E8 "R8/Col/Idx2A.bin"
+Extract  $1C9D0  $200 "R8/FGPC/2A.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2A.bin" "FG/2A.bin"
+Extract  $1CBD0  $200 "R8/BGPC/2A.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2A.bin" "BG/2A.bin"
+
+Copy     "R8/82A/Map82A.bin" "R8/256/2A.bin" Swap16
+
+Copy     "R8/82A/T82A.map" "R8/16U/2A.bin" Swap16
+
+WorkPath "#src/R8/82A"
+Extern   "#Batch/msexpand" "tcmp82a.cm_"
+LoadFile "R8/82A/tcmp82a.cm"
+Extract  $940 $4940 "R8/8U/2A.bin"
+
+
+LoadFile "R8/82B/DLL82B.DLL"
+Extract  $1B390    $2 "R8/Obj/XStart2B.bin"
+Extract  $1B392    $2 "R8/Obj/YStart2B.bin"
+WorkPath "#Dest/R8"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2B.bin" "Obj/YStart2B.bin" "Obj/Start2B.bin"
+Extract  $1AE38  $100 "R8/Pal/PC/2B/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/0_1.bin" "Pal/2B/0_1.bin"
+Extract  $1AF38  $100 "R8/Pal/PC/2B/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/2.bin"   "Pal/2B/2.bin"
+Extract  $1B038   $40 "R8/Pal/PC/2B/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/3.bin"   "Pal/2B/3.bin"
+Extract  $1B078   $C0 "R8/Pal/PC/2B/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/4.bin"   "Pal/2B/4.bin"
+Extract  $1B138   $C0 "R8/Pal/PC/2B/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2B/5.bin"   "Pal/2B/5.bin"
+;Extract  $19000  $D98 "R8/Obj/2B.bin" Swap16
+Extract  $1B3D0  $100 "R8/Col/Ang2B.bin"
+Extract  $1B4D0 $1000 "R8/Col/HM2B.bin"
+Extract  $1C4E0 $1000 "R8/Col/HMR2B.bin"
+Extract  $1D4F0  $3E8 "R8/Col/Idx2B.bin"
+Extract  $1D8D8  $200 "R8/FGPC/2B.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2B.bin" "FG/2B.bin"
+Extract  $1DAD8  $200 "R8/BGPC/2B.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2B.bin" "BG/2B.bin"
+
+Copy     "R8/82B/Map82B.bin" "R8/256/2B.bin" Swap16
+
+Copy     "R8/82B/T82B.map" "R8/16U/2B.bin" Swap16
+
+WorkPath "#src/R8/82B"
+Extern   "#Batch/msexpand" "tcmp82b.cm_"
+LoadFile "R8/82B/tcmp82b.cm"
+Extract  $914 $47E0 "R8/8U/2B.bin"
+
+
+LoadFile "R8/82C/DLL82C.DLL"
+Extract  $1B880    $2 "R8/Obj/XStart2C.bin"
+Extract  $1B882    $2 "R8/Obj/YStart2C.bin"
+WorkPath "#Dest/R8"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2C.bin" "Obj/YStart2C.bin" "Obj/Start2C.bin"
+Extract  $1ADF0  $100 "R8/Pal/PC/2C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/0_1.bin" "Pal/2C/0_1.bin"
+Extract  $1AEF0  $100 "R8/Pal/PC/2C/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/2.bin"   "Pal/2C/2.bin"
+Extract  $1AFF0   $40 "R8/Pal/PC/2C/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/3.bin"   "Pal/2C/3.bin"
+Extract  $1B030   $C0 "R8/Pal/PC/2C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/4.bin"   "Pal/2C/4.bin"
+Extract  $1B0F0   $C0 "R8/Pal/PC/2C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/5.bin"   "Pal/2C/5.bin"
+Extract  $1B1B0   $C0 "R8/Pal/PC/2C/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/6.bin"   "Pal/2C/6.bin"
+Extract  $1B270   $40 "R8/Pal/PC/2C/8_9.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/8_9.bin" "Pal/2C/8_9.bin"
+Extract  $1B2B0   $40 "R8/Pal/PC/2C/7.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/7.bin"   "Pal/2C/7.bin"
+Extract  $1B2F0   $40 "R8/Pal/PC/2C/B.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2C/B.bin"   "Pal/2C/B.bin"
+;Extract  $19000  $D98 "R8/Obj/2C.bin" Swap16
+Extract  $1B8B8  $100 "R8/Col/Ang2C.bin"
+Extract  $1B9B8 $1000 "R8/Col/HM2C.bin"
+Extract  $1C9C8 $1000 "R8/Col/HMR2C.bin"
+Extract  $1D9D8  $3E8 "R8/Col/Idx2C.bin"
+Extract  $1DDC0  $200 "R8/FGPC/2C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2C.bin" "FG/2C.bin"
+Extract  $1DFC0  $200 "R8/BGPC/2C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2C.bin" "BG/2C.bin"
+
+Copy     "R8/82C/Map82C.bin" "R8/256/2C.bin" Swap16
+
+Copy     "R8/82C/T82C.map" "R8/16U/2C.bin" Swap16
+
+WorkPath "#src/R8/82C"
+Extern   "#Batch/msexpand" "tcmp82c.cm_"
+LoadFile "R8/82C/tcmp82c.cm"
+Extract  $930 $48C0 "R8/8U/2C.bin"
+
+
+LoadFile "R8/82D/DLL82D.DLL"
+Extract  $1BC78    $2 "R8/Obj/XStart2D.bin"
+Extract  $1BC7A    $2 "R8/Obj/YStart2D.bin"
+WorkPath "#Dest/R8"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart2D.bin" "Obj/YStart2D.bin" "Obj/Start2D.bin"
+Extract  $1B0E0  $100 "R8/Pal/PC/2D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/0_1.bin" "Pal/2D/0_1.bin"
+Extract  $1B1E0  $100 "R8/Pal/PC/2D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/2.bin"   "Pal/2D/2.bin"
+Extract  $1B2E0   $40 "R8/Pal/PC/2D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/3.bin"   "Pal/2D/3.bin"
+Extract  $1B320   $C0 "R8/Pal/PC/2D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/4.bin"   "Pal/2D/4.bin"
+Extract  $1B3E0   $C0 "R8/Pal/PC/2D/A.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/A.bin"   "Pal/2D/A.bin"
+Extract  $1B4A0   $C0 "R8/Pal/PC/2D/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/5.bin"   "Pal/2D/5.bin"
+Extract  $1B560   $40 "R8/Pal/PC/2D/8.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/8.bin"   "Pal/2D/8.bin"
+Extract  $1B5A0   $40 "R8/Pal/PC/2D/9.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/9.bin"   "Pal/2D/9.bin"
+Extract  $1B5E0   $40 "R8/Pal/PC/2D/7.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/7.bin"   "Pal/2D/7.bin"
+Extract  $1B620   $40 "R8/Pal/PC/2D/B.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/2D/B.bin"   "Pal/2D/B.bin"
+;Extract  $19200  $D98 "R8/Obj/2D.bin" Swap16
+Extract  $1BCB0  $100 "R8/Col/Ang2D.bin"
+Extract  $1BDB0 $1000 "R8/Col/HM2D.bin"
+Extract  $1CDC0 $1000 "R8/Col/HMR2D.bin"
+Extract  $1DDD0  $3E8 "R8/Col/Idx2D.bin"
+Extract  $1E1B8  $200 "R8/FGPC/2D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/2D.bin" "FG/2D.bin"
+Extract  $1E3B8  $200 "R8/BGPC/2D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/2D.bin" "BG/2D.bin"
+
+Copy     "R8/82D/Map82D.bin" "R8/256/2D.bin" Swap16
+
+Copy     "R8/82D/T82D.map" "R8/16U/2D.bin" Swap16
+
+WorkPath "#src/R8/82D"
+Extern   "#Batch/msexpand" "tcmp82d.cm_"
+LoadFile "R8/82D/tcmp82d.cm"
+Extract  $98C $4BA0 "R8/8U/2D.bin"
+
+
+LoadFile "R8/83C/DLL83C.DLL"
+Extract  $197E8    $2 "R8/Obj/XStart3C.bin"
+Extract  $197EA    $2 "R8/Obj/YStart3C.bin"
+WorkPath "#Dest/R8"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart3C.bin" "Obj/YStart3C.bin" "Obj/Start3C.bin"
+Extract  $18E38  $100 "R8/Pal/PC/3C/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/0_1.bin" "Pal/3C/0_1.bin"
+Extract  $18F38  $100 "R8/Pal/PC/3C/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/2.bin"   "Pal/3C/2.bin"
+Extract  $19038   $40 "R8/Pal/PC/3C/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/3.bin"   "Pal/3C/3.bin"
+Extract  $19078   $C0 "R8/Pal/PC/3C/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/4.bin"   "Pal/3C/4.bin"
+Extract  $19138   $C0 "R8/Pal/PC/3C/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/5.bin"   "Pal/3C/5.bin"
+Extract  $192F8   $C0 "R8/Pal/PC/3C/6.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/6.bin"   "Pal/3C/6.bin"
+Extract  $192B8   $40 "R8/Pal/PC/3C/8_9.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/8_9.bin" "Pal/3C/8_9.bin"
+Extract  $192F8   $40 "R8/Pal/PC/3C/7.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/7.bin"   "Pal/3C/7.bin"
+Extract  $19338   $40 "R8/Pal/PC/3C/B.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3C/B.bin"   "Pal/3C/B.bin"
+;Extract  $19830  $3B8 "R8/Obj/3C.bin" Swap16
+Extract  $19830  $3B8 "R8/Obj/3.bin" Swap16
+Extract  $19BF0  $100 "R8/Col/Ang3C.bin"
+Extract  $19CF0 $1000 "R8/Col/HM3C.bin"
+Extract  $1AD00 $1000 "R8/Col/HMR3C.bin"
+Extract  $1BD10  $3E8 "R8/Col/Idx3C.bin"
+Extract  $1C0F8  $200 "R8/FGPC/3C.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/3C.bin" "FG/3C.bin"
+Extract  $1C2F8  $200 "R8/BGPC/3C.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/3C.bin" "BG/3C.bin"
+
+Copy     "R8/83C/Map83C.bin" "R8/256/3C.bin" Swap16
+
+Copy     "R8/83C/T83C.map" "R8/16U/3C.bin" Swap16
+
+WorkPath "#src/R8/83C"
+Extern   "#Batch/msexpand" "tcmp83c.cm_"
+LoadFile "R8/83C/tcmp83c.cm"
+Extract  $878 $4300 "R8/8U/3C.bin"
+
+
+LoadFile "R8/83D/DLL83D.DLL"
+Extract  $1B484    $2 "R8/Obj/XStart3D.bin"
+Extract  $1B486    $2 "R8/Obj/YStart3D.bin"
+WorkPath "#Dest/R8"
+Extern   "#Batch/CDPosFix" 0 "Obj/XStart3D.bin" "Obj/YStart3D.bin" "Obj/Start3D.bin"
+Extract  $1A910  $100 "R8/Pal/PC/3D/0_1.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/0_1.bin" "Pal/3D/0_1.bin"
+Extract  $1AA10  $100 "R8/Pal/PC/3D/2.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/2.bin"   "Pal/3D/2.bin"
+Extract  $1AB10   $40 "R8/Pal/PC/3D/3.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/3.bin"   "Pal/3D/3.bin"
+Extract  $1AB50   $C0 "R8/Pal/PC/3D/4.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/4.bin"   "Pal/3D/4.bin"
+Extract  $1AC10   $C0 "R8/Pal/PC/3D/A.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/A.bin"   "Pal/3D/A.bin"
+Extract  $1ACD0   $C0 "R8/Pal/PC/3D/5.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/5.bin"   "Pal/3D/5.bin"
+Extract  $1AD90   $40 "R8/Pal/PC/3D/8.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/8.bin"   "Pal/3D/8.bin"
+Extract  $1ADD0   $40 "R8/Pal/PC/3D/9.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/9.bin"   "Pal/3D/9.bin"
+Extract  $1AE10   $40 "R8/Pal/PC/3D/7.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/7.bin"   "Pal/3D/7.bin"
+Extract  $1AE50   $40 "R8/Pal/PC/3D/B.bin"
+Extern   "#Batch/PCPalCon" 0 "Pal/PC/3D/B.bin"   "Pal/3D/B.bin"
+;Extract  $190B8  $3B8 "R8/Obj/3D.bin" Swap16
+Extract  $1B4B0  $100 "R8/Col/Ang3D.bin"
+Extract  $1B5B0 $1000 "R8/Col/HM3D.bin"
+Extract  $1C5C0 $1000 "R8/Col/HMR3D.bin"
+Extract  $1D5D0  $3E8 "R8/Col/Idx3D.bin"
+Extract  $1D9B8  $200 "R8/FGPC/3D.bin"
+Extern   "#Batch/PCLevCon" 0 "FGPC/3D.bin" "FG/3D.bin"
+Extract  $1DBB8  $200 "R8/BGPC/3D.bin"
+Extern   "#Batch/PCLevCon" 0 "BGPC/3D.bin" "BG/3D.bin"
+
+Copy     "R8/83D/Map83D.bin" "R8/256/3D.bin" Swap16
+
+Copy     "R8/83D/T83D.map" "R8/16U/3D.bin" Swap16
+
+WorkPath "#src/R8/83D"
+Extern   "#Batch/msexpand" "tcmp83d.cm_"
+LoadFile "R8/83D/tcmp83d.cm"
+Extract  $804 $3F60 "R8/8U/3D.bin"
+
+
+WorkPath "#dest/R8"
+Extern   "#Batch/derecmp" "nc" "8U" "8"
+Extern   "#Batch/derecmp" "nc" "16U" "16"
+
+WorkPath "#Batch"

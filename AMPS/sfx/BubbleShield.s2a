@@ -1,0 +1,11 @@
+Sound_3F_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$80, ctFM5, Sound_3F_FM5, $F6, $0A
+
+; FM5 Data
+Sound_3F_FM5:
+	sVoice		pBubbleShield
+	dc.b nBb2, $05, sHold, nB2, $26
+	sStop

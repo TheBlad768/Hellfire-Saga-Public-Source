@@ -1,0 +1,21 @@
+Sound_B1_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$80, ctFM5, Sound_B1_FM5, $00, $02
+
+; FM5 Data
+Sound_B1_FM5:
+	sVoice		pSpring1
+	dc.b nRst, $01
+	sModAMPS	$03, $01, $5D, $0F
+	dc.b nB3, $0A
+	sModOff
+	sVoice		pSpring2
+
+Sound_B1_Loop00:
+	dc.b nC5, $02
+	saVol		$01
+	dc.b sHold
+	sLoop		$00, $19, Sound_B1_Loop00
+	sStop

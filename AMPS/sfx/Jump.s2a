@@ -1,0 +1,13 @@
+Sound_62_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$A1, ctPSG1, Sound_62_PSG1, $F4+$0C, $00
+
+; PSG1 Data
+Sound_62_PSG1:
+	sVolEnv		vNone
+	dc.b nF2, $05
+	sModAMPS	$02, $01, $F8, $65
+	dc.b nBb2, $15
+	sStop

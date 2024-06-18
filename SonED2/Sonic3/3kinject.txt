@@ -1,0 +1,41 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Sonic the Hedgehog 3 & Knuckles Batch Injection File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+; Source folder prompt ;
+;;;;;;;;;;;;;;;;;;;;;;;;
+
+;GetPath "Please select the source folder for the data"
+;SrcPath #Got
+
+;WorkPath	"#Src"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Injector prompt and call ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;GetFile "Please select the target Sonic the Hedgehog ROM file"
+;LoadFile #Got
+LoadFile "sk.bin"
+
+LoadInject "#Batch/3kinmrg.txt"
+
+RunInject  "s3km.bin"
+
+LoadInject "#Batch/3kinmain.txt"
+AddInject  "#Batch/3kinopts.txt"
+
+;GetFile "Please name the output file"
+;RunInject  #Got
+RunInject  "inject.bin"
+
+;;;;;;;;;;;;;;;
+; ROM cleanup ;
+;;;;;;;;;;;;;;;
+
+;Extern     "#Batch/fixheadr" "#Got"
+Extern     "#Batch/fixheadr" "inject.bin"

@@ -1,0 +1,25 @@
+Sound_B0_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$03
+	sHeaderSFX	$80, ctFM2, Sound_B0_FM2, $F5, $08
+	sHeaderSFX	$80, ctFM4, Sound_B0_FM4, $00, $00
+	sHeaderSFX	$80, ctFM5, Sound_B0_FM5, $00, $00
+
+; FM5 Data
+Sound_B0_FM5:
+	sVoice		pRegister1
+	dc.b nA0, $08, nRst, $02, nA0, $08
+	sStop
+
+; FM4 Data
+Sound_B0_FM4:
+	sVoice		pRings
+	dc.b nRst, $12, nA5, $55
+	sStop
+
+; FM3 Data
+Sound_B0_FM2:
+	sVoice		pRegister2
+	dc.b nRst, $02, nF5, $05, $04, $05, $04
+	sStop

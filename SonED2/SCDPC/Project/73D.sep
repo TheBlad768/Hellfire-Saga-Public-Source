@@ -1,0 +1,65 @@
+Type: Level
+
+Zone ID:    6
+Act ID:     2
+
+Object Def: objdef\R7Obj
+Object Palette: objdef\R7Obj1.tga
+
+8x8 Compression:      3
+Num 8x8 Pages:        1
+8x8 Tiles Page 0:     ..\R7\8\3D.bin
+
+16x16 Compression:    3
+Num 16x16 Pages:      1
+Page0 8x8 Page:       0
+16x16 Tiles Page 0:   ..\R7\16\3D.bin
+
+Metatile Size:        256
+256x256 Compression:  0
+Num 256x256 Pages:    1
+Page0 16x16 Page:     0
+256x256 Tiles Page 0: ..\R7\256\3D.bin
+
+Layout Format:        0
+Layout Compression:   0
+FG Layout: ..\R7\FG\3D.bin
+BG 256x256 Page:      0
+BG Layout: ..\R7\BG\3D.bin
+
+Objects Format:       2
+Objects Time:         D
+Objects:              ..\R7\Obj\3.bin
+Rings Format:         0
+Misc Format:          0
+Num Start Positions:  1
+Start Position 0:     ..\R7\Obj\Start3D.bin
+
+Palettes-
+
+ Number of files: 2
+
+  Palette 0-
+
+   Start index:       0
+   Number of entries: 16
+   File:              ..\R7\Pal\3D\3.bin
+
+  Palette 1-
+
+   Start index:       16
+   Number of entries: 48
+   File:              ..\R7\Pal\3D\4.bin
+
+Collision Map Format:    0
+Collision Array:         ..\R7\Col\HM3D.bin
+Rotated Collision Array: ..\R7\Col\HMR3D.bin
+Angle Array:             ..\R7\Col\Ang3D.bin
+
+Collision Index Format:      0
+Collision Index Compression: 0
+Collision Index: ..\R7\Col\Idx3D.bin
+
+Game Name: Sonic CD
+
+-EOF-

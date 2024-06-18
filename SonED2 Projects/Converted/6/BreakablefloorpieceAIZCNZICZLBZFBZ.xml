@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Namespace="SonED2.Zone6" TypeName="BreakablefloorpieceAIZCNZICZLBZFBZ" Language="cs" Name="Breakable floor piece - AIZ/CNZ/ICZ/LBZ/FBZ" Image="Image1" RememberState="false" Debug="false" xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromBitmap id="Image1" filename="Sprites/s3objsprite2-23.png" />
+  </Images>
+  <Display>
+    <DisplayOption>
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="-32" />
+      </ImageRef>
+    </DisplayOption>
+  </Display>
+</ObjDef>

@@ -1,0 +1,98 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Knuckles' Chaotix (JU / 5) Batch Injection File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+; Source folder prompt ;
+;;;;;;;;;;;;;;;;;;;;;;;;
+
+;GetPath "Please select the source folder for the data"
+;SrcPath #Got
+
+;WorkPath	"#Src"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Player/Plane start location correction ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+Extern  "KCPosFix" "1" "Levels/SSZ/FG/PlStBoss.bin" "Levels/SSZ/FG/FGStBoss.bin"
+
+Extern  "KCPosFix" "1" "Levels/TTZ/FG/PlStBoss.bin" "Levels/TTZ/FG/FGStBoss.bin"
+
+Extern  "KCPosFix" "1" "Levels/BBZ/FG/PlSt01MN.bin" "Levels/BBZ/FG/FGSt01MN.bin"
+Extern  "KCPosFix" "1" "Levels/BBZ/FG/PlSt2MN.bin" "Levels/BBZ/FG/FGSt2MN.bin"
+Extern  "KCPosFix" "1" "Levels/BBZ/FG/PlSt4MN.bin" "Levels/BBZ/FG/FGSt4MN.bin"
+Extern  "KCPosFix" "1" "Levels/BBZ/FG/PlSt36MN.bin" "Levels/BBZ/FG/FGSt36MN.bin"
+
+Extern  "KCPosFix" "1" "Levels/SSZ/FG/PlSt01MN.bin" "Levels/SSZ/FG/FGSt01MN.bin"
+Extern  "KCPosFix" "1" "Levels/SSZ/FG/PlSt2MN.bin" "Levels/SSZ/FG/FGSt2MN.bin"
+Extern  "KCPosFix" "1" "Levels/SSZ/FG/PlSt3MN.bin" "Levels/SSZ/FG/FGSt3MN.bin"
+Extern  "KCPosFix" "1" "Levels/SSZ/FG/PlSt4MN.bin" "Levels/SSZ/FG/FGSt4MN.bin"
+Extern  "KCPosFix" "1" "Levels/SSZ/FG/PlSt5MN.bin" "Levels/SSZ/FG/FGSt5MN.bin"
+
+Extern  "KCPosFix" "1" "Levels/AAZ/FG/PlSt01MN.bin" "Levels/AAZ/FG/FGSt01MN.bin"
+Extern  "KCPosFix" "1" "Levels/AAZ/FG/PlSt2MN.bin" "Levels/AAZ/FG/FGSt2MN.bin"
+Extern  "KCPosFix" "1" "Levels/AAZ/FG/PlSt3MN.bin" "Levels/AAZ/FG/FGSt3MN.bin"
+Extern  "KCPosFix" "1" "Levels/AAZ/FG/PlSt4MN.bin" "Levels/AAZ/FG/FGSt4MN.bin"
+Extern  "KCPosFix" "1" "Levels/AAZ/FG/PlSt56MN.bin" "Levels/AAZ/FG/FGSt56MN.bin"
+
+Extern  "KCPosFix" "1" "Levels/TTZ/FG/PlSt06MN.bin" "Levels/TTZ/FG/FGSt06MN.bin"
+
+Extern  "KCPosFix" "1" "Levels/MMZ/FG/PlSt01MN.bin" "Levels/MMZ/FG/FGSt01MN.bin"
+Extern  "KCPosFix" "1" "Levels/MMZ/FG/PlSt2MN.bin" "Levels/MMZ/FG/FGSt2MN.bin"
+Extern  "KCPosFix" "1" "Levels/MMZ/FG/PlSt3MN.bin" "Levels/MMZ/FG/FGSt3MN.bin"
+Extern  "KCPosFix" "1" "Levels/MMZ/FG/PlSt4MN.bin" "Levels/MMZ/FG/FGSt4MN.bin"
+Extern  "KCPosFix" "1" "Levels/MMZ/FG/PlSt56MN.bin" "Levels/MMZ/FG/FGSt56MN.bin"
+
+Extern  "KCPosFix" "1" "Levels/Intro/FG/PlSt01MN.bin" "Levels/Intro/FG/FGSt01MN.bin"
+Extern  "KCPosFix" "1" "Levels/Intro/FG/PlSt2MN.bin" "Levels/Intro/FG/FGSt2MN.bin"
+Extern  "KCPosFix" "1" "Levels/Intro/FG/PlSt3MN.bin" "Levels/Intro/FG/FGSt3MN.bin"
+Extern  "KCPosFix" "1" "Levels/Intro/FG/PlSt4MN.bin" "Levels/Intro/FG/FGSt4MN.bin"
+
+Extern  "KCPosFix" "1" "Levels/Tutorial/FG/PlSt0MN.bin" "Levels/Tutorial/FG/FGSt0MN.bin"
+Extern  "KCPosFix" "1" "Levels/Tutorial/FG/PlSt1MN.bin" "Levels/Tutorial/FG/FGSt1MN.bin"
+Extern  "KCPosFix" "1" "Levels/Tutorial/FG/PlSt2MN.bin" "Levels/Tutorial/FG/FGSt2MN.bin"
+Extern  "KCPosFix" "1" "Levels/Tutorial/FG/PlSt3MN.bin" "Levels/Tutorial/FG/FGSt3MN.bin"
+Extern  "KCPosFix" "1" "Levels/Tutorial/FG/PlSt4MN.bin" "Levels/Tutorial/FG/FGSt4MN.bin"
+Extern  "KCPosFix" "1" "Levels/Tutorial/FG/PlSt5M.bin" "Levels/Tutorial/FG/FGSt5M.bin"
+Extern  "KCPosFix" "1" "Levels/Tutorial/FG/PlSt5D.bin" "Levels/Tutorial/FG/FGSt5D.bin"
+Extern  "KCPosFix" "1" "Levels/Tutorial/FG/PlSt5S.bin" "Levels/Tutorial/FG/FGSt5S.bin"
+Extern  "KCPosFix" "1" "Levels/Tutorial/FG/PlSt5N.bin" "Levels/Tutorial/FG/FGSt5N.bin"
+Extern  "KCPosFix" "1" "Levels/Tutorial/FG/PlSt6M.bin" "Levels/Tutorial/FG/FGSt6M.bin"
+Extern  "KCPosFix" "1" "Levels/Tutorial/FG/PlSt6D.bin" "Levels/Tutorial/FG/FGSt6D.bin"
+
+Extern  "KCPosFix" "1" "Levels/Entrance/FG/PlSt01MN.bin" "Levels/Entrance/FG/FGSt01MN.bin"
+Extern  "KCPosFix" "1" "Levels/Entrance/FG/PlSt2M.bin" "Levels/Entrance/FG/FGSt2M.bin"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; YLoop Object Vertical location correction ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+Extern "ObjYAdj" "1024" "Levels/Intro/Sprites/1MN.bin" "Levels/Intro/Sprites/Conv/1MN.bin"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Injector prompt and call ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;GetFile "Please select the target Chaotix ROM file"
+;LoadFile #Got
+LoadFile "kc.bin"
+
+LoadInject "#Batch/inmain.txt"
+AddInject  "#Batch/inopts.txt"
+
+;GetFile "Please name the output file"
+;RunInject  #Got
+RunInject  "inject.bin"
+
+
+;;;;;;;;;;;;;;;
+; ROM cleanup ;
+;;;;;;;;;;;;;;;
+
+;Extern     "#Batch\\fixheadr" "#Got"
+Extern     "#Batch\\fixheadr" "inject.bin"

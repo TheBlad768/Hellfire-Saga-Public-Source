@@ -1,0 +1,185 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Sonic the Hedgehog 3 & Knuckles Options Injector File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;
+; Setup Directives ;
+;;;;;;;;;;;;;;;;;;;;
+
+MaxSize	$400000				;Maximum Genesis ROM size
+
+
+;;;;;;;;;;;;;;;;
+; Data Defines ;
+;;;;;;;;;;;;;;;;
+
+Define	YLoop		$FF00		;Create Y-looping level (when used as Y Start, and Y End is $800)
+
+Define	Input_Up	$01		;Input State Bits (for cheat codes, etc)
+Define	Input_Down	$02
+Define	Input_Left	$04
+Define	Input_Right	$08
+Define	Input_B		$10
+Define	Input_C		$20
+Define	Input_A		$40
+Define	Input_Start	$80
+Define	Input_Invalid	$FF		;Substituting this Define for any keypress will effectively disable the code
+
+Define	Code_End	$00		;Cheat Code Terminator
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Manual Settings Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;Game Header Information
+;;;
+
+StartSeg Big_Endian $000100 $8E
+
+	String	"SEGA GENESIS    "					;Console Name
+	String	"(C)SEGA 1994.JUN"					;Copyright Date
+	String  "Sonic 3 & Knuckles                              "	;Domestic Game Name
+	String  "Sonic 3 & Knuckles                              "	;Foreign Game Name
+	String	"GM MK-1563 -00"					;Game Serial Number
+
+EndSeg
+
+;;;
+;Level Music Playlist
+;;;
+
+StartSeg Big_Endian $005F82
+
+	;	Act1  Act2
+	BYTE	  1,    2	;AIZ
+	BYTE	  3,    4	;HCZ
+	BYTE	  5,    6	;MGZ
+	BYTE	  7,    8	;CNZ
+	BYTE	  9,   $A	;FBZ
+	BYTE 	 $B,   $C	;ICZ
+	BYTE 	 $D,   $E	;LBZ
+	BYTE 	 $F,  $10	;MHZ
+	BYTE	$11,  $12	;SOZ
+	BYTE	$13,  $14	;LRZ
+	BYTE	$15,  $15	;SSZ
+	BYTE	$16,  $17	;DEZ
+	BYTE	$1A,  $1A	;DDZ
+	BYTE	$1C,  $15	;AIZ Intro (?), Ending Scene
+	BYTE	$20,  $20	;ALZ
+	BYTE	$21,  $21	;BPZ
+	BYTE	$22,  $22	;DPZ
+	BYTE	$23,  $23	;CGZ
+	BYTE	$24,  $24	;EMZ
+	BYTE	$1E,  $1E	;Gumball
+	BYTE	$1B,  $1B	;Pachinko
+	BYTE	$1D,  $1D	;Slots
+	BYTE	$19,  $14	;LRZ Boss, HPZ
+	BYTE	$17,  $14	;DEZ Boss, Special Stage Arena (HPZ)
+
+EndSeg
+
+;;;
+; Level Size Array
+;;;
+
+StartSeg Big_Endian $01BCC6
+
+	WORD	$1308,  $6000,      0,   $390		; AIZ1
+	WORD	    0,  $4640,      0,   $590		; AIZ2
+	WORD	    0,  $6000,      0,  $1000		; HCZ1
+	WORD	    0,  $6000,      0,  $1000		; HCZ2
+	WORD	    0,  $6000,  YLoop,  $1000		; MGZ1
+	WORD	    0,  $6000,      0,  $1000		; MGZ2
+	WORD	    0,  $6000,      0,   $B20		; CNZ1
+	WORD	    0,  $6000,   $580,  $1000		; CNZ2
+	WORD	    0,  $2E60,      0,   $B00		; FBZ1
+	WORD	    0,  $6000,      0,   $B00		; FBZ2
+	WORD	    0,  $7000,  YLoop,   $800		; ICZ1
+	WORD	    0,  $7000,      0,   $B20		; ICZ2
+	WORD	    0,  $6000,      0,  $1000		; LBZ1
+	WORD	    0,  $6000,      0,   $B20		; LBZ2
+	WORD	    0,  $4298,      0,   $AA0		; MHZ1
+	WORD	  $98,  $3C90,   $620,   $9A0		; MHZ2
+	WORD	    0,  $4310,      0,   $B20		; SOZ1
+	WORD	    0,  $6000,  YLoop,   $800		; SOZ2
+	WORD	    0,  $2CC0,      0,   $B20		; LRZ1
+	WORD     $940,  $3EC0,      0,   $B20		; LRZ2
+	WORD	    0,  $19A0,  YLoop,  $1000		; SSZ1
+	WORD	    0,  $6000,      0,   $400		; SSZ2
+	WORD	    0,  $6000,      0,   $B20		; DEZ1
+	WORD	    0,  $6000,      0,   $F10		; DEZ2
+	WORD	    0,  $6000,      0,  $1000		; DDZ
+	WORD	    0,  $6000,      0,  $1000		; DDZ
+	WORD	    0,  $6000,      0,  $1000		; AIZ Intro (?)
+	WORD	    0,  $6000,      0,  $1000		; Ending scene
+	WORD	    0,  $12C0,   $100,   $190		; ALZ
+	WORD	    0,  $12C0,   $100,   $190		; ALZ
+	WORD	    0,  $12C0,   $200,   $390		; BPZ
+	WORD	    0,  $12C0,   $200,   $390		; BPZ
+	WORD	    0,  $12C0,   $100,   $190		; DPZ
+	WORD	    0,  $12C0,   $100,   $190		; DPZ
+	WORD	    0,  $12C0,  YLoop,  $1000		; CGZ
+	WORD	    0,  $12C0,      0,    $90		; CGZ
+	WORD	    0,  $12C0,   $100,   $190		; EMZ
+	WORD	    0,  $12C0,   $100,   $190		; EMZ
+	WORD	  $60,  $0060,      0,   $240		; Gumball
+	WORD	  $60,  $0060,      0,   $240		; Gumball
+	WORD	    0,   $140,      0,   $F00		; Pachinko
+	WORD	    0,   $140,      0,   $F00		; Pachinko
+	WORD	    0,  $6000,      0,  $1000		; Slots
+	WORD	    0,  $6000,      0,  $1000		; Slots
+	WORD	    0,   $EC0,      0,   $430		; LRZ Boss
+	WORD	    0,  $1880,      0,   $B20		; HPZ
+	WORD	    0,  $6000,    $20,    $20		; DEZ Boss
+	WORD	$1500,  $1640,   $320,   $320		; Special Stage Arena (HPZ)
+
+EndSeg
+
+;;;
+;Cheat Codes
+;;;
+
+StartSeg Code_LevelSelect Big_Endian $221E2 $A
+
+	;;;
+	;This code may not be any longer than 9 buttonpresses
+	;;;
+
+	BYTE	Input_Left, Input_Left, Input_Left, Input_Right, Input_Right, Input_Right, Input_Up, Input_Up, Input_Up, Code_End
+
+EndSeg
+
+StartSeg Code_DebugMode Big_Endian $3E5E8 $A
+
+	;;;
+	;This code may not be any longer than 9 buttonpresses
+	;;;
+
+	BYTE	Input_Left, Input_Left, Input_Left, Input_Right, Input_Right, Input_Right, Input_Up, Input_Up, Input_Up, Code_End
+
+EndSeg
+
+;;;
+;S3K Titlescreen Cheat Code
+;;;
+
+;StartSeg Big_Endian $004C4E
+
+;	 WORD $4E71
+
+;	 WORD $43F9
+;	DWORD Code_TSLevelSelect
+
+;EndSeg
+
+;StartSeg Code_TSLevelSelect Big_Endian
+
+;	BYTE	Input_Up, Input_Up, Input_Down, Input_Down, Input_Up, Input_Up, Input_Up, Input_Up, Code_End
+
+;EndSeg
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Namespace="SonED2.ZoneCommon" TypeName="PlatformwhichmovesupwhenaswitchispressedLBZunused" Language="cs" Name="Platform which moves up when a switch is pressed - LBZ (unused)" Image="Image1" RememberState="false" Debug="false" xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromBitmap id="Image1" filename="Sprites/s3objsprite0-1.png" />
+  </Images>
+  <Properties>
+    <BitsProperty name="Property1" type="Enum1" startbit="0" length="4" />
+    <BitsProperty name="Property2" type="Enum2" startbit="4" length="3" />
+  </Properties>
+  <Enums>
+    <Enum name="Enum1">
+      <EnumMember name="Moves when switch 0 is pressed" />
+      <EnumMember name="Moves when switch 1 is pressed" />
+      <EnumMember name="Moves when switch 2 is pressed" />
+      <EnumMember name="Moves when switch 3 is pressed" />
+      <EnumMember name="Moves when switch 4 is pressed" />
+      <EnumMember name="Moves when switch 5 is pressed" />
+      <EnumMember name="Moves when switch 6 is pressed" />
+      <EnumMember name="Moves when switch 7 is pressed" />
+      <EnumMember name="Moves when switch 8 is pressed" />
+      <EnumMember name="Moves when switch 9 is pressed" />
+      <EnumMember name="Moves when switch A is pressed" />
+      <EnumMember name="Moves when switch B is pressed" />
+      <EnumMember name="Moves when switch C is pressed" />
+      <EnumMember name="Moves when switch D is pressed" />
+      <EnumMember name="Moves when switch E is pressed" />
+      <EnumMember name="Moves when switch F is pressed" />
+    </Enum>
+    <Enum name="Enum2">
+      <EnumMember name="Specifies height" />
+      <EnumMember name="Specifies height2" />
+      <EnumMember name="Specifies height3" />
+      <EnumMember name="Specifies height4" />
+      <EnumMember name="Specifies height5" />
+      <EnumMember name="Specifies height6" />
+      <EnumMember name="Invalid" />
+      <EnumMember name="Invalid2" />
+    </Enum>
+  </Enums>
+  <Display>
+    <DisplayOption>
+      <ImageRef image="Image1">
+        <Offset X="8" Y="7" />
+      </ImageRef>
+    </DisplayOption>
+  </Display>
+</ObjDef>

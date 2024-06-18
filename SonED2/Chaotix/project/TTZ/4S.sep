@@ -1,0 +1,72 @@
+Type: Level
+
+Zone ID:    3
+Act ID:     4
+
+Object Def: ..\objdef\kcobj
+Object Palette: ..\objdef\kcobj1.pcx
+
+8x8 Compression:      3
+Num 8x8 Pages:        3
+8x8 Tiles Page 0:     ..\..\Levels\TTZ\8x8\0_15MN.bin
+8x8 Tiles Page 2:     ..\..\Levels\TTZ\8x8\2_15MN.bin
+8x8 Tiles Page 3:     ..\..\Levels\TTZ\8x8\3_34MN.bin
+
+16x16 Compression:    2
+Num 16x16 Pages:      3
+Page0 8x8 Page:       0
+16x16 Tiles Page 0:   ..\..\Levels\TTZ\16x16\0_15MN.bin
+Page2 8x8 Page:       1
+16x16 Tiles Page 2:   ..\..\Levels\TTZ\16x16\2_15MN.bin
+Page3 8x8 Page:       1
+16x16 Tiles Page 3:   ..\..\Levels\TTZ\16x16\3_34MN.bin
+
+Metatile Size:        128
+128x128 Compression:  2
+Num 128x128 Pages:    4
+Page0 16x16 Page:     0
+128x128 Tiles Page 0: ..\..\Levels\TTZ\128x128\0_15MN.bin
+Page1 16x16 Page:     0
+128x128 Tiles Page 1: ..\..\Levels\TTZ\128x128\1_4MN.bin
+Page2 16x16 Page:     1
+128x128 Tiles Page 2: ..\..\Levels\TTZ\128x128\2_15MN.bin
+Page3 16x16 Page:     1
+128x128 Tiles Page 3: ..\..\Levels\TTZ\128x128\3_34MN.bin
+
+Layout Format:        3
+Layout Compression:   2
+FG Size:              ..\..\Levels\TTZ\FG\Size06MN.bin
+FG Level Layout:      ..\..\Levels\TTZ\FG\4MN.bin
+BG 128x128 Page:      2
+BG Size:              ..\..\Levels\TTZ\BG\Size06MN.bin
+BG Level Layout:      ..\..\Levels\TTZ\BG\14MS.bin
+
+Objects Format:       5
+Objects:              ..\..\Levels\TTZ\Sprites\4S.bin
+Rings Format:         0
+Misc Format:          0
+Num Start Positions:  1
+Start Position 0:     ..\..\Levels\TTZ\FG\PlSt06MN.bin
+
+Palettes-
+
+ Number of files: 1
+
+  Palette 1-
+
+   Start index:       0
+   Number of entries: 64
+   File:              ..\..\Levels\TTZ\Pal\14S.bin
+
+Collision Map Format:    1
+Collision Array:         ..\..\Collisn\HMaps.bin
+Rotated Collision Array: ..\..\Collisn\HMapsR.bin
+Angle Array:             ..\..\Collisn\Angles.bin
+
+Collision Index Format:      4
+Collision Index Compression: 0
+Collision Index: ..\..\Levels\TTZ\Collisn\14.bin
+
+Game Name: Chaotix
+
+-EOF-

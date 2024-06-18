@@ -1,0 +1,75 @@
+Type: Level
+
+Zone ID:    1
+Act ID:     2
+
+Object Def: ..\objdef\kcobj
+Object Palette: ..\objdef\kcobj1.pcx
+
+8x8 Compression:      3
+Num 8x8 Pages:        4
+8x8 Tiles Page 0:     ..\..\Levels\SSZ\8x8\0_15MN.bin
+8x8 Tiles Page 1:     ..\..\Levels\SSZ\8x8\1_12MN.bin
+8x8 Tiles Page 2:     ..\..\Levels\SSZ\8x8\2_15MN.bin
+8x8 Tiles Page 3:     ..\..\Levels\SSZ\8x8\3_12MD.bin
+
+16x16 Compression:    2
+Num 16x16 Pages:      4
+Page0 8x8 Page:       0
+16x16 Tiles Page 0:   ..\..\Levels\SSZ\16x16\0_15MN.bin
+Page1 8x8 Page:       0
+16x16 Tiles Page 1:   ..\..\Levels\SSZ\16x16\1_12MN.bin
+Page2 8x8 Page:       2
+16x16 Tiles Page 2:   ..\..\Levels\SSZ\16x16\2_15MN.bin
+Page3 8x8 Page:       2
+16x16 Tiles Page 3:   ..\..\Levels\SSZ\16x16\3_12MD.bin
+
+Metatile Size:        128
+128x128 Compression:  2
+Num 128x128 Pages:    4
+Page0 16x16 Page:     0
+128x128 Tiles Page 0: ..\..\Levels\SSZ\128x128\0_15MN.bin
+Page1 16x16 Page:     0
+128x128 Tiles Page 1: ..\..\Levels\SSZ\128x128\1_12MN.bin
+Page2 16x16 Page:     2
+128x128 Tiles Page 2: ..\..\Levels\SSZ\128x128\2_15MN.bin
+Page3 16x16 Page:     2
+128x128 Tiles Page 3: ..\..\Levels\SSZ\128x128\3_12MD.bin
+
+Layout Format:        3
+Layout Compression:   2
+FG Size:              ..\..\Levels\SSZ\FG\Size2MN.bin
+FG Level Layout:      ..\..\Levels\SSZ\FG\2MN.bin
+BG 128x128 Page:      2
+BG Size:              ..\..\Levels\SSZ\BG\Size02MD.bin
+BG Level Layout:      ..\..\Levels\SSZ\BG\12MD.bin
+
+Objects Format:       5
+Objects:              ..\..\Levels\SSZ\Sprites\2M.bin
+Rings Format:         0
+Misc Format:          0
+Num Start Positions:  1
+Start Position 0:     ..\..\Levels\SSZ\FG\PlSt2MN.bin
+
+Palettes-
+
+ Number of files: 1
+
+  Palette 1-
+
+   Start index:       0
+   Number of entries: 64
+   File:              ..\..\Levels\SSZ\Pal\15M.bin
+
+Collision Map Format:    1
+Collision Array:         ..\..\Collisn\HMaps.bin
+Rotated Collision Array: ..\..\Collisn\HMapsR.bin
+Angle Array:             ..\..\Collisn\Angles.bin
+
+Collision Index Format:      4
+Collision Index Compression: 0
+Collision Index: ..\..\Levels\SSZ\Collisn\12.bin
+
+Game Name: Chaotix
+
+-EOF-

@@ -1,0 +1,1021 @@
+Snd_Stage51_Header:
+	sHeaderInit
+	sHeaderTempo	$00E4
+	sHeaderCh	$05, $00
+	sHeaderDAC	Snd_Stage51_DAC1
+	sHeaderDAC	Snd_Stage51_DAC2,	$04
+	sHeaderFM	Snd_Stage51_FM1,	$00, $10
+	sHeaderFM	Snd_Stage51_FM3,	$00, $10		; AF: SFX now use FM2
+	sHeaderFM	Snd_Stage51_FM2,	$00, $10
+	sHeaderFM	Snd_Stage51_FM4,	$00, $15
+	sHeaderFM	Snd_Stage51_FM5,	$00, $15
+
+;	Voice $00
+;	$39
+;	$F2, $64, $12, $12, 	$0F, $8F, $0F, $4F, 	$00, $07, $03, $02
+;	$00, $00, $00, $00, 	$1F, $1F, $1F, $1F, 	$1F, $24, $22, $02
+	spAlgorithm	$01
+	spFeedback	$07
+	spDetune	$0F, $01, $06, $01
+	spMultiple	$02, $02, $04, $02
+	spRateScale	$00, $00, $02, $01
+	spAttackRt	$0F, $0F, $0F, $0F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $03, $07, $02
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$01, $01, $01, $01
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1F, $22, $24, $02
+
+;	Voice $01
+;	$3D
+;	$02, $31, $72, $01, 	$90, $11, $11, $11, 	$0D, $0E, $0E, $10
+;	$00, $02, $02, $04, 	$3F, $2F, $2F, $1F, 	$1A, $03, $02, $03
+	spAlgorithm	$05
+	spFeedback	$07
+	spDetune	$00, $07, $03, $00
+	spMultiple	$02, $02, $01, $01
+	spRateScale	$02, $00, $00, $00
+	spAttackRt	$10, $11, $11, $11
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0D, $0E, $0E, $10
+	spDecayRt	$00, $02, $02, $04
+	spSustainLv	$03, $02, $02, $01
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1A, $02, $03, $03
+
+;	Voice $02
+;	$1C
+;	$14, $24, $12, $02, 	$1F, $1F, $1F, $1F, 	$15, $14, $15, $14
+;	$00, $00, $00, $00, 	$5F, $2F, $5F, $2F, 	$0F, $0A, $0F, $00
+	spAlgorithm	$04
+	spFeedback	$03
+	spDetune	$01, $01, $02, $00
+	spMultiple	$04, $02, $04, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$15, $15, $14, $14
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$05, $05, $02, $02
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$0F, $0F, $0A, $00
+
+; DAC Data
+Snd_Stage51_DAC2:
+	dc.b dKick, $08, $10, $08, $08, $10, $08, $18, $18, $10, $08, $10
+	dc.b $08, $08, $10, $08, $18, $10, $08, $08, $08
+
+Snd_Stage51_Jump00:
+	dc.b dKick
+
+Snd_Stage51_Loop00:
+	dc.b $18, $18, $10, $08, $10, $10, $08, $10
+	sLoop		$00, $07, Snd_Stage51_Loop00
+	dc.b $18, $18, $10, $08, $10, $10, $08, $08
+
+Snd_Stage51_Loop01:
+	dc.b $08, $08, $10
+	sLoop		$00, $08, Snd_Stage51_Loop01
+	dc.b $08
+
+Snd_Stage51_Loop02:
+	dc.b $18, $18, $10, $08, $10, $10, $08, $10
+	sLoop		$00, $07, Snd_Stage51_Loop02
+	dc.b $18, $18, $10, $08, $10, $10, $08, $08, $08
+	sJump		Snd_Stage51_Jump00
+
+; FM1 Data
+Snd_Stage51_FM1:
+	sVoice		$00
+	sPan		spCenter, $00
+	sModAMPS	$21, $01, $01, $07
+	dc.b nG3, $40, nFs3, nEb3, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+	dc.b nEb3
+	sVoice		$00
+
+Snd_Stage51_Jump02:
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+	dc.b nEb3
+	sModAMPS	$21, $01, $01, $07
+
+Snd_Stage51_Loop51:
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3, nEb3
+	sLoop		$00, $02, Snd_Stage51_Loop51
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop52:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop52
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3
+	sJump		Snd_Stage51_Jump02
+
+; FM2 Data
+Snd_Stage51_FM2:
+	sVoice		$01
+	sPan		spCenter, $00
+
+Snd_Stage51_Loop4C:
+	dc.b nC2, $18, nG1, nFs1, $10
+	sLoop		$00, $03, Snd_Stage51_Loop4C
+	dc.b nC3, $08, nB2, nAb2, nG2, nF2, nG1, nB1, nEb2
+
+Snd_Stage51_Loop4D:
+	dc.b nC2, $10, nFs1, $08, nC2, $10, nFs1, $18
+	sLoop		$00, $03, Snd_Stage51_Loop4D
+	dc.b nC2, $08, nFs1, nG1, nB1, nEb2, nC2, nFs2, nG2
+	sLoop		$01, $03, Snd_Stage51_Loop4D
+
+Snd_Stage51_Loop4E:
+	dc.b nC2, $10, nFs1, $08, nC2, $10, nFs1, $18
+	sLoop		$00, $03, Snd_Stage51_Loop4E
+	dc.b nC3, $08, nB2, nAb2, nG2, nF2, nG1, nB1, nEb2
+	sPan		spLeft, $00
+	dc.b nRst, $03
+	ssDetune	$02
+	saVol		$05
+	dc.b nC2, $18, nG2, nFs2, $10, nC3, $18, nFs2, nG2, $10, nEb2, $40
+	dc.b nC2, $08, $08, nRst, $18, nG2, $08, nFs2, $0D
+	ssDetune	$00
+	sPan		spCenter, $00
+	saVol		$FB
+
+Snd_Stage51_Loop4F:
+	dc.b nC2, $10, nFs1, $08, nC2, $10, nFs1, $18
+	sLoop		$00, $03, Snd_Stage51_Loop4F
+	dc.b nC2, $08, nFs1, nG1, nB1, nEb2, nC2, nFs2, nG2
+	sLoop		$01, $02, Snd_Stage51_Loop4F
+
+Snd_Stage51_Loop50:
+	dc.b nC2, nG1, nG1, nC2, nG1, nG1, nEb2, nFs2
+	sLoop		$00, $07, Snd_Stage51_Loop50
+	dc.b nC3, nB2, nAb2, nG2, nF2, nG1, nB1, nEb2
+	sJump		Snd_Stage51_Loop4D
+
+; FM3 Data
+Snd_Stage51_FM3:
+	sVoice		$00
+	sPan		spCenter, $00
+	sModAMPS	$21, $01, $01, $07
+	dc.b nC3, $40, nB2, nG2, $7F, sHold, $01
+	sVoice		$00
+
+Snd_Stage51_Jump01:
+	dc.b nC4, $58, nFs4, $18, nG4, $10, nEb4, $40, nFs4, nC4, nFs4, nA4
+	dc.b $18, nEb4, nG4, nFs4, $38, nC4, $58, nFs4, $18, nG4, $10, nEb4
+	dc.b $40, nFs4, nC4, nFs4, nA4, $18, nEb4, nG4, $50
+	sVoice		$01
+	dc.b nC2, $18, nG2, nFs2, $10, nC3, $18, nFs2, nG2, $10, nEb2, $40
+	dc.b nC2, $08, $08, nRst, $18, nG2, $08, nFs2, $10
+	sVoice		$00
+	sModAMPS	$21, $01, $01, $07
+	dc.b nC4, $58, nFs4, $18, nG4, $10, nEb4, $40, nFs4, nC4, nFs4, nA4
+	dc.b $18, nEb4, nG4, nFs4, $38
+	dc.b nC4, $18, nB3, nEb4, nD4, nC4, $10, nEb4, nFs4, $40, nG4, nC4
+	dc.b $18, nB3, nEb4, nD4, nC4, $10, nEb4, nG3, $7F, sHold, $01
+	sJump		Snd_Stage51_Jump01
+
+; FM4 Data
+Snd_Stage51_FM4:
+	sVoice		$00
+	sPan		spLeft, $00
+	dc.b nRst, $05
+	ssDetune	$03
+	dc.b nG3, $40, nFs3, nEb3, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+	dc.b nEb3
+	sVoice		$00
+	sModAMPS	$21, $01, $01, $07
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop04:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop04
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop05:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop05
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop06:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop06
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop07:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop07
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop08:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop08
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop09:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop09
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop0A:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop0A
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop0B:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop0B
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop0C:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop0C
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop0D:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop0D
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop0E:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop0E
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop0F:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop0F
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop10:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop10
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop11:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop11
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop12:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop12
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop13:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop13
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop14:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop14
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop15:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop15
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop16:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop16
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop17:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop17
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop18:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop18
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop19:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop19
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop1A:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop1A
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop1B:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop1B
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop1C:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop1C
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop1D:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop1D
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop1E:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop1E
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop1F:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop1F
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop20:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop20
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop21:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop21
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop22:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop22
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop23:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop23
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop24:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop24
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop25:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop25
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop26:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop26
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop27:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop27
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop28:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop28
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop29:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop29
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop2A:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop2A
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop2B:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop2B
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop2C:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop2C
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop2D:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop2D
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop2E:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop2E
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop2F:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop2F
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop30:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop30
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop31:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop31
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop32:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop32
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop33:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop33
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop34:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop34
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop35:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop35
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop36:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop36
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop37:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop37
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop38:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop38
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop39:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop39
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop3A:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop3A
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop3B:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop3B
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop3C:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop3C
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop3D:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop3D
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop3E:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop3E
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop3F:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop3F
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop40:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop40
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop41:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop41
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop42:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop42
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop43:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop43
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop44:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop44
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop45:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop45
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop46:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop46
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop47:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop47
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop48:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop48
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop49:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop49
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3
+	dc.b nG3, $10, nEb3, $7F, sHold, $01, nC3, $18, nG3, nFs3, $7F, sHold
+	dc.b $51, nC3, $18, nG3, nFs3, $10, nA3, $18, nFs3, nG3, $10, nEb3
+	dc.b $40, nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2
+
+Snd_Stage51_Loop4A:
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC4, nC5, nB4, nC5, nG4, nAb4, nEb5, nB4, nFs4, nF4, nEb4, nB3
+	dc.b nC4, nFs3, nG3
+	sLoop		$00, $02, Snd_Stage51_Loop4A
+	dc.b nEb3
+	sVoice		$00
+	dc.b nC3, $18, nG3, nFs3, $7F, sHold, $51, nC3, $18, nG3, nFs3, $10
+	dc.b nA3, $18, nFs3, nG3, $10, nEb3, $7F, sHold, $01
+	sVoice		$02
+
+Snd_Stage51_Loop4B:
+	dc.b nC4, $08, $08, nRst, nG3, nRst, nEb4, nFs3, $10
+	sLoop		$00, $07, Snd_Stage51_Loop4B
+	sVoice		$00
+	dc.b nC4, $08, nB3, nAb3, nG3, nF3, nG2, nB2, nEb3, nC3, $18, nG3
+	dc.b nFs3, $50
+	sStop
+
+; FM5 Data
+Snd_Stage51_FM5:
+	sVoice		$00
+	sPan		spRight, $00
+	dc.b nRst, $03
+	ssDetune	$02
+	dc.b nC3, $40, nB2, nG2, $7F, sHold, $01
+	sVoice		$00
+	sModAMPS	$21, $01, $01, $07
+
+Snd_Stage51_Loop03:
+	dc.b nC4, $58, nFs4, $18, nG4, $10, nEb4, $40, nFs4, nC4, nFs4, nA4
+	dc.b $18, nEb4, nG4, nFs4, $38, nC4, $58, nFs4, $18, nG4, $10, nEb4
+	dc.b $40, nFs4, nC4, nFs4, nA4, $18, nEb4, nG4, $50
+	sVoice		$01
+	dc.b nC2, $18, nG2, nFs2, $10, nC3, $18, nFs2, nG2, $10, nEb2, $40
+	dc.b nC2, $08, $08, nRst, $18, nG2, $08, nFs2, $10
+	sVoice		$00
+	dc.b nC4, $58, nFs4, $18, nG4, $10, nEb4, $40, nFs4, nC4, nFs4, nA4
+	dc.b $18, nEb4, nG4, nFs4, $38
+	sVoice		$00
+	dc.b nC4, $18, nB3, nEb4, nD4, nC4, $10, nEb4, nFs4, $40, nG4, nC4
+	dc.b $18, nB3, nEb4, nD4, nC4, $10, nEb4, nG3, $7F, sHold, $01
+	sLoop		$00, $24, Snd_Stage51_Loop03
+	dc.b nC4, $58, nFs4, $18, nG4, $10, nEb4, $40
+	sStop
+
+Snd_Stage51_DAC1:
+	sStop

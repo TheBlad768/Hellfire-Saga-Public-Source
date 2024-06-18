@@ -1,0 +1,65 @@
+Map_TitleLogo:
+		dc.w Map_TitleLogo_2-Map_TitleLogo
+Map_TitleLogo_2:
+		dc.w $3C
+		dc.b $B4, $F, $0, $0, $FF, $E4
+		dc.b $B4, $B, $0, $10, $0, $4
+		dc.b $BC, $F, $0, $1C, $FF, $94
+		dc.b $BC, $7, $0, $2C, $FF, $D4
+		dc.b $BC, $B, $0, $34, $0, $1C
+		dc.b $C4, $3, $0, $40, $FF, $8C
+		dc.b $C4, $1, $0, $44, $FF, $B4
+		dc.b $C4, $3, $0, $46, $FF, $CC
+		dc.b $CC, $3, $0, $4A, $FF, $84
+		dc.b $CC, $3, $0, $4E, $FF, $C4
+		dc.b $CC, $F, $0, $52, $0, $34
+		dc.b $CC, $F, $0, $62, $0, $54
+		dc.b $D4, $3, $0, $72, $FF, $BC
+		dc.b $D4, $F, $0, $76, $FF, $E4
+		dc.b $D4, $B, $0, $86, $0, $4
+		dc.b $DC, $F, $0, $92, $FF, $94
+		dc.b $DC, $7, $0, $A2, $FF, $D4
+		dc.b $DC, $B, $0, $AA, $0, $1C
+		dc.b $E4, $A, $0, $B6, $FF, $6C
+		dc.b $E4, $3, $0, $BF, $FF, $8C
+		dc.b $E4, $3, $0, $C3, $FF, $B4
+		dc.b $E4, $3, $0, $C7, $FF, $CC
+		dc.b $E4, $E, $0, $CB, $0, $74
+		dc.b $EC, $2, $0, $D7, $FF, $84
+		dc.b $EC, $3, $0, $DA, $FF, $C4
+		dc.b $EC, $F, $0, $DE, $0, $34
+		dc.b $EC, $F, $0, $EE, $0, $54
+		dc.b $F4, $3, $0, $FE, $FF, $BC
+		dc.b $F4, $F, $1, $2, $FF, $E4
+		dc.b $F4, $B, $1, $12, $0, $4
+		dc.b $FC, $F, $1, $1E, $FF, $94
+		dc.b $FC, $7, $1, $2E, $FF, $D4
+		dc.b $FC, $B, $1, $36, $0, $1C
+		dc.b $4, $1, $1, $42, $FF, $8C
+		dc.b $4, $3, $1, $44, $FF, $B4
+		dc.b $4, $3, $1, $48, $FF, $CC
+		dc.b $C, $3, $1, $4C, $FF, $C4
+		dc.b $C, $F, $1, $50, $0, $34
+		dc.b $C, $7, $1, $60, $0, $54
+		dc.b $C, $4, $1, $68, $0, $64
+		dc.b $14, $3, $1, $6A, $FF, $BC
+		dc.b $14, $F, $1, $6E, $FF, $E4
+		dc.b $14, $B, $1, $7E, $0, $4
+		dc.b $14, $0, $1, $8A, $0, $64
+		dc.b $1C, $C, $1, $8B, $FF, $94
+		dc.b $1C, $7, $1, $8F, $FF, $D4
+		dc.b $1C, $B, $1, $97, $0, $1C
+		dc.b $24, $C, $1, $A3, $FF, $9C
+		dc.b $24, $3, $1, $A7, $FF, $CC
+		dc.b $2C, $9, $1, $AB, $FF, $A4
+		dc.b $2C, $2, $1, $B1, $FF, $C4
+		dc.b $2C, $D, $1, $B4, $0, $34
+		dc.b $2C, $1, $1, $BC, $0, $54
+		dc.b $34, $1, $1, $BE, $FF, $BC
+		dc.b $34, $D, $1, $C0, $FF, $E4
+		dc.b $34, $9, $1, $C8, $0, $4
+		dc.b $3C, $4, $1, $CE, $FF, $D4
+		dc.b $3C, $C, $1, $D0, $0, $1C
+		dc.b $3C, $0, $1, $D4, $0, $3C
+		dc.b $44, $0, $1, $D5, $FF, $FC
+	even

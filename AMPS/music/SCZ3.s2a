@@ -1,0 +1,229 @@
+Snd_Stage72_Header:
+	sHeaderInit
+	sHeaderTempo	$00FD
+	sHeaderCh	$06, $00
+	sHeaderDAC	Snd_Stage72_DAC1
+	sHeaderDAC	Snd_Stage72_DAC2,	$04
+	sHeaderFM	Snd_Stage72_FM1,	$00, $10
+	sHeaderFM	Snd_Stage72_FM3,	$00, $10		; AF: SFX now use FM2
+	sHeaderFM	Snd_Stage72_FM2,	$F4, $10
+	sHeaderFM	Snd_Stage72_FM4,	$00, $15
+	sHeaderFM	Snd_Stage72_FM5,	$00, $15
+	sHeaderFM	Snd_Stage72_FM6,	$00, $10
+
+;	Voice $00
+;	$33
+;	$01, $F2, $02, $02, 	$1F, $1F, $1F, $1F, 	$09, $07, $0A, $09
+;	$00, $00, $00, $00, 	$2F, $1F, $1F, $1F, 	$1A, $1C, $17, $80
+	spAlgorithm	$03
+	spFeedback	$06
+	spDetune	$00, $00, $0F, $00
+	spMultiple	$01, $02, $02, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$09, $0A, $07, $09
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$02, $01, $01, $01
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1A, $17, $1C, $00
+
+;	Voice $01
+;	$3C
+;	$0A, $12, $F2, $22, 	$9F, $9F, $9F, $9F, 	$0D, $03, $04, $03
+;	$00, $00, $00, $00, 	$1F, $5F, $1F, $5F, 	$1D, $86, $16, $8A
+	spAlgorithm	$04
+	spFeedback	$07
+	spDetune	$00, $0F, $01, $02
+	spMultiple	$0A, $02, $02, $02
+	spRateScale	$02, $02, $02, $02
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0D, $04, $03, $03
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$01, $01, $05, $05
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1D, $16, $06, $0A
+
+;	Voice $02
+;	$0C
+;	$E2, $14, $A1, $D2, 	$0B, $0B, $0B, $0B, 	$00, $00, $00, $00
+;	$00, $00, $00, $00, 	$1F, $1F, $1F, $1F, 	$22, $84, $22, $84
+	spAlgorithm	$04
+	spFeedback	$01
+	spDetune	$0E, $0A, $01, $0D
+	spMultiple	$02, $01, $04, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$0B, $0B, $0B, $0B
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $00, $00, $00
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$01, $01, $01, $01
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$22, $22, $04, $04
+
+; FM1 Data
+Snd_Stage72_FM1:
+	sVoice		$01
+	sModAMPS	$21, $01, $01, $07
+	sPan		spCenter, $00
+
+Snd_Stage72_Call01:
+	dc.b nE4, $08, nB3, nG3, nG4, nB3, nG3, nBb4, nB3, nG3, nB4, nB3
+	dc.b nG3, nFs4, nB3, nG3, nG4, nB3, nG3, nEb4, nB3, nG3, nFs4, nB3
+	dc.b nG3, nE4, $08, nA3, nFs3, nEb4, nA3, nF3, nFs4, nA3, nFs3, nF4
+	dc.b nA3, nF3, nC5, nA3, nFs3, nA4, nA3, nF3, nEb5, nA3, nF3, nC5
+	dc.b nA3, nF3, nB4, $08, nB3, nG3, nBb4, nB3, nG3, nA4, nB3, nG3
+	dc.b nG4, nB3, nG3, nFs4, nB3, nG3, nG4, nB3, nG3, nEb4, nB3, nG3
+	dc.b nFs4, nB3, nG3, nE4, $08, nA3, nFs3, nEb4, nA3, nFs3, nFs4, nA3
+	dc.b nFs3, nF4, nA3, nF3, nC5, nA3, nFs3, nA4, nA3, nF3, nEb5, nA3
+	dc.b nF3, nC5, nA3, nF3
+
+Snd_Stage72_Loop0A:
+	dc.b nB4, $08, nB3, nG3, nBb3, nG3, nE3, nB3, nG3, nE3, nFs3, nE3
+	dc.b nF3, nG3, nE3, nG3, nBb3, nG3, nBb3, nB3, nE3, nFs3, nG3, nFs3
+	dc.b nG3
+	sLoop		$00, $04, Snd_Stage72_Loop0A
+	dc.b nB3, $08, nG3, nE3, nBb3, nG3, nE3, nB3, nG3, nE3, nE4, nG3
+	dc.b nE3, nEb4, nB3, nG3, nE4, nB3, nG3, nFs4, nB3, nG3, nEb4, nB3
+	dc.b nG3, nE4, $08, nB3, nG3, nEb4, nB3, nG3, nE4, nB3, nG3, nG4
+	dc.b nB3, nG3, nFs4, nB3, nG3, nA4, nB3, nG3, nG4, nB3, nG3, nEb4
+	dc.b nB3, nG3, nE4, $08, nG3, nE3, nBb3, nG3, nE3, nB3, nG3, nE3
+	dc.b nE4, nB3, nG3, nEb4, nB3, nG3, nE4, nB3, nG3, nFs4, nB3, nG3
+	dc.b nD4, nB3, nG3, nE4, nB3, nG3, nB4, nB3, nG3, nBb4, nB3, nG3
+	dc.b nA4, nB3, nG3, nFs4, nB3, nG3, nG4, nB3, nG3, nEb4, nB3, nG3
+	dc.b nFs4, nB3, nG3
+	sJump		Snd_Stage72_Call01
+
+; FM2 Data
+Snd_Stage72_FM2:
+	sVoice		$00
+	sPan		spCenter, $00
+	dc.b nE2, $60, sHold, $48, sHold, $10, $08, nAb2, $60, sHold, $48, sHold
+	dc.b $10, $08
+	sLoop		$00, $02, Snd_Stage72_FM2
+	sVoice		$00
+	sPan		spCenter, $00
+
+Snd_Stage72_Loop03:
+	dc.b nE2, $18, nE3
+	sLoop		$00, $04, Snd_Stage72_Loop03
+
+Snd_Stage72_Loop04:
+	dc.b nEb2, $18, nEb3
+	sLoop		$00, $04, Snd_Stage72_Loop04
+
+Snd_Stage72_Loop05:
+	dc.b nD2, $18, nD3
+	sLoop		$00, $04, Snd_Stage72_Loop05
+
+Snd_Stage72_Loop06:
+	dc.b nCs2, $18, nCs3
+	sLoop		$00, $04, Snd_Stage72_Loop06
+
+Snd_Stage72_Loop07:
+	dc.b nC2, $18, nC3
+	sLoop		$00, $04, Snd_Stage72_Loop07
+
+Snd_Stage72_Loop08:
+	dc.b nE2, $18, nE3
+	sLoop		$00, $04, Snd_Stage72_Loop08
+
+Snd_Stage72_Loop09:
+	dc.b nC2, $18, nC3
+	sLoop		$00, $03, Snd_Stage72_Loop09
+	dc.b nC2, $30, nE2, $60, nEb2
+	sJump		Snd_Stage72_FM2
+
+; FM3 Data
+Snd_Stage72_FM3:
+	sVoice		$02
+	sModAMPS	$21, $01, $01, $07
+	sPan		spCenter, $00
+
+Snd_Stage72_Call00:
+	dc.b nE3, $18, nG3, nBb3, nB3, nFs3, nG3, nEb3, nFs3, nE3, $18, nEb3
+	dc.b nFs3, nF3, nC4, nA3, nEb4, nC4, nB3, $18, nBb3, nA3, nG3, nFs3
+	dc.b nG3, nEb3, nFs3, nE3, $18, nEb3, nFs3, nF3, nC4, nA3, nEb4, nC4
+
+Snd_Stage72_Loop00:
+	dc.b nB3, $06, sHold
+	saVol		$01
+	sLoop		$00, $0F, Snd_Stage72_Loop00
+	dc.b nB3, $06
+	saVol		$F1
+
+Snd_Stage72_Loop01:
+	dc.b nRst, $18, nG3, nB3, nBb3, nG3, $60
+	sLoop		$00, $03, Snd_Stage72_Loop01
+	dc.b nRst, $18, nG3, nB3, nBb3, nB3, nE4, nEb4, nG4, nFs4, nG4, nB4
+	dc.b nFs4
+
+Snd_Stage72_Loop02:
+	dc.b nRst, $60
+	sLoop		$00, $06, Snd_Stage72_Loop02
+	sJump		Snd_Stage72_Call00
+
+; FM4 Data
+Snd_Stage72_FM4:
+	sVoice		$01
+	dc.b nRst, $04
+	sPan		spLeft, $00
+	ssDetune	$05
+	sCall		Snd_Stage72_Call01
+	sVoice		$03
+	sModAMPS	$21, $01, $01, $07
+	sPan		spCenter, $00
+	sVoice		$03
+	sModAMPS	$21, $01, $01, $07
+	sPan		spCenter, $00
+	sVoice		$03
+	sModAMPS	$21, $01, $01, $07
+	sPan		spCenter, $00
+	sVoice		$03
+	sModAMPS	$21, $01, $01, $07
+	sPan		spCenter, $00
+	sVoice		$03
+	sModAMPS	$21, $01, $01, $07
+	sPan		spCenter, $00
+	sStop
+
+; FM5 Data
+Snd_Stage72_FM5:
+	sVoice		$01
+	dc.b nRst, $05
+	sPan		spRight, $00
+	ssDetune	$03
+	sCall		Snd_Stage72_Call01
+	sVoice		$03
+	sModAMPS	$21, $01, $01, $07
+	sPan		spCenter, $00
+	sVoice		$03
+	sModAMPS	$21, $01, $01, $07
+	sPan		spCenter, $00
+	sVoice		$03
+	sModAMPS	$21, $01, $01, $07
+	sPan		spCenter, $00
+	sVoice		$03
+	sModAMPS	$21, $01, $01, $07
+	sPan		spCenter, $00
+	sVoice		$03
+	sModAMPS	$21, $01, $01, $07
+	sPan		spCenter, $00
+	sStop
+
+; FM6 Data
+Snd_Stage72_FM6:
+	sVoice		$02
+	dc.b nRst, $03
+	sPan		spLeft, $00
+	ssDetune	$03
+	sCall		Snd_Stage72_Call00
+
+; DAC Data
+Snd_Stage72_DAC1:
+Snd_Stage72_DAC2:
+	sStop

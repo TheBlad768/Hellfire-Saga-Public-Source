@@ -1,0 +1,17 @@
+Sound_26_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$A0, ctFM4, Sound_26_FM4, $00, $00
+
+; FM4 Data
+Sound_26_FM4:
+	sVoice		pAttachment1
+	dc.b nBb0, $04, nRst, $01
+	sVoice		pAttachment2
+
+Sound_26_Loop00:
+	dc.b nC0, $07
+	saVol		$0E
+	sLoop		$00, $03, Sound_26_Loop00
+	sStop

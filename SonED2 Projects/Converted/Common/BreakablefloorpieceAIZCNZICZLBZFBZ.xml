@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Namespace="SonED2.ZoneCommon" TypeName="BreakablefloorpieceAIZCNZICZLBZFBZ" Language="cs" Name="Breakable floor piece - AIZ/CNZ/ICZ/LBZ/FBZ" Image="Image1" RememberState="false" Debug="false" xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromBitmap id="Image1" filename="Sprites/s3objsprite1-6.png" />
+  </Images>
+  <Properties>
+    <BitsProperty name="Property1" type="Enum1" startbit="0" length="1" />
+  </Properties>
+  <Enums>
+    <Enum name="Enum1">
+      <EnumMember name="Breaks from beneath" />
+      <EnumMember name="Breaks when jumped on" />
+    </Enum>
+  </Enums>
+  <Display>
+    <DisplayOption>
+      <ImageRef image="Image1">
+        <Offset X="-16" Y="-47" />
+      </ImageRef>
+    </DisplayOption>
+  </Display>
+</ObjDef>

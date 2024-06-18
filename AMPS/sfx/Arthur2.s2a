@@ -1,0 +1,11 @@
+Snd_SFX02_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$80, ctFM5, Snd_SFX02_FM5, $00, $01
+
+; FM6 Data
+Snd_SFX02_FM5:
+	sVoice		$1D
+	dc.b nCs2, $04, nRst, $01
+	sStop

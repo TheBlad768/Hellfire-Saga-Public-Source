@@ -1,0 +1,2474 @@
+Snd_HellFire_Header:
+	sHeaderInit
+	sHeaderTempo	$00E6
+	sHeaderCh	$05, $03
+	sHeaderDAC	Snd_HellFire_DAC1
+	sHeaderDAC	Snd_HellFire_DAC2
+	sHeaderFM	Snd_HellFire_FM1,	$00, $04
+	sHeaderFM	Snd_HellFire_FM3,	$00, $12		; AF: SFX now use FM2
+	sHeaderFM	Snd_HellFire_FM2,	$00, $09
+	sHeaderFM	Snd_HellFire_FM4,	$00, $06
+	sHeaderFM	Snd_HellFire_FM5,	$00, $08
+	sHeaderPSG	Snd_HellFire_PSG1,	$00+$0C, $28, $00, v08
+	sHeaderPSG	Snd_HellFire_PSG2,	$00+$0C, $28, $00, v08
+	sHeaderPSG	Snd_HellFire_PSG3,	$00+$0C, $10, $00, v01
+
+;	Voice $00
+;	$20
+;	$3F, $53, $00, $01, 	$5F, $5F, $5F, $5F, 	$0F, $10, $12, $07
+;	$08, $08, $08, $08, 	$17, $17, $17, $17, 	$13, $3E, $0C, $0C
+	spAlgorithm	$00
+	spFeedback	$04
+	spDetune	$03, $00, $05, $00
+	spMultiple	$0F, $00, $03, $01
+	spRateScale	$01, $01, $01, $01
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0F, $12, $10, $07
+	spDecayRt	$08, $08, $08, $08
+	spSustainLv	$01, $01, $01, $01
+	spReleaseRt	$07, $07, $07, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$13, $0C, $3E, $0C
+
+;	Voice $01
+;	$28
+;	$33, $53, $70, $30, 	$DF, $DC, $1F, $1F, 	$14, $05, $01, $01
+;	$00, $01, $00, $1D, 	$11, $21, $10, $F9, 	$0E, $1B, $12, $08
+	spAlgorithm	$00
+	spFeedback	$05
+	spDetune	$03, $07, $05, $03
+	spMultiple	$03, $00, $03, $00
+	spRateScale	$03, $00, $03, $00
+	spAttackRt	$1F, $1F, $1C, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$14, $01, $05, $01
+	spDecayRt	$00, $00, $01, $1D
+	spSustainLv	$01, $01, $02, $0F
+	spReleaseRt	$01, $00, $01, $09
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$0E, $12, $1B, $08
+
+;	Voice $02
+;	$38
+;	$33, $01, $51, $01, 	$10, $13, $1A, $1B, 	$0F, $1F, $1F, $1F
+;	$01, $01, $01, $01, 	$33, $03, $03, $08, 	$16, $1A, $19, $0C
+	spAlgorithm	$00
+	spFeedback	$07
+	spDetune	$03, $05, $00, $00
+	spMultiple	$03, $01, $01, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$10, $1A, $13, $1B
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0F, $1F, $1F, $1F
+	spDecayRt	$01, $01, $01, $01
+	spSustainLv	$03, $00, $00, $00
+	spReleaseRt	$03, $03, $03, $08
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$16, $19, $1A, $0C
+
+;	Voice $03
+;	$24
+;	$33, $33, $52, $52, 	$0F, $17, $0F, $17, 	$05, $03, $05, $03
+;	$00, $00, $00, $00, 	$27, $17, $27, $17, 	$16, $0C, $16, $0C
+	spAlgorithm	$04
+	spFeedback	$04
+	spDetune	$03, $05, $03, $05
+	spMultiple	$03, $02, $03, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$0F, $0F, $17, $17
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$05, $05, $03, $03
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$02, $02, $01, $01
+	spReleaseRt	$07, $07, $07, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$16, $16, $0C, $0C
+
+; DAC Data
+Snd_HellFire_DAC2:
+	sPan		spCenter, $00
+	dc.b $92, $04, dMidTimpani, dKick, $01, dLowTimpani, $04, dSnare, $05, $92, $04, dSnare
+	dc.b dKick, $05, dLowTimpani, $04, $05, $05, dVLowTimpani, $04, $05, $04, $05, $8C
+	dc.b $04, $05, $8D, $12, $92, $05, dKick, $04, $09, $09, $09, $92
+	dc.b dKick, $12, $05, $04, $92, $09, dKick, dKick, dKick, $92
+
+Snd_HellFire_Loop00:
+	dc.b dKick, dKick, $12, $92, $05, dKick, $04, $09, $09, $09, $09, $12
+	dc.b $05, $04, $92, $09, dKick, dKick, dKick, dKick, dKick, $8D, $12, $92
+	dc.b $05, dKick, $04, $09, $09, $09, $09, $12, $05, $04, $92, $09
+	dc.b dKick, dKick, dKick, dKick
+	sLoop		$00, $03, Snd_HellFire_Loop00
+	dc.b dKick, dKick, $12, $92, $05, dKick, $04, $09, $09, $09, $09, $09
+	dc.b $09, dSnare, dSnare, dKick, $92, dKick, $8C, $8C, $8D
+
+Snd_HellFire_Loop01:
+	dc.b $12, $92, $09, dKick, dKick, dKick, $92, dKick, $12, $09, dSnare, dKick
+	dc.b $12, $09, dSnare, dKick
+	sLoop		$00, $04, Snd_HellFire_Loop01
+	dc.b $8D
+
+Snd_HellFire_Loop02:
+	dc.b $12, $92, $09, dKick, dKick, dKick, $92, dKick, $12, $09, dSnare, dKick
+	dc.b $12, $09, dSnare, dKick
+	sLoop		$00, $03, Snd_HellFire_Loop02
+	dc.b dKick, $12, $92, $09, dKick, dKick, dKick, $92, dKick, $12, $09, dSnare
+	dc.b dKick, $12, $09, dLowTimpani, $05, dVLowTimpani, $04, $05, $8C, $04, $8D
+
+Snd_HellFire_Loop03:
+	dc.b $09, dKick, dKick, $12, $92, dKick, $09, $12, $09, $09, $09, dSnare
+	dc.b dKick, dKick, dKick
+	sLoop		$00, $02, Snd_HellFire_Loop03
+	dc.b $8D, dKick, dKick, $12, $92, dKick, $09, $12, $09, $09, $09, dSnare
+	dc.b dKick, dKick, dKick, dKick, dKick, dKick, $12, $92, dKick, $09, $8D, $12
+	dc.b dKick, $09, $09, $09, dSnare, $92, $92, $92, $8D, $12, $92, $09
+	dc.b dKick, dKick, dKick, $92, dKick, $12, $05, $04, $92, $09, dKick, dKick
+	dc.b dKick, $92, dKick, dKick, $12, $92, $05, dKick, $04, $09, $09, $09
+	dc.b $92, dKick, $12, $05, $04, $92, $09, dKick, dKick, dKick, $92, dKick
+	dc.b $8D, $12, $92, $05, dKick, $04, $09, $09, $09, $09, $12, $05
+	dc.b $04, $92, $09, dKick, dKick, dKick, $92, dKick, dKick, $12, $92, $05
+	dc.b dKick, $04, $09, $09, $09, $92, dKick, dKick, dSnare, dSnare, dKick, $92
+	dc.b dKick, $8C, $8C, $8D, dKick, dSnare, dKick, $05, $04, $12, $92, $09
+	dc.b dKick
+
+Snd_HellFire_Loop04:
+	dc.b $12, $05, $04, $92, $09, dKick, dKick, dKick, $92, dKick, dKick, $05
+	dc.b $04, $09, dSnare, dKick, $05, $04, $12, $92, $05, dKick, $04
+	sLoop		$00, $03, Snd_HellFire_Loop04
+	dc.b $12, $05, $04, $92, $09, dKick, dKick, dKick, dKick, $05, dVLowTimpani, $04
+	dc.b dKick, $05, $8C, $04, $8D
+
+Snd_HellFire_Loop05:
+	dc.b $12, $92, $09, dKick, dKick, dKick, $92, dKick, $12, $09, dSnare, dKick
+	dc.b $12, $09, dSnare, dKick
+	sLoop		$00, $03, Snd_HellFire_Loop05
+	dc.b dKick, $12, $92, $09, dKick, dKick, dKick, $92, dKick, $12, $09, dSnare
+	dc.b dKick, $12, $09, dLowTimpani, $05, dVLowTimpani, $04, dKick, $05, $8C, $04, $8D
+
+Snd_HellFire_Loop06:
+	dc.b $09, dKick, dKick, $12, $92, dKick, $09, $12, $09, $09, $09, dSnare
+	dc.b dKick, dKick, dKick
+	sLoop		$00, $02, Snd_HellFire_Loop06
+	dc.b $8D, dKick, dKick, $12, $92, dKick, $09, $12, $09, $09, $09, dSnare
+	dc.b dKick, dKick, dKick, dKick, dKick, dKick, $12, $92, dKick, $09, $8D, $12
+	dc.b dKick, $09, $09, $09, dSnare, $92, $92, $92, $8D
+
+Snd_HellFire_Loop07:
+	dc.b dKick, dSnare, dKick, dKick
+	sLoop		$00, $06, Snd_HellFire_Loop07
+	dc.b dKick, $92, dKick, dKick, dKick, dSnare, dKick, $8D
+
+Snd_HellFire_Loop08:
+	dc.b dKick, dSnare, dKick, dKick
+	sLoop		$00, $03, Snd_HellFire_Loop08
+
+Snd_HellFire_Loop09:
+	dc.b dKick, dSnare
+	sLoop		$00, $05, Snd_HellFire_Loop09
+	dc.b $8D, dSnare, dKick, dSnare, dKick
+
+Snd_HellFire_Loop0A:
+	dc.b $92, $05, dSnare, $04, $05, $04
+	sLoop		$00, $02, Snd_HellFire_Loop0A
+	dc.b $8D
+
+Snd_HellFire_Loop0B:
+	dc.b $12, dKick
+	sLoop		$00, $0D, Snd_HellFire_Loop0B
+	dc.b dKick, dKick, $5A, $8D
+
+Snd_HellFire_Loop0C:
+	dc.b $12, dKick, $09, $09, $92, dKick, dKick, dKick, $12, $12, $09, dSnare
+	dc.b dKick, dKick, dKick
+	sLoop		$00, $03, Snd_HellFire_Loop0C
+	dc.b dKick, $12, $09, $09, $92, $05, dLowTimpani, $04, dKick, $05, dVLowTimpani, $04
+	dc.b dKick, $05, $8C, $55
+
+Snd_HellFire_Loop0D:
+	dc.b $8D, $12, $92, $09, dKick, dKick, dKick, $92, dKick, $12, $09, dSnare
+	dc.b dKick, dKick, dKick, $92, $12, dKick, $92, $09, dKick, dKick, dKick, $92
+	dc.b dKick, $12, $09, dSnare, dKick, dKick, dKick, $92, $12
+	sLoop		$00, $03, Snd_HellFire_Loop0D
+	dc.b $8D, $92, $09, dKick, dKick, dKick, $92, dKick, $12, $09, $92, dKick
+	dc.b dKick, dKick, $92, $12, $8D, $3F, $3F, $92, $12, $8D
+
+Snd_HellFire_Loop0E:
+	dc.b $09, dKick, dSnare, dKick
+	sLoop		$00, $06, Snd_HellFire_Loop0E
+	dc.b dKick, dKick, $92, dKick, dKick
+
+Snd_HellFire_Loop10:
+	dc.b dKick, dSnare, dKick, $8D
+
+Snd_HellFire_Loop0F:
+	dc.b dKick, dSnare, dKick, dKick
+	sLoop		$00, $03, Snd_HellFire_Loop0F
+	sLoop		$01, $02, Snd_HellFire_Loop10
+	dc.b dVLowTimpani, dKick, $8C, $8D, dKick, dKick, dKick
+
+Snd_HellFire_Loop12:
+	dc.b $92
+
+Snd_HellFire_Loop11:
+	dc.b dKick
+	sLoop		$00, $07, Snd_HellFire_Loop11
+	sLoop		$01, $03, Snd_HellFire_Loop12
+	dc.b $92, dKick, dKick, dKick, $8D, dKick, dKick, dKick, $92
+
+Snd_HellFire_Loop13:
+	dc.b dKick
+	sLoop		$00, $07, Snd_HellFire_Loop13
+	dc.b $92, dKick, dKick
+
+Snd_HellFire_Loop14:
+	dc.b dKick, dSnare
+	sLoop		$00, $06, Snd_HellFire_Loop14
+	dc.b dKick
+
+Snd_HellFire_Loop15:
+	dc.b dKick, $05, dSnare, $04, $05, $04
+	sLoop		$00, $02, Snd_HellFire_Loop15
+	dc.b $8D, $12, $92, $09, dKick, dKick, dKick, $92, dKick, $12, $05, $04
+	dc.b $92, $09, dKick, dKick, dKick, $92, dKick, dKick, $12, $92, $05, dKick
+	dc.b $04, $09, $09, $09, $92, dKick, $12, $05, $04, $92, $09, dKick
+	dc.b dKick, dKick, $92, dKick, $8D, $12, $92, $05, dKick, $04, $09, $09
+	dc.b $09, $09, $12, $05, $04, $92, $09, dKick, dKick, dKick, $92, dKick
+	dc.b dKick, $12, $92, $05, dKick, $04, $09, $09, $09, $92, dKick, $12
+	dc.b $05, $04, $92, $09, dKick, dKick, dKick, $92, dKick, $8D, $12, $92
+	dc.b $09, dKick, dKick, dKick, $92, dKick, $12, $05, $04, $92, $09, dKick
+	dc.b dKick, dKick, $92, dKick, dKick, $12, $92, $05, dKick, $04, $09, $09
+	dc.b $09, $92, dKick, $12, $05, $04, $92, $09, dKick, dKick, dKick, $92
+	dc.b dKick, $8D, $12, $92, $05, dKick, $04, $09, $09, $09, $92, dKick
+	dc.b $12, $05, $04, $92, $09, dKick, dKick, dKick, $92, dKick, dKick, $12
+	dc.b $92, $05, dKick, $04, $09, $09, $09, $92, dKick, dKick, dSnare, dSnare
+	dc.b dKick, dSnare, dKick, $8C, $8C, $8D, $60, nRst, nRst, nRst, nRst, nRst
+	sStop
+
+; FM1 Data
+Snd_HellFire_FM1:
+	sVoice		$00
+	sPan		spCenter, $00
+	dc.b nRst, $48
+
+Snd_HellFire_Loop50:
+	dc.b nC2, $12, $05
+	saVol		$01
+	dc.b $04
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b nG3, nEb3, nC2, nC2, $12, $05
+	saVol		$FF
+	dc.b $04
+	saVol		$01
+	dc.b $09, $09, nG3, nAb3, nG3, nFs3
+	saVol		$FF
+	dc.b nD2, $12, $05
+	saVol		$01
+	dc.b $04
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b nFs3, nD3, nD2, nD2, $12, $05
+	saVol		$FF
+	dc.b $04
+	saVol		$01
+	dc.b $09, $09, $09, $09, $09, $09
+	saVol		$FF
+	dc.b nC2, $12, $05
+	saVol		$01
+	dc.b $04
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b nG3, nEb3, nC2, nC2, $12, $05
+	saVol		$FF
+	dc.b $04
+	saVol		$01
+	dc.b $09, $09, nG3, nAb3, nG3, nFs3
+	saVol		$FF
+	dc.b nD2, $12, $05
+	saVol		$01
+	dc.b $04
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b nFs3, nD3, nD2, nD2, $12, $05
+	saVol		$FF
+	dc.b $04
+	saVol		$01
+	dc.b $09, $09, nFs2, nFs2, nD2, nD2
+	saVol		$FF
+	sLoop		$00, $02, Snd_HellFire_Loop50
+	dc.b nC2, $12, $09, $09, $09
+
+Snd_HellFire_Loop51:
+	dc.b $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	sLoop		$00, $02, Snd_HellFire_Loop51
+	dc.b $09
+	saVol		$01
+	dc.b $09, $09
+	saVol		$FF
+	dc.b nD2, $12, $09, $09, $09
+
+Snd_HellFire_Loop52:
+	dc.b $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	sLoop		$00, $02, Snd_HellFire_Loop52
+	dc.b $09
+	saVol		$01
+	dc.b $09, $09
+	saVol		$FF
+	dc.b nC2, $12, $09, $09, $09
+
+Snd_HellFire_Loop53:
+	dc.b $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	sLoop		$00, $02, Snd_HellFire_Loop53
+	dc.b $09
+	saVol		$01
+	dc.b $09, $09
+	saVol		$FF
+	dc.b nD2, $12, $09, $09, $09
+
+Snd_HellFire_Loop54:
+	dc.b $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	sLoop		$00, $02, Snd_HellFire_Loop54
+	dc.b $09
+	saVol		$01
+	dc.b $09, $09
+	saVol		$FF
+	dc.b nC2, $12, $09, $09, $09
+
+Snd_HellFire_Loop55:
+	dc.b $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	sLoop		$00, $02, Snd_HellFire_Loop55
+	dc.b $09
+	saVol		$01
+	dc.b $09, $09
+	saVol		$FF
+	dc.b nD2, $12, $09, $09, $09
+
+Snd_HellFire_Loop56:
+	dc.b $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	sLoop		$00, $02, Snd_HellFire_Loop56
+	dc.b $09
+	saVol		$01
+	dc.b $09, $09
+	saVol		$FF
+	dc.b nC2, $12, $09, $09, $09
+
+Snd_HellFire_Loop57:
+	dc.b $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	sLoop		$00, $02, Snd_HellFire_Loop57
+	dc.b $09
+	saVol		$01
+	dc.b $09, $09
+	saVol		$FF
+	dc.b nD2, $12, $09, $09, $09
+
+Snd_HellFire_Loop58:
+	dc.b $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	sLoop		$00, $02, Snd_HellFire_Loop58
+	dc.b $09
+	saVol		$01
+	dc.b $09, $09
+	saVol		$FF
+	dc.b nC2, nC2, nC2, $12, $12
+
+Snd_HellFire_Loop59:
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	dc.b $09
+	sLoop		$00, $02, Snd_HellFire_Loop59
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	dc.b nD2, $09, $09, $12, $12
+
+Snd_HellFire_Loop5A:
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	dc.b $09
+	sLoop		$00, $02, Snd_HellFire_Loop5A
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	dc.b nEb2, $09, $09, $12, $12
+
+Snd_HellFire_Loop5B:
+	saVol		$01
+	dc.b $09, nFs2, $12
+	saVol		$FF
+	dc.b $09
+	sLoop		$00, $02, Snd_HellFire_Loop5B
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	dc.b nG2, $09, $09, $12, $12
+
+Snd_HellFire_Loop5C:
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	dc.b $09
+	sLoop		$00, $02, Snd_HellFire_Loop5C
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	dc.b nC2, nC2, $05
+	saVol		$01
+	dc.b $04
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b nG3, nEb3, nC2, nC2, $12, $05
+	saVol		$FF
+	dc.b $04
+	saVol		$01
+	dc.b $09, $09, nG3, nAb3, nG3, nFs3
+	saVol		$FF
+	dc.b nD2, $12, $05
+	saVol		$01
+	dc.b $04
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b nFs3, nD3, nD2, nD2, $12, $05
+	saVol		$FF
+	dc.b $04
+	saVol		$01
+	dc.b $09, $09, $09, $09, $09, $09
+	saVol		$FF
+	dc.b nC2, $12, $05
+	saVol		$01
+	dc.b $04
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b nG3, nEb3, nC2, nC2, $12, $05
+	saVol		$FF
+	dc.b $04
+	saVol		$01
+	dc.b $09, $09, nG3, nAb3, nG3, nFs3
+	saVol		$FF
+	dc.b nD2, $12, $05
+	saVol		$01
+	dc.b $04
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b nFs3, nD3, nD2, nD2, $12, $05
+	saVol		$FF
+	dc.b $04
+	saVol		$01
+	dc.b $09, $09, nFs2, nFs2, nD2, nD2
+	saVol		$FF
+	dc.b nC2, $05, $04
+
+Snd_HellFire_Loop5D:
+	dc.b $09, nRst, nC2, $04, $05
+	sLoop		$00, $03, Snd_HellFire_Loop5D
+	dc.b $09, $09, $09, $09
+	saVol		$01
+	dc.b nG3, nEb3
+	saVol		$FF
+
+Snd_HellFire_Loop5E:
+	dc.b nD2, $04, $05, $09, nRst
+	sLoop		$00, $03, Snd_HellFire_Loop5E
+	dc.b nD2, $04, $05, $09, $09, $09, $09
+	saVol		$01
+	dc.b nFs3, nD3
+	saVol		$FF
+
+Snd_HellFire_Loop5F:
+	dc.b nC2, $05, $04, $09, nRst
+	sLoop		$00, $03, Snd_HellFire_Loop5F
+	dc.b nC2, $05, $04, $09, $09, $09, $09
+	saVol		$01
+	dc.b nG3, nEb3
+	saVol		$FF
+
+Snd_HellFire_Loop60:
+	dc.b nD2, $05, $04, $09, nRst
+	sLoop		$00, $03, Snd_HellFire_Loop60
+	dc.b nD2, $04, $05, $09, $09, $09, $09
+	saVol		$01
+	dc.b nFs3, nD3
+	saVol		$FF
+	dc.b nC2, $12, $09, $09, $09
+
+Snd_HellFire_Loop61:
+	dc.b $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	sLoop		$00, $02, Snd_HellFire_Loop61
+	dc.b $09
+	saVol		$01
+	dc.b $09, $09
+	saVol		$FF
+	dc.b nD2, $12, $09, $09, $09
+
+Snd_HellFire_Loop62:
+	dc.b $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	sLoop		$00, $02, Snd_HellFire_Loop62
+	dc.b $09
+	saVol		$01
+	dc.b $09, $09
+	saVol		$FF
+	dc.b nC2, $12, $09, $09, $09
+
+Snd_HellFire_Loop63:
+	dc.b $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	sLoop		$00, $02, Snd_HellFire_Loop63
+	dc.b $09
+	saVol		$01
+	dc.b $09, $09
+	saVol		$FF
+	dc.b nD2, $12, $09, $09, $09
+
+Snd_HellFire_Loop64:
+	dc.b $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	sLoop		$00, $02, Snd_HellFire_Loop64
+	dc.b $09
+	saVol		$01
+	dc.b $09, $09
+	saVol		$FF
+	dc.b nC2, nC2, nC2, $12, $12
+
+Snd_HellFire_Loop65:
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	dc.b $09
+	sLoop		$00, $02, Snd_HellFire_Loop65
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	dc.b nD2, $09, $09, $12, $12
+
+Snd_HellFire_Loop66:
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	dc.b $09
+	sLoop		$00, $02, Snd_HellFire_Loop66
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	dc.b nEb2, $09, $09, $12, $12
+
+Snd_HellFire_Loop67:
+	saVol		$01
+	dc.b $09, nFs2, $12
+	saVol		$FF
+	dc.b $09
+	sLoop		$00, $02, Snd_HellFire_Loop67
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	dc.b nG2, $09, $09, $12, $12
+
+Snd_HellFire_Loop68:
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	dc.b $09
+	sLoop		$00, $02, Snd_HellFire_Loop68
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	dc.b nC2, nC2, nC2, $09, $09
+	saVol		$01
+	dc.b nRst, nC2, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	dc.b nD2, nRst, nD2, $09, $09
+	saVol		$01
+	dc.b nRst, nD2, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	dc.b nEb2, nRst, nEb2, $09, $09
+	saVol		$01
+	dc.b nRst, nFs2, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	dc.b nG2, nRst, nG2, $09, $09
+	saVol		$01
+	dc.b nRst, nG2, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $12, nRst, $60, $60, $60, $60, $60, $60
+
+Snd_HellFire_Loop69:
+	saVol		$FF
+	dc.b nC2, $12, $09, $09, $09, $09, $09, nCs2, $12, nC2, $09
+	saVol		$01
+	dc.b $09, nCs2, $12
+	saVol		$FF
+	dc.b nC2, $09
+	saVol		$01
+	dc.b nCs2, nC2
+	sLoop		$00, $03, Snd_HellFire_Loop69
+	saVol		$FF
+	dc.b $12, $09, $09, $09, $09, $09, nRst, $51
+
+Snd_HellFire_Loop6A:
+	dc.b nCs2, $12, $09, $09, $09, $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $09, $09, $09
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	dc.b nAb2, nAb2, $09, $09, $09, $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $09, $09, $09
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	sLoop		$00, $02, Snd_HellFire_Loop6A
+	dc.b nG2, nG2, $09, $09, $09, $09
+	saVol		$01
+	dc.b $09, nC2, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $09, $09, $09
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	dc.b nF2, nF2, $09, $09, $09, $09
+	saVol		$01
+	dc.b $09, nD2, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $09, $09, $09
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	dc.b nCs2, nCs2, $09, $09, $09, $09
+	saVol		$01
+	dc.b $09, nG2, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $09, $09, $09
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	dc.b nC2, $3F, $51, $12, $12, $09
+	saVol		$01
+	dc.b $09
+
+Snd_HellFire_Loop6B:
+	dc.b $09, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	sLoop		$00, $02, Snd_HellFire_Loop6B
+	dc.b $12
+	saVol		$FF
+	dc.b nD2, nRst, nD2, $09
+	saVol		$01
+	dc.b $09, nRst, nD2, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	dc.b nEb2, nRst, nEb2, $09, $09
+	saVol		$01
+	dc.b nRst, nFs2, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	dc.b nG2, nRst, nG2, $09, $09
+	saVol		$01
+	dc.b nRst, nG2, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $09, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	dc.b nC2, nC2
+
+Snd_HellFire_Loop6C:
+	dc.b nC2
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	sLoop		$00, $03, Snd_HellFire_Loop6C
+	dc.b nD2, nD2
+
+Snd_HellFire_Loop6D:
+	dc.b nD2
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	sLoop		$00, $03, Snd_HellFire_Loop6D
+	dc.b nEb2, nEb2, nEb2
+
+Snd_HellFire_Loop6E:
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	dc.b nFs2
+	sLoop		$00, $02, Snd_HellFire_Loop6E
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	dc.b nG2, nG2
+
+Snd_HellFire_Loop6F:
+	dc.b nG2
+	saVol		$01
+	dc.b $12
+	saVol		$FF
+	sLoop		$00, $03, Snd_HellFire_Loop6F
+	dc.b nC2, nC2, $05
+	saVol		$01
+	dc.b $04
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b nG3, nEb3, nC2, nC2, $12, $05
+	saVol		$FF
+	dc.b $04
+	saVol		$01
+	dc.b $09, $09, nG3, nAb3, nG3, nFs3
+	saVol		$FF
+	dc.b nD2, $12, $05
+	saVol		$01
+	dc.b $04
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b nFs3, nD3, nD2, nD2, $12, $05
+	saVol		$FF
+	dc.b $04
+	saVol		$01
+	dc.b $09, $09, $09, $09, $09, $09
+	saVol		$FF
+	dc.b nC2, $12, $05
+	saVol		$01
+	dc.b $04
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b nG3, nEb3, nC2, nC2, $12, $05
+	saVol		$FF
+	dc.b $04
+	saVol		$01
+	dc.b $09, $09, nG3, nAb3, nG3, nFs3
+	saVol		$FF
+	dc.b nD2, $12, $05
+	saVol		$01
+	dc.b $04
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b nFs3, nD3, nD2, nD2, $12, $05
+	saVol		$FF
+	dc.b $04
+	saVol		$01
+	dc.b $09, $09, nFs2, nFs2, nD2, nD2
+	saVol		$FF
+	dc.b nC2, $12, $05
+	saVol		$01
+	dc.b $04
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b nG3, nEb3, nC2, nC2, $12, $05
+	saVol		$FF
+	dc.b $04
+	saVol		$01
+	dc.b $09, $09, nG3, nAb3, nG3, nFs3
+	saVol		$FF
+	dc.b nD2, $12, $05
+	saVol		$01
+	dc.b $04
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b nFs3, nD3, nD2, nD2, $12, $05
+	saVol		$FF
+	dc.b $04
+	saVol		$01
+	dc.b $09, $09, $09, $09, $09, $09
+	saVol		$FF
+	dc.b nC2, $12, $05
+	saVol		$01
+	dc.b $04
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b nG3, nEb3, nC2, nC2, $12, $05
+	saVol		$FF
+	dc.b $04
+	saVol		$01
+	dc.b $09, $09, nG3, nAb3, nG3, nFs3
+	saVol		$FF
+	dc.b nD2, $12, $05
+	saVol		$01
+	dc.b $04
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b nFs3, nD3, nD2, nD2, $12, $05
+	saVol		$FF
+	dc.b $04
+	saVol		$01
+	dc.b $09, $09, nFs2, nFs2, nD2, nD2
+	saVol		$FF
+	dc.b nC2
+
+Snd_HellFire_Loop70:
+	dc.b $60, sHold
+	sLoop		$00, $05, Snd_HellFire_Loop70
+	dc.b $60
+	sStop
+
+; FM2 Data
+Snd_HellFire_FM2:
+	sVoice		$01
+	sPan		spCenter, $00
+	dc.b nRst, $48
+
+Snd_HellFire_Loop28:
+	dc.b nC2, $11, nRst, $01, nC2, $04, nRst, $01
+	saVol		$01
+	dc.b nC2, $03, nRst, $01
+	saVol		$FF
+	dc.b nC2, $08, nRst, $01
+	saVol		$01
+	dc.b nG3, $09, nEb3, nC2, $08, nRst, $01, nC2, $11, nRst, $01, nC2
+	dc.b $04, nRst, $01
+	saVol		$FF
+	dc.b nC2, $03, nRst, $01
+	saVol		$01
+	dc.b nC2, $08, nRst, $01, nC2, $08, nRst, $01, nG3, $09, nAb3, nG3
+	dc.b nFs3
+	saVol		$FF
+	dc.b nD2, $11, nRst, $01, nD2, $04, nRst, $01
+	saVol		$01
+	dc.b nD2, $03, nRst, $01
+	saVol		$FF
+	dc.b nD2, $08, nRst, $01
+	saVol		$01
+	dc.b nFs3, $09, nD3, nD2, $08, nRst, $01, nD2, $11, nRst, $01, nD2
+	dc.b $04, nRst, $01
+	saVol		$FF
+	dc.b nD2, $03, nRst, $01
+	saVol		$01
+
+Snd_HellFire_Loop27:
+	dc.b nD2, $08, nRst, $01
+	sLoop		$00, $06, Snd_HellFire_Loop27
+	saVol		$FF
+	dc.b nC2, $11, nRst, $01, nC2, $04, nRst, $01
+	saVol		$01
+	dc.b nC2, $03, nRst, $01
+	saVol		$FF
+	dc.b nC2, $08, nRst, $01
+	saVol		$01
+	dc.b nG3, $09, nEb3, nC2, $08, nRst, $01, nC2, $11, nRst, $01, nC2
+	dc.b $04, nRst, $01
+	saVol		$FF
+	dc.b nC2, $03, nRst, $01
+	saVol		$01
+	dc.b nC2, $08, nRst, $01, nC2, $08, nRst, $01, nG3, $09, nAb3, nG3
+	dc.b nFs3
+	saVol		$FF
+	dc.b nD2, $11, nRst, $01, nD2, $04, nRst, $01
+	saVol		$01
+	dc.b nD2, $03, nRst, $01
+	saVol		$FF
+	dc.b nD2, $08, nRst, $01
+	saVol		$01
+	dc.b nFs3, $09, nD3, nD2, $08, nRst, $01, nD2, $11, nRst, $01, nD2
+	dc.b $04, nRst, $01
+	saVol		$FF
+	dc.b nD2, $03, nRst, $01
+	saVol		$01
+	dc.b nD2, $08, nRst, $01, nD2, $08, nRst, $01, nFs2, $08, nRst, $01
+	dc.b nFs2, $08, nRst, $01, nD2, $08, nRst, $01, nD2, $08, nRst, $01
+	saVol		$FF
+	sLoop		$01, $02, Snd_HellFire_Loop28
+	dc.b nG3, $11, nRst, $01
+
+Snd_HellFire_Loop29:
+	dc.b nG2, $07, nRst, $02
+	sLoop		$00, $05, Snd_HellFire_Loop29
+	dc.b nG3, $11, nRst, $01, nG3, $08, nRst, $01, nC2, $07, nRst, $02
+	dc.b nG4, $11, nRst, $01, nEb4, $08, nRst, $01, nC4, $08, nRst, $01
+	dc.b nG3, $08, nRst, $01, nD3, $11, nRst, $01
+
+Snd_HellFire_Loop2A:
+	dc.b nA2, $07, nRst, $02
+	sLoop		$00, $05, Snd_HellFire_Loop2A
+	dc.b nD3, $11, nRst, $01, nD3, $08, nRst, $01, nD2, $07, nRst, $02
+	dc.b nD4, $11, nRst, $01, nA3, $08, nRst, $01, nFs3, $08, nRst, $01
+	dc.b nD3, $08, nRst, $01, nC3, $11, nRst, $01
+
+Snd_HellFire_Loop2B:
+	dc.b nG2, $07, nRst, $02
+	sLoop		$00, $05, Snd_HellFire_Loop2B
+	dc.b nC3, $11, nRst, $01, nC3, $08, nRst, $01, nC2, $07, nRst, $02
+	dc.b nG4, $11, nRst, $01, nEb4, $08, nRst, $01, nC4, $08, nRst, $01
+	dc.b nG3, $08, nRst, $01, nD3, $11, nRst, $01
+
+Snd_HellFire_Loop2C:
+	dc.b nA2, $07, nRst, $02
+	sLoop		$00, $05, Snd_HellFire_Loop2C
+	dc.b nD3, $11, nRst, $01, nD3, $08, nRst, $01, nD2, $07, nRst, $02
+	dc.b nD4, $11, nRst, $01, nA3, $08, nRst, $01, nFs3, $08, nRst, $01
+	dc.b nD3, $08, nRst, $01, nG3, $12
+
+Snd_HellFire_Loop2D:
+	dc.b nG2, $08, nRst, $01
+	sLoop		$00, $05, Snd_HellFire_Loop2D
+	dc.b nG3, $12, $09, nC2, $08, nRst, $01, nG4, $12, nEb4, $09, nC4
+	dc.b nG3, nD3, $12
+
+Snd_HellFire_Loop2E:
+	dc.b nA2, $08, nRst, $01
+	sLoop		$00, $05, Snd_HellFire_Loop2E
+	dc.b nD3, $12, $09, nD2, $08, nRst, $01, nD4, $12, nA3, $09, nFs3
+	dc.b nD3, nC3, $12
+
+Snd_HellFire_Loop2F:
+	dc.b nG2, $08, nRst, $01
+	sLoop		$00, $05, Snd_HellFire_Loop2F
+	dc.b nC3, $12, $09, nC2, $08, nRst, $01, nG4, $12, nEb4, $09, nC4
+	dc.b nG3, nD3, $12
+
+Snd_HellFire_Loop30:
+	dc.b nA2, $08, nRst, $01
+	sLoop		$00, $05, Snd_HellFire_Loop30
+	dc.b nD3, $12, $09, nD2, $08, nRst, $01, nD4, $12, nA3, $09, nFs3
+	dc.b nD3, nG2, $08, nRst, $01, nG2, $08, nRst, $01, nEb3, $12, $12
+
+Snd_HellFire_Loop31:
+	dc.b nG2, $08, nRst, $01, nEb3, $12, $09
+	sLoop		$00, $02, Snd_HellFire_Loop31
+	dc.b $12, nA2, $08, nRst, $01, nA2, $08, nRst, $01, nFs3, $12, $12
+
+Snd_HellFire_Loop32:
+	dc.b nA2, $08, nRst, $01, nFs3, $12, $09
+	sLoop		$00, $02, Snd_HellFire_Loop32
+	dc.b $12, nBb2, $08, nRst, $01, nBb2, $08, nRst, $01, nG3, $12, $12
+	dc.b nBb2, $08, nRst, $01, nA3, $12, $09, nD3, $08, nRst, $01, nA3
+	dc.b $12, $09, $12, nD3, $08, nRst, $01, nD3, $08, nRst, $01, nC4
+	dc.b $12, $12
+
+Snd_HellFire_Loop33:
+	dc.b nD3, $08, nRst, $01, nB3, $12, $09
+	sLoop		$00, $02, Snd_HellFire_Loop33
+	dc.b $12, nC2, $11, nRst, $01, nC2, $04, nRst, $01
+	saVol		$01
+	dc.b nC2, $03, nRst, $01
+	saVol		$FF
+	dc.b nC2, $08, nRst, $01
+	saVol		$01
+	dc.b nG3, $09, nEb3, nC2, $08, nRst, $01, nC2, $11, nRst, $01, nC2
+	dc.b $04, nRst, $01
+	saVol		$FF
+	dc.b nC2, $03, nRst, $01
+	saVol		$01
+	dc.b nC2, $08, nRst, $01, nC2, $08, nRst, $01, nG3, $09, nAb3, nG3
+	dc.b nFs3
+	saVol		$FF
+	dc.b nD2, $11, nRst, $01, nD2, $04, nRst, $01
+	saVol		$01
+	dc.b nD2, $03, nRst, $01
+	saVol		$FF
+	dc.b nD2, $08, nRst, $01
+	saVol		$01
+	dc.b nFs3, $09, nD3, nD2, $08, nRst, $01, nD2, $11, nRst, $01, nD2
+	dc.b $04, nRst, $01
+	saVol		$FF
+	dc.b nD2, $03, nRst, $01
+	saVol		$01
+
+Snd_HellFire_Loop34:
+	dc.b nD2, $08, nRst, $01
+	sLoop		$00, $06, Snd_HellFire_Loop34
+	saVol		$FF
+	dc.b nC2, $11, nRst, $01, nC2, $04, nRst, $01
+	saVol		$01
+	dc.b nC2, $03, nRst, $01
+	saVol		$FF
+	dc.b nC2, $08, nRst, $01
+	saVol		$01
+	dc.b nG3, $09, nEb3, nC2, $08, nRst, $01, nC2, $11, nRst, $01, nC2
+	dc.b $04, nRst, $01
+	saVol		$FF
+	dc.b nC2, $03, nRst, $01
+	saVol		$01
+	dc.b nC2, $08, nRst, $01, nC2, $08, nRst, $01, nG3, $09, nAb3, nG3
+	dc.b nFs3
+	saVol		$FF
+	dc.b nD2, $11, nRst, $01, nD2, $04, nRst, $01
+	saVol		$01
+	dc.b nD2, $03, nRst, $01
+	saVol		$FF
+	dc.b nD2, $08, nRst, $01
+	saVol		$01
+	dc.b nFs3, $09, nD3, nD2, $08, nRst, $01, nD2, $11, nRst, $01, nD2
+	dc.b $04, nRst, $01
+	saVol		$FF
+	dc.b nD2, $03, nRst, $01
+	saVol		$01
+	dc.b nD2, $08, nRst, $01, nD2, $08, nRst, $01, nFs2, $08, nRst, $01
+	dc.b nFs2, $08, nRst, $01, nD2, $08, nRst, $01, nD2, $08, nRst, $01
+	saVol		$FF
+
+Snd_HellFire_Loop35:
+	dc.b nC2, $04, nRst, $01, nC2, $03, nRst, $01, nC2, $08, nRst, $0A
+	sLoop		$00, $03, Snd_HellFire_Loop35
+	dc.b nC2, $04, $04
+
+Snd_HellFire_Loop36:
+	dc.b nRst, $01, nC2, $08
+	sLoop		$00, $04, Snd_HellFire_Loop36
+	dc.b nRst, $01
+	saVol		$01
+	dc.b nG3, $09, nEb3
+	saVol		$FF
+	dc.b nD2, $04, nRst, $01, nD2, $03
+
+Snd_HellFire_Loop37:
+	dc.b nRst, $01, nD2, $08, nRst, $0A, nD2, $04, $04
+	sLoop		$00, $03, Snd_HellFire_Loop37
+
+Snd_HellFire_Loop38:
+	dc.b nRst, $01, nD2, $08
+	sLoop		$00, $04, Snd_HellFire_Loop38
+	dc.b nRst, $01
+	saVol		$01
+	dc.b nFs3, $09, nD3
+	saVol		$FF
+
+Snd_HellFire_Loop39:
+	dc.b nC2, $04, nRst, $01, nC2, $03, nRst, $01, nC2, $08, nRst, $0A
+	sLoop		$00, $03, Snd_HellFire_Loop39
+	dc.b nC2, $04, nRst, $01, nC2, $03
+
+Snd_HellFire_Loop3A:
+	dc.b nRst, $01, nC2, $08
+	sLoop		$00, $04, Snd_HellFire_Loop3A
+	dc.b nRst, $01
+	saVol		$01
+	dc.b nG3, $09, nEb3
+	saVol		$FF
+
+Snd_HellFire_Loop3B:
+	dc.b nD2, $04, nRst, $01, nD2, $03, nRst, $01, nD2, $08, nRst, $0A
+	sLoop		$00, $03, Snd_HellFire_Loop3B
+	dc.b nD2, $04, nRst, $01, nD2, $03
+
+Snd_HellFire_Loop3C:
+	dc.b nRst, $01, nD2, $08
+	sLoop		$00, $04, Snd_HellFire_Loop3C
+	dc.b nRst, $01
+	saVol		$01
+	dc.b nFs3, $09, nD3
+	saVol		$FF
+	dc.b nG3, $12
+
+Snd_HellFire_Loop3D:
+	dc.b nG2, $08, nRst, $01
+	sLoop		$00, $05, Snd_HellFire_Loop3D
+	dc.b nG3, $12, $09, nC2, $08, nRst, $03, nG4, $10, nEb4, $09, nC4
+	dc.b nG3, nD3, $12
+
+Snd_HellFire_Loop3E:
+	dc.b nA2, $08, nRst, $01
+	sLoop		$00, $05, Snd_HellFire_Loop3E
+	dc.b nD3, $12, $09, nD2, $08, nRst, $01, nD4, $12, nA3, $09, nFs3
+	dc.b nD3, nG3, $12
+
+Snd_HellFire_Loop3F:
+	dc.b nG2, $08, nRst, $01
+	sLoop		$00, $05, Snd_HellFire_Loop3F
+	dc.b nG3, $12, $09, nC2, $08, nRst, $03, nG4, $10, nEb4, $09, nC4
+	dc.b nG3, nD3, $12, nD2, $08
+
+Snd_HellFire_Loop40:
+	dc.b nRst, $01, nA2, $08
+	sLoop		$00, $04, Snd_HellFire_Loop40
+	dc.b nRst, $01, nD3, $12, $09, nD2, $08, nRst, $01, nD4, $12, nA3
+	dc.b $09, nFs3, nD3, nG2, $08, nRst, $01, nG2, $08, nRst, $01, nEb3
+	dc.b $12, $12
+
+Snd_HellFire_Loop41:
+	dc.b nG2, $08, nRst, $01, nEb3, $12, $09
+	sLoop		$00, $02, Snd_HellFire_Loop41
+	dc.b $12, nA2, $08, nRst, $01, nA2, $08, nRst, $01, nFs3, $12, $12
+
+Snd_HellFire_Loop42:
+	dc.b nA2, $08, nRst, $01, nFs3, $12, $09
+	sLoop		$00, $02, Snd_HellFire_Loop42
+	dc.b $12, nBb2, $08, nRst, $01, nBb2, $08, nRst, $01, nG3, $12, $12
+	dc.b nBb2, $08, nRst, $01, nA3, $12, $09, nD3, $08, nRst, $01, nA3
+	dc.b $12, $09, $12, nD3, $08, nRst, $01, nD3, $08, nRst, $01, nC4
+	dc.b $12, $12
+
+Snd_HellFire_Loop43:
+	dc.b nD3, $08, nRst, $01, nB3, $12, $09
+	sLoop		$00, $02, Snd_HellFire_Loop43
+	dc.b $12, nEb3, nEb3, nEb3
+
+Snd_HellFire_Loop44:
+	dc.b $09, $09, $09, $12, $09, $09, $12, $09, $12, nFs3, nFs3
+	sLoop		$00, $02, Snd_HellFire_Loop44
+	dc.b $09, $09, $09, nA3, $12, $09, $09, $12, $09, $12, nC4, nC4
+	dc.b nC4, $09, $09, $09, nB3, $12, $09, $09, $12, $09, $12, nC2
+	dc.b nRst, $09
+
+Snd_HellFire_Loop45:
+	dc.b nC2, $08, nRst, $01
+	sLoop		$00, $04, Snd_HellFire_Loop45
+
+Snd_HellFire_Loop47:
+	dc.b nCs2, $12, nC2, $08, nRst, $01
+	saVol		$01
+	dc.b nC2, $08, nRst, $01, nCs2, $12
+	saVol		$FF
+	dc.b nC2, $08, nRst, $01
+	saVol		$01
+	dc.b nCs2, $09, nC2, $08, nRst, $01
+	saVol		$FF
+	dc.b nC2, $11
+
+Snd_HellFire_Loop46:
+	dc.b nRst, $01, nC2, $08
+	sLoop		$00, $05, Snd_HellFire_Loop46
+	dc.b nRst, $01
+	sLoop		$01, $07, Snd_HellFire_Loop47
+	dc.b nCs2, $12, nC2, $08, nRst, $01
+	saVol		$01
+	dc.b nC2, $08, nRst, $01, nCs2, $12
+	saVol		$FF
+	dc.b nC2, $08, nRst, $01
+	saVol		$01
+	dc.b nCs2, $09, nC2, $08, nRst, $01
+	saVol		$FF
+	dc.b nE3, $12, nAb2, $08, nRst, $01, nAb2, $07, nRst, $02, nE3, $09
+	dc.b $09
+	saVol		$01
+	dc.b nAb2, $08, nRst, $01, nE3, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b nAb2, $08, nRst, $01, nAb2, $08, nRst, $01, nAb2, $07, nRst, $02
+	saVol		$FF
+	dc.b nAb2, $08, nRst, $01
+	saVol		$01
+	dc.b nE3, $12
+	saVol		$FF
+	dc.b nB3, nEb3, $08, nRst, $01, nEb3, $07, nRst, $02, nB3, $09, $09
+	saVol		$01
+	dc.b nEb3, $08, nRst, $01, nB3, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b nEb3, $08, nRst, $01, nEb3, $08, nRst, $01, nEb3, $07, nRst, $02
+	saVol		$FF
+	dc.b nEb3, $08, nRst, $01
+	saVol		$01
+	dc.b nB3, $12
+	saVol		$FF
+	dc.b nE3, nAb2, $08, nRst, $01, nAb2, $08, nRst, $01, nE3, $09, $09
+	saVol		$01
+	dc.b nAb2, $08, nRst, $01, nE3, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+
+Snd_HellFire_Loop48:
+	dc.b nAb2, $08, nRst, $01
+	sLoop		$00, $03, Snd_HellFire_Loop48
+	saVol		$FF
+	dc.b nAb2, $08, nRst, $01
+	saVol		$01
+	dc.b nE3, $12
+	saVol		$FF
+	dc.b nB3, nEb3, $08, nRst, $01, nEb3, $08, nRst, $01, nB3, $09, $09
+	saVol		$01
+	dc.b nEb3, $08, nRst, $01, nB3, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+
+Snd_HellFire_Loop49:
+	dc.b nEb3, $08, nRst, $01
+	sLoop		$00, $03, Snd_HellFire_Loop49
+	saVol		$FF
+	dc.b nEb3, $08, nRst, $01
+	saVol		$01
+	dc.b nB3, $12
+	saVol		$FF
+	dc.b nBb3, nD3, $08, nRst, $01, nD3, $07, nRst, $02, nBb3, $09, $09
+	saVol		$01
+	dc.b nD3, $08, nRst, $01, nEb3, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b nG2, $08, nRst, $01, nG2, $08, nRst, $01, nG2, $07, nRst, $02
+	saVol		$FF
+	dc.b nG2, $08, nRst, $01
+	saVol		$01
+	dc.b nEb3, $12
+	saVol		$FF
+	dc.b nA3, nC3, $07, nRst, $02, nC3, $07, nRst, $02, nA3, $09, $09
+	saVol		$01
+	dc.b nC3, $07, nRst, $02, nD3, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+	dc.b nA2, $08, nRst, $01, nA2, $08, nRst, $01, nA2, $07, nRst, $02
+	saVol		$FF
+	dc.b nA2, $08, nRst, $01
+	saVol		$01
+	dc.b nD3, $12
+	saVol		$FF
+	dc.b nF3, nAb2, $07, nRst, $02, nAb2, $07, nRst, $02, nF3, $09, $09
+	saVol		$01
+	dc.b nAb2, $07, nRst, $02, nBb3, $12
+	saVol		$FF
+	dc.b $09
+	saVol		$01
+
+Snd_HellFire_Loop4A:
+	dc.b nD3, $08, nRst, $01
+	sLoop		$00, $03, Snd_HellFire_Loop4A
+	saVol		$FF
+	dc.b nD3, $08, nRst, $01
+	saVol		$01
+	dc.b nBb3, $12
+	saVol		$FF
+	dc.b nF3, $3F, nE3, $51, nC3, $12, $12, $09, $09, $09, $12, $09
+	dc.b $09, $12, $09, $12, nFs3, nFs3, nFs3, $09, $09, $09, $12, $09
+	dc.b $09, $12, $09, $12, nG3, nG3, nG3, $09, $09, $09, nA3, $12
+	dc.b $09, $09, $12, $09, $12, nC4, nC4, nC4, $09, $09, $09, nB3
+	dc.b $12, $09, $09, $12, $09
+
+Snd_HellFire_Loop4B:
+	dc.b $12, nEb3
+	sLoop		$00, $04, Snd_HellFire_Loop4B
+	dc.b nEb3
+
+Snd_HellFire_Loop4C:
+	dc.b nFs3
+	sLoop		$00, $08, Snd_HellFire_Loop4C
+	dc.b nG3, nG3, nG3, nG3, nA3, nA3, nA3, nA3, nC4, nC4, nC4, nC4
+	dc.b nB3, nB3, nB3, nB3
+
+Snd_HellFire_Loop4E:
+	dc.b nC2, $11, nRst, $01, nC2, $04, nRst, $01
+	saVol		$01
+	dc.b nC2, $03, nRst, $01
+	saVol		$FF
+	dc.b nC2, $08, nRst, $01
+	saVol		$01
+	dc.b nG3, $09, nEb3, nC2, $08, nRst, $01, nC2, $11, nRst, $01, nC2
+	dc.b $04, nRst, $01
+	saVol		$FF
+	dc.b nC2, $03, nRst, $01
+	saVol		$01
+	dc.b nC2, $08, nRst, $01, nC2, $08, nRst, $01, nG3, $09, nAb3, nG3
+	dc.b nFs3
+	saVol		$FF
+	dc.b nD2, $11, nRst, $01, nD2, $04, nRst, $01
+	saVol		$01
+	dc.b nD2, $03, nRst, $01
+	saVol		$FF
+	dc.b nD2, $08, nRst, $01
+	saVol		$01
+	dc.b nFs3, $09, nD3, nD2, $08, nRst, $01, nD2, $11, nRst, $01, nD2
+	dc.b $04, nRst, $01
+	saVol		$FF
+	dc.b nD2, $03, nRst, $01
+	saVol		$01
+
+Snd_HellFire_Loop4D:
+	dc.b nD2, $08, nRst, $01
+	sLoop		$00, $06, Snd_HellFire_Loop4D
+	saVol		$FF
+	dc.b nC2, $11, nRst, $01, nC2, $04, nRst, $01
+	saVol		$01
+	dc.b nC2, $03, nRst, $01
+	saVol		$FF
+	dc.b nC2, $08, nRst, $01
+	saVol		$01
+	dc.b nG3, $09, nEb3, nC2, $08, nRst, $01, nC2, $11, nRst, $01, nC2
+	dc.b $04, nRst, $01
+	saVol		$FF
+	dc.b nC2, $03, nRst, $01
+	saVol		$01
+	dc.b nC2, $08, nRst, $01, nC2, $08, nRst, $01, nG3, $09, nAb3, nG3
+	dc.b nFs3
+	saVol		$FF
+	dc.b nD2, $11, nRst, $01, nD2, $04, nRst, $01
+	saVol		$01
+	dc.b nD2, $03, nRst, $01
+	saVol		$FF
+	dc.b nD2, $08, nRst, $01
+	saVol		$01
+	dc.b nFs3, $09, nD3, nD2, $08, nRst, $01, nD2, $11, nRst, $01, nD2
+	dc.b $04, nRst, $01
+	saVol		$FF
+	dc.b nD2, $03, nRst, $01
+	saVol		$01
+	dc.b nD2, $08, nRst, $01, nD2, $08, nRst, $01, nFs2, $08, nRst, $01
+	dc.b nFs2, $08, nRst, $01, nD2, $08, nRst, $01, nD2, $08, nRst, $01
+	saVol		$FF
+	sLoop		$01, $02, Snd_HellFire_Loop4E
+	dc.b nC2
+
+Snd_HellFire_Loop4F:
+	dc.b $60, sHold
+	sLoop		$00, $05, Snd_HellFire_Loop4F
+	dc.b $60
+	sStop
+
+; FM3 Data
+Snd_HellFire_FM3:
+	sVoice		$03
+	sPan		spCenter, $00
+	dc.b nRst, $48
+
+Snd_HellFire_Loop20:
+	dc.b nC4, $7F, sHold, $11, nD4, $7F, sHold, $11, nEb4, $7F, sHold, $11
+	dc.b nFs4, $7F, sHold, $11
+	sLoop		$00, $04, Snd_HellFire_Loop20
+	saVol		$01
+	dc.b nEb4, $7F, sHold, $11, nFs4, $7F, sHold, $11, nG4, $3F, nA4, $51
+	dc.b nC5, $3F, nB4, $51
+	saVol		$FF
+
+Snd_HellFire_Loop21:
+	dc.b nC4, $7F, sHold, $11, nD4, $7F, sHold, $11, nEb4, $7F, sHold, $11
+	dc.b nFs4, $7F, sHold, $11
+	sLoop		$00, $03, Snd_HellFire_Loop21
+	saVol		$01
+
+Snd_HellFire_Loop22:
+	dc.b nEb4, $7F, sHold, $11, nFs4, $7F, sHold, $11, nG4, $3F, nA4, $51
+	dc.b nC5, $3F, nB4, $51
+	sLoop		$00, $02, Snd_HellFire_Loop22
+	dc.b nRst
+
+Snd_HellFire_Loop23:
+	dc.b $60
+	sLoop		$00, $0C, Snd_HellFire_Loop23
+
+Snd_HellFire_Loop24:
+	dc.b nAb4, $7F, sHold, $11, nEb5, $7F, sHold, $11
+	sLoop		$00, $02, Snd_HellFire_Loop24
+	dc.b nD5, $3F
+	saVol		$FF
+	dc.b nG4, $51
+	saVol		$01
+	dc.b nF5, $3F, nD5, $51, nCs5, $3F, nD5, $51
+	saVol		$FF
+	dc.b nF5, $3F
+	saVol		$01
+	dc.b nE5, $51, nEb4, $7F, sHold, $11, nFs4, $7F, sHold, $11, nG4, $3F
+	dc.b nA4, $51, nC5, $3F, nB4, $51, nEb4, $7F, sHold, $11, nFs4, $7F
+	dc.b sHold, $11, nG4, $48, nA4, nC5, nB4
+	saVol		$FF
+
+Snd_HellFire_Loop25:
+	dc.b nC4, $7F, sHold, $11, nD4, $7F, sHold, $11, nEb4, $7F, sHold, $11
+	dc.b nFs4, $7F, sHold, $11
+	sLoop		$00, $02, Snd_HellFire_Loop25
+	dc.b nC4
+
+Snd_HellFire_Loop26:
+	dc.b $60, sHold
+	sLoop		$00, $05, Snd_HellFire_Loop26
+	dc.b $60
+	sStop
+
+; FM4 Data
+Snd_HellFire_FM4:
+	sVoice		$02
+	sPan		spCenter, $00
+	dc.b nRst
+
+Snd_HellFire_Loop1B:
+	dc.b $66
+	sLoop		$00, $0C, Snd_HellFire_Loop1B
+	sModAMPS	$0F, $01, $05, $03
+	dc.b nG4, $24, nC4, $09, nEb4, nG4, nBb4, $12, nAb4, nG4, nG4, $05
+	dc.b nAb4, $04, nG4, $09, nF4, nFs4, $24, nD4, nG5, $09, nFs5, nF5
+	dc.b nEb5, nF5, nEb5, nD5, nEb5, nG4, $24, nC4, $09, nEb4, nG4, nBb4
+	dc.b $12, nAb4, nG4, nD5, $05, nEb5, $04, nD5, $09, nBb4, nFs5, $24
+	dc.b nD5, $12, nFs5, $09, nG5, $12, nA5, nG5, nFs5, $1B, nG5, $09
+	dc.b nF5, nEb5, nD5, nEb5, nD5, nC5, nBb4, nC5, nD5, nEb5, nF5, nEb5
+	dc.b nD5, nC5, nBb4, nA4, $36, nBb4, $09, nC5, $51, nG5, $09, nF5
+	dc.b nEb5, nD5, nEb5, nD5, nC5, nBb4, nC5, nD5, nG5, nAb5, nG5, nF5
+	dc.b nG5, nF5
+
+Snd_HellFire_Loop1C:
+	dc.b nB5, nC6
+	sLoop		$00, $06, Snd_HellFire_Loop1C
+	dc.b nD6, $24, nC4, nC5, nB4, nG4, nBb4, $36, nC5, $09, nBb4, nA4
+	dc.b $24, nF4, $12, nG4, nAb4, $36, nBb4, $09, nAb4, nFs4, $24, nD4
+	dc.b $12, nFs4, nG4, $7F, sHold, $11, nRst, $60, $60, $60, $60, $60
+	dc.b $60, nG4, $24, nC4, $09, nEb4, nG4, nBb4, $12, nAb4, nG4, nG4
+	dc.b $05, nAb4, $04, nG4, $09, nF4, nFs4, $24, nD4, nG5, $09, nFs5
+	dc.b nF5, nEb5, nF5, nEb5, nD5, nEb5, nG4, $24, nC4, $09, nEb4, nG4
+	dc.b nBb4, $12, nAb4, nG4, nD5, $05, nEb5, $04, nD5, $09, nBb4, nFs5
+	dc.b $24, nD5, $12, nFs5, $09, nG5, $12, nA5, nG5, nFs5, $1B, nG5
+	dc.b $09, nF5, nEb5, nD5, nEb5, nD5, nC5, nBb4, nC5, nD5, nEb5, nF5
+	dc.b nEb5, nD5, nC5, nBb4, nA4, $36, nBb4, $09, nC5, $51, nG5, $09
+	dc.b nF5, nEb5, nD5, nEb5, nD5, nC5, nBb4, nC5, nD5, nG5, nAb5, nG5
+	dc.b nF5, nG5, nF5
+
+Snd_HellFire_Loop1D:
+	dc.b nB5, nC6
+	sLoop		$00, $06, Snd_HellFire_Loop1D
+	dc.b nD6, $24, nC4, nC5, nB4, nG4, nBb4, $36, nC5, $09, nBb4, nA4
+	dc.b $24, nF4, $12, nG4, nAb4, $36, nBb4, $09, nAb4, nFs4, $24, nD4
+	dc.b $12, nFs4, nG4, $7F, sHold, $11, nC4, $24, nC5, nB4, nG4, nBb4
+	dc.b $36, nC5, $09, nBb4, nA4, $24, nF4, $12, nG4, nAb4, $36, nBb4
+	dc.b $09, nAb4, nFs4, $24, nD4, $12, nFs4, nG4, $7F, sHold, $11, nRst
+
+Snd_HellFire_Loop1E:
+	dc.b $60
+	sLoop		$00, $0C, Snd_HellFire_Loop1E
+	dc.b nB4, $09, nAb4, $12, nB4, $09, nBb4, $12, nB4, $09, nEb5, $12
+	dc.b nCs5, nB4, nB4, $05, nCs5, $04, nB4, $09, nBb4, nB4, $24, nBb4
+	dc.b $12, nFs4, $09, nAb4, $51, nB4, $09, nAb4, $12, nB4, $09, nBb4
+	dc.b $12, nB4, $09, nFs5, $12, nE5, nEb5, nEb5, $05, nE5, $04, nEb5
+	dc.b $09, nB4, nFs5, $24, nE5, $12, nFs5, $09, nAb5, $51, nBb4, $24
+	dc.b nA4, $09, nBb4, nC5, nEb5, $12, nD5, nC5, nD5, $09, nC5, nBb4
+	dc.b nA4, $24, nG4, $09, nA4, nBb4, nC5, $12, nBb5, nA5, nF5, $1B
+	dc.b nCs5, $09, $09, $09, $09, $09, nC5, nCs5, nF5, $12, $09, $09
+	dc.b $09, $09, $09, nCs5, nF5, nAb5, $3F, nG5, $51
+
+Snd_HellFire_Loop1F:
+	dc.b nC4, $24, nC5, nB4, nG4, nBb4, $36, nC5, $09, nBb4, nA4, $24
+	dc.b nF4, $12, nG4, nAb4, $36, nBb4, $09, nAb4, nFs4, $24, nD4, $12
+	dc.b nFs4, nG4, $7F, sHold, $11
+	sLoop		$00, $02, Snd_HellFire_Loop1F
+	sStop
+
+; FM5 Data
+Snd_HellFire_FM5:
+	sVoice		$02
+	sPan		spRight, $00
+	dc.b nRst
+
+Snd_HellFire_Loop16:
+	dc.b $66
+	sLoop		$00, $0C, Snd_HellFire_Loop16
+	dc.b $03
+	sModAMPS	$0F, $01, $05, $03
+	ssDetune	-6
+	dc.b nG4, $24, nC4, $09, nEb4, nG4, nBb4, $12, nAb4, nG4, nG4, $05
+	dc.b nAb4, $04, nG4, $09, nF4, nFs4, $24, nD4, $21
+	saVol		$FD
+	dc.b nG4, $09, nFs4, nF4, nEb4, nF4, nEb4, nD4, nEb4, nRst, $03
+	saVol		$03
+	dc.b nG4, $24, nC4, $09, nEb4, nG4, nBb4, $12, nAb4, nG4, nD5, $05
+	dc.b nEb5, $04, nD5, $09, nBb4, nFs5, $21
+	saVol		$FD
+	dc.b nD4, $12, nFs4, $09, nG4, $12, nA4, nG4, nFs4, $1B, nRst, $03
+	saVol		$03
+	dc.b nG5, $09, nF5, nEb5, nD5, nEb5, nD5, nC5, nBb4, nC5, nD5, nEb5
+	dc.b nF5, nEb5, nD5, nC5, nBb4, nA4, $36, nBb4, $09, nC5, $51, nG5
+	dc.b $09, nF5, nEb5, nD5, nEb5, nD5, nC5, nBb4, nC5, nD5, nG5, nAb5
+	dc.b nG5, nF5, nG5, nF5, $06
+	saVol		$FD
+
+Snd_HellFire_Loop17:
+	dc.b nB4, $09, nC5
+	sLoop		$00, $06, Snd_HellFire_Loop17
+	dc.b nD5, $24, nC3, nC4, nB3, nG3, nBb3, $36, nC4, $09, nBb3, nA3
+	dc.b $24, nF3, $12, nG3, nAb3, $36, nBb3, $09, nAb3, nFs3, $24, nD3
+	dc.b $12, nFs3, nG3, $7F, sHold, $11, nRst, $60, $60, $60, $60, $60
+	dc.b $60, $03
+	saVol		$03
+	dc.b nG4, $24, nC4, $09, nEb4, nG4, nBb4, $12, nAb4, nG4, nG4, $05
+	dc.b nAb4, $04, nG4, $09, nF4, nFs4, $24, nD4, $21
+	saVol		$FD
+	dc.b nG4, $09, nFs4, nF4, nEb4, nF4, nEb4, nD4, nEb4, nRst, $03
+	saVol		$03
+	dc.b nG4, $24, nC4, $09, nEb4, nG4, nBb4, $12, nAb4, nG4, nD5, $05
+	dc.b nEb5, $04, nD5, $09, nBb4, nFs5, $21
+	saVol		$FD
+	dc.b nD4, $12, nFs4, $09, nG4, $12, nA4, nG4, nFs4, $1B, nRst, $03
+	saVol		$03
+	dc.b nG5, $09, nF5, nEb5, nD5, nEb5, nD5, nC5, nBb4, nC5, nD5, nEb5
+	dc.b nF5, nEb5, nD5, nC5, nBb4, nA4, $36, nBb4, $09, nC5, $51, nG5
+	dc.b $09, nF5, nEb5, nD5, nEb5, nD5, nC5, nBb4, nC5, nD5, nG5, nAb5
+	dc.b nG5, nF5, nG5, nF5, $06
+	saVol		$FD
+
+Snd_HellFire_Loop18:
+	dc.b nB4, $09, nC5
+	sLoop		$00, $06, Snd_HellFire_Loop18
+	dc.b nD5, $24, nC3, nC4, nB3, nG3, nBb3, $36, nC4, $09, nBb3, nA3
+	dc.b $24, nF3, $12, nG3, nAb3, $36, nBb3, $09, nAb3, nFs3, $24, nD3
+	dc.b $12, nFs3, nG3, $7F, sHold, $11, nC3, $24, nC4, nB3, nG3, nBb3
+	dc.b $36, nC4, $09, nBb3, nA3, $24, nF3, $12, nG3, nAb3, $36, nBb3
+	dc.b $09, nAb3, nFs3, $24, nD3, $12, nFs3, nG3, $7F, sHold, $11, nRst
+
+Snd_HellFire_Loop19:
+	dc.b $69
+	sLoop		$00, $0B, Snd_HellFire_Loop19
+	saVol		$03
+	dc.b nB4, $09, nAb4, $12, nB4, $09, nBb4, $12, nB4, $09, nEb5, $12
+	dc.b nCs5, nB4, nB4, $05, nCs5, $04, nB4, $09, nBb4, nB4, $24, nBb4
+	dc.b $12, nFs4, $09, nAb4, $51, nB4, $09, nAb4, $12, nB4, $09, nBb4
+	dc.b $12, nB4, $09, nFs5, $12, nE5, nEb5, nEb5, $05, nE5, $04, nEb5
+	dc.b $09, nB4, nFs5, $24, nE5, $12, nFs5, $09, nAb5, $51, nBb4, $24
+	dc.b nA4, $09, nBb4, nC5, nEb5, $12, nD5, nC5, nD5, $09, nC5, nBb4
+	dc.b nA4, $24, nG4, $09, nA4, nBb4, nC5, $12, nBb5, nA5, nF5, $1B
+	dc.b nCs5, $09, $09, $09, $09, $09, nC5, nCs5, nF5, $12, $09, $09
+	dc.b $09, $09, $09, nCs5, nF5, $06
+	saVol		$FD
+	dc.b $3F, nE5, $51
+
+Snd_HellFire_Loop1A:
+	dc.b nC3, $24, nC4, nB3, nG3, nBb3, $36, nC4, $09, nBb3, nA3, $24
+	dc.b nF3, $12, nG3, nAb3, $36, nBb3, $09, nAb3, nFs3, $24, nD3, $12
+	dc.b nFs3, nG3, $7F, sHold, $11
+	sLoop		$00, $02, Snd_HellFire_Loop1A
+	sStop
+
+; PSG1 Data
+Snd_HellFire_PSG1:
+	dc.b nRst, $48
+	sModAMPS	$00, $02, $01, $02
+	dc.b nC1, $7F, sHold, $11, nD1, $7F, sHold, $11, nEb1, $7F, sHold, $11
+	dc.b nFs1, $7F, sHold, $11
+	saVol		$08
+	dc.b nEb1, $09
+	saVol		-$08
+	dc.b nG1
+	saVol		$08
+	dc.b nC2, nG1, nEb1
+	saVol		-$08
+	dc.b nG1
+	saVol		$08
+	dc.b nC2
+	saVol		-$08
+	dc.b nG1
+	saVol		$08
+	dc.b nEb1
+	saVol		-$08
+	dc.b nG1
+	saVol		$08
+	dc.b nC2, nG1, nEb1, nG1, nC2
+	saVol		-$08
+	dc.b nG1
+	saVol		$08
+	dc.b nFs1, nA1
+	saVol		-$08
+	dc.b nD2, nA1
+	saVol		$08
+	dc.b nFs1
+	saVol		-$08
+	dc.b nA1
+	saVol		$08
+	dc.b nD2, nA1, nFs1, nA1
+	saVol		-$08
+	dc.b nD2
+	saVol		$08
+	dc.b nA1, nFs1, nA1, nD2, nA1
+	saVol		-$08
+	dc.b nG1
+	saVol		$08
+	dc.b nC2, nEb2, nC2, nG1, nC2, nEb2, nC2, nG1
+	saVol		-$08
+	dc.b nC2
+	saVol		$08
+	dc.b nEb2
+	saVol		-$08
+	dc.b nC2
+	saVol		$08
+	dc.b nG1, nC2
+	saVol		-$08
+	dc.b nEb2, nC2
+	saVol		$08
+	dc.b nA1, nD2, nFs2, nD2, nA1, nD2, nFs2, nD2, nA1, nD2, nFs2
+	saVol		-$08
+	dc.b nD2
+	saVol		$08
+	dc.b nA1
+	saVol		-$08
+	dc.b nD2
+	saVol		$08
+	dc.b nFs2, nD2
+	saVol		-$08
+
+Snd_HellFire_LoopA0:
+	dc.b nG0, nEb0
+	sLoop		$00, $08, Snd_HellFire_LoopA0
+
+Snd_HellFire_LoopA1:
+	dc.b nFs0, nD0
+	sLoop		$00, $08, Snd_HellFire_LoopA1
+	sLoop		$01, $04, Snd_HellFire_LoopA0
+	dc.b nC1, $24, nC2, nB1, nG1, nBb1, $36, nC2, $09, nBb1, nA1, $24
+	dc.b nF1, $12, nG1, nAb1, $36, nBb1, $09, nAb1, nFs1, $24, nD1, $12
+	dc.b nFs1, nG1, $7F, sHold, $11
+	saVol		$08
+	dc.b nEb1, $09
+	saVol		-$08
+	dc.b nG1
+	saVol		$08
+	dc.b nC2, nG1, nEb1
+	saVol		-$08
+	dc.b nG1
+	saVol		$08
+	dc.b nC2
+	saVol		-$08
+	dc.b nG1
+	saVol		$08
+	dc.b nEb1
+	saVol		-$08
+	dc.b nG1
+	saVol		$08
+	dc.b nC2, nG1, nEb1, nG1, nC2
+	saVol		-$08
+	dc.b nG1
+	saVol		$08
+	dc.b nFs1, nA1
+	saVol		-$08
+	dc.b nD2, nA1
+	saVol		$08
+	dc.b nFs1
+	saVol		-$08
+	dc.b nA1
+	saVol		$08
+	dc.b nD2, nA1, nFs1, nA1
+	saVol		-$08
+	dc.b nD2
+	saVol		$08
+	dc.b nA1, nFs1, nA1, nD2, nA1
+	saVol		-$08
+	dc.b nG1
+	saVol		$08
+	dc.b nC2, nEb2, nC2, nG1, nC2, nEb2, nC2, nG1
+	saVol		-$08
+	dc.b nC2
+	saVol		$08
+	dc.b nEb2
+	saVol		-$08
+	dc.b nC2
+	saVol		$08
+	dc.b nG1, nC2
+	saVol		-$08
+	dc.b nEb2, nC2
+	saVol		$08
+	dc.b nA1, nD2, nFs2, nD2, nA1, nD2, nFs2, nD2, nA1, nD2, nFs2
+	saVol		-$08
+	dc.b nD2
+	saVol		$08
+	dc.b nA1
+	saVol		-$08
+	dc.b nD2
+	saVol		$08
+	dc.b nFs2, nD2, nRst
+
+Snd_HellFire_LoopA2:
+	dc.b $60
+	sLoop		$00, $0C, Snd_HellFire_LoopA2
+	saVol		-$08
+
+Snd_HellFire_LoopA3:
+	dc.b nC1, $24, nC2, nB1, nG1, nBb1, $36, nC2, $09, nBb1, nA1, $24
+	dc.b nF1, $12, nG1, nAb1, $36, nBb1, $09, nAb1, nFs1, $24, nD1, $12
+	dc.b nFs1, nG1, $7F, sHold, $11
+	sLoop		$00, $02, Snd_HellFire_LoopA3
+	dc.b nRst
+
+Snd_HellFire_LoopA4:
+	dc.b $60
+	sLoop		$00, $0C, Snd_HellFire_LoopA4
+	saVol		$08
+
+Snd_HellFire_LoopA5:
+	dc.b nAb1, $7F, sHold, $11, nEb2, $7F, sHold, $11
+	sLoop		$00, $02, Snd_HellFire_LoopA5
+	dc.b nD2, $3F
+	saVol		-$08
+	dc.b nG1, $51, nF2, $3F
+	saVol		$08
+	dc.b nD2, $51, nCs2, $3F, nD2, $51
+	saVol		-$08
+	dc.b nF2, $3F
+	saVol		$08
+	dc.b nE2, $51
+	saVol		-$08
+
+Snd_HellFire_LoopA6:
+	dc.b nC1, $24, nC2, nB1, nG1, nBb1, $36, nC2, $09, nBb1, nA1, $24
+	dc.b nF1, $12, nG1, nAb1, $36, nBb1, $09, nAb1, nFs1, $24, nD1, $12
+	dc.b nFs1, nG1, $7F, sHold, $11
+	sLoop		$00, $02, Snd_HellFire_LoopA6
+	saVol		$08
+
+Snd_HellFire_LoopA7:
+	dc.b nEb1, $09
+	saVol		-$08
+	dc.b nG1
+	saVol		$08
+	dc.b nC2, nG1, nEb1
+	saVol		-$08
+	dc.b nG1
+	saVol		$08
+	dc.b nC2
+	saVol		-$08
+	dc.b nG1
+	saVol		$08
+	dc.b nEb1
+	saVol		-$08
+	dc.b nG1
+	saVol		$08
+	dc.b nC2, nG1, nEb1, nG1, nC2
+	saVol		-$08
+	dc.b nG1
+	saVol		$08
+	dc.b nFs1, nA1
+	saVol		-$08
+	dc.b nD2, nA1
+	saVol		$08
+	dc.b nFs1
+	saVol		-$08
+	dc.b nA1
+	saVol		$08
+	dc.b nD2, nA1, nFs1, nA1
+	saVol		-$08
+	dc.b nD2
+	saVol		$08
+	dc.b nA1, nFs1, nA1, nD2, nA1
+	saVol		-$08
+	dc.b nG1
+	saVol		$08
+	dc.b nC2, nEb2, nC2, nG1, nC2, nEb2, nC2, nG1
+	saVol		-$08
+	dc.b nC2
+	saVol		$08
+	dc.b nEb2
+	saVol		-$08
+	dc.b nC2
+	saVol		$08
+	dc.b nG1, nC2
+	saVol		-$08
+	dc.b nEb2, nC2
+	saVol		$08
+	dc.b nA1, nD2, nFs2, nD2, nA1, nD2, nFs2, nD2, nA1, nD2, nFs2
+	saVol		-$08
+	dc.b nD2
+	saVol		$08
+	dc.b nA1
+	saVol		-$08
+	dc.b nD2
+	saVol		$08
+	dc.b nFs2, nD2
+	sLoop		$00, $02, Snd_HellFire_LoopA7
+	saVol		-$08
+	dc.b nC1
+
+Snd_HellFire_LoopA8:
+	dc.b $60, sHold
+	sLoop		$00, $05, Snd_HellFire_LoopA8
+	dc.b $60
+	sStop
+
+; PSG2 Data
+Snd_HellFire_PSG2:
+	dc.b nRst, $48
+	sModAMPS	$00, $02, $01, $02
+	dc.b nG0, $7F, sHold, $11, nA0, $7F, sHold, $11, nC1, $7F, sHold, $11
+	dc.b nD1, $7F, sHold, $11, nRst, $03
+	saVol		$28
+
+Snd_HellFire_Loop87:
+	dc.b nEb1, $09, nG1, nC2, nG1
+	sLoop		$00, $04, Snd_HellFire_Loop87
+
+Snd_HellFire_Loop88:
+	dc.b nFs1, nA1, nD2, nA1
+	sLoop		$00, $04, Snd_HellFire_Loop88
+
+Snd_HellFire_Loop89:
+	dc.b nG1, nC2, nEb2, nC2
+	sLoop		$00, $04, Snd_HellFire_Loop89
+
+Snd_HellFire_Loop8A:
+	dc.b nA1, nD2, nFs2, nD2
+	sLoop		$00, $04, Snd_HellFire_Loop8A
+
+Snd_HellFire_Loop8B:
+	dc.b nG0, nEb0
+	sLoop		$00, $08, Snd_HellFire_Loop8B
+
+Snd_HellFire_Loop8C:
+	dc.b nFs0, nD0
+	sLoop		$00, $08, Snd_HellFire_Loop8C
+	sLoop		$01, $02, Snd_HellFire_Loop8B
+	dc.b nG0, nEb0, nG0, nEb0, nG0, nEb0, nRst, nEb0, nRst, nEb0, nG0, nEb0
+	dc.b nG0, nEb0, nG0, nEb0
+
+Snd_HellFire_Loop8D:
+	dc.b nFs0, nD0
+	sLoop		$00, $08, Snd_HellFire_Loop8D
+
+Snd_HellFire_Loop8E:
+	dc.b nG0, nEb0
+	sLoop		$00, $08, Snd_HellFire_Loop8E
+
+Snd_HellFire_Loop8F:
+	dc.b nFs0, nD0
+	sLoop		$00, $07, Snd_HellFire_Loop8F
+	dc.b nFs0, nD0, $06
+	saVol		-$20
+	dc.b nG0, $7F, sHold, $11, nA0, $7F, sHold, $11
+	saVol		-$08
+	dc.b nBb0, $3F
+	saVol		$08
+	dc.b nD1, $51
+	saVol		-$08
+	dc.b $7F, sHold, $11, nRst, $03
+	saVol		$28
+
+Snd_HellFire_Loop90:
+	dc.b nEb1, $09, nG1, nC2, nG1
+	sLoop		$00, $04, Snd_HellFire_Loop90
+
+Snd_HellFire_Loop91:
+	dc.b nFs1, nA1, nD2, nA1
+	sLoop		$00, $04, Snd_HellFire_Loop91
+
+Snd_HellFire_Loop92:
+	dc.b nG1, nC2, nEb2, nC2
+	sLoop		$00, $04, Snd_HellFire_Loop92
+
+Snd_HellFire_Loop93:
+	dc.b nA1, nD2, nFs2, nD2
+	sLoop		$00, $03, Snd_HellFire_Loop93
+	dc.b nA1, nD2, nFs2, nD2, $06
+	saVol		-$28
+
+Snd_HellFire_Loop94:
+	dc.b nG0, $7F, sHold, $11, nA0, $7F, sHold, $11, nC1, $7F, sHold, $11
+	dc.b nD1, $7F, sHold, $11
+	sLoop		$00, $02, Snd_HellFire_Loop94
+
+Snd_HellFire_Loop95:
+	saVol		$08
+	dc.b nG0, $7F, sHold, $11, nA0, $7F, sHold, $11
+	saVol		-$08
+	dc.b nBb0, $3F
+	saVol		$08
+	dc.b nD1, $51
+	saVol		-$08
+	dc.b $7F, sHold, $11
+	sLoop		$00, $02, Snd_HellFire_Loop95
+	dc.b nRst
+
+Snd_HellFire_Loop96:
+	dc.b $60
+	sLoop		$00, $0C, Snd_HellFire_Loop96
+	saVol		$08
+	dc.b nCs1, $7F, sHold, $11, nAb1, $7F, sHold, $11, nCs1, $7F, sHold, $11
+	saVol		-$08
+	dc.b nAb1, $7F, sHold, $11
+	saVol		$08
+	dc.b nF1, $3F, nC1, $51, nA1, $3F, $51, nF1, $3F, nG1, $51, nC1
+	dc.b $7F, sHold, $11, nG0, $7F, sHold, $11, nA0, $7F, sHold, $11
+	saVol		-$08
+	dc.b nBb0, $3F
+	saVol		$08
+	dc.b nD1, $51
+	saVol		-$08
+	dc.b $7F, sHold, $11, nG0, $7F, sHold, $11
+	saVol		$08
+	dc.b nA0, $7F, sHold, $11
+	saVol		-$08
+	dc.b nBb0, $48
+	saVol		$08
+	dc.b nD1
+	saVol		-$08
+	dc.b $7F, sHold, $11, nRst, $03
+	saVol		$28
+
+Snd_HellFire_Loop97:
+	dc.b nEb1, $09, nG1, nC2, nG1
+	sLoop		$00, $04, Snd_HellFire_Loop97
+
+Snd_HellFire_Loop98:
+	dc.b nFs1, nA1, nD2, nA1
+	sLoop		$00, $04, Snd_HellFire_Loop98
+
+Snd_HellFire_Loop99:
+	dc.b nG1, nC2, nEb2, nC2
+	sLoop		$00, $04, Snd_HellFire_Loop99
+
+Snd_HellFire_Loop9A:
+	dc.b nA1, nD2, nFs2, nD2
+	sLoop		$00, $04, Snd_HellFire_Loop9A
+
+Snd_HellFire_Loop9B:
+	dc.b nEb1, nG1, nC2, nG1
+	sLoop		$00, $04, Snd_HellFire_Loop9B
+
+Snd_HellFire_Loop9C:
+	dc.b nFs1, nA1, nD2, nA1
+	sLoop		$00, $04, Snd_HellFire_Loop9C
+
+Snd_HellFire_Loop9D:
+	dc.b nG1, nC2, nEb2, nC2
+	sLoop		$00, $04, Snd_HellFire_Loop9D
+
+Snd_HellFire_Loop9E:
+	dc.b nA1, nD2, nFs2, nD2
+	sLoop		$00, $03, Snd_HellFire_Loop9E
+	dc.b nA1, nD2, nFs2, $06
+	saVol		-$20
+	dc.b nD2, $09
+	saVol		-$08
+	dc.b nG0
+
+Snd_HellFire_Loop9F:
+	dc.b $60, sHold
+	sLoop		$00, $05, Snd_HellFire_Loop9F
+	dc.b $60
+	sStop
+
+; PSG3 Data
+Snd_HellFire_PSG3:
+	sNoisePSG	snWhitePSG3
+	dc.b nRst, $5A, nA5
+
+Snd_HellFire_Loop71:
+	dc.b $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12, $12
+	sLoop		$00, $02, Snd_HellFire_Loop71
+	dc.b $12, $12, $12
+	saVol		-$08
+	dc.b $12, $12, $12
+	saVol		$08
+	dc.b $24, $12
+	saVol		-$08
+	dc.b $12, $12
+	saVol		$08
+	dc.b $12, $12, $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12, $12, $12, $12, $12, $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $24
+
+Snd_HellFire_Loop72:
+	dc.b $12, $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	sLoop		$00, $03, Snd_HellFire_Loop72
+	dc.b $12, $12, $12, $12, $12, $24
+	saVol		-$08
+	dc.b $12, $12
+	saVol		$08
+
+Snd_HellFire_Loop73:
+	dc.b $12
+	sLoop		$00, $09, Snd_HellFire_Loop73
+	sVolEnv		v02
+	dc.b nF5, $09
+	sVolEnv		v01
+	dc.b nEb5
+	sVolEnv		v02
+	dc.b nF5, $12
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $12
+	saVol		-$08
+	dc.b $24
+	saVol		$08
+
+Snd_HellFire_Loop74:
+	dc.b $12, $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12
+	sLoop		$00, $02, Snd_HellFire_Loop74
+	dc.b $12, $12
+
+Snd_HellFire_Loop75:
+	dc.b $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	sLoop		$00, $02, Snd_HellFire_Loop75
+	dc.b $12, $12, $12, $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12
+	saVol		-$08
+	dc.b $12, $12, $12
+	saVol		$08
+	dc.b $12
+
+Snd_HellFire_Loop76:
+	dc.b $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	sLoop		$00, $02, Snd_HellFire_Loop76
+	dc.b $12, $12
+	saVol		-$08
+	dc.b $24
+
+Snd_HellFire_Loop77:
+	saVol		$08
+	dc.b $12, $12
+	saVol		-$08
+	dc.b $12
+	sLoop		$00, $02, Snd_HellFire_Loop77
+	saVol		$08
+	dc.b $12
+	saVol		-$08
+	dc.b $12, $12, $12
+	saVol		$08
+	dc.b $12, $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12
+	saVol		-$08
+	dc.b $12, $12
+	saVol		$08
+
+Snd_HellFire_Loop78:
+	dc.b $12
+	sLoop		$00, $09, Snd_HellFire_Loop78
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12, $12, $12, $36
+	sVolEnv		v01
+	dc.b nE5, $12, $12, $12, $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12, $12
+	saVol		-$08
+	dc.b nHiHat, nE5, nE5
+	saVol		$08
+	dc.b $12, $12, $12
+	saVol		-$08
+	dc.b $12, $24
+	saVol		$08
+	dc.b $12, $12, $09, nHiHat, nE5, $12, $12, $12, $12
+	saVol		-$08
+	dc.b nEb5
+	saVol		$08
+	dc.b nE5, nE5
+	saVol		-$08
+	dc.b $12, $12
+	saVol		$08
+	dc.b $48, nHiHat
+
+Snd_HellFire_Loop79:
+	dc.b $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12
+	sLoop		$00, $02, Snd_HellFire_Loop79
+	saVol		-$08
+	dc.b $12, $12
+	saVol		$08
+	dc.b $12, $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12, $12, $12, $24, $12
+	saVol		-$08
+	dc.b $12, $12
+	saVol		$08
+	dc.b $12, $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12, $12, $12, $12, $12
+	sVolEnv		v02
+	saVol		-$08
+	dc.b nF5, $09
+	sVolEnv		v01
+	saVol		$08
+	dc.b nEb5
+	sVolEnv		v02
+	saVol		-$08
+	dc.b nF5, $12
+	sVolEnv		v01
+	saVol		$08
+	sVolEnv		v02
+	dc.b $12, $24, $12, $12, $12
+	saVol		-$08
+	dc.b $12, $12, $12
+	saVol		$08
+	dc.b $12
+
+Snd_HellFire_Loop7A:
+	dc.b $12, $12, $12
+	saVol		-$08
+	dc.b $12, $12
+	saVol		$08
+	sLoop		$00, $02, Snd_HellFire_Loop7A
+
+Snd_HellFire_Loop7B:
+	dc.b $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	sLoop		$00, $02, Snd_HellFire_Loop7B
+
+Snd_HellFire_Loop7C:
+	dc.b $12
+	sLoop		$00, $08, Snd_HellFire_Loop7C
+	dc.b $36
+	sVolEnv		v01
+	dc.b nE5, $12, $12, $12, $12, $12
+	saVol		-$08
+	dc.b $12, $12, $12, $12
+	saVol		$08
+	dc.b $12, $12, $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12, $12
+	saVol		-$08
+	dc.b $12, $12
+	saVol		$08
+	dc.b $12, $12, $12
+
+Snd_HellFire_Loop7D:
+	dc.b $12, $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	sLoop		$00, $02, Snd_HellFire_Loop7D
+	dc.b $12, $12, $12, $36, nHiHat, $12, $12
+	saVol		-$08
+	dc.b $12, $12
+	saVol		$08
+	dc.b $12, $12
+	saVol		-$08
+	dc.b $12, nEb5, nHiHat
+	saVol		$08
+	dc.b $12, $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12, $12, $24, $12, $12, $09
+	saVol		-$08
+	dc.b nEb5
+	saVol		$08
+	dc.b nHiHat, $12, $12, $12, $12, nEb5, nHiHat
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12, $12, $48, $12, $12, $12, $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12, $12
+	saVol		-$08
+	dc.b nEb5
+	saVol		$08
+	dc.b nHiHat, nHiHat
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12, $12, $12, $24, $12, $12, $09, nEb5
+	saVol		-$08
+	dc.b nHiHat, $12
+	saVol		$08
+	dc.b $12, $12
+
+Snd_HellFire_Loop7E:
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b nEb5
+	sLoop		$00, $02, Snd_HellFire_Loop7E
+	dc.b $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+
+Snd_HellFire_Loop7F:
+	dc.b $6F, sHold
+	sLoop		$00, $05, Snd_HellFire_Loop7F
+	dc.b $6F
+	saVol		-$08
+	dc.b $24
+	saVol		$08
+
+Snd_HellFire_Loop80:
+	dc.b $24
+	sLoop		$00, $0A, Snd_HellFire_Loop80
+	dc.b $7F, sHold, $23, nE5, $12, $12, $12, $12, $12
+	saVol		-$08
+	dc.b $12, $12
+	saVol		$08
+	dc.b nHiHat, nE5, nE5, nE5, nE5, nE5, nE5, nE5, $24
+
+Snd_HellFire_Loop81:
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12, $12
+	sLoop		$00, $02, Snd_HellFire_Loop81
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b nHiHat, nE5
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12, $12, $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $24, $12, $12, $09, nEb5, nE5, $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12, $12, nHiHat, nE5, nE5
+	saVol		-$08
+	dc.b $09
+	saVol		$08
+	dc.b nEb5
+	saVol		-$08
+	dc.b nE5, $12
+	saVol		$08
+	dc.b $12, $12, $24, $12, $12
+	saVol		-$08
+	dc.b $09, nEb5
+	saVol		$08
+	dc.b nE5, $12, $12, $12, $7F, sHold, $35
+	saVol		-$08
+	dc.b nHiHat, $12
+	saVol		$08
+	dc.b $12, $12, $12, $12, $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b nEb5, nHiHat, nHiHat, nHiHat, nHiHat
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12, $24, $12, $12, $09
+	saVol		-$08
+	dc.b nEb5
+	saVol		$08
+	dc.b nHiHat, $12, $12, $12, $24, $12, $12, $09, nEb5, nHiHat, $12, $5A
+
+Snd_HellFire_Loop82:
+	saVol		-$08
+	dc.b $24
+	saVol		$08
+	dc.b $24, $24
+	sLoop		$00, $02, Snd_HellFire_Loop82
+	dc.b $48, $24, $24
+	saVol		-$08
+	dc.b $24
+	saVol		$08
+	dc.b nEb5, $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12, $12, $12, $48
+	saVol		-$08
+	dc.b nHiHat, $12, $12
+	saVol		$08
+
+Snd_HellFire_Loop83:
+	dc.b $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12
+	sLoop		$00, $02, Snd_HellFire_Loop83
+	dc.b $12, $12, $12, $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12, $24, $12, $12, $12
+
+Snd_HellFire_Loop84:
+	dc.b $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	sLoop		$00, $02, Snd_HellFire_Loop84
+	dc.b $12, $12, $12, $12, $12
+	saVol		-$08
+	dc.b $12, $12
+	saVol		$08
+	dc.b $24, $12
+	saVol		-$08
+
+Snd_HellFire_Loop85:
+	dc.b $12
+	saVol		$08
+	dc.b $12, $12
+	saVol		-$08
+	dc.b $12
+	sLoop		$00, $02, Snd_HellFire_Loop85
+	saVol		$08
+	dc.b $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12, $12
+	saVol		-$08
+	dc.b $12, $24, $12
+	saVol		$08
+	dc.b $12, $12
+	saVol		-$08
+	dc.b $12
+	saVol		$08
+	dc.b $12, $12, $12, $12, $12, $12
+	saVol		-$08
+	dc.b $12
+	sVolEnv		v02
+	saVol		$08
+	dc.b nF5, $09
+	sVolEnv		v01
+	saVol		-$08
+	dc.b nEb5
+	sVolEnv		v02
+	saVol		$08
+	sVolEnv		v01
+	dc.b $12
+	sVolEnv		v02
+	sVolEnv		v01
+	saVol		-$08
+	dc.b $12
+	sVolEnv		v02
+	saVol		$08
+	dc.b nF5
+
+Snd_HellFire_Loop86:
+	dc.b $63, sHold
+	sLoop		$00, $05, Snd_HellFire_Loop86
+	dc.b $63
+	sStop
+
+Snd_HellFire_DAC1:
+	sStop

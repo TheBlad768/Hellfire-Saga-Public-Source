@@ -1,0 +1,11 @@
+Sound_69_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$80, ctFM4, Sound_69_FM4, $00, $06
+
+; FM4 Data
+Sound_69_FM4:
+	sVoice		$35
+	dc.b nD1, $07, nRst, $02, nD1, $06, nRst
+	sStop

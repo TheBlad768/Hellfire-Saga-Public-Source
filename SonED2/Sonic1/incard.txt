@@ -1,0 +1,218 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Sonic the Hedgehog (Rev 00) TitleCard Names Injector File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;
+; Setup Directives ;
+;;;;;;;;;;;;;;;;;;;;
+
+MaxSize	$400000				;Maximum Genesis ROM size
+
+Dispose	$00C9E6	$00CBA4			;Titlecard Map Data
+
+
+;;;;;;;;;;;;;;;;
+; Data Defines ;
+;;;;;;;;;;;;;;;;
+
+;;;
+;Letter Graphics VRAM Tile Offset Data
+;;;
+
+Define TCTilePos_A	$00
+Define TCTilePos_B	$04
+Define TCTilePos_C	$08
+Define TCTilePos_D	$0C
+Define TCTilePos_E	$10
+Define TCTilePos_F	$14
+Define TCTilePos_G	$18
+Define TCTilePos_H	$1C
+Define TCTilePos_I	$20
+;There is no J
+Define TCTilePos_K	$22
+Define TCTilePos_L	$26
+Define TCTilePos_M	$2A
+Define TCTilePos_N	$2E
+Define TCTilePos_O	$32
+Define TCTilePos_P	$36
+;There is no Q
+Define TCTilePos_R	$3A
+Define TCTilePos_S	$3E
+Define TCTilePos_T	$42
+Define TCTilePos_U	$46
+;There is no V
+;There is no W
+;There is no X
+Define TCTilePos_Y	$4A
+Define TCTilePos_Z	$4E
+
+;;;
+;Map Settings
+;;;
+
+Define	MPHigh		$8000
+Define	MWidth8		$0000
+Define	MWidth16	$0004
+Define	MWidth24	$0008
+Define	MWidth32	$000A
+Define	MHeight8	$0000
+Define	MHeight16	$0001
+Define	MHeight24	$0002
+Define	MHeight32	$0003
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Manual Settings Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg TCardMapData Big_Endian
+
+	WORD	TCMap_GHZ-TCardMapData
+	WORD	TCMap_LZ-TCardMapData
+	WORD	TCMap_MZ-TCardMapData
+	WORD	TCMap_SLZ-TCardMapData
+	WORD	TCMap_SYZ-TCardMapData
+	WORD	TCMap_SBZ-TCardMapData
+	WORD	TCMap_Zone-TCardMapData
+	WORD	TCMap_Act1-TCardMapData
+	WORD	TCMap_Act2-TCardMapData
+	WORD	TCMap_Act3-TCardMapData
+	WORD	TCMap_Oval-TCardMapData
+	WORD	TCMap_Final-TCardMapData
+
+	TCMap_GHZ:
+		BYTE	 9
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_G, $B4
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_R, $C4
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_E, $D4
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_E, $E4
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_N, $F4
+
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_H, $14
+		BYTE	$F8,  MWidth8 + MHeight16, 0, TCTilePos_I, $24
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_L, $2C
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_L, $3C
+
+	TCMap_LZ:
+		BYTE	 9
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_L, $BC
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_A, $CC
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_B, $DC
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_Y, $EC
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_R, $FC
+		BYTE	$F8,  MWidth8 + MHeight16, 0, TCTilePos_I, $0C
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_N, $14
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_T, $24
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_H, $34
+
+	TCMap_MZ:
+		BYTE	 6
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_M, $CF
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_A, $E0
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_R, $F0
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_B, $00
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_L, $10
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_E, $20
+
+	TCMap_SLZ:
+		BYTE	 9
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_S, $B4
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_T, $C4
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_A, $D4
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_R, $E4
+
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_L, $04
+		BYTE	$F8,  MWidth8 + MHeight16, 0, TCTilePos_I, $14
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_G, $1C
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_H, $2C
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_T, $3C
+
+	TCMap_SYZ:
+		BYTE	10
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_S, $AC
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_P, $BC
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_R, $CC
+		BYTE	$F8,  MWidth8 + MHeight16, 0, TCTilePos_I, $DC
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_N, $E4
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_G, $F4
+
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_Y, $14
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_A, $24
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_R, $34
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_D, $44
+
+	TCMap_SBZ:
+		BYTE	10
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_S, $AC
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_C, $BC
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_R, $CC
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_A, $DC
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_P, $EC
+
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_B, $0C
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_R, $1C
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_A, $2C
+		BYTE	$F8,  MWidth8 + MHeight16, 0, TCTilePos_I, $3C
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_N, $44
+
+	TCMap_Zone:
+		BYTE	 4
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_Z, $E0
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_O, $F0
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_N, $00
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_E, $10
+
+	TCMap_Act1:
+		BYTE	 2
+		BYTE	$04, MWidth32 + MHeight24, 0, $53, $EC
+		BYTE	$F4,  MWidth8 + MHeight24, 0, $57, $0C
+
+	TCMap_Act2:
+		BYTE	 2
+		BYTE	$04, MWidth32 + MHeight24, 0, $53, $EC
+		BYTE	$F4, MWidth16 + MHeight24, 0, $5A, $08
+
+	TCMap_Act3:
+		BYTE	 2
+		BYTE	$04, MWidth32 + MHeight24, 0, $53, $EC
+		BYTE	$F4, MWidth16 + MHeight24, 0, $60, $08
+
+	TCMap_Oval:
+		BYTE	13
+		BYTE	$E4, MWidth32 + MHeight24, $00, $70, $F4
+		BYTE	$E4,  MWidth8 + MHeight24, $00, $74, $14
+		BYTE	$EC, MWidth16 +  MHeight8, $00, $77, $EC
+		BYTE	$F4, MWidth16 + MHeight16, $00, $79, $E4
+		BYTE	$14, MWidth32 + MHeight24, $18, $70, $EC
+		BYTE	$04,  MWidth8 + MHeight24, $18, $74, $E4
+		BYTE	$0C, MWidth16 +  MHeight8, $18, $77, $04
+		BYTE	$FC, MWidth16 + MHeight16, $18, $79, $0C
+		BYTE	$EC, MWidth24 +  MHeight8, $00, $7D, $FC
+		BYTE	$F4, MWidth32 + MHeight24, $00, $7C, $F4
+		BYTE	$FC, MWidth24 +  MHeight8, $00, $7C, $F4
+		BYTE	$04, MWidth32 + MHeight24, $00, $7C, $EC
+		BYTE	$0C, MWidth24 +  MHeight8, $00, $7C, $EC
+
+	TCMap_Final:
+		BYTE	 5
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_F, $DC
+		BYTE	$F8,  MWidth8 + MHeight16, 0, TCTilePos_I, $EC
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_N, $F4
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_A, $04
+		BYTE	$F8, MWidth16 + MHeight16, 0, TCTilePos_L, $14
+
+EndSeg
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; General Reference Replacement Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Big_Endian $00C388
+
+	DWORD TCardMapData
+
+EndSeg

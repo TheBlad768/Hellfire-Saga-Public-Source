@@ -1,0 +1,5140 @@
+; AMPS Optimizer v1.0 - TestLable
+
+TestLable_Header:
+	sHeaderInit
+	sHeaderTempo	$0168
+	sHeaderCh	$05, $03
+	sHeaderDAC	TestLable_DAC1
+	sHeaderDAC	TestLable_DAC2
+	sHeaderFM	TestLable_FM1, $00, $00
+	sHeaderFM	TestLable_FM2, $00, $00
+	sHeaderFM	TestLable_FM3, $00, $00
+	sHeaderFM	TestLable_FM4, $00, $00
+	sHeaderFM	TestLable_FM5, $00, $00
+	sHeaderPSG	TestLable_PSG1, $00, $00, $00, $00
+	sHeaderPSG	TestLable_PSG2, $00, $00, $00, $00
+	sHeaderPSG	TestLable_PSG3, $00, $00, $00, $00
+
+TestLable_Voices:
+	; Voice $00
+	spAlgorithm	$04
+	spFeedback	$04
+	spDetune	$04, $03, $04, $07
+	spMultiple	$01, $00, $00, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$01, $00, $00, $00
+	spSustainRt	$0B, $0D, $1F, $00
+	spDecayRt	$1F, $00, $00, $1F
+	spSustainLv	$0F, $0F, $0F, $0F
+	spReleaseRt	$0F, $07, $0F, $03
+	spSSGEG		$01, $00, $08, $00
+	spTotalLv	$07, $16, $00, $00
+
+	; Voice $01
+	spAlgorithm	$04
+	spFeedback	$04
+	spDetune	$04, $03, $04, $07
+	spMultiple	$01, $00, $00, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$01, $00, $00, $00
+	spSustainRt	$10, $00, $1F, $00
+	spDecayRt	$1F, $00, $00, $1F
+	spSustainLv	$0F, $0F, $0F, $0F
+	spReleaseRt	$0F, $07, $0F, $03
+	spSSGEG		$01, $00, $08, $00
+	spTotalLv	$07, $24, $00, $00
+
+	; Voice $02
+	spAlgorithm	$04
+	spFeedback	$04
+	spDetune	$04, $03, $04, $07
+	spMultiple	$01, $00, $00, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$01, $00, $00, $00
+	spSustainRt	$0E, $0D, $1F, $00
+	spDecayRt	$1F, $00, $00, $1F
+	spSustainLv	$0F, $0F, $0F, $0F
+	spReleaseRt	$0F, $07, $0F, $03
+	spSSGEG		$01, $00, $08, $00
+	spTotalLv	$07, $1B, $00, $00
+
+	; Voice $03
+	spAlgorithm	$04
+	spFeedback	$04
+	spDetune	$04, $03, $04, $07
+	spMultiple	$01, $00, $00, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$01, $00, $00, $00
+	spSustainRt	$10, $00, $1F, $00
+	spDecayRt	$1F, $00, $00, $1F
+	spSustainLv	$0F, $0F, $0F, $0F
+	spReleaseRt	$0F, $07, $0F, $03
+	spSSGEG		$01, $00, $08, $00
+	spTotalLv	$07, $24, $00, $00
+
+	; Voice $04
+	spAlgorithm	$00
+	spFeedback	$07
+	spDetune	$07, $07, $03, $03
+	spMultiple	$05, $00, $02, $01
+	spRateScale	$00, $00, $02, $00
+	spAttackRt	$1F, $1F, $14, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$13, $00, $02, $06
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$04, $00, $09, $0F
+	spReleaseRt	$03, $06, $06, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$07, $19, $16, $12
+
+	; Voice $05
+	spAlgorithm	$04
+	spFeedback	$04
+	spDetune	$04, $03, $04, $07
+	spMultiple	$01, $00, $00, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$01, $00, $00, $00
+	spSustainRt	$0E, $0D, $1D, $00
+	spDecayRt	$1F, $00, $00, $1F
+	spSustainLv	$0F, $0F, $0F, $0F
+	spReleaseRt	$0F, $07, $0F, $03
+	spSSGEG		$01, $00, $08, $00
+	spTotalLv	$07, $1B, $00, $00
+
+	; Voice $06
+	spAlgorithm	$00
+	spFeedback	$07
+	spDetune	$07, $07, $03, $03
+	spMultiple	$05, $00, $02, $01
+	spRateScale	$00, $00, $02, $00
+	spAttackRt	$1F, $1F, $14, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$13, $00, $02, $04
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$08, $00, $09, $0F
+	spReleaseRt	$03, $06, $06, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$07, $19, $16, $10
+
+	; Voice $07
+	spAlgorithm	$00
+	spFeedback	$07
+	spDetune	$07, $07, $03, $03
+	spMultiple	$05, $00, $02, $01
+	spRateScale	$00, $00, $02, $00
+	spAttackRt	$1F, $1F, $14, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0F, $00, $02, $00
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$04, $00, $09, $0F
+	spReleaseRt	$03, $06, $06, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$10, $19, $16, $10
+
+	; Voice $08
+	spAlgorithm	$00
+	spFeedback	$07
+	spDetune	$07, $07, $03, $03
+	spMultiple	$05, $00, $02, $01
+	spRateScale	$00, $00, $02, $00
+	spAttackRt	$1F, $1F, $14, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$10, $00, $05, $00
+	spDecayRt	$04, $00, $00, $00
+	spSustainLv	$04, $00, $09, $0F
+	spReleaseRt	$03, $06, $06, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$19, $19, $16, $10
+
+	; Voice $09
+	spAlgorithm	$04
+	spFeedback	$07
+	spDetune	$04, $04, $04, $04
+	spMultiple	$07, $0D, $01, $0A
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $16, $1F, $16
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$08, $0C, $1B, $19
+	spDecayRt	$00, $00, $0A, $0C
+	spSustainLv	$03, $0F, $03, $04
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$00, $11, $00, $03
+
+	; Voice $0A
+	spAlgorithm	$02
+	spFeedback	$07
+	spDetune	$03, $06, $04, $04
+	spMultiple	$00, $02, $06, $00
+	spRateScale	$02, $02, $03, $03
+	spAttackRt	$1C, $1C, $1B, $19
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$04, $04, $09, $03
+	spDecayRt	$03, $03, $01, $00
+	spSustainLv	$01, $00, $00, $0A
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$24, $26, $3B, $0A
+
+	; Voice $0B
+	spAlgorithm	$00
+	spFeedback	$07
+	spDetune	$07, $07, $03, $03
+	spMultiple	$05, $00, $02, $01
+	spRateScale	$00, $00, $02, $00
+	spAttackRt	$1F, $1F, $14, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0D, $00, $02, $00
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$0F, $00, $09, $0F
+	spReleaseRt	$03, $06, $06, $07
+	spSSGEG		$08, $00, $00, $00
+	spTotalLv	$10, $19, $16, $0A
+
+	; Voice $0C
+	spAlgorithm	$02
+	spFeedback	$06
+	spDetune	$01, $05, $05, $04
+	spMultiple	$04, $00, $01, $08
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$03, $03, $03, $03
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$04, $03, $04, $03
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$18, $18, $18, $10
+
+	; Voice $0D
+	spAlgorithm	$01
+	spFeedback	$07
+	spDetune	$04, $06, $07, $02
+	spMultiple	$07, $02, $02, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$16, $05, $0C, $0B
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$06, $01, $08, $01
+	spReleaseRt	$0F, $00, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$04, $1D, $0D, $08
+
+	; Voice $0E
+	spAlgorithm	$01
+	spFeedback	$01
+	spDetune	$04, $06, $07, $02
+	spMultiple	$07, $02, $02, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$18, $05, $0C, $0B
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$06, $01, $08, $01
+	spReleaseRt	$0F, $00, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$04, $1D, $0D, $08
+
+	; Voice $0F
+	spAlgorithm	$01
+	spFeedback	$07
+	spDetune	$04, $06, $07, $02
+	spMultiple	$08, $05, $00, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$1B, $05, $07, $07
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$06, $01, $05, $0F
+	spReleaseRt	$0F, $05, $05, $09
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$04, $1D, $0D, $08
+
+	; Voice $10
+	spAlgorithm	$01
+	spFeedback	$07
+	spDetune	$04, $06, $07, $02
+	spMultiple	$07, $02, $02, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$13, $05, $07, $0B
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$06, $01, $08, $01
+	spReleaseRt	$0F, $00, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$04, $1D, $0D, $07
+
+	; Voice $11
+	spAlgorithm	$01
+	spFeedback	$07
+	spDetune	$04, $06, $07, $02
+	spMultiple	$04, $01, $01, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$1F, $05, $1F, $0B
+	spDecayRt	$01, $00, $06, $00
+	spSustainLv	$06, $01, $01, $01
+	spReleaseRt	$0F, $00, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$04, $1D, $0D, $07
+
+	; Voice $12
+	spAlgorithm	$04
+	spFeedback	$04
+	spDetune	$04, $04, $04, $04
+	spMultiple	$01, $01, $01, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$09, $09, $09, $09
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$0F, $0F, $0F, $0F
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$07, $11, $08, $24
+
+	; Voice $13
+	spAlgorithm	$04
+	spFeedback	$04
+	spDetune	$04, $03, $04, $07
+	spMultiple	$01, $00, $00, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$01, $00, $00, $00
+	spSustainRt	$11, $0D, $1F, $11
+	spDecayRt	$1F, $00, $00, $1F
+	spSustainLv	$0F, $0F, $0F, $0F
+	spReleaseRt	$0F, $07, $0F, $03
+	spSSGEG		$01, $00, $08, $00
+	spTotalLv	$07, $16, $07, $10
+
+	; Voice $14
+	spAlgorithm	$04
+	spFeedback	$07
+	spDetune	$04, $04, $04, $04
+	spMultiple	$07, $0D, $01, $0A
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$13, $16, $16, $16
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$08, $0C, $1B, $19
+	spDecayRt	$00, $00, $07, $09
+	spSustainLv	$03, $0F, $04, $04
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$00, $11, $00, $03
+
+	; Voice $15
+	spAlgorithm	$04
+	spFeedback	$04
+	spDetune	$04, $03, $04, $07
+	spMultiple	$00, $00, $01, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$01, $00, $00, $00
+	spSustainRt	$0B, $0D, $1F, $00
+	spDecayRt	$1F, $00, $00, $1F
+	spSustainLv	$0F, $0F, $0F, $0F
+	spReleaseRt	$0F, $07, $0F, $03
+	spSSGEG		$01, $00, $08, $00
+	spTotalLv	$07, $16, $00, $00
+
+	; Voice $16
+	spAlgorithm	$04
+	spFeedback	$07
+	spDetune	$04, $04, $04, $04
+	spMultiple	$07, $0D, $01, $0A
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$13, $1F, $05, $04
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$08, $0C, $1B, $19
+	spDecayRt	$00, $00, $07, $09
+	spSustainLv	$03, $0F, $04, $04
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$00, $3B, $06, $0D
+
+	; Voice $17
+	spAlgorithm	$02
+	spFeedback	$07
+	spDetune	$04, $04, $04, $04
+	spMultiple	$06, $04, $0F, $03
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$05, $09, $16, $0B
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$0F, $0F, $0F, $0F
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$0D, $4E, $00, $06
+
+	; Voice $18
+	spAlgorithm	$02
+	spFeedback	$07
+	spDetune	$03, $07, $03, $03
+	spMultiple	$05, $00, $00, $01
+	spRateScale	$01, $00, $03, $00
+	spAttackRt	$19, $1F, $12, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$01, $00, $10, $00
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$00, $00, $01, $00
+	spReleaseRt	$08, $02, $04, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$14, $17, $18, $0A
+
+	; Voice $19
+	spAlgorithm	$04
+	spFeedback	$03
+	spDetune	$04, $04, $04, $04
+	spMultiple	$00, $01, $00, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$05, $18, $1F, $09
+	spDecayRt	$00, $09, $00, $00
+	spSustainLv	$0F, $04, $0F, $0F
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $08, $00
+	spTotalLv	$00, $02, $00, $14
+
+	; Voice $1A
+	spAlgorithm	$00
+	spFeedback	$07
+	spDetune	$07, $07, $03, $03
+	spMultiple	$05, $00, $02, $00
+	spRateScale	$01, $03, $02, $00
+	spAttackRt	$1F, $1F, $14, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$13, $05, $04, $04
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$04, $0F, $09, $0F
+	spReleaseRt	$03, $04, $06, $06
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$07, $19, $2E, $07
+
+	; Voice $1B
+	spAlgorithm	$00
+	spFeedback	$05
+	spDetune	$04, $07, $05, $04
+	spMultiple	$00, $01, $04, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $09, $0B, $00
+	spDecayRt	$1F, $00, $00, $07
+	spSustainLv	$0F, $0F, $0F, $0F
+	spReleaseRt	$00, $00, $00, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$00, $17, $7F, $00
+
+	; Voice $1C
+	spAlgorithm	$04
+	spFeedback	$03
+	spDetune	$04, $04, $04, $04
+	spMultiple	$00, $02, $00, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$05, $18, $1F, $09
+	spDecayRt	$00, $09, $00, $00
+	spSustainLv	$0F, $04, $0F, $0F
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $08, $00
+	spTotalLv	$00, $02, $00, $14
+
+	; Voice $1D
+	spAlgorithm	$04
+	spFeedback	$03
+	spDetune	$04, $04, $04, $04
+	spMultiple	$00, $01, $00, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$11, $18, $1F, $09
+	spDecayRt	$00, $09, $00, $00
+	spSustainLv	$0F, $04, $0F, $0F
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $08, $00
+	spTotalLv	$00, $02, $00, $14
+
+	; Voice $1E
+	spAlgorithm	$01
+	spFeedback	$07
+	spDetune	$04, $06, $07, $02
+	spMultiple	$07, $02, $02, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$1F, $05, $1F, $0B
+	spDecayRt	$01, $00, $06, $00
+	spSustainLv	$06, $01, $01, $01
+	spReleaseRt	$0F, $00, $06, $09
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$04, $1D, $0D, $07
+
+	; Voice $1F
+	spAlgorithm	$02
+	spFeedback	$07
+	spDetune	$04, $02, $04, $04
+	spMultiple	$04, $02, $02, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$1F, $19, $15, $1F
+	spDecayRt	$00, $0A, $00, $00
+	spSustainLv	$00, $03, $09, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$18, $00, $00, $0D
+
+	; Voice $20
+	spAlgorithm	$02
+	spFeedback	$07
+	spDetune	$04, $02, $04, $04
+	spMultiple	$04, $02, $02, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$1F, $19, $19, $1F
+	spDecayRt	$00, $0A, $00, $00
+	spSustainLv	$00, $03, $09, $00
+	spReleaseRt	$0F, $0B, $0F, $0A
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$18, $00, $00, $0D
+
+	; Voice $21
+	spAlgorithm	$02
+	spFeedback	$07
+	spDetune	$03, $05, $03, $07
+	spMultiple	$01, $05, $05, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$0F, $1F, $19, $1F
+	spAmpMod	$01, $01, $00, $00
+	spSustainRt	$0D, $00, $0F, $0D
+	spDecayRt	$00, $00, $06, $05
+	spSustainLv	$0F, $00, $0F, $04
+	spReleaseRt	$01, $04, $02, $09
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$20, $2B, $2F, $0A
+
+	; Voice $22
+	spAlgorithm	$01
+	spFeedback	$07
+	spDetune	$00, $06, $07, $02
+	spMultiple	$04, $01, $01, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$15, $05, $1F, $0B
+	spDecayRt	$01, $00, $06, $00
+	spSustainLv	$06, $01, $01, $01
+	spReleaseRt	$04, $03, $05, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$04, $1D, $0D, $07
+
+	; Voice $23
+	spAlgorithm	$04
+	spFeedback	$02
+	spDetune	$04, $07, $04, $03
+	spMultiple	$00, $01, $00, $03
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$16, $1F, $05, $09
+	spDecayRt	$03, $06, $00, $00
+	spSustainLv	$06, $03, $0F, $0F
+	spReleaseRt	$08, $0F, $07, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$00, $00, $0B, $0D
+
+	; Voice $24
+	spAlgorithm	$04
+	spFeedback	$04
+	spDetune	$04, $04, $04, $04
+	spMultiple	$01, $01, $01, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$09, $09, $09, $09
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$0F, $0F, $0F, $0F
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$07, $11, $08, $24
+
+	; Voice $25
+	spAlgorithm	$06
+	spFeedback	$02
+	spDetune	$04, $07, $04, $03
+	spMultiple	$00, $01, $00, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1C
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$16, $10, $05, $09
+	spDecayRt	$03, $06, $00, $00
+	spSustainLv	$06, $03, $0F, $0F
+	spReleaseRt	$08, $0F, $07, $09
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$00, $04, $0B, $0E
+
+
+TestLable_DAC1:
+	sStop
+
+TestLable_DAC2:
+	dc.b		nRst, $7F, $7F, $7F, $7F, $7F, $7F, $7F, $7F, $7F, $7F, $7F, $7F, $7F, $6F
+	sPan		spCenter
+	sCall		TestLable_X0577
+	dc.b		$88, $28
+	sCall		TestLable_X0577
+	sCall		TestLable_X0577
+	dc.b		$81, $28
+	sCall		TestLable_X0577
+	dc.b		$82, $02
+	dc.b		$02
+	dc.b		$06
+	dc.b		$81, $0A
+	dc.b		$88, $14
+	sCall		TestLable_X0474
+
+TestLable_DAC2_0001:
+	dc.b		$81, $28
+	sCall		TestLable_X0032
+	dc.b		$88, $28
+	sCall		TestLable_X0251
+	dc.b		$88, $28
+	sCall		TestLable_X0251
+	dc.b		$88, $7F, sHold, $21
+	dc.b		$81, $50
+	dc.b		$50
+	dc.b		$3C
+	dc.b		$14
+	dc.b		$50
+	dc.b		$50
+	dc.b		$50
+	dc.b		$28
+	dc.b		$28
+	dc.b		$28
+	dc.b		$0A
+	dc.b		$82
+	dc.b		$82
+	dc.b		$82
+	dc.b		$88, $28
+	sCall		TestLable_X0430
+	dc.b		$88, $28
+	sCall		TestLable_X0032
+	dc.b		$81, $28
+	sCall		TestLable_X0430
+	dc.b		$88, $6E
+	dc.b		$81, $0A
+	sCall		TestLable_X0474
+	sJump		TestLable_DAC2_0001
+
+TestLable_FM1:
+	dc.b		nRst, $02
+	ssVol		$05
+	sVoice		$11
+	sCall		TestLable_X0058
+	dc.b		nE5, $0A
+	dc.b		nA4
+	sCall		TestLable_X0059
+	dc.b		nA5, $0A
+	dc.b		nA4
+	sCall		TestLable_X0060
+	dc.b		nB5, $0A
+	dc.b		nBb4
+	sCall		TestLable_X0061
+	dc.b		nC6, $0A
+	dc.b		nAb4
+	sCall		TestLable_X0062
+	dc.b		nG5, $0A
+	dc.b		nEb4
+	dc.b		nD4, $7F, sHold, $7F, sHold, $42
+	ssVol		$00
+	sVoice		$20
+	ssPortamento	$0000
+	ssPortaTgt	$0000
+	sCall		TestLable_X0253
+	dc.b		nBb3, $0A
+	dc.b		nEb3
+	dc.b		nBb3
+	dc.b		nEb3
+	dc.b		nEb4
+	dc.b		nEb3
+	dc.b		nBb3
+	dc.b		nEb3
+	sCall		TestLable_X0253
+	dc.b		nB3, $0A
+	dc.b		nFs3
+	dc.b		nB3
+	dc.b		nFs3
+	dc.b		nFs4
+	dc.b		nFs3
+	dc.b		nB3
+	dc.b		nFs3
+	sVoice		$1F
+	sCall		TestLable_X0476
+	dc.b		nCs4, $0A
+	sCall		TestLable_X0254
+	dc.b		nE4, $0A
+	sVoice		$20
+	dc.b		nAb3
+	sVoice		$1F
+	sCall		TestLable_X0475
+	dc.b		nEb4, $0A
+	sCall		TestLable_X0254
+	sCall		TestLable_X0475
+	dc.b		nD4, $0A
+	sVoice		$20
+	dc.b		nF3
+	sVoice		$1F
+	dc.b		nBb3
+	sVoice		$20
+	dc.b		nD4
+	sVoice		$1F
+	dc.b		nF4
+	sVoice		$20
+	dc.b		nBb3
+	sVoice		$1F
+	dc.b		nBb4
+	sVoice		$20
+	dc.b		nD4
+	sVoice		$1F
+	dc.b		nEb4, $14
+	sModAMPS	$00, $01, $05, $05
+	dc.b		sHold, $14
+	ssPortamento	-$0011
+	ssPortaTgt	$0000
+	sModOff
+	dc.b		sHold, $28
+
+TestLable_FM1_0001:
+	sModOff
+	sPan		spCenter
+	sVoice		$21
+	ssPortamento	$0000
+	ssPortaTgt	$0000
+	sCall		TestLable_X0143
+	sCall		TestLable_X0272
+	dc.b		nCs5, $0A
+	sCall		TestLable_X0255
+	dc.b		nCs5, $0A
+	sCall		TestLable_X0255
+	sCall		TestLable_X0269
+	dc.b		nF5, $0A
+	dc.b		nD5
+	dc.b		nB4
+	dc.b		nBb4
+	sCall		TestLable_X0484
+	dc.b		nG5, $0A
+	dc.b		nCs5
+	dc.b		nBb4
+	dc.b		nG4
+	dc.b		nCs4
+	dc.b		nG4
+	dc.b		nCs5
+	dc.b		nG5
+	ssVol		$03
+	sVoice		$22
+	sCall		TestLable_X0068
+	dc.b		nCs5, $0A
+	dc.b		nE5
+	sCall		TestLable_X0483
+	sCall		TestLable_X0142
+	sKeyOff
+	sCall		TestLable_X0267
+	ssPortamento	$0000
+	ssPortaTgt	$0000
+	sCall		TestLable_X0137
+	dc.b		nB4, $28
+	sCall		TestLable_X0137
+	dc.b		nC5, $28
+	sCall		TestLable_X0268
+	dc.b		nEb5, $28
+	sModAMPS	$00, $01, $05, $0A
+	dc.b		sHold, $3C
+	sModOff
+	dc.b		nBb5, $0A
+	dc.b		nAb5
+	dc.b		nG5, $50
+	sModAMPS	$00, $01, $05, $0E
+	sCall		TestLable_X0557
+	ssVol		$05
+	sVoice		$1E
+	sCall		TestLable_X0063
+	sCall		TestLable_X0067
+	dc.b		nEb3, $0A
+	ssVol		$02
+	sVoice		$22
+	dc.b		nB5, $05
+	sCall		TestLable_X0138
+	dc.b		nB4, $05
+	sCall		TestLable_X0407
+	sCall		TestLable_X0556
+	dc.b		nB5, $05
+	sCall		TestLable_X0064
+	dc.b		nB5, $05
+	sCall		TestLable_X0434
+	dc.b		nBb5, $05
+	sCall		TestLable_X0407
+	dc.b		nFs5, $05
+	sCall		TestLable_X0409
+	dc.b		nFs4, $05
+	sCall		TestLable_X0479
+	sCall		TestLable_X0259
+	dc.b		nAb5, $05
+	sCall		TestLable_X0139
+	dc.b		nCs5, $05
+	sCall		TestLable_X0260
+	dc.b		nCs5, $05
+	sCall		TestLable_X0139
+	dc.b		nC6, $05
+	sCall		TestLable_X0261
+	dc.b		nF5, $05
+	sCall		TestLable_X0479
+	sCall		TestLable_X0409
+	sCall		TestLable_X0556
+	dc.b		nC6, $05
+	sCall		TestLable_X0262
+	sCall		TestLable_X0480
+	dc.b		nF5, $05
+	sCall		TestLable_X0451
+	dc.b		nF5, $05
+	sCall		TestLable_X0262
+	dc.b		nC6, $05
+	sCall		TestLable_X0138
+	dc.b		nC5, $05
+	sCall		TestLable_X0584
+	sCall		TestLable_X0261
+	dc.b		nC6, $05
+	sCall		TestLable_X0064
+	dc.b		nC6, $05
+	sCall		TestLable_X0434
+	dc.b		nE6, $05
+	sCall		TestLable_X0140
+	dc.b		nE5, $05
+	sCall		TestLable_X0555
+	sCall		TestLable_X0451
+	dc.b		nE6, $05
+	sCall		TestLable_X0065
+	dc.b		nE6, $05
+	sCall		TestLable_X0584
+	sCall		TestLable_X0451
+	sCall		TestLable_X0486
+	dc.b		nB5, $05
+	sCall		TestLable_X0259
+	dc.b		nB4, $05
+	sCall		TestLable_X0488
+	sCall		TestLable_X0260
+	dc.b		nCs6, $05
+	sCall		TestLable_X0141
+	sCall		TestLable_X0487
+	dc.b		nE6, $05
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	dc.b		nFs5
+	sCall		TestLable_X0141
+	dc.b		nF6, $05
+	sCall		TestLable_X0451
+	dc.b		nBb5, $05
+	sCall		TestLable_X0434
+	dc.b		nFs5, $05
+	sCall		TestLable_X0265
+	sCall		TestLable_X0266
+	dc.b		nBb6, $05
+	sCall		TestLable_X0578
+	sCall		TestLable_X0271
+	dc.b		nBb5, $05
+	sCall		TestLable_X0266
+	dc.b		nF6, $05
+	sCall		TestLable_X0140
+	dc.b		nF5, $05
+	sCall		TestLable_X0555
+	sCall		TestLable_X0265
+	sCall		TestLable_X0065
+	sCall		TestLable_X0480
+	dc.b		nAb5, $05
+	sPan		spRight
+	dc.b		sHold, $05
+	ssVol		$05
+	sVoice		$1E
+	sPan		spCenter
+	sCall		TestLable_X0063
+	sCall		TestLable_X0033
+	dc.b		nEb4, $50
+	sModAMPS	$00, $01, $05, $0A
+	sCall		TestLable_X0557
+	ssPortamento	$0000
+	sJump		TestLable_FM1_0001
+
+TestLable_FM2:
+	dc.b		nRst, $01
+	sVoice		$04
+	sPan		spRight
+	dc.b		$01
+	dc.b		nA2, $7F, sHold, $7F, sHold, $7F, sHold, $7F, sHold, $7F, sHold, $05
+	dc.b		nC3, $7F, sHold, $21
+	dc.b		nB2, $50
+	dc.b		nEb2
+	dc.b		nG3
+	dc.b		nG2
+	dc.b		nG2
+	dc.b		nAb2
+	dc.b		nG2
+	dc.b		nG2
+	dc.b		nG2
+	dc.b		nG2
+	dc.b		nD3, $7F, sHold, $49
+	sCall		TestLable_X0273
+	dc.b		sHold, $1E
+	ssVol		$00
+	sVoice		$1B
+	sPan		spCenter
+	dc.b		nD1, $14
+	ssPortamento	$00FF
+	ssPortaTgtNote	nD2
+	dc.b		sHold, $14
+	ssPortamento	-$0022
+	ssPortaTgt	$0000
+	dc.b		sHold, $14
+	sVoice		$1A
+	ssPortamento	$0000
+	ssPortaTgt	$0000
+	dc.b		nAb2, $3C
+	dc.b		$14
+	dc.b		nG2, $3C
+	dc.b		$14
+	dc.b		nAb2, $3C
+	dc.b		$0A
+	dc.b		nBb2
+	dc.b		nB2, $3C
+	dc.b		nB1, $0A
+	dc.b		nB2
+	dc.b		nCs3, $3C
+	dc.b		nB2, $0A
+	dc.b		nBb2
+	dc.b		nB2, $3C
+	dc.b		nBb2, $0A
+	dc.b		nAb2
+	dc.b		nBb2, $28
+	dc.b		$0A
+	dc.b		nF3, $14
+	dc.b		nBb2, $0A
+	dc.b		nEb3, $32
+	dc.b		nEb2, $0A
+	dc.b		nF2
+	dc.b		nG2
+
+TestLable_FM2_0001:
+	sPan		spCenter
+	ssVol		$00
+	sVoice		$1A
+	sCall		TestLable_X0005
+	sJump		TestLable_FM2_0001
+
+TestLable_FM3:
+	sVoice		$19
+	sSpecFM3	TestLable_FM3O2, TestLable_FM3O3, TestLable_FM3O4
+	dc.b		nD2, $7F, sHold, $7F, sHold, $7F, sHold, $7F, sHold, $7F, sHold, $05
+	sCall		TestLable_X0144
+
+TestLable_FM3_0001:
+	sModOff
+	sPan		spRight
+	ssVol		$00
+	sVoice		$23
+	dc.b		nRst, $02
+	sCall		TestLable_X0005
+	sJump		TestLable_FM3_0001
+
+TestLable_FM3O2:
+	dc.b		nRst, $0B
+	sCall		TestLable_X0002
+	sCall		TestLable_X0489
+	sModOff
+	sCall		TestLable_X0034
+
+TestLable_FM3O2_0001:
+	sCall		TestLable_X0490
+	sModOff
+	sCall		TestLable_X0035
+	sCall		TestLable_X0601
+	dc.b		nAb5, $0A
+	dc.b		nRst, $1E
+	dc.b		nAb4, $28
+	sModAMPS	$00, $01, $05, $0A
+	sCall		TestLable_X0003
+	sCall		TestLable_X0004
+	sJump		TestLable_FM3O2_0001
+
+TestLable_FM3O3:
+	dc.b		nRst, $01
+	ssVol		$00
+	dc.b		$01
+	dc.b		nD2, $05
+	ssVol		$01
+	dc.b		sHold, $0A
+	ssVol		$02
+	dc.b		sHold, $0A
+	ssVol		$03
+	dc.b		sHold, $0A
+	ssVol		$04
+	dc.b		sHold, $0A
+	ssVol		$05
+	dc.b		sHold, $0A
+	ssVol		$06
+	dc.b		sHold, $0A
+	ssVol		$07
+	dc.b		sHold, $0A
+	ssVol		$08
+	dc.b		sHold, $0A
+	ssVol		$09
+	dc.b		sHold, $0A
+	ssVol		$0A
+	dc.b		sHold, $0A
+	ssVol		$0B
+	dc.b		sHold, $0A
+	ssVol		$0C
+	dc.b		sHold, $0A
+	ssVol		$0D
+	dc.b		sHold, $0A
+	ssVol		$0E
+	dc.b		sHold, $0A
+	ssVol		$0F
+	dc.b		sHold, $0A
+	ssVol		$10
+	dc.b		sHold, $0A
+	ssVol		$11
+	dc.b		sHold, $0A
+	ssVol		$12
+	dc.b		sHold, $0A
+	ssVol		$13
+	dc.b		sHold, $0A
+	ssVol		$14
+	dc.b		sHold, $0A
+	ssVol		$15
+	dc.b		sHold, $0A
+	ssVol		$16
+	dc.b		sHold, $0A
+	ssVol		$17
+	dc.b		sHold, $0A
+	ssVol		$18
+	dc.b		sHold, $0A
+	ssVol		$19
+	dc.b		sHold, $0A
+	ssVol		$1A
+	dc.b		sHold, $0A
+	ssVol		$1B
+	dc.b		sHold, $0A
+	ssVol		$1C
+	dc.b		sHold, $0A
+	ssVol		$1D
+	dc.b		sHold, $0A
+	ssVol		$1E
+	dc.b		sHold, $0A
+	ssVol		$1F
+	dc.b		sHold, $14
+	ssVol		$20
+	dc.b		sHold, $05
+	ssVol		$21
+	dc.b		sHold, $0A
+	ssVol		$22
+	dc.b		sHold, $0A
+	ssVol		$23
+	dc.b		sHold, $0A
+	ssVol		$24
+	dc.b		sHold, $0A
+	ssVol		$25
+	dc.b		sHold, $0A
+	ssVol		$26
+	dc.b		sHold, $0A
+	ssVol		$27
+	dc.b		sHold, $0A
+	ssVol		$28
+	dc.b		sHold, $0A
+	ssVol		$29
+	dc.b		sHold, $0A
+	ssVol		$2A
+	dc.b		sHold, $0A
+	ssVol		$2B
+	dc.b		sHold, $0A
+	ssVol		$2C
+	dc.b		sHold, $0A
+	ssVol		$2D
+	dc.b		sHold, $0A
+	ssVol		$2E
+	dc.b		sHold, $0A
+	ssVol		$2F
+	dc.b		sHold, $0A
+	ssVol		$30
+	dc.b		sHold, $0A
+	ssVol		$31
+	dc.b		sHold, $0A
+	ssVol		$32
+	dc.b		sHold, $0A
+	ssVol		$33
+	dc.b		sHold, $0A
+	ssVol		$34
+	dc.b		sHold, $0A
+	ssVol		$35
+	dc.b		sHold, $0A
+	ssVol		$36
+	dc.b		sHold, $0A
+	ssVol		$37
+	dc.b		sHold, $0A
+	ssVol		$38
+	dc.b		sHold, $0A
+	ssVol		$39
+	dc.b		sHold, $0A
+	ssVol		$3A
+	dc.b		sHold, $0A
+	ssVol		$3B
+	dc.b		sHold, $0A
+	ssVol		$3C
+	dc.b		sHold, $0A
+	ssVol		$3D
+	dc.b		sHold, $0A
+	ssVol		$3E
+	dc.b		sHold, $0A
+	ssVol		$3F
+	dc.b		sHold, $0A
+	ssVol		$00
+	sCall		TestLable_X0144
+
+TestLable_FM3O3_0001:
+	sModOff
+	ssVol		$00
+	sVoice		$23
+	sCall		TestLable_X0005
+	sJump		TestLable_FM3O3_0001
+
+TestLable_FM3O4:
+	sPan		spRight
+	dc.b		nRst, $0B
+	ssVol		$00
+	sCall		TestLable_X0002
+	sModOff
+	sCall		TestLable_X0489
+	sCall		TestLable_X0034
+
+TestLable_FM3O4_0001:
+	sModOff
+	sCall		TestLable_X0490
+	sCall		TestLable_X0035
+	ssVol		$03
+	sCall		TestLable_X0601
+	sCall		TestLable_X0483
+	sCall		TestLable_X0003
+	ssVol		$00
+	sCall		TestLable_X0004
+	sJump		TestLable_FM3O4_0001
+
+TestLable_FM4:
+	dc.b		nRst, $02
+	ssVol		$05
+	sVoice		$11
+	sCall		TestLable_X0491
+	dc.b		nC2, $50
+	dc.b		nBb1
+	dc.b		nA1
+	dc.b		nAb1
+	sCall		TestLable_X0492
+	dc.b		nD2, $7F, sHold, $4E
+	ssVol		$06
+	dc.b		sHold, $05
+	ssVol		$07
+	dc.b		sHold, $05
+	ssVol		$08
+	dc.b		sHold, $0A
+	ssVol		$09
+	dc.b		sHold, $05
+	ssVol		$0A
+	dc.b		sHold, $5A
+	ssVol		$05
+	sPan		spLeft
+	dc.b		nAb2, $50
+	dc.b		nG2
+	dc.b		nAb2, $3C
+	dc.b		nBb2, $14
+	dc.b		nB2, $50
+	dc.b		nCs3
+	dc.b		nB2
+	dc.b		nBb2
+	dc.b		nEb2
+
+TestLable_FM4_0001:
+	sPan		spLeft
+	sVoice		$1E
+	ssVol		$05
+	sCall		TestLable_X0275
+	dc.b		nBb2, $3C
+	dc.b		nC3, $05
+	dc.b		nRst
+	dc.b		nC3
+	sCall		TestLable_X0495
+	dc.b		nCs3, $05
+	dc.b		nRst
+	dc.b		nE3, $3C
+	dc.b		$05
+	dc.b		nRst
+	dc.b		nE3
+	sCall		TestLable_X0493
+	dc.b		nD3, $3C
+	dc.b		$05
+	dc.b		nRst
+	dc.b		nD3
+	sCall		TestLable_X0493
+	dc.b		nAb2, $0A
+	dc.b		nRst, $1E
+	dc.b		nAb1, $78
+	dc.b		nAb2, $0A
+	dc.b		nRst, $1E
+	dc.b		nE2, $78
+	dc.b		nAb2, $0A
+	dc.b		nRst, $1E
+	dc.b		nAb1, $78
+	dc.b		nE2, $50
+	dc.b		nEb2
+	sCall		TestLable_X0494
+	dc.b		nB1, $28
+	sCall		TestLable_X0494
+	dc.b		nFs2, $28
+	dc.b		nF2, $50
+	dc.b		nBb2
+	dc.b		nEb2, $7F, sHold, $0D
+	dc.b		nBb1, $14
+	dc.b		nEb2, $7F, sHold, $21
+	sCall		TestLable_X0274
+	dc.b		nB3, $50
+	sCall		TestLable_X0496
+	dc.b		nB3, $3C
+	dc.b		nCs4, $0A
+	dc.b		nB3
+	dc.b		nBb3, $28
+	dc.b		nEb4
+	sVoice		$1E
+	dc.b		nAb2, $7F, sHold, $21
+	dc.b		nFs2, $7F, sHold, $21
+	dc.b		nBb2, $7F, sHold, $21
+	dc.b		nAb2, $7F, sHold, $21
+	dc.b		nCs3, $7F, sHold, $21
+	dc.b		nB2, $7F, sHold, $21
+	dc.b		nEb3, $7F, sHold, $21
+	dc.b		nCs3, $7F, sHold, $21
+	sCall		TestLable_X0274
+	dc.b		nAb5, $50
+	dc.b		nFs5
+	ssVol		$00
+	dc.b		nF5, $3C
+	dc.b		nCs5, $0A
+	dc.b		nF5
+	dc.b		nE5, $3C
+	dc.b		nCs5, $0A
+	dc.b		nE5
+	dc.b		nEb5, $3C
+	dc.b		nB4, $0A
+	dc.b		nEb5
+	dc.b		nD5, $50
+	dc.b		nEb5, $7F, sHold, $21
+	dc.b		$7F, sHold, $21
+	ssPortamento	$0000
+	sJump		TestLable_FM4_0001
+
+TestLable_FM5:
+	dc.b		nRst, $02
+	ssVol		$05
+	sVoice		$0F
+	sCall		TestLable_X0491
+	sCall		TestLable_X0276
+	dc.b		nD2, $7F, sHold, $49
+	sCall		TestLable_X0273
+	dc.b		sHold, $5A
+	sCall		TestLable_X0275
+	dc.b		nAb2, $3C
+	dc.b		nG2, $05
+	dc.b		nRst
+	dc.b		nBb2
+	sCall		TestLable_X0497
+	dc.b		nB2, $05
+	sCall		TestLable_X0495
+	dc.b		nB2, $05
+	sCall		TestLable_X0497
+	dc.b		nBb2, $05
+	dc.b		nRst
+	dc.b		nBb2, $3C
+	dc.b		$05
+	dc.b		nRst
+	dc.b		nBb2
+	dc.b		nRst
+	dc.b		nEb3, $28
+	dc.b		nEb2
+
+TestLable_FM5_0001:
+	sModOff
+	ssVol		$05
+	sPan		spCenter
+	ssVol		$0A
+	sVoice		$0F
+	dc.b		nAb3, $50
+	dc.b		nG3
+	dc.b		nBb3
+	dc.b		nCs4, $3C
+	dc.b		$14
+	dc.b		nE4, $50
+	dc.b		nEb4
+	dc.b		nD4
+	dc.b		nEb4
+	ssVol		$0F
+	sCall		TestLable_X0277
+	dc.b		nE4, $0A
+	dc.b		nRst
+	dc.b		nE4, $14
+	dc.b		$14
+	dc.b		$14
+	dc.b		$14
+	dc.b		$14
+	dc.b		$14
+	dc.b		$14
+	sCall		TestLable_X0277
+	dc.b		nE3, $0A
+	dc.b		nRst
+	dc.b		nE3, $14
+	dc.b		$14
+	dc.b		$14
+	dc.b		nEb3, $0A
+	dc.b		nRst
+	dc.b		nEb3, $14
+	dc.b		$14
+	dc.b		$14
+	ssVol		$03
+	sVoice		$1F
+	sCall		TestLable_X0036
+	dc.b		nB3, $0A
+	sCall		TestLable_X0280
+	dc.b		nEb4, $28
+	sCall		TestLable_X0036
+	dc.b		nC4, $0A
+	sVoice		$20
+	dc.b		nAb3
+	sVoice		$1F
+	dc.b		nEb3
+	sCall		TestLable_X0498
+	sCall		TestLable_X0476
+	dc.b		nF3, $0A
+	sCall		TestLable_X0498
+	dc.b		nCs4, $0A
+	sVoice		$20
+	dc.b		nBb3
+	sVoice		$1F
+	dc.b		nE3
+	sVoice		$20
+	dc.b		nBb3
+	sVoice		$1F
+	dc.b		nAb4, $28
+	dc.b		nEb4, $0A
+	sVoice		$20
+	dc.b		nBb3
+	sVoice		$1F
+	dc.b		nEb3
+	sVoice		$20
+	dc.b		nBb3
+	sVoice		$1F
+	dc.b		nAb4, $78
+	sCall		TestLable_X0278
+	ssVol		$00
+	sCall		TestLable_X0145
+	sCall		TestLable_X0496
+	dc.b		nAb4, $3C
+	dc.b		nBb4, $0A
+	dc.b		nAb4
+	dc.b		nAb4, $28
+	dc.b		nG4, $1E
+	dc.b		nEb3, $0A
+	sVoice		$1E
+	dc.b		nAb3, $3C
+	dc.b		nB3, $14
+	dc.b		nEb4, $28
+	dc.b		nB3
+	dc.b		nFs3, $50
+	dc.b		nBb3, $28
+	dc.b		nCs4
+	dc.b		nBb3, $3C
+	dc.b		nCs4, $14
+	dc.b		nF4, $28
+	dc.b		nCs4
+	dc.b		nAb3, $50
+	dc.b		nC4, $28
+	dc.b		nEb4
+	dc.b		nCs4, $3C
+	dc.b		nE4, $14
+	dc.b		nAb4, $28
+	dc.b		nE4
+	dc.b		nB3, $50
+	dc.b		nEb4, $28
+	dc.b		nFs4
+	dc.b		nEb4, $3C
+	dc.b		nFs4, $14
+	dc.b		nBb4, $28
+	dc.b		nFs4
+	dc.b		nCs4, $50
+	dc.b		nF4, $28
+	dc.b		nAb4
+	sCall		TestLable_X0145
+	dc.b		nEb4, $3C
+	dc.b		nBb3, $0A
+	dc.b		nEb4
+	dc.b		nAb4
+	sCall		TestLable_X0279
+	sCall		TestLable_X0548
+	ssPortaTgtNote	nF4
+	dc.b		sHold, $0A
+	ssPortamento	$00FF
+	ssPortaTgtNote	nG4
+	sCall		TestLable_X0502
+	dc.b		nAb4, $0A
+	ssPortamento	-$00FF
+	ssPortaTgtNote	nE4
+	dc.b		sHold, $0A
+	sCall		TestLable_X0548
+	ssPortaTgtNote	nE4
+	sCall		TestLable_X0500
+	sCall		TestLable_X0279
+	dc.b		nEb4, $0A
+	dc.b		$0A
+	ssPortamento	-$00FF
+	sCall		TestLable_X0579
+	ssPortamento	-$00FF
+	ssPortaTgtNote	nAb3
+	dc.b		sHold, $0A
+	dc.b		nAb3
+	ssPortamento	$00FF
+	sCall		TestLable_X0579
+	dc.b		nD4, $0A
+	dc.b		$0A
+	ssPortamento	-$00FF
+	ssPortaTgtNote	nBb3
+	dc.b		sHold, $0A
+	ssPortamento	$00FF
+	ssPortaTgtNote	nD4
+	dc.b		sHold, $0A
+	dc.b		$0A
+	ssPortamento	$00FF
+	ssPortaTgtNote	nF4
+	sCall		TestLable_X0500
+	ssPortamento	-$00FF
+	ssPortaTgtNote	nD4
+	dc.b		sHold, $0A
+	dc.b		nEb4
+	dc.b		nEb4
+	sCall		TestLable_X0146
+	dc.b		nAb4, $0A
+	ssPortamento	-$00FF
+	ssPortaTgtNote	nEb4
+	dc.b		sHold, $0A
+	sCall		TestLable_X0146
+	sVoice		$1E
+	sCall		TestLable_X0278
+	ssPortamento	$0000
+	sJump		TestLable_FM5_0001
+
+TestLable_PSG1:
+	dc.b		nRst, $02
+	ssVolPSGDMF	$7F
+	dc.b		nA1, $03
+	sCall		TestLable_X0136
+	dc.b		nA1, $7F
+	dc.b		$2A
+	sCall		TestLable_X0147
+	dc.b		nC1, $03
+	sCall		TestLable_X0136
+	dc.b		nC1, $7F
+	dc.b		$02
+	ssVolPSGDMF	$7F
+	dc.b		nB0, $03
+	sCall		TestLable_X0037
+	dc.b		nC1, $03
+	sCall		TestLable_X0037
+	dc.b		nA0, $03
+	sCall		TestLable_X0136
+	dc.b		sHold, $31
+	ssVolPSGDMF	$7F
+	dc.b		nAb1, $03
+	sCall		TestLable_X0039
+	dc.b		nD1, $03
+	sCall		TestLable_X0136
+	dc.b		nD1, $7F
+	dc.b		$7F, sHold, $23
+	sCall		TestLable_X0038
+	dc.b		nAb1, $15
+	sCall		TestLable_X0439
+	dc.b		nAb1, $15
+	sCall		TestLable_X0439
+	dc.b		nAb1, $15
+	sCall		TestLable_X0439
+	dc.b		nAb1, $15
+	sCall		TestLable_X0439
+	sCall		TestLable_X0281
+	ssVolPSGDMF	$7F
+	sCall		TestLable_X0281
+	sCall		TestLable_X0038
+	dc.b		nEb1, $15
+	sCall		TestLable_X0466
+	dc.b		sHold, $31
+
+TestLable_PSG1_0001:
+	ssVolPSGDMF	$1A
+	dc.b		nAb3, $03
+	sCall		TestLable_X0241
+	dc.b		nAb3, $03
+	sCall		TestLable_X0241
+	dc.b		nEb4, $03
+	sCall		TestLable_X0241
+	dc.b		nAb3, $03
+	sCall		TestLable_X0470
+	dc.b		nEb3, $03
+	sCall		TestLable_X0470
+	dc.b		nBb3, $03
+	sCall		TestLable_X0241
+	dc.b		nBb3, $03
+	sCall		TestLable_X0241
+	dc.b		nEb4, $03
+	sCall		TestLable_X0470
+	dc.b		nEb3, $03
+	sCall		TestLable_X0470
+	dc.b		nBb3, $03
+	sCall		TestLable_X0241
+	dc.b		nBb3, $03
+	sCall		TestLable_X0241
+	dc.b		nBb3, $03
+	sCall		TestLable_X0241
+	dc.b		nEb4, $03
+	sCall		TestLable_X0241
+	dc.b		nBb3, $03
+	sCall		TestLable_X0241
+	dc.b		nCs4, $03
+	sCall		TestLable_X0117
+	dc.b		nAb4, $03
+	sCall		TestLable_X0117
+	dc.b		nCs4, $03
+	sCall		TestLable_X0117
+	dc.b		nAb4, $03
+	sCall		TestLable_X0117
+	dc.b		nEb4, $03
+	sCall		TestLable_X0073
+	dc.b		nAb4, $03
+	sCall		TestLable_X0073
+	dc.b		nF4, $03
+	sCall		TestLable_X0149
+	dc.b		nB3, $03
+	sCall		TestLable_X0224
+	dc.b		nF3, $03
+	sCall		TestLable_X0470
+	dc.b		nBb3, $03
+	sCall		TestLable_X0149
+	dc.b		nF4, $03
+	sCall		TestLable_X0470
+	sCall		TestLable_X0284
+	ssVolPSGDMF	$1A
+	dc.b		nCs4, $03
+	sCall		TestLable_X0224
+	dc.b		nG3, $03
+	sCall		TestLable_X0470
+	dc.b		nCs3, $03
+	sCall		TestLable_X0470
+	dc.b		nG3, $03
+	sCall		TestLable_X0470
+	dc.b		nCs4, $03
+	sCall		TestLable_X0470
+	sCall		TestLable_X0284
+	ssVolPSGDMF	$00
+	dc.b		nEb3, $03
+	sCall		TestLable_X0083
+	dc.b		nEb3, $03
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	sCall		TestLable_X0447
+	ssVolPSGDMF	$44
+	dc.b		sHold, $64
+	ssVolPSGDMF	$00
+	dc.b		nCs3, $03
+	sCall		TestLable_X0074
+	dc.b		nCs3, $03
+	sCall		TestLable_X0250
+	dc.b		sHold, $64
+	ssVolPSGDMF	$00
+	dc.b		nEb3, $03
+	sCall		TestLable_X0074
+	dc.b		nEb3, $03
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	sCall		TestLable_X0447
+	ssVolPSGDMF	$44
+	dc.b		sHold, $64
+	ssVolPSGDMF	$00
+	dc.b		nE3, $03
+	sCall		TestLable_X0250
+	dc.b		sHold, $3C
+	ssVolPSGDMF	$00
+	sCall		TestLable_X0153
+	dc.b		sHold, $3C
+	sCall		TestLable_X0006
+	dc.b		nB2, $03
+	sCall		TestLable_X0471
+	dc.b		nEb2, $03
+	sCall		TestLable_X0471
+	dc.b		nB1, $03
+	sCall		TestLable_X0471
+	dc.b		nEb2, $03
+	sCall		TestLable_X0471
+	sCall		TestLable_X0153
+	dc.b		sHold, $14
+	sCall		TestLable_X0006
+	dc.b		nC3, $03
+	sCall		TestLable_X0471
+	dc.b		nAb2, $03
+	sCall		TestLable_X0471
+	dc.b		nEb2, $03
+	sCall		TestLable_X0042
+	dc.b		nAb2, $03
+	sCall		TestLable_X0471
+	dc.b		nF2, $03
+	sCall		TestLable_X0042
+	dc.b		nBb2, $03
+	sCall		TestLable_X0471
+	dc.b		nE2, $03
+	sCall		TestLable_X0075
+	dc.b		sHold, $14
+	ssVolPSGDMF	$00
+	dc.b		nEb3, $03
+	sCall		TestLable_X0471
+	dc.b		nBb2, $03
+	sCall		TestLable_X0471
+	dc.b		nEb2, $03
+	sCall		TestLable_X0075
+	dc.b		sHold, $50
+	ssVolPSGDMF	$00
+	dc.b		nBb3, $03
+	sCall		TestLable_X0471
+	dc.b		nAb3, $03
+	sCall		TestLable_X0471
+	dc.b		nG3, $03
+	sCall		TestLable_X0250
+	dc.b		nG3, $7F
+	dc.b		$0D
+	ssVolPSGDMF	$00
+	dc.b		nEb4, $01
+	dc.b		nEb3, $02
+	sCall		TestLable_X0471
+	dc.b		nBb3, $01
+	dc.b		nBb2, $02
+	sCall		TestLable_X0076
+	ssVolPSGDMF	$44
+	dc.b		sHold, $0A
+	sCall		TestLable_X0309
+	sCall		TestLable_X0155
+	dc.b		nBb4, $01
+	dc.b		nBb3, $02
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	sCall		TestLable_X0447
+	ssVolPSGDMF	$00
+	dc.b		nBb3, $01
+	dc.b		nBb2, $02
+	sCall		TestLable_X0250
+	dc.b		sHold, $0A
+	ssVolPSGDMF	$00
+	dc.b		nBb3, $01
+	dc.b		nBb2, $02
+	sCall		TestLable_X0178
+	dc.b		nF4, $01
+	dc.b		nF3, $02
+	sCall		TestLable_X0076
+	ssVolPSGDMF	$00
+	dc.b		nEb4, $01
+	dc.b		nEb3, $02
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	sCall		TestLable_X0447
+	ssVolPSGDMF	$00
+	sCall		TestLable_X0157
+	sCall		TestLable_X0155
+	dc.b		nEb4, $01
+	dc.b		nEb3, $02
+	ssVolPSGDMF	$09
+	sCall		TestLable_X0290
+	ssVolPSGDMF	$09
+	sCall		TestLable_X0290
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	sCall		TestLable_X0447
+	ssVolPSGDMF	$00
+	dc.b		nD4, $01
+	dc.b		nD3, $02
+	sCall		TestLable_X0250
+	dc.b		sHold, $0A
+	ssVolPSGDMF	$00
+	dc.b		nF4, $01
+	dc.b		nF3, $02
+	sCall		TestLable_X0471
+	sCall		TestLable_X0157
+	dc.b		sHold, $02
+	ssVolPSGDMF	$44
+	dc.b		sHold, $28
+	ssVolPSGDMF	$00
+	dc.b		nBb4, $01
+	dc.b		nBb3, $02
+	sCall		TestLable_X0471
+	dc.b		nAb4, $01
+	dc.b		nAb3, $02
+	sCall		TestLable_X0471
+	dc.b		nEb5, $01
+	dc.b		nEb4, $02
+	sCall		TestLable_X0250
+	dc.b		sHold, $3C
+	ssVolPSGDMF	$00
+	dc.b		nE5, $01
+	dc.b		nE4, $02
+	sCall		TestLable_X0159
+	dc.b		nCs5, $01
+	dc.b		nCs4, $02
+	sCall		TestLable_X0159
+	sCall		TestLable_X0160
+	dc.b		sHold, $14
+	ssVolPSGDMF	$00
+	sCall		TestLable_X0160
+	dc.b		sHold, $19
+	ssVolPSGDMF	$22
+	dc.b		nB3, $01
+	sCall		TestLable_X0161
+	dc.b		nB2, $01
+	sCall		TestLable_X0417
+	sCall		TestLable_X0560
+	dc.b		nB3, $01
+	sCall		TestLable_X0077
+	dc.b		nB3, $01
+	sCall		TestLable_X0435
+	dc.b		nBb3, $01
+	sCall		TestLable_X0417
+	dc.b		nFs3, $01
+	sCall		TestLable_X0419
+	dc.b		nFs2, $01
+	sCall		TestLable_X0504
+	sCall		TestLable_X0295
+	dc.b		nAb3, $01
+	sCall		TestLable_X0162
+	dc.b		nCs3, $01
+	sCall		TestLable_X0296
+	dc.b		nCs3, $01
+	sCall		TestLable_X0162
+	dc.b		nC4, $01
+	sCall		TestLable_X0297
+	dc.b		nF3, $01
+	sCall		TestLable_X0504
+	sCall		TestLable_X0419
+	sCall		TestLable_X0560
+	dc.b		nC4, $01
+	sCall		TestLable_X0298
+	sCall		TestLable_X0505
+	dc.b		nF3, $01
+	sCall		TestLable_X0454
+	dc.b		nF3, $01
+	sCall		TestLable_X0298
+	dc.b		nC4, $01
+	sCall		TestLable_X0161
+	dc.b		nC3, $01
+	sCall		TestLable_X0585
+	sCall		TestLable_X0297
+	dc.b		nC4, $01
+	sCall		TestLable_X0077
+	dc.b		nC4, $01
+	sCall		TestLable_X0435
+	dc.b		nE4, $01
+	sCall		TestLable_X0163
+	dc.b		nE3, $01
+	sCall		TestLable_X0559
+	sCall		TestLable_X0454
+	dc.b		nE4, $01
+	sCall		TestLable_X0078
+	dc.b		nE4, $01
+	sCall		TestLable_X0585
+	sCall		TestLable_X0454
+	sCall		TestLable_X0509
+	dc.b		nB3, $01
+	sCall		TestLable_X0295
+	dc.b		nB2, $01
+	sCall		TestLable_X0511
+	sCall		TestLable_X0296
+	dc.b		nCs4, $01
+	sCall		TestLable_X0164
+	sCall		TestLable_X0510
+	dc.b		nE4, $01
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	dc.b		nFs3, $01
+	sCall		TestLable_X0164
+	dc.b		nF4, $01
+	sCall		TestLable_X0454
+	dc.b		nBb3, $01
+	sCall		TestLable_X0435
+	dc.b		nFs3, $01
+	sCall		TestLable_X0301
+	sCall		TestLable_X0302
+	dc.b		nBb4, $01
+	sCall		TestLable_X0580
+	sCall		TestLable_X0311
+	dc.b		nBb3, $01
+	sCall		TestLable_X0302
+	dc.b		nF4, $01
+	sCall		TestLable_X0163
+	dc.b		nF3, $01
+	sCall		TestLable_X0559
+	sCall		TestLable_X0301
+	sCall		TestLable_X0078
+	sCall		TestLable_X0505
+	dc.b		nAb3, $01
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $04
+	ssVolPSGDMF	$22
+	dc.b		nEb4, $01
+	dc.b		nEb3, $02
+	sCall		TestLable_X0469
+	dc.b		nBb3, $01
+	dc.b		nBb2, $02
+	sCall		TestLable_X0085
+	sCall		TestLable_X0304
+	sCall		TestLable_X0165
+	sCall		TestLable_X0166
+	ssVolPSGDMF	$22
+	dc.b		nBb3, $01
+	dc.b		nBb2, $02
+	sCall		TestLable_X0167
+	dc.b		nBb3, $01
+	dc.b		nBb2, $02
+	sCall		TestLable_X0229
+	dc.b		nF4, $01
+	dc.b		nF3, $02
+	sCall		TestLable_X0085
+	sCall		TestLable_X0169
+	sCall		TestLable_X0170
+	sCall		TestLable_X0165
+	sCall		TestLable_X0305
+	ssVolPSGDMF	$22
+	sCall		TestLable_X0305
+	sCall		TestLable_X0169
+	dc.b		nD4, $01
+	dc.b		nD3, $02
+	sCall		TestLable_X0167
+	dc.b		nF4, $01
+	dc.b		nF3, $02
+	sCall		TestLable_X0469
+	dc.b		nAb4, $01
+	dc.b		nAb3, $02
+	sCall		TestLable_X0229
+	sCall		TestLable_X0170
+	dc.b		sHold, $02
+	ssVolPSGDMF	$66
+	dc.b		sHold, $0A
+	ssVolPSGDMF	$22
+	dc.b		nB4, $01
+	dc.b		nB3, $02
+	sCall		TestLable_X0171
+	dc.b		nAb4, $01
+	dc.b		nAb3, $02
+	sCall		TestLable_X0085
+	ssVolPSGDMF	$22
+	sCall		TestLable_X0166
+	sCall		TestLable_X0304
+	dc.b		sHold, $02
+	ssVolPSGDMF	$22
+	dc.b		nBb4, $01
+	dc.b		nBb3, $02
+	sCall		TestLable_X0080
+	dc.b		nF5, $01
+	dc.b		nF4, $02
+	sCall		TestLable_X0081
+	dc.b		nAb4, $01
+	dc.b		nAb3, $02
+	sCall		TestLable_X0469
+	dc.b		nAb4, $01
+	dc.b		nAb3, $02
+	sCall		TestLable_X0081
+	dc.b		nAb5, $01
+	dc.b		nAb4, $02
+	sCall		TestLable_X0172
+	dc.b		nB4, $01
+	dc.b		nB3, $02
+	sCall		TestLable_X0172
+	sCall		TestLable_X0173
+	sCall		TestLable_X0469
+	dc.b		nE5, $01
+	dc.b		nE4, $02
+	sCall		TestLable_X0469
+	sCall		TestLable_X0119
+	sCall		TestLable_X0469
+	sCall		TestLable_X0173
+	sCall		TestLable_X0080
+	dc.b		nD5, $01
+	dc.b		nD4, $02
+	sCall		TestLable_X0171
+	dc.b		nD5, $01
+	sCall		TestLable_X0307
+	dc.b		nD5, $01
+	sCall		TestLable_X0307
+	dc.b		nF5, $01
+	dc.b		nF4, $02
+	sCall		TestLable_X0176
+	dc.b		nD5, $01
+	dc.b		nD4, $02
+	sCall		TestLable_X0469
+	sCall		TestLable_X0119
+	sCall		TestLable_X0469
+	sCall		TestLable_X0119
+	sCall		TestLable_X0469
+	sCall		TestLable_X0119
+	sCall		TestLable_X0469
+	sCall		TestLable_X0119
+	sCall		TestLable_X0469
+	dc.b		nG5, $01
+	dc.b		nG4, $02
+	sCall		TestLable_X0437
+	sCall		TestLable_X0390
+	ssVolPSGDMF	$66
+	dc.b		nG4, $7F
+	dc.b		$0D
+	ssPortamento	$0000
+	sJump		TestLable_PSG1_0001
+
+TestLable_PSG2:
+	dc.b		nRst, $02
+	ssVolPSGDMF	$7F
+	dc.b		nD2, $03
+	sCall		TestLable_X0136
+	dc.b		nD2, $7F
+	dc.b		$2A
+	sCall		TestLable_X0147
+	dc.b		nF1, $03
+	sCall		TestLable_X0136
+	dc.b		nF1, $7F
+	dc.b		$02
+	ssVolPSGDMF	$7F
+	dc.b		nE1, $03
+	sCall		TestLable_X0087
+	dc.b		nEb1, $03
+	sCall		TestLable_X0087
+	dc.b		nG1, $03
+	sCall		TestLable_X0088
+	dc.b		nG1, $03
+	sCall		TestLable_X0088
+	dc.b		nF1, $03
+	sCall		TestLable_X0136
+	dc.b		sHold, $31
+	ssVolPSGDMF	$7F
+	dc.b		nAb2, $03
+	sCall		TestLable_X0039
+	dc.b		nD3, $03
+	sCall		TestLable_X0136
+	dc.b		nD3, $7F
+	dc.b		$7F, sHold, $23
+	sCall		TestLable_X0090
+	dc.b		nBb1, $15
+	sCall		TestLable_X0466
+	dc.b		sHold, $09
+	ssVolPSGDMF	$7F
+	dc.b		nBb1, $15
+	sCall		TestLable_X0424
+	sCall		TestLable_X0090
+	sCall		TestLable_X0125
+	dc.b		nE2, $15
+	sCall		TestLable_X0424
+	ssVolPSGDMF	$7F
+	dc.b		nE2, $15
+	sCall		TestLable_X0313
+	sCall		TestLable_X0125
+	dc.b		nEb2, $15
+	sCall		TestLable_X0313
+	sCall		TestLable_X0314
+	dc.b		sHold, $09
+	ssVolPSGDMF	$7F
+	sCall		TestLable_X0314
+	dc.b		sHold, $31
+
+TestLable_PSG2_0001:
+	dc.b		sHold, $05
+	ssDetune	$FE
+	ssVolPSGDMF	$2B
+	dc.b		nAb3, $03
+	sCall		TestLable_X0240
+	dc.b		nAb3, $03
+	sCall		TestLable_X0240
+	dc.b		nEb4, $03
+	sCall		TestLable_X0240
+	dc.b		nAb3, $03
+	sCall		TestLable_X0240
+	dc.b		nBb3, $03
+	sCall		TestLable_X0240
+	dc.b		nBb3, $03
+	sCall		TestLable_X0240
+	dc.b		nEb4, $03
+	sCall		TestLable_X0240
+	dc.b		nBb3, $03
+	sCall		TestLable_X0240
+	dc.b		nBb3, $03
+	sCall		TestLable_X0240
+	dc.b		nBb3, $03
+	sCall		TestLable_X0240
+	dc.b		nEb4, $03
+	sCall		TestLable_X0240
+	dc.b		nBb3, $03
+	sCall		TestLable_X0464
+	dc.b		nEb3, $03
+	sCall		TestLable_X0574
+	sCall		TestLable_X0046
+	ssVolPSGDMF	$4D
+	dc.b		sHold, $03
+	ssVolPSGDMF	$55
+	sCall		TestLable_X0046
+	ssVolPSGDMF	$2B
+	dc.b		nEb4, $03
+	sCall		TestLable_X0093
+	dc.b		nAb4, $03
+	sCall		TestLable_X0093
+	dc.b		nF4, $03
+	sCall		TestLable_X0180
+	dc.b		nB3, $03
+	sCall		TestLable_X0181
+	dc.b		nF3, $03
+	sCall		TestLable_X0464
+	dc.b		nBb3, $03
+	sCall		TestLable_X0180
+	dc.b		nF4, $03
+	sCall		TestLable_X0464
+	dc.b		nG4, $03
+	sCall		TestLable_X0464
+	dc.b		nCs4, $03
+	sCall		TestLable_X0181
+	sCall		TestLable_X0317
+	dc.b		nCs3, $03
+	sCall		TestLable_X0464
+	sCall		TestLable_X0317
+	dc.b		nCs4, $03
+	sCall		TestLable_X0574
+	dc.b		sHold, $02
+	ssVolPSGDMF	$00
+	dc.b		nAb3, $03
+	sCall		TestLable_X0083
+	sCall		TestLable_X0098
+	ssVolPSGDMF	$00
+	sCall		TestLable_X0204
+	sCall		TestLable_X0098
+	ssVolPSGDMF	$00
+	sCall		TestLable_X0204
+	sCall		TestLable_X0098
+	sCall		TestLable_X0447
+	ssVolPSGDMF	$44
+	dc.b		sHold, $3C
+	ssVolPSGDMF	$00
+	dc.b		nAb3, $03
+	sCall		TestLable_X0250
+	dc.b		sHold, $3C
+	ssVolPSGDMF	$00
+	ssPortamento	$0000
+	ssPortaTgt	$0000
+	sCall		TestLable_X0007
+	dc.b		nB3, $03
+	sCall		TestLable_X0250
+	dc.b		sHold, $14
+	ssVolPSGDMF	$00
+	sCall		TestLable_X0007
+	dc.b		nC4, $03
+	sCall		TestLable_X0094
+	dc.b		nF3, $03
+	sCall		TestLable_X0183
+	dc.b		nCs4, $03
+	sCall		TestLable_X0094
+	dc.b		nE3, $03
+	sCall		TestLable_X0183
+	dc.b		nD4, $03
+	sCall		TestLable_X0250
+	dc.b		sHold, $14
+	sCall		TestLable_X0363
+	sCall		TestLable_X0318
+	sCall		TestLable_X0607
+	sCall		TestLable_X0318
+	sCall		TestLable_X0184
+	dc.b		sHold, $64
+	sCall		TestLable_X0184
+	dc.b		nEb4, $7F
+	dc.b		$0D
+	ssVolPSGDMF	$00
+	dc.b		nRst, $03
+	sCall		TestLable_X0250
+	dc.b		nRst, $7F, $7F, $2E
+	ssVolPSGDMF	$1A
+	dc.b		nAb3, $03
+	sCall		TestLable_X0241
+	dc.b		nB3, $03
+	sCall		TestLable_X0185
+	dc.b		nB3, $03
+	sCall		TestLable_X0224
+	dc.b		nAb3, $03
+	sCall		TestLable_X0470
+	dc.b		nFs3, $03
+	sCall		TestLable_X0328
+	ssVolPSGDMF	$1A
+	dc.b		nBb3, $03
+	sCall		TestLable_X0185
+	dc.b		nFs3, $03
+	sCall		TestLable_X0224
+	dc.b		nEb4, $03
+	sCall		TestLable_X0190
+	dc.b		nE4, $03
+	sCall		TestLable_X0470
+	dc.b		nB3, $03
+	sCall		TestLable_X0095
+	dc.b		nB3, $03
+	sCall		TestLable_X0095
+	sCall		TestLable_X0513
+	dc.b		nBb4, $03
+	ssVolPSGDMF	$22
+	dc.b		sHold, $02
+	ssVolPSGDMF	$1A
+	sCall		TestLable_X0513
+	dc.b		nG4, $03
+	sCall		TestLable_X0328
+	ssVolPSGDMF	$5E
+	dc.b		sHold, $0F
+	ssVolPSGDMF	$1A
+	dc.b		nEb4, $03
+	sCall		TestLable_X0470
+	dc.b		nBb3, $03
+	sCall		TestLable_X0241
+	dc.b		nB2, $01
+	sCall		TestLable_X0320
+	dc.b		nAb3, $01
+	sCall		TestLable_X0321
+	sCall		TestLable_X0322
+	dc.b		nBb2, $01
+	ssVolPSGDMF	$22
+	dc.b		sHold, $13
+	dc.b		nCs3, $28
+	sCall		TestLable_X0514
+	sCall		TestLable_X0322
+	dc.b		nF3, $01
+	ssVolPSGDMF	$22
+	sCall		TestLable_X0323
+	dc.b		nF3, $01
+	sCall		TestLable_X0321
+	dc.b		sHold, $27
+	ssVolPSGDMF	$1A
+	dc.b		nC3, $01
+	ssVolPSGDMF	$22
+	dc.b		sHold, $13
+	ssVolPSGDMF	$1A
+	dc.b		nEb3, $01
+	sCall		TestLable_X0324
+	dc.b		nE3, $01
+	sCall		TestLable_X0581
+	dc.b		nAb3, $01
+	ssVolPSGDMF	$22
+	dc.b		sHold, $13
+	ssVolPSGDMF	$1A
+	dc.b		nCs4, $01
+	sCall		TestLable_X0324
+	dc.b		nFs3, $01
+	sCall		TestLable_X0320
+	dc.b		nFs3, $01
+	sCall		TestLable_X0587
+	ssVolPSGDMF	$1A
+	dc.b		nB3, $01
+	sCall		TestLable_X0587
+	sCall		TestLable_X0514
+	dc.b		sHold, $27
+	ssVolPSGDMF	$1A
+	dc.b		nBb3, $01
+	ssVolPSGDMF	$22
+	dc.b		sHold, $13
+	ssVolPSGDMF	$1A
+	dc.b		nEb4, $01
+	ssVolPSGDMF	$22
+	dc.b		sHold, $14
+	ssVolPSGDMF	$2B
+	sCall		TestLable_X0323
+	dc.b		nAb3, $01
+	sCall		TestLable_X0581
+	dc.b		nF3, $01
+	ssVolPSGDMF	$22
+	sCall		TestLable_X0330
+	dc.b		nCs4, $01
+	sCall		TestLable_X0519
+	dc.b		nRst, $01
+	ssVolPSGDMF	$22
+	dc.b		sHold, $14
+	ssVolPSGDMF	$2B
+	dc.b		$7F, sHold, $7F, sHold, $7F, sHold, $4E
+	ssVolPSGDMF	$09
+	dc.b		nF3, $01
+	sCall		TestLable_X0325
+	dc.b		nF3, $01
+	ssVolPSGDMF	$11
+	dc.b		sHold, $09
+	ssVolPSGDMF	$09
+	dc.b		nE3, $01
+	sCall		TestLable_X0325
+	dc.b		nE3, $01
+	sCall		TestLable_X0517
+	sCall		TestLable_X0520
+	dc.b		nB2, $01
+	sCall		TestLable_X0517
+	dc.b		sHold, $09
+	ssVolPSGDMF	$09
+	dc.b		nD3, $01
+	ssVolPSGDMF	$11
+	dc.b		sHold, $14
+	ssVolPSGDMF	$1A
+	dc.b		sHold, $3B
+	ssVolPSGDMF	$09
+	sCall		TestLable_X0518
+	ssVolPSGDMF	$09
+	sCall		TestLable_X0518
+	ssPortamento	$0000
+	sJump		TestLable_PSG2_0001
+
+TestLable_PSG3:
+	sNoisePSG	snWhitePSG3
+	dc.b		nRst, $7F, $7F, $7F, $7F, $7F, $7F, $7F, $7F, $7F, $7F, $7F, $7F, $7F, $6D
+	ssVol		$7F
+	dc.b		nG3, $03
+	ssVol		$6F
+	dc.b		sHold, $01
+	ssVol		$55
+	dc.b		sHold, $01
+	ssVol		$44
+	dc.b		sHold, $05
+	ssVol		$3C
+	dc.b		sHold, $0F
+	ssVol		$33
+	dc.b		sHold, $0F
+	ssVol		$2B
+	dc.b		sHold, $0F
+	ssVol		$22
+	dc.b		sHold, $0F
+	ssVol		$1A
+	dc.b		sHold, $0F
+	ssVol		$11
+	dc.b		sHold, $0F
+	ssVol		$09
+	dc.b		sHold, $0F
+	ssVol		$00
+	dc.b		sHold, $2D
+	sCall		TestLable_X0099
+	dc.b		nRst, $01
+	ssVol		$7F
+	dc.b		sHold, $01
+	ssVol		$09
+	dc.b		sHold, $01
+	sCall		TestLable_X0192
+	dc.b		nRst, $7F, $7F, $7F, $7F, $37
+
+TestLable_PSG3_0001:
+	dc.b		nRst, $02
+	ssVol		$00
+	sCall		TestLable_X0099
+	sNoisePSG	snWhitePSG3
+	sCall		TestLable_X0621
+	dc.b		nD4, $01
+	sCall		TestLable_X0031
+	dc.b		nAb6, $03
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	sCall		TestLable_X0447
+	ssVolPSGDMF	$00
+	sCall		TestLable_X0621
+	dc.b		nD4, $01
+	sCall		TestLable_X0031
+	dc.b		nD4, $01
+	sCall		TestLable_X0031
+	sCall		TestLable_X0050
+	dc.b		nD4, $01
+	sCall		TestLable_X0031
+	sCall		TestLable_X0237
+	sCall		TestLable_X0130
+	dc.b		nD4, $01
+	sCall		TestLable_X0031
+	sCall		TestLable_X0050
+	sCall		TestLable_X0129
+	sCall		TestLable_X0011
+	sCall		TestLable_X0237
+	sCall		TestLable_X0130
+	dc.b		nD4, $01
+	sCall		TestLable_X0031
+	sCall		TestLable_X0050
+	sCall		TestLable_X0129
+	sCall		TestLable_X0621
+	dc.b		nD4, $01
+	sCall		TestLable_X0248
+	sCall		TestLable_X0222
+	sCall		TestLable_X0020
+	sCall		TestLable_X0193
+	sCall		TestLable_X0621
+	dc.b		nD4, $01
+	sCall		TestLable_X0248
+	sCall		TestLable_X0222
+	sCall		TestLable_X0020
+	dc.b		nD4, $01
+	sCall		TestLable_X0031
+	dc.b		nD4, $01
+	sCall		TestLable_X0031
+	sCall		TestLable_X0237
+	sCall		TestLable_X0130
+	dc.b		nD4, $01
+	sCall		TestLable_X0031
+	dc.b		nD4, $01
+	sCall		TestLable_X0031
+	sCall		TestLable_X0027
+	sCall		TestLable_X0237
+	sCall		TestLable_X0130
+	sCall		TestLable_X0027
+	sCall		TestLable_X0027
+	sCall		TestLable_X0056
+	dc.b		sHold, $0A
+	ssVol		$00
+	sCall		TestLable_X0237
+	sCall		TestLable_X0130
+	sCall		TestLable_X0027
+	sCall		TestLable_X0056
+	sCall		TestLable_X0051
+	sCall		TestLable_X0620
+	dc.b		sHold, $1E
+	ssVol		$00
+	ssPortamento	-$0001
+	ssPortaTgt	$0000
+	sCall		TestLable_X0049
+	dc.b		sHold, $46
+	sCall		TestLable_X0052
+	dc.b		sHold, $1E
+	ssVol		$00
+	sCall		TestLable_X0049
+	sCall		TestLable_X0051
+	ssVol		$3C
+	dc.b		nG3, $03
+	ssVol		$66
+	dc.b		sHold, $01
+	ssVol		$4D
+	dc.b		sHold, $01
+	ssVol		$3C
+	dc.b		sHold, $05
+	ssVol		$33
+	dc.b		sHold, $0A
+	ssVol		$2B
+	dc.b		sHold, $0A
+	ssVol		$22
+	dc.b		sHold, $0A
+	ssVol		$1A
+	dc.b		sHold, $0A
+	ssVol		$11
+	dc.b		sHold, $0A
+	ssVol		$09
+	dc.b		sHold, $0A
+	ssVol		$00
+	dc.b		sHold, $0A
+	sCall		TestLable_X0621
+	sCall		TestLable_X0027
+	sCall		TestLable_X0193
+	sCall		TestLable_X0621
+	sCall		TestLable_X0027
+	sCall		TestLable_X0129
+	sCall		TestLable_X0011
+	sCall		TestLable_X0237
+	ssVol		$00
+	sCall		TestLable_X0621
+	sCall		TestLable_X0027
+	sCall		TestLable_X0129
+	ssPortamento	-$0001
+	sCall		TestLable_X0024
+	ssPortamento	-$0001
+	sCall		TestLable_X0024
+	sCall		TestLable_X0127
+	ssVol		$00
+	sCall		TestLable_X0621
+	dc.b		nD4, $01
+	sCall		TestLable_X0031
+	sCall		TestLable_X0237
+	ssVol		$00
+	sCall		TestLable_X0621
+	sCall		TestLable_X0027
+	sCall		TestLable_X0129
+	ssPortamento	-$0001
+	sCall		TestLable_X0024
+	ssPortamento	-$0001
+	sCall		TestLable_X0024
+	dc.b		nEb4, $01
+	dc.b		nAb6
+	ssVol		$1A
+	dc.b		nA6
+	sCall		TestLable_X0234
+	sCall		TestLable_X0051
+	ssVol		$00
+	sCall		TestLable_X0521
+	sCall		TestLable_X0234
+	dc.b		sHold, $1E
+	sJump		TestLable_PSG3_0001
+
+TestLable_X0032:
+	sCall		TestLable_X0430
+	sCall		TestLable_X0339
+	dc.b		$81, $28
+	sCall		TestLable_X0430
+	sCall		TestLable_X0339
+
+TestLable_X0339:
+	dc.b		$88, $28
+
+TestLable_X0430:
+	sCall		TestLable_X0572
+	dc.b		$81, $28
+
+TestLable_X0572:
+	dc.b		$82, $28
+	dc.b		$81, $14
+	dc.b		$14
+	dc.b		$82, $28
+	sRet
+
+TestLable_X0251:
+	dc.b		$82, $28
+	dc.b		$81, $14
+	dc.b		$14
+	dc.b		$82
+	dc.b		dcrash_sample
+	dc.b		$88, $28
+	sJump		TestLable_X0572
+
+TestLable_X0058:
+	dc.b		nD5, $0A
+	dc.b		nA4
+	dc.b		nF5
+	dc.b		nA4
+	dc.b		nE5
+	sCall		TestLable_X0350
+	dc.b		nE5, $0A
+	sCall		TestLable_X0349
+	dc.b		nE5, $0A
+
+TestLable_X0349:
+	dc.b		nA4, $0A
+	dc.b		nF5
+	dc.b		nA4
+	dc.b		nD5
+	dc.b		nA4
+	dc.b		nA5
+	dc.b		nA4
+	sRet
+
+TestLable_X0059:
+	dc.b		nF5, $0A
+	sCall		TestLable_X0350
+	dc.b		nD5, $0A
+	dc.b		nA4
+	dc.b		nG5
+	dc.b		nA4
+	dc.b		nE5
+	dc.b		nA4
+	dc.b		nF5
+	sCall		TestLable_X0535
+	dc.b		nA5, $0A
+	dc.b		nA4
+	dc.b		nD5
+
+TestLable_X0535:
+	dc.b		nA4, $0A
+	dc.b		nA5
+	dc.b		nA4
+	dc.b		nE5
+	dc.b		nA4
+	sRet
+
+TestLable_X0143:
+	sCall		TestLable_X0342
+
+TestLable_X0272:
+	dc.b		nBb4, $0A
+	dc.b		nEb4
+	dc.b		nBb4
+	dc.b		nEb4
+	dc.b		nEb5
+	dc.b		nEb4
+	dc.b		nBb4
+	dc.b		nEb4
+	sRet
+
+TestLable_X0142:
+	sCall		TestLable_X0353
+	dc.b		nCs5, $28
+
+TestLable_X0546:
+	sModAMPS	$00, $01, $05, $06
+	dc.b		sHold, $1E
+	ssPortamento	-$0011
+	ssPortaTgt	$0000
+	sModOff
+	sRet
+
+TestLable_X0137:
+	sCall		TestLable_X0543
+	dc.b		nE4, $0A
+	dc.b		nRst
+	sCall		TestLable_X0543
+	dc.b		nAb4, $0A
+	dc.b		nRst
+	dc.b		nG4
+	dc.b		nRst
+	dc.b		nEb4
+	dc.b		nRst
+	dc.b		nBb4, $28
+
+TestLable_X0544:
+	dc.b		nAb4, $0A
+	dc.b		nRst
+	dc.b		nEb4
+	dc.b		nRst
+	sRet
+
+TestLable_X0268:
+	dc.b		nAb4, $0A
+	dc.b		nRst
+	dc.b		nF4
+	dc.b		nRst
+	dc.b		nCs5, $28
+	dc.b		nAb4, $0A
+	dc.b		nRst
+	dc.b		nE4
+	dc.b		nRst
+	dc.b		nD5, $28
+	sJump		TestLable_X0544
+
+TestLable_X0064:
+	sCall		TestLable_X0434
+	dc.b		nEb6, $05
+	sCall		TestLable_X0434
+	dc.b		nCs6, $05
+
+TestLable_X0434:
+	sCall		TestLable_X0488
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	sRet
+
+TestLable_X0259:
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+
+TestLable_X0487:
+	dc.b		nFs5, $05
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	sRet
+
+TestLable_X0139:
+	sCall		TestLable_X0578
+	sCall		TestLable_X0409
+
+TestLable_X0486:
+	dc.b		nCs6, $05
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	sRet
+
+TestLable_X0140:
+	sCall		TestLable_X0451
+	dc.b		nCs6, $05
+	sCall		TestLable_X0584
+
+TestLable_X0409:
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	dc.b		nCs5
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	sRet
+
+TestLable_X0065:
+	sCall		TestLable_X0584
+	sCall		TestLable_X0271
+	dc.b		nAb5, $05
+	sCall		TestLable_X0538
+
+TestLable_X0407:
+	sCall		TestLable_X0584
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	sRet
+
+TestLable_X0141:
+	sCall		TestLable_X0451
+	dc.b		nFs5, $05
+
+TestLable_X0374:
+	sCall		TestLable_X0538
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	sRet
+
+TestLable_X0266:
+	sCall		TestLable_X0374
+
+TestLable_X0556:
+	dc.b		nBb5, $05
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	sRet
+
+TestLable_X0033:
+	sCall		TestLable_X0341
+	dc.b		nF4, $0A
+	dc.b		nCs4
+	dc.b		nF4
+	dc.b		nAb3
+	dc.b		nAb3
+	dc.b		nCs4
+	dc.b		nF4
+	dc.b		nAb4
+	dc.b		nE4
+	dc.b		nB3
+	dc.b		nE4
+	dc.b		nAb3
+	dc.b		nAb3
+	dc.b		nB3
+	dc.b		nE4
+	sCall		TestLable_X0530
+	dc.b		nAb3, $0A
+	dc.b		$0A
+	dc.b		nB3
+	dc.b		nEb4
+	dc.b		nAb4
+	dc.b		nD4
+	dc.b		nBb3
+	dc.b		nD4
+	dc.b		nD4
+	dc.b		nF4
+	dc.b		nAb4
+	dc.b		nD4
+	dc.b		nAb4
+	sCall		TestLable_X0340
+	dc.b		nAb4, $0A
+
+TestLable_X0340:
+	dc.b		nEb4, $0A
+	dc.b		nB3
+	dc.b		nEb4
+
+TestLable_X0530:
+	dc.b		nAb4, $0A
+	dc.b		nEb4
+	dc.b		nB3
+	dc.b		nEb4
+	sRet
+
+TestLable_X0276:
+	dc.b		nC3, $50
+	dc.b		nBb2
+	dc.b		nA2
+	dc.b		nAb2
+
+TestLable_X0492:
+	dc.b		nG2, $50
+	dc.b		nFs2
+	dc.b		nF2
+	dc.b		nEb2
+	sRet
+
+TestLable_X0278:
+	dc.b		nBb4, $50
+	sModAMPS	$00, $01, $08, $08
+
+TestLable_X0557:
+	dc.b		sHold, $41
+	ssPortamento	-$0022
+	ssPortaTgt	$0000
+	sModOff
+	dc.b		sHold, $0F
+	sRet
+
+TestLable_X0279:
+	ssPortamento	-$00FF
+	ssPortaTgtNote	nF4
+	dc.b		sHold, $0A
+	ssPortamento	$00FF
+	ssPortaTgtNote	nAb4
+
+TestLable_X0502:
+	dc.b		sHold, $0A
+	ssPortamento	-$00FF
+	ssPortaTgtNote	nF4
+	dc.b		sHold, $0A
+	sRet
+
+TestLable_X0146:
+	sCall		TestLable_X0547
+	sCall		TestLable_X0548
+	ssPortaTgtNote	nEb4
+	dc.b		sHold, $0A
+
+TestLable_X0547:
+	ssPortamento	-$00FF
+
+TestLable_X0579:
+	ssPortaTgtNote	nB3
+	dc.b		sHold, $0A
+	ssPortamento	$00FF
+	ssPortaTgtNote	nEb4
+	dc.b		sHold, $0A
+	sRet
+
+TestLable_X0037:
+	sCall		TestLable_X0114
+	dc.b		nBb0, $03
+
+TestLable_X0114:
+	sCall		TestLable_X0136
+	dc.b		sHold, $31
+	ssVolPSGDMF	$7F
+	sRet
+
+TestLable_X0038:
+	ssVolPSGDMF	$7F
+	dc.b		nAb1, $15
+	sCall		TestLable_X0439
+	dc.b		nAb1, $15
+	sCall		TestLable_X0439
+	dc.b		nG1, $15
+	sCall		TestLable_X0345
+	dc.b		nG1, $15
+
+TestLable_X0345:
+	sCall		TestLable_X0466
+	dc.b		sHold, $09
+	ssVolPSGDMF	$7F
+	sRet
+
+TestLable_X0241:
+	sCall		TestLable_X0470
+	dc.b		nEb3, $03
+
+TestLable_X0470:
+	sCall		TestLable_X0576
+	ssVolPSGDMF	$1A
+	sRet
+
+TestLable_X0117:
+	sCall		TestLable_X0470
+	dc.b		nAb3, $03
+	sCall		TestLable_X0470
+	dc.b		nCs4, $03
+	sCall		TestLable_X0470
+	dc.b		nAb3, $03
+	sJump		TestLable_X0470
+
+TestLable_X0073:
+	sCall		TestLable_X0470
+	dc.b		nAb3, $03
+	sCall		TestLable_X0470
+	dc.b		nEb4, $03
+	sCall		TestLable_X0470
+	dc.b		nAb3, $03
+	sJump		TestLable_X0470
+
+TestLable_X0149:
+	sCall		TestLable_X0470
+	dc.b		nD4, $03
+	sJump		TestLable_X0470
+
+TestLable_X0224:
+	sCall		TestLable_X0470
+	dc.b		nBb3, $03
+	sJump		TestLable_X0470
+
+TestLable_X0284:
+	dc.b		nG4, $03
+
+TestLable_X0576:
+	ssVolPSGDMF	$22
+	dc.b		sHold, $02
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $03
+	ssVolPSGDMF	$33
+	dc.b		sHold, $02
+	sRet
+
+TestLable_X0074:
+	sCall		TestLable_X0471
+
+TestLable_X0204:
+	dc.b		nRst, $03
+	sCall		TestLable_X0250
+	dc.b		sHold, $0A
+	ssVolPSGDMF	$00
+	sRet
+
+TestLable_X0250:
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	ssVolPSGDMF	$22
+	dc.b		sHold, $03
+
+TestLable_X0437:
+	sCall		TestLable_X0590
+	dc.b		sHold, $02
+	ssVolPSGDMF	$44
+	sRet
+
+TestLable_X0153:
+	dc.b		nEb3, $03
+	sJump		TestLable_X0250
+
+TestLable_X0042:
+	sCall		TestLable_X0471
+	dc.b		nAb2, $03
+	sCall		TestLable_X0471
+	dc.b		nAb3, $03
+	sCall		TestLable_X0250
+	dc.b		sHold, $14
+	ssVolPSGDMF	$00
+	dc.b		nCs3, $03
+
+TestLable_X0471:
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	ssVolPSGDMF	$00
+	sRet
+
+TestLable_X0075:
+	sCall		TestLable_X0471
+	dc.b		nBb2, $03
+	sCall		TestLable_X0471
+	dc.b		nAb3, $03
+	sJump		TestLable_X0250
+
+TestLable_X0076:
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	sCall		TestLable_X0309
+	dc.b		sHold, $02
+
+TestLable_X0447:
+	ssVol		$22
+	dc.b		sHold, $03
+	sCall		TestLable_X0590
+	dc.b		sHold, $02
+	sRet
+
+TestLable_X0309:
+	ssVolPSGDMF	$00
+	dc.b		nFs4, $01
+	dc.b		nFs3, $02
+
+TestLable_X0591:
+	ssVol		$09
+	dc.b		sHold, $02
+	ssVol		$11
+	dc.b		sHold, $03
+	ssVol		$1A
+	sRet
+
+TestLable_X0155:
+	sCall		TestLable_X0549
+
+TestLable_X0178:
+	sCall		TestLable_X0471
+	dc.b		nEb4, $01
+	dc.b		nEb3, $02
+	sJump		TestLable_X0471
+
+TestLable_X0160:
+	dc.b		nEb5, $01
+	dc.b		nEb4, $02
+	sJump		TestLable_X0250
+
+TestLable_X0077:
+	sCall		TestLable_X0435
+	dc.b		nEb4, $01
+	sCall		TestLable_X0435
+	dc.b		nCs4, $01
+
+TestLable_X0435:
+	sCall		TestLable_X0511
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	sRet
+
+TestLable_X0295:
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+
+TestLable_X0510:
+	dc.b		nFs3, $01
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	sRet
+
+TestLable_X0162:
+	sCall		TestLable_X0580
+	sCall		TestLable_X0419
+
+TestLable_X0509:
+	dc.b		nCs4, $01
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	sRet
+
+TestLable_X0163:
+	sCall		TestLable_X0454
+	dc.b		nCs4, $01
+	sCall		TestLable_X0585
+
+TestLable_X0419:
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	dc.b		nCs3, $01
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	sRet
+
+TestLable_X0078:
+	sCall		TestLable_X0585
+	sCall		TestLable_X0311
+	dc.b		nAb3, $01
+	sCall		TestLable_X0540
+
+TestLable_X0417:
+	sCall		TestLable_X0585
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	sRet
+
+TestLable_X0164:
+	sCall		TestLable_X0454
+	dc.b		nFs3, $01
+
+TestLable_X0379:
+	sCall		TestLable_X0540
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	sRet
+
+TestLable_X0302:
+	sCall		TestLable_X0379
+
+TestLable_X0560:
+	dc.b		nBb3, $01
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	sRet
+
+TestLable_X0085:
+	sCall		TestLable_X0469
+	dc.b		nFs4, $01
+	dc.b		nFs3, $02
+
+TestLable_X0360:
+	sCall		TestLable_X0437
+
+TestLable_X0390:
+	sCall		TestLable_X0567
+	dc.b		sHold, $02
+	sRet
+
+TestLable_X0304:
+	ssVolPSGDMF	$66
+	dc.b		sHold, $0A
+	ssVolPSGDMF	$22
+	dc.b		nFs4, $01
+	dc.b		nFs3, $02
+
+TestLable_X0590:
+	ssVol		$2B
+	dc.b		sHold, $02
+	ssVol		$33
+	dc.b		sHold, $03
+	ssVol		$3C
+	sRet
+
+TestLable_X0165:
+	sCall		TestLable_X0551
+
+TestLable_X0229:
+	sCall		TestLable_X0590
+	dc.b		sHold, $02
+	sCall		TestLable_X0381
+	ssVolPSGDMF	$22
+	sRet
+
+TestLable_X0166:
+	dc.b		nBb4, $01
+	dc.b		nBb3, $02
+	sJump		TestLable_X0360
+
+TestLable_X0170:
+	sCall		TestLable_X0369
+
+TestLable_X0380:
+	ssVolPSGDMF	$44
+
+TestLable_X0567:
+	dc.b		sHold, $03
+	ssVolPSGDMF	$4D
+	dc.b		sHold, $02
+	ssVolPSGDMF	$55
+	dc.b		sHold, $03
+	ssVolPSGDMF	$5E
+	sRet
+
+TestLable_X0171:
+	sCall		TestLable_X0469
+	dc.b		nBb4, $01
+	dc.b		nBb3, $02
+
+TestLable_X0469:
+	sCall		TestLable_X0590
+	dc.b		sHold, $02
+	ssVolPSGDMF	$22
+	sRet
+
+TestLable_X0080:
+	sCall		TestLable_X0469
+	dc.b		nEb5, $01
+	dc.b		nEb4, $02
+
+TestLable_X0176:
+	sCall		TestLable_X0469
+	dc.b		nAb5, $01
+	dc.b		nAb4, $02
+	sJump		TestLable_X0469
+
+TestLable_X0081:
+	sCall		TestLable_X0469
+	dc.b		nCs5, $01
+	dc.b		nCs4, $02
+	sCall		TestLable_X0469
+	dc.b		nF5, $01
+	dc.b		nF4, $02
+	sJump		TestLable_X0469
+
+TestLable_X0172:
+	sCall		TestLable_X0469
+	dc.b		nE5, $01
+	dc.b		nE4, $02
+	sJump		TestLable_X0469
+
+TestLable_X0307:
+	dc.b		nD4, $02
+	sJump		TestLable_X0469
+
+TestLable_X0090:
+	ssVolPSGDMF	$7F
+
+TestLable_X0125:
+	dc.b		nB1, $15
+	sCall		TestLable_X0439
+	dc.b		nB1, $15
+
+TestLable_X0439:
+	sCall		TestLable_X0466
+	dc.b		sHold, $09
+	ssVolPSGDMF	$7F
+	sRet
+
+TestLable_X0314:
+	dc.b		nEb2, $15
+
+TestLable_X0466:
+	ssVolPSGDMF	$77
+	dc.b		sHold, $02
+	ssVolPSGDMF	$6F
+	dc.b		sHold, $03
+	ssVolPSGDMF	$66
+	dc.b		sHold, $03
+	ssVolPSGDMF	$5E
+	dc.b		sHold, $02
+	ssVolPSGDMF	$55
+	sRet
+
+TestLable_X0240:
+	sCall		TestLable_X0464
+	dc.b		nEb3, $03
+
+TestLable_X0464:
+	sCall		TestLable_X0574
+	dc.b		sHold, $02
+	ssVolPSGDMF	$2B
+	sRet
+
+TestLable_X0046:
+	dc.b		sHold, $02
+	ssVolPSGDMF	$2B
+	dc.b		nCs4, $03
+	sCall		TestLable_X0464
+	sCall		TestLable_X0370
+	ssVolPSGDMF	$2B
+	dc.b		nCs4, $03
+	sCall		TestLable_X0464
+	sCall		TestLable_X0370
+	ssVolPSGDMF	$2B
+	dc.b		nAb4, $03
+	sCall		TestLable_X0464
+	sCall		TestLable_X0370
+	ssVolPSGDMF	$2B
+	dc.b		nCs4, $03
+	sCall		TestLable_X0464
+
+TestLable_X0370:
+	dc.b		nAb3, $03
+	ssVolPSGDMF	$33
+	dc.b		sHold, $02
+
+TestLable_X0564:
+	ssVolPSGDMF	$3C
+	dc.b		sHold, $03
+	ssVolPSGDMF	$44
+	dc.b		sHold, $02
+	sRet
+
+TestLable_X0180:
+	sCall		TestLable_X0464
+	dc.b		nD4, $03
+	sJump		TestLable_X0464
+
+TestLable_X0181:
+	sCall		TestLable_X0464
+	dc.b		nBb3, $03
+	sJump		TestLable_X0464
+
+TestLable_X0317:
+	dc.b		nG3, $03
+	sJump		TestLable_X0464
+
+TestLable_X0098:
+	dc.b		nAb3, $03
+	sCall		TestLable_X0250
+	dc.b		sHold, $64
+
+TestLable_X0363:
+	ssVolPSGDMF	$00
+	dc.b		nAb3, $03
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	sRet
+
+TestLable_X0094:
+	sCall		TestLable_X0250
+	dc.b		sHold, $14
+	sCall		TestLable_X0363
+	ssVolPSGDMF	$00
+	dc.b		nRst, $03
+	sJump		TestLable_X0471
+
+TestLable_X0183:
+	sCall		TestLable_X0471
+	dc.b		nRst, $03
+	sJump		TestLable_X0471
+
+TestLable_X0184:
+	ssVolPSGDMF	$00
+	dc.b		nEb4, $03
+	sJump		TestLable_X0250
+
+TestLable_X0190:
+	sCall		TestLable_X0470
+	dc.b		nAb4, $03
+	sJump		TestLable_X0470
+
+TestLable_X0095:
+	sCall		TestLable_X0470
+	dc.b		nE4, $03
+	sJump		TestLable_X0190
+
+TestLable_X0322:
+	dc.b		sHold, $13
+	ssVolPSGDMF	$1A
+	dc.b		nCs3, $01
+
+TestLable_X0581:
+	ssVolPSGDMF	$22
+	dc.b		sHold, $14
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $27
+	ssVolPSGDMF	$1A
+	sRet
+
+TestLable_X0323:
+	dc.b		sHold, $13
+	ssVolPSGDMF	$1A
+	dc.b		nBb3, $01
+
+TestLable_X0563:
+	sCall		TestLable_X0587
+	ssVolPSGDMF	$1A
+	sRet
+
+TestLable_X0324:
+	ssVolPSGDMF	$22
+	dc.b		sHold, $14
+	ssVolPSGDMF	$2B
+
+TestLable_X0330:
+	dc.b		sHold, $13
+	ssVolPSGDMF	$1A
+	dc.b		nAb3, $01
+	sJump		TestLable_X0563
+
+TestLable_X0237:
+	dc.b		nAb6, $03
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	sJump		TestLable_X0447
+
+TestLable_X0011:
+	sCall		TestLable_X0127
+
+TestLable_X0020:
+	sCall		TestLable_X0130
+	dc.b		nD4, $01
+
+TestLable_X0031:
+	sCall		TestLable_X0248
+	ssVol		$00
+	dc.b		nD4, $01
+	sCall		TestLable_X0248
+	sCall		TestLable_X0222
+	ssVol		$7F
+	dc.b		sHold, $0A
+	ssVol		$00
+	dc.b		nD4, $01
+	sCall		TestLable_X0248
+	ssVol		$00
+	dc.b		nD4, $01
+	sCall		TestLable_X0248
+	sCall		TestLable_X0222
+	ssVol		$7F
+	dc.b		sHold, $0A
+	ssVol		$00
+	sRet
+
+TestLable_X0248:
+	dc.b		nA6, $01
+	ssVol		$1A
+	dc.b		nAb6
+
+TestLable_X0401:
+	ssVol		$2B
+	dc.b		sHold, $01
+	ssVol		$33
+	dc.b		sHold, $01
+	ssVol		$44
+	dc.b		sHold, $01
+	ssVol		$4D
+	dc.b		sHold, $01
+	ssVol		$66
+	dc.b		sHold, $01
+	ssVol		$6F
+	dc.b		sHold, $01
+	ssVol		$77
+	dc.b		sHold, $01
+	sRet
+
+TestLable_X0222:
+	ssVol		$00
+	dc.b		nD4, $01
+	sJump		TestLable_X0248
+
+TestLable_X0049:
+	sCall		TestLable_X0131
+
+TestLable_X0052:
+	ssVol		$00
+	sCall		TestLable_X0205
+	dc.b		sHold, $46
+
+TestLable_X0620:
+	ssVol		$00
+	dc.b		nD4, $01
+	sCall		TestLable_X0248
+	ssVol		$7F
+	sRet
+
+TestLable_X0127:
+	ssPortamento	-$0001
+	ssPortaTgt	$0000
+
+TestLable_X0131:
+	dc.b		nAb6, $01
+	ssVol		$7F
+	dc.b		sHold, $01
+	ssVol		$09
+	dc.b		nA6
+	sCall		TestLable_X0192
+	dc.b		sHold, $03
+	sRet
+
+TestLable_X0205:
+	sCall		TestLable_X0521
+
+TestLable_X0234:
+	sCall		TestLable_X0401
+	ssVol		$7F
+	sRet
+
+TestLable_X0577:
+	dc.b		$81, $28
+	dc.b		$28
+	dc.b		$28
+	dc.b		$28
+	sRet
+
+TestLable_X0474:
+	dc.b		$82, $0A
+	dc.b		$0A
+	dc.b		$0A
+	dc.b		$0A
+	sRet
+
+TestLable_X0060:
+	sCall		TestLable_X0536
+	dc.b		nG5, $0A
+	dc.b		nC5
+	dc.b		nC6
+	dc.b		nC5
+	dc.b		nAb5
+	dc.b		nC5
+	dc.b		nC6
+	dc.b		nC5
+	sCall		TestLable_X0536
+	dc.b		nE5, $0A
+	dc.b		nB4
+	dc.b		nB5
+	dc.b		nB4
+	dc.b		nFs5
+	dc.b		nB4
+	dc.b		nB5
+	dc.b		nB4
+	dc.b		nG5
+	dc.b		nBb4
+	dc.b		nB5
+	dc.b		nBb4
+	dc.b		nEb5
+	dc.b		nBb4
+	sRet
+
+TestLable_X0061:
+	dc.b		nC5, $0A
+	dc.b		nG4
+	dc.b		nG5
+	dc.b		nG4
+	dc.b		nD5
+	dc.b		nG4
+	dc.b		nG5
+	dc.b		nG4
+	dc.b		nEb5
+	dc.b		nG4
+	dc.b		nG5
+	dc.b		nG4
+	dc.b		nE5
+	dc.b		nG4
+	dc.b		nG5
+	dc.b		nG4
+	dc.b		nF5
+	dc.b		nA4
+	dc.b		nC6
+	dc.b		nA4
+	dc.b		nG5
+	dc.b		nA4
+	dc.b		nC6
+	dc.b		nA4
+	dc.b		nAb5
+	dc.b		nAb4
+	dc.b		nC6
+	dc.b		nAb4
+	dc.b		nFs5
+	dc.b		nAb4
+	sRet
+
+TestLable_X0062:
+	dc.b		nB4, $0A
+	dc.b		nG4
+	dc.b		nG5
+	dc.b		nG4
+	dc.b		nB4
+	dc.b		nG4
+	dc.b		nG5
+	dc.b		nG4
+	dc.b		nB4
+	dc.b		nFs4
+	dc.b		nFs5
+	sCall		TestLable_X0531
+	dc.b		nB4, $0A
+	dc.b		nF4
+	dc.b		nF5
+	dc.b		nF4
+	dc.b		nB4
+	dc.b		nF4
+	dc.b		nF5
+	dc.b		nF4
+	dc.b		nB4
+	dc.b		nEb4
+	dc.b		nG5
+	dc.b		nEb4
+	dc.b		nB4
+	dc.b		nEb4
+	sRet
+
+TestLable_X0253:
+	dc.b		nAb3, $0A
+	dc.b		nEb3
+	dc.b		nAb3
+	dc.b		nEb3
+	dc.b		nEb4
+	dc.b		nEb3
+	dc.b		nAb3
+	dc.b		nEb3
+	sRet
+
+TestLable_X0476:
+	dc.b		nCs4, $0A
+	sVoice		$20
+	dc.b		nAb3
+	sVoice		$1F
+	sRet
+
+TestLable_X0254:
+	sVoice		$20
+	dc.b		nAb3, $0A
+	sVoice		$1F
+	dc.b		nAb4
+	sVoice		$20
+	dc.b		nAb3
+	sVoice		$1F
+	sRet
+
+TestLable_X0475:
+	dc.b		nEb4, $0A
+	sVoice		$20
+	dc.b		nAb3
+	sVoice		$1F
+	sRet
+
+TestLable_X0255:
+	sCall		TestLable_X0532
+	dc.b		nCs5, $0A
+	dc.b		nAb4
+	sRet
+
+TestLable_X0269:
+	dc.b		nEb5, $0A
+	dc.b		nAb4
+	dc.b		nEb5
+	dc.b		nAb4
+	dc.b		nAb5
+	dc.b		nAb4
+	dc.b		nEb5
+	dc.b		nAb4
+	sRet
+
+TestLable_X0484:
+	dc.b		nF4, $0A
+	dc.b		nBb4
+	dc.b		nD5
+	dc.b		nF5
+	sRet
+
+TestLable_X0068:
+	dc.b		nAb5, $0A
+	dc.b		nRst, $1E
+	dc.b		nAb4, $28
+	sModAMPS	$00, $01, $06, $0A
+	sCall		TestLable_X0353
+	dc.b		nAb5, $0A
+	dc.b		nRst, $1E
+	dc.b		nAb4, $28
+	sModAMPS	$00, $01, $08, $08
+	dc.b		sHold, $1E
+	ssPortamento	-$0022
+	ssPortaTgt	$0000
+	sModOff
+	dc.b		sHold, $14
+	ssPortamento	$0000
+	ssPortaTgt	$0000
+	dc.b		$0A
+	sRet
+
+TestLable_X0483:
+	dc.b		nAb5, $0A
+	dc.b		nRst, $1E
+	dc.b		nAb4, $28
+	sModAMPS	$00, $01, $08, $0A
+	sRet
+
+TestLable_X0267:
+	dc.b		sHold, $0A
+	ssPortamento	$0000
+	ssPortaTgt	$0000
+	dc.b		nB4, $28
+	sCall		TestLable_X0546
+	dc.b		sHold, $0A
+	sRet
+
+TestLable_X0063:
+	ssPortamento	$0000
+	ssPortaTgt	$0000
+	sCall		TestLable_X0208
+	dc.b		nEb3, $05
+	dc.b		nF3
+	dc.b		nEb3
+	dc.b		nF3
+	dc.b		nEb3, $14
+	sRet
+
+TestLable_X0067:
+	sCall		TestLable_X0341
+	dc.b		nE4, $0A
+	dc.b		nB3
+	dc.b		nE4
+	dc.b		nAb4
+	dc.b		nB3
+	dc.b		nE4
+	dc.b		nAb4
+	dc.b		nAb4, $05
+	dc.b		nBb4
+	dc.b		nAb4
+	dc.b		nG4, $23
+	dc.b		nEb4, $0A
+	dc.b		nBb3
+	sRet
+
+TestLable_X0138:
+	sCall		TestLable_X0578
+	sCall		TestLable_X0407
+	dc.b		nEb5, $05
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	dc.b		nAb4
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	sRet
+
+TestLable_X0479:
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	dc.b		nBb4
+	sRet
+
+TestLable_X0260:
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	dc.b		nB5
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	sRet
+
+TestLable_X0261:
+	sCall		TestLable_X0578
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	sRet
+
+TestLable_X0262:
+	sCall		TestLable_X0555
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	dc.b		nF5
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	sRet
+
+TestLable_X0480:
+	dc.b		nF6, $05
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	sRet
+
+TestLable_X0451:
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	dc.b		nEb6
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	sRet
+
+TestLable_X0584:
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	dc.b		nAb5
+	sRet
+
+TestLable_X0555:
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	dc.b		nCs6
+	sRet
+
+TestLable_X0488:
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	dc.b		nEb5
+	sRet
+
+TestLable_X0265:
+	sCall		TestLable_X0451
+	dc.b		nF6, $05
+	sRet
+
+TestLable_X0578:
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	dc.b		nBb5
+	sRet
+
+TestLable_X0271:
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	dc.b		nAb6
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	sRet
+
+TestLable_X0273:
+	ssVol		$00
+	dc.b		sHold, $05
+	ssVol		$01
+	dc.b		sHold, $05
+	ssVol		$02
+	dc.b		sHold, $05
+	ssVol		$03
+	dc.b		sHold, $0A
+	ssVol		$04
+	dc.b		sHold, $05
+	ssVol		$05
+	sRet
+
+TestLable_X0005:
+	sCall		TestLable_X0429
+	dc.b		nG2, $0A
+	dc.b		nRst
+	dc.b		nG2
+	dc.b		nG2
+	dc.b		nG2
+	dc.b		nRst
+	dc.b		nG2
+	dc.b		nAb2
+	dc.b		nBb2
+	dc.b		nRst
+	sCall		TestLable_X0522
+	dc.b		nC3, $0A
+	dc.b		$0A
+	sCall		TestLable_X0568
+	dc.b		nRst, $0A
+	dc.b		nCs4
+	dc.b		nRst
+	dc.b		nE3
+	dc.b		nRst
+	dc.b		nE4
+	dc.b		nE3
+	sCall		TestLable_X0525
+	sCall		TestLable_X0524
+	dc.b		nEb3, $0A
+	dc.b		nRst
+	dc.b		nBb2
+	dc.b		nRst
+	dc.b		nBb3
+	dc.b		nBb2
+	dc.b		nBb2
+	dc.b		nRst
+	dc.b		nBb3
+	dc.b		nBb2
+	sCall		TestLable_X0524
+	dc.b		nEb4, $0A
+	dc.b		nEb3
+	sCall		TestLable_X0106
+	dc.b		nE3, $0A
+	dc.b		nE4
+	dc.b		nE3
+	dc.b		nE3
+	dc.b		nCs4
+	dc.b		nE3
+	dc.b		nE4
+	dc.b		nE2
+	sCall		TestLable_X0106
+	sCall		TestLable_X0395
+	sCall		TestLable_X0107
+	dc.b		nRst, $0A
+	dc.b		nAb2
+	dc.b		nAb2
+	dc.b		nB2
+	dc.b		nB3
+	dc.b		nB2
+	dc.b		nB3
+	sCall		TestLable_X0107
+	dc.b		nAb2, $0A
+	dc.b		$0A
+	dc.b		nRst
+	dc.b		nAb2
+	dc.b		nAb4
+	dc.b		nRst
+	dc.b		nAb4
+	dc.b		nF3
+	dc.b		nF3
+	dc.b		nF3
+	dc.b		nRst
+	dc.b		nF3
+	dc.b		nAb4
+	dc.b		nRst
+	dc.b		nF3
+	sCall		TestLable_X0522
+	dc.b		nBb2, $0A
+	dc.b		nAb4
+	dc.b		nRst
+	dc.b		nBb2
+	sCall		TestLable_X0395
+	sCall		TestLable_X0395
+	dc.b		nEb2, $7F, sHold, $21
+	sCall		TestLable_X0332
+	dc.b		nFs3, $50
+	dc.b		nE3, $28
+	dc.b		nCs3
+	dc.b		nEb3
+	dc.b		nEb2
+	sCall		TestLable_X0429
+	sCall		TestLable_X0429
+	dc.b		nFs2, $0A
+	sCall		TestLable_X0334
+	dc.b		nFs2, $0A
+	sCall		TestLable_X0334
+	dc.b		nBb2, $0A
+	sCall		TestLable_X0335
+	dc.b		nBb2, $0A
+	sCall		TestLable_X0335
+	sCall		TestLable_X0429
+	dc.b		nAb2, $0A
+	dc.b		nRst
+	dc.b		nAb2
+	dc.b		nAb2
+	dc.b		nAb2
+	dc.b		nEb3
+	dc.b		nAb3
+	dc.b		nAb2
+	sCall		TestLable_X0568
+	dc.b		nRst, $0A
+	dc.b		nCs3
+	dc.b		nCs3
+	sCall		TestLable_X0568
+	dc.b		nRst, $0A
+	dc.b		nCs3
+	dc.b		nCs3
+	sCall		TestLable_X0526
+	dc.b		nRst, $0A
+	dc.b		nB2
+	dc.b		nB2
+	sCall		TestLable_X0526
+	dc.b		nFs3, $0A
+	dc.b		nB3
+	dc.b		nB2
+	sCall		TestLable_X0395
+	sCall		TestLable_X0395
+	sCall		TestLable_X0568
+	dc.b		nRst, $0A
+	dc.b		nCs3
+	dc.b		nCs3
+	sCall		TestLable_X0568
+	dc.b		nAb3, $0A
+	dc.b		nCs4
+	dc.b		nCs3
+	sCall		TestLable_X0332
+	dc.b		nFs3, $3C
+	dc.b		nCs3, $0A
+	dc.b		nEb3
+	dc.b		nF3
+	dc.b		nRst
+	dc.b		nF3
+	dc.b		nF3
+	dc.b		nF3
+	dc.b		nCs4
+	dc.b		nAb4
+	dc.b		nCs4
+	dc.b		nE3
+	dc.b		nRst
+	dc.b		nE3
+	dc.b		nE3
+	dc.b		nE3
+	dc.b		nCs4
+	dc.b		nAb4
+	dc.b		nCs4
+	sCall		TestLable_X0527
+	dc.b		nEb4, $0A
+	dc.b		nAb4
+	dc.b		nEb4
+	dc.b		nD3
+	dc.b		nRst
+	dc.b		nD3
+	dc.b		nD3
+	dc.b		nD3
+	dc.b		nD4
+	dc.b		nAb4
+	dc.b		nD4
+	dc.b		nEb3, $28
+	dc.b		$28
+	dc.b		$28
+	dc.b		$28
+	dc.b		nEb2, $78
+	dc.b		nG2, $28
+	ssPortamento	$0000
+	sRet
+
+TestLable_X0144:
+	sVoice		$1C
+	dc.b		nF2, $7F, sHold, $21
+	sVoice		$19
+	dc.b		nE3, $50
+	dc.b		nBb2
+	sCall		TestLable_X0276
+	dc.b		nD2, $7F, sHold, $7F, sHold, $42
+	dc.b		nRst, $7F, $7F, $7F, $7F, $7F, $05
+	sRet
+
+TestLable_X0002:
+	sVoice		$19
+	dc.b		nRst, $01
+	sCall		TestLable_X0058
+	dc.b		nE5, $14
+	sCall		TestLable_X0059
+	dc.b		nA5, $14
+	sCall		TestLable_X0060
+	dc.b		nB5, $14
+	sCall		TestLable_X0061
+	dc.b		nC6, $14
+	sCall		TestLable_X0062
+	dc.b		nG5, $14
+	dc.b		nD4, $7F, sHold, $7F, sHold, $38
+	sRet
+
+TestLable_X0489:
+	dc.b		nRst, $0A
+	ssVol		$05
+	ssPortamento	$0000
+	ssPortaTgt	$0000
+	sRet
+
+TestLable_X0034:
+	sCall		TestLable_X0143
+	sCall		TestLable_X0342
+	dc.b		nB4, $0A
+	sCall		TestLable_X0531
+	dc.b		nB4, $14
+	dc.b		nCs5, $0A
+	sCall		TestLable_X0532
+	dc.b		nE5, $0A
+	dc.b		nAb4
+	sCall		TestLable_X0269
+	dc.b		nD5, $0A
+	sCall		TestLable_X0484
+	dc.b		nBb4, $0A
+	dc.b		nBb5
+	dc.b		nD5
+	dc.b		nEb5, $14
+	sModAMPS	$00, $01, $09, $06
+	dc.b		sHold, $14
+	ssPortamento	-$0011
+	ssPortaTgt	$0000
+	dc.b		sHold, $1E
+	sRet
+
+TestLable_X0490:
+	sModOff
+	dc.b		nRst, $0A
+	ssVol		$05
+	sVoice		$19
+	ssPortamento	$0000
+	ssPortaTgt	$0000
+	sRet
+
+TestLable_X0035:
+	dc.b		nAb5, $0A
+	dc.b		nEb5
+	dc.b		nAb5
+	dc.b		nEb5
+	dc.b		nEb6
+	dc.b		nEb5
+	dc.b		nAb5
+	dc.b		nEb5
+	dc.b		nBb5
+	sCall		TestLable_X0343
+	dc.b		nBb5, $0A
+	sCall		TestLable_X0343
+	sCall		TestLable_X0533
+	dc.b		nCs6, $14
+	sCall		TestLable_X0533
+	dc.b		nCs6, $0A
+	dc.b		nAb5
+	dc.b		nEb6
+	dc.b		nAb5
+	dc.b		nEb6
+	dc.b		nAb5
+	dc.b		nAb6
+	dc.b		nAb5
+	dc.b		nEb6
+	dc.b		nAb5
+	dc.b		nF6
+	dc.b		nD6
+	dc.b		nB5
+	dc.b		nBb5
+	dc.b		nF5
+	dc.b		nBb5
+	dc.b		nD6
+	dc.b		nF6
+	dc.b		nG6
+	dc.b		nCs6
+	dc.b		nBb5
+	dc.b		nG5
+	dc.b		nCs5
+	dc.b		nG5
+	dc.b		nCs6
+	dc.b		nRst, $05
+	sRet
+
+TestLable_X0601:
+	sVoice		$23
+	sCall		TestLable_X0068
+	dc.b		nCs5, $14
+	sModOff
+	sRet
+
+TestLable_X0003:
+	sCall		TestLable_X0142
+	sCall		TestLable_X0267
+	sCall		TestLable_X0105
+	dc.b		nB3, $28
+	sCall		TestLable_X0105
+	dc.b		nC4, $28
+	sCall		TestLable_X0268
+	dc.b		nEb5, $5F
+	dc.b		nBb5, $0A
+	dc.b		nAb5
+	dc.b		nG5, $7F, sHold, $26
+	sCall		TestLable_X0195
+	sCall		TestLable_X0067
+	dc.b		nEb3, $05
+	sRet
+
+TestLable_X0004:
+	dc.b		nB3, $3C
+	dc.b		nEb4, $14
+	dc.b		nAb4, $28
+	dc.b		nEb4
+	dc.b		nCs4, $3C
+	dc.b		nBb3, $14
+	dc.b		nCs4, $28
+	dc.b		nFs4
+	dc.b		nCs4, $3C
+	dc.b		nF4, $14
+	dc.b		nBb4, $28
+	dc.b		nF4
+	dc.b		nEb4, $3C
+	dc.b		nC4, $14
+	dc.b		nEb4, $28
+	dc.b		nAb4
+	dc.b		nE4, $3C
+	dc.b		nAb4, $14
+	dc.b		nCs5, $28
+	dc.b		nAb4
+	dc.b		nFs4, $3C
+	dc.b		nEb4, $14
+	dc.b		nFs4, $28
+	dc.b		nB4
+	dc.b		nFs4, $3C
+	dc.b		nBb4, $14
+	dc.b		nEb5, $28
+	dc.b		nBb4
+	dc.b		nAb4, $3C
+	dc.b		nF4, $14
+	dc.b		nAb4, $28
+	dc.b		nCs5, $2D
+	sCall		TestLable_X0195
+	sCall		TestLable_X0033
+	dc.b		nEb4, $7F, sHold, $1C
+	ssPortamento	$0000
+	sRet
+
+TestLable_X0491:
+	dc.b		nD2, $7F, sHold, $7F, sHold, $7F, sHold, $7F, sHold, $7F, sHold, $05
+	dc.b		nF2, $7F, sHold, $21
+	dc.b		nE2, $50
+	dc.b		nBb1
+	sRet
+
+TestLable_X0275:
+	dc.b		nAb2, $3C
+	dc.b		$05
+	dc.b		nRst
+	dc.b		nAb2
+	dc.b		nRst
+	dc.b		nG2, $3C
+	dc.b		$05
+	dc.b		nRst
+	dc.b		nG2
+	dc.b		nRst
+	sRet
+
+TestLable_X0495:
+	dc.b		nRst, $05
+	dc.b		nCs3, $3C
+	dc.b		$05
+	dc.b		nRst
+	sRet
+
+TestLable_X0493:
+	dc.b		nRst, $05
+	dc.b		nEb3, $3C
+	dc.b		$05
+	dc.b		nRst
+	dc.b		nEb3
+	dc.b		nRst
+	sRet
+
+TestLable_X0494:
+	dc.b		nCs2, $50
+	dc.b		nB1
+	dc.b		nBb1, $28
+	dc.b		nEb2
+	dc.b		nAb1
+	sRet
+
+TestLable_X0274:
+	sVoice		$21
+	dc.b		nBb3, $50
+	dc.b		nEb3
+	dc.b		nB2, $14
+	dc.b		nAb2
+	dc.b		nAb3
+	dc.b		nB3
+	dc.b		nBb3, $05
+	dc.b		nAb3
+	dc.b		nBb3
+	dc.b		nAb3
+	dc.b		nBb3, $14
+	dc.b		nFs3
+	dc.b		nD3
+	sRet
+
+TestLable_X0496:
+	dc.b		nEb4, $32
+	dc.b		nFs3, $0A
+	dc.b		nBb3
+	dc.b		nEb4
+	sRet
+
+TestLable_X0497:
+	dc.b		nRst, $05
+	dc.b		nB2, $3C
+	dc.b		$05
+	dc.b		nRst
+	sRet
+
+TestLable_X0277:
+	dc.b		nB3, $0A
+	dc.b		nRst
+	dc.b		nB3, $14
+	dc.b		$14
+	dc.b		$14
+	dc.b		$14
+	dc.b		$14
+	dc.b		$14
+	dc.b		$14
+	sRet
+
+TestLable_X0036:
+	dc.b		nG3, $0A
+	sCall		TestLable_X0344
+	dc.b		nG3, $0A
+	sCall		TestLable_X0534
+	sVoice		$20
+	dc.b		nEb3, $0A
+	sVoice		$1F
+	dc.b		nAb3
+	sCall		TestLable_X0280
+	dc.b		nAb3, $0A
+	sVoice		$20
+	dc.b		nEb3
+	sVoice		$1F
+	dc.b		nB3
+	sCall		TestLable_X0534
+	sCall		TestLable_X0344
+	dc.b		nCs4, $28
+	sRet
+
+TestLable_X0280:
+	sVoice		$20
+	dc.b		nEb3, $0A
+	sVoice		$1F
+	dc.b		nB2
+	sVoice		$20
+	dc.b		nEb3
+	sVoice		$1F
+	sRet
+
+TestLable_X0498:
+	sVoice		$20
+	dc.b		nAb3, $0A
+	sVoice		$1F
+	dc.b		nAb4, $28
+	sRet
+
+TestLable_X0145:
+	sVoice		$20
+	ssPortamento	$0000
+	ssPortaTgt	$0000
+	dc.b		nFs3, $3C
+	dc.b		nF3, $0A
+	dc.b		nEb3
+	dc.b		nBb3, $3C
+	dc.b		nRst, $14
+	dc.b		nFs3, $3C
+	dc.b		nF3, $0A
+	dc.b		nEb3
+	dc.b		nEb3, $28
+	dc.b		nD3
+	dc.b		nB3, $3C
+	dc.b		nBb3, $0A
+	dc.b		nAb3
+	sRet
+
+TestLable_X0548:
+	ssPortamento	$00FF
+	ssPortaTgtNote	nAb4
+	dc.b		sHold, $0A
+	ssPortamento	-$00FF
+	sRet
+
+TestLable_X0500:
+	dc.b		sHold, $0A
+	ssPortamento	$00FF
+	ssPortaTgtNote	nAb4
+	dc.b		sHold, $0A
+	sRet
+
+TestLable_X0136:
+	ssVolPSGDMF	$77
+	dc.b		sHold, $01
+	ssVolPSGDMF	$7F
+	dc.b		sHold, $03
+	ssVolPSGDMF	$77
+	dc.b		sHold, $03
+	ssVolPSGDMF	$6F
+	dc.b		sHold, $03
+	ssVolPSGDMF	$66
+	dc.b		sHold, $02
+	ssVolPSGDMF	$5E
+	dc.b		sHold, $03
+	ssVolPSGDMF	$55
+	dc.b		sHold, $03
+	ssVolPSGDMF	$4D
+	dc.b		sHold, $02
+	ssVolPSGDMF	$44
+	dc.b		sHold, $03
+	ssVolPSGDMF	$3C
+	dc.b		sHold, $03
+	ssVolPSGDMF	$33
+	dc.b		sHold, $02
+	ssVolPSGDMF	$2B
+	sRet
+
+TestLable_X0147:
+	ssVolPSGDMF	$55
+	sCall		TestLable_X0375
+	dc.b		sHold, $28
+	ssVolPSGDMF	$7F
+	sCall		TestLable_X0375
+	dc.b		sHold, $50
+	ssVolPSGDMF	$00
+	sRet
+
+TestLable_X0039:
+	sCall		TestLable_X0136
+	dc.b		sHold, $31
+	ssVolPSGDMF	$7F
+	dc.b		nRst, $03
+	sCall		TestLable_X0136
+	dc.b		nRst, $7F, $7F, $23
+	ssVolPSGDMF	$7F
+	sRet
+
+TestLable_X0281:
+	dc.b		nCs2, $15
+	sCall		TestLable_X0466
+	dc.b		sHold, $09
+	sRet
+
+TestLable_X0083:
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	ssVolPSGDMF	$22
+	dc.b		sHold, $03
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $02
+	ssVolPSGDMF	$00
+	dc.b		nRst, $03
+	sCall		TestLable_X0250
+	dc.b		sHold, $05
+	ssVolPSGDMF	$00
+	sRet
+
+TestLable_X0006:
+	ssVolPSGDMF	$00
+	dc.b		nG2, $03
+	sCall		TestLable_X0471
+	dc.b		nEb2, $03
+	sCall		TestLable_X0471
+	dc.b		nCs2, $03
+	sCall		TestLable_X0471
+	dc.b		nEb2, $03
+	sCall		TestLable_X0471
+	dc.b		nG2, $03
+	sCall		TestLable_X0471
+	dc.b		nEb2, $03
+	sCall		TestLable_X0471
+	dc.b		nBb2, $03
+	sCall		TestLable_X0471
+	dc.b		nEb2, $03
+	sCall		TestLable_X0471
+	dc.b		nAb2, $03
+	sCall		TestLable_X0471
+	dc.b		nEb2, $03
+	sCall		TestLable_X0471
+	dc.b		nB1, $03
+	sCall		TestLable_X0471
+	dc.b		nEb2, $03
+	sCall		TestLable_X0471
+	dc.b		nAb2, $03
+	sCall		TestLable_X0471
+	dc.b		nEb2, $03
+	sCall		TestLable_X0471
+	dc.b		nB2, $03
+	sCall		TestLable_X0471
+	dc.b		nEb2, $03
+	sCall		TestLable_X0471
+	dc.b		nBb2, $03
+	sCall		TestLable_X0471
+	dc.b		nEb2, $03
+	sCall		TestLable_X0471
+	dc.b		nCs2, $03
+	sCall		TestLable_X0471
+	dc.b		nEb2, $03
+	sCall		TestLable_X0471
+	dc.b		nCs3, $03
+	sCall		TestLable_X0250
+	dc.b		sHold, $14
+	ssVolPSGDMF	$00
+	sRet
+
+TestLable_X0157:
+	dc.b		nB4, $01
+	dc.b		nB3, $02
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	ssVolPSGDMF	$22
+	dc.b		sHold, $03
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $02
+	ssVolPSGDMF	$33
+	dc.b		sHold, $03
+	ssVolPSGDMF	$3C
+	sRet
+
+TestLable_X0290:
+	sCall		TestLable_X0549
+	ssVolPSGDMF	$09
+	dc.b		sHold, $02
+	ssVolPSGDMF	$00
+	dc.b		nEb4, $01
+	dc.b		nEb3, $02
+	sRet
+
+TestLable_X0159:
+	sCall		TestLable_X0250
+	dc.b		sHold, $14
+	ssVolPSGDMF	$00
+	sRet
+
+TestLable_X0161:
+	sCall		TestLable_X0580
+	sCall		TestLable_X0417
+	dc.b		nEb3, $01
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	dc.b		nAb2, $01
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	sRet
+
+TestLable_X0504:
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	dc.b		nBb2, $01
+	sRet
+
+TestLable_X0296:
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	dc.b		nB3, $01
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	sRet
+
+TestLable_X0297:
+	sCall		TestLable_X0580
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	sRet
+
+TestLable_X0298:
+	sCall		TestLable_X0559
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	dc.b		nF3, $01
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	sRet
+
+TestLable_X0505:
+	dc.b		nF4, $01
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	sRet
+
+TestLable_X0454:
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	dc.b		nEb4, $01
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	sRet
+
+TestLable_X0585:
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	dc.b		nAb3, $01
+	sRet
+
+TestLable_X0559:
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	dc.b		nCs4, $01
+	sRet
+
+TestLable_X0511:
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	dc.b		nEb3, $01
+	sRet
+
+TestLable_X0301:
+	sCall		TestLable_X0454
+	dc.b		nF4, $01
+	sRet
+
+TestLable_X0580:
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	dc.b		nBb3, $01
+	sRet
+
+TestLable_X0311:
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	dc.b		nAb4, $01
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	sRet
+
+TestLable_X0167:
+	sCall		TestLable_X0437
+	sCall		TestLable_X0390
+	ssVolPSGDMF	$66
+	dc.b		sHold, $0A
+	ssVolPSGDMF	$22
+	sRet
+
+TestLable_X0169:
+	sCall		TestLable_X0381
+	sCall		TestLable_X0380
+	dc.b		sHold, $02
+	ssVolPSGDMF	$22
+	sRet
+
+TestLable_X0305:
+	dc.b		nEb4, $01
+	dc.b		nEb3, $02
+	ssVolPSGDMF	$2B
+	sCall		TestLable_X0551
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $02
+	sRet
+
+TestLable_X0173:
+	dc.b		nAb4, $01
+	sCall		TestLable_X0384
+	dc.b		nAb4, $01
+	sCall		TestLable_X0384
+	dc.b		nB4, $01
+	dc.b		nB3, $02
+	sRet
+
+TestLable_X0119:
+	dc.b		nAb5, $01
+	dc.b		nAb4, $02
+	sCall		TestLable_X0469
+	dc.b		nEb5, $01
+	dc.b		nEb4, $02
+	sCall		TestLable_X0469
+	sCall		TestLable_X0369
+	ssVolPSGDMF	$22
+	dc.b		nEb5, $01
+	dc.b		nEb4, $02
+	sRet
+
+TestLable_X0087:
+	sCall		TestLable_X0136
+	dc.b		sHold, $31
+	ssVolPSGDMF	$7F
+	sRet
+
+TestLable_X0088:
+	sCall		TestLable_X0136
+	dc.b		sHold, $31
+	ssVolPSGDMF	$7F
+	sRet
+
+TestLable_X0424:
+	sCall		TestLable_X0466
+	dc.b		sHold, $09
+	sRet
+
+TestLable_X0313:
+	sCall		TestLable_X0424
+	ssVolPSGDMF	$7F
+	sRet
+
+TestLable_X0574:
+	ssVolPSGDMF	$33
+	dc.b		sHold, $02
+	ssVolPSGDMF	$3C
+	dc.b		sHold, $03
+	ssVolPSGDMF	$44
+	sRet
+
+TestLable_X0093:
+	sCall		TestLable_X0464
+	sCall		TestLable_X0370
+	ssVolPSGDMF	$2B
+	dc.b		nEb4, $03
+	sCall		TestLable_X0464
+	sCall		TestLable_X0370
+	ssVolPSGDMF	$2B
+	sRet
+
+TestLable_X0007:
+	dc.b		nEb3, $03
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	sCall		TestLable_X0447
+	ssVolPSGDMF	$44
+	dc.b		sHold, $14
+	ssVolPSGDMF	$00
+	dc.b		nEb3, $03
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	sCall		TestLable_X0447
+	ssVolPSGDMF	$00
+	dc.b		nE3, $03
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	sCall		TestLable_X0447
+	ssVol		$00
+	dc.b		nEb3, $03
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	sCall		TestLable_X0447
+	ssVolPSGDMF	$44
+	dc.b		sHold, $14
+	ssVolPSGDMF	$00
+	dc.b		nEb3, $03
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	sCall		TestLable_X0447
+	ssVolPSGDMF	$00
+	dc.b		nAb3, $03
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	sCall		TestLable_X0447
+	ssVol		$00
+	dc.b		nG3, $03
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	sCall		TestLable_X0447
+	sCall		TestLable_X0607
+	sCall		TestLable_X0447
+	ssVolPSGDMF	$00
+	dc.b		nBb3, $03
+	sCall		TestLable_X0250
+	dc.b		sHold, $14
+	sCall		TestLable_X0363
+	sCall		TestLable_X0447
+	sCall		TestLable_X0607
+	sCall		TestLable_X0447
+	ssVolPSGDMF	$00
+	sRet
+
+TestLable_X0318:
+	ssVolPSGDMF	$00
+	dc.b		nRst, $03
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	sRet
+
+TestLable_X0607:
+	ssVol		$00
+	dc.b		nEb3, $03
+	sCall		TestLable_X0591
+	dc.b		sHold, $02
+	sRet
+
+TestLable_X0185:
+	sCall		TestLable_X0328
+	ssVolPSGDMF	$5E
+	dc.b		sHold, $0A
+	ssVolPSGDMF	$1A
+	sRet
+
+TestLable_X0328:
+	sCall		TestLable_X0576
+	sCall		TestLable_X0564
+	ssVolPSGDMF	$4D
+	dc.b		sHold, $03
+	ssVolPSGDMF	$55
+	dc.b		sHold, $02
+	sRet
+
+TestLable_X0513:
+	dc.b		nAb4, $03
+	ssVolPSGDMF	$22
+	dc.b		sHold, $02
+	ssVolPSGDMF	$1A
+	sRet
+
+TestLable_X0320:
+	sCall		TestLable_X0581
+	dc.b		nEb3, $01
+	ssVolPSGDMF	$22
+	dc.b		sHold, $13
+	ssVolPSGDMF	$1A
+	sRet
+
+TestLable_X0321:
+	sCall		TestLable_X0519
+	dc.b		nEb3, $01
+	ssVolPSGDMF	$22
+	dc.b		sHold, $14
+	ssVolPSGDMF	$2B
+	sRet
+
+TestLable_X0514:
+	ssVolPSGDMF	$1A
+	dc.b		nFs3, $01
+	ssVolPSGDMF	$22
+	dc.b		sHold, $14
+	ssVolPSGDMF	$2B
+	sRet
+
+TestLable_X0587:
+	ssVolPSGDMF	$22
+	dc.b		sHold, $14
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $13
+	sRet
+
+TestLable_X0519:
+	sCall		TestLable_X0587
+	ssVolPSGDMF	$1A
+	sRet
+
+TestLable_X0325:
+	ssVolPSGDMF	$11
+	sCall		TestLable_X0520
+	dc.b		nCs3, $01
+	ssVolPSGDMF	$11
+	dc.b		sHold, $09
+	ssVolPSGDMF	$09
+	sRet
+
+TestLable_X0517:
+	ssVolPSGDMF	$11
+	dc.b		sHold, $09
+	ssVolPSGDMF	$09
+	dc.b		nEb3, $01
+	ssVolPSGDMF	$11
+	sRet
+
+TestLable_X0520:
+	dc.b		sHold, $14
+	ssVolPSGDMF	$1A
+	dc.b		sHold, $27
+	ssVolPSGDMF	$09
+	sRet
+
+TestLable_X0518:
+	dc.b		nEb3, $01
+	ssVolPSGDMF	$11
+	dc.b		sHold, $14
+	ssVolPSGDMF	$1A
+	dc.b		$7F
+	dc.b		$0C
+	sRet
+
+TestLable_X0099:
+	sCall		TestLable_X0127
+	ssVol		$00
+	sRet
+
+TestLable_X0192:
+	ssVol		$5E
+	dc.b		sHold, $01
+	ssVol		$09
+	dc.b		sHold, $01
+	ssVol		$11
+	dc.b		sHold, $04
+	ssVol		$1A
+	dc.b		sHold, $04
+	ssVol		$22
+	dc.b		sHold, $04
+	ssVol		$2B
+	dc.b		sHold, $04
+	ssVol		$33
+	dc.b		sHold, $04
+	ssVol		$3C
+	dc.b		sHold, $04
+	ssVol		$44
+	dc.b		sHold, $04
+	ssVol		$4D
+	dc.b		sHold, $04
+	ssVol		$55
+	sRet
+
+TestLable_X0621:
+	dc.b		nD4, $01
+	sCall		TestLable_X0248
+	ssVol		$7F
+	dc.b		sHold, $0A
+	ssVol		$00
+	sRet
+
+TestLable_X0050:
+	sCall		TestLable_X0056
+	dc.b		sHold, $0A
+	ssVol		$00
+	sRet
+
+TestLable_X0130:
+	sCall		TestLable_X0222
+	ssVol		$7F
+	dc.b		sHold, $0A
+	ssVol		$00
+	sRet
+
+TestLable_X0129:
+	dc.b		nD4, $01
+	sCall		TestLable_X0248
+	sCall		TestLable_X0222
+	ssVol		$00
+	sRet
+
+TestLable_X0193:
+	sCall		TestLable_X0237
+	ssVol		$00
+	sRet
+
+TestLable_X0027:
+	dc.b		nD4, $01
+	sCall		TestLable_X0031
+	sCall		TestLable_X0056
+	dc.b		sHold, $0A
+	ssVol		$00
+	sRet
+
+TestLable_X0056:
+	dc.b		nD4, $01
+	sCall		TestLable_X0248
+	ssVol		$00
+	dc.b		nD4, $01
+	sCall		TestLable_X0248
+	sCall		TestLable_X0222
+	ssVol		$7F
+	sRet
+
+TestLable_X0051:
+	dc.b		sHold, $1E
+	sCall		TestLable_X0620
+	dc.b		sHold, $1E
+	ssVol		$00
+	sCall		TestLable_X0205
+	dc.b		sHold, $1E
+	sRet
+
+TestLable_X0024:
+	ssPortaTgt	$0000
+	sCall		TestLable_X0131
+	sCall		TestLable_X0130
+	dc.b		nD4, $01
+	sCall		TestLable_X0031
+	sCall		TestLable_X0237
+	sCall		TestLable_X0130
+	dc.b		nD4, $01
+	sCall		TestLable_X0031
+	sCall		TestLable_X0129
+	sCall		TestLable_X0621
+	dc.b		nD4, $01
+	sCall		TestLable_X0248
+	sCall		TestLable_X0222
+	ssVol		$00
+	sRet
+
+TestLable_X0521:
+	dc.b		nD4, $01
+	dc.b		nA6
+	ssVol		$1A
+	dc.b		nAb6
+	sRet
+
+TestLable_X0350:
+	dc.b		nA4, $0A
+	dc.b		nD5
+	dc.b		nA4
+	dc.b		nE5
+	dc.b		nA4
+	dc.b		nG5
+	dc.b		nA4
+	dc.b		nF5
+	dc.b		nA4
+	sRet
+
+TestLable_X0342:
+	dc.b		nAb4, $0A
+	dc.b		nEb4
+	dc.b		nAb4
+	dc.b		nEb4
+	dc.b		nEb5
+	dc.b		nEb4
+	dc.b		nAb4
+	dc.b		nEb4
+	sRet
+
+TestLable_X0353:
+	dc.b		sHold, $14
+	sModOff
+	dc.b		nEb5, $0A
+	ssPortamento	-$00FF
+	ssPortaTgtNote	nD5
+	dc.b		sHold, $0A
+	ssPortamento	$00FF
+	ssPortaTgtNote	nEb5
+	dc.b		sHold, $14
+	dc.b		nAb4
+	sRet
+
+TestLable_X0543:
+	dc.b		nEb4, $0A
+	dc.b		nRst, $1E
+	dc.b		nEb4, $0A
+	dc.b		nRst
+	sRet
+
+TestLable_X0538:
+	sPan		spRight
+	dc.b		sHold, $05
+	sPan		spCenter
+	dc.b		nFs6
+	sRet
+
+TestLable_X0341:
+	dc.b		nD3, $1E
+	dc.b		nF3, $0A
+	dc.b		nAb3
+	dc.b		nEb3
+	dc.b		nB3, $1E
+	dc.b		$0A
+	dc.b		nBb3
+	dc.b		nAb3
+	dc.b		nFs3, $14
+	dc.b		nBb3, $1E
+	dc.b		nFs3, $0A
+	dc.b		nBb3
+	dc.b		nEb4
+	dc.b		nAb4
+	sRet
+
+TestLable_X0549:
+	dc.b		sHold, $02
+	ssVolPSGDMF	$00
+	dc.b		nF4, $01
+	dc.b		nF3, $02
+	sRet
+
+TestLable_X0540:
+	ssVolPSGDMF	$2B
+	dc.b		sHold, $09
+	ssVolPSGDMF	$22
+	dc.b		nFs4, $01
+	sRet
+
+TestLable_X0551:
+	dc.b		sHold, $02
+	ssVolPSGDMF	$22
+	dc.b		nF4, $01
+	dc.b		nF3, $02
+	sRet
+
+TestLable_X0381:
+	ssVolPSGDMF	$22
+	dc.b		nEb4, $01
+	dc.b		nEb3, $02
+	sCall		TestLable_X0590
+	dc.b		sHold, $02
+	sRet
+
+TestLable_X0369:
+	dc.b		nB4, $01
+	dc.b		nB3, $02
+	sCall		TestLable_X0590
+	dc.b		sHold, $02
+	sRet
+
+TestLable_X0536:
+	dc.b		nF5, $0A
+	dc.b		nC5
+	dc.b		nC6
+	dc.b		nC5
+	sRet
+
+TestLable_X0531:
+	dc.b		nFs4, $0A
+	dc.b		nB4
+	dc.b		nFs4
+	dc.b		nFs5
+	dc.b		nFs4
+	sRet
+
+TestLable_X0532:
+	dc.b		nAb4, $0A
+	dc.b		nCs5
+	dc.b		nAb4
+	dc.b		nAb5
+	dc.b		nAb4
+	sRet
+
+TestLable_X0208:
+	dc.b		nEb3, $0A
+	dc.b		nBb2
+	dc.b		nFs3, $1E
+	dc.b		$0A
+	dc.b		nF3
+	dc.b		nEb3
+	dc.b		nBb3, $14
+	dc.b		nBb2, $1E
+	dc.b		$0A
+	dc.b		nEb3
+	dc.b		nF3
+	dc.b		nFs3, $14
+	dc.b		nEb3
+	dc.b		nB3
+	dc.b		nF3, $0A
+	dc.b		nEb3
+	sRet
+
+TestLable_X0429:
+	dc.b		nAb2, $0A
+	dc.b		nRst
+	dc.b		nAb2
+	dc.b		nAb2
+	dc.b		nAb2
+	dc.b		nRst
+	dc.b		nAb2
+	dc.b		nAb2
+	sRet
+
+TestLable_X0522:
+	dc.b		nBb2, $0A
+	dc.b		$0A
+	dc.b		$0A
+	dc.b		nRst
+	sRet
+
+TestLable_X0568:
+	dc.b		nCs3, $0A
+	dc.b		nRst
+	dc.b		nCs3
+	dc.b		nCs3
+	dc.b		nCs3
+	sRet
+
+TestLable_X0525:
+	dc.b		nE3, $0A
+	dc.b		$0A
+	dc.b		$0A
+	dc.b		nRst
+	sRet
+
+TestLable_X0524:
+	dc.b		nEb3, $0A
+	dc.b		nRst
+	dc.b		nEb4
+	dc.b		nEb3
+	dc.b		nEb3
+	dc.b		nEb3
+	sRet
+
+TestLable_X0106:
+	sCall		TestLable_X0429
+	dc.b		nAb2, $0A
+	dc.b		nCs4
+	dc.b		nAb3
+	dc.b		nAb2
+	dc.b		nB3
+	dc.b		nRst
+	dc.b		nAb2
+	dc.b		nAb2
+	dc.b		nE3
+	dc.b		nRst
+	sCall		TestLable_X0525
+	dc.b		nE3, $0A
+	dc.b		$0A
+	sRet
+
+TestLable_X0395:
+	sCall		TestLable_X0527
+	dc.b		nRst, $0A
+	dc.b		nEb3
+	dc.b		nEb3
+	sRet
+
+TestLable_X0107:
+	sCall		TestLable_X0568
+	dc.b		nRst, $0A
+	dc.b		nCs3
+	dc.b		nCs3
+	sCall		TestLable_X0526
+	dc.b		nRst, $0A
+	dc.b		nB2
+	dc.b		nB2
+	sCall		TestLable_X0542
+	dc.b		nEb3, $0A
+	dc.b		nEb4
+	dc.b		nEb3
+	dc.b		nEb4
+	dc.b		nAb2
+	sRet
+
+TestLable_X0332:
+	dc.b		nEb4, $3C
+	dc.b		nEb3, $0A
+	dc.b		nEb4
+	dc.b		nCs4, $3C
+	dc.b		nG3, $0A
+	dc.b		nBb3
+	dc.b		nB3, $28
+	dc.b		nAb3
+	dc.b		nBb3
+	dc.b		nBb2
+	dc.b		nAb3, $3C
+	dc.b		nEb3, $0A
+	dc.b		nAb3
+	sRet
+
+TestLable_X0334:
+	dc.b		nRst, $0A
+	dc.b		nFs2
+	dc.b		nFs2
+	dc.b		nFs2
+	dc.b		nRst
+	dc.b		nFs2
+	dc.b		nFs2
+	sRet
+
+TestLable_X0335:
+	dc.b		nRst, $0A
+	dc.b		nBb2
+	dc.b		nBb2
+
+TestLable_X0542:
+	dc.b		nBb2, $0A
+	dc.b		nRst
+	dc.b		nBb2
+	dc.b		nBb2
+	sRet
+
+TestLable_X0526:
+	dc.b		nB2, $0A
+	dc.b		nRst
+	dc.b		nB2
+	dc.b		nB2
+	dc.b		nB2
+	sRet
+
+TestLable_X0527:
+	dc.b		nEb3, $0A
+	dc.b		nRst
+	dc.b		nEb3
+	dc.b		nEb3
+	dc.b		nEb3
+	sRet
+
+TestLable_X0343:
+	dc.b		nEb5, $0A
+	dc.b		nBb5
+	dc.b		nEb5
+	dc.b		nEb6
+	dc.b		nEb5
+	dc.b		nBb5
+	dc.b		nEb5
+	sRet
+
+TestLable_X0533:
+	dc.b		nCs6, $0A
+	dc.b		nAb5
+	dc.b		nCs6
+	dc.b		nAb5
+	dc.b		nAb6
+	dc.b		nAb5
+	sRet
+
+TestLable_X0105:
+	ssPortamento	$0000
+	ssPortaTgt	$0000
+	sCall		TestLable_X0541
+	dc.b		nE3, $0A
+	dc.b		nRst
+	sCall		TestLable_X0541
+	dc.b		nAb3, $0A
+	dc.b		nRst
+	dc.b		nG3
+	dc.b		nRst
+	dc.b		nEb3
+	dc.b		nRst
+	dc.b		nBb3, $28
+	dc.b		nAb3, $0A
+	dc.b		nRst
+	dc.b		nEb3
+	dc.b		nRst
+	sRet
+
+TestLable_X0195:
+	sCall		TestLable_X0208
+	dc.b		nEb3, $14
+	dc.b		nF3
+	sRet
+
+TestLable_X0344:
+	sVoice		$20
+	dc.b		nEb3, $0A
+	sVoice		$1F
+	dc.b		nCs3
+	sVoice		$20
+	dc.b		nEb3
+	sVoice		$1F
+	sRet
+
+TestLable_X0534:
+	sVoice		$20
+	dc.b		nEb3, $0A
+	sVoice		$1F
+	dc.b		nBb3
+	sRet
+
+TestLable_X0375:
+	dc.b		sHold, $28
+	ssVolPSGDMF	$5E
+	dc.b		sHold, $28
+	ssVolPSGDMF	$66
+	dc.b		sHold, $28
+	ssVolPSGDMF	$6F
+	dc.b		sHold, $28
+	ssVolPSGDMF	$77
+	sRet
+
+TestLable_X0384:
+	dc.b		nAb3, $02
+	sJump		TestLable_X0469
+
+TestLable_X0541:
+	dc.b		nEb3, $0A
+	dc.b		nRst, $1E
+	dc.b		nEb3, $0A
+	dc.b		nRst
+	sRet

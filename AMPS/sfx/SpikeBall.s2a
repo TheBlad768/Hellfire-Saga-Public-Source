@@ -1,0 +1,19 @@
+Sound_C9_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$80, ctFM4, Sound_C9_FM4, $FD, $00
+
+; FM4 Data
+Sound_C9_FM4:
+	sVoice		$2B
+	sModAMPS	$00, $01, $A2, $42
+
+Sound_C9_Loop00:
+	dc.b nCs2, $0D
+	saVol		$10
+	dc.b nCs2, $0D
+	sLoop		$00, $02, Sound_C9_Loop00
+	saVol		$E0
+	sCont		Sound_C9_Loop00
+	sStop

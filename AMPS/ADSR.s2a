@@ -1,0 +1,3 @@
+dBankADSR:
+sPatNum :=	0
+	spADSR	None, admImm,		$00, $FF, $00, $FF, $FF		; $00 - normal

@@ -1,0 +1,783 @@
+Snd_Chapel_Header:
+	sHeaderInit
+	sHeaderTempo	$00DB
+	sHeaderCh	$06, $03
+	sHeaderDAC	Snd_Chapel_DAC1
+	sHeaderDAC	Snd_Chapel_DAC2, $04
+	sHeaderFM	Snd_Chapel_FM1,	$00, $08
+	sHeaderFM	Snd_Chapel_FM3,	$00, $08+6		; AF: SFX now use FM2
+	sHeaderFM	Snd_Chapel_FM2,	$00, $02
+	sHeaderFM	Snd_Chapel_FM4,	$00, $06
+	sHeaderFM	Snd_Chapel_FM5,	$00, $0C
+	sHeaderFM	Snd_Chapel_FM6,	$00, $08+6
+	sHeaderPSG	Snd_Chapel_PSG1, $00+$0C, $30, $00, v06
+	sHeaderPSG	Snd_Chapel_PSG2, $00+$0C, $40, $00, vNone
+	sHeaderPSG	Snd_Chapel_PSG3, $00+$0C, $38, $00, vNone
+
+;	Voice $00
+;	$39
+;	$3C, $0C, $41, $43, 	$1F, $9F, $1F, $9F, 	$02, $0C, $02, $09
+;	$07, $07, $07, $07, 	$F7, $36, $36, $36, 	$26, $2D, $1E, $0A
+	spAlgorithm	$01
+	spFeedback	$07
+	spDetune	$03, $04, $00, $04
+	spMultiple	$0C, $01, $0C, $03
+	spRateScale	$00, $00, $02, $02
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$02, $02, $0C, $09
+	spDecayRt	$07, $07, $07, $07
+	spSustainLv	$0F, $03, $03, $03
+	spReleaseRt	$07, $06, $06, $06
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$26, $1E, $2D, $0A
+
+;	Voice $01
+;	$32
+;	$11, $15, $01, $11, 	$54, $54, $54, $4D, 	$0A, $0B, $0D, $04
+;	$00, $00, $00, $00, 	$15, $58, $26, $06, 	$1C, $12, $30, $00
+	spAlgorithm	$02
+	spFeedback	$06
+	spDetune	$01, $00, $01, $01
+	spMultiple	$01, $01, $05, $01
+	spRateScale	$01, $01, $01, $01
+	spAttackRt	$14, $14, $14, $0D
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0A, $0D, $0B, $04
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$01, $02, $05, $00
+	spReleaseRt	$05, $06, $08, $06
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1C, $30, $12, $00
+
+;	Voice $02
+;	$34
+;	$72, $74, $31, $32, 	$91, $98, $92, $9B, 	$03, $00, $00, $00
+;	$02, $00, $02, $00, 	$5A, $0A, $0A, $0A, 	$16, $0A, $12, $0A
+	spAlgorithm	$04
+	spFeedback	$06
+	spDetune	$07, $03, $07, $03
+	spMultiple	$02, $01, $04, $02
+	spRateScale	$02, $02, $02, $02
+	spAttackRt	$11, $12, $18, $1B
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$03, $00, $00, $00
+	spDecayRt	$02, $02, $00, $00
+	spSustainLv	$05, $00, $00, $00
+	spReleaseRt	$0A, $0A, $0A, $0A
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$16, $12, $0E, $0E
+
+; FM1 Data
+Snd_Chapel_FM1:
+
+	sPan		spCenter, $00
+Snd_Chapel_FM1_JMP:
+	sVoice		$00
+	sModAMPS	$0C,	$02,	$8,	$02
+
+Snd_Chapel_Loop49:
+	dc.b nD3, $08, nRst, $01, nA2, $08, nRst, $01, nF3, $08
+
+Snd_Chapel_Loop46:
+	dc.b nRst, $01, nA2, $08, nRst, $01, nE3, $08, nRst, $01, nA2, $08
+	dc.b nRst, $01, nD3, $08, nRst, $01, nA2, $08, nRst, $01, nCs3, $08
+	sLoop		$00, $02, Snd_Chapel_Loop46
+	dc.b nRst, $01, nA2, $08, nRst, $01, nD3, $08, nRst, $01, nBb2, $08
+	dc.b nRst, $01, nG3, $08, nRst, $01, nBb2, $08, nRst, $01, nF3, $08
+	dc.b nRst, $01, nBb2, $08, nRst, $01, nE3, $08, nRst, $01, nBb2, $08
+	dc.b nRst, $01, nD3, $08, nRst, $01, nA2, $08, nRst, $01, nF3, $08
+	dc.b nRst, $01, nA2, $08, nRst, $01, nE3, $08
+
+Snd_Chapel_Loop47:
+	dc.b nRst, $01, nA2, $08, nRst, $01, nD3, $08
+	sLoop		$00, $02, Snd_Chapel_Loop47
+	dc.b nRst, $01, nAb2, $08, nRst, $01, nF3, $08, nRst, $01, nAb2, $08
+	dc.b nRst, $01, nE3, $08
+
+Snd_Chapel_Loop48:
+	dc.b nRst, $01, nAb2, $08, nRst, $01, nD3, $08
+	sLoop		$00, $02, Snd_Chapel_Loop48
+	dc.b nRst, $01, nA2, $08, nRst, $01, nE3, $08, nRst, $01, nD3, $08
+	dc.b nRst, $01, nCs3, $08, nRst, $01, nD3, $08, nRst, $01, nE3, $08
+	dc.b nRst, $01, nA2, $08, nRst, $01
+	sLoop		$01, $02, Snd_Chapel_Loop49
+	dc.b nD3, $08, nRst, $01, nAb2, $08, nRst, $01, nF3, $08, nRst, $01
+	dc.b nAb2, $08, nRst, $01, nE3, $08
+
+Snd_Chapel_Loop4A:
+	dc.b nRst, $01, nAb2, $08, nRst, $01, nD3, $08
+	sLoop		$00, $02, Snd_Chapel_Loop4A
+	dc.b nRst, $01, nA2, $08, nRst, $01, nE3, $08, nRst, $01, nD3, $08
+	dc.b nRst, $01, nCs3, $08, nRst, $01, nD3, $08, nRst, $01, nE3, $08
+	dc.b nRst, $01, nA2, $08, nRst, $01, nD3, $08, nRst, $01, nCs3, $08
+	dc.b nRst, $01, nD3, $08
+
+Snd_Chapel_Loop4B:
+	dc.b nRst, $01, nE3, $08, nRst, $01, nF3, $08
+	sLoop		$00, $02, Snd_Chapel_Loop4B
+	dc.b nRst, $01, nG3, $08, nRst, $01, nA3, $08, nRst, $01, nBb3, $08
+	dc.b nRst, $01, nA3, $08, nRst, $01, nG3, $08, nRst, $01, nF3, $08
+	dc.b nRst, $01, nE3, $08, nRst, $01, nF3, $08, nRst, $01, nG3, $08
+	dc.b nRst, $01, nA3, $08, nRst, $01, nD3, $08, nRst, $01, nD4, $08
+	dc.b nRst, $01, nD3, $08, nRst, $01, nC4, $08, nRst, $01, nD3, $08
+	dc.b nRst, $01, nBb3, $08, nRst, $01, nD3, $08, nRst, $01, nA3, $08
+	dc.b nRst, $01, nD3, $08, nRst, $01, nC4, $08
+
+Snd_Chapel_Loop4C:
+	dc.b nRst, $01, nBb3, $08, nRst, $01, nA3, $08
+	sLoop		$00, $02, Snd_Chapel_Loop4C
+	dc.b nRst, $01, nFs3, $08, nRst, $01, nG3, $08, nRst, $01, nD3, $08
+	dc.b nRst, $01, nBb3, $08, nRst, $01, nD3, $08, nRst, $01, nA3, $08
+
+Snd_Chapel_Loop4D:
+	dc.b nRst, $01, nD3, $08, nRst, $01, nG3, $08
+	sLoop		$00, $02, Snd_Chapel_Loop4D
+	dc.b nRst, $01, nCs3, $08, nRst, $01, nBb3, $08, nRst, $01, nCs3, $08
+	dc.b nRst, $01, nA3, $08
+
+Snd_Chapel_Loop4E:
+	dc.b nRst, $01, nCs3, $08, nRst, $01, nG3, $08
+	sLoop		$00, $02, Snd_Chapel_Loop4E
+	dc.b nRst, $01, nD3, $08, nRst, $01, nBb3, $08, nRst, $01, nD3, $08
+	dc.b nRst, $01, nA3, $08, nRst, $01, nD3, $08, nRst, $01, nG3, $08
+	dc.b nRst, $01, nD3, $08, nRst, $01, nFs3, $08, nRst, $01, nG3, $08
+	dc.b nRst, $01, nA3, $08, nRst, $01, nFs3, $08, nRst, $01, nD3, $23
+	dc.b nRst, $01, nG3, $08, nRst, $01, nFs3, $08, nRst, $01, nG3, $08
+
+Snd_Chapel_Loop4F:
+	dc.b nRst, $01, nA3, $08, nRst, $01, nBb3, $08
+	sLoop		$00, $02, Snd_Chapel_Loop4F
+	dc.b nRst, $01, nC4, $08, nRst, $01, nD4, $08, nRst, $01, nEb4, $08
+	dc.b nRst, $01, nD4, $08, nRst, $01, nC4, $08, nRst, $01, nBb3, $08
+	dc.b nRst, $01, nA3, $08, nRst, $01, nBb3, $08, nRst, $01, nC4, $08
+	dc.b nRst, $01, nD4, $08, nRst, $01, nG3, $08, nRst, $01, nG4, $08
+	dc.b nRst, $01, nG3, $08, nRst, $01, nF4, $08, nRst, $01, nG3, $08
+	dc.b nRst, $01, nEb4, $08, nRst, $01, nG3, $08, nRst, $01, nD4, $08
+	dc.b nRst, $01, nG3, $08, nRst, $01, nF4, $08
+
+Snd_Chapel_Loop50:
+	dc.b nRst, $01, nEb4, $08, nRst, $01, nD4, $08
+	sLoop		$00, $02, Snd_Chapel_Loop50
+	dc.b nRst, $01, nB3, $08, nRst, $01, nC4, $08, nRst, $01, nG3, $08
+	dc.b nRst, $01, nEb4, $08, nRst, $01, nG3, $08, nRst, $01, nD4, $08
+
+Snd_Chapel_Loop51:
+	dc.b nRst, $01, nG3, $08, nRst, $01, nC4, $08
+	sLoop		$00, $02, Snd_Chapel_Loop51
+	dc.b nRst, $01, nFs3, $08, nRst, $01, nEb4, $08, nRst, $01, nFs3, $08
+	dc.b nRst, $01, nD4, $08
+
+Snd_Chapel_Loop52:
+	dc.b nRst, $01, nFs3, $08, nRst, $01, nC4, $08
+	sLoop		$00, $02, Snd_Chapel_Loop52
+	dc.b nRst, $01, nG3, $08, nRst, $01, nEb4, $08, nRst, $01, nG3, $08
+	dc.b nRst, $01, nD4, $08, nRst, $01, nG3, $08, nRst, $01, nC4, $08
+	dc.b nRst, $01, nG3, $08, nRst, $01, nB3, $08, nRst, $01, nC4, $08
+	dc.b nRst, $01, nD4, $08, nRst, $01, nB3, $08, nRst, $01, nG3, $23
+	dc.b nRst, $01
+	sVoice		$01
+	saVol		$F9
+	dc.b nC3, $23, nRst, $0A
+	saVol		$03
+	dc.b nEb3, $05, nRst, $04, nG3, $05, nRst, $04, nC4, $05, nRst, $04
+	saVol		$FF
+	dc.b nEb4, $29, nRst, $04
+	saVol		$01
+	dc.b nD4, $02, nRst, $03, nEb4, nRst, $01, nD4, $08, nRst, $01, nC4
+	dc.b $08, nRst, $01, nG4, $2C, nRst, $01, nG3, $03, nRst, $06, nC4
+	dc.b $03, nRst, $06, nEb4, $03, nRst, $06, nG4, $35, nRst, $01
+	saVol		$04
+	dc.b nG4, $05, nAb4, $03, nRst, $01, nA4, $05, nB4, $03, nRst, $01
+	saVol		$FC
+	dc.b nC5, $47, nRst, $01
+	saVol		$04
+
+Snd_Chapel_Loop53:
+	dc.b nC5, $02, nRst, $03, nD5, $02, nRst
+	sLoop		$00, $02, Snd_Chapel_Loop53
+	saVol		$FC
+	dc.b nEb5, nRst, $03, nC5, $02, nRst, nG4, nRst, $03, nEb4, $02, nRst
+	dc.b nC5, nRst, $03, nG4, $02, nRst, nEb4, nRst, $03, nC4, $02, nRst
+	dc.b nG4, nRst, $03, nEb4, $02, nRst, nC4, nRst, $03, nG3, $02, nRst
+	saVol		$FF
+	dc.b nC3, $22, nRst, $0B
+	saVol		$FE
+	dc.b nD3, $03, nRst, $06
+	saVol		$03
+	dc.b nEb3, $03, nRst, $06, nF3, $03, nRst, $06
+	saVol		$08
+
+Snd_Chapel_Loop54:
+	dc.b nG3, $05, nRst, $04
+	saVol		$FE
+	sLoop		$00, $04, Snd_Chapel_Loop54
+	dc.b nG3, $05, nRst, $04
+	saVol		$FF
+	dc.b nG3, $05, nRst, $04
+	saVol		$FE
+	dc.b nG3, $05, nRst, $04, nG3, $05, nRst, $04, nC3, $02, nRst, $03
+	saVol		$03
+	dc.b nEb3, $02, nRst, nG3, nRst, $03, nC4, $02, nRst, nC4, nRst, $03
+	dc.b nG3, $02, nRst, nEb3, nRst, $03, nC3, $02
+
+Snd_Chapel_Loop55:
+	dc.b nRst
+	saVol		$FD
+	dc.b nC4, nRst, $03
+	saVol		$03
+	dc.b nEb4, $02, nRst, nG4, nRst, $03, nC5, $02, nRst, nC5, nRst, $03
+	dc.b nG4, $02, nRst, nEb4, nRst, $03, nC4, $02
+	sLoop		$00, $02, Snd_Chapel_Loop55
+	dc.b nRst
+	saVol		$FD
+	dc.b nC5, nRst, $03
+	saVol		$03
+	dc.b nEb5, $02, nRst, nG5, nRst, $03, nC6, $02, nRst, nC6, nRst, $03
+	dc.b nG5, $02, nRst, nEb5, nRst, $03, nC5, $02, nRst
+	saVol		$FD
+	dc.b nEb4, $03, nRst, $06, nD4, $03, nRst, $06, nC4, $03, nRst, $06
+	dc.b nBb3, $03, nRst, $06, nC4, $03, nRst, $06, nG3, $03, nRst, $06
+	dc.b nEb3, $03, nRst, $06, nC3, $03, nRst, $06, nG2, $08, nRst, $01
+	saVol		$03
+	dc.b nC3, $3E, nRst, $01
+	saVol		$02
+
+Snd_Chapel_Loop56:
+	dc.b nC3, $03, nRst, $02, nD3, $03, nRst, $01
+	sLoop		$00, $02, Snd_Chapel_Loop56
+	dc.b nEb3, $11
+
+Snd_Chapel_Loop57:
+	dc.b nRst, $01, nEb3, $03, nRst, $02, nF3, $03
+	sLoop		$00, $02, Snd_Chapel_Loop57
+	dc.b nRst, $01, nG3, $11
+
+Snd_Chapel_Loop58:
+	dc.b nRst, $01, nC4, $03, nRst, $02, nD4, $03
+	sLoop		$00, $02, Snd_Chapel_Loop58
+	dc.b nRst, $01, nEb4, $11
+
+Snd_Chapel_Loop59:
+	dc.b nRst, $01, nEb4, $03, nRst, $02, nF4, $03
+	sLoop		$00, $02, Snd_Chapel_Loop59
+	dc.b nRst, $01, nG4, $11, nRst, $01
+	saVol		$FE
+	dc.b nC5, $7F, sHold, $10, nRst, $01
+	sVoice		$00
+	saVol		$04
+	sJump		Snd_Chapel_Loop49
+
+; FM2 Data
+Snd_Chapel_FM2:
+	sVoice		$00
+	sPan		spCenter, $00
+	sModOff
+
+Snd_Chapel_Loop2D:
+	dc.b nD1, $47, nRst, $01, nA1, $47, nRst, $01, nBb1, $47, nRst, $01
+	dc.b nA1, $47, nRst, $01, nAb1, $47, nRst, $01, nA1, $47, nRst, $01
+	sLoop		$00, $02, Snd_Chapel_Loop2D
+	dc.b nAb1, $47, nRst, $01, nA1, $47, nRst, $01, nD1, $47, nRst, $01
+	dc.b nE1, $47, nRst, $01, nF1, $47, nRst, $01, nFs1, $47, nRst, $01
+	dc.b nG1, $47, nRst, $01, nEb1, $47, nRst, $01, nD1, $47, nRst, $01
+	dc.b nD1, $08, nRst, $01, nD2, $08, nRst, $01, nC2, $08, nRst, $01
+	dc.b nBb1, $08, nRst, $01, nA1, $08, nRst, $01, nG1, $08, nRst, $01
+	dc.b nFs1, $08, nRst, $01, nD1, $08, nRst, $01, nG1, $47, nRst, $01
+	dc.b nA1, $47, nRst, $01, nBb1, $47, nRst, $01, nB1, $47, nRst, $01
+	dc.b nC2, $47, nRst, $01, nAb1, $47, nRst, $01, nG1, $47, nRst, $01
+	sVoice		$02
+	saVol		$02
+
+Snd_Chapel_Loop2E:
+	dc.b nG1, $08, nRst, $01
+	saVol		$05
+	dc.b nG1, $08, nRst, $01
+	saVol		$FB
+	dc.b nG1, $08, nRst, $01
+	sLoop		$00, $02, Snd_Chapel_Loop2E
+	dc.b nG1, $08, nRst, $01
+	saVol		$05
+	dc.b nG1, $08, nRst, $01
+	sVoice		$02
+	saVol		$F9
+
+Snd_Chapel_Loop2F:
+	dc.b nC1, $07, nRst, $02
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02
+	sLoop		$00, $03, Snd_Chapel_Loop2F
+
+Snd_Chapel_Loop30:
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02, nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop30
+
+Snd_Chapel_Loop31:
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop31
+
+Snd_Chapel_Loop32:
+	dc.b nC1, $07, nRst, $02
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop32
+
+Snd_Chapel_Loop33:
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02, nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop33
+
+Snd_Chapel_Loop34:
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop34
+
+Snd_Chapel_Loop35:
+	dc.b nC1, $07, nRst, $02
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop35
+
+Snd_Chapel_Loop36:
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02, nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop36
+
+Snd_Chapel_Loop37:
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop37
+
+Snd_Chapel_Loop38:
+	dc.b nC1, $07, nRst, $02
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop38
+
+Snd_Chapel_Loop39:
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02, nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop39
+
+Snd_Chapel_Loop3A:
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop3A
+
+Snd_Chapel_Loop3B:
+	dc.b nC1, $07, nRst, $02
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop3B
+
+Snd_Chapel_Loop3C:
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02, nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop3C
+
+Snd_Chapel_Loop3D:
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop3D
+
+Snd_Chapel_Loop3E:
+	dc.b nC1, $07, nRst, $02
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop3E
+
+Snd_Chapel_Loop3F:
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02, nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop3F
+
+Snd_Chapel_Loop40:
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop40
+
+Snd_Chapel_Loop41:
+	dc.b nC1, $07, nRst, $02
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop41
+
+Snd_Chapel_Loop42:
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02, nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop42
+
+Snd_Chapel_Loop43:
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop43
+
+Snd_Chapel_Loop44:
+	dc.b nC1, $07, nRst, $02
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop44
+
+Snd_Chapel_Loop45:
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	saVol		$FC
+	dc.b nC1, $07, nRst, $02, nC1, $07, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop45
+	saVol		$04
+	dc.b nC1, $07, nRst, $02
+	sVoice		$00
+	saVol		$FC
+	sJump		Snd_Chapel_Loop2D
+
+; FM3 Data
+Snd_Chapel_FM3:
+	sVoice		$00
+	sPan		spCenter, $00
+	sModOff
+
+Snd_Chapel_Jump02:
+	dc.b nRst, $0E
+	sPan		spRight, $00
+
+Snd_Chapel_Loop1C:
+	dc.b nD3, $08, nRst, $01, nA2, $08, nRst, $01, nF3, $08
+
+Snd_Chapel_Loop19:
+	dc.b nRst, $01, nA2, $08, nRst, $01, nE3, $08, nRst, $01, nA2, $08
+	dc.b nRst, $01, nD3, $08, nRst, $01, nA2, $08, nRst, $01, nCs3, $08
+	sLoop		$00, $02, Snd_Chapel_Loop19
+	dc.b nRst, $01, nA2, $08, nRst, $01, nD3, $08, nRst, $01, nBb2, $08
+	dc.b nRst, $01, nG3, $08, nRst, $01, nBb2, $08, nRst, $01, nF3, $08
+	dc.b nRst, $01, nBb2, $08, nRst, $01, nE3, $08, nRst, $01, nBb2, $08
+	dc.b nRst, $01, nD3, $08, nRst, $01, nA2, $08, nRst, $01, nF3, $08
+	dc.b nRst, $01, nA2, $08, nRst, $01, nE3, $08
+
+Snd_Chapel_Loop1A:
+	dc.b nRst, $01, nA2, $08, nRst, $01, nD3, $08
+	sLoop		$00, $02, Snd_Chapel_Loop1A
+	dc.b nRst, $01, nAb2, $08, nRst, $01, nF3, $08, nRst, $01, nAb2, $08
+	dc.b nRst, $01, nE3, $08
+
+Snd_Chapel_Loop1B:
+	dc.b nRst, $01, nAb2, $08, nRst, $01, nD3, $08
+	sLoop		$00, $02, Snd_Chapel_Loop1B
+	dc.b nRst, $01, nA2, $08, nRst, $01, nE3, $08, nRst, $01, nD3, $08
+	dc.b nRst, $01, nCs3, $08, nRst, $01, nD3, $08, nRst, $01, nE3, $08
+	dc.b nRst, $01, nA2, $08, nRst, $01
+	sLoop		$01, $02, Snd_Chapel_Loop1C
+	dc.b nD3, $08, nRst, $01, nAb2, $08, nRst, $01, nF3, $08, nRst, $01
+	dc.b nAb2, $08, nRst, $01, nE3, $08
+
+Snd_Chapel_Loop1D:
+	dc.b nRst, $01, nAb2, $08, nRst, $01, nD3, $08
+	sLoop		$00, $02, Snd_Chapel_Loop1D
+	dc.b nRst, $01, nA2, $08, nRst, $01, nE3, $08, nRst, $01, nD3, $08
+	dc.b nRst, $01, nCs3, $08, nRst, $01, nD3, $08, nRst, $01, nE3, $08
+	dc.b nRst, $01, nA2, $08, nRst, $01, nD3, $08, nRst, $01, nCs3, $08
+	dc.b nRst, $01, nD3, $08
+
+Snd_Chapel_Loop1E:
+	dc.b nRst, $01, nE3, $08, nRst, $01, nF3, $08
+	sLoop		$00, $02, Snd_Chapel_Loop1E
+	dc.b nRst, $01, nG3, $08, nRst, $01, nA3, $08, nRst, $01, nBb3, $08
+	dc.b nRst, $01, nA3, $08, nRst, $01, nG3, $08, nRst, $01, nF3, $08
+	dc.b nRst, $01, nE3, $08, nRst, $01, nF3, $08, nRst, $01, nG3, $08
+	dc.b nRst, $01, nA3, $08, nRst, $01, nD3, $08, nRst, $01, nD4, $08
+	dc.b nRst, $01, nD3, $08, nRst, $01, nC4, $08, nRst, $01, nD3, $08
+	dc.b nRst, $01, nBb3, $08, nRst, $01, nD3, $08, nRst, $01, nA3, $08
+	dc.b nRst, $01, nD3, $08, nRst, $01, nC4, $08
+
+Snd_Chapel_Loop1F:
+	dc.b nRst, $01, nBb3, $08, nRst, $01, nA3, $08
+	sLoop		$00, $02, Snd_Chapel_Loop1F
+	dc.b nRst, $01, nFs3, $08, nRst, $01, nG3, $08, nRst, $01, nD3, $08
+	dc.b nRst, $01, nBb3, $08, nRst, $01, nD3, $08, nRst, $01, nA3, $08
+
+Snd_Chapel_Loop20:
+	dc.b nRst, $01, nD3, $08, nRst, $01, nG3, $08
+	sLoop		$00, $02, Snd_Chapel_Loop20
+	dc.b nRst, $01, nCs3, $08, nRst, $01, nBb3, $08, nRst, $01, nCs3, $08
+	dc.b nRst, $01, nA3, $08
+
+Snd_Chapel_Loop21:
+	dc.b nRst, $01, nCs3, $08, nRst, $01, nG3, $08
+	sLoop		$00, $02, Snd_Chapel_Loop21
+	dc.b nRst, $01, nD3, $08, nRst, $01, nBb3, $08, nRst, $01, nD3, $08
+	dc.b nRst, $01, nA3, $08, nRst, $01, nD3, $08, nRst, $01, nG3, $08
+	dc.b nRst, $01, nD3, $08, nRst, $01, nFs3, $08, nRst, $01, nG3, $08
+	dc.b nRst, $01, nA3, $08, nRst, $01, nFs3, $08, nRst, $01, nD3, $23
+	dc.b nRst, $01, nG3, $08, nRst, $01, nFs3, $08, nRst, $01, nG3, $08
+
+Snd_Chapel_Loop22:
+	dc.b nRst, $01, nA3, $08, nRst, $01, nBb3, $08
+	sLoop		$00, $02, Snd_Chapel_Loop22
+	dc.b nRst, $01, nC4, $08, nRst, $01, nD4, $08, nRst, $01, nEb4, $08
+	dc.b nRst, $01, nD4, $08, nRst, $01, nC4, $08, nRst, $01, nBb3, $08
+	dc.b nRst, $01, nA3, $08, nRst, $01, nBb3, $08, nRst, $01, nC4, $08
+	dc.b nRst, $01, nD4, $08, nRst, $01, nG3, $08, nRst, $01, nG4, $08
+	dc.b nRst, $01, nG3, $08, nRst, $01, nF4, $08, nRst, $01, nG3, $08
+	dc.b nRst, $01, nEb4, $08, nRst, $01, nG3, $08, nRst, $01, nD4, $08
+	dc.b nRst, $01, nG3, $08, nRst, $01, nF4, $08
+
+Snd_Chapel_Loop23:
+	dc.b nRst, $01, nEb4, $08, nRst, $01, nD4, $08
+	sLoop		$00, $02, Snd_Chapel_Loop23
+	dc.b nRst, $01, nB3, $08, nRst, $01, nC4, $08, nRst, $01, nG3, $08
+	dc.b nRst, $01, nEb4, $08, nRst, $01, nG3, $08, nRst, $01, nD4, $08
+
+Snd_Chapel_Loop24:
+	dc.b nRst, $01, nG3, $08, nRst, $01, nC4, $08
+	sLoop		$00, $02, Snd_Chapel_Loop24
+	dc.b nRst, $01, nFs3, $08, nRst, $01, nEb4, $08, nRst, $01, nFs3, $08
+	dc.b nRst, $01, nD4, $08
+
+Snd_Chapel_Loop25:
+	dc.b nRst, $01, nFs3, $08, nRst, $01, nC4, $08
+	sLoop		$00, $02, Snd_Chapel_Loop25
+	dc.b nRst, $01, nG3, $08, nRst, $01, nEb4, $08, nRst, $01, nG3, $08
+	dc.b nRst, $01, nD4, $08, nRst, $01, nG3, $08, nRst, $01, nC4, $08
+	dc.b nRst, $01, nG3, $08, nRst, $01, nB3, $08, nRst, $01, nC4, $08
+	dc.b nRst, $01, nD4, $08, nRst, $01, nB3, $08, nRst, $01, nG3, $23
+	dc.b nRst, $01
+	sVoice		$01
+	saVol		$F9
+	dc.b nC3, $23, nRst, $0A
+	saVol		$03
+	dc.b nEb3, $04, nRst, $05, nG3, $04, nRst, $05, nC4, $04, nRst, $05
+	saVol		$FE
+	dc.b nEb4, $28, nRst, $05
+	saVol		$02
+	dc.b nD4, $01, nRst, $03, nEb4, $04, nRst, $01, nD4, $08, nRst, $01
+	dc.b nC4, $07, nRst, $02, nG4, $2B, nRst, $02, nG3, $03, nRst, $06
+	dc.b nC4, $03, nRst, $06, nEb4, $03, nRst, $06, nG4, $34, nRst, $02
+	saVol		$04
+	dc.b nG4, $04, nAb4, $03, nRst, $02, nA4, $04, nB4, $03, nRst, $02
+	saVol		$FC
+	dc.b nC5, $46, nRst, $02
+	saVol		$04
+	dc.b nC5, nRst, nD5, nRst, $03, nC5, $02, nRst, nD5, nRst, $03
+	saVol		$FC
+	dc.b nEb5, $02, nRst, nC5, nRst, $03, nG4, $02, nRst, nEb4, nRst, $03
+	dc.b nC5, $02, nRst, nG4, nRst, $03, nEb4, $02, nRst, nC4, nRst, $03
+	dc.b nG4, $02, nRst, nEb4, nRst, $03, nC4, $02, nRst, nG3, nRst, $03
+	saVol		$FE
+	dc.b nC3, $21, nRst, $0C
+	saVol		$FF
+	dc.b nD3, $03, nRst, $06
+	saVol		$03
+	dc.b nEb3, $03, nRst, $06, nF3, $03, nRst, $06
+	saVol		$0A
+
+Snd_Chapel_Loop26:
+	dc.b nG3, $04, nRst, $05
+	saVol		$FD
+	sLoop		$00, $02, Snd_Chapel_Loop26
+
+Snd_Chapel_Loop27:
+	dc.b nG3, $04, nRst, $05
+	saVol		$FE
+	sLoop		$00, $03, Snd_Chapel_Loop27
+	dc.b nG3, $04, nRst, $05
+	saVol		$FF
+	dc.b nG3, $04, nRst, $05, nG3, $04, nRst, $05, nC3, $02, nRst
+	saVol		$01
+	dc.b nEb3, nRst, $03, nG3, $02, nRst, nC4, nRst, $03, nC4, $02, nRst
+	dc.b nG3, nRst, $03, nEb3, $02, nRst, nC3
+
+Snd_Chapel_Loop28:
+	dc.b nRst, $03
+	saVol		$FF
+	dc.b nC4, $02, nRst
+	saVol		$01
+	dc.b nEb4, nRst, $03, nG4, $02, nRst, nC5, nRst, $03, nC5, $02, nRst
+	dc.b nG4, nRst, $03, nEb4, $02, nRst, nC4
+	sLoop		$00, $02, Snd_Chapel_Loop28
+	dc.b nRst, $03
+	saVol		$FF
+	dc.b nC5, $02, nRst
+	saVol		$01
+	dc.b nEb5, nRst, $03, nG5, $02, nRst, nC6, nRst, $03, nC6, $02, nRst
+	dc.b nG5, nRst, $03, nEb5, $02, nRst, nC5, nRst, $03
+	saVol		$FF
+	dc.b nEb4, nRst, $06, nD4, $03, nRst, $06, nC4, $03, nRst, $06, nBb3
+	dc.b $03, nRst, $06, nC4, $03, nRst, $06, nG3, $03, nRst, $06, nEb3
+	dc.b $03, nRst, $06, nC3, $03, nRst, $06, nG2, $08, nRst, $01
+	saVol		$03
+	dc.b nC3, $3E, nRst, $01
+	saVol		$02
+
+Snd_Chapel_Loop29:
+	dc.b nC3, $03, nRst, $01, nD3, $03, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop29
+	dc.b nEb3, $10
+
+Snd_Chapel_Loop2A:
+	dc.b nRst, $02, nEb3, $03, nRst, $01, nF3, $03
+	sLoop		$00, $02, Snd_Chapel_Loop2A
+	dc.b nRst, $02, nG3, $10
+
+Snd_Chapel_Loop2B:
+	dc.b nRst, $02, nC4, $03, nRst, $01, nD4, $03
+	sLoop		$00, $02, Snd_Chapel_Loop2B
+	dc.b nRst, $02, nEb4, $10
+
+Snd_Chapel_Loop2C:
+	dc.b nRst, $02, nEb4, $03, nRst, $01, nF4, $03
+	sLoop		$00, $02, Snd_Chapel_Loop2C
+	dc.b nRst, $02, nG4, $10, nRst, $02
+	saVol		$FE
+	dc.b nC5, $7F, sHold, $03
+	saVol		$04
+	sJump		Snd_Chapel_Jump02
+
+; FM4 Data
+Snd_Chapel_FM4:
+	sVoice		$01
+	sPan		spCenter, $00
+	sModAMPS	$10, $01, $03, $02
+
+Snd_Chapel_Loop17:
+	dc.b nD3, $22, nRst, $02, nD3, $07, nRst, $02, nE3, $07, nRst, $02
+	dc.b nF3, $07, nRst, $02, nG3, $07, nRst, $02, nA3, $46, nRst, $02
+	dc.b nBb3, $22, nRst, $02, nBb3, $07, nRst, $02, nA3, $07, nRst, $02
+	dc.b nG3, $07, nRst, $02, nBb3, $07, nRst, $02, nA3, $46, nRst, $02
+	dc.b nAb3, $46, nRst, $02, nA3, $46, nRst, $02
+	sLoop		$00, $02, Snd_Chapel_Loop17
+	dc.b nAb3, $46, nRst, $02, nA3, $46, nRst, $02
+	saVol		$02
+	dc.b nD3, $22, nRst, $02, nA3, $22, nRst, $02, nD4, $22, nRst, $02
+	dc.b nE4, $22, nRst, $02, nF4, $46, nRst, $02, nFs4, $22, nRst, $02
+	dc.b nA4, $22, nRst, $02, nBb4, $22, nRst, $02, nG4, $22, nRst, $02
+	dc.b nBb4, $22, nRst, $02, nCs5, $22, nRst, $02, nD5, $46, nRst, $02
+	dc.b nD5, $46, nRst, $02, nG3, $22, nRst, $02, nD4, $22, nRst, $02
+	dc.b nG4, $22, nRst, $02, nA4, $22, nRst, $02, nBb4, $46, nRst, $02
+	dc.b nB4, $22, nRst, $02, nD5, $22, nRst, $02, nEb5, $22, nRst, $02
+	dc.b nC5, $22, nRst, $02, nEb5, $22, nRst, $02, nFs5, $22, nRst, $02
+	dc.b nG5, $46, nRst, $02, nG5, $46, nRst, $02
+	sVoice		$00
+	saVol		$05
+
+Snd_Chapel_Loop18:
+	dc.b nC4, $07, nRst, $02, nG3, $07, nRst, $02, nEb4, $07, nRst, $02
+	dc.b nG3, $07, nRst, $02
+	sLoop		$00, $20, Snd_Chapel_Loop18
+	sVoice		$01
+	saVol		$F9
+	sJump		Snd_Chapel_Loop17
+
+; FM5 Data
+Snd_Chapel_FM5:
+	ssDetune	-$4
+	dc.b nRst, $0E
+	sJump		Snd_Chapel_FM4
+
+; FM6 Data
+Snd_Chapel_FM6:
+	ssDetune	-$4
+	dc.b nRst, $12
+	sPan		spLeft, $00
+	sJump		Snd_Chapel_FM1_JMP
+
+; PSG1 Data
+Snd_Chapel_PSG1:
+	sModAMPS	$00, $02, $02, $02
+
+Snd_Chapel_Jump05:
+	dc.b nD1, $48, nA1, nBb1, nA1, nAb1, nA1, nD2, nA2, nBb2, nA2, nAb2
+	dc.b nA2, nAb2, nA2, nD0, $24, nA0, nD1, nE1, nF1, $48, nFs1, $24
+	dc.b nA1, nBb1, nG1, nBb1, nCs2, nD2, $48, $48, nG0, $24, nD1, nG1
+	dc.b nA1, nBb1, $48, nB1, $24, nD2, nEb2, nC2, nEb2, nFs2, nG2, $48
+	dc.b $48
+
+Snd_Chapel_Loop5C:
+	dc.b nC2, nBb1, nA1, nG1
+	sLoop		$00, $04, Snd_Chapel_Loop5C
+	sJump		Snd_Chapel_Jump05
+
+; PSG2 Data
+Snd_Chapel_PSG2:
+	ssDetune	$01
+	sModAMPS	$00, $02, $02, $02
+
+Snd_Chapel_Jump04:
+	dc.b nRst, $01
+	sVolEnv		v06
+	dc.b $0D, nD1, $48, nA1, nBb1, nA1, nAb1, nA1, nD2, nA2, nBb2, nA2
+	dc.b nAb2, nA2, nAb2, nA2, nD0, $24, nA0, nD1, nE1, nF1, $48, nFs1
+	dc.b $24, nA1, nBb1, nG1, nBb1, nCs2, nD2, $48, $48, nG0, $24, nD1
+	dc.b nG1, nA1, nBb1, $48, nB1, $24, nD2, nEb2, nC2, nEb2, nFs2, nG2
+	dc.b $48, $3A
+
+Snd_Chapel_Loop5B:
+	dc.b nG1, $48, nF1, nF1, nEb1
+	sLoop		$00, $04, Snd_Chapel_Loop5B
+	sJump		Snd_Chapel_Jump04
+
+; PSG3 Data
+Snd_Chapel_PSG3:
+	sModAMPS	$00, $02, $02, $02
+
+Snd_Chapel_Jump03:
+	dc.b nRst, $01
+	sVolEnv		v06
+	dc.b $7F, $7F, $7F, $32, nD1, $48, nA1, nBb1, nA1, nAb1, nA1, nAb1
+	dc.b nA1, nC0, $24, nD0, nA0, $48, nD1, nD1, $24, nFs1, nG1, nD1
+	dc.b nG1, nBb1, nA1, $48, $48, nD0, $24, nG0, nD1, $48, nG1, nG1
+	dc.b $24, nB1, nC2, nG1, nC2, nEb2, nD2, $48, $48
+
+Snd_Chapel_Loop5A:
+	dc.b nEb1, nD1, nC1, nBb0
+	sLoop		$00, $04, Snd_Chapel_Loop5A
+	sJump		Snd_Chapel_Jump03
+
+; DAC Data
+Snd_Chapel_DAC2:
+Snd_Chapel_DAC1:
+	sStop

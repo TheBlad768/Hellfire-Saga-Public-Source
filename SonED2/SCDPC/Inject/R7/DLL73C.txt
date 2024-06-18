@@ -1,0 +1,53 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Sonic CD for PC (DirectX Version) DLL73C.DLL Injector File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Little_Endian $0FB17 $2
+
+		include "R7/Obj/XStart3C.bin"
+
+EndSeg
+
+StartSeg Little_Endian $0FB1C $2
+
+		include "R7/Obj/YStart3C.bin"
+
+EndSeg
+
+StartSeg Little_Endian $18D50 $2D8
+
+		include "R7/Pal/PC/3C/0_1.bin"
+		include "R7/Pal/PC/3C/2_3.bin"
+		include "R7/Pal/PC/3C/4.bin"
+		include "R7/Pal/PC/3C/5.bin"
+		include "R7/Pal/PC/3C/6.bin"
+
+EndSeg
+
+StartSeg Little_Endian $18A68 $278
+
+		include "R7/Obj/3.bin" Swap16
+
+EndSeg
+
+StartSeg Little_Endian $19060 $2508
+
+		include "R7/Col/Ang3C.bin"
+		include "R7/Col/HM3C.bin"
+		BYTE	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+		include "R7/Col/HMR3C.bin"
+		BYTE	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+		include "R7/Col/Idx3C.bin"
+
+EndSeg
+
+StartSeg Little_Endian $1B568 $400
+
+		include "R7/FGPC/3C.bin"
+		include "R7/BGPC/3C.bin"
+
+EndSeg
+
+

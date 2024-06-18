@@ -1,0 +1,20 @@
+Snd_SFX36_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$02
+	sHeaderSFX	$80, ctFM4, Snd_SFX36_FM4, $00, $02
+	sHeaderSFX	$80, ctFM5, Snd_SFX36_FM5, $00, $06
+
+; FM5 Data
+Snd_SFX36_FM4:
+	sVoice		$1C
+	ssDetune	$0A
+	dc.b nCs6, $09, nRst, $0B
+	sStop
+
+; FM6 Data
+Snd_SFX36_FM5:
+	sVoice		$1C
+	ssDetune	$0A
+	dc.b nCs5, $09, nRst, $0B
+	sStop

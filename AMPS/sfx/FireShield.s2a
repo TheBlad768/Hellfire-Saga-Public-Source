@@ -1,0 +1,11 @@
+Sound_3E_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$80, ctFM5, Sound_3E_FM5, $E8, $00
+
+; FM5 Data
+Sound_3E_FM5:
+	sVoice		pFireShield
+	dc.b nBb2, $05, sHold, nB2, $26
+	sStop

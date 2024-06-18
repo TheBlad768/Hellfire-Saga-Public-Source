@@ -1,0 +1,12 @@
+Sound_4D_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$80, ctFM5, Sound_4D_FM5, $00, $08
+
+; FM5 Data
+Sound_4D_FM5:
+	sVoice		$13
+	sModAMPS	$01, $01, $E0, $14
+	dc.b nEb3, $09
+	sStop

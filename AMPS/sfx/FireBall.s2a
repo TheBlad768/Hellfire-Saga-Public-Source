@@ -1,0 +1,27 @@
+Sound_70_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$02
+	sHeaderSFX	$80, ctFM5, Sound_70_FM5, $00, $00
+	sHeaderSFX	$A1, ctPSG3, Sound_70_PSG3, $00, $00
+
+; FM5 Data
+Sound_70_FM5:
+	sVoice		$1A
+	sModAMPS	$01, $01, $40, $48
+	dc.b nD0, $06, nE0, $02
+	sStop
+
+; PSG3 Data
+Sound_70_PSG3:
+	sVolEnv		vNone	; was 0D ???
+	dc.b nRst, $0A
+	sNoisePSG	snWhitePSG3
+	dc.b nHiHat, $01, sHold
+
+Sound_70_Loop00:
+	dc.b $02
+	saVol		$08
+	dc.b sHold
+	sLoop		$00, $10, Sound_70_Loop00
+	sStop

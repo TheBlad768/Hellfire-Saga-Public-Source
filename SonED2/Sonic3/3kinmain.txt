@@ -1,0 +1,868 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Sonic the Hedgehog 3 & Knuckles Main Injector File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;
+; Setup Directives ;
+;;;;;;;;;;;;;;;;;;;;
+
+MaxSize	$400000				;Maximum Genesis ROM size
+
+Dispose	$1E44D4	$1FCF2A			;Sonic and Knuckles Sprite, and Ring Layout Offsets and Data and Special Objects Movement/Path Data
+Dispose	$09D680	$0A872C			;Sonic and Knuckles Level Layout Data
+Dispose	$194388	$194400			;Sonic and Knuckles Padding
+Dispose	$1E3BB4	$1E3C00			;Sonic and Knuckles Padding
+
+Dispose	$25E0D8	$26C11E			;Sonic 3 Sprite, Ring, and Special Stage Layout Offsets and Data
+Dispose	$26C11E	$26D000			;Sonic 3 Padding
+Dispose	$281420	$28BF54			;Sonic 3 Level Layout Data
+Dispose	$2DFEAC	$2E0000			;Sonic 3 Padding
+Dispose	$2E7B43	$2E8000			;Sonic 3 Padding
+Dispose	$300000	$3200E0			;Sonic 3 Sonic Art Data
+Dispose	$340FE0	$3428AC			;Sonic 3 Sonic Map Data
+Dispose	$3428AC	$343488			;Sonic 3 Sonic PLC Data
+Dispose	$3FFF20	$400000			;Sonic 3 Padding
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; General Reference Replacement Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;None
+
+
+;;;;;;;;;;;;;;;;;;;;;;;
+; Fixed Data Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Big_Endian $1E3C18	;Replace the Level Start Position Array
+
+;;;
+;Sonic
+;;;
+
+	include	"Levels/AIZ/Start/SK/Sonic/1.bin",     "Levels/AIZ/Start/SK/Sonic/2.bin"
+	include	"Levels/HCZ/Start/SK/Sonic/1.bin",     "Levels/HCZ/Start/SK/Sonic/2.bin"
+	include	"Levels/MGZ/Start/SK/Sonic/1.bin",     "Levels/MGZ/Start/SK/Sonic/2.bin"
+	include	"Levels/CNZ/Start/SK/Sonic/1.bin",     "Levels/CNZ/Start/SK/Sonic/2.bin"
+	include	"Levels/FBZ/Start/Sonic/1.bin",        "Levels/FBZ/Start/Sonic/2.bin"
+	include	"Levels/ICZ/Start/SK/Sonic/1.bin",     "Levels/ICZ/Start/SK/Sonic/2.bin"
+	include	"Levels/LBZ/Start/SK/Sonic/1.bin",     "Levels/LBZ/Start/SK/Sonic/2.bin"
+	include	"Levels/MHZ/Start/Sonic/1.bin",        "Levels/MHZ/Start/Sonic/2.bin"
+	include	"Levels/SOZ/Start/Sonic/1.bin",        "Levels/SOZ/Start/Sonic/2.bin"
+	include	"Levels/LRZ/Start/Sonic/1.bin",        "Levels/LRZ/Start/Sonic/2.bin"
+	include	"Levels/SSZ/Start/Sonic/1.bin",        "Levels/SSZ/Start/Sonic/2.bin"
+	include	"Levels/DEZ/Start/Sonic/1.bin",        "Levels/DEZ/Start/Sonic/2.bin"
+	include	"Levels/DDZ/Start/Sonic/1.bin",        "Levels/DDZ/Start/Sonic/2.bin"
+	include	"Levels/AIZIntro/Start/Sonic/1.bin",   "Levels/Ending/Start/Sonic/1.bin"
+	include	"Levels/ALZ/Start/SK/Sonic/1.bin",     "Levels/ALZ/Start/SK/Sonic/2.bin"
+	include	"Levels/BPZ/Start/SK/Sonic/1.bin",     "Levels/BPZ/Start/SK/Sonic/2.bin"
+	include	"Levels/DPZ/Start/SK/Sonic/1.bin",     "Levels/DPZ/Start/SK/Sonic/2.bin"
+	include	"Levels/CGZ/Start/SK/Sonic/1.bin",     "Levels/CGZ/Start/SK/Sonic/2.bin"
+	include	"Levels/EMZ/Start/SK/Sonic/1.bin",     "Levels/EMZ/Start/SK/Sonic/2.bin"
+	include	"Levels/Gumball/Start/SK/Sonic/1.bin", "Levels/Gumball/Start/SK/Sonic/2.bin"
+	include	"Levels/Pachinko/Start/Sonic/1.bin",   "Levels/Pachinko/Start/Sonic/2.bin"
+	include	"Levels/Slots/Start/Sonic/1.bin",      "Levels/Slots/Start/Sonic/2.bin"
+	include	"Levels/LRZ/Start/Sonic/Boss.bin",     "Levels/HPZ/Start/Sonic/1.bin"
+	include	"Levels/DEZ/Start/Sonic/Boss.bin",     "Levels/HPZ/Start/Sonic/Mini.bin"
+
+;;;
+;Knuckles
+;;;
+
+	include	"Levels/AIZ/Start/SK/Knuckles/1.bin",     "Levels/AIZ/Start/SK/Knuckles/2.bin"
+	include	"Levels/HCZ/Start/SK/Knuckles/1.bin",     "Levels/HCZ/Start/SK/Knuckles/2.bin"
+	include	"Levels/MGZ/Start/SK/Knuckles/1.bin",     "Levels/MGZ/Start/SK/Knuckles/2.bin"
+	include	"Levels/CNZ/Start/SK/Knuckles/1.bin",     "Levels/CNZ/Start/SK/Knuckles/2.bin"
+	include	"Levels/FBZ/Start/Knuckles/1.bin",        "Levels/FBZ/Start/Knuckles/2.bin"
+	include	"Levels/ICZ/Start/SK/Knuckles/1.bin",     "Levels/ICZ/Start/SK/Knuckles/2.bin"
+	include	"Levels/LBZ/Start/SK/Knuckles/1.bin",     "Levels/LBZ/Start/SK/Knuckles/2.bin"
+	include	"Levels/MHZ/Start/Knuckles/1.bin",        "Levels/MHZ/Start/Knuckles/2.bin"
+	include	"Levels/SOZ/Start/Knuckles/1.bin",        "Levels/SOZ/Start/Knuckles/2.bin"
+	include	"Levels/LRZ/Start/Knuckles/1.bin",        "Levels/LRZ/Start/Knuckles/2.bin"
+	include	"Levels/SSZ/Start/Knuckles/1.bin",        "Levels/SSZ/Start/Knuckles/2.bin"
+	include	"Levels/DEZ/Start/Knuckles/1.bin",        "Levels/DEZ/Start/Knuckles/2.bin"
+	include	"Levels/DDZ/Start/Knuckles/1.bin",        "Levels/DDZ/Start/Knuckles/2.bin"
+	include	"Levels/AIZIntro/Start/Knuckles/1.bin",   "Levels/Ending/Start/Knuckles/1.bin"
+	include	"Levels/ALZ/Start/SK/Knuckles/1.bin",     "Levels/ALZ/Start/SK/Knuckles/2.bin"
+	include	"Levels/BPZ/Start/SK/Knuckles/1.bin",     "Levels/BPZ/Start/SK/Knuckles/2.bin"
+	include	"Levels/DPZ/Start/SK/Knuckles/1.bin",     "Levels/DPZ/Start/SK/Knuckles/2.bin"
+	include	"Levels/CGZ/Start/SK/Knuckles/1.bin",     "Levels/CGZ/Start/SK/Knuckles/2.bin"
+	include	"Levels/EMZ/Start/SK/Knuckles/1.bin",     "Levels/EMZ/Start/SK/Knuckles/2.bin"
+	include	"Levels/Gumball/Start/SK/Knuckles/1.bin", "Levels/Gumball/Start/SK/Knuckles/2.bin"
+	include	"Levels/Pachinko/Start/Knuckles/1.bin",   "Levels/Pachinko/Start/Knuckles/2.bin"
+	include	"Levels/Slots/Start/Knuckles/1.bin",      "Levels/Slots/Start/Knuckles/2.bin"
+	include	"Levels/LRZ/Start/Knuckles/Boss.bin",     "Levels/HPZ/Start/Knuckles/1.bin"
+	include	"Levels/DEZ/Start/Knuckles/Boss.bin",     "Levels/HPZ/Start/Knuckles/Mini.bin"
+
+EndSeg
+
+StartSeg PalPointers Big_Endian $0A872C
+
+	DWORD	Pal_00			;00
+	WORD	$FC00
+	WORD	$1F
+	DWORD	Pal_01			;01
+	WORD	$FC20
+	WORD	7
+	DWORD	Pal_02			;02
+	WORD	$FC00
+	WORD	$1F
+	DWORD	Pal_SonicTails		;03
+	WORD	$FC00
+	WORD	7
+	DWORD	Pal_04			;04
+	WORD	$FC00
+	WORD	$1F
+	DWORD	Pal_Knuckles		;05
+	WORD	$FC00
+	WORD	7
+	DWORD	Pal_00			;06
+	WORD	$FC00
+	WORD	$1F
+	DWORD	Pal_00			;07
+	WORD	$FC00
+	WORD	$1F
+	DWORD	Pal_00			;08
+	WORD	$FC00
+	WORD	$1F
+	DWORD	Pal_00			;09
+	WORD	$FC00
+	WORD	$1F
+	DWORD	Pal_AIZIntro		;0A
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_AIZFire		;0B
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_HCZ1		;0C
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_HCZ2		;0D
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_MGZ			;0E
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_MGZ			;0F
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_CNZ			;10
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_CNZ			;11
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_FBZ1		;12
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_FBZ2		;13
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_ICZ1		;14
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_ICZ2		;15
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_LBZ1		;16
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_LBZ2		;17
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_MHZ1		;18
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_MHZ2		;19
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_SOZ1		;1A
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_S0Z2		;1B
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_LRZ1		;1C
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_LRZ2		;1D
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_SSZ1		;1E
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_SSZ2		;1F
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_DEZ1		;20
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_DEZ2		;21
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_DDZ			;22
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_DDZ			;23
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_24			;24
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_25			;25
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_ALZ			;26
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_ALZ			;27
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_BPZ			;28
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_BPZ			;29
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_AIZ			;2A
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_AIZ_Water		;2B
+	WORD	$FC00
+	WORD	$1F
+	DWORD	Pal_AIZ2_Water		;2C
+	WORD	$FC00
+	WORD	$1F
+	DWORD	Pal_LBZ_Water		;2D
+	WORD	$FC00
+	WORD	$1F
+	DWORD	Pal_LBZ_Water		;2E
+	WORD	$FC00
+	WORD	$1F
+	DWORD	Pal_LBZ_DeathEgg	;2F
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_AIZBoss		;30
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_HCZ1_Water		;31
+	WORD	$FC00
+	WORD	$1F
+	DWORD	Pal_HCZ2_Water		;32
+	WORD	$FC00
+	WORD	$1F
+	DWORD	Pal_Gumball		;33
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_DPZ			;34
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_CGZ			;35
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_EMZ			;36
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_Pachinko		;37
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_Slot		;38
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_ICZ2_Water		;39
+	WORD	$FC00
+	WORD	$1F
+	DWORD	Pal_CNZ_Water		;3A
+	WORD	$FC00
+	WORD	$1F
+	DWORD	Pal_AIZ			;3B
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_SOZ2_Dark1		;3C
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_SOZ2_Dark2		;3D
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_LRZBoss		;3E
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_HPZ			;3F
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_DEZBoss		;40
+	WORD	$FC20
+	WORD	$17
+	DWORD	Pal_DEZBoss		;41
+	WORD	$FC20
+	WORD	$17
+
+	Pal_00:		include	"Palettes/SK/A893C.bin"
+	Pal_01:		include "Palettes/SK/A89BC.bin"
+	Pal_02:		include	"Palettes/SK/A89DC.bin"
+	Pal_SonicTails:	include	"Palettes/SK/SonTail.bin"
+	Pal_04:		include	"Palettes/SK/A8A7C.bin"
+	Pal_Knuckles:	include	"Palettes/SK/Knuckles.bin"
+	Pal_AIZIntro:	include	"Levels/AIZ/Pal/SK/Intro.bin"
+	Pal_AIZ:	include	"Levels/AIZ/Pal/SK/1.bin"
+	Pal_AIZFire:	include	"Levels/AIZ/Pal/SK/Fire.bin"
+	Pal_AIZBoss:	include	"Levels/AIZ/Pal/SK/Boss.bin"
+	Pal_AIZ_Water:	include	"Levels/AIZ/Pal/SK/Water1.bin"
+	Pal_AIZ2_Water:	include	"Levels/AIZ/Pal/SK/Water2.bin"
+	Pal_HCZ1:	include	"Levels/HCZ/Pal/SK/1.bin"
+	Pal_HCZ2:	include	"Levels/HCZ/Pal/SK/2.bin"
+	Pal_HCZ1_Water:	include	"Levels/HCZ/Pal/SK/Water1.bin"
+	Pal_HCZ2_Water:	include	"Levels/HCZ/Pal/SK/Water2.bin"
+	Pal_MGZ:	include	"Levels/MGZ/Pal/SK/1.bin"
+	Pal_CNZ:	include	"Levels/CNZ/Pal/SK/1.bin"
+	Pal_CNZ_Water:	include	"Levels/CNZ/Pal/SK/Water.bin"
+	Pal_FBZ1:	include	"Levels/FBZ/Pal/1.bin"
+	Pal_FBZ2:	include	"Levels/FBZ/Pal/2.bin"
+	Pal_ICZ1:	include	"Levels/ICZ/Pal/SK/1.bin"
+	Pal_ICZ2:	include	"Levels/ICZ/Pal/SK/2.bin"
+	Pal_ICZ2_Water:	include	"Levels/ICZ/Pal/SK/Water.bin"
+	Pal_LBZ1:	include	"Levels/LBZ/Pal/SK/1.bin"
+	Pal_LBZ2:	include	"Levels/LBZ/Pal/SK/2.bin"
+	Pal_LBZ_Water:	include	"Levels/LBZ/Pal/SK/Water.bin"
+	Pal_LBZ_DeathEgg:	include	"Levels/LBZ/Pal/SK/DeathEgg.bin"
+	Pal_MHZ1:	include	"Levels/MHZ/Pal/1.bin"
+	Pal_MHZ2:	include	"Levels/MHZ/Pal/2.bin"
+	Pal_SOZ1:	include	"Levels/SOZ/Pal/1.bin"
+	Pal_S0Z2:	include	"Levels/SOZ/Pal/2.bin"
+	Pal_SOZ2_Dark1:	include	"Levels/SOZ/Pal/Dark2_1.bin"
+	Pal_SOZ2_Dark2:	include	"Levels/SOZ/Pal/Dark2_2.bin"
+	Pal_LRZ1:	include	"Levels/LRZ/Pal/1.bin"
+	Pal_LRZ2:	include	"Levels/LRZ/Pal/2.bin"
+	Pal_SSZ1:	include	"Levels/SSZ/Pal/1.bin"
+	Pal_SSZ2:	include	"Levels/SSZ/Pal/2.bin"
+			include	"Levels/SSZ/Pal/2_Ex.bin"		;Part of the above palette, but this section of the palette is also directly addressed
+	Pal_24:		include	"Palettes/SK/A97FC.bin"
+	Pal_25:		include	"Palettes/SK/A985C.bin"
+	Pal_DEZ1:	include	"Levels/DEZ/Pal/1.bin"
+	Pal_DEZ2:	include	"Levels/DEZ/Pal/2.bin"
+	Pal_DDZ:	include	"Levels/DDZ/Pal/1.bin"
+	Pal_ALZ:	include	"Levels/ALZ/Pal/SK/1.bin"
+	Pal_BPZ:	include	"Levels/BPZ/Pal/SK/1.bin"
+	Pal_DPZ:	include	"Levels/DPZ/Pal/SK/1.bin"
+	Pal_CGZ:	include	"Levels/CGZ/Pal/SK/1.bin"
+	Pal_EMZ:	include	"Levels/EMZ/Pal/SK/1.bin"
+	Pal_Gumball:	include	"Levels/Gumball/Pal/SK/1.bin"
+	Pal_Pachinko:	include	"Levels/Pachinko/Pal/1.bin"
+	Pal_Slot:	include	"Levels/Slots/Pal/1.bin"
+	Pal_LRZBoss:	include	"Levels/LRZ/Pal/Boss.bin"
+	Pal_HPZ:	include	"Levels/HPZ/Pal/1.bin"
+			include	"Levels/HPZ/Pal/1_Ex.bin"		;Part of the above palette, but this section of the palette is also directly addressed
+	Pal_DEZBoss:	include	"Levels/DEZ/Pal/Boss.bin"
+
+EndSeg
+
+StartSeg SpriteRingObjDataPtrs Big_Endian $1E3D98
+
+	;;;
+	;Object Layout Ptrs
+	;;;
+
+	DWORD	Sprites_AIZ1
+	DWORD	Sprites_AIZ2
+	DWORD	Sprites_HCZ1
+	DWORD	Sprites_HCZ2
+	DWORD	Sprites_MGZ1
+	DWORD	Sprites_MGZ2
+	DWORD	Sprites_CNZ1
+	DWORD	Sprites_CNZ2
+	DWORD	Sprites_FBZ1
+	DWORD	Sprites_FBZ2
+	DWORD	Sprites_ICZ1
+	DWORD	Sprites_ICZ2
+	DWORD	Sprites_LBZ1
+	DWORD	Sprites_LBZ2
+	DWORD	Sprites_MHZ1
+	DWORD	Sprites_MHZ2
+	DWORD	Sprites_SOZ1
+	DWORD	Sprites_SOZ2
+	DWORD	Sprites_LRZ1
+	DWORD	Sprites_LRZ2
+	DWORD	Sprites_SSZ1
+	DWORD	Sprites_SSZ2
+	DWORD	Sprites_DEZ1
+	DWORD	Sprites_DEZ2
+	DWORD	Sprites_DDZ1
+	DWORD	Sprites_DDZ2
+	DWORD	Sprites_Ending
+	DWORD	Sprites_Ending
+	DWORD	Sprites_ALZ
+	DWORD	Sprites_ALZ
+	DWORD	Sprites_BPZ
+	DWORD	Sprites_BPZ
+	DWORD	Sprites_DPZ
+	DWORD	Sprites_DPZ
+	DWORD	Sprites_CGZ
+	DWORD	Sprites_CGZ
+	DWORD	Sprites_EMZ
+	DWORD	Sprites_EMZ
+	DWORD	Sprites_Gumball
+	DWORD	Sprites_Gumball
+	DWORD	Sprites_Pachinko
+	DWORD	Sprites_Pachinko
+	DWORD	Sprites_Slots
+	DWORD	Sprites_Slots
+	DWORD	Sprites_LRZ3
+	DWORD	Sprites_HPZ
+	DWORD	Sprites_DEZ3
+	DWORD	Sprites_HPZMini
+
+	;;;
+	;Ring Layout Ptrs
+	;;;
+
+	DWORD	Rings_AIZ1
+	DWORD	Rings_AIZ2
+	DWORD	Rings_HCZ1
+	DWORD	Rings_HCZ2
+	DWORD	Rings_MGZ1
+	DWORD	Rings_MGZ2
+	DWORD	Rings_CNZ1
+	DWORD	Rings_CNZ2
+	DWORD	Rings_FBZ1
+	DWORD	Rings_FBZ2
+	DWORD	Rings_ICZ1
+	DWORD	Rings_ICZ2
+	DWORD	Rings_LBZ1
+	DWORD	Rings_LBZ2
+	DWORD	Rings_MHZ1
+	DWORD	Rings_MHZ2
+	DWORD	Rings_SOZ1
+	DWORD	Rings_SOZ2
+	DWORD	Rings_LRZ1
+	DWORD	Rings_LRZ2
+	DWORD	Rings_SSZ1
+	DWORD	Rings_SSZ2
+	DWORD	Rings_DEZ1
+	DWORD	Rings_DEZ2
+	DWORD	Rings_DDZ1
+	DWORD	Rings_DDZ2
+	DWORD	Rings_Ending
+	DWORD	Rings_Ending
+	DWORD	Rings_ALZ
+	DWORD	Rings_ALZ
+	DWORD	Rings_BPZ
+	DWORD	Rings_BPZ
+	DWORD	Rings_DPZ
+	DWORD	Rings_DPZ
+	DWORD	Rings_CGZ
+	DWORD	Rings_CGZ
+	DWORD	Rings_EMZ
+	DWORD	Rings_EMZ
+	DWORD	Rings_Gumball
+	DWORD	Rings_Gumball
+	DWORD	Rings_Pachinko
+	DWORD	Rings_Pachinko
+	DWORD	Rings_Slots
+	DWORD	Rings_Slots
+	DWORD	Rings_LRZ3
+	DWORD	Rings_HPZ
+	DWORD	Rings_DEZ3
+	DWORD	Rings_DEZ3
+
+	;;;
+	;LRZ Auto-Tunnel Path Data Ptrs
+	;;;
+
+	DWORD	LRZTunnel_00
+	DWORD	LRZTunnel_01_02
+	DWORD	LRZTunnel_01_02
+	DWORD	LRZTunnel_03
+	DWORD	LRZTunnel_04
+	DWORD	LRZTunnel_05
+	DWORD	LRZTunnel_06
+	DWORD	LRZTunnel_07
+	DWORD	LRZTunnel_08
+	DWORD	LRZTunnel_09
+	DWORD	LRZTunnel_0A
+	DWORD	LRZTunnel_0B
+	DWORD	LRZTunnel_0C
+	DWORD	LRZTunnel_0D
+	DWORD	LRZTunnel_0E
+	DWORD	LRZTunnel_0F
+	DWORD	LRZTunnel_10
+	DWORD	LRZTunnel_11
+	DWORD	LRZTunnel_12
+	DWORD	LRZTunnel_13
+	DWORD	LRZTunnel_14
+	DWORD	LRZTunnel_15		; LRZ2 first
+	DWORD	LRZTunnel_16
+	DWORD	LRZTunnel_17
+	DWORD	LRZTunnel_18
+	DWORD	LRZTunnel_19
+	DWORD	Sprite_NULL
+	DWORD	Sprite_NULL
+	DWORD	Sprite_NULL
+	DWORD	Sprite_NULL
+	DWORD	Sprite_NULL
+	DWORD	Sprite_NULL
+
+	;;;
+	;FBZ Snake Platform Movement Data
+	;;;
+
+	DWORD	FBZSnakePlatform_00
+	DWORD	FBZSnakePlatform_01
+	DWORD	FBZSnakePlatform_02
+	DWORD	FBZSnakePlatform_03
+	DWORD	FBZSnakePlatform_04
+	DWORD	FBZSnakePlatform_05
+	DWORD	FBZSnakePlatform_06
+	DWORD	FBZSnakePlatform_07
+	DWORD	Sprite_NULL
+	DWORD	Sprite_NULL
+	DWORD	Sprite_NULL
+	DWORD	Sprite_NULL
+	DWORD	Sprite_NULL
+	DWORD	Sprite_NULL
+	DWORD	Sprite_NULL
+	DWORD	Sprite_NULL
+
+	;;;
+	;SOZ Conveyor Rock Movement Data
+	;;;
+
+	DWORD	SOZConveyorRock_00
+	DWORD	SOZConveyorRock_01
+	DWORD	SOZConveyorRock_02
+	DWORD	SOZConveyorRock_03
+	DWORD	SOZConveyorRock_04
+	DWORD	SOZConveyorRock_05
+	DWORD	SOZConveyorRock_06
+	DWORD	SOZConveyorRock_07
+	DWORD	SOZConveyorRock_08
+	DWORD	SOZConveyorRock_09
+	DWORD	SOZConveyorRock_0A
+	DWORD	SOZConveyorRock_NULL
+	DWORD	SOZConveyorRock_NULL
+	DWORD	SOZConveyorRock_NULL
+	DWORD	SOZConveyorRock_NULL
+	DWORD	SOZConveyorRock_NULL
+	DWORD	SOZConveyorRock_NULL
+	DWORD	SOZConveyorRock_NULL
+	DWORD	SOZConveyorRock_NULL
+	DWORD	SOZConveyorRock_NULL
+	DWORD	SOZConveyorRock_NULL
+	DWORD	SOZConveyorRock_NULL
+	DWORD	SOZConveyorRock_NULL
+	DWORD	SOZConveyorRock_NULL
+	DWORD	SOZConveyorRock_NULL
+	DWORD	SOZConveyorRock_NULL
+	DWORD	SOZConveyorRock_NULL
+	DWORD	SOZConveyorRock_NULL
+	DWORD	SOZConveyorRock_NULL
+	DWORD	SOZConveyorRock_NULL
+	DWORD	SOZConveyorRock_NULL
+	DWORD	SOZConveyorRock_NULL
+
+	;;;
+	;DEZ Light Tunnel Path Data
+	;;;
+
+	DWORD	DEZLightTunnel_00
+	DWORD	DEZLightTunnel_01
+	DWORD	DEZLightTunnel_02_03
+	DWORD	DEZLightTunnel_02_03
+	DWORD	DEZLightTunnel_04
+	DWORD	DEZLightTunnel_05
+	DWORD	DEZLightTunnel_06
+	DWORD	DEZLightTunnel_07
+
+EndSeg
+
+StartSeg LayoutPtrs Big_Endian $09D5C0
+
+	DWORD	Layout_AIZ1
+	DWORD	Layout_AIZ2
+	DWORD	Layout_HCZ1
+	DWORD	Layout_HCZ2
+	DWORD	Layout_MGZ1
+	DWORD	Layout_MGZ2
+	DWORD	Layout_CNZ1
+	DWORD	Layout_CNZ2
+	DWORD	Layout_FBZ1
+	DWORD	Layout_FBZ2
+	DWORD	Layout_ICZ1
+	DWORD	Layout_ICZ2
+	DWORD	Layout_LBZ1
+	DWORD	Layout_LBZ2
+	DWORD	Layout_MHZ1
+	DWORD	Layout_MHZ2
+	DWORD	Layout_SOZ1
+	DWORD	Layout_SOZ2
+	DWORD	Layout_LRZ1
+	DWORD	Layout_LRZ2
+	DWORD	Layout_SSZ1
+	DWORD	Layout_SSZ2
+	DWORD	Layout_DEZ1
+	DWORD	Layout_DEZ2
+	DWORD	Layout_DDZ
+	DWORD	Layout_DDZ
+	DWORD	Layout_SSZ2
+	DWORD	Layout_SSZ2
+	DWORD	Layout_ALZ
+	DWORD	Layout_ALZ
+	DWORD	Layout_BPZ
+	DWORD	Layout_BPZ
+	DWORD	Layout_DPZ
+	DWORD	Layout_DPZ
+	DWORD	Layout_CGZ
+	DWORD	Layout_CGZ
+	DWORD	Layout_EMZ
+	DWORD	Layout_EMZ
+	DWORD	Layout_Gumball
+	DWORD	Layout_Gumball
+	DWORD	Layout_Pachinko
+	DWORD	Layout_Pachinko
+	DWORD	Layout_Slots
+	DWORD	Layout_Slots
+	DWORD	Layout_LRZBoss
+	DWORD	Layout_HPZ
+	DWORD	Layout_DEZBoss
+	DWORD	Layout_HPZ
+
+EndSeg
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Moveable Data Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Big_Endian
+
+;;;
+;Sonic3
+;;;
+
+	Layout_AIZ1:	include	"Levels/AIZ/Layout/1.bin"
+	Layout_AIZ2:	include	"Levels/AIZ/Layout/2.bin"
+	Layout_HCZ1:	include	"Levels/HCZ/Layout/1.bin"
+	Layout_HCZ2:	include	"Levels/HCZ/Layout/2.bin"
+	Layout_MGZ1:	include	"Levels/MGZ/Layout/1.bin"
+	Layout_MGZ2:	include	"Levels/MGZ/Layout/2.bin"
+	Layout_CNZ1:	include	"Levels/CNZ/Layout/1.bin"
+	Layout_CNZ2:	include	"Levels/CNZ/Layout/2.bin"
+	Layout_ICZ1:	include	"Levels/ICZ/Layout/1.bin"
+	Layout_ICZ2:	include	"Levels/ICZ/Layout/2.bin"
+	Layout_LBZ1:	include	"Levels/LBZ/Layout/1.bin"
+	Layout_LBZ2:	include	"Levels/LBZ/Layout/2.bin"
+	Layout_ALZ:	include	"Levels/ALZ/Layout/1.bin"
+	Layout_BPZ:	include	"Levels/BPZ/Layout/1.bin"
+	Layout_DPZ:	include	"Levels/DPZ/Layout/1.bin"
+	Layout_CGZ:	include	"Levels/CGZ/Layout/1.bin"
+	Layout_EMZ:	include	"Levels/EMZ/Layout/1.bin"
+	Layout_Gumball:	include	"Levels/Gumball/Layout/1.bin"
+
+EndSeg
+
+StartSeg Big_Endian
+
+;;;
+;Sonic and Knuckles
+;;;
+
+	Layout_FBZ1:	include	"Levels/FBZ/Layout/1.bin"
+	Layout_FBZ2:	include	"Levels/FBZ/Layout/2.bin"
+	Layout_MHZ1:	include	"Levels/MHZ/Layout/1.bin"
+	Layout_MHZ2:	include	"Levels/MHZ/Layout/2.bin"
+	Layout_SOZ1:	include	"Levels/SOZ/Layout/1.bin"
+	Layout_SOZ2:	include	"Levels/SOZ/Layout/2.bin"
+	Layout_LRZ1:	include	"Levels/LRZ/Layout/1.bin"
+	Layout_LRZ2:	include	"Levels/LRZ/Layout/2.bin"
+	Layout_SSZ1:	include	"Levels/SSZ/Layout/1.bin"
+	Layout_SSZ2:	include	"Levels/SSZ/Layout/2.bin"
+	Layout_DEZ1:	include	"Levels/DEZ/Layout/1.bin"
+	Layout_DEZ2:	include	"Levels/DEZ/Layout/2.bin"
+	Layout_DDZ:	include	"Levels/DDZ/Layout/1.bin"
+	Layout_Pachinko:	include	"Levels/Pachinko/Layout/1.bin"
+	Layout_Slots:	include	"Levels/Slots/Layout/1.bin"
+	Layout_LRZBoss:	include	"Levels/LRZ/Layout/Boss.bin"
+	Layout_HPZ:	include	"Levels/HPZ/Layout/1.bin"
+	Layout_DEZBoss:	include	"Levels/DEZ/Layout/Boss.bin"
+	Layout_MHZCustom:	include	"Levels/MHZ/Layout/FBZShip.bin"			;Loaded manually during gameplay
+
+EndSeg
+
+StartSeg RingPos_Index Big_Endian
+
+	Rings_AIZ1:	include	"Levels/AIZ/Rng/SK/1.bin"
+	Rings_AIZ2:	include	"Levels/AIZ/Rng/SK/2.bin"
+	Rings_HCZ1:	include	"Levels/HCZ/Rng/SK/1.bin"
+	Rings_HCZ2:	include	"Levels/HCZ/Rng/SK/2.bin"
+	Rings_MGZ1:	include	"Levels/MGZ/Rng/SK/1.bin"
+	Rings_MGZ2:	include	"Levels/MGZ/Rng/SK/2.bin"
+	Rings_CNZ1:	include	"Levels/CNZ/Rng/SK/1.bin"
+	Rings_CNZ2:	include	"Levels/CNZ/Rng/SK/2.bin"
+	Rings_FBZ1:	include	"Levels/FBZ/Rng/1.bin"
+	Rings_FBZ2:	include	"Levels/FBZ/Rng/2.bin"
+	Rings_ICZ1:	include	"Levels/ICZ/Rng/SK/1.bin"
+	Rings_ICZ2:	include	"Levels/ICZ/Rng/SK/2.bin"
+	Rings_LBZ1:	include	"Levels/LBZ/Rng/SK/1.bin"
+	Rings_LBZ2:	include	"Levels/LBZ/Rng/SK/2.bin"
+
+EndSeg
+
+StartSeg RingPos_Index Big_Endian
+
+	Rings_MHZ1:	include	"Levels/MHZ/Rng/1.bin"
+	Rings_MHZ2:	include	"Levels/MHZ/Rng/2.bin"
+	Rings_SOZ1:	include	"Levels/SOZ/Rng/1.bin"
+	Rings_SOZ2:	include	"Levels/SOZ/Rng/2.bin"
+	Rings_LRZ1:	include	"Levels/LRZ/Rng/1.bin"
+	Rings_LRZ2:	include	"Levels/LRZ/Rng/2.bin"
+	Rings_SSZ1:	include	"Levels/SSZ/Rng/1.bin"
+	Rings_SSZ2:	include	"Levels/SSZ/Rng/2.bin"
+	Rings_DEZ1:	include	"Levels/DEZ/Rng/1.bin"
+	Rings_DEZ2:	include	"Levels/DEZ/Rng/2.bin"
+	Rings_DDZ1:	include	"Levels/DDZ/Rng/1.bin"
+	Rings_DDZ2:	include	"Levels/DDZ/Rng/2.bin"
+	Rings_Ending:	include	"Levels/Ending/Rng/1.bin"
+	Rings_ALZ:	include	"Levels/ALZ/Rng/SK/1.bin"
+	Rings_BPZ:	include	"Levels/BPZ/Rng/SK/1.bin"
+	Rings_DPZ:	include	"Levels/DPZ/Rng/SK/1.bin"
+	Rings_CGZ:	include	"Levels/CGZ/Rng/SK/1.bin"
+	Rings_EMZ:	include	"Levels/EMZ/Rng/SK/1.bin"
+	Rings_Gumball:	include	"Levels/Gumball/Rng/SK/1.bin"
+	Rings_Pachinko:	include	"Levels/Pachinko/Rng/1.bin"
+	Rings_Slots:	include	"Levels/Slots/Rng/1.bin"
+	Rings_LRZ3:	include	"Levels/LRZ/Rng/3.bin"
+	Rings_HPZ:	include	"Levels/HPZ/Rng/1.bin"
+	Rings_DEZ3:	include	"Levels/DEZ/Rng/Boss.bin"
+
+EndSeg
+
+StartSeg ObjPos_Index Big_Endian
+
+			WORD $FFFF, $0000, $0000			;Object position data prefix
+	Sprites_AIZ1:	include	"Levels/AIZ/Obj/SK/1.bin"
+	Sprites_AIZ2:	include	"Levels/AIZ/Obj/SK/2.bin"
+	Sprites_HCZ1:	include	"Levels/HCZ/Obj/SK/1.bin"
+	Sprites_HCZ2:	include	"Levels/HCZ/Obj/SK/2.bin"
+	Sprites_MGZ1:	include	"Levels/MGZ/Obj/SK/1.bin"
+	Sprites_MGZ2:	include	"Levels/MGZ/Obj/SK/2.bin"
+	Sprites_CNZ1:	include	"Levels/CNZ/Obj/SK/1.bin"
+	Sprites_CNZ2:	include	"Levels/CNZ/Obj/SK/2.bin"
+	Sprites_FBZ1:	include	"Levels/FBZ/Obj/1.bin"
+	Sprites_FBZ2:	include	"Levels/FBZ/Obj/2.bin"
+	Sprites_ICZ1:	include	"Levels/ICZ/Obj/SK/1.bin"
+	Sprites_ICZ2:	include	"Levels/ICZ/Obj/SK/2.bin"
+	Sprites_LBZ1:	include	"Levels/LBZ/Obj/SK/1.bin"
+	Sprites_LBZ2:	include	"Levels/LBZ/Obj/SK/2.bin"
+	Sprites_MHZ1:	include	"Levels/MHZ/Obj/1.bin"
+	Sprites_MHZ2:	include	"Levels/MHZ/Obj/2.bin"
+	Sprites_SOZ1:	include	"Levels/SOZ/Obj/1.bin"
+	Sprites_SOZ2:	include	"Levels/SOZ/Obj/2.bin"
+	Sprites_LRZ1:	include	"Levels/LRZ/Obj/1.bin"
+	Sprites_LRZ2:	include	"Levels/LRZ/Obj/2.bin"
+	Sprites_SSZ1:	include	"Levels/SSZ/Obj/1.bin"
+	Sprites_SSZ2:	include	"Levels/SSZ/Obj/2.bin"
+	Sprites_DEZ1:	include	"Levels/DEZ/Obj/1.bin"
+	Sprites_DEZ2:	include	"Levels/DEZ/Obj/2.bin"
+	Sprites_DDZ1:	include	"Levels/DDZ/Obj/1.bin"
+	Sprites_DDZ2:	include	"Levels/DDZ/Obj/2.bin"
+	Sprites_Ending:	include	"Levels/Ending/Obj/1.bin"
+	Sprites_ALZ:	include	"Levels/ALZ/Obj/SK/1.bin"
+	Sprites_BPZ:	include	"Levels/BPZ/Obj/SK/1.bin"
+	Sprites_DPZ:	include	"Levels/DPZ/Obj/SK/1.bin"
+	Sprites_CGZ:	include	"Levels/CGZ/Obj/SK/1.bin"
+	Sprites_EMZ:	include	"Levels/EMZ/Obj/SK/1.bin"
+	Sprites_Gumball:	include	"Levels/Gumball/Obj/SK/1.bin"
+	Sprites_Pachinko:	include	"Levels/Pachinko/Obj/1.bin"
+	Sprites_Slots:	include	"Levels/Slots/Obj/1.bin"
+	Sprites_LRZ3:	include	"Levels/LRZ/Obj/3.bin"
+	Sprites_HPZ:	include	"Levels/HPZ/Obj/1.bin"
+	Sprites_DEZ3:	include	"Levels/DEZ/Obj/Boss.bin"
+	Sprites_HPZMini:	include	"Levels/HPZ/Obj/Mini.bin"
+
+EndSeg
+
+
+
+
+
+StartSeg Big_Endian
+
+	Sprite_NULL:
+		WORD  $FFFF,	 0,	0
+
+	;;;
+	;FBZ Snake Platform Movement Data
+	;;;
+
+	FBZSnakePlatform_00:	include	"Levels/FBZ/Obj/PlatData/00.bin"
+	FBZSnakePlatform_01:	include	"Levels/FBZ/Obj/PlatData/01.bin"
+	FBZSnakePlatform_02:	include	"Levels/FBZ/Obj/PlatData/02.bin"
+	FBZSnakePlatform_03:	include	"Levels/FBZ/Obj/PlatData/03.bin"
+	FBZSnakePlatform_04:	include	"Levels/FBZ/Obj/PlatData/04.bin"
+	FBZSnakePlatform_05:	include	"Levels/FBZ/Obj/PlatData/05.bin"
+	FBZSnakePlatform_06:	include	"Levels/FBZ/Obj/PlatData/06.bin"
+	FBZSnakePlatform_07:	include	"Levels/FBZ/Obj/PlatData/07.bin"
+
+	;;;
+	;LRZ Auto-Tunnel Path Data Ptrs
+	;;;
+
+	LRZTunnel_00:	include	"Levels/LRZ/Obj/TunlPath/00.bin"
+	LRZTunnel_01_02:	include	"Levels/LRZ/Obj/TunlPath/01_02.bin"
+	LRZTunnel_03:	include	"Levels/LRZ/Obj/TunlPath/03.bin"
+	LRZTunnel_04:	include	"Levels/LRZ/Obj/TunlPath/04.bin"
+	LRZTunnel_05:	include	"Levels/LRZ/Obj/TunlPath/05.bin"
+	LRZTunnel_06:	include	"Levels/LRZ/Obj/TunlPath/06.bin"
+	LRZTunnel_07:	include	"Levels/LRZ/Obj/TunlPath/07.bin"
+	LRZTunnel_08:	include	"Levels/LRZ/Obj/TunlPath/08.bin"
+	LRZTunnel_09:	include	"Levels/LRZ/Obj/TunlPath/09.bin"
+	LRZTunnel_0A:	include	"Levels/LRZ/Obj/TunlPath/0A.bin"
+	LRZTunnel_0B:	include	"Levels/LRZ/Obj/TunlPath/0B.bin"
+	LRZTunnel_0C:	include	"Levels/LRZ/Obj/TunlPath/0C.bin"
+	LRZTunnel_0D:	include	"Levels/LRZ/Obj/TunlPath/0D.bin"
+	LRZTunnel_0E:	include	"Levels/LRZ/Obj/TunlPath/0E.bin"
+	LRZTunnel_0F:	include	"Levels/LRZ/Obj/TunlPath/0F.bin"
+	LRZTunnel_10:	include	"Levels/LRZ/Obj/TunlPath/10.bin"
+	LRZTunnel_11:	include	"Levels/LRZ/Obj/TunlPath/11.bin"
+	LRZTunnel_12:	include	"Levels/LRZ/Obj/TunlPath/12.bin"
+	LRZTunnel_13:	include	"Levels/LRZ/Obj/TunlPath/13.bin"
+	LRZTunnel_14:	include	"Levels/LRZ/Obj/TunlPath/14.bin"
+	LRZTunnel_15:	include	"Levels/LRZ/Obj/TunlPath/15.bin"
+	LRZTunnel_16:	include	"Levels/LRZ/Obj/TunlPath/16.bin"
+	LRZTunnel_17:	include	"Levels/LRZ/Obj/TunlPath/17.bin"
+	LRZTunnel_18:	include	"Levels/LRZ/Obj/TunlPath/18.bin"
+	LRZTunnel_19:	include	"Levels/LRZ/Obj/TunlPath/19.bin"
+
+	;;;
+	;SOZ Conveyor Rock Movement Data
+	;;;
+
+	SOZConveyorRock_00:	include	"Levels/SOZ/Obj/RockData/00.bin"
+	SOZConveyorRock_01:	include	"Levels/SOZ/Obj/RockData/01.bin"
+	SOZConveyorRock_02:	include	"Levels/SOZ/Obj/RockData/02.bin"
+	SOZConveyorRock_03:	include	"Levels/SOZ/Obj/RockData/03.bin"
+	SOZConveyorRock_04:	include	"Levels/SOZ/Obj/RockData/04.bin"
+	SOZConveyorRock_05:	include	"Levels/SOZ/Obj/RockData/05.bin"
+	SOZConveyorRock_06:	include	"Levels/SOZ/Obj/RockData/06.bin"
+	SOZConveyorRock_07:	include	"Levels/SOZ/Obj/RockData/07.bin"
+	SOZConveyorRock_08:	include	"Levels/SOZ/Obj/RockData/08.bin"
+	SOZConveyorRock_09:	include	"Levels/SOZ/Obj/RockData/09.bin"
+	SOZConveyorRock_0A:	include	"Levels/SOZ/Obj/RockData/0A.bin"
+	SOZConveyorRock_NULL:	include	"Levels/SOZ/Obj/RockData/0B.bin"
+
+	;;;
+	;DEZ Light Tunnel Path Data
+	;;;
+
+	DEZLightTunnel_00:	include	"Levels/DEZ/Obj/TunlPath/00.bin"
+	DEZLightTunnel_01:	include	"Levels/DEZ/Obj/TunlPath/01.bin"
+	DEZLightTunnel_02_03:	include	"Levels/DEZ/Obj/TunlPath/02_03.bin"
+	DEZLightTunnel_04:	include	"Levels/DEZ/Obj/TunlPath/04.bin"
+	DEZLightTunnel_05:	include	"Levels/DEZ/Obj/TunlPath/05.bin"
+	DEZLightTunnel_06:	include	"Levels/DEZ/Obj/TunlPath/06.bin"
+	DEZLightTunnel_07:	include	"Levels/DEZ/Obj/TunlPath/07.bin"
+
+EndSeg

@@ -1,0 +1,467 @@
+<html>
+<head>
+<title>SonED2 - Object Listing Files</title>
+</head>
+<body>
+<b><center>SonED2 - Object Listing Files</center></b><br>
+<br>
+These files are called on by Standard Level Project Files, and provide SonED2 with graphics and settings information for
+Level Objects so that they may be displayed and edited in a useful way when using either the Object Editor
+or the Level Editor. They are made up of two distinct sections that are laid out in the following manner:<br>
+<br>
+<b><a href="#Sprites">Sprite Listing</a></b><br>
+<ul>
+ # of sprite sets:<br>
+ <ul>
+  # of Sprites in set ?:<br>
+  <ul>
+   Sprite ? file:<br>
+   xoff in file:<br>
+   yoff in file:<br>
+   Width:<br>
+   Height:<br>
+  </ul>
+ </ul>
+</ul>
+
+<br>
+<b><a href="#Objects">Object Listing</a></b><br>
+<ul>
+ Num of objects:<br>
+ <ul>
+  Object ID:<br>
+  # of Zones:<br>
+  <ul>
+   Zone Entry:<br>
+   Description:<br>
+   Num Bitfields:<br>
+   <ul>
+    BitField ?:<br>
+    <ul>
+     Desc  ?:<br>
+    </ul>
+   </ul>
+   DefaultParam:<br>
+   DefaultFlag:<br>
+   DefaultDir:<br>
+   DefltRemember:<br>
+   Num Dependants:<br>
+   <ul>
+    Dependant ?:<br>
+   </ul>
+   Num Types:<br>
+   <ul>
+    Val?: [...]<br>
+    XMin:<br>
+    YMin:<br>
+    XMax:<br>
+    YMax:<br>
+    # of Sprites:<br>
+    <ul>
+     Sprite ? ID:<br>
+     Set:<br>
+     Direction:<br>
+     XOff:<br>
+     YOff:<br>
+    </ul>
+   </ul>
+  </ul>
+ </ul>
+</ul>
+
+
+<br><a name="Sprites">
+<b>Sprite Listing</b><br>
+<br>
+<ul>
+ This section loads all of the graphics that are referenced by the Object Listing section to specify
+ how each Level Object should be visually represented within the Object Editor and the Level Editor.<br>
+ <br>
+ The sprites loaded by this file may be split into separate sets as the author sees fit. The most important reason for
+ this is that "Set 0" has two special properties that do not apply to any other set:<br>
+ <br>
+ <ul>
+  <li><b>Invisible/Unknown Objects</b>- Objects that call on this set are regarded as either "Invisible" or "Unknown". This means that, while they're displayed in the editors, they will not be included on any generated map images that use the "Include Known Objects" option, as opposed to the "Include All Objects" option. <i>All undefined Objects will be displayed as Sprite 1 from Set 0, and all "Ring" objects that are loaded separately from standard Objects will be displayed as Sprite 0 from Set 0</i>. Despite this, this type of "Ring" is still drawn onto level map dumps when either "Include ___ Objects" option is enabled.<br>
+  <li><b>Player Start Positions</b>- When Player Start Positions are loaded by the Project File, they are displayed using graphics starting at Sprite X in Set 0, where X is equal to the total number of sprites in set 0, minus the number of Start Positions that were loaded (Ex: Assume that set 0 has 5 sprites [whose IDs are numbered 0-4], and the Project File loads 2 Start Positions. In this case, Start Position 0 will be displayed using sprite 3, and Start Position 1 will be displayed using sprite 4)<br>
+ </ul>
+ <br>
+ The graphics are loaded from files that are referenced by number. Any numbers may be used, and the graphics may be distributed
+ across the files as the author sees fit. The filename that SonED2 attempts to open is automatically generated using the name
+ of the current Object Listing File, and the number given in the sprite data described below (Ex: Assume the Object Listing File is named "s1obj.lst". In this case, when file "1" is referenced, SonED2 will attempt to load from the file named "s1obj1.pcx" or "s1obj1.tga").<br>
+ <br>
+ This section uses the following format:<br>
+ <br>
+ <ul>
+  <b># of sprite sets:</b><br>
+  <br>
+  <ul>
+   This value specifies the number of sets that will follow.<br>
+   <br>
+   <ul>
+    <pre># of sprite sets:     5</pre>
+   </ul>
+   <br>
+   The data for each set is listed immediately below in the following format:<br>
+   <br>
+   <b># of Sprites in set ?:</b><br>
+   <br>
+   <ul>
+    This value specifies the number of sprites that should be loaded for this set.<br>
+    <br>
+    <ul>
+     <pre># of Sprites in set 0:     4</pre>
+    </ul>
+    <br>
+    The data for each sprite is listed immediately below in the following format:<br>
+    <br>
+    <b>Sprite ? file:</b><br>
+    <br>
+    <ul>
+     This value specifies the ID number of the graphics file from which to load the desired art.<br>
+     <br>
+     <ul>
+      <pre>Sprite 0 file:     1</pre>
+     </ul>
+    </ul>
+    <br>
+    <b>xoff in file:</b><br>
+    <b>yoff in file:</b><br>
+    <br>
+    <ul>
+     These values specify the X and Y position of the upper-left corner of the region to copy from the art file.<br>
+     <br>
+     <ul>
+      <pre>xoff in file:    98
+yoff in file:    15</pre>
+     </ul>
+    </ul>
+    <br>
+    <b>Width:</b><br>
+    <b>Height:</b><br>
+    <br>
+    <ul>
+     These values specify the width and height of the region to copy from the art file.<br>
+     <br>
+     <ul>
+      <pre> Width:    16
+Height:    16</pre>
+     </ul>
+    </ul>
+   </ul>
+  </ul>
+ </ul>
+</ul>
+
+<br><a name="Objects">
+<b>Object Listing</b><br>
+<br>
+ This section specifies how each Object Type should be managed by the Object Editor, and how it should be displayed by both the Object Editor and the Level Editor.<br>
+ <br>
+ This section is laid out in the following way:<br>
+ <br>
+ <ul>
+  <b>Num of objects:</b><br>
+  <br>
+  <ul>
+   This value specifies the number of Objects that will be defined.<br>
+   <br>
+   <ul>
+    <pre>Num of objects: 128</pre>
+   </ul>
+   <br>
+   The data for each Object is listed immediately below in the following format:<br>
+   <br>
+   <b>Object ID:</b><br>
+   <br>
+   <ul>
+    Each Object in each game has a unique ID number based on its position in that game's Object Pointers List. This value specifies the ID number of the Object that this entry is meant to describe.<br>
+    <br>
+    <i>This value is unprefixed, but is hexadecimal</i>.
+    <br>
+    <ul>
+     <pre>Object ID:  26</pre>
+    </ul>
+   </ul>
+   <br>
+   <b># of Zones:</b><br>
+   <br>
+   <ul>
+    Between different levels, some Objects display differently, some have different settings, and some can technically be entirely different objects.
+    For this reason, this setting allows more than one set of data to be assigned to a single Object ID.<br>
+    <br>
+    This value specifies the number of definitions that will be made for this Object ID. There must be at least one.<br>
+    <br>
+    <ul>
+     <pre># of Zones:   1</pre>
+    </ul>
+    <br>
+    The data for each version of this Object is listed immediately below in the following format:<br>
+    <br>
+    <b>Zone Entry:</b><br>
+    <br>
+    <ul>
+     This value specifies the "Zone" setting (as defined in the Project File) for which the Object will use this set of data. (Ex: If this value is "1", this data will only be used if the currently-loaded Project File's "Zone ID" setting is also "1")<br>
+     <br>
+     <i>This value is unprefixed, but is hexadecimal</i>.<br>
+     <br>
+     <i>A value of "FF" represents the "default" settings, but for this to be true, it must also be listed before any other "Zone"</i>. For any Object type that only uses one set of data, this value should be "FF". For any Project File's "Zone ID" setting that does not have a correspoinding "Zone Entry" setting for this Object, this Object will be displayed and edited using the data for the "FF" entry.<br>
+     <br>
+     <ul>
+      <pre> Zone Entry:  FF</pre>
+     </ul>
+    </ul>
+    <br>
+    <b>Description:</b><br>
+    <br>
+    <ul>
+     This entry is used to supply a short textual description of the Object, which will be shown on the Object Editor's "Status" display and on the Object Selector list.<br>
+     <br>
+     <ul>
+      <pre>Description: Monitor</pre>
+     </ul>
+    </ul>
+    <br>
+    <b>Num Bitfields:</b><br>
+    <br>
+    <ul>
+     All Objects contain a parameter BYTE, which usually represents several smaller bitfields that each control separate settings.<br>
+     <br>
+     (Note: In the case of Crackers/Chaotix-style Objects, read "BYTE" as "WORD").<br>
+     <br>
+     This value specifies the number of settings bitfields that will be defined for this Object.<br>
+     <br>
+     <ul>
+      <pre>Num Bitfields:   1</pre>
+     </ul>
+     <br>
+     The data for each bitfield is listed immediately below in the following format:<br>
+     <br>
+     <b>BitField ?:</b><br>
+     <br>
+     <ul>
+      <i>This value is unprefixed, but is binary</i>.<br>
+      <br>
+      This is a textual representation of the binary form of the Object's parameter BYTE, specifying which bits belong to this particular bitfield. Bits that belong to this field should be represented as "1"'s, while bits that do not belong to this field should be represented as "0"'s.<br>
+      <br>
+      <ul>
+       <pre>BitField 0: 00001111</pre>
+      </ul>
+      <br>
+      This entry is immediately followed by entries supplying short textual descriptions for each of the possible values for this bitfield in the following format:<br>
+      <br>
+      <b>Desc  ?:</b><br>
+      <br>
+      <ul>
+       This entry is used to supply a short textual description to be displayed when this bitfield is set equal to this value, which will be shown on the Object Editor's "Status" display.<br>
+       <br>
+       <ul>
+        <pre>Desc  0: Blank</pre>
+       </ul>
+      </ul>
+     </ul>
+    </ul>
+    <br>
+    <b>DefaultParam:</b><br>
+    <br>
+    <ul>
+     This is the value that SonED2 will assign to the Parameter BYTE by default when this type of Object is selected from within the Object Selector.<br>
+     <br>
+     <i>This value is unprefixed, but is hexadecimal</i>.
+     <br>
+     <ul>
+      <pre>DefaultParam:   0</pre>
+     </ul>
+    </ul>
+    <br>
+    <b>DefaultFlag:</b><br>
+    <br>
+    <ul>
+     This is the value that SonED2 will assign to the "Unknown Flag" by default when this type of Object is selected from within the Object Selector. Valid settings are<br>
+     <br>
+     <ul><table>
+     <tr><td><b>0</b></td><td> - </td><td>Undefined</td></tr>
+     <tr><td><b>1</b></td><td> - </td><td>Undefined</td></tr>
+     </table></ul>
+     <br>
+     By default, this flag has no meaning. It is not present at all in Sonic Crackers/Knuckles' Chaotix.
+     <br>
+     <ul>
+      <pre>DefaultFlag:   0</pre>
+     </ul>
+    </ul>
+    <br>
+    <b>DefaultDir:</b><br>
+    <br>
+    <ul>
+     This is the value that SonED2 will assign to the flip/mirror directional flags by default when this type of Object is selected from within the Object Selector. Valid settings are:<br>
+     <br>
+     <ul><table>
+     <tr><td><b>0</b></td><td> - </td><td>Normal</td></tr>
+     <tr><td><b>1</b></td><td> - </td><td>Backward</td></tr>
+     <tr><td><b>2</b></td><td> - </td><td>Upside-down</td></tr>
+     <tr><td><b>3</b></td><td> - </td><td>Backward and Upside-down</td></tr>
+     </table></ul>
+     <br>
+     These flags do not exist in Sonic Crackers/Knuckles' Chaotix, and thus, this value is meaningless in that case.
+     <br>
+     <ul>
+      <pre>DefaultDir:   0</pre>
+     </ul>
+    </ul>
+    <br>
+    <b>DefltRemember:</b><br>
+    <br>
+    <ul>
+     This is the value that SonED2 will assign to the "Remember Sprite State Flag" by default when this type of Object is selected from within the Object Selector. Valid settings are:<br>
+     <br>
+     <ul><table>
+     <tr><td><b>0</b></td><td> - </td><td>The Object will reset whenever the player moves far enough away, regardless of whether or not it is capable of certain persistent states</td></tr>
+     <tr><td><b>1</b></td><td> - </td><td>Objects that have persistent states (such as destroyed enemies, collected items, etc) will not reset until the level is reset</td></tr>
+     </table></ul>
+     <br>
+     This value is only meaningful to Sonic 1, Sonic CD, and Sonic 2. Sonic 3 (& Knuckles) and Sonic Crackers/Knuckles' Chaotix do not use a flag for this functionality.<br>
+     <br>
+     <ul>
+      <pre>DefltRemember:   1</pre>
+     </ul>
+    </ul>
+    <br>
+    <b>Num Dependants:</b><br>
+    <br>
+    <ul>
+     The Parameter byte can control graphical aspects of the Object as well as functional aspects. Because of this, it is possible to define different graphic display setups for an Object based on its bitfield settings.<br>
+     <br>
+     This values specify the number of bitfields that affect the way the Object is displayed. This is not necessarily the total number of bitfields, because not all of these fields will have a graphical effect.<br>
+     <br>
+     <ul>
+      <pre>Num Dependants:   1</pre>
+     </ul>
+     <br>
+     The ID value of each of these bitfield is listed immediately below in the following format:<br>
+     <br>
+     <b>Dependant ?:</b><br>
+     <br>
+     <ul>
+      This is the ID number of the bitfield that will affect the display of the Object. The bitfield ID numbers are determined by the order in which they are defined in this file, with the first bitfield to be defined having an ID of 0.<br>
+      <br>
+      <ul>
+       <pre>Dependant 0:   0</pre>
+      </ul>
+     </ul>
+    </ul>
+    <br>
+    <b>Num Types:</b><br>
+    <br>
+    <ul>
+     This value specifies the number of ways in which this Object can be drawn according to its bitfield settings.<br>
+     <br>
+     This value does not necessarily have to correspond with the total number of "Dependants" as listed above. If a "type" is not found that corresponds with an Object's current settings, it will display as "type" 0 by default.<br>
+     <br>
+     For an Object to be considered to be any one of the defined types, the values of each of its "Dependant" bitfields must all be equal to their corresponding "Val?" entries for that type.<br>
+     <br>
+     <ul>
+      <pre>Num Types:   9</pre>
+     </ul>
+     <br>
+     <b>Val?:</b> [...]<br>
+     <br>
+     <ul>
+      <i>This entry is repeated as many times as specified by the "Num Dependants" setting. If there are no "Dependants", this entry must be completely omitted.</i><br>
+      <br>
+      This value specifies the value that this "Dependant" bitfield must have for this Object to be displayed as this "type". The first of these entries defines the value that the bitfield listed as "Dependent" 0 must have, the second defines the value that "Dependent" 1 must have, etc.<br>
+      <br>
+      <ul>
+       <pre>Val0:   0</pre>
+      </ul>
+     </ul>
+
+     <br>
+     <b>XMin:</b><br>
+     <b>YMin:</b><br>
+     <b>XMax:</b><br>
+     <b>YMax:</b><br>
+     <br>
+     <ul>
+      Each of these values is an offset from the Object's position within the level that define a rectangular area within which the mouse cursor will be considered to be "hovering over" the Object.<br>
+      <br>
+      In order, these values define the leftmost, uppermost, rightmost, and lowermost sides of this area.<br>
+      <br>
+      In general, it is best to set these values such that they surround the entire set of sprite graphics that are drawn to represent this Object.<br>
+      <br>
+      <ul>
+       <pre>XMin: -16
+YMin: -16
+XMax:  16
+YMax:  16</pre>
+      </ul>
+     </ul>
+
+     <br>
+     <b># of Sprites:</b><br>
+     <br>
+     <ul>
+      This value specifies the number of Sprites that should be drawn to represent this Object while it is in this state.<br>
+      <br>
+      <ul>
+       <pre># of Sprites:   1</pre>
+      </ul>
+      <br>
+      The data for drawing each of these sprites is listed immediately below in the following format:<br>
+
+      <br>
+      <b>Sprite ? ID:</b><br>
+      <b>Set:</b><br>
+      <br>
+      <ul>
+       These values, in this order, supply the ID number of the sprite to draw, and the ID number of the set from which to obtain the sprite.<br>
+       <br>
+       <ul>
+        <pre>Sprite 0 ID:  10
+        Set:   1</pre>
+       </ul>
+      </ul>
+
+      <br>
+      <b>Direction:</b><br>
+      <br>
+      <ul>
+       This value specifies the direction in which the sprite should be drawn. Valid settings are:<br>
+       <br>
+       <ul><table>
+       <tr><td><b>0</b></td><td> - </td><td>Normal</td></tr>
+       <tr><td><b>1</b></td><td> - </td><td>Backward</td></tr>
+       <tr><td><b>2</b></td><td> - </td><td>Upside-down</td></tr>
+       <tr><td><b>3</b></td><td> - </td><td>Backward and Upside-down</td></tr>
+       </table></ul>
+       <br>
+       <ul>
+        <pre>Direction:   0</pre>
+       </ul>
+      </ul>
+
+      <br>
+      <b>XOff:</b><br>
+      <b>YOff:</b><br>
+      <br>
+      <ul>
+       These values are added to the X and Y level position of the Object to determine where its upper-left corner should be drawn.<br>
+       <br>
+       <ul>
+        <pre>xoff: -15
+yoff: -15</pre>
+       </ul>
+      </ul>
+
+     </ul>
+
+    </ul>
+   </ul>
+  </ul>
+ </ul>
+</ul>
+<pre>
+
+</pre>
+
+</body>
+</html>

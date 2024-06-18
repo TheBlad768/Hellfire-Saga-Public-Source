@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Namespace="SonED2.ZoneCommon" TypeName="Monitor" Language="cs" Name="Monitor" Image="Image1" Debug="false" xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromBitmap id="Image1" filename="Sprites/s3objsprite4-11.png" />
+    <ImageFromBitmap id="Image2" filename="Sprites/s3objsprite4-7.png" />
+    <ImageFromBitmap id="Image3" filename="Sprites/s3objsprite4-9.png" />
+    <ImageFromBitmap id="Image4" filename="Sprites/s3objsprite4-2.png" />
+    <ImageFromBitmap id="Image5" filename="Sprites/s3objsprite4-5.png" />
+    <ImageFromBitmap id="Image6" filename="Sprites/s3objsprite4-3.png" />
+    <ImageFromBitmap id="Image7" filename="Sprites/s3objsprite4-6.png" />
+    <ImageFromBitmap id="Image8" filename="Sprites/s3objsprite4-8.png" />
+    <ImageFromBitmap id="Image9" filename="Sprites/s3objsprite4-4.png" />
+    <ImageFromBitmap id="Image10" filename="Sprites/s3objsprite4-10.png" />
+  </Images>
+  <Properties>
+    <BitsProperty name="Property1" type="Enum1" startbit="0" length="4" />
+  </Properties>
+  <Enums>
+    <Enum name="Enum1">
+      <EnumMember name="Static (Harmful)" />
+      <EnumMember name="1-Up" />
+      <EnumMember name="Robotnik" />
+      <EnumMember name="Super Ring" />
+      <EnumMember name="Speed Shoes" />
+      <EnumMember name="Fire shield" />
+      <EnumMember name="Lightning shield" />
+      <EnumMember name="Bubble shield" />
+      <EnumMember name="Invicibility" />
+      <EnumMember name="S" />
+      <EnumMember name="Broken" />
+      <EnumMember name="Invalid" />
+      <EnumMember name="Invalid2" />
+      <EnumMember name="Invalid3" />
+      <EnumMember name="Invalid4" />
+      <EnumMember name="Invalid5" />
+    </Enum>
+  </Enums>
+  <Display>
+    <DisplayOption>
+      <Condition property="Property1" value="Static (Harmful)" />
+      <ImageRef image="Image1">
+        <Offset X="-14" Y="-16" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="1-Up" />
+      <ImageRef image="Image1">
+        <Offset X="-14" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image2">
+        <Offset X="-8" Y="-12" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Robotnik" />
+      <ImageRef image="Image1">
+        <Offset X="-14" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image3">
+        <Offset X="-8" Y="-12" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Super Ring" />
+      <ImageRef image="Image1">
+        <Offset X="-14" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image4">
+        <Offset X="-8" Y="-12" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Speed Shoes" />
+      <ImageRef image="Image1">
+        <Offset X="-14" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image5">
+        <Offset X="-8" Y="-12" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Fire shield" />
+      <ImageRef image="Image1">
+        <Offset X="-14" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-12" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Lightning shield" />
+      <ImageRef image="Image1">
+        <Offset X="-14" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image7">
+        <Offset X="-8" Y="-12" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Bubble shield" />
+      <ImageRef image="Image1">
+        <Offset X="-14" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image8">
+        <Offset X="-8" Y="-12" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Invicibility" />
+      <ImageRef image="Image1">
+        <Offset X="-14" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image9">
+        <Offset X="-8" Y="-12" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="S" />
+      <ImageRef image="Image1">
+        <Offset X="-14" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image10">
+        <Offset X="-8" Y="-12" />
+      </ImageRef>
+    </DisplayOption>
+  </Display>
+</ObjDef>

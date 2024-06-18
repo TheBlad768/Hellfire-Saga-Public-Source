@@ -1,0 +1,38 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Sonic the Hedgehog 2 (Rev 01) Batch Injection File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+; Source folder prompt ;
+;;;;;;;;;;;;;;;;;;;;;;;;
+
+;GetPath "Please select the source folder for the data"
+;SrcPath #Got
+
+;WorkPath	"#Src"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Injector prompt and call ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;GetFile "Please select the target Sonic the Hedgehog ROM file"
+;LoadFile #Got
+LoadFile "sonic2.bin"
+
+LoadInject "#Batch/inmain.txt"
+AddInject  "#Batch/inopts.txt"
+AddInject  "#Batch/incard.txt"
+
+;GetFile "Please name the output file"
+;RunInject  #Got
+RunInject  "inject.bin"
+
+;;;;;;;;;;;;;;;
+; ROM cleanup ;
+;;;;;;;;;;;;;;;
+
+;Extern     "#Batch/fixheadr" "#Got"
+Extern     "#Batch/fixheadr" "inject.bin"

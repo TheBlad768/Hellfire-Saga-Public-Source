@@ -1,0 +1,315 @@
+Sound_198_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$80, ctFM5, Sound_198_FM5, $00, $07
+
+; FM5 Data
+Sound_198_FM5:
+	sVoice		$34
+	dc.b nB5, $01, nB5, nB5, sHold
+	ssDetune	$01
+	dc.b $01, sHold
+	ssDetune	$04
+	dc.b $01, sHold
+	ssDetune	$07
+	dc.b $01, sHold
+	ssDetune	$09
+	dc.b $01, sHold
+	ssDetune	$0C
+	dc.b $01, sHold
+	ssDetune	$0F
+	dc.b $01, sHold
+	ssDetune	$12
+	dc.b $01, sHold
+	ssDetune	$15
+	dc.b $01, sHold
+	ssDetune	$18
+	dc.b $01, sHold
+	ssDetune	$1B
+	dc.b $01, sHold
+	ssDetune	$1D
+	dc.b $01, sHold
+	ssDetune	$20
+	dc.b $01, nRst, $02
+	ssDetune	$00
+	dc.b nC6, sHold
+	ssDetune	$02
+	dc.b $01, sHold
+	ssDetune	$03
+	dc.b $01, sHold
+	ssDetune	$05
+	dc.b $01, sHold
+	ssDetune	$06
+	dc.b $01, sHold
+	ssDetune	$08
+	dc.b $01, sHold
+	ssDetune	$09
+	dc.b $01, sHold
+	ssDetune	$0B
+	dc.b $01, sHold
+	ssDetune	$0C
+	dc.b $01, sHold
+	ssDetune	$0E
+	dc.b $01, sHold
+	ssDetune	$0F
+	dc.b $01, sHold
+	ssDetune	$11
+	dc.b $01, nRst, $02
+	ssDetune	$00
+	dc.b nB5, $01, sHold
+	ssDetune	$02
+	dc.b $01, sHold
+	ssDetune	$05
+	dc.b $01, sHold
+	ssDetune	$08
+	dc.b $01, sHold
+	ssDetune	$0B
+	dc.b $01, sHold
+	ssDetune	$0E
+	dc.b $01, sHold
+	ssDetune	$11
+	dc.b $01, sHold
+	ssDetune	$13
+	dc.b $01, sHold
+	ssDetune	$16
+	dc.b $01, sHold
+	ssDetune	$19
+	dc.b $01, sHold
+	ssDetune	$1C
+	dc.b $01, sHold
+	ssDetune	$1F
+	dc.b $01, nRst, $02
+	ssDetune	$00
+	dc.b nCs6, sHold
+	ssDetune	$02
+	dc.b $01, sHold
+	ssDetune	$03
+	dc.b $01, sHold
+	ssDetune	$05
+	dc.b $01, sHold
+	ssDetune	$07
+	dc.b $01, sHold
+	ssDetune	$08
+	dc.b $01, sHold
+	ssDetune	$0A
+	dc.b $01, sHold
+	ssDetune	$0B
+	dc.b $01, sHold
+	ssDetune	$0D
+	dc.b $01, sHold
+	ssDetune	$0E
+	dc.b $01, sHold
+	ssDetune	$10
+	dc.b $01, sHold
+	ssDetune	$11
+	dc.b $01, nRst, $02
+	ssDetune	$00
+	dc.b nB5, $01, sHold
+	ssDetune	$02
+	dc.b $01, sHold
+	ssDetune	$05
+	dc.b $01, sHold
+	ssDetune	$08
+	dc.b $01, sHold
+	ssDetune	$0B
+	dc.b $01, sHold
+	ssDetune	$0E
+	dc.b $01, sHold
+	ssDetune	$11
+	dc.b $01, sHold
+	ssDetune	$13
+	dc.b $01, sHold
+	ssDetune	$16
+	dc.b $01, sHold
+	ssDetune	$19
+	dc.b $01, sHold
+	ssDetune	$1C
+	dc.b $01, sHold
+	ssDetune	$1F
+	dc.b $01, sHold
+	ssDetune	$22
+	dc.b $01, nRst, $02
+	ssDetune	$00
+	dc.b nC6, $01, sHold
+	ssDetune	$01
+	dc.b $01, sHold
+	ssDetune	$02
+	dc.b $01, sHold
+	ssDetune	$04
+	dc.b $01, sHold
+	ssDetune	$05
+	dc.b $01, sHold
+	ssDetune	$07
+	dc.b $01, sHold
+	ssDetune	$08
+	dc.b $01, sHold
+	ssDetune	$0A
+	dc.b $01, sHold
+	ssDetune	$0B
+	dc.b $01, sHold
+	ssDetune	$0D
+	dc.b $01, sHold
+	ssDetune	$0E
+	dc.b $01, sHold
+	ssDetune	$10
+	dc.b $01, nRst, $02
+	ssDetune	$00
+	dc.b nB5, $01, sHold
+	ssDetune	$01
+	dc.b $01, sHold
+	ssDetune	$04
+	dc.b $01, sHold
+	ssDetune	$07
+	dc.b $01, sHold
+	ssDetune	$09
+	dc.b $01, sHold
+	ssDetune	$0C
+	dc.b $01, sHold
+	ssDetune	$0F
+	dc.b $01, sHold
+	ssDetune	$12
+	dc.b $01, sHold
+	ssDetune	$15
+	dc.b $01, sHold
+	ssDetune	$18
+	dc.b $01, sHold
+	ssDetune	$1B
+	dc.b $01, sHold
+	ssDetune	$1D
+	dc.b $01, sHold
+	ssDetune	$20
+	dc.b $01, nRst, $02
+	ssDetune	$00
+	dc.b nCs6, $01, sHold
+	ssDetune	$01
+	dc.b $01, sHold
+	ssDetune	$03
+	dc.b $01, sHold
+	ssDetune	$04
+	dc.b $01, sHold
+	ssDetune	$06
+	dc.b $01, sHold
+	ssDetune	$07
+	dc.b $01, sHold
+	ssDetune	$09
+	dc.b $01, sHold
+	ssDetune	$0A
+	dc.b $01, sHold
+	ssDetune	$0C
+	dc.b $01, sHold
+	ssDetune	$0E
+	dc.b $01, sHold
+	ssDetune	$0F
+	dc.b $01, sHold
+	ssDetune	$11
+	dc.b $01, sHold
+	ssDetune	$12
+	dc.b $01, nRst
+	saVol		$04
+	ssDetune	$00
+	dc.b nB5, $02, sHold
+	ssDetune	$02
+	dc.b $01, sHold
+	ssDetune	$05
+	dc.b $01, sHold
+	ssDetune	$08
+	dc.b $01, sHold
+	ssDetune	$0B
+	dc.b $01, sHold
+	ssDetune	$0E
+	dc.b $01, sHold
+	ssDetune	$11
+	dc.b $01, sHold
+	ssDetune	$13
+	dc.b $01, sHold
+	ssDetune	$16
+	dc.b $01, sHold
+	ssDetune	$19
+	dc.b $01, sHold
+	ssDetune	$1C
+	dc.b $01, sHold
+	ssDetune	$1F
+	dc.b $01, nRst, $02
+	saVol		$02
+	ssDetune	$00
+	dc.b nC6, sHold
+	ssDetune	$02
+	dc.b $01, sHold
+	ssDetune	$03
+	dc.b $01, sHold
+	ssDetune	$05
+	dc.b $01, sHold
+	ssDetune	$06
+	dc.b $01, sHold
+	ssDetune	$08
+	dc.b $01, sHold
+	ssDetune	$09
+	dc.b $01, sHold
+	ssDetune	$0B
+	dc.b $01, sHold
+	ssDetune	$0C
+	dc.b $01, sHold
+	ssDetune	$0E
+	dc.b $01, sHold
+	ssDetune	$0F
+	dc.b $01, sHold
+	ssDetune	$11
+	dc.b $01, nRst, $02
+	saVol		$05
+	ssDetune	$00
+	dc.b nB5, $01, sHold
+	ssDetune	$02
+	dc.b $01, sHold
+	ssDetune	$05
+	dc.b $01, sHold
+	ssDetune	$08
+	dc.b $01, sHold
+	ssDetune	$0B
+	dc.b $01, sHold
+	ssDetune	$0E
+	dc.b $01, sHold
+	ssDetune	$11
+	dc.b $01, sHold
+	ssDetune	$13
+	dc.b $01, sHold
+	ssDetune	$16
+	dc.b $01, sHold
+	ssDetune	$19
+	dc.b $01, sHold
+	ssDetune	$1C
+	dc.b $01, sHold
+	ssDetune	$1F
+	dc.b $01, nRst, $02
+	saVol		$05
+	ssDetune	$00
+	dc.b nC6, sHold
+	ssDetune	$02
+	dc.b $01, sHold
+	ssDetune	$03
+	dc.b $01, sHold
+	ssDetune	$05
+	dc.b $01, sHold
+	ssDetune	$06
+	dc.b $01, sHold
+	ssDetune	$08
+	dc.b $01, sHold
+	ssDetune	$09
+	dc.b $01, sHold
+	ssDetune	$0B
+	dc.b $01, sHold
+	ssDetune	$0C
+	dc.b $01, sHold
+	ssDetune	$0E
+	dc.b $01, sHold
+	ssDetune	$0F
+	dc.b $01, sHold
+	ssDetune	$11
+	dc.b $01, nRst, $02
+
+	; Natsumi: This is a bit easier lol
+	sCmdYM		$80, $FF	; op1: Decay level $F, reelase rate $F
+	sCmdYM		$84, $FF	; op2: Decay level $F, reelase rate $F
+	sCmdYM		$88, $FF	; op3: Decay level $F, reelase rate $F
+	sCmdYM		$8C, $FF	; op4: Decay level $F, reelase rate $F
+	sStop

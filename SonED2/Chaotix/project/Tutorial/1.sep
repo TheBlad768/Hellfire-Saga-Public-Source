@@ -1,0 +1,66 @@
+Type: Level
+
+Zone ID:    6
+Act ID:     5
+
+Object Def: ..\objdef\kcobj
+Object Palette: ..\objdef\kcobj1.pcx
+
+8x8 Compression:      3
+Num 8x8 Pages:        3
+8x8 Tiles Page 0:     ..\..\Levels/Tutorial/8x8/0_56MN.bin
+8x8 Tiles Page 1:     ..\..\Levels/Tutorial/8x8/1_56MN.bin
+8x8 Tiles Page 2:     ..\..\Levels/Tutorial/8x8/2_56MN.bin
+
+16x16 Compression:    2
+Num 16x16 Pages:      2
+Page0 8x8 Page:       0
+16x16 Tiles Page 0:   ..\..\Levels/Tutorial/16x16/0_56MN.bin
+Page1 8x8 Page:       2
+16x16 Tiles Page 1:   ..\..\Levels/Tutorial/16x16/1_56MN.bin
+
+Metatile Size:        128
+128x128 Compression:  2
+Num 128x128 Pages:    2
+Page0 16x16 Page:     0
+128x128 Tiles Page 0: ..\..\Levels/Tutorial/128x128/0_56MN.bin
+Page1 16x16 Page:     1
+128x128 Tiles Page 1: ..\..\Levels/Tutorial/128x128/1_56MN.bin
+
+Layout Format:        3
+Layout Compression:   2
+FG Size:              ..\..\Levels\Tutorial\FG\Size5M.bin
+FG Level Layout:      ..\..\Levels\Tutorial\FG\5M.bin
+BG 128x128 Page:      2
+BG Size:              ..\..\Levels\Tutorial\BG\Size56MN.bin
+BG Level Layout:      ..\..\Levels\Tutorial\BG\56MN.bin
+
+Objects Format:       5
+Objects:              ..\..\Levels\Tutorial\Sprites\5MN.bin
+Rings Format:         0
+Misc Format:          0
+Num Start Positions:  1
+Start Position 0:     ..\..\Levels\Tutorial\FG\PlSt5M.bin
+
+Palettes-
+
+ Number of files: 1
+
+  Palette 1-
+
+   Start index:       0
+   Number of entries: 64
+   File:              ..\..\Levels\Tutorial\Pal\15M.bin
+
+Collision Map Format:    1
+Collision Array:         ..\..\Collisn\HMaps.bin
+Rotated Collision Array: ..\..\Collisn\HMapsR.bin
+Angle Array:             ..\..\Collisn\Angles.bin
+
+Collision Index Format:      4
+Collision Index Compression: 0
+Collision Index: ..\..\Levels\Tutorial\Collisn\56.bin
+
+Game Name: Chaotix
+
+-EOF-

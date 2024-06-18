@@ -1,0 +1,88 @@
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<p align="center"><u><b><font size="6">KENS Version History</font></b></u></p>
+<p>&nbsp;</p>
+<p>KENS V1.4 RC3<br>
+* Corrected a bug that prevented the functions that output data to a buffer to 
+create the buffer (could only use already initialized buffers). Thanks a LOT to 
+Korama for helping me fixing this.<br>
+* Fixed all the compression functions so they produce files with an even size<br>
+* Included the Delphi unit corrected by Korama (my changes to this unit were not 
+really good - I'm not a Delphi programmer)<br>
+* Headers and units are now in a sub-directory named &quot;Include&quot;<br>
+* Updated the info in the README.HTML file</p>
+<p>&nbsp;</p>
+<p>KENS V1.4 RC2<br>
+* Turned all functions to local functions, so they all use temporary files<br>
+* Removed the temporary local Kosinski functions (as the original functions are 
+now local)<br>
+* Added functions that output data to a buffer rather than to a file (thanks to 
+Stealth for asking for
+that improvement)<br>
+* Edited the headers and units to reflect the changes<br>
+* Converted README.TXT, VERSION.TXT and LICENSE.TXT to HTML, because it's easier to read<br>
+* Updated the info in the README.HTML file</p>
+<p>&nbsp;</p>
+<p>KENS V1.4 RC1<br>
+* Corrected a bug in the Enigma Decompression algorithm. Thanks to Stealth for 
+reporting and Nemesis
+for helping in fixing it.<br>
+* Added &quot;Local&quot; Kosinski functions, which copy the file to the Windows temporary 
+directory before
+compressing or decompressing. This fixes a speed issue when the source or 
+destination files are on a
+remote computer. Thanks to Stealth for finding out this issue (we spent hours 
+trying to find out why
+it was so slow) and helping in fixing it (although I used a different method 
+from the one used in
+the unofficial version that he released).<br>
+* Edited the headers and units to reflect the changes in the Kosinski functions</p>
+<p>&nbsp;</p>
+<p>KENS V1.3<br>
+* Corrected a bug in the Game Maker wrapper functions. That bug prevented to use 
+the decompression
+functions.<br>
+* Added the Sonic 2 Sound Driver support to the Saxman compressor and 
+decompressor<br>
+* Edited the headers and units to reflect the changes in the Saxman functions<br>
+* Changed the info about the Saxman compression tools in the README.TXT file<br>
+* Radically changed the copyright texts in the sources, so everybody who 
+participated to the KENS
+Project is recognized for his work</p>
+<p>&nbsp;</p>
+<p>KENS V1.2<br>
+* Added Game Maker wrapper functions, so that Game Maker users are able to use 
+the KENS library<br>
+* Completed the README.TXT file with info for Game Maker users</p>
+<p>&nbsp;</p>
+<p>KENS V1.1<br>
+* Corrected a bug in the Moduled Kosinski compression algorithm (thanks to 
+rika_chou for reporting it,
+thanks to Esrael for giving a hint on how to correct it)<br>
+* Updated the Enigma decompressor with the last version of the algorithm kindly 
+provided by Nemesis<br>
+* Added the Delphi Unit made by Korama (amarokorama@msn.com), so Delphi 
+programmers can Dynamic Link
+to the KENS library<br>
+* Added a KENS.h file that groups the Kosinski.h, Enigma.h, Nemesis.h and 
+Saxman.h C++ header files<br>
+* Added some more info in the README.TXT file</p>
+<p>&nbsp;</p>
+<p>KENS V1.0a<br>
+* Just some size improvements</p>
+<p>&nbsp;</p>
+<p>KENS V1.0<br>
+* Initial Release</p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+

@@ -1,0 +1,257 @@
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<p align="center"><u><b><font size="7">KENS</font></b></u></p>
+<p align="center">Kosinski / Enigma / Nemesis / Saxman Compression and Decompression Libraries<br>
+Copyright © 2002-2004 The KENS Project Development Team</p>
+<p align="left">&nbsp;</p>
+<p align="left"><a href="#1_Intro">1. What is KENS ?</a><br>
+<a href="#2_Authors">2. Who made KENS ?</a><br>
+<a href="#3_CPlusPlus">3. How do I use KENS in a C/C++ program ?</a><br>
+<a href="#4_Delphi">4. How do I use KENS in a Delphi program ?</a><br>
+<a href="#5_VisualBasic">5. How do I use KENS in a Visual Basic program ?</a><br>
+<a href="#6_GameMaker">6. How do I use KENS in a Game Maker &quot;program&quot; ?</a><br>
+<a href="#7_Functions">7. What are the functions, and how do I call them&nbsp; ?</a><br>
+<a href="#8_Buffer">8. Advanced topic: How do I decompress to a buffer rather than a file ?</a></p>
+<p align="left">&nbsp;</p>
+<p align="left"><b><u><a name="1_Intro"></a>1. What is KENS ?</u></b></p>
+<p align="left">KENS is a group of four libraries that allow you to compress and 
+decompress data using the Kosinski, Enigma, Nemesis and Saxman compression 
+formats. These libraries, programmed using Visual C++, can be easily used from 
+your applications, even from Visual Basic and Game Maker applications. KENS is 
+being distributed under LGPL. For more info about the LGPL, read 
+<a href="LICENSE.HTML">LICENSE.HTML</a>.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><u><b><a name="2_Authors"></a>2. Who made KENS ?</b></u></p>
+<p align="left">Several people worked on KENS, in a way or another. There are 
+people who cracked the formats, others who wrote the algorithms to compress and 
+decompress the data, some who contributed by making headers allowing to use the 
+libraries easily in other programming languages, and people who tested them heavily and reported bugs. All these people can be considered to be a part of a 
+team, The KENS Project Development Team. Without them, making KENS what it has 
+become today would not have been possible. Here is a list of these people so far 
+(in alphabetical order).<br>
+&nbsp;<div align="center">
+<table border="0" id="table1" width="414">
+	<tr>
+		<td>Brett Kosinski</td>
+		<td width="200">brettk@gpu.srv.ualberta.ca</td>
+	</tr>
+	<tr>
+		<td>Damian &quot;Saxman&quot; Grove</td>
+		<td width="200">saxman@shentel.net</td>
+	</tr>
+	<tr>
+		<td>David &quot;Magus&quot; Declerck</td>
+		<td width="200">ChaosIsLight@aol.com</td>
+	</tr>
+	<tr>
+		<td>Korama</td>
+		<td width="200">amarokorama@msn.com</td>
+	</tr>
+	<tr>
+		<td>Roger &quot;Nemesis&quot; Sanders</td>
+		<td width="200">nemesis2k2hacker@hotmail.com</td>
+	</tr>
+	<tr>
+		<td>Stealth</td>
+		<td width="200">stealth@emulationzone.org</td>
+	</tr>
+	<tr>
+		<td>Ultima</td>
+		<td width="200">ultima@shadowsoft-games.com</td>
+	</tr>
+</table>
+	<p align="left">&nbsp;</p>
+	<p align="left"><u><b><a name="3_CPlusPlus"></a>3. How do I use KENS in a C/C++ program ?</b></u></div>
+<p align="left">Include the Kosinski.h, Enigma.h, Nemesis.h or Saxman.h files 
+into any file that calls the compression / decompression routines. 
+Alternatively, you can just include KENS.h, which contains the definitions of 
+all these four files. Then, you have to call KInit, EInit, NInit or SInit before 
+using any of the routines (these functions are used to initialize the pointers 
+to the routines). These functions all take a parameter that specifies the path 
+to the DLL, and they return &quot;true&quot; if initialization worked or &quot;false&quot; if it 
+didn't. It is very important that you check the return value of these functions 
+before calling any of the functions from the DLLs.</p>
+<p align="left">&nbsp;</p>
+<div align="center">
+	<p align="left"><u><b><a name="4_Delphi"></a>4. How do I use KENS in a Delphi program ?</b></u></div>
+<p align="left">Include the KENS unit into the &quot;uses&quot; clause of any unit that 
+calls the compression / decompression functions. In KENS.pas, there's a compiler 
+switch &quot;KENS_LoadDynamically&quot;, which controls whether the KENS DLLs are imported 
+statically (when your program starts up) or dynamically (during runtime of your 
+program). If &quot;KENS_LoadDynamically&quot; is disabled, your program won't load if one 
+of the used KENS DLLs is missing. If &quot;KENS_LoadDynamically&quot; is enabled 
+(default), then you have to call KInit, EInit, NInit or SInit and check the 
+return value before using any of the routines (these functions are used to load 
+the DLLs at runtime and initialize the pointers to the routines). You can also 
+use the helper functions KAvailable, EAvailable, NAvailable and SAvailable, they 
+call the respective Init function if necessary. For an example, please refer to 
+the comments at the begining of KENS.pas.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><u><b><a name="5_VisualBasic"></a>5. How do I use KENS in a Visual Basic program ?</b></u></p>
+<p align="left">Simply copy / paste the required declarations at the begining of 
+a module:</p>
+<p align="left"><u>Kosinski:<br>
+</u><font face="Courier New" size="2">Declare Function KComp Lib &quot;Kosinski.dll&quot; 
+Alias &quot;VBComp&quot; (ByVal Source As Variant, ByVal Destination As Variant, ByVal 
+Moduled As Boolean) As Long<br>
+Declare Function KDecomp Lib &quot;Kosinski.dll&quot; Alias &quot;VBDecomp&quot; (ByVal Source As 
+Variant, ByVal Destination As Variant, ByVal Pointer As Long, ByVal Moduled As 
+Boolean) As Long<br>
+Declare Function KCompEx Lib &quot;Kosinski.dll&quot; Alias &quot;VBCompEx&quot; (ByVal Source As 
+Variant, ByVal Destination As Variant, ByVal SlideWin As Long, ByVal RecLen As 
+Long, ByVal Moduled As Boolean) As Long</font></p>
+<p align="left"><u>Enigma:<br>
+</u><font size="2" face="Courier New">Declare Function EComp Lib &quot;Enigma.dll&quot; 
+Alias &quot;VBComp&quot; (ByVal Source As Variant, ByVal Destination As Variant, ByVal 
+Padding As Boolean) As Long<br>
+Declare Function EDecomp Lib &quot;Enigma.dll&quot; Alias &quot;VBDecomp&quot; (ByVal Source As 
+Variant, ByVal Destination As Variant, ByVal Pointer As Long, ByVal Padding As 
+Boolean) As Long</font></p>
+<p align="left"><u>Nemesis:<br>
+</u><font size="2" face="Courier New">Declare Function NComp Lib &quot;Nemesis.dll&quot; 
+Alias &quot;VBComp&quot; (ByVal Source As Variant, ByVal Destination As Variant) As Long<br>
+Declare Function NDecomp Lib &quot;Nemesis.dll&quot; Alias &quot;VBDecomp&quot; (ByVal Source As 
+Variant, ByVal Destination As Variant, ByVal Pointer As Long) As Long</font></p>
+<p align="left"><u>Saxman:<br>
+</u><font size="2" face="Courier New">Declare Function SComp Lib &quot;Saxman.dll&quot; 
+Alias &quot;VBComp2&quot; (ByVal Source As Variant, ByVal Destination As Variant, ByVal 
+WithSize As Boolean) As Long<br>
+Declare Function SDecomp Lib &quot;Saxman.dll&quot; Alias &quot;VBDecomp2&quot; (ByVal Source As 
+Variant, ByVal Destination As Variant, ByVal Pointer As Long, ByVal Size As 
+Long) As Long</font></p>
+<p align="left">&nbsp;</p>
+<p align="left"><u><b><a name="6_GameMaker"></a>6. How do I use KENS in a Game Maker &quot;program&quot; ?</b></u></p>
+<p align="left">Declare the functions as follows:<br>
+<br>
+<u>Kosinski:<br>
+</u><font size="2" face="Courier New">external_define('Kosinski.dll', 'GMComp', 
+dll_cdecl, ty_real, 3, ty_string, ty_string, ty_real);<br>
+external_define('Kosinski.dll', 'GMDecomp', dll_cdecl, ty_real, 4, ty_string, 
+ty_string, ty_real, ty_real);</font></p>
+<p align="left"><u>Enigma:<br>
+</u><font size="2" face="Courier New">external_define('Enigma.dll', 'GMComp', 
+dll_cdecl, ty_real, 3, ty_string, ty_string, ty_real);<br>
+external_define('Enigma.dll', 'GMDecomp', dll_cdecl, ty_real, 4, ty_string, 
+ty_string, ty_real, ty_real);</font></p>
+<p align="left"><u>Nemesis:<br>
+</u><font size="2" face="Courier New">external_define('Nemesis.dll', 'GMComp', 
+dll_cdecl, ty_real, 2, ty_string, ty_string);<br>
+external_define('Nemesis.dll', 'GMDecomp', dll_cdecl, ty_real, 3, ty_string, 
+ty_string, ty_real);</font></p>
+<p align="left"><u>Saxman:<br>
+</u><font size="2" face="Courier New">external_define('Saxman.dll', 'GMComp2', 
+dll_cdecl, ty_real, 3, ty_string, ty_string, ty_real);<br>
+external_define('Saxman.dll', 'GMDecomp2', dll_cdecl, ty_real, 4, ty_string, 
+ty_string, ty_real, ty_real);</font></p>
+<p align="left">&nbsp;</p>
+<p align="left"><u><b><a name="7_Functions"></a>7. What are the functions, and how do I call them&nbsp; ?</b></u></p>
+<p align="left">Before explaining the functions and their parameters, I will 
+explain the parameters types.<br>
+* String: In C/C++, this is represented as char* or char[]. In Delphi, this is 
+represented as PChar. In Visual Basic, this is represented as String. In Game 
+Maker, this is represented as ty_string.<br>
+* Long: In C/C++, this is represented as long. In Delphi, this is represented as 
+Longint. In Visual Basic, this is represented as Long. In Game Maker, this type 
+does not exist, but KENS will accept the ty_real type.<br>
+* Boolean: In C/C++, this is represented as bool. In Delphi and Visual Basic, 
+this is represented as Boolean. In Game Maker, this type does not exist, but 
+KENS will accept the ty_real type, where 0 means false and anything else 
+(usually 1) means true.</p>
+<p align="left"><u>KComp: Compresses data using the Kosinski format<br>
+</u>The first parameter is a string representing the source file. The second 
+parameter is a string representing the destination file. The third parameter is 
+a boolean that indicates whether or not to use the Moduled Kosinski compression.</p>
+<p align="left"><u>KCompEx: Compresses data using the Kosinski format, and 
+allows to specify a custom Sliding Window and Recurrence Length<br>
+</u>The first parameter is a string representing the source file. The second 
+parameter is a string representing the destination file. The third parameter is 
+a long that specifies a custom Sliding Window (default: 8192). The fourth 
+parameter is a long that specifies a custom Recurrence Length (default: 256). 
+The fifth parameter is a boolean that indicates whether or not to use the 
+Moduled Kosinski compression. Due to an internal restriction on the number of 
+parameters, Game Maker can't call this function.</p>
+<p align="left"><u>KDecomp: Decompresses data using the Kosinski format<br>
+</u>The first parameter is a string representing the source file. The second 
+parameter is a string representing the destination file. The third parameter is 
+a long that indicates the offset to start decompressing from. The fourth 
+parameter is a boolean that indicates whether or not to use the Moduled Kosinski 
+compression.</p>
+<p align="left"><u>EComp: Compresses data using the Enigma format<br>
+</u>The first parameter is a string representing the source file. The second 
+parameter is a string representing the destination file. The third parameter is 
+a boolean that indicates whether or not to remove the padding when compressing 
+(usually false, as most files you will compress won't have added padding).</p>
+<p align="left"><u>EDecomp: Decompresses data using the Enigma format<br>
+</u>The first parameter is a string representing the source file. The second 
+parameter is a string representing the destination file. The third parameter is 
+a long that indicates the offset to start decompressing from. The fourth 
+parameter is a boolean that indicates whether or not to add padding when 
+decompressing (usually false, although you might want to add padding for Sonic 1 
+Special Stages).</p>
+<p align="left"><u>NComp: Compresses data using the Nemesis format<br>
+</u>The first parameter is a string representing the source file. The second 
+parameter is a string representing the destination file.</p>
+<p align="left"><u>NDecomp: Decompresses data using the Nemesis format<br>
+</u>The first parameter is a string representing the source file. The second 
+parameter is a string representing the destination file. The third parameter is 
+a long that indicates the offset to start decompressing from.</p>
+<p align="left"><u>SComp: Compresses data using the Saxman format<br>
+</u>The first parameter is a string representing the source file. The second 
+parameter is a string representing the destination file. The third parameter is 
+a boolean that indicates whether or not to add the size of the compressed file 
+to the output (usually, you will specify true, expect if you're compressing the 
+Sonic 2 Sound Driver).</p>
+<p align="left"><u>SDecomp: Decompresses data using the Saxman format<br>
+</u>The first parameter is a string representing the source file. The second 
+parameter is a string representing the destination file. The third parameter is 
+a long that indicates the offset to start decompressing from. The fourth 
+parameter is a long that indicates a custom size (specify 0 if you want the 
+decompressor to read the size from the compressed data, otherwise specify a 
+custom size - note that you will only need to specify a custom size when 
+decompressing the Sonic 2 Sound Driver).</p>
+<p align="left">&nbsp;</p>
+<p align="left"><u><b><a name="8_Buffer"></a>8. Advanced topic: How do I decompress to a buffer rather than a file ?</b></u></p>
+<p align="left">Since version 1.4, it is now possible to decompress data to a 
+buffer rather than a file. However, there is a requirement. You must be using a 
+programming language that is capable of using pointers and calling the standard functions from the 
+DLLs. This means you won't be able to decompress to a buffer under Visual Basic 
+or Game Maker. However, you will be able to do it under C/C++ and Delphi. In 
+order to do so, you will have to use the following functions:<br>
+Kosinski: KCompToBuf, KDecompToBuf and KCompExToBuf<br>
+Enigma: ECompToBuf and EDecompToBuf<br>
+Nemesis: NCompToBuf and NDecompToBuf<br>
+Saxman: SCompToBuf and SDecompToBuf<br>
+
+These functions are practically identical to the classic functions. There are 
+only two differences. The second parameter, instead of being a string that contains 
+the name of the destination file, is a pointer to the destination buffer (this 
+pointer being passed by reference). This buffer must be 
+declared as char* or char[] in C/C++ or Pointer in Delphi. Also, right after 
+this parameter, a new parameter was inserted. It is a pointer to a long that 
+will receive the size of the data contained in the buffer. This parameter MUST 
+be specified correctly (don't pass NULL). The rest of the parameters remains unchanged.<br>
+Now, here are the two ways 
+of calling these functions.<br>
+* If you specify a NULL pointer as the destination buffer (a pointer set to NULL or 0), the function will 
+initialize it by itself and fill the buffer with the output data. The advantage 
+is that the buffer will be initialized to the right size. However you will have 
+to call the FreeBuffer() function from the KENS DLL and pass the pointer to the 
+buffer as a parameter in order to free it. Note that if you are using C++, you 
+may free it by yourself by calling the delete[] operator. Do NOT try to use the 
+ANSI-C free() function on the pointer.<br>
+* If you specify an already initialized pointer, the function will simply fill 
+the buffer with the output data. You should ensure that the buffer is large 
+enough to handle the data it will receive, otherwise you'll get an access 
+violation error. You also have to free the pointer by yourself.</p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+</body>

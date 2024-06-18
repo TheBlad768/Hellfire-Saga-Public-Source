@@ -1,0 +1,20 @@
+	sHeaderInit	; Z80 offset is $FAD7
+	sHeaderPrio	$80
+	sHeaderCh	$02
+	sHeaderSFX	$80, ctFM5, .FM2, $00, $06
+	sHeaderSFX	$80, ctFM4, .FM4, $00, $06
+
+.FM4
+	sVoice		pSpecialRumble
+	sJump		.jump
+
+.FM2
+	sVoice		pSpecialRumble
+
+.loop
+	dc.b nE0, $03, nC0, $07, nA0, $0A, nEb1, $07
+
+.jump
+	dc.b nAb0, $08, nBb0, $08
+	sCont		.loop
+	sStop

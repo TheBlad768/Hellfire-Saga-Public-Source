@@ -1,0 +1,409 @@
+Snd_Festival_Header:
+	sHeaderInit
+	sHeaderTempo	$0080
+	sHeaderCh	$05, $03
+
+	sHeaderDAC	Snd_Festival_DAC1
+	sHeaderDAC	Snd_Festival_DAC2,	$04
+	sHeaderFM	Snd_Festival_FM1,	$0C, $08
+	sHeaderFM	Snd_Festival_FM3,	$00, $06		; AF: SFX now use FM2
+	sHeaderFM	Snd_Festival_FM2,	$00, $04
+	sHeaderFM	Snd_Festival_FM5,	$00, $08
+	sHeaderFM	Snd_Festival_FM4,	$00, $06
+	sHeaderPSG	Snd_Festival_PSG1,	$00+$0C, $20, $00, v03
+	sHeaderPSG	Snd_Festival_PSG2,	$00+$0C, $20, $00, v03
+	sHeaderPSG	Snd_Festival_PSG3,	$00+$0C, $08, $00, v01
+
+;	Voice $00
+;	$28
+;	$33, $53, $70, $30, 	$DF, $DC, $1F, $1F, 	$14, $05, $01, $01
+;	$00, $01, $00, $1D, 	$11, $21, $10, $F9, 	$0E, $1B, $12, $0C
+	spAlgorithm	$00
+	spFeedback	$05
+	spDetune	$03, $07, $05, $03
+	spMultiple	$03, $00, $03, $00
+	spRateScale	$03, $00, $03, $00
+	spAttackRt	$1F, $1F, $1C, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$14, $01, $05, $01
+	spDecayRt	$00, $00, $01, $1D
+	spSustainLv	$01, $01, $02, $0F
+	spReleaseRt	$01, $00, $01, $09
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$0E, $12, $1B, $0C
+
+;	Voice $01
+;	$38
+;	$53, $51, $51, $51, 	$DF, $DF, $1F, $1F, 	$07, $0E, $07, $04
+;	$04, $03, $03, $08, 	$F7, $33, $74, $67, 	$1B, $11, $10, $0C
+	spAlgorithm	$00
+	spFeedback	$07
+	spDetune	$05, $05, $05, $05
+	spMultiple	$03, $01, $01, $01
+	spRateScale	$03, $00, $03, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$07, $07, $0E, $04
+	spDecayRt	$04, $03, $03, $08
+	spSustainLv	$0F, $07, $03, $06
+	spReleaseRt	$07, $04, $03, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1B, $10, $11, $0C
+
+;	Voice $02
+;	$38
+;	$33, $01, $51, $01, 	$10, $13, $1A, $1B, 	$0F, $1F, $1F, $1F
+;	$01, $01, $01, $01, 	$33, $03, $03, $08, 	$16, $1A, $19, $0C
+	spAlgorithm	$00
+	spFeedback	$07
+	spDetune	$03, $05, $00, $00
+	spMultiple	$03, $01, $01, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$10, $1A, $13, $1B
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0F, $1F, $1F, $1F
+	spDecayRt	$01, $01, $01, $01
+	spSustainLv	$03, $00, $00, $00
+	spReleaseRt	$03, $03, $03, $08
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$16, $19, $1A, $0C
+
+;	Voice $03
+;	$20
+;	$3F, $03, $00, $01, 	$9F, $9F, $9F, $5F, 	$0D, $0C, $0B, $09
+;	$08, $08, $08, $08, 	$27, $27, $27, $17, 	$13, $36, $18, $06
+	spAlgorithm	$00
+	spFeedback	$04
+	spDetune	$03, $00, $00, $00
+	spMultiple	$0F, $00, $03, $01
+	spRateScale	$02, $02, $02, $01
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0D, $0B, $0C, $09
+	spDecayRt	$08, $08, $08, $08
+	spSustainLv	$02, $02, $02, $01
+	spReleaseRt	$07, $07, $07, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$13, $18, $36, $06
+
+; DAC Data
+Snd_Festival_DAC2:
+	sPan		spCenter, $00
+	dc.b nRst, $01, dKick, $2F, $8D, $0C, $0C, $18, dSnare, dSnare, dSnare, $0C
+	dc.b $0C, $0C, $03, $03, $03, $03
+
+Snd_Festival_Loop00:
+	dc.b dKick
+
+Snd_Festival_Loop01:
+	dc.b dKick, dSnare, dKick
+	sLoop		$00, $20, Snd_Festival_Loop00
+
+Snd_Festival_Jump00:
+	dc.b dKick, $03
+	sLoop		$01, $02, Snd_Festival_Loop01
+
+Snd_Festival_Loop02:
+	dc.b dKick, dSnare, dKick, dKick
+	sLoop		$00, $1F, Snd_Festival_Loop02
+	dc.b dKick, dSnare, dKick, $8D, $3C, $0C, $30, dKick
+
+Snd_Festival_Loop03:
+	dc.b $03, $03, dSnare, dKick
+	sLoop		$00, $2A, Snd_Festival_Loop03
+	sJump		Snd_Festival_Jump00
+
+; FM1 Data
+Snd_Festival_FM1:
+	sVoice		$03
+	sPan		spCenter, $00
+	dc.b nRst, $60, nG1, $30, nAb1, nG1
+
+Snd_Festival_Loop13:
+	dc.b $03
+	sLoop		$00, $80, Snd_Festival_Loop13
+
+Snd_Festival_Loop16:
+	dc.b nG1
+
+Snd_Festival_Loop14:
+	dc.b $03
+	sLoop		$00, $08, Snd_Festival_Loop14
+
+Snd_Festival_Loop15:
+	dc.b nAb1
+	sLoop		$00, $08, Snd_Festival_Loop15
+	sLoop		$01, $03, Snd_Festival_Loop16
+
+Snd_Festival_Loop17:
+	dc.b nG1
+	sLoop		$00, $18, Snd_Festival_Loop17
+
+Snd_Festival_Loop18:
+	dc.b nAb1
+	sLoop		$00, $08, Snd_Festival_Loop18
+
+Snd_Festival_Loop19:
+	dc.b nG1
+	sLoop		$00, $08, Snd_Festival_Loop19
+	sLoop		$01, $03, Snd_Festival_Loop18
+
+Snd_Festival_Loop1A:
+	dc.b nG1
+	sLoop		$00, $08, Snd_Festival_Loop1A
+
+Snd_Festival_Loop1B:
+	dc.b nD2
+	sLoop		$00, $08, Snd_Festival_Loop1B
+
+Snd_Festival_Loop1C:
+	dc.b nEb2
+	sLoop		$00, $08, Snd_Festival_Loop1C
+
+Snd_Festival_Loop1D:
+	dc.b nD2
+	sLoop		$00, $18, Snd_Festival_Loop1D
+	sLoop		$01, $03, Snd_Festival_Loop1C
+
+Snd_Festival_Loop1E:
+	dc.b nEb2
+	sLoop		$00, $08, Snd_Festival_Loop1E
+
+Snd_Festival_Loop1F:
+	dc.b nD2
+	sLoop		$00, $10, Snd_Festival_Loop1F
+
+Snd_Festival_Loop20:
+	dc.b nG1
+	sLoop		$00, $10, Snd_Festival_Loop20
+
+Snd_Festival_Loop22:
+	dc.b nRst, $0C, nG1
+
+Snd_Festival_Loop21:
+	dc.b $03
+	sLoop		$00, $10, Snd_Festival_Loop21
+	sLoop		$01, $04, Snd_Festival_Loop22
+
+Snd_Festival_Loop23:
+	dc.b $03
+	sLoop		$00, $70, Snd_Festival_Loop23
+	sJump		Snd_Festival_Loop16
+
+; FM2 Data
+Snd_Festival_FM2:
+	sVoice		$02
+	sPan		spCenter, $00
+	dc.b nRst, $01, nD5, $2F, nG2, $06, nRst, nG2, nRst, nAb3, $21, nG3
+	dc.b $09, nE3, $06, nEb3, $09, nE3, nF3, $06, nAb3, $30
+
+Snd_Festival_Loop0F:
+	dc.b nG3, $06, nRst, nD4, nRst, nEb4, $09, nG3, nF4, $06, nG3, nRst
+	dc.b nF4, nRst, nE4, $09, nCs4, nBb3, $06, nG3, nRst, nD4, nRst, nEb4
+	dc.b $09, nG3, nF4, $06, nG3, nRst, $12, nC5, $03, nB4, nBb4, nA4
+	dc.b nAb4, nG4, nFs4, nF4
+	sLoop		$00, $02, Snd_Festival_Loop0F
+
+Snd_Festival_Loop10:
+	dc.b nD4, $18, nEb4, $09, $09, nF4, $06
+	sLoop		$00, $03, Snd_Festival_Loop10
+	dc.b nG3, $09, nD4, nG4, $0C, nFs4, $06, nEb4, nAb3
+
+Snd_Festival_Loop11:
+	dc.b nD5, $18, nEb5, $09, $09, nF5, $06
+	sLoop		$00, $03, Snd_Festival_Loop11
+	dc.b nG4, $09, nD5, nG5, $0C, nFs5, $06, nEb5, nAb4, nD5, $18, nCs5
+	dc.b $09, nA4, nCs5, $06, nD5, $09, nEb5, nD5, $06, nFs5, $09, nEb5
+	dc.b nD5, $06, $18, nCs5, $09, nA4, nCs5, $06, nD5, $18, nFs5, nFs5
+	dc.b nCs5, $09, nA4, nCs5, $06, nFs5, $09, nEb5, nD5, $06, nFs5, $09
+	dc.b nEb5, nD5, $06, nFs5, $18, nCs5, $09, nA4, nCs5, $06, nD5, $30
+	dc.b nRst, $78
+
+Snd_Festival_Loop12:
+	dc.b nG4, $04, nRst, $02, nD5, $04, nRst, $02, nG5, $04, nRst, $02
+	dc.b nFs5, $04, nRst, $02, nCs5, $09, nF5, nB4, nE5
+	sLoop		$00, $02, Snd_Festival_Loop12
+	dc.b nD5, $18, nEb5, nF5, nEb5, nD5, nEb5, nF5, nC5, $03, nB4, nBb4
+	dc.b nA4, nAb4, nG4, nFs4, nF4, nG3, $06, nRst, nD4, nRst, nEb4, $09
+	dc.b nG3, nF4, $06, nG3, nRst, nF4, nRst, nE4, $09, nCs4, nBb3, $06
+	dc.b nG3, nRst, nD4, nRst, nEb4, $09, nG3, nF4, $06, nG3, nRst, $12
+	dc.b nC5, $03, nB4, nBb4, nA4, nAb4, nG4, nFs4, nF4
+	sJump		Snd_Festival_Loop10
+
+; FM3 Data
+Snd_Festival_FM3:
+	sVoice		$00
+	sPan		spLeft, $00
+	dc.b nRst, $30, nG2, $06, nRst, nG2, nRst, nAb3, $21, nG3, $09, nE3
+	dc.b $06, nEb3, $09, nC3, nB2, $06, nAb2, $30
+
+Snd_Festival_Loop0B:
+	dc.b nG2, $06, nRst, nD3, nRst, nEb3, $09, nG2, nF3, $06, nG2, nRst
+	dc.b nF3, nRst, nE3, $09, nCs3, nBb2, $06, nG2, nRst, nD3, nRst, nEb3
+	dc.b $09, nG2, nF3, $06, nG2, nRst, $2A
+	sLoop		$00, $02, Snd_Festival_Loop0B
+
+Snd_Festival_Jump03:
+	dc.b nG2
+
+Snd_Festival_Loop0C:
+	dc.b $18, nAb2, nG2, nAb2, nG2, nAb2, nG2, $30
+	sLoop		$00, $02, Snd_Festival_Loop0C
+
+Snd_Festival_Loop0D:
+	dc.b nD2, $18, nEb2, nD2, $30, $18, nEb2, nA1, $09, nD2, nA2, $0C
+	dc.b nFs2, $06, nD2, nC2
+	sLoop		$00, $02, Snd_Festival_Loop0D
+
+Snd_Festival_Loop0E:
+	dc.b nG1, $04, nRst, $02, nD2, $04, nRst, $02, nG2, $04, nRst, $02
+	dc.b nFs2, $04, nRst, $02, nCs2, $09, nF2, nB1, nE2
+	sLoop		$00, $04, Snd_Festival_Loop0E
+	dc.b nG2, $18, nAb3, $30, $18, nG3, $12, nRst, $03, nF3, nG3, $48
+	dc.b nG2, $06, nRst, nD3, nRst, nEb3, $09, nG2, nF3, $06, nG2, nRst
+	dc.b nF3, nRst, nE3, $09, nCs3, nBb2, $06, nG2, nRst, nD3, nRst, nEb3
+	dc.b $09, nG2, nF3, $06, nG2, nRst, $2A
+	sJump		Snd_Festival_Jump03
+
+; FM4 Data
+Snd_Festival_FM4:
+	sVoice		$01
+	sPan		spRight, $00
+	dc.b nRst, $30, nG2, $06, nRst, nG2, nRst, nAb3, $21, nG3, $09, nE3
+	dc.b $06, nEb3, $09, nC3, nB2, $06, nAb2, $30
+
+Snd_Festival_Loop07:
+	dc.b nG2, $06, nRst, nD3, nRst, nEb3, $09, nG2, nF3, $06, nG2, nRst
+	dc.b nF3, nRst, nE3, $09, nCs3, nBb2, $06, nG2, nRst, nD3, nRst, nEb3
+	dc.b $09, nG2, nF3, $06, nG2, nRst, $2A
+	sLoop		$00, $02, Snd_Festival_Loop07
+
+Snd_Festival_Jump02:
+	dc.b nG2
+
+Snd_Festival_Loop08:
+	dc.b $18, nAb2, nG2, nAb2, nG2, nAb2, nG2, $30
+	sLoop		$00, $02, Snd_Festival_Loop08
+
+Snd_Festival_Loop09:
+	dc.b nD2, $18, nEb2, nD2, $30, $18, nEb2, nA1, $09, nD2, nA2, $0C
+	dc.b nFs2, $06, nD2, nC2
+	sLoop		$00, $02, Snd_Festival_Loop09
+
+Snd_Festival_Loop0A:
+	dc.b nG1, $04, nRst, $02, nD2, $04, nRst, $02, nG2, $04, nRst, $02
+	dc.b nFs2, $04, nRst, $02, nCs2, $09, nF2, nB1, nE2
+	sLoop		$00, $04, Snd_Festival_Loop0A
+	dc.b nG2, $18, nAb3, $30, $18, nG3, $12, nRst, $03, nF3, nG3, $48
+	dc.b nG2, $06, nRst, nD3, nRst, nEb3, $09, nG2, nF3, $06, nG2, nRst
+	dc.b nF3, nRst, nE3, $09, nCs3, nBb2, $06, nG2, nRst, nD3, nRst, nEb3
+	dc.b $09, nG2, nF3, $06, nG2, nRst, $2A
+	sJump		Snd_Festival_Jump02
+
+; FM5 Data
+Snd_Festival_FM5:
+	sVoice		$02
+	sPan		spRight, $00
+	dc.b nRst, $08
+	ssDetune	-$6
+	dc.b nD5, $30, nG2, $06, nRst, nG2, nRst, nAb3, $21, nG3, $09, nE3
+	dc.b $06, nEb3, $09, nE3, nF3, $06, nAb3, $30, nG3, $06, nRst, nD4
+	dc.b nRst, nEb4, $09, nG3, nF4, $06, nG3, nRst, nF4, nRst, nE4, $09
+	dc.b nCs4, nBb3, $06, nG3, nRst, nD4, nRst, nEb4, $09, nG3, nF4, $06
+	dc.b nG3, nRst, $12, nC5, $03, nB4, nBb4, nA4, nAb4, nG4, nFs4, nF4
+	dc.b nG3, $06, nRst, nD4, nRst, nEb4, $09, nG3, nF4, $06, nG3, nRst
+	dc.b nF4, nRst, nE4, $09, nCs4, nBb3, $06, nG3, nRst, nD4, nRst, nEb4
+	dc.b $09, nG3, nF4, $06, nG3, nRst, $12, nC5, $03, nB4, nBb4, nA4
+	dc.b nAb4, nG4, nFs4, $02
+
+Snd_Festival_Jump01:
+	dc.b sHold, $01, nF4, $03
+
+Snd_Festival_Loop04:
+	dc.b nD4, $18, nEb4, $09, $09, nF4, $06
+	sLoop		$00, $03, Snd_Festival_Loop04
+	dc.b nG3, $09, nD4, nG4, $0C, nFs4, $06, nEb4, nAb3
+
+Snd_Festival_Loop05:
+	dc.b nD5, $18, nEb5, $09, $09, nF5, $06
+	sLoop		$00, $03, Snd_Festival_Loop05
+	dc.b nG4, $09, nD5, nG5, $0C, nFs5, $06, nEb5, nAb4, nD5, $18, nCs5
+	dc.b $09, nA4, nCs5, $06, nD5, $09, nEb5, nD5, $06, nFs5, $09, nEb5
+	dc.b nD5, $06, $18, nCs5, $09, nA4, nCs5, $06, nD5, $18, nFs5, nFs5
+	dc.b nCs5, $09, nA4, nCs5, $06, nFs5, $09, nEb5, nD5, $06, nFs5, $09
+	dc.b nEb5, nD5, $06, nFs5, $18, nCs5, $09, nA4, nCs5, $06, nD5, $30
+	dc.b nRst, $78
+
+Snd_Festival_Loop06:
+	dc.b nG4, $04, nRst, $02, nD5, $04, nRst, $02, nG5, $04, nRst, $02
+	dc.b nFs5, $04, nRst, $02, nCs5, $09, nF5, nB4, nE5
+	sLoop		$00, $02, Snd_Festival_Loop06
+	dc.b nD5, $18, nEb5, nF5, nEb5, nD5, nEb5, nF5, nC5, $03, nB4, nBb4
+	dc.b nA4, nAb4, nG4, nFs4, nF4, nG3, $06, nRst, nD4, nRst, nEb4, $09
+	dc.b nG3, nF4, $06, nG3, nRst, nF4, nRst, nE4, $09, nCs4, nBb3, $06
+	dc.b nG3, nRst, nD4, nRst, nEb4, $09, nG3, nF4, $06, nG3, nRst, $12
+	dc.b nC5, $03, nB4, nBb4, nA4, nAb4, nG4, nFs4, $02
+	sJump		Snd_Festival_Jump01
+
+; PSG1 Data
+Snd_Festival_PSG1:
+	dc.b nRst, $01, nD2, $2F, nRst, $7F, $7F, $52
+
+Snd_Festival_Loop28:
+	dc.b nD1, $03, nBb0, nG0, nBb0, nD1, nBb0, nG0, nBb0, nEb1, nC1, nA0
+	dc.b nC1, nEb1, nC1, nA0, nC1
+	sLoop		$00, $04, Snd_Festival_Loop28
+
+Snd_Festival_Jump05:
+	dc.b nRst
+
+Snd_Festival_Loop29:
+	dc.b $7E
+	sLoop		$00, $08, Snd_Festival_Loop29
+	dc.b nD1, $18, nEb1, nF1, nEb1, nD1, nEb1, nF1, nEb1, nD1, nEb1, nF1
+	dc.b $30, nD1, $18, nEb1, nF1, nEb1
+	sJump		Snd_Festival_Jump05
+
+; PSG2 Data
+Snd_Festival_PSG2:
+	dc.b nRst, $01, nCs2, $2F, nRst, $7F, $7F, $53
+	saVol		$30
+
+Snd_Festival_Loop26:
+	dc.b nD1, $03, nBb0, nG0, nBb0, nD1, nBb0, nG0, nBb0, nEb1, nC1, nA0
+	dc.b nC1, nEb1, nC1, nA0, nC1
+	sLoop		$00, $03, Snd_Festival_Loop26
+	dc.b nD1, nBb0, nG0, nBb0, nD1, nBb0, nG0, nBb0, nEb1, nC1, nA0, nC1
+	dc.b nEb1, nC1, nA0, nC1, $02
+
+Snd_Festival_Jump04:
+	dc.b sHold, $01, nRst
+
+Snd_Festival_Loop27:
+	dc.b $43
+	sLoop		$00, $0F, Snd_Festival_Loop27
+	dc.b $02
+	saVol		-$30
+	dc.b nD2, $18, nEb2, nF2, nEb2, nD2, nEb2, nF2, nEb2, nD2, nEb2, nF2
+	dc.b $30, nD2, $18, nEb2, nF2, nEb2
+	saVol		$30
+	sJump		Snd_Festival_Jump04
+
+; PSG3 Data
+Snd_Festival_PSG3:
+	sNoisePSG	snWhitePSG3
+	dc.b nRst, $30, nE5, $0C, $0C, $7F, sHold, $7F, sHold, $7F, sHold, $7B
+
+Snd_Festival_Loop24:
+	dc.b sHold, $60
+	sLoop		$00, $08, Snd_Festival_Loop24
+	dc.b nE5, $3C, $0C
+
+Snd_Festival_Loop25:
+	dc.b $5C, sHold
+	sLoop		$00, $05, Snd_Festival_Loop25
+	dc.b $5C
+	sJump		Snd_Festival_Loop24
+
+Snd_Festival_DAC1:
+	sStop

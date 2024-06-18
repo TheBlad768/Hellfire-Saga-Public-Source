@@ -1,0 +1,551 @@
+<html>
+<head>
+<title>SonED2 Tile Editor</title>
+</head>
+<body>
+<b><center>SonED2 Tile Editor</center></b><br>
+<br>
+The tile editor is used for editing each component of the tiles that make
+up normal gameplay levels, including the palette colors and solidity maps.<br>
+<br>
+Levels are built in several steps, beginning with 8x8 Tile graphics.
+The 64-color palette is divided into four sub-palettes (referred to here as "rows"),
+and each 8x8 Tile may only use colors from any one of those rows (for a total of 15
+color choices, with the first entry in each row being transparent). In the Sonic the
+Hedgehog games, the first color entry on row 3 controls the "Backdrop Color". This is
+the color that appears where nothing else is drawn to the screen, including the screen
+borders displayed by some system versions, and can be taken advantage of to use a full
+set of 16 colors for the background.<br>
+<br>
+The Tiles are then formed into 16x16 "Blocks", which contain drawing direction and
+palette row ID data for each Tile, and the ID of the Solidity Height Map that
+should be used to set which parts of the block are "solid".<br>
+<br>
+The Blocks are used to build "Chunks", which are either 256x256 or 128x128, depending
+on the project settings and the target game. These Chunks contain data for each Block
+that defines drawing direction and the type of reaction a player should have to the
+Block's assigned Height Map.<br>
+<br>
+Finally, the Chunks are used to build the level layout.<br>
+<br>
+Solidity Height Maps define the parts of a Block that are "solid" (that the player can collide
+with), and are based on the idea that each pixel column along the width of a
+Block can be filled up to a certain height, where the player will be made to stand on
+it (or, if it is beside him, be made to act as if it is a solid wall). The Height Maps
+also contain Angle values that determine how gravity affects the player's velocity while
+he is standing on or running along the Height Map. This data, however,
+does not have any affect on the player unless the "Solidity Type" of the
+Block is set within the Chunk.<br>
+<br>
+All of the above-described data can be created by altering
+existing data, by starting from scratch within the editor, or the Tile art
+and palette data can be created outside of SonED2 and imported from an image, however,
+the image must be set up as described in the <a href="Art Importing.html">art importing document</a> to obtain useful results.<br>
+<br>
+This editing mode is actually made up of several parts, each with their own functions:<br>
+<br>
+<li><a href="#General"><b>General Controls</b></a><br><ul>
+    <li><a href="#Editors">Other Editor Modes</a><br>
+    <li><a href="#Viewing">Viewing Controls</a><br></ul><br>
+<li><a href="#Tileset"><b>Tileset Controls</b></a><br><ul>
+    <li><a href="#Expand">Expand List</a><br>
+    <li><a href="#Contract">Contract List</a><br>
+    <li><a href="#Insert">Insert</a><br>
+    <li><a href="#Delete">Delete</a><br>
+    <li><a href="#Copy">Copy</a><br>
+    <li><a href="#Paste">Paste</a><br>
+    <li><a href="#Mirror">Mirror</a><br>
+    <li><a href="#Flip">Flip</a><br></ul><br>
+<li><a href="#Census"><b>Tile Census</b></a><br></a><br>
+<li><a href="#Selector"><b>Tile Selector</b></a><br></a><br>
+<li><a href="#Palette"><b>Palette Editor</b></a><br><ul>
+    <li><a href="#Swap">Swap Palette</a><br>
+    <li><a href="#ChangeColor">Change Color</a><br>
+    <li><a href="#AltPalette">Generate Alt Palette</a><br></ul><br>
+<li><a href="#Tiles"><b>Tile Editor</b></a><br><ul>
+    <li><a href="#DrawTile">Draw to the Tile</a><br>
+    <li><a href="#GrabColor">Grab a Color</a><br></ul><br>
+<li><a href="#Blocks"><b>Block Editor</b></a><br><ul>
+    <li><a href="#SelectTile">Select an 8x8 Entry</a><br>
+    <li><a href="#DrawBlock">Draw to the Block</a><br>
+    <li><a href="#GrabTile">Grab an 8x8 Tile</a><br>
+    <li><a href="#Priority">Plane Priority</a><br>
+    <li><a href="#PalRow">Palette Row</a><br>
+    <li><a href="#TileDirection">Draw Direction</a><br>
+    <li><a href="#HeightMap">Solidity Map</a><br>
+    <li><a href="#GrabSolidity">Grab Solidity</a><br></ul><br>
+<li><a href="#Chunks"><b>Chunk Editor</b></a><br><ul>
+    <li><a href="#SelectBlock">Select a Block Entry</a><br>
+    <li><a href="#DrawChunk">Draw to the Chunk</a><br>
+    <li><a href="#GrabBlock">Grab a Block</a><br>
+    <li><a href="#SolidDirection">Solidity Direction</a><br>
+    <li><a href="#BlockDirection">Draw Direction</a><br></ul><br>
+<li><a href="#Solids"><b>Solidity Editor</b></a><br><ul>
+    <li><a href="#DrawSolid">Draw Solidity</a><br>
+    <li><a href="#BlockView">Block View</a><br></ul>
+
+<br>
+<br><a name="General">
+<b>General Controls</b><br>
+<br>
+<ul>
+The following controls are always available while in this editing mode:<br>
+<br>
+<a name="Editors">
+<b>Other Editor Modes</b><br>
+<ul><br>The "Editors" menu has options to switch to any of the other
+              editing modes available to a project using this editor.
+              The following keys also have the same effect:<br><br>
+
+              <ul><table>
+              <tr><td><b>L</b></td><td> - </td><td>Level Editor Plane A (foreground)</td></tr>
+              <tr><td><b>P</b></td><td> - </td><td>Level Editor Plane B (background)</td></tr>
+              <tr><td><b>K</b></td><td> - </td><td>Level Editor Clipboard</td></tr>
+              <tr><td><b>O</b></td><td> - </td><td>Object Editor</td></tr>
+              </table></ul></ul>
+
+<br>
+<br>
+<a name="Viewing">
+<b>Viewing Controls</b><br>
+<ul><br>The following keys affect other viewing options:<br><br>
+                   <ul><table>
+                   <tr><td><b>Q</b></td><td> - </td><td>Disable Chunk Solidity viewing</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td><b>W</b></td><td> - </td><td>Display Solidity Path 0 Over Chunks</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td><b>E</b></td><td> - </td><td>Display Solidity Path 1 Over Chunks (for games that support two-path collision)</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td><b>R</b></td><td> - </td><td>Toggle angle view when viewing solidity path</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td><b>Y</b></td><td> - </td><td>Toggles the "Low" plane on or off</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td><b>U</b></td><td> - </td><td>Toggles the "High" plane on or off</td></tr>
+                   </table></ul>
+</ul>
+</ul>
+
+<br>
+<br><a name="Tileset">
+<b>Tileset Controls</b><br>
+<br>
+<ul>
+There are a few generic commands that apply to all Tile/Solidity editing
+sections of this editing mode. They are applied to the editor over which the cursor is
+currently hovering and the tile that is currently selected therein, or in the case of
+the Tile Selector, the Tile/Block/Chunk/Solid that is currently being pointed to.<br>
+<br>
+<a name="Expand">
+<b>Expand List</b><br>
+<ul><br>Increase the size of a tile listing by adding a new tile to
+              the end. When hovering the cursor over the desired tile type,
+              <b>hold CTRL and press A</b>. If the list contains more than one
+              page, one of the individual pages must be selected, as opposed
+              to "Page X" (all pages)</ul><br>
+
+<br>
+<a name="Contract">
+<b>Contract List</b><br>
+<ul><br>Decrease the size of a tile listing by removing the tile at
+                the end. When hovering the cursor over the desired tile
+                type, <b>hold CTRL and press Z</b>. If the list contains more than
+                one page, one of the individual pages must be selected, as
+                opposed to "Page X" (all pages)</ul><br>
+
+<br>
+<a name="Insert">
+<b>Insert</b><br>
+<ul><br>Insert a new tile into the list in front of the selected tile.
+         When hovering the cursor over the desired tile of the desired type,
+         <b>hold CTRL and press I</b>. Larger tiles and level layout are updated to
+         reflect the new listing order</ul><br>
+
+<br>
+<a name="Delete">
+<b>Delete</b><br>
+<ul><br>Delete the currently selected tile from the list. When hovering the
+         cursor over the desired tile of the desired type, <b>hold CTRL and
+         press D</b>. Larger tiles and level layout are updated to reflect the
+         new listing order. Positions occupied by the deleted tile are
+         set to "0"</ul><br>
+
+<br>
+<a name="Copy">
+<b>Copy</b><br>
+<ul><br>Copy the currently selected tile for later pasting. When hovering the
+       cursor over the desired tile of the desired type, <b>hold CTRL and press
+       C</b>. Copied tiles of different types are stored separately</ul><br>
+
+<br>
+<a name="Paste">
+<b>Paste</b><br>
+<ul><br>Paste the last tile of the selected type that was copied to the
+        currently selected tile. When hovering the cursor over the desired
+        tile of the desired type, <b>hold CTRL and press P</b></ul><br>
+
+<br>
+<a name="Mirror">
+<b>Mirror</b><br>
+<ul><br>Reverse the currently selected tile horizontally. When hovering the
+         cursor over the desired tile of the desired type, <b>hold CTRL and
+         press M</b>. When a Tile or Block is mirrored, its drawing direction
+         in any Block or Chunk that it appears in is updated so that it has
+         no visible effect. This is useful for Blocks in particular, to
+         avoid having to draw new Solidity Maps that are just reversed
+         versions of existing ones. <i>To prevent the Block/Chunk from being
+         updated with the Tile/Block, <b>hold Spacebar</b></i></ul><br>
+
+<br>
+<a name="Flip">
+<b>Flip</b><br>
+<ul><br>Reverse the currently selected tile vertically. When hovering the
+       cursor over the desired tile of the desired type, <b>hold CTRL and
+       press F</b>. When a Tile or Block is flipped, its drawing direction
+       in any Block or Chunk that it appears in is updated so that it has
+       no visible effect. This is useful for Blocks in particular, to
+       avoid having to draw new Solidity Maps that are just reversed
+       versions of existing ones. <i>To prevent the Block/Chunk from being
+       updated with the Tile/Block, <b>hold Spacebar</b></i></ul><br>
+</ul>
+
+
+<br>
+<br><a name="Census">
+<b>Tile Census</b><br>
+<br>
+<ul>
+This section simply specifies the number of tiles of each type that currently
+exist. <b>Left-clicking</b> on the name of any tile type will cause that
+type to be displayed in the Tile Selector.<br>
+</ul>
+
+
+<br>
+<br><a name="Selector">
+<b>Tile Selector</b><br>
+<br>
+<ul>
+The Tile Selector simply functions as a tool for selecting a tile of any
+type to edit. The <b>Arrow Keys</b>, or the <b>scrollbar</b> (in windowed mode) can be
+used to scroll the list up and down. <b>Left-click</b> the desired Tile to select
+it for editing.<br>
+<br>
+Tile types are selected by clicking the tile type name in
+the Tile Census area. When any tile type in the current project uses more
+than one page, a selection for each page will appear below the Tile Census
+area. <b>Left-clicking</b> "Page X" will cause the Tile Selector to list all tiles of
+the current type from all pages. <b>Left-clicking</b> any of the other "Page" options
+will limit the list to show only the tiles that are a part of the selected
+page for the selected type.<br>
+</ul>
+
+
+
+<br>
+<br><a name="Palette">
+<b>Palette Editor</b><br>
+<br>
+<ul>
+The palette editor serves as both the color selection tool and the color
+editing tool. The currently-selected color is marked by a white box that
+surrounds it. A level may only display 64 colors at once (the top 4 rows),
+but the display shows 128 colors, with the bottom  4 rows being available for
+creating "underwater" colors, or any other kind of alternate palette.<br>
+<br><a name="Swap">
+<b>Swap Palette</b><br>
+<br><ul><b>Left-clicking</b> the "X" to the right of the palette will swap
+               the two sections, displaying the level with the alternate
+               palette<br></ul>
+
+
+<br><a name="ChangeColor">
+<b>Change Color</b><br>
+<br><ul>The "R" "G" and "B" selections below the palette itself list the Red, Green, and
+               Blue component values that make up the currently-selected color. <b>Left-click</b>
+               one of the components to increase it, or <b>right-click</b> it to decrease<br>
+               <br>
+               Hovering over the desired color entry and pressing one of the following keys has the same effect:<br>
+               <br>
+                   <ul><table>
+                   <tr><td><b>G/B</b></td><td> - </td><td>Decrease/Increase the Red component</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td><b>H/N</b></td><td> - </td><td>Decrease/Increase the Blue component</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td><b>J/M</b></td><td> - </td><td>Decrease/increase the Green component</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   </table></ul>
+               <br>
+               Using any of the above-listed keys will also automatically select the entry<br>
+<br></ul>
+
+<br><a name="AltPalette">
+<b>Generate Alt Palette</b><br>
+<br><ul>The color selection just to the right of the RGB options can be used
+                       to generate a type of "alpha blend" palette, useful
+                       for quickly creating "water" or other blend effects.
+                       <b>Left-click</b> the color to select it for editing, and
+                       then <b>Right-Click</b> it to generate an alternate palette
+                       based on the primary palette and the blend color<br></ul>
+</ul>
+
+<br>
+<br><a name="Tiles">
+<b>Tile Editor</b><br>
+<br>
+<ul>
+The 8x8 Tile Editor is made up of a fat-bit grid, which is used for drawing
+to the Tile, and the smaller Tile view above it, which shows the Tile in
+its actual size.<br>
+<br>
+The Tile is displayed using the palette row in which the
+currently-selected color resides.<br>
+<br>
+The "Tile ID" option shows the ID number
+of the currently-selected tile, and can be <b>left-clicked or right-clicked</b> to select a different
+tile. The "Tiles" option on the "Tile Census" may be selected to cause the selection
+list at the right of the screen to display the 8x8 Tiles, which can be chosen
+by <b>left-clicking</b> on them. The "<b>D</b>" and "<b>C</b>" keys may also be used to cycle through available Tiles.<br>
+<br>
+All generic commands listed in the "Tileset Control" section above can be used when pointing within the Tile
+Editor, or when hovering over an 8x8 Tile in the Tile Selector.<br>
+<br><a name="DrawTile">
+<b>Draw to the Tile</b><br>
+<br><ul>To draw the currently-selected color onto the currently-selected 8x8 Tile,
+                       <b>left-click</b> the desired location on the fat-bit grid, or <b>hold the left mouse button and drag</b> across the desired area</ul>
+
+<br><a name="GrabColor">
+<b>Grab a Color</b><br>
+<br><ul>To "pick up" a color from the tile, hover over the desired color on the fat-bit grid and <b>right-click</b></ul>
+
+</ul>
+
+<br>
+<br><a name="Blocks">
+<b>Block Editor</b><br>
+<br>
+<ul>
+The Block Editor is made up of the Block Editing window, which displays the
+Block in actual size and allows for drawing 8x8 tiles into the Block or
+selecting the Tiles to edit their properties, and the Block Entry Property
+Display, which displays the properties assigned to the currently-selected 8x8 Tile entry in
+the Block.<br>
+<br>
+The "Block ID" option shows the ID
+number of the currently-selected Block, and can be <b>left-clicked or right-clicked</b> to select a different
+Block. The "Blocks" option on the "Tile Census" may be selected to cause the selection
+list at the right of the screen to display 16x16 Blocks, which can be selected
+by <b>left-clicking</b> on them. The "<b>S</b>" and "<b>X</b>" keys may also be used to cycle through available Blocks.<br>
+<br>
+All generic commands listed in the "Tileset Control" section above can be used when pointing within the Block
+Editor, or when hovering over a Block in the Tile Selector.<br>
+<br><a name="SelectTile">
+<b>Select an 8x8 Entry</b><br>
+<br><ul>To select an 8x8 Tile entry in the Block to edit its
+                      properties, <b>right-click</b> the desired entry, and it will
+                      be marked by the selection box</ul><br>
+
+<br><a name="DrawBlock">
+<b>Draw to the Block</b><br>
+<br><ul>To draw the currently-selected 8x8 Tile onto the Block, <b>left-click</b> the desired entry in the Block, or
+        <b>hold the left mouse button and drag</b> across the desired area</ul><br>
+
+<br><a name="GrabTile">
+<b>Grab an 8x8 Tile</b><br>
+<br><ul>To "Grab" the 8x8 Tile displayed at any portion of the
+                   Block for editing in the Tile Editor, <b>double-right-click</b>
+                   the desired Tile within the Block</ul><br>
+
+<br><a name="Priority">
+<b>Plane Priority</b><br>
+<br><ul>An 8x8 Tile within a Block can be displayed as "High" (in
+                 front of the player and most Objects), or "Low" (behind
+                 them). Select the desired Tile entry and <b>left-click or right-click</b> the "Low Plane"/"High Plane" setting<br>
+                 <br>
+                 <b>To change this setting using the keyboard</b>, hover the cursor over the desired 8x8 Tile entry and use the "<b>G</b>" or
+                 "<b>B</b>" keys. This will also automatically select the entry</ul><br>
+
+<br><a name="PalRow">
+<b>Palette Row</b><br>
+<br><ul>Because Tiles only use a maximum of 16 color values, the
+              Block must be told which palette row to use when drawing each
+              Tile. Select the desired Tile entry and <b>left-click or right-click</b> the "Palette Row ?" setting<br>
+              <br>
+              <b>To change this setting using the keyboard</b>, hover the cursor over the desired 8x8 Tile entry and use the "<b>H</b>" or
+              "<b>N</b>" keys. This will also automatically select the entry</ul><br>
+
+<br><a name="TileDirection">
+<b>Draw Direction</b><br>
+<br><ul>The Block must be told in which direction to draw each
+                 Tile (whether or not they are mirrored horizontally and/or flipped vertically). The following settings are available:<br>
+                   <br>
+                   <ul><table>
+                   <tr><td nowrap><b>Draw Normal</b></td><td> - </td><td>The Tile will be drawn in normal orientation</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b>Draw B-Ward</b></td><td> - </td><td>The Tile will be mirrored horizontally</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b>Draw U-Down</b></td><td> - </td><td>The Tile will be flipped vertically.</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b>Draw UD + B</b></td><td> - </td><td>The Tile will be both mirrored horizontally and flipped vertically</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   </table></ul>
+                 Select the desired Tile entry and <b>left-click or right-click</b> the "Draw ???" setting<br>
+                 <br>
+                 <b>To change this setting using the keyboard</b>, hover the cursor over the desired 8x8 Tile entry and use the "<b>J</b>" or
+                 "<b>M</b>" keys. This will also automatically select the entry</ul><br>
+
+<br><a name="HeightMap">
+<b>Solidity Map</b><br>
+<br><ul>The Block must be given the ID number of a solidity map to
+               use when the player collides with it. Some games
+               use only one "Path", while others use two. For
+               each path, select the desired solidity map for editing, and then <b>left-
+               click</b> the "Solids" ID number that corresponds with with the desired
+               path (left for Path 0, right for Path 1) to set the current Block's solid entry for that path</ul><br>
+
+<br><a name="GrabSolidity">
+<b>Grab Solidity</b><br>
+<br><ul>To "grab" the Height Map assigned to either Path of the
+                current Block for editing in the Solidity Editor, <b>right-
+                click</b> the corresponding ID number in the Block's "Solids" setting (left for Path 0, right for Path 1)</ul><br>
+</ul>
+
+<br>
+<br><a name="Chunks">
+<b>Chunk Editor</b><br>
+<br>
+<ul>
+The Chunk Editor is made up of the Chunk editing window, which displays the
+Chunk in actual size and allows for drawing 16x16 Blocks into the Chunk or
+selecting the Blocks to edit their properties, and the Chunk Entry Property
+Display, which displays the properties assigned to the currently-selected 16x16 Block entry
+the Chunk.<br>
+<br>
+The "Chunk ID" option shows the ID
+number of the currently-selected Chunk, and can be <b>left-clicked or right-clicked</b> to select a different
+Chunk. The "Chunks" option on the "Tile Census" may be selected to cause the selection
+list at the right of the screen to display Chunks, which can be selected by
+<b>left-clicking</b> on them. The "<b>A</b>" and "<b>Z</b>" keys may also be used to cycle through available Chunks.<br>
+<br>
+All generic commands listed in the "Tileset Control" section above can be used when pointing within the Chunk
+Editor, or when hovering over a Chunk in the Tile Selector<br>
+<br><a name="SelectBlock">
+<b>Select a Block Entry</b><br>
+<br><ul>To select a Block entry in the Chunk to edit its
+                       properties, <b>right-click</b> on the desired entry, and it
+                       will be marked by the selection box</ul><br>
+
+<br><a name="DrawChunk">
+<b>Draw to the Chunk</b><br>
+<br><ul>To draw the currently-selected Block onto the Chunk, <b>left-click</b> the desired entry in the Chunk, or
+        <b>hold the left mouse button and drag</b> across the desired area</ul><br>
+
+<br><a name="GrabBlock">
+<b>Grab a Block</b><br>
+<br><ul>To "grab" the Block displayed at any portion of the Chunk for
+               editing in the Block editor, <b>double-right-click</b> the desired
+               Block within the Chunk</ul><br>
+
+<br><a name="SolidDirection">
+<b>Solidity Direction</b><br>
+<br><ul>While Height Maps define the parts of a Block that are
+                     solid, the Chunk must then be told how the player and other Objects
+                     should be affected by that solidity. The following settings are available:<br>
+                   <br>
+                   <ul><table>
+                   <tr><td nowrap><b>Not Solid</b></td><td> - </td><td>Players and objects will completely ignore the Height Map assigned to this Block</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b>Top Solid</b></td><td> - </td><td>Players and Objects will stand on top of this Block according to the Height Map, but can run through the side of it, or jump through it from below</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b>L/R/B Solid</b></td><td> - </td><td>A side-effect of the way this data is stored- Players and Objects cannot pass through the filled Height Map areas of Block from the left, right, or bottom, but they can fall through the top.</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b>All Solid</b></td><td> - </td><td>Players and Objects will treat the Height Map-filled portion of this block as completely solid. They will stand on top of it, and cannot pass through from the left, right, or bottom</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   </table></ul>
+
+                    Select the desired Tile entry and <b>left-click or right-click</b> the displayed solidity setting text for the desired Path (Upper text for Path 0, Lower text for Path 1)<br>
+                    <br>
+                    <b>To change this setting using the keyboard</b>, hover the cursor over the desired Block entry and use the "<b>G</b>" or
+                    "<b>B</b>" keys to modify the setting for Path 0, or the "<b>H</b>" or "<b>N</b>" keys to modify the setting for path 1. This will also automatically select the entry</ul><br>
+
+<br><a name="BlockDirection">
+<b>Draw Direction</b><br>
+<br><ul>The Chunk must be told in which direction to draw each
+                 Block (whether or not they are mirrored horizontally and/or flipped vertically). The following settings are available:<br>
+                   <br>
+                   <ul><table>
+                   <tr><td nowrap><b>Draw Normal</b></td><td> - </td><td>The Block will be drawn in normal orientation</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b>Draw B-Ward</b></td><td> - </td><td>The Block will be mirrored horizontally</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b>Draw U-Down</b></td><td> - </td><td>The Block will be flipped vertically.</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b>Draw UD + B</b></td><td> - </td><td>The Block will be both mirrored horizontally and flipped vertically</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   </table></ul>
+
+                 Select the desired Block entry and <b>left-click or right-click</b> the "Draw ???" setting<br>
+                 <br>
+                 <b>To change this setting using the keyboard</b>, hover the cursor over the desired Block entry and use the "<b>J</b>" or
+                 "<b>M</b>" keys. This will also automatically select the entry</ul><br>
+</ul>
+
+<br>
+<br><a name="Solids">
+<b>Solidity Editor</b><br>
+<br>
+<ul>
+The Solidity Editor is used to edit the Height Maps that can be applied to
+the 16x16 Blocks to give the effect that they are "solid". Height Maps do
+not correspond directly with 16x16 tiles, instead, they are listed by
+themselves, and each 16x16 Block is given an ID number that corresponds
+with the Height Map it should use.<br>
+<br>
+Each Height Map also contains an Angle
+value that determines the ammount and direction of force that is applied
+to a player that stands on it. A value of 0xFF is used for flat ground, but
+otherwise, all angles <i>must</i> be even values. A full range of 360 degrees is
+represented by values between 0x00 and 0xFF (256 values), with 0x00 being 0/360
+degrees, 0x40 being 90, 0x80 being 180, and 0xC0 being 270. Values starting at 0x00 and
+rising are used starting at the bottom of a circle and moving clockwise
+(left-side slopes use values between 0x00 and 0x3F from bottom-up, right
+side are 0xFF to 0xC0 from bottom-up).<br>
+<br>
+The "Solid ID"
+option shows the ID number of the currently-selected Height Map, and can
+be <b>left-clicked or right-clicked</b> to select a different Height Map. The "Solids" option on the "Tile Census" may be
+selected to cause the selection list at the right of the screen to display
+Height Maps, which can be selected by <b>left-clicking</b> on them. The "<b>F</b>" and "<b>V</b>"
+keys may also be used to cycle through available Height Maps.<br>
+<br>
+All generic commands listed
+in the "Tileset Control" section above can be used when pointing within the Solidity, or when hovering over
+a Height Map in the Tile Selector<br>
+<br><a name="DrawSolid">
+<b>Draw Solidity</b><br>
+<br><ul>A Height Map is made up of 16 columns, representing the
+                16 columns of a Block. Each column can be filled up (or
+                down) to a certain height to specify which parts of the Block will be "solid".<br>
+                <br>To fill
+                a column from bottom up, <b>left-click</b> the heighest point that
+                should be made "solid".<br>
+                <br>To fill from top down, <b>right-click the</b>
+                lowest point that should be made "solid".<br>
+                <br>To remove a column,
+                <b>left-click the "X"</b> below it</ul><br>
+
+<br><a name="BlockView">
+<b>Block View</b><br>
+<br><ul>To cause the currently-selected Block to be displayed behind the Height Map for
+             more accurate drawing, <b>left-click the "Show Block" option</b>.<br>
+             <br>
+             <i>The
+             Block shown doesn't necessarily correspond with the Height Map
+             shown.</i> Because unique Height Maps should only be stored once,
+             and multiple Blocks can reference the same Height Map,
+             corresponding Blocks and Maps must be selected manually, and
+             their relationship must be set manually.</ul><br>
+</ul>
+
+
+</body>
+</html>

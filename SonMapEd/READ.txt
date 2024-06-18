@@ -1,0 +1,8 @@
+SonMapEd 1.05
+Sonic (Sprite) Mappings Editor
+by Xenowhirl
+
+Thanks to Nemesis, Stealth, and Hivebrain, and anyone who worked on Kens or helped document the sprite mapping/reloading formats.
+
+This program is provided "as-is"; you are free to use it for whatever you want, but I can't be held responsible for what it does or what you do with it. Please give credit where credit is due, however.
+

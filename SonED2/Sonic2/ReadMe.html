@@ -1,0 +1,392 @@
+<head>
+<title>Sonic the Hedgehog 2 Rev 1 ROMulan Package</title>
+</head>
+<body>
+<b><center>Sonic the Hedgehog 2 Rev 1 ROMulan Package</center></b><br>
+<br>
+The files contained herein are for use with <a href="http://stealth.hapisan.com/ROMulan">ROMulan</a> and <a href="http://stealth.hapisan.com/SonED">SonED2</a>, to provide a means of editing the levels of Revision 1 of "Sonic the Hedgehog 2".<br>
+<br>
+Please visit the <a href="http://stealth.hapisan.com/Forum">official forum</a> for discussion on mods made using this package, to submit additions to the scripts, or to report any errors in the official distribution.<br>
+<br>
+
+<li><b><a href="#Setup">Setup and Basic Usage</a></b><br>
+<br>
+<li><b><a href="#Files">File Listing</a></b><br>
+<br>
+<li><b><a href="#Notes">Game Notes</a></b><br>
+<ul>
+ <li><a href="#SharedData">Shared Level Data and Unused Level Slots</a><br>
+ <li><a href="#Animated">Animated Tiles and Palettes</a><br>
+ <li><a href="#CrossingPaths">Loops, Crossing Paths, and Plane Priority</a><br>
+ <li><a href="#SpinTunnels">Spin Tunnels</a><br>
+ <li><a href="#LevelBoundaries">Level Boundaries</a><br>
+ <li><a href="#Water">Fixed and Dynamic Water Heights</a><br>
+ <li><a href="#BossArena">Boss Arenas</a><br>
+</ul>
+<li><b><a href="#Options">Special Options</a></b><br>
+<ul>
+ <li><a href="#Playlist">Level Music Playlist</a><br>
+ <li><a href="#Boundaries">Level Boundaries</a><br>
+ <li><a href="#LevelOrder">Starting Level and Level Progression Order</a><br>
+ <li><a href="#Codes">Cheat Codes</a><br>
+</ul>
+<li><b><a href="#TitleCard">Level TitleCard Names</a></b><br>
+<ul>
+ <li><a href="#LetterLoad">Letter Art Loading</a><br>
+ <li><a href="#NameDisplay">Name Display</a><br>
+</ul>
+
+<br>
+<br>
+<br><a name="Setup">
+<b>Setup and Basic Usage</b>
+<ul>
+ This script set is "<b>non-destructive</b>". This means that the input game files will never need to be restored, as the Injection process never modifies them. Thus, all changes are applied to a clean copy of the game, and saved to a different file.
+ The only time any of the initial steps will need to be repeated is if the separated data files have become corrupt, in which case, the Split will need to be performed again.<br>
+ <br>
+ <br>
+ <b>One-Time Setup Steps</b>
+ <ul>
+  <li>Unpack all files from this archive into their own folder. <i>The full path name of this folder must not contain any spaces</i><br>
+  <li>Place in the same folder a copy of Revision 1 of "<b>Sonic the Hedgehog 2</b>" and give it the filename "<b>sonic2.bin</b>"<br>
+  <li>Run the included Batch File "<b>split.txt</b>" using ROMulan or SonED2's built-in ROMulan functionality  to retrieve the game's data<br>
+ </ul>
+ <br>
+ <br>
+ <b>Every Time Level Editing Steps</b>
+ <ul>
+  <li>Using SonED2's <b>"Open Project" option</b> in the "File" menu, navigate to the <b>"Projects" folder</b> included with this fileset and open any of the included Project Files to edit its corresponding level<br>
+  <li>Make any changes using SonED2 as described in its own documentation<br>
+  <li>Use SonED2's <b>"Save Project" option</b> by selecting it in the "File" menu or pressing <b>F3</b> to save the changes to their respective files (<i>This is important as the edited data is SonED2-internal; ROMulan expects to find all necessary data in the files listed by the injector script</i>)<br>
+ </ul>
+ <br>
+ <br>
+ <b>Other Modifications</b><br>
+ <ul>
+  <li>With the proper knowledge of the game, other changes can be made by modifying the two Batch Files and/or the Injector File "<b>inmain.txt</b>" as described by the ROMulan documentation. For relevant information, see the "<a href="#Notes">Game Notes</a>" section.<br>
+  <li>Some game settings are already available for modification in the Injector File "<b>inopts.txt</b>". See the "<a href="#Options">Special Options</a>" section for details.<br>
+  <li>The names of the Zones as presented on the "TitleCards" may be modified through the Injector File "<b>incard.txt</b>". See the "<a href="#TitleCard">Level TitleCard Names</a>" section for details.<br>
+ </ul>
+ <br>
+ <br>
+ <b>Every Time Finalization Steps</b>
+ <ul>
+  <li>Run the included Batch File "<b>inject.txt</b>" using ROMulan or SonED2's built-in ROMulan functionality to inject the changes into the game<br>
+  <li>The file "<b>inject.bin</b>" will have been created and placed in the same folder as the "inject.txt" script. The process is now complete<br>
+ </ul>
+</ul>
+
+<br>
+<br><a name="Files">
+<b>File Listing</b>
+<ul>
+ This section provides a complete listing of the folders and files included with this package, each with a brief description. Note that other files and folders will also appear in this folder after "split.txt" has been run, which belong to the data that was extracted from the game.<br>
+ <br>
+ <li><b>/_dlls</b> - DLLs used by "derecmp.exe" for data compression and decompression</a><br>
+ <br>
+ <ul><table>
+  <tr><td nowrap><li><b>Enigma.dll</b></td><td> - </td><td>DLL used by "derecmp.exe", containing functions for compressing and decompressing data with the "Enigma" format</td></tr>
+  <tr><td nowrap><li><b>Kosinski.dll</b></td><td> - </td><td>DLL used by "derecmp.exe", containing functions for compressing and decompressing data with the "Kosinski" format</td></tr>
+  <tr><td nowrap><li><b>Nemesis.dll</b></td><td> - </td><td>DLL used by "derecmp.exe", containing functions for compressing and decompressing data with the "Nemesis" format</td></tr>
+  </table>
+  <br><br>
+ </ul>
+
+ <li><b>/Project</b> - This is the primary folder containing Object Listing Files and a full set of SonED2 Standard Level Project Files for Sonic the Hedgehog 2, based on the data created by "split.txt"</a><br>
+	<br>
+        <ul>
+        <li><b>/objdef</b> - Object Listing Files and supporting graphics files that define the Objects used in Sonic the Hedgehog for SonED2's Object Editor</a><br>
+	<br>
+        <ul><table>
+        <tr><td nowrap><li><b>s2obj.lst</b></td><td> - </td><td>Object Listing File, which defines Object descriptions, setting data, and in-editor graphic displays</td></tr>
+        <tr><td nowrap><li><b>s2obj1.pcx</b></td><td> - </td><td>Graphic file containing some of the global Object graphics</td></tr>
+        <tr><td nowrap><li><b>s2obj10.pcx</b></td><td> - </td><td>Graphic file containing some of the Object graphics for Emerald Hill Zone</td></tr>
+        <tr><td nowrap><li><b>s2obj20.pcx</b></td><td> - </td><td>Graphic file containing some of the Object graphics for Aquatic Ruin Zone</td></tr>
+        </table></ul>
+	<br>
+        <table>
+        <tr><td nowrap><li><b>00_EHZ1.sep</b></td><td> - </td><td>Emerald Hill Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>00_EHZ2.sep</b></td><td> - </td><td>Emerald Hill Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>01_1.sep</b></td><td> - </td><td>Zone 01 Act 1 (Unused)</td></tr>
+        <tr><td nowrap><li><b>01_2.sep</b></td><td> - </td><td>Zone 01 Act 2 (Unused)</td></tr>
+        <tr><td nowrap><li><b>02_WZ1.sep</b></td><td> - </td><td>Wood Zone Act 1 (Unused)</td></tr>
+        <tr><td nowrap><li><b>02_WZ2.sep</b></td><td> - </td><td>Wood Zone Act 2 (Unused)</td></tr>
+        <tr><td nowrap><li><b>03_1.sep</b></td><td> - </td><td>Zone 03 Act 1 (Unused)</td></tr>
+        <tr><td nowrap><li><b>03_2.sep</b></td><td> - </td><td>Zone 03 Act 2 (Unused)</td></tr>
+        <tr><td nowrap><li><b>04_MTZ1.sep</b></td><td> - </td><td>Metropolis Zone Act 1 (04 Act 1)</td></tr>
+        <tr><td nowrap><li><b>04_MTZ2.sep</b></td><td> - </td><td>Metropolis Zone Act 2 (04 Act 2)</td></tr>
+        <tr><td nowrap><li><b>05_MTZ1.sep</b></td><td> - </td><td>Metropolis Zone Act 3 (05 Act 1)</td></tr>
+        <tr><td nowrap><li><b>05_MTZ2.sep</b></td><td> - </td><td>Metropolis Zone Act 4 (05 Act 2 - Unused)</td></tr>
+        <tr><td nowrap><li><b>06_WFZ1.sep</b></td><td> - </td><td>Wing Fortress Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>06_WFZ2.sep</b></td><td> - </td><td>Wing Fortress Zone Act 2 (Unused)</td></tr>
+        <tr><td nowrap><li><b>07_HTZ1.sep</b></td><td> - </td><td>Hill Top Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>07_HTZ2.sep</b></td><td> - </td><td>Hill Top Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>08_HPZ1.sep</b></td><td> - </td><td>Hidden Palace Zone Act 1 (Unused)</td></tr>
+        <tr><td nowrap><li><b>08_HPZ2.sep</b></td><td> - </td><td>Hidden Palace Zone Act 2 (Unused)</td></tr>
+        <tr><td nowrap><li><b>09_1.sep</b></td><td> - </td><td>Zone 09 Act 1 (Unused)</td></tr>
+        <tr><td nowrap><li><b>09_2.sep</b></td><td> - </td><td>Zone 09 Act 2 (Unused)</td></tr>
+        <tr><td nowrap><li><b>0A_OOZ1.sep</b></td><td> - </td><td>Oil Ocean Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>0A_OOZ2.sep</b></td><td> - </td><td>Oil Ocean Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>0B_MCZ1.sep</b></td><td> - </td><td>Mystic Cave Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>0B_MCZ2.sep</b></td><td> - </td><td>Mystic Cave Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>0C_CNZ1.sep</b></td><td> - </td><td>Casino Night Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>0C_CNZ1_2P.sep</b></td><td> - </td><td>Casino Night Zone Act 1 (2P Mode Objects Layout)</td></tr>
+        <tr><td nowrap><li><b>0C_CNZ2.sep</b></td><td> - </td><td>Casino Night Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>0C_CNZ2_2P.sep</b></td><td> - </td><td>Casino Night Zone Act 2 (2P Mode Objects Layout)</td></tr>
+        <tr><td nowrap><li><b>0D_CPZ1.sep</b></td><td> - </td><td>Chemical Plant Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>0D_CPZ2.sep</b></td><td> - </td><td>Chemical Plant Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>0E_DEZ1.sep</b></td><td> - </td><td>Death Egg Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>0E_DEZ2.sep</b></td><td> - </td><td>Death Egg Zone Act 2 (Unused)</td></tr>
+        <tr><td nowrap><li><b>0F_ARZ1.sep</b></td><td> - </td><td>Aquatic Ruin Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>0F_ARZ2.sep</b></td><td> - </td><td>Aquatic Ruin Zone Act 2</td></tr>
+        <tr><td nowrap><li><b>10_SCZ1.sep</b></td><td> - </td><td>Sky Chase Zone Act 1</td></tr>
+        <tr><td nowrap><li><b>10_SCZ2.sep</b></td><td> - </td><td>Sky Chase Zone Act 2 (Unused)</td></tr>
+        </table>
+	<br><br>
+	</ul>
+
+                   <table>
+                   <tr><td nowrap><b><li>derecmp.exe</b></td><td> - </td><td>This program is used for decompressing and recompressing the Hill Top Zone and Sky Chase Zone Tilesets before and after applying their respective patches</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>fixheadr.exe</b></td><td> - </td><td>This program is used to correct the size and checksum header information after Injection</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>incard.txt</b></td><td> - </td><td>This is the "Injector File" that contains modifiable information for setting up the "Title Cards" that provide Zone names</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>inject.txt</b></td><td> - </td><td>This is the "Batch File" that is used to initiate Injection</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>injmain.txt</b></td><td> - </td><td>This is the "Injector File" that contains the information for placing the modified data back into the game file</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>inopts.txt</b></td><td> - </td><td>This is the "Injector File" that contains various modifiable options for the game</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>split.txt</b></td><td> - </td><td>This is the "Batch File" that is used to split data from the game file</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>tilpatch.exe</b></td><td> - </td><td>This program is used to create proper Tilesets for Hill Top Zone and Sky Chase Zone by applying their respective patches to the extracted data</td></tr>
+                   </table>
+
+	</ul>
+
+<br>
+<br><a name="Notes">
+<b>Game Notes</b>
+<ul><a name="SharedData">
+ <b>Shared Level Data and Unused Level Slots</b><br>
+ <br>
+ <ul>
+  Tiles are shared between every Act of any one Zone. Modifying them for one Act will modify them for every other Act within the same Zone.<br>
+  <br>
+  In an unmodified game, Emerald Hill Zone and Wing Fortress Zone share Tile data with Hill Top Zone and Sky Chase Zone, respectively, and are overlayed with special patch data to replace only certain Tiles.
+  This would normally cause modifications to either Zone to appear in the other, however, this script set duplicates these Tilesets and causes each Zone to use its own. It also pre-applies the Tileset patches
+  and disables in-game patching to allow for proper viewing and editing of the patched levels.<br>
+  <br>
+  An unmodified game also has space allocated for 5 unused Zones, and 4 unused second acts.
+  Normally, these levels load most of their data from existing, used levels, however, this script set duplicates the re-used data and causes these unused Zones and Acts to each use their own dataset, and also includes Project Files for modifying these levels.
+  They may now be used to extend the game, and each of the unused Zones may be given their own set of level graphics.<br>
+  <br>
+  The "<b><a href="#LevelOrder">Next Level" array</a></b>" section of "<b>inopts.txt</b>" may be used to add these new levels to the gameplay progression.
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="Animated">
+ <b>Animated Tiles and Palettes</b><br>
+ <br>
+ <ul>
+  Certain Tiles and Palette entries are animated/cycled during gameplay. This behavior is not accounted for in the current script set version; these animations and the data that they use are not available for editing. Any modifications to these Tile or Palette entries will be overridden by these animations during gameplay.<br>
+  <br>
+  In this game, the Tile data contains blank "graphics" at these positions, which is what will be displayed in SonED2.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="CrossingPaths">
+ <b>Loops, Crossing Paths, and Plane Priority</b><br>
+ <br>
+ <ul>
+  This game uses a two-path collision system, and so, it supports level paths that cross freely by means of a "Path Swapper Object".<br>
+  <br>
+  These Objects can be used to cause the player to switch back and forth between collision with "Path 0" and "Path 1", which may be viewed and edited independently in SonED2.<br>
+  <br>
+  The same Objects may also change the player's "priority", causing him to be displayed either in front of or behind the "High" level plane for effects such as loops or other path crosses that overlap the player, or even walls that can be crossed both from in front and behind.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="SpinTunnels">
+ <b>Spin Tunnels</b><br>
+ <br>
+ <ul>
+  This game uses a "Spin Tunnel Object" to achieve forced-spin tunnels.<br>
+  <br>
+  These Objects will cause the player to enter a spinning state that prevents jumping or standing up, and which will apply horizontal velocity in the direction that he is facing if he decelerates to 0, until he crosses another Object of the same type that is set to disable this mode.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="LevelBoundaries">
+ <b>Level Boundaries</b><br>
+ <br>
+ <ul>
+  For the most part, Level Boundaries (the area within which the screen is allowed to scroll across the level during gameplay) are not dynamically altered in this game, meaning that the initial (and persistent) settings can be modified.<br>
+  <br>
+  The "<b><a href="#Boundaries">Level Size Array</a></b>" section of "<b>inopts.txt</b>" can be used to modify these settings.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="EarthQuakes">
+ <b>Hill Top Zone Earthquakes</b><br>
+ <br>
+ <ul>
+  The Earthquake events in Hill Top Zone are triggered by hardcoded player position tests. This is not accounted for in the current script set version; the level areas that trigger the Earthquakes are not available for editing.<br>
+  <br>
+  The floor and lava level sections that rise and fall during these events are stored on Plane B (the "background"), which is how they are able to move separately from Plane A (the "foreground"), and they can be modified there.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="Water">
+ <b>Fixed and Dynamic Water Heights</b><br>
+ <br>
+ <ul>
+  The current script set version does not support affecting "water"; Which levels do and don't contain water, the Y position of the water at level start, the events that change the Y position of the water, and the Y positions that the water is moved to are not available for editing.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="BossArena">
+ <b>Boss Arenas</b><br>
+ <br>
+ <ul>
+  Boss events are triggered by hardcoded player position tests, and the Boss Objects themselves test for and set absolute positions within the level. This is not accounted for in the current script set version; the level positions at which the Boss is triggered and the position values used by the Boss Object for movement are not available for editing.<br>
+  <br>
+  The level can, however, be made to end before the Boss area by decreasing the corresponding XEnd setting within the "<b><a href="#Boundaries">Level Size Array</b></a>" section in "<b>inopts.txt</b>", and placing a Signpost Object at the new "end" location.<br>
+ </ul>
+</ul>
+
+<br>
+<br><a name="Options">
+<b>Special Options</b>
+<ul><a name="Playlist">
+ <b>Level Music Playlist</b><br>
+ <br>
+ <ul>
+  The "<b>Level Music Playlist</b>" section of "<b>inopts.txt</b>" specifies which songs play for which Zones.<br>
+  <br>
+  Within the list, find the entry that corresponds with the desired Zone, and replace the existing value with the ID number of the music that should be played for the Zone.<br>
+  <br>
+  The ID numbers entered in this section are the Song Numbers as they appear in the game's Sound Test, <i>plus $80</i>. Entering the song's Sound Test ID and adding "<b> + MakeMusicID</b>" will generate the appropriate value.<br>
+ </ul>
+
+ <br>
+ <br><a name="Boundaries">
+ <b>Level Boundaries</b><br>
+ <br>
+ <ul>
+  The "<b>Level Size Array</b>" section of "<b>inopts.txt</b>" contains the listing that defines the initial Level Boundaries (the area within which the screen is allowed to scroll across the level during gameplay) for each level.<br>
+  <br>
+  Each Zone entry is laid out in the following manner:<br>
+     <ul>
+      <ul>
+<pre>WORD	XStart, XEnd, YStart, YEnd</pre>
+      </ul>
+                   <table>
+                   <tr><td nowrap><b><li>XStart</b></td><td> - </td><td>The leftmost world position that the screen is allowed to scroll to within the level</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>XEnd</b></td><td> - </td><td>The rightmost world position that the screen is allowed to scroll to within the level</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>YStart</b></td><td> - </td><td>The uppermost world position that the screen is allowed to scroll to within the level</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>YEnd</b></td><td> - </td><td>The lowermost world position that the screen is allowed to scroll to within the level</td></tr>
+                   </table>
+     <br>
+     </ul>
+ <b>Level Y Looping</b> can be achieved by entering "<b>YLoop</b>" into the "<b>YStart</b>" field, but for this to work, the level must be exactly $800 pixels (16 Chunks) in height.<br>
+ </ul>
+
+ <br>
+ <br><a name="LevelOrder">
+ <b>Starting Level and Level Progression Order</b><br>
+ <br>
+ <ul>
+  The "<b>Starting Level</b>" section of "<b>inopts.txt</b>" determines the level on which the game starts, after pressing Start on the TitleScreen.<br>
+  <br>
+  To change the Starting Level, find the line containing the comment "<b>Zone and Act to go to when starting a new game</b>", and change the two values to reflect the Zone and Act IDs of the desired level.<br>
+  <br>
+  The "<b>"Next Level" array</b>" section of "<b>inopts.txt</b>" determines the order in which the levels are presented during gameplay.<br>
+  <br>
+  This list is not laid out in the order in which the levels will be played, but rather, contains an entry for each level in the game in order of Zone and Act ID. The level defined by the entry will be played after the level that corresponds with the entry has been completed (Ex: The first entry in the list corresponds with Emerald Hill Zone Act 1. The data in the entry specifies that Emerald Hill Zone Act 2 will be played after Emerald Hill Zone Act 1 is complete).<br>
+  <br>
+  The Zone and Act name "Defines" that are listed in the "<b>Data Defines</b>" section can be used for either of these settings.
+ </ul>
+
+ <br>
+ <br><a name="Codes">
+ <b>Cheat Codes</b><br>
+ <br>
+ <ul>
+  The "<b>Cheat Codes</b>" section of "<b>inopts.txt</b>" defines the Sound Test IDs that must be played to activate the game's Cheat Codes.<br>
+  <br>
+  The Cheat Codes are defined by entering the exact Sound Test IDs numbers that must be played, in the order that they must be used.<br>
+  <br>
+  The last Sound Test ID in the code must be followed by "<b>, Code_End</b>" to mark the end.<br>
+  <br>
+  To effectively disable any code, insert "<b>Code_Invalid</b>" in place of a Sound Test ID within the code.<br>
+ </ul>
+
+</ul>
+
+
+<br>
+<br><a name="TitleCard">
+<b>Level TitleCard Names</b>
+<ul><a name="LetterLoad">
+ <b>Letter Art Loading</b><br>
+ <br>
+ <ul>
+  This game loads only the letters that are needed to display the current TitleCard, so it is necessary to specify which letters those are.<br>
+  <br>
+  The "<b>Load Data</b>" section of "<b>incard.txt</b>" contains the data for loading the letter graphics for each TitleCard.
+  To specify the letters that should be loaded for any level, simply find its corresponding data row, and use it to list the names of the Defines that correspond with the desired letters, followed by ", TCLoad_End" to mark the end of the list.<br>
+  <br>
+  Letters "E", "N", "O", and "Z" are always loaded by default, and should not be included in the letter loading lists.<br>
+  <br>
+  The Defines in the "<b>Letter Graphics VRAM Tile Offset Data</b>" area assist in keeping track of where the letters are loaded to in VRAM, as this is affected by changes to the letter loading list.
+  For the same reason, there is a list of these Defines for each Zone.<br>
+  <br>
+  The first letter that is loaded will always use the value "<b>TCCustomStart</b>", and the position of every letter following can be calculated by adding the Define name for the previous letter's position to the Define name for the previous letter's size.<br>
+  </ul>
+ <br>
+ <br><a name="NameDisplay">
+ <b>Name Display</b><br>
+ <br>
+ <ul>
+  The "<b>TCardMapData</b>" segment in "<b>incard.txt</b>" contains the standard Sonic 2 Sprite Mappings data that build the displayed Zone names and other TitleCard elements.<br>
+  <br>
+  Once the letter loading data and VRAM offset Defines are set up, changing the names presented by the TitleCard is as simple as changing each mapping to call on the desired letter art.<br>
+  <br>
+  Each mapping starts with a "<b>WORD</b>" that defines the number of entries that it contains. The entries themselves are formatted as follows:<br>
+  <br>
+     <ul>
+      <ul>
+<pre>BYTE	MWidth?? + MHeight??, TCTilePos_? + MPHigh, TCTilePos_? / 2 + MPHigh, XOff</pre>
+      </ul>
+      <br>
+                   <table>
+                   <tr><td nowrap><b><li>MWidth?? + MHeight??</b></td><td> - </td><td>Add together the names of the Width and Height "Defines" that describe the pixel size of the desired letter. A Y offset can be applied to the letter by also adding "YOff * 16 + " to the beginning of the entry, where "YOff" is the value by which to offset the letter from the Titlecard position on the Y axis. Generally, there should be no Y offset, however.</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>TCTilePos_? + MPHigh</b></td><td> - </td><td>The name of the "Define" that corresponds with the desired letter, plus the define "MPHigh" to give the letter "High" priority.</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>TCTilePos_? / 2 + MPHigh</b></td><td> - </td><td>The same as the previous entry, except that the "Define" for the letter (its VRAM position) is divided by two, for use in the split-screen mode.</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>XOff</b></td><td> - </td><td>The X offset from the TitleCard's position at which this letter should be placed.</td></tr>
+                   </table>
+     </ul>
+  <br>
+  The "Defines" used for these entries are listed at the top of the file.<br>
+  <br>
+  To effectively insert a space "character", simply use the "<b>XOff</b>" entry to place the character after the "space" farther away from the one before.
+ </ul>
+</ul>
+
+</body>
+</html>

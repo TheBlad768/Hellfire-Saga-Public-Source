@@ -1,0 +1,70 @@
+Type: Level
+
+Zone ID:    2
+Act ID:     3
+
+Object Def: ..\objdef\kcobj
+Object Palette: ..\objdef\kcobj1.pcx
+
+8x8 Compression:      3
+Num 8x8 Pages:        3
+8x8 Tiles Page 0:     ..\..\Levels\AAZ\8x8\0_15MN.bin
+8x8 Tiles Page 1:     ..\..\Levels\AAZ\8x8\1_3MN.bin
+8x8 Tiles Page 2:     ..\..\Levels\AAZ\8x8\2_34MN.bin
+
+16x16 Compression:    2
+Num 16x16 Pages:      3
+Page0 8x8 Page:       0
+16x16 Tiles Page 0:   ..\..\Levels\AAZ\16x16\0_15MN.bin
+Page1 8x8 Page:       0
+16x16 Tiles Page 1:   ..\..\Levels\AAZ\16x16\1_3MN.bin
+Page2 8x8 Page:       2
+16x16 Tiles Page 2:   ..\..\Levels\AAZ\16x16\2_34MN.bin
+
+Metatile Size:        128
+128x128 Compression:  2
+Num 128x128 Pages:    3
+Page0 16x16 Page:     0
+128x128 Tiles Page 0: ..\..\Levels\AAZ\128x128\0_15MN.bin
+Page1 16x16 Page:     0
+128x128 Tiles Page 1: ..\..\Levels\AAZ\128x128\1_3MN.bin
+Page2 16x16 Page:     2
+128x128 Tiles Page 2: ..\..\Levels\AAZ\128x128\2_34MN.bin
+
+Layout Format:        3
+Layout Compression:   2
+FG Size:              ..\..\Levels\AAZ\FG\Size3MN.bin
+FG Level Layout:      ..\..\Levels\AAZ\FG\3MN.bin
+BG 128x128 Page:      2
+BG Size:              ..\..\Levels\AAZ\BG\Size34MN.bin
+BG Level Layout:      ..\..\Levels\AAZ\BG\34MN.bin
+
+Objects Format:       5
+Objects:              ..\..\Levels\AAZ\Sprites\3S.bin
+Rings Format:         0
+Misc Format:          0
+Num Start Positions:  1
+Start Position 0:     ..\..\Levels\AAZ\FG\PlSt3MN.bin
+
+Palettes-
+
+ Number of files: 1
+
+  Palette 1-
+
+   Start index:       0
+   Number of entries: 64
+   File:              ..\..\Levels\AAZ\Pal\34MN.bin
+
+Collision Map Format:    1
+Collision Array:         ..\..\Collisn\HMaps.bin
+Rotated Collision Array: ..\..\Collisn\HMapsR.bin
+Angle Array:             ..\..\Collisn\Angles.bin
+
+Collision Index Format:      4
+Collision Index Compression: 0
+Collision Index: ..\..\Levels\AAZ\Collisn\34.bin
+
+Game Name: Chaotix
+
+-EOF-

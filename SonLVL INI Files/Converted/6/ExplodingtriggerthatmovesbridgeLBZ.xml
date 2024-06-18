@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Namespace="SonED2.Zone6" TypeName="ExplodingtriggerthatmovesbridgeLBZ" Language="cs" Name="Exploding trigger that moves bridge - LBZ" Image="Image1" RememberState="false" Debug="false" xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromBitmap id="Image1" filename="Sprites/s3objsprite2-8.png" />
+  </Images>
+  <Properties>
+    <BitsProperty name="Property1" type="Enum1" startbit="0" length="4" />
+  </Properties>
+  <Enums>
+    <Enum name="Enum1">
+      <EnumMember name="Trigger 0" />
+      <EnumMember name="Trigger 1" />
+      <EnumMember name="Trigger 2" />
+      <EnumMember name="Trigger 3" />
+      <EnumMember name="Trigger 4" />
+      <EnumMember name="Trigger 5" />
+      <EnumMember name="Trigger 6" />
+      <EnumMember name="Trigger 7" />
+      <EnumMember name="Trigger 8" />
+      <EnumMember name="Trigger 9" />
+      <EnumMember name="Trigger A" />
+      <EnumMember name="Trigger B" />
+      <EnumMember name="Trigger C" />
+      <EnumMember name="Trigger D" />
+      <EnumMember name="Trigger E" />
+      <EnumMember name="Trigger F" />
+    </Enum>
+  </Enums>
+  <Display>
+    <DisplayOption>
+      <ImageRef image="Image1">
+        <Offset X="-12" Y="-12" />
+      </ImageRef>
+    </DisplayOption>
+  </Display>
+</ObjDef>

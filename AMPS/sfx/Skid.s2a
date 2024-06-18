@@ -1,0 +1,26 @@
+SndA4_Skid_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$02
+	sHeaderSFX	$A1, ctPSG2, SndA4_Skid_PSG2, $F4+$0C, $00
+	sHeaderSFX	$A1, ctPSG3, SndA4_Skid_PSG3, $F4+$0C, $00
+
+; PSG2 Data
+SndA4_Skid_PSG2:
+	sVolEnv		vNone
+	dc.b nBb3, $01, nRst, nBb3, nRst, $03
+
+SndA4_Skid_Loop01:
+	dc.b nBb3, $01, nRst, $01
+	sLoop		$00, $0B, SndA4_Skid_Loop01
+	sStop
+
+; PSG3 Data
+SndA4_Skid_PSG3:
+	sVolEnv		vNone
+	dc.b nRst, $01, nAb3, nRst, nAb3, nRst, $03
+
+SndA4_Skid_Loop00:
+	dc.b nAb3, $01, nRst, $01
+	sLoop		$00, $0B, SndA4_Skid_Loop00
+	sStop

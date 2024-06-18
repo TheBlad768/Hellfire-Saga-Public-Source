@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Namespace="SonED2.ZoneCommon" TypeName="PathSwapper" Language="cs" Name="Path Swapper" Image="Image1" RememberState="false" Debug="false" xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromBitmap id="Image1" filename="Sprites/s3objsprite0-1.png" />
+  </Images>
+  <Properties>
+    <BitsProperty name="Property1" type="Enum1" startbit="0" length="2" />
+    <BitsProperty name="Property2" type="Enum2" startbit="2" length="1" />
+    <BitsProperty name="Property3" type="Enum3" startbit="3" length="1" />
+    <BitsProperty name="Property4" type="Enum4" startbit="4" length="1" />
+    <BitsProperty name="Property5" type="Enum5" startbit="5" length="1" />
+    <BitsProperty name="Property6" type="Enum6" startbit="6" length="1" />
+    <BitsProperty name="Property7" type="Enum7" startbit="7" length="1" />
+  </Properties>
+  <Enums>
+    <Enum name="Enum1">
+      <EnumMember name="Size: 64" />
+      <EnumMember name="Size: 128" />
+      <EnumMember name="Size: 256" />
+      <EnumMember name="Size: 512" />
+    </Enum>
+    <Enum name="Enum2">
+      <EnumMember name="Vertical" />
+      <EnumMember name="Horizontal" />
+    </Enum>
+    <Enum name="Enum3">
+      <EnumMember name="Right\Down - Path 0" />
+      <EnumMember name="Right\Down - Path 1" />
+    </Enum>
+    <Enum name="Enum4">
+      <EnumMember name="Left\Up    - Path 0" />
+      <EnumMember name="Left\up    - Path 1" />
+    </Enum>
+    <Enum name="Enum5">
+      <EnumMember name="Right\Down - Below High" />
+      <EnumMember name="Right\Down - Above High" />
+    </Enum>
+    <Enum name="Enum6">
+      <EnumMember name="Left\Up    - Below High" />
+      <EnumMember name="Left\up    - Above High" />
+    </Enum>
+    <Enum name="Enum7">
+      <EnumMember name="Allow freespace switch" />
+      <EnumMember name="Switch only on path" />
+    </Enum>
+  </Enums>
+  <Display>
+    <DisplayOption>
+      <Condition property="Property1" value="Size: 64" />
+      <Condition property="Property2" value="Vertical" />
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-32" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="16" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Size: 128" />
+      <Condition property="Property2" value="Vertical" />
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-48" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-32" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="32" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="48" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Size: 256" />
+      <Condition property="Property2" value="Vertical" />
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-128" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-112" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-96" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-80" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-48" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-32" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="32" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="48" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="80" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="96" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="112" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Size: 512" />
+      <Condition property="Property2" value="Vertical" />
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-256" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-240" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-224" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-208" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-192" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-176" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-160" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-144" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-128" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-112" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-96" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-80" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-48" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-32" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="32" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="48" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="80" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="96" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="112" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="128" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="144" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="160" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="176" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="192" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="208" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="224" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="240" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Size: 64" />
+      <Condition property="Property2" value="Horizontal" />
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-16" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="16" Y="-8" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Size: 128" />
+      <Condition property="Property2" value="Horizontal" />
+      <ImageRef image="Image1">
+        <Offset X="-64" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-48" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-16" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="16" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="32" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="48" Y="-8" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Size: 256" />
+      <Condition property="Property2" value="Horizontal" />
+      <ImageRef image="Image1">
+        <Offset X="-128" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-112" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-96" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-80" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-64" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-48" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-16" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="16" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="32" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="48" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="64" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="80" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="96" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="112" Y="-8" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Size: 512" />
+      <Condition property="Property2" value="Horizontal" />
+      <ImageRef image="Image1">
+        <Offset X="-256" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-240" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-224" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-208" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-192" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-176" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-160" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-144" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-128" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-112" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-96" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-80" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-64" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-48" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-16" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="16" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="32" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="48" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="64" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="80" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="96" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="112" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="128" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="144" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="160" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="176" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="192" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="208" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="224" Y="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="240" Y="-8" />
+      </ImageRef>
+    </DisplayOption>
+  </Display>
+</ObjDef>

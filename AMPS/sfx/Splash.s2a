@@ -1,0 +1,25 @@
+SndAA_Splash_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$02
+	sHeaderSFX	$A1, ctPSG3, SndAA_Splash_PSG3,	$00+$0C, $00
+	sHeaderSFX	$80, ctFM5, SndAA_Splash_FM5,	$00, $03
+
+; PSG3 Data
+SndAA_Splash_PSG3:
+	sVolEnv		$00
+	sNoisePSG	snWhitePSG3
+	dc.b nF5, $05, nA5, $05, sHold
+
+SndAA_Splash_Loop00:
+	dc.b $07
+	saVol		$08
+	dc.b sHold
+	sLoop		$00, $0F, SndAA_Splash_Loop00
+	sStop
+
+; FM5 Data
+SndAA_Splash_FM5:
+	sVoice		$02
+	dc.b nCs3, $14
+	sStop

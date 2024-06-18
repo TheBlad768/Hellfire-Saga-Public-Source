@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Name="Falling Blocks" Image="img1">
+  <Images>
+    <ImageFromMappings id="img1">
+      <ArtFile filename="../Objects/CollapsingStairCase/Kosinski-M Art/CollapsingStaircase.bin" compression="KosinskiM" />
+      <MapFile type="ASM" filename="../Objects/Staircase/Object data/Map - Staircase.asm" frame="0" startpal="2" />
+    </ImageFromMappings>
+  </Images>
+  <Properties>
+      <BitsProperty name="Count" type="int" startbit="0" length="8" />
+  </Properties>
+  <Subtypes>
+    <Subtype id="00" name="1 block" image="img1" />
+    <Subtype id="01" name="2 blocks" image="img1" />
+    <Subtype id="02" name="3 blocks" image="img1" />
+    <Subtype id="03" name="4 blocks" image="img1" />
+  </Subtypes>
+  <Display>
+    <DisplayOption>
+      <Condition property="Count" value="00" />
+      <ImageRef image="img1" xflip="NeverFlip" />
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Count" value="01" />
+      <ImageRef image="img1" xflip="NeverFlip" />
+      <ImageRef image="img1" xflip="NeverFlip">
+        <Offset X="32" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Count" value="02" />
+      <ImageRef image="img1" xflip="NeverFlip" />
+      <ImageRef image="img1" xflip="NeverFlip">
+        <Offset X="32" />
+      </ImageRef>
+      <ImageRef image="img1" xflip="NeverFlip">
+        <Offset X="64" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Count" value="03" />
+      <ImageRef image="img1" xflip="NeverFlip" />
+      <ImageRef image="img1" xflip="NeverFlip">
+        <Offset X="32" />
+      </ImageRef>
+      <ImageRef image="img1" xflip="NeverFlip">
+        <Offset X="64" />
+      </ImageRef>
+      <ImageRef image="img1" xflip="NeverFlip">
+        <Offset X="96" />
+      </ImageRef>
+    </DisplayOption>
+  </Display>
+</ObjDef>

@@ -1,0 +1,174 @@
+<html>
+<head>
+<title>SonED2 Sonic 1 Special Stage Editor</title>
+</head>
+<body>
+<b><center>SonED2 Sonic 1 Special Stage Editor</center></b><br>
+<br>
+The Sonic 1 Special Stage Editor is used for editing the map layout and starting position data for Sonic 1's Rotating Special Stages.<br>
+<br>
+The map layout is formed by placing "Objects" onto a 24x24 (pixel-measurement) grid. The images and
+descriptions displayed in the editor are set up through "Sonic 1 Special Stage Object Listing Files",
+which tell the editor how each object should be represented graphically. Those files may be altered and expanded upon as described by their own documentation.<br>
+<br>
+This editor is capable of animating the "Objects", so that animated walls can easily be placed in the desired order.<br>
+<br>
+This editor is made up of two editing modes:<br>
+<br>
+
+ <b><a href="#Layout">Layout Editing Mode:</a></b><br>
+ <ul>
+  <li><a href="#LStatus">Status</a><br>
+  <li><a href="#LDrawing">Drawing to the layout</a><br>
+  <li><a href="#LType">Selecting Object Type</a><br>
+  <li><a href="#LMode">Switch Editing Mode</a><br>
+ </ul>
+ <br>
+ <b><a href="#StartPos">Start Position Editing Mode:</a></b><br>
+ <ul>
+  <li><a href="#SStatus">Status</a><br>
+  <li><a href="#SMoving">Moving a Player Start Position</a><br>
+  <li><a href="#SMode">Switch Editing Mode</a><br>
+ </ul>
+
+
+<br>
+<br><a name="Layout">
+<b>Layout Editing Mode</b>
+<ul>
+This mode is for editing the map layout of the Special Stage, and contains the following features:<br>
+<br>
+<a name="LStatus">
+<b>Status</b><br>
+<ul>
+<br>
+The Status Display appears at the upper-left corner of the editor and displays certain level and editor
+information:<br>
+<ul>
+<br>
+<table border="0">
+<tr>
+<td nowrap><b><li>Screen Position</b></td><td> - </td><td>The X and Y world position of the top-left corner of the screen,
+                  shown in hex as with the in-game debug modes</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Pointer Position</b></td><td> - </td><td>The X and Y world position of the mouse cursor, shown in hex</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<td nowrap><b><li>Map Position</b></td><td> - </td><td>The X and Y map layout grid position that the mouse cursor is currently hovering over</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Current Object</b></td><td> - </td><td>The ID of the "Object" that is currently selected for drawing to the map layout</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Object At Cursor</b></td><td> - </td><td>The ID of the "Object" that is currently placed at the map layout position under the cursor</td>
+</tr>
+</table>
+</ul>
+</ul>
+
+<br>
+<br><a name="LDrawing">
+<b>Drawing to the layout</b><br>
+<br>
+<ul>
+To draw the currently-selected "Object" onto the map layout,
+                       <b>left-click</b> the desired location, or <b>hold the left mouse button and drag</b> across the desired area
+</ul>
+
+<br>
+<br><a name="LType">
+<b>Selecting Object Type</b><br>
+<br>
+<ul>
+To select the type of an "Object" by using the Sonic 1 Special Stage Object Type
+                        Selection List, <b>double-left-click</b> anywhere on the map layout. When the
+                        list appears, scroll to the description of the desired
+                        "Object" type and left-click. To exit the list without
+                        selecting an "Object" type, right-click instead<br>
+                        <br>
+To cycle between "Object" types using the keyboard, press the "<b>A</b>" or "<b>Z</b>" keys<br>
+<br>
+To "pick up" an "Object" type from the map layout, hover over an "Object" of the desired type and <b>right-click</b>
+</ul>
+
+<br>
+<br><a name="LMode">
+<b>Switch Editing Mode</b><br>
+<br>
+<ul>
+The "Editors" menu has options to switch between the two
+              editing modes available to a project using this editor<br>
+<br>
+To switch to Start Position Editing mode using the keyboard, press "<b>O</b>"
+</ul>
+
+</ul>
+
+<br>
+<br><a name="StartPos">
+<b>Start Position Editing Mode</b>
+<ul>
+This mode is for editing the player start locations for the Special Stage, and contains the following features:<br>
+<br>
+<a name="SStatus">
+<b>Status</b><br>
+<ul>
+<br>
+The Status Display appears at the upper-left corner of the editor and displays certain level and editor
+information:<br>
+<ul>
+<br>
+<table border="0">
+<tr>
+<td nowrap colspan=3><b>The status display always shows the following information:</b></td>
+<tr><td> </td></tr><tr><td> </td></tr>
+</tr>
+<tr>
+<td nowrap><b><li>Screen Position</b></td><td> - </td><td>The X and Y world position of the top-left corner of the screen,
+                  shown in hex as with the in-game debug modes</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Pointer Position</b></td><td> - </td><td>The X and Y world position of the mouse cursor, shown in hex</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr><tr><td> </td></tr><tr><td> </td></tr><tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap colspan=3><b>The following status elements are only available when the cursor is hovering
+over a Player Start Position:</b></td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<td nowrap><b><li>Object Position</b></td><td> - </td><td>The X and Y world position of the selected Player Start Position</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Player Start Position ?</b></td><td> - </td><td>The ID number of the selected Player Start Position</td>
+</tr>
+</table>
+</ul>
+</ul>
+
+<br>
+<br><a name="SMoving">
+<b>Moving a Player Start Position</b><br>
+<br>
+<ul>
+To move a Player Start Position, <b>click and drag</b> the
+                   graphic representing that Start Position to its new location
+</ul>
+
+<br>
+<br><a name="SMode">
+<b>Switch Editing Mode</b><br>
+<br>
+<ul>
+The "Editors" menu has options to switch between the two
+              editing modes available to a project using this editor<br>
+<br>
+To switch to Layout Editing mode using the keyboard, press "<b>L</b>"
+</ul>
+
+</ul>

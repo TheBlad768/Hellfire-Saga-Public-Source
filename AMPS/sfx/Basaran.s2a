@@ -1,0 +1,11 @@
+SndC0_Basaran_Flap_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$80, ctFM5, SndC0_Basaran_Flap_FM5, $00, $03
+
+; FM5 Data
+SndC0_Basaran_Flap_FM5:
+	sVoice		$2F
+	dc.b nG1, $05, nRst, $05, nG1, $04, nRst, $04
+	sStop

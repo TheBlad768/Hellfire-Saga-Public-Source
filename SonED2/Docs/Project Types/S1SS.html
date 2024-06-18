@@ -1,0 +1,169 @@
+<html>
+<head>
+<title>SonED2 - Sonic 1 Rotating Special Stage Project Format</title>
+</head>
+<body>
+<b><center>SonED2 - Sonic 1 Rotating Special Stage Project Format</center></b><br>
+<br>
+This type of project allows for editing the layouts of Sonic 1's Rotating Special Stages. It uses the following format:<br>
+<br>
+
+<li><a href="#Type">[Project Type and Object Def reference]</a><br>
+<ul>
+ <li>Type:<br>
+ <li>Object Def:<br>
+</ul>
+
+<li><a href="#Layout">[Map Layout]</a><br>
+<ul>
+ <li>Layout Compression:<br>
+ <li>Layout X Size:<br>
+ <li>Layout Y Size:<br>
+ <li>Layout Data:<br>
+</ul>
+
+<li><a href="#StartPositions">[Player Start Positions]</a><br>
+<ul>
+ <li>Num Start Positions:<br>
+ <ul>
+ <li>Start Position ?:<br>
+ </ul>
+</ul>
+
+<li><a href="#Palettes">[Palettes]</a><br>
+<ul>
+ <li>Number of files:<br>
+ <ul>
+  <li>Start index:<br>
+  <li>Number of entries:<br>
+  <li>File:<br>
+ </ul>
+</ul>
+
+<li><a href="#GameName">[Game Name]</a><br>
+<ul>
+ <li>Game Name:<br>
+</ul>
+
+<br><a name="Type">
+<b>[Project Type and Object Def reference]</b><br>
+<ul>
+ This section contains the following general setup data:<br>
+ <br>
+ <b>Type:</b><br>
+ <ul>
+  The first line in any Project File is the "Type" identifier. This Project's "Type" should read "S1SS"<br>
+  <br>
+  <ul><pre>Type: S1SS</pre></ul><br>
+ </ul>
+ <b>Object Def:</b><br>
+ <ul>
+  This is the path and filename of the Sonic 1 Special Stage Map Object Listing file that contains graphic and animation information for displaying the "objects" that make up the level. This filename must <b>not</b> be accompanied by an extension; the extension ".lst" will be added by SonED2 when loading the list, and this filename will also be used to generate the filename string for the accompanying graphics file<br>
+  <br>
+  <ul><pre>Object Def: ObjDef\ssobj</pre></ul><br>
+ </ul>
+</ul>
+
+<br><a name="Layout">
+<b>[Map Layout]</b><br>
+<ul>
+ This section specifies how to load the map layout data<br>
+ <br>
+ <b>Layout Compression:</b><br>
+ <br>
+ <ul>
+  This entry specifies the <a href="../Project Files.html#Compression">type of compression</a> that is used on the Map Layout data<br>
+  <br>
+  <ul><pre>Layout Compression:  2</pre></ul><br>
+  </ul>
+ <b>Layout X Size:</b><br>
+ <b>Layout Y Size:</b><br>
+ <br>
+ <ul>
+  These entries specify the X and Y grid size of the Special Stage Map Layout<br>
+  <br>
+  <ul><pre>Layout X Size:       64
+Layout Y Size:       64</pre></ul><br>
+  </ul>
+ <b>Layout Data:</b><br>
+ <br>
+ <ul>
+  This entry specifies the path and filename of the file containing the Map Layout data<br>
+  <br>
+  <ul><pre>Layout Data:         ..\SStage\1.bin</pre></ul><br>
+  </ul>
+</ul>
+
+<br><a name="StartPositions">
+<b>[Player Start Positions]</b><br>
+<ul>
+ This section specifies how to load the Player Start Positions data. The graphics that represent these positions within the editor are <a href="../S1SS%20Object%20Files.html#Sprites">loaded by the Sonic 1 Special Stage Object Listing File</a><br>
+ <br>
+ <b>Num Start Positions:</b><br>
+ <ul>
+  This entry specifies the number of Player Start Positions that should be loaded. The value entered here determines the number of entries that should follow:<br>
+  <br>
+  <ul>
+   <pre>Num Start Positions:   1</pre><br>
+  </ul>
+  <b>Start Position ?:</b><br>
+  <ul>
+   This entry specifies the path and filename of the file containing the Player Start Position data<br>
+   <br>
+   <ul>
+    <pre>Start Position 0:    ..\SStage\Start\1.bin</pre><br>
+   </ul>
+  </ul>
+ </ul>
+</ul>
+
+<br><a name="Palettes">
+<b>[Palettes]</b><br>
+<ul>
+ This section specifies how to load the Palette Color Data. The Genesis/Megadrive palette only has 64 entries, but an additional color space of 64 is available in the editor for creating "underwater" and other accessory palettes that can be flip/flopped with the primary palette during editing<br>
+ <br>
+ Palette data is typically stored in pieces, such as the usual separation between the "Main" palette section (player and global objects, indexes 0-15, usually unchanging) and the "Level" palette section (indexes 16-63, different for every level), so, generally more than one file will need to be loaded at a time<br>
+ <br>
+ <b>Number of files:</b><br>
+ <ul>
+  This entry specifies the number of Palette Color Data files to load<br>
+  <br>
+  <ul><pre>Number of files: 2</pre></ul><br>
+  The data for loading each palette section is listed immediately below in the following format:<br>
+  <br>
+  <b>Start index:</b><br>
+  <ul>
+   This entry specifies where to place the incoming data in the palette. The value entered here is the palette index into which the data for the first color will be placed<br>
+   <br>
+   <ul><pre>Start index:        0</pre></ul><br>
+  </ul>
+  <b>Number of entries:</b><br>
+  <ul>
+   This entry specifies the number of palette color entries that should be loaded from the file<br>
+   <br>
+   <ul><pre>Number of entries: 16</pre></ul><br>
+  </ul>
+  <b>File:</b><br>
+  <ul>
+   This entry specifies the path and filename of the file containing the Palette Color Data<br>
+   <br>
+   <ul><pre>File:              ..\Palettes\Sonic.bin</pre></ul><br>
+  </ul>
+ </ul>
+</ul>
+
+<br><a name="GameName">
+<b>[Game Name]</b><br>
+<ul>
+ This section allows a Game Name to be given to the Project, which will be displayed in the SonED2 titlebar along with the path and filename of the Project File<br>
+ <br>
+ <b>Game Name:</b><br>
+ <ul>
+  This entry is a text string that names the game that this Project File was created for<br>
+  <br>
+  <ul><pre>Game Name: Sonic 1 Special</pre></ul><br>
+ </ul>
+</ul>
+
+</body>
+</html>

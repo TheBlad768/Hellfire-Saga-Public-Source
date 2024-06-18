@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Namespace="SonED2.ZoneCommon" TypeName="Spring" Language="cs" Name="Spring" Image="Image1" RememberState="false" Debug="false" xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromBitmap id="Image1" filename="Sprites/s3objsprite4-12.png" />
+    <ImageFromBitmap id="Image2" filename="Sprites/s3objsprite4-13.png" />
+    <ImageFromBitmap id="Image3" filename="Sprites/s3objsprite4-14.png" />
+    <ImageFromBitmap id="Image4" filename="Sprites/s3objsprite4-15.png" />
+    <ImageFromBitmap id="Image5" filename="Sprites/s3objsprite4-16.png" />
+    <ImageFromBitmap id="Image6" filename="Sprites/s3objsprite4-17.png" />
+  </Images>
+  <Properties>
+    <BitsProperty name="Property1" type="Enum1" startbit="0" length="1" />
+    <BitsProperty name="Property2" type="Enum2" startbit="1" length="1" />
+    <BitsProperty name="Property3" type="Enum3" startbit="4" length="3" />
+  </Properties>
+  <Enums>
+    <Enum name="Enum1">
+      <EnumMember name="Normal" />
+      <EnumMember name="Twirl" />
+    </Enum>
+    <Enum name="Enum2">
+      <EnumMember name="Red" />
+      <EnumMember name="Yellow" />
+    </Enum>
+    <Enum name="Enum3">
+      <EnumMember name="Up" />
+      <EnumMember name="Horizontal" />
+      <EnumMember name="Down" />
+      <EnumMember name="Diagonal Up" />
+      <EnumMember name="Diagonal Down" />
+      <EnumMember name="Invalid" />
+      <EnumMember name="Invalid2" />
+      <EnumMember name="Invalid3" />
+    </Enum>
+  </Enums>
+  <Display>
+    <DisplayOption>
+      <Condition property="Property2" value="Red" />
+      <Condition property="Property3" value="Up" />
+      <ImageRef image="Image1">
+        <Offset X="-16" Y="-8" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="Yellow" />
+      <Condition property="Property3" value="Up" />
+      <ImageRef image="Image2">
+        <Offset X="-16" Y="-8" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="Red" />
+      <Condition property="Property3" value="Horizontal" />
+      <ImageRef image="Image3">
+        <Offset X="-8" Y="-16" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="Yellow" />
+      <Condition property="Property3" value="Horizontal" />
+      <ImageRef image="Image4">
+        <Offset X="-8" Y="-16" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="Yellow" />
+      <Condition property="Property3" value="Down" />
+      <ImageRef image="Image2">
+        <Offset X="-16" Y="-8" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="Red" />
+      <Condition property="Property3" value="Diagonal Up" />
+      <ImageRef image="Image5">
+        <Offset X="-16" Y="-16" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="Yellow" />
+      <Condition property="Property3" value="Diagonal Up" />
+      <ImageRef image="Image6">
+        <Offset X="-16" Y="-16" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="Red" />
+      <Condition property="Property3" value="Diagonal Down" />
+      <ImageRef image="Image5">
+        <Offset X="-16" Y="-16" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="Yellow" />
+      <Condition property="Property3" value="Diagonal Down" />
+      <ImageRef image="Image6">
+        <Offset X="-16" Y="-16" />
+      </ImageRef>
+    </DisplayOption>
+  </Display>
+</ObjDef>

@@ -1,0 +1,477 @@
+Snd_BossTheme_Header:
+	sHeaderInit
+	sHeaderTempo	$00FE
+	sHeaderCh	$05, $00
+	sHeaderDAC	Snd_BossTheme_DAC1
+	sHeaderDAC	Snd_BossTheme_DAC2,	$04
+	sHeaderFM	Snd_BossTheme_FM1,	$F4, $10
+	sHeaderFM	Snd_BossTheme_FM3,	$F4, $10		; AF: SFX now use FM2
+	sHeaderFM	Snd_BossTheme_FM2,	$F4, $10
+	sHeaderFM	Snd_BossTheme_FM4,	$F4, $10
+	sHeaderFM	Snd_BossTheme_FM5,	$F4, $10
+
+;	Voice $00
+;	$3D
+;	$F1, $11, $31, $10, 	$0F, $10, $10, $10, 	$0D, $09, $0A, $05
+;	$00, $00, $00, $00, 	$2F, $2F, $2F, $2F, 	$1A, $82, $82, $82
+	spAlgorithm	$05
+	spFeedback	$07
+	spDetune	$0F, $03, $01, $01
+	spMultiple	$01, $01, $01, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$0F, $10, $10, $10
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0D, $0A, $09, $05
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$02, $02, $02, $02
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1A, $02, $02, $02
+
+;	Voice $01
+;	$39
+;	$F2, $64, $12, $12, 	$0F, $8F, $0F, $4F, 	$00, $07, $03, $02
+;	$00, $00, $00, $00, 	$1F, $1F, $1F, $1F, 	$1F, $24, $22, $82
+	spAlgorithm	$01
+	spFeedback	$07
+	spDetune	$0F, $01, $06, $01
+	spMultiple	$02, $02, $04, $02
+	spRateScale	$00, $00, $02, $01
+	spAttackRt	$0F, $0F, $0F, $0F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $03, $07, $02
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$01, $01, $01, $01
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1F, $22, $24, $02
+
+;	Voice $02
+;	$3D
+;	$12, $02, $22, $32, 	$0F, $10, $10, $10, 	$0E, $0C, $0C, $0D
+;	$09, $08, $08, $08, 	$1F, $3F, $3F, $3F, 	$1A, $82, $82, $82
+	spAlgorithm	$05
+	spFeedback	$07
+	spDetune	$01, $02, $00, $03
+	spMultiple	$02, $02, $02, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$0F, $10, $10, $10
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0E, $0C, $0C, $0D
+	spDecayRt	$09, $08, $08, $08
+	spSustainLv	$01, $03, $03, $03
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1A, $02, $02, $02
+
+;	Voice $03
+;	$3D
+;	$31, $11, $11, $10, 	$0F, $0F, $0E, $0F, 	$0E, $08, $11, $06
+;	$00, $02, $02, $02, 	$3F, $2F, $4F, $2F, 	$18, $82, $82, $88
+	spAlgorithm	$05
+	spFeedback	$07
+	spDetune	$03, $01, $01, $01
+	spMultiple	$01, $01, $01, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$0F, $0E, $0F, $0F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0E, $11, $08, $06
+	spDecayRt	$00, $02, $02, $02
+	spSustainLv	$03, $04, $02, $02
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$18, $02, $02, $08
+
+;	Voice $04
+;	$3A
+;	$F0, $D1, $11, $10, 	$0F, $0F, $0F, $0A, 	$09, $05, $05, $00
+;	$00, $00, $00, $00, 	$2F, $2F, $2F, $1F, 	$17, $19, $18, $80
+	spAlgorithm	$02
+	spFeedback	$07
+	spDetune	$0F, $01, $0D, $01
+	spMultiple	$00, $01, $01, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$0F, $0F, $0F, $0A
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$09, $05, $05, $00
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$02, $02, $02, $01
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$17, $18, $19, $00
+
+;	Voice $05
+;	$39
+;	$F2, $61, $12, $12, 	$0F, $8F, $0F, $4F, 	$00, $07, $03, $02
+;	$00, $00, $00, $00, 	$1F, $1F, $1F, $1F, 	$1F, $24, $1C, $80
+	spAlgorithm	$01
+	spFeedback	$07
+	spDetune	$0F, $01, $06, $01
+	spMultiple	$02, $02, $01, $02
+	spRateScale	$00, $00, $02, $01
+	spAttackRt	$0F, $0F, $0F, $0F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $03, $07, $02
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$01, $01, $01, $01
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1F, $1C, $24, $00
+
+;	Voice $06
+;	$3D
+;	$12, $F2, $11, $11, 	$0F, $11, $11, $11, 	$0D, $08, $0D, $06
+;	$00, $02, $02, $02, 	$1F, $2F, $2F, $4F, 	$1B, $80, $86, $85
+	spAlgorithm	$05
+	spFeedback	$07
+	spDetune	$01, $01, $0F, $01
+	spMultiple	$02, $01, $02, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$0F, $11, $11, $11
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0D, $0D, $08, $06
+	spDecayRt	$00, $02, $02, $02
+	spSustainLv	$01, $02, $02, $04
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1B, $06, $00, $05
+
+; FM1 Data
+Snd_BossTheme_FM1:
+	sVoice		$02
+	sModAMPS	$21, $01, $01, $07
+	sPan		spCenter, $00
+	saVol		$0C
+
+Snd_BossTheme_Loop1B:
+	dc.b nBb4, $08, nA4
+	saVol		$FE
+	sLoop		$00, $06, Snd_BossTheme_Loop1B
+	sVoice		$00
+	dc.b nRst, $18, nA5, $08, nA5, nA5, nBb5, nBb5, nBb5, nB5, nB5, nB5
+	sVoice		$05
+	sPan		spCenter, $00
+	sCall		Snd_BossTheme_Call04
+	dc.b nBb5, $24, nFs5, nCs5, $18
+	sCall		Snd_BossTheme_Call04
+	dc.b nBb5, $24, nEb6, nD6, $18
+
+Snd_BossTheme_Loop1C:
+	sVoice		$05
+	sPan		spCenter, $00
+	dc.b nA4, $24, nAb4, $0C, sHold, $48, nFs4, $18, nAb4, nA4, nC5, $60
+	dc.b nCs5
+	sLoop		$00, $02, Snd_BossTheme_Loop1C
+
+Snd_BossTheme_Loop1D:
+	sVoice		$05
+	sPan		spCenter, $00
+	dc.b nC4, $10, nAb4, nG4, nCs5, nC5, nFs5, nF5, $24, nC5, nEb5, $18
+	dc.b nD5, $24, nAb5, nG5, $18, nBb5, $24, nD6, nCs6, $18
+	sLoop		$00, $02, Snd_BossTheme_Loop1D
+	sVoice		$05
+	sPan		spCenter, $00
+	dc.b nA4, $24, nAb4, $0C, sHold, $48, nFs4, $18, nAb4, nA4, nC5, $60
+	dc.b nCs5, nA4, $24, nAb4, $0C, sHold, $48, nFs4, $18, nAb4, nG4
+	sJump		Snd_BossTheme_FM1
+
+Snd_BossTheme_Call04:
+	dc.b nAb4, $10, nB4, nEb5, nAb5, $10, sHold, $10, nG5, $10, nFs5, $24
+	dc.b nCs5, $0C, sHold, $30, nAb4, $10, nB4, nEb5, nAb5, $10, sHold, $10
+	dc.b nB5, $10
+	sRet
+
+; FM2 Data
+Snd_BossTheme_FM2:
+	sVoice		$02
+	sModAMPS	$21, $01, $01, $07
+	sPan		spCenter, $00
+	saVol		$0C
+
+Snd_BossTheme_Loop11:
+	dc.b nFs4, $08, nF4
+	saVol		$FE
+	sLoop		$00, $06, Snd_BossTheme_Loop11
+	sVoice		$00
+	dc.b nRst, $18, nFs5, $08, nFs5, nFs5, nG5, nG5, nG5, nAb5, nAb5, nAb5
+
+Snd_BossTheme_Loop12:
+	sPan		spLeft, $00
+	sVoice		$00
+	dc.b nAb5, $24, $06, $06, $10, $10, nB5
+	sVoice		$05
+	dc.b nRst, $18, nCs5, nCs5, nCs5
+	sVoice		$00
+	dc.b nAb5, $24, $06, $06, $10, $10, nG5
+	sVoice		$05
+	dc.b nRst, $18, nCs5, nCs5, nCs5
+	sLoop		$00, $02, Snd_BossTheme_Loop12
+	sVoice		$02
+	sPan		spLeft, $00
+
+Snd_BossTheme_Loop13:
+	dc.b nF4, $08, nE4, nF4
+	sLoop		$00, $04, Snd_BossTheme_Loop13
+	dc.b nF4, nAb4, nG4, nFs4, nF4, nE4, nF4, nE4, nEb4, nE4, nEb4, nD4
+
+Snd_BossTheme_Loop14:
+	dc.b nCs4, $08, nC4, nCs4
+	sLoop		$00, $04, Snd_BossTheme_Loop14
+
+Snd_BossTheme_Loop15:
+	dc.b nD4, $08, nD4, nCs4
+	sLoop		$00, $04, Snd_BossTheme_Loop15
+	sLoop		$01, $02, Snd_BossTheme_Loop13
+
+Snd_BossTheme_Loop16:
+	sVoice		$05
+	sPan		spCenter, $00
+	dc.b nRst, $60, nCs5, $24, nAb4, nA4, $18, nA4, $24, nB4, nC5, $18
+	dc.b nCs5, $24, nD5, nEb5, $18
+	sLoop		$00, $02, Snd_BossTheme_Loop16
+	sVoice		$02
+	sPan		spLeft, $00
+
+Snd_BossTheme_Loop17:
+	dc.b nF4, $08, nE4, nF4
+	sLoop		$00, $04, Snd_BossTheme_Loop17
+	dc.b nF4, nAb4, nG4, nFs4, nF4, nE4, nF4, nE4, nEb4, nE4, nEb4, nD4
+
+Snd_BossTheme_Loop18:
+	dc.b nCs4, $08, nC4, nCs4
+	sLoop		$00, $04, Snd_BossTheme_Loop18
+
+Snd_BossTheme_Loop19:
+	dc.b nD4, $08, nD4, nCs4
+	sLoop		$00, $04, Snd_BossTheme_Loop19
+
+Snd_BossTheme_Loop1A:
+	dc.b nF4, $08, nE4, nF4
+	sLoop		$00, $04, Snd_BossTheme_Loop1A
+	dc.b nF4, nAb4, nG4, nFs4, nF4, nE4, nF4, nE4, nEb4, nE4, nEb4, nD4
+	sJump		Snd_BossTheme_FM2
+
+; FM3 Data
+Snd_BossTheme_FM3:
+	sVoice		$02
+	sModAMPS	$21, $01, $01, $07
+	sPan		spLeft, $00
+	dc.b nRst, $04
+	saVol		$0C
+
+Snd_BossTheme_Loop08:
+	dc.b nBb4, $08, nA4
+	saVol		$FE
+	sLoop		$00, $05, Snd_BossTheme_Loop08
+	saVol		$FE
+	dc.b nBb4, $08, nA4, $04
+	sVoice		$03
+	sPan		spCenter, $00
+	saVol		$FA
+	dc.b nEb3, $60
+	saVol		$06
+	sVoice		$05
+	sPan		spCenter, $00
+	sCall		Snd_BossTheme_Call03
+	dc.b nRst, $18, nFs5, $18, nF5, nFs5
+	sCall		Snd_BossTheme_Call03
+	dc.b nRst, $18, nFs5, $18, nF5, nE5
+	sVoice		$02
+	sPan		spRight, $00
+
+Snd_BossTheme_Loop09:
+	dc.b nCs4, $08
+	sLoop		$00, $0C, Snd_BossTheme_Loop09
+	dc.b nC4, nE4, nEb4, nD4, nCs4, nC4, nB3, nC4, nB3, nBb3, nA3, nBb3
+
+Snd_BossTheme_Loop0A:
+	dc.b nAb3, $08
+	sLoop		$00, $0C, Snd_BossTheme_Loop0A
+
+Snd_BossTheme_Loop0B:
+	dc.b nAb3, $08
+	sLoop		$00, $0C, Snd_BossTheme_Loop0B
+	sLoop		$01, $02, Snd_BossTheme_Loop09
+
+Snd_BossTheme_Loop0C:
+	sVoice		$06
+	sPan		spCenter, $00
+	dc.b nRst, $48, nCs6, $04, nC6, nAb5, nG5, nCs5, nC5, nRst, $18, nC5
+	dc.b $08, nC5, nC5, nCs5, nCs5, nCs5, nD5, nD5, nD5, nRst, $60, nRst
+	dc.b $18, nCs5, $08, nCs5, nCs5, nD5, $18, nEb5
+	sLoop		$00, $02, Snd_BossTheme_Loop0C
+	sVoice		$02
+	sPan		spRight, $00
+
+Snd_BossTheme_Loop0D:
+	dc.b nCs4, $08
+	sLoop		$00, $0C, Snd_BossTheme_Loop0D
+	dc.b nC4, nE4, nEb4, nD4, nCs4, nC4, nB3, nC4, nB3, nBb3, nA3, nBb3
+
+Snd_BossTheme_Loop0E:
+	dc.b nAb3, $08
+	sLoop		$00, $0C, Snd_BossTheme_Loop0E
+
+Snd_BossTheme_Loop0F:
+	dc.b nAb3, $08
+	sLoop		$00, $0C, Snd_BossTheme_Loop0F
+
+Snd_BossTheme_Loop10:
+	dc.b nCs4, $08
+	sLoop		$00, $0C, Snd_BossTheme_Loop10
+	dc.b nC4, nE4, nEb4, nD4, nCs4, nC4, nB3, nC4, nB3, nBb3, nA3, nBb3
+	sJump		Snd_BossTheme_FM3
+
+Snd_BossTheme_Call03:
+	dc.b nEb4, $10, nAb4, nB4, nEb5, $10, sHold, $10, nD5, $10, nRst, $18
+	dc.b nFs5, $18, nF5, nE5, nEb4, $10, nAb4, nB4, nEb5, $10, sHold, $10
+	dc.b nFs5, $10
+	sRet
+
+; FM4 Data
+Snd_BossTheme_FM4:
+	sVoice		$02
+	sModAMPS	$21, $01, $01, $07
+	ssDetune	$03
+
+Snd_BossTheme_Jump01:
+	saVol		$0C
+	sVoice		$02
+	sPan		spRight, $00
+	dc.b nRst, $01
+
+Snd_BossTheme_Loop05:
+	dc.b nFs4, $08, nF4
+	saVol		$FE
+	sLoop		$00, $05, Snd_BossTheme_Loop05
+	saVol		$FE
+	dc.b nFs4, $08, nF4
+	sVoice		$03
+	sPan		spRight, $00
+	dc.b nEb3, $5F
+	sVoice		$05
+	sPan		spRight, $00
+	dc.b nRst, $08
+	saVol		$05
+	sCall		Snd_BossTheme_Call02
+	dc.b nBb5, $24, nFs5, nCs5, $18
+	sCall		Snd_BossTheme_Call02
+	dc.b nBb5, $24, nEb6, nD6, $18
+
+Snd_BossTheme_Loop06:
+	sVoice		$05
+	sPan		spCenter, $00
+	dc.b nA4, $24, nAb4, $0C, sHold, $48, nFs4, $18, nAb4, nA4, nC5, $60
+	dc.b nCs5
+	sLoop		$00, $02, Snd_BossTheme_Loop06
+
+Snd_BossTheme_Loop07:
+	sVoice		$05
+	sPan		spCenter, $00
+	dc.b nC4, $10, nAb4, nG4, nCs5, nC5, nFs4, nF5, $24, nC5, nEb5, $18
+	dc.b nD5, $24, nAb5, nG5, $18, nBb5, $24, nD6, nCs6, $18
+	sLoop		$00, $02, Snd_BossTheme_Loop07
+	sVoice		$05
+	sPan		spCenter, $00
+	dc.b nA4, $24, nAb4, $0C, sHold, $48, nFs4, $18, nAb4, nA4, nC5, $60
+	dc.b nCs5, nA4, $24, nAb4, $0C, sHold, $48, nFs4, $18, nAb4, nG4, $10
+	saVol		$FB
+	sJump		Snd_BossTheme_Jump01
+
+Snd_BossTheme_Call02:
+	dc.b nAb4, $10, nB4, nEb5, nAb5, $10, sHold, $10, nG5, $10, nFs5, $24
+	dc.b nCs5, $0C, sHold, $30, nAb4, $10, nB4, nEb5, nAb5, $10, sHold, $10
+	dc.b nB5, $10
+	sRet
+
+; FM5 Data
+Snd_BossTheme_FM5:
+	sVoice		$02
+	sModAMPS	$21, $01, $01, $07
+	ssDetune	$FD
+
+Snd_BossTheme_Jump00:
+	saVol		$0C
+	sVoice		$02
+	sPan		spCenter, $00
+	dc.b nRst, $02
+
+Snd_BossTheme_Loop02:
+	dc.b nFs4, $08, nF4
+	saVol		$FE
+	sLoop		$00, $05, Snd_BossTheme_Loop02
+	saVol		$FE
+	dc.b nFs4, $08, nF4
+	sVoice		$03
+	sPan		spCenter, $00
+	dc.b nEb3, $5E
+	sVoice		$05
+	sPan		spLeft, $00
+	dc.b nRst, $08
+	saVol		$05
+	sCall		Snd_BossTheme_Call01
+	dc.b nRst, $18, nFs5, $18, nF5, nFs5
+	sCall		Snd_BossTheme_Call01
+	dc.b nRst, $18, nFs5, $18, nF5, nE5, $10
+	saVol		$FB
+
+Snd_BossTheme_Loop03:
+	sVoice		$05
+	sPan		spCenter, $00
+	dc.b nA3, $24, nAb3, $0C, sHold, $48, nFs3, $18, nAb3, nA3, nC4, $60
+	dc.b nCs4
+	sLoop		$00, $02, Snd_BossTheme_Loop03
+
+Snd_BossTheme_Loop04:
+	sVoice		$05
+	sPan		spCenter, $00
+	dc.b nC3, $10, nAb3, nG3, nCs4, nC4, nFs4, nF4, $24, nC4, nEb4, $18
+	dc.b nD4, $24, nAb4, nG4, $18, nBb4, $24, nD5, nCs5, $18
+	sLoop		$00, $02, Snd_BossTheme_Loop04
+	sVoice		$05
+	sPan		spCenter, $00
+	dc.b nA3, $24, nAb3, $0C, sHold, $48, nFs3, $18, nAb3, nA3, nC4, $60
+	dc.b nCs4, nA3, $24, nAb3, $0C, sHold, $48, nFs3, $18, nAb3, nG3
+	sJump		Snd_BossTheme_Jump00
+
+Snd_BossTheme_Call01:
+	dc.b nEb4, $10, nAb4, nB4, nEb5, $10, sHold, $10, nD5, $10, nRst, $18
+	dc.b nFs5, $18, nF5, nE5, nEb4, $10, nAb4, nB4, nEb5, $10, sHold, $10
+	dc.b nFs5, $10
+	sRet
+
+Snd_BossTheme_DAC1:
+	sStop
+
+; DAC Data
+Snd_BossTheme_DAC2:
+	sPan		spCenter, $00
+	dc.b dKick, $0C, dSnare, $18, dKick, $0C, nRst, $0C, dKick, $0C, $0C, dSnare
+	dc.b dKick, $18, nRst, $0C, dSnare, $06, $06, dKick, $30
+
+Snd_BossTheme_Loop00:
+	dc.b dKick, $24, dSnare, $06, $06, nRst, $0C, dKick, $18, dSnare, $06, $06
+	dc.b dKick, $0C, dSnare, $18, dKick, $0C, nRst, $0C, dKick, $0C, $0C, dSnare
+	sLoop		$00, $04, Snd_BossTheme_Loop00
+
+Snd_BossTheme_Loop01:
+	sCall		Snd_BossTheme_Call00
+	dc.b dKick, $0C, $06, $06
+	sCall		Snd_BossTheme_Call00
+	dc.b dKick, $0C, $0C
+	sLoop		$01, $02, Snd_BossTheme_Loop01
+	dc.b dKick, $24, dSnare, $06, $06, nRst, $0C, dKick, $18, dSnare, $06, $06
+	dc.b dKick, $0C, dSnare, $18, dKick, $0C, nRst, $0C, dKick, $0C, $0C, dSnare
+	sLoop		$00, $04, Snd_BossTheme_Loop00
+	sCall		Snd_BossTheme_Call00
+	dc.b dKick, $0C, $06, $06
+	sCall		Snd_BossTheme_Call00
+	dc.b dKick, $0C, $0C
+	sCall		Snd_BossTheme_Call00
+	dc.b dKick, $0C, $06, $06
+	sJump		Snd_BossTheme_DAC2
+
+Snd_BossTheme_Call00:
+	dc.b dKick, $18
+	sLoop		$00, $07, Snd_BossTheme_Call00
+	sRet

@@ -1,0 +1,79 @@
+; ========================================================================
+;  by
+; Converted with dmf2amps v1.0 by VladislavSavvateev
+; ========================================================================
+
+hoZeFy_Header:
+	sHeaderInit
+	sHeaderTempo	$0166
+	sHeaderCh	$06, $03
+	sHeaderDAC	hoZeFy_DAC1
+	sHeaderDAC	hoZeFy_DAC2
+	sHeaderFM	hoZeFy_FM1, $00, $00
+	sHeaderFM	hoZeFy_FM2, $00, $00
+	sHeaderFM	hoZeFy_FM3_OP_0, $00, $1
+	sHeaderFM	hoZeFy_FM4, $00, $00
+	sHeaderFM	hoZeFy_FM5, $00, $00
+	sHeaderFM	hoZeFy_FM6, $00, $00
+	sHeaderPSG	hoZeFy_PSG1, $00, $00, $00, $00
+	sHeaderPSG	hoZeFy_PSG2, $00, $00, $00, $00
+	sHeaderPSG	hoZeFy_PSG3, $00, $00, $00, $00
+
+; Instruments
+
+; $22: She took the Guitar
+	spAlgorithm	$01
+	spFeedback	$07
+	spDetune	$00, $06, $07, $02
+	spMultiple	$04, $01, $01, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$15, $05, $1F, $0B
+	spDecayRt	$01, $00, $06, $00
+	spSustainLv	$06, $01, $01, $01
+	spReleaseRt	$04, $03, $05, $07
+	spSSGEG	$00, $00, $00, $00
+	spTotalLv	$04, $1D, $0D, $07
+
+hoZeFy_FM1:
+	sModOff
+	ssPortamento	$00
+	ssVol	$00
+	sVoice	$00
+	sPan	spCenter
+	dc.b	nCs5, $28
+	sModAMPS	$0, $01, $04, $6
+	dc.b	sHold, $1E
+	ssPortamento	-$0011
+	ssPortaTgt	$0000
+	sModOff
+	sKeyOff
+	dc.b	sHold, $0A
+
+	sVoice	$00
+	ssPortamento	-$0000
+	ssPortaTgt	$0000
+	dc.b	nB4, $28
+	sModAMPS    $0, $01, $04, $6
+	dc.b    sHold, $1E
+	ssPortamento    -$0011
+	ssPortaTgt    $0000
+	sModOff
+	sKeyOff
+	dc.b	sHold, $0A
+
+hoZeFy_FM2:
+hoZeFy_FM3_OP_0:
+hoZeFy_FM3_OP_1:
+hoZeFy_FM3_OP_2:
+hoZeFy_FM3_OP_3:
+hoZeFy_FM4:
+hoZeFy_FM5:
+hoZeFy_FM6:
+hoZeFy_DAC1:
+hoZeFy_DAC2:
+hoZeFy_PSG1:
+hoZeFy_PSG2:
+hoZeFy_PSG3:
+	sStop

@@ -1,0 +1,280 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Sonic the Hedgehog 2 (Rev 01) Options Injector File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;
+; Setup Directives ;
+;;;;;;;;;;;;;;;;;;;;
+
+MaxSize	$400000				;Maximum Genesis ROM size
+
+Dispose	$0097B2	$0097CA			;Cheat Codes Data
+
+
+;;;;;;;;;;;;;;;;
+; Data Defines ;
+;;;;;;;;;;;;;;;;
+
+Define	Zone_EHZ	$00		;Zone ID Names
+Define	Zone_01		$01
+Define	Zone_WZ		$02
+Define	Zone_03		$03
+Define	Zone_MTZ4	$04
+Define	Zone_MTZ5	$05
+Define	Zone_WFZ	$06
+Define	Zone_HTZ	$07
+Define	Zone_HPZ	$08
+Define	Zone_09		$09
+Define	Zone_OOZ	$0A
+Define	Zone_MCZ	$0B
+Define	Zone_CNZ	$0C
+Define	Zone_CPZ	$0D
+Define	Zone_DEZ	$0E
+Define	Zone_ARZ	$0F
+Define	Zone_SCZ	$10
+
+Define	Act1		$00		;Act ID Names
+Define	Act2		$01
+
+Define	Zone_END	$FF		;Ending Sequence Trigger
+Define	ActEND		$FF
+
+Define	MakeMusicID	$80		;Convert from Sound Test ID to internal music ID
+
+Define	YLoop		$FF00		;Create Y-looping level (when used as Y Start, and Y End is $800)
+
+Define	Code_End	$00		;Cheat Code Terminator
+Define	Code_Invalid	$FF		;Substituting this Define for any Sound Test ID will effectively disable the code
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Manual Settings Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;Game Header Information
+;;;
+
+StartSeg Big_Endian $000100 $8E
+
+	String	"SEGA MEGA DRIVE "					;Console Name
+	String	"(C)SEGA 1992.SEP"					;Copyright Date
+	String  "SONIC THE             HEDGEHOG 2                "	;Domestic Game Name
+	String  "SONIC THE             HEDGEHOG 2                "	;Foreign Game Name
+	String	"GM 00001051-01"					;Game Serial Number
+
+EndSeg
+
+;;;
+;Level Music Playlist
+;;;
+
+StartSeg Big_Endian $003EA0
+
+	;;;
+	;1P
+	;;;
+
+	BYTE	$02 + MakeMusicID	;EHZ
+	BYTE	$02 + MakeMusicID	; 01
+	BYTE	$05 + MakeMusicID	; WZ
+	BYTE	$04 + MakeMusicID	; 03
+	BYTE	$05 + MakeMusicID	;MTZ4
+	BYTE	$05 + MakeMusicID	;MTZ5
+	BYTE	$0F + MakeMusicID	;WFZ
+	BYTE	$06 + MakeMusicID	;HTZ
+	BYTE	$10 + MakeMusicID	;HPZ
+	BYTE	$0D + MakeMusicID	; 09
+	BYTE	$04 + MakeMusicID	;OOZ
+	BYTE	$0B + MakeMusicID	;MCZ
+	BYTE	$09 + MakeMusicID	;CNZ
+	BYTE	$0E + MakeMusicID	;CPZ
+	BYTE	$0A + MakeMusicID	;DEZ
+	BYTE	$07 + MakeMusicID	;ARZ
+	BYTE	$0D + MakeMusicID	;SCZ
+
+	;;;
+	;Pad
+	;;;
+
+	BYTE	$00
+
+	;;;
+	;2P
+	;;;
+
+	BYTE	$0C + MakeMusicID	;EHZ
+	BYTE	$02 + MakeMusicID	; 01
+	BYTE	$05 + MakeMusicID	; WZ
+	BYTE	$04 + MakeMusicID	; 03
+	BYTE	$05 + MakeMusicID	;MTZ4
+	BYTE	$05 + MakeMusicID	;MTZ5
+	BYTE	$0F + MakeMusicID	;WFZ
+	BYTE	$06 + MakeMusicID	;HTZ
+	BYTE	$10 + MakeMusicID	;HPZ
+	BYTE	$0D + MakeMusicID	; 09
+	BYTE	$04 + MakeMusicID	;OOZ
+	BYTE	$03 + MakeMusicID	;MCZ
+	BYTE	$08 + MakeMusicID	;CNZ
+	BYTE	$0E + MakeMusicID	;CPZ
+	BYTE	$0A + MakeMusicID	;DEZ
+	BYTE	$07 + MakeMusicID	;ARZ
+	BYTE	$0D + MakeMusicID	;SCZ
+
+EndSeg
+
+;;;
+; Level Size Array
+;;;
+
+StartSeg Big_Endian $00C054
+
+	WORD	0, $29A0,     0,   $320		;EHZ1
+	WORD	0, $2940,     0,   $420		;EHZ2
+	WORD	0, $3FFF,     0,   $720		;01_1
+	WORD	0, $3FFF,     0,   $720		;01_2
+	WORD	0, $3FFF,     0,   $720		;WZ1
+	WORD	0, $3FFF,     0,   $720		;WZ2
+	WORD	0, $3FFF,     0,   $720		;03_1
+	WORD	0, $3FFF,     0,   $720		;03_2
+	WORD	0, $2280, YLoop,   $800		;MTZ1
+	WORD	0, $1E80, YLoop,   $800		;MTZ2
+	WORD	0, $2A80, YLoop,   $800		;MTZ3
+	WORD	0, $3FFF, YLoop,   $800		;MTZ4
+	WORD	0, $3FFF,     0,   $720		;WFZ1
+	WORD	0, $3FFF,     0,   $720		;WFZ2
+	WORD	0, $2800,     0,   $720		;HTZ1
+	WORD	0, $3280,     0,   $720		;HTZ2
+	WORD	0, $3FFF,     0,   $720		;HPZ1
+	WORD	0, $3FFF,     0,   $720		;HPZ2
+	WORD	0, $3FFF,     0,   $720		;09_1
+	WORD	0, $3FFF,     0,   $720		;09_2
+	WORD	0, $2F80,     0,   $680		;OOZ1
+	WORD	0, $2D00,     0,   $680		;OOZ2
+	WORD	0, $2380,  $3C0,   $720		;MCZ1
+	WORD	0, $3FFF,   $60,   $720		;MCZ2
+	WORD	0, $27A0,     0,   $720		;CNZ1
+	WORD	0, $2A80,     0,   $720		;CNZ2
+	WORD	0, $2780,     0,   $720		;CPZ1
+	WORD	0, $2A80,     0,   $720		;CPZ2
+	WORD	0, $1000,   $C8,    $C8		;DEZ1
+	WORD	0, $1000,   $C8,    $C8		;DEZ2
+	WORD	0, $28C0,  $200,   $600		;ARZ1
+	WORD	0, $3FFF,  $180,   $710		;ARZ2
+	WORD	0, $3FFF,     0,      0		;SCZ1
+	WORD	0, $3FFF,     0,   $720		;SCZ2
+
+EndSeg
+
+;;;
+;Starting Level
+;;;
+
+StartSeg SetStartingLevel Big_Endian
+
+	 WORD	$31C0, $FFD8
+
+	 WORD	$31FC
+	 BYTE	Zone_EHZ, Act1		;Zone and Act to go to when starting a new game
+	 WORD	$FE10
+
+	 WORD	$4E75
+
+EndSeg
+
+;;;
+;"Next Level" array
+;;;
+
+StartSeg Big_Endian $0142F8
+
+	BYTE	Zone_EHZ, Act2		;From EHZ Act 1
+	BYTE	Zone_CPZ, Act1		;From EHZ Act 2
+	BYTE	Zone_EHZ, Act1		;From  01 Act 1
+	BYTE	Zone_EHZ, Act1		;From  01 Act 2
+	BYTE	Zone_WZ,  Act2		;From  WZ Act 1
+	BYTE	Zone_MTZ4,Act1		;From  WZ Act 2
+	BYTE	Zone_EHZ, Act1		;From  03 Act 1
+	BYTE	Zone_EHZ, Act1		;From  03 Act 2
+	BYTE	Zone_MTZ4,Act2		;From MTZ Act 1
+	BYTE	Zone_MTZ5,Act2		;From MTZ Act 2
+	BYTE	Zone_SCZ, Act1		;From MTZ Act 3
+	BYTE	Zone_EHZ, Act1		;From MTZ Act 4
+	BYTE	Zone_DEZ, Act1		;From WFZ Act 1
+	BYTE	Zone_EHZ, Act1		;From WFZ Act 2
+	BYTE	Zone_HTZ, Act2		;From HTZ Act 1
+	BYTE	Zone_MCZ, Act1		;From HTZ Act 2
+	BYTE	Zone_HPZ, Act2		;From HPZ Act 1
+	BYTE	Zone_OOZ, Act1		;From HPZ Act 2
+	BYTE	Zone_EHZ, Act1		;From  09 Act 1
+	BYTE	Zone_EHZ, Act1		;From  09 Act 2
+	BYTE	Zone_OOZ, Act2		;From OOZ Act 1
+	BYTE	Zone_MTZ4,Act1		;From OOZ Act 2
+	BYTE	Zone_MCZ, Act2		;From MCZ Act 1
+	BYTE	Zone_OOZ, Act1		;From MCZ Act 2
+	BYTE	Zone_CNZ, Act2		;From CNZ Act 1
+	BYTE	Zone_HTZ, Act1		;From CNZ Act 2
+	BYTE	Zone_CPZ, Act2		;From CPZ Act 1
+	BYTE	Zone_ARZ, Act1		;From CPZ Act 2
+	BYTE	Zone_END, ActEND	;From DEZ Act 1
+	BYTE	Zone_EHZ, Act1		;From DEZ Act 2
+	BYTE	Zone_ARZ, Act2		;From ARZ Act 1
+	BYTE	Zone_CNZ, Act1		;From ARZ Act 2
+	BYTE	Zone_WFZ, Act1		;From SCZ Act 1
+	BYTE	Zone_EHZ, Act1		;From SCZ Act 2
+
+EndSeg
+
+;;;
+;Cheat Codes
+;;;
+
+StartSeg Big_Endian
+
+	Code_LevelSelect:	BYTE	$19, $65, $09, $17, Code_End
+	Code_14Continues:	BYTE	$01, $01, $02, $04, Code_End
+	Code_DebugMode:		BYTE	$01, $09, $09, $02, $01, $01, $02, 04, Code_End
+	Code_SuperSonic:	BYTE	$04, $01, $02, $06, Code_End
+
+EndSeg
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; General Reference Replacement Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Big_Endian $009164
+
+	DWORD Code_LevelSelect
+
+EndSeg
+
+StartSeg Big_Endian $00916A
+
+	DWORD Code_14Continues
+
+EndSeg
+
+StartSeg Big_Endian $009574
+
+	DWORD Code_DebugMode
+
+EndSeg
+
+StartSeg Big_Endian $00957A
+
+	DWORD Code_SuperSonic
+
+EndSeg
+
+StartSeg Big_Endian $003CC6
+
+	 WORD	$4E71
+
+	 WORD	$4EB9
+	DWORD	SetStartingLevel
+
+EndSeg

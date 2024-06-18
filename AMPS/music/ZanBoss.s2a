@@ -1,0 +1,290 @@
+Snd_ZanBoss_Header:
+	sHeaderInit
+	sHeaderTempo	$0066
+	sHeaderCh	$05, $00
+	sHeaderDAC	Snd_ZanBoss_DAC1
+	sHeaderDAC	Snd_ZanBoss_DAC2, $04
+	sHeaderFM	Snd_ZanBoss_FM1, $00, $08
+	sHeaderFM	Snd_ZanBoss_FM3, $00, $06		; AF: SFX now use FM2
+	sHeaderFM	Snd_ZanBoss_FM2, $00, $08
+	sHeaderFM	Snd_ZanBoss_FM4, $00, $06
+	sHeaderFM	Snd_ZanBoss_FM5, $00, $06
+
+;	Voice $00
+;	$3D
+;	$71, $32, $61, $02, 	$15, $5F, $DF, $10, 	$02, $0C, $05, $05
+;	$04, $04, $04, $04, 	$38, $F8, $38, $FA, 	$1B, $19, $19, $0E
+	spAlgorithm	$05
+	spFeedback	$07
+	spDetune	$07, $06, $03, $00
+	spMultiple	$01, $01, $02, $02
+	spRateScale	$00, $03, $01, $00
+	spAttackRt	$15, $1F, $1F, $10
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$02, $05, $0C, $05
+	spDecayRt	$04, $04, $04, $04
+	spSustainLv	$03, $03, $0F, $0F
+	spReleaseRt	$08, $08, $08, $0A
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1B, $19, $19, $0E
+
+;	Voice $01
+;	$03
+;	$6A, $01, $01, $01, 	$1F, $1F, $1F, $1C, 	$0C, $00, $00, $00
+;	$00, $00, $04, $06, 	$FA, $0A, $06, $08, 	$2F, $17, $21, $09
+	spAlgorithm	$03
+	spFeedback	$00
+	spDetune	$06, $00, $00, $00
+	spMultiple	$0A, $01, $01, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1C
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0C, $00, $00, $00
+	spDecayRt	$00, $04, $00, $06
+	spSustainLv	$0F, $00, $00, $00
+	spReleaseRt	$0A, $06, $0A, $08
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$2F, $21, $17, $09
+
+;	Voice $02
+;	$04
+;	$33, $01, $03, $71, 	$D6, $99, $D6, $99, 	$00, $07, $00, $08
+;	$0C, $08, $12, $06, 	$40, $37, $44, $35, 	$1E, $1A, $20, $10
+	spAlgorithm	$04
+	spFeedback	$00
+	spDetune	$03, $00, $00, $07
+	spMultiple	$03, $03, $01, $01
+	spRateScale	$03, $03, $02, $02
+	spAttackRt	$16, $16, $19, $19
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $00, $07, $08
+	spDecayRt	$0C, $12, $08, $06
+	spSustainLv	$04, $04, $03, $03
+	spReleaseRt	$00, $04, $07, $05
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1E, $20, $1A, $10
+
+; DAC Data
+Snd_ZanBoss_DAC2:
+	sPan		spCenter, $00
+
+Snd_ZanBoss_Jump00:
+	dc.b dKick
+
+Snd_ZanBoss_Loop00:
+	dc.b $06, $03, dSnare, dKick, $06
+	sLoop		$00, $06, Snd_ZanBoss_Loop00
+	dc.b dTimpani, $01, $02, $03, $03, dTimpani2, $01, $02, $03, $03, dTimpani3, $01
+	dc.b $02, $03, $03
+
+Snd_ZanBoss_Loop01:
+	dc.b dSnare, $01, $02, $03, $03, $06, $06, $03, $03, $06, $06, $03
+	dc.b $03, dTimpani, $01, $02, $03, dKick, dTimpani2, $01, $02, $03, dKick, dTimpani3
+	dc.b $01, $02, $03, dKick
+	sLoop		$00, $02, Snd_ZanBoss_Loop01
+	dc.b dSnare, $01, $02, $03, $03
+
+Snd_ZanBoss_Loop02:
+	dc.b dKick, $06, dSnare, dKick, $03, $03, dSnare, $06, dKick, $03, $03, dSnare
+	dc.b $06
+	sLoop		$00, $03, Snd_ZanBoss_Loop02
+	dc.b dKick, dSnare, dKick, $03, $03, dSnare, $01, $02, $03, $03, $03, $03
+	dc.b $03
+	sJump		Snd_ZanBoss_Jump00
+
+; FM1 Data
+Snd_ZanBoss_FM1:
+	sVoice		$00
+
+Snd_ZanBoss_Jump05:
+	sPan		spCenter, $00
+	dc.b nB4, $01
+	ssDetune	$EF
+	dc.b sHold, $01
+	ssDetune	$F8
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b sHold, $0F, nF5, $09, nB5
+	ssDetune	$13
+	dc.b nA5, $01
+	ssDetune	$E1
+	dc.b sHold, nBb5
+	ssDetune	$F2
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b sHold, $0F, nE5, $09, nBb4
+	ssDetune	$15
+	dc.b $01
+	ssDetune	$EF
+	dc.b sHold, nB4
+	ssDetune	$F8
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b sHold, $0F, nF5, $09, nB5
+	ssDetune	$13
+	dc.b nA5, $01
+	ssDetune	$E1
+	dc.b sHold, nBb5
+	ssDetune	$F2
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b sHold, $0F, nE5, $09, nBb4
+
+Snd_ZanBoss_Loop0E:
+	dc.b nE4, $06, $06, $03, $03, $06, $06, $03, $03
+	ssDetune	$0F
+	dc.b $03
+	ssDetune	$E9
+	dc.b sHold, nF4
+	ssDetune	$F6
+	dc.b sHold, $03
+	ssDetune	$00
+	dc.b sHold, $1B, nFs4, $06, $06, $03, $03, $06, $06, $03, $03
+	ssDetune	$11
+	dc.b $03
+	ssDetune	$E6
+	dc.b sHold, nG4
+	ssDetune	$F3
+	dc.b sHold, $03
+	ssDetune	$00
+	dc.b sHold, $1B
+	sLoop		$00, $02, Snd_ZanBoss_Loop0E
+	sJump		Snd_ZanBoss_Jump05
+
+; FM2 Data
+Snd_ZanBoss_FM2:
+	sVoice		$00
+
+Snd_ZanBoss_Jump04:
+	sPan		spCenter, $00
+	dc.b nF4, $01
+	ssDetune	$E9
+	dc.b sHold, $01
+	ssDetune	$F6
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b sHold, $0F, nB4, $09, nF5
+	ssDetune	$0F
+	dc.b nE5, $01
+	ssDetune	$E9
+	dc.b sHold, nF5
+	ssDetune	$F6
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b sHold, $0F, nBb4, $09, nF4
+	ssDetune	$0F
+	dc.b nE4, $01
+	ssDetune	$E9
+	dc.b sHold, nF4
+	ssDetune	$F6
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b sHold, $0F, nB4, $09, nF5
+	ssDetune	$0F
+	dc.b nE5, $01
+	ssDetune	$E9
+	dc.b sHold, nF5
+	ssDetune	$F6
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b sHold, $0F, nBb4, $09, nF4
+
+Snd_ZanBoss_Loop0D:
+	dc.b nA4, $06, $06, $03, $03, $06, $06, $03, $03
+	ssDetune	$13
+	dc.b $03
+	ssDetune	$E1
+	dc.b sHold, nBb4
+	ssDetune	$F2
+	dc.b sHold, $03
+	ssDetune	$00
+	dc.b sHold, $1B, nB4, $06, $06, $03, $03, $06, $06, $03, $03
+	ssDetune	$0B
+	dc.b $03
+	ssDetune	$EF
+	dc.b sHold, nC5
+	ssDetune	$F8
+	dc.b sHold, $03
+	ssDetune	$00
+	dc.b sHold, $1B
+	sLoop		$00, $02, Snd_ZanBoss_Loop0D
+	sJump		Snd_ZanBoss_Jump04
+
+; FM3 Data
+Snd_ZanBoss_FM3:
+	sVoice		$01
+
+Snd_ZanBoss_Jump03:
+	sPan		spCenter, $00
+
+Snd_ZanBoss_Loop0B:
+	dc.b nC2, $03, nB1, nC2, nC2, nB1, nC2, nD2, nCs2, nC2, nEb2, nD2
+	dc.b nCs2
+	sLoop		$00, $02, Snd_ZanBoss_Loop0B
+
+Snd_ZanBoss_Loop0C:
+	dc.b nE2, nEb2, nE2, nE2, nEb2, nE2, nE2, nF2, nFs2, nG2, nAb2, nA2
+	sLoop		$00, $02, Snd_ZanBoss_Loop0C
+	dc.b nBb1, $06, $06, $03, $03, $06, $06, $03, $03, nB1, $06, $06
+	dc.b $03, $03, $06, $06, $03, $03, nC2, $06, $06, $03, $03, $06
+	dc.b $06, $03, $03, nCs2, $06, $06, $03, $03, $06, $06, $03, $03
+	dc.b nBb1, $06, $06, $03, $03, $06, $06, $03, $03, nB1, $06, $06
+	dc.b $03, $03, $06, $06, $03, $03, nC2, $06, $06, $03, $03, $06
+	dc.b $06, $03, $03, nCs2, $06, $06, $03, $03, $03, nCs3, nCs2, nCs3
+	dc.b nCs2, nCs3
+	sJump		Snd_ZanBoss_Jump03
+
+; FM4 Data
+Snd_ZanBoss_FM4:
+	sVoice		$02
+
+Snd_ZanBoss_Jump02:
+	sPan		spRight, $00
+
+Snd_ZanBoss_Loop07:
+	dc.b nB3, $03, nE4, nF4, nB4, nF4, nE4
+	sLoop		$00, $08, Snd_ZanBoss_Loop07
+
+Snd_ZanBoss_Loop0A:
+	dc.b nB3, nC4, nCs4, nD4, nEb4, nE4, nF4, nFs4, nG4, nAb4, nA4
+
+Snd_ZanBoss_Loop08:
+	dc.b nBb4, nB4
+	sLoop		$00, $06, Snd_ZanBoss_Loop08
+	dc.b nBb4, nCs4, nD4, nEb4, nE4, nF4, nFs4, nG4, nAb4, nA4, nBb4, nB4
+
+Snd_ZanBoss_Loop09:
+	dc.b nC5, nCs5
+	sLoop		$00, $06, Snd_ZanBoss_Loop09
+	dc.b nC5
+	sLoop		$01, $02, Snd_ZanBoss_Loop0A
+	sJump		Snd_ZanBoss_Jump02
+
+; FM5 Data
+Snd_ZanBoss_FM5:
+	sVoice		$02
+
+Snd_ZanBoss_Jump01:
+	sPan		spRight, $00
+
+Snd_ZanBoss_Loop03:
+	dc.b nF3, $03, nB3, nE4, nF4, nE4, nB3
+	sLoop		$00, $08, Snd_ZanBoss_Loop03
+
+Snd_ZanBoss_Loop06:
+	dc.b nD4, nEb4, nE4, nF4, nFs4, nG4, nAb4, nA4, nBb4, nB4, nC5
+
+Snd_ZanBoss_Loop04:
+	dc.b nCs5, nD5
+	sLoop		$00, $06, Snd_ZanBoss_Loop04
+	dc.b nCs5, nE4, nF4, nFs4, nG4, nAb4, nA4, nBb4, nB4, nC5, nCs5, nD5
+
+Snd_ZanBoss_Loop05:
+	dc.b nEb5, nE5
+	sLoop		$00, $06, Snd_ZanBoss_Loop05
+	dc.b nEb5
+	sLoop		$01, $02, Snd_ZanBoss_Loop06
+	sJump		Snd_ZanBoss_Jump01
+
+Snd_ZanBoss_DAC1:
+	sStop

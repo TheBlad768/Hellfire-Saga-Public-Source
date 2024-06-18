@@ -1,0 +1,24 @@
+Sound_81_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$02
+	sHeaderSFX	$80, ctFM5, Sound_81_FM5, $0C, $00
+	sHeaderSFX	$A1, ctPSG3, Sound_81_PSG3, $00+$0C, $02
+
+; FM5 Data
+Sound_81_FM5:
+	sVoice		$33
+	sModAMPS	$02, $01, $99, $E1
+	dc.b nCs0, $18
+	saVol		$0E
+	sLoop		$00, $03, Sound_81_FM5
+	sStop
+
+; PSG3 Data
+Sound_81_PSG3:
+	sNoisePSG	snWhitePSG3
+	sModAMPS	$01, $01, $04, $01
+	dc.b nC0, $0F
+	saVol		$28
+	sLoop		$00, $03, Sound_81_PSG3
+	sStop

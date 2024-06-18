@@ -1,0 +1,65 @@
+{
+    "Flex": 2,
+    "name": "",
+    "node": "91165d9b-ab8e-478a-950e-5a58618fc87f",
+    "objects": [
+        {
+            "uuid": "5d9bab8e-d78a-450e-9a58-618fc87fb377",
+            "format": "Sonic 3&K Object.js",
+            "name": "Bat (Same Palette)",
+            "palettes": [
+                {
+                    "path": "..\\..\\Levels\\FDZ\\Palettes\\Forest Decay Zone 3.bin",
+                    "length": 3
+                },
+                {
+                    "path": "..\\Sonic\\Palettes\\SonicFDZRain.bin",
+                    "length": 1
+                }
+            ],
+            "art": {
+                "path": "..\\Bat\\Kosinski-M Art\\Bat.bin",
+                "compression": "Kosinski-M",
+                "offset": 0
+            },
+            "mappings": {
+                "path": "..\\Bat\\Object Data\\Map - Bat.asm",
+                "label": ""
+            },
+            "dplcs": {
+                "enabled": false,
+                "path": "",
+                "label": ""
+            }
+        },
+        {
+            "uuid": "91165d9b-ab8e-478a-950e-5a58618fc87f",
+            "format": "Sonic 3&K Object.js",
+            "name": "Crow",
+            "palettes": [
+                {
+                    "path": "..\\..\\Levels\\FDZ\\Palettes\\Forest Decay Zone 3.bin",
+                    "length": 3
+                },
+                {
+                    "path": "..\\Sonic\\Palettes\\SonicFDZRain.bin",
+                    "length": 1
+                }
+            ],
+            "art": {
+                "path": "Kosinski-M Art\\Crow.bin",
+                "compression": "Kosinski-M",
+                "offset": 0
+            },
+            "mappings": {
+                "path": "Object Data\\Map - Crow.asm",
+                "label": "Map_Crow"
+            },
+            "dplcs": {
+                "enabled": false,
+                "path": "",
+                "label": ""
+            }
+        }
+    ]
+}

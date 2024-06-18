@@ -1,0 +1,41 @@
+Sound_59_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$04
+	sHeaderSFX	$80, ctFM2, Sound_59_FM2, $10, $00
+	sHeaderSFX	$80, ctFM4, Sound_59_FM4, $00, $00
+	sHeaderSFX	$80, ctFM5, Sound_59_FM5, $10, $00
+	sHeaderSFX	$A1, ctPSG3, Sound_59_PSG3, $0C+$0C, $00
+
+; FM3 Data
+Sound_59_FM2:
+	sPan		spRight, $00
+	dc.b nRst, $02
+	sJump		Sound_59_FM4
+
+; FM5 Data
+Sound_59_FM5:
+	sPan		spLeft, $00
+	dc.b nRst, $01
+
+; FM4 Data
+Sound_59_FM4:
+	sVoice		$0F
+	sModAMPS	$03, $01, $20, $04
+
+Sound_59_Loop01:
+	dc.b nC0, $18
+	saVol		$0A
+	sLoop		$00, $06, Sound_59_Loop01
+	sStop
+
+; PSG3 Data
+Sound_59_PSG3:
+	sModAMPS	$01, $01, $0F, $05
+	sNoisePSG	snWhitePSG3
+
+Sound_59_Loop00:
+	dc.b nB3, $18, sHold
+	saVol		$18
+	sLoop		$00, $05, Sound_59_Loop00
+	sStop

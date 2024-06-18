@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Namespace="SonED2.ZoneCommon" TypeName="Spikes" Language="cs" Name="Spikes" Image="Image1" RememberState="false" Debug="false" xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromBitmap id="Image1" filename="Sprites/s3objsprite4-18.png" />
+    <ImageFromBitmap id="Image2" filename="Sprites/s3objsprite4-19.png" />
+  </Images>
+  <Properties>
+    <BitsProperty name="Property1" type="Enum1" startbit="0" length="2" />
+    <BitsProperty name="Property2" type="Enum2" startbit="4" length="2" />
+    <BitsProperty name="Property3" type="Enum3" startbit="6" length="1" />
+  </Properties>
+  <Enums>
+    <Enum name="Enum1">
+      <EnumMember name="Static" />
+      <EnumMember name="Moving Up and Down" />
+      <EnumMember name="Moving Left and Right" />
+      <EnumMember name="Pushable" />
+    </Enum>
+    <Enum name="Enum2">
+      <EnumMember name="1 set" />
+      <EnumMember name="2 sets" />
+      <EnumMember name="3 sets" />
+      <EnumMember name="4 sets" />
+    </Enum>
+    <Enum name="Enum3">
+      <EnumMember name="Vertical" />
+      <EnumMember name="Horizontal" />
+    </Enum>
+  </Enums>
+  <Display>
+    <DisplayOption>
+      <Condition property="Property2" value="1 set" />
+      <Condition property="Property3" value="Vertical" />
+      <ImageRef image="Image1">
+        <Offset X="-16" Y="-16" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="2 sets" />
+      <Condition property="Property3" value="Vertical" />
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset Y="-16" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="3 sets" />
+      <Condition property="Property3" value="Vertical" />
+      <ImageRef image="Image1">
+        <Offset X="-48" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-16" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="16" Y="-16" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="4 sets" />
+      <Condition property="Property3" value="Vertical" />
+      <ImageRef image="Image1">
+        <Offset X="-64" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="32" Y="-16" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="1 set" />
+      <Condition property="Property3" value="Horizontal" />
+      <ImageRef image="Image2">
+        <Offset X="-16" Y="-16" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="2 sets" />
+      <Condition property="Property3" value="Horizontal" />
+      <ImageRef image="Image2">
+        <Offset X="-16" Y="-32" />
+      </ImageRef>
+      <ImageRef image="Image2">
+        <Offset X="-16" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="3 sets" />
+      <Condition property="Property3" value="Horizontal" />
+      <ImageRef image="Image2">
+        <Offset X="-16" Y="-48" />
+      </ImageRef>
+      <ImageRef image="Image2">
+        <Offset X="-16" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image2">
+        <Offset X="-16" Y="16" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="4 sets" />
+      <Condition property="Property3" value="Horizontal" />
+      <ImageRef image="Image2">
+        <Offset X="-16" Y="-64" />
+      </ImageRef>
+      <ImageRef image="Image2">
+        <Offset X="-16" Y="-32" />
+      </ImageRef>
+      <ImageRef image="Image2">
+        <Offset X="-16" />
+      </ImageRef>
+      <ImageRef image="Image2">
+        <Offset X="-16" Y="32" />
+      </ImageRef>
+    </DisplayOption>
+  </Display>
+</ObjDef>

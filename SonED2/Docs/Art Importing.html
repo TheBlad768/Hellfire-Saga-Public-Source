@@ -1,0 +1,287 @@
+<html>
+<head>
+<title>SonED2 - Art Importing</title>
+</head>
+<body>
+<b><center>SonED2 - Art Importing</center></b><br>
+<br>
+One key feature of SonED2 is the ability to import palettes and art from
+image files. This allows the creation of level art in external programs.<br>
+<br>
+<li><b><a href="#Importing">The Import Feature</a></b><br>
+<ul>
+ <li><a href="#Selection">Selecting Data Types for Import</a><br>
+ <li><a href="#Clipboard">Level Layout</a><br>
+ <li><a href="#Paging">Tile Paging</a><br>
+ <li><a href="#PaletteImport">Palette Importing</a><br>
+ <li><a href="#DoImport">Selecting the Source Image and Performing the Import</a><br>
+</ul>
+<li><b><a href="#Setup">Important Setup Notes</a></b><br>
+<ul>
+ <li><a href="#Formats">Supported Image File Formats</a><br>
+ <li><a href="#Palette">The Megadrive/Genesis Palette</a><br>
+ <li><a href="#Tiles">Tiles and Tile Mappings</a><br>
+ <li><a href="#Issues">Image Editor Palette Issues and Suggestions</a><br>
+ <li><a href="#Optimization">Tile Optimization</a><br>
+ <li><a href="#Loops">Loops and Crossing Paths</a><br>
+</ul>
+
+<br>
+<br><a name="Importing">
+<b>The Import Feature</b>
+<ul>
+The "Import from Image" option in the "File" menu will display a set of
+options for importing palette colors, any of the 3 Tile sizes, and
+sections of Level Layout.<br>
+<br><a name="Selection">
+<b>Selecting Data Types for Import</b><br>
+<br>
+<ul>
+ Each of the available data types will be listed in on the selection menu,
+ and will be accompanied by a checkbox. Click to place a check in the checkbox next
+ to the names of all desired data types.<br>
+ <br>
+ Note that when selecting "Layout", "Chunks, or "Blocks", the
+ smaller Tile formats are also selected automatically, as any smaller art that does
+ not already exist within the data will need to be added for the other incoming Tiles or
+ Layout to display properly.<br>
+</ul>
+
+<br><a name="Clipboard">
+<b>Level Layout</b><br>
+<br>
+<ul>
+ When importing Level Layout sections, the layout is imported to the "Plane Clipboard",
+ and must then be manually pasted onto Plane A (Foreground) or Plane B (Background) within
+ the Level Editor.
+</ul>
+
+<br><a name="Paging">
+<b>Tile Paging</b><br>
+<br>
+<ul>
+ Some games further separate Tilesets into "Pages". This method is generally used to
+ vary art between acts, and even portions of the same level, by storing common graphics
+ on lower pages, and using higher pages for graphics that need to be swapped out.<br>
+<br>
+ When the target game uses Tile Paging, it is necessary to specify which Tile page
+ should receive the incoming Tile data. The "Chunks", "Blocks", and "Tiles" options
+ each have two entries that are used for this purpose:<br>
+ <br>
+                   <ul><table>
+                   <tr><td nowrap><b>Page to Search</b></td><td> - </td><td>This setting specifies the ID number of the first Page that should be searched for duplicate Tiles. In many cases, this option would remain "0", but in some instances, it is desireable to skip the checking of lower pages and allow Tiles from those lower pages to be duplicated in an upper page</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b>Page to Append</b></td><td> - </td><td>This setting specifies the ID number of the Page that the incoming Tile data should be inserted into, if no match was found in any of the Pages starting at "Page to Search"</td></tr>
+                   </table></ul>
+ <br>
+ When a game does <i>not</i> use Paging, these values should remain set to "0". These values should not be set higher than the highest existing Page ID.<br>
+ <br>
+ It is important to know how many Pages the level data is using, and what they are being used for. In some cases, the Pages are split between Foreground (Plane A) and Background (Plane B), as opposed to the usual method of sharing Tiles between these Planes.
+</ul>
+
+<br><a name="PaletteImport">
+<b>Palette Importing</b><br>
+<br>
+<ul>
+ The Palette importing section contains three additional settings:<br>
+ <br>
+                   <ul><table>
+                   <tr><td nowrap><b>Num Entries</b></td><td> - </td><td>This setting specifies the number of palette entries that should be copied from the source image</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b>Source ID</b></td><td> - </td><td>This setting specifies the ID number of the first source image palette entry to be copied</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b>Dest ID</b></td><td> - </td><td>This setting specifies the ID number of the first game palette entry into which the incoming color data will be copied</td></tr>
+                   </table></ul>
+</ul>
+
+<br><a name="DoImport">
+<b>Selecting the Source Image and Performing the Import</b><br>
+<br>
+<ul>
+ Once all of the desired settings have been made, click "Select image and import".
+ A file selection menu will appear, requesting the
+ location and name of the graphics file that contains the data to import. Once the
+ file is selected, the import begins.<br>
+ <br>
+ The Status Window will announce the beginning and end of the import process,
+ as well as give the number of Tiles that were previously stored in the
+ level, and the number of Tiles that are stored after the import has
+ completed.<br>
+</ul>
+
+</ul>
+
+<br>
+<br>
+<br><a name="Setup">
+<b>Important Setup Notes</b>
+<ul>
+There are a few things to bear in mind when creating art externally.
+Not following these rules will likely cause undesired results:<br>
+<br><a name="Formats">
+<b>Supported Image File Formats</b><br>
+<br>
+<ul>
+ SonED2 can read 256-color PCX or TGA images of any size, as long as the height and
+ width are multiples of the largest Tile size being imported:<br>
+ <br>
+                   <ul><table>
+                   <tr><td nowrap><b>Tiles</b></td><td> - </td><td>Height/Width must be multiples of 8</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b>Blocks</b></td><td> - </td><td>Height/Width must be multiples of 16</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b>Level Layout or Chunks<br>(With 128x128 Chunks)</b></td><td> - </td><td>Height/Width must be multiples of 128.</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b>Level Layout or Chunks<br>(With 256x256 Chunks)</b></td><td> - </td><td>Height/Width must be multiples of 256.</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   </table></ul>
+</ul>
+<br><a name="Palette">
+<b>The Megadrive/Genesis Palette</b><br>
+<br>
+<ul>
+ The Megadrive/Genesis uses a 64-color palette. The palette itself is divided
+ into 4 sub-palettes, or "rows", each of which may only be used one at a time. This is because
+ each pixel in an 8x8 Tile is stored as a 4-bit value, with a maximum value
+ of 15. This value is an index into a palette row containing 16 colors (0-15),
+ with color 0 on each row being "transparent" (it is not drawn).<br>
+ <br>In the Sonic the
+ Hedgehog games, the first color entry on row 3 controls the "Backdrop Color". This is
+ the color that appears where nothing else is drawn to the screen, including the screen
+ borders displayed by some system versions, and can be taken advantage of to use a full
+ set of 16 colors for the background.<br>
+ <br>The total
+ number of colors that can be generated by the Megadrive/Genesis is 512, which is less than the total
+ number that can be generated by a PC. This is because color components are
+ also stored as 4-bit values, and only even values are valid (0, 2, 4, 6, 8,
+ 10, 12, 14). Most art programs use an 8-bit value (0-256) for the Red, Green,
+ and Blue components of a color. Both have the same color range, but the
+ Genesis has significantly fewer shades in-between. Its 4-bit component
+ values correspond to multiples of 32 in the 8-bit component values. Anything
+ in-between would be rounded down to the nearest multiple of 32, meaning that
+ shades that are too similar will become the exact same color. For that
+ reason, a chart containing all 512 possible colors is included in the file
+ "MDColor.png" in the "Docs" folder:<br>
+ <br>
+ <ul>
+  <img src="MDColor.png">
+ </ul>
+ <br>
+ Using this chart to select colors will help eliminate bad
+ color value problems.<br>
+</ul>
+<br><a name="Tiles">
+<b>Tiles and Tile Mappings</b><br>
+<br>
+<ul>
+  Levels are built in several steps, beginning with 8x8 Tile graphics.<br>
+ <br>
+ The Tiles are then formed into 16x16 "Blocks", which contain drawing direction and
+ palette row ID data for each Tile, and the ID of the Solidity Height Map that
+ should be used to set which parts of the block are "solid".<br>
+ <br>
+ The Blocks are used to build "Chunks", which are either 256x256 or 128x128, depending
+ on the project settings and the target game. These Chunks contain data for each Block
+ that defines drawing direction and the type of reaction a player should have to the
+ Block's assigned Height Map.<br>
+ <br>
+ Finally, the Chunks are used to build the level layout.<br>
+ <br>
+ Because the 16x16 Blocks contain a palette row setting for each 8x8 Tile entry,
+ a single Tile may be reused several times with
+ different palette rows to show the same form with different colors. When
+ importing Blocks or Chunks, SonED2 will use the last pixel found within a
+ Tile to determine which palette row to assign to it within the Block. If colors
+ from different rows are used within the Tile, they will become colors from
+ the row assigned to the Tile (Ex: A pixel using palette index 17 in a Tile that
+ has been assigned row 3 will be end up using palette index 33, because both are "index 1" in their respective rows). The very first
+ color in the 64-color palette (entry 0) is safe
+ to use anywhere in any Tile to represent transparency, however.<br>
+</ul>
+<br><a name="Issues">
+<b>Image Editor Palette Issues and Suggestions</b><br>
+<br>
+<ul>
+ Some art programs do strange things with the palette, such as not allowing
+ the user to specify which palette index to draw with if two palette entries
+ contain the exact same color (For example, if entry 4 and entry 17 contain
+ the exact same color, attempting to draw with entry 17 will actually draw
+ with entry 4, which can be seen by then changing the color in entry 4).
+ This can be avoided by changing one of the colors completely, or just
+ slightly, so that there is no reason for the image program not to use the selected color, and
+ then changing it back when finished drawing. The same error can occur when
+ copying art from one image to another, and will occur if a palette is loaded
+ with a "Match Nearest Color" option.<br>
+ <br>
+ It is always a good idea to double-check
+ the image to make sure that the graphics program hasn't caused any palette
+ errors. Also, Color Reduction options will re-order the palette, so they
+ should <i>never</i> be used on any primary images, where the palette and art
+ intended for import are being built and stored.<br>
+ <br>
+ It is best to use an art program that has a resizeable grid. Using the grid
+ will help ensure that all patterns are drawn in sizes that are multiples of
+ 8, and that art that is moved or pasted is positioned properly. If the art
+ doesn't fit properly into the 8x8 grid, extra Tiles will be created, reducing
+ the amount of Tiles that can be added later. Larger shapes that form Blocks
+ and Chunks also need to conform to a grid. Blocks should be positioned on a
+ 16x16 grid, and Chunks should be positioned on a 128x128 or
+ 256x256 grid, depending on the target game's Chunk size. If the Tiles are not positioned properly in the
+ image, they will not be imported properly, because the program cannot
+ otherwise know where the Tile begins and ends.<br>
+</ul>
+<br><a name="Optimization">
+<b>Tile Optimization</b><br>
+<br>
+<ul>
+ SonED2 will attempt to "optimize" Tile usage by automatically detecting
+ "mirrored" and/or "flipped" Tiles and Blocks. When an 8x8 or 16x16 shape is
+ encountered that can be displayed by changing the direction of an existing
+ Tile/Block is found, that Tile is not stored, but instead,
+ the previously-stored version is used to build the Block or Chunk that is
+ currently being imported, and the proper drawing direction flags are set.<br>
+ <br>
+ When importing art that looks the same as art that is already stored, but
+ should contain different property settings, a new entry is <i>not</i> made for the
+ similar Tile, because SonED2 cannot know that different properties are
+ required when it is reading an image file that does not contain them. The
+ Tile must be copied within the editor, and the appropriate properties set manually.<br>
+ <br>
+ Art that is already stored with properties set, when run through the import
+ function again, will not be stored in new entires with no properties set,
+ but will use the art that was already stored, with the properties that were
+ already set. If more than one entry that looks the same is already stored,
+ the art being imported will be regarded as the first entry that is found, so if it
+ should actually correspond to a later entry, it must be corrected manually
+ within the editor. This could also cause unnecesary "copies" of larger Tile
+ types, so it is recommended that art that has already been imported not
+ be included with any new art intended for import.<br>
+</ul>
+<br><a name="Loops">
+<b>Loops and Crossing Paths</b><br>
+<br>
+<ul>
+ Games that use a two-path solidity system use Path Swapper objects
+ to accomplish loops and crossing paths, however, games that only use
+ a one-path solidity system (Sonic 1 and Sonic CD) use a hard-coded
+ test against Chunk IDs.<br>
+ <br>
+ Each level in a game using one-path solidity can be given two Chunk IDs
+ to define as "loops". These Chunks must be followed immediately by a
+ visibly-identical copy, with the original having solidity filled in on
+ the right half, and the copy having solidity filled in on the left half
+ (For example, if Chunks 4 and 8 are "loop" Chunks, they must be made
+ solid on the right side, and must also have copies in Chunks 5
+ and 9, made solid on the left side). The original and copy are swapped
+ back and forth in-game depending on which side the player is moving toward
+ them from.<br>
+ <br>
+ When working with the one-path solidity system, the IDs of the "loop"
+ Chunks must correspond with the Chunk IDs that were supplied to the game
+ program. Otherwise, they will not function. This means that "loop" Chunks
+ for a modified level must be given the same IDs as the "loop" Chunks for
+ the original level, or the game must be modified to recognise the new
+ "loop" Chunk IDs.<br>
+</ul>
+</body>
+</html>

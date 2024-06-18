@@ -1,0 +1,743 @@
+Snd_Invin_Header:
+	sHeaderInit
+	sHeaderTempo	$00FE
+	sHeaderCh	$06, $03
+	sHeaderDAC	Snd_Invin_DAC
+	sHeaderDAC	Snd_Invin_DAC2,	$04
+	sHeaderFM	Snd_Invin_FM1,	$00, $01
+	sHeaderFM	Snd_Invin_FM3,	$00, $01		; AF: SFX now use FM2
+	sHeaderFM	Snd_Invin_FM2,	$00, $01
+	sHeaderFM	Snd_Invin_FM4,	$00, $01
+	sHeaderFM	Snd_Invin_FM5,	$00, $00
+	sHeaderFM	Snd_Invin_FM6,	$00, $00
+	sHeaderPSG	Snd_Invin_PSG1,	$00+$0C, $08, $00, $00
+	sHeaderPSG	Snd_Invin_PSG2,	$00+$0C, $08, $00, $00
+	sHeaderPSG	Snd_Invin_PSG3,	$00+$0C, $20, $00, $00
+
+;	Voice $00
+;	$39
+;	$09, $15, $01, $02, 	$9F, $9F, $9F, $9F, 	$03, $03, $03, $06
+;	$00, $00, $00, $00, 	$F9, $F9, $F8, $F7, 	$25, $2F, $1F, $00
+	spAlgorithm	$01
+	spFeedback	$07
+	spDetune	$00, $00, $01, $00
+	spMultiple	$09, $01, $05, $02
+	spRateScale	$02, $02, $02, $02
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$03, $03, $03, $06
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$0F, $0F, $0F, $0F
+	spReleaseRt	$09, $08, $09, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$25, $1F, $2F, $00
+
+;	Voice $01
+;	$04
+;	$07, $71, $01, $30, 	$1F, $1F, $1F, $1F, 	$09, $00, $16, $00
+;	$00, $00, $00, $00, 	$FF, $FF, $FF, $FF, 	$2F, $08, $1B, $00
+	spAlgorithm	$04
+	spFeedback	$00
+	spDetune	$00, $00, $07, $03
+	spMultiple	$07, $01, $01, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$09, $16, $00, $00
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$0F, $0F, $0F, $0F
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $08, $00
+	spTotalLv	$2F, $1B, $08, $00
+
+;	Voice $02
+;	$3E
+;	$02, $01, $32, $76, 	$1F, $1F, $1F, $1F, 	$0C, $11, $0E, $00
+;	$00, $0A, $07, $09, 	$FF, $0F, $1F, $0F, 	$18, $00, $0A, $19
+	spAlgorithm	$06
+	spFeedback	$07
+	spDetune	$00, $03, $00, $07
+	spMultiple	$02, $02, $01, $06
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0C, $0E, $11, $00
+	spDecayRt	$00, $07, $0A, $09
+	spSustainLv	$0F, $01, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$0C, $00, $00, $00
+	spTotalLv	$18, $0A, $00, $18
+
+; DAC Data
+Snd_Invin_DAC:
+	sStop
+; FM1 Data
+Snd_Invin_FM1:
+	sVoice		$00
+	saVol		$0F
+
+Snd_Invin_Loop06:
+	sPan		spCenter, $00
+	dc.b nC3, $20
+	sPan		spRight, $00
+	dc.b sHold, nC3
+	sPan		spCenter, $00
+	dc.b nEb3
+	sPan		spRight, $00
+	dc.b sHold, nEb3
+	sPan		spCenter, $00
+	dc.b nAb2
+	sPan		spRight, $00
+	dc.b sHold, nAb2
+	sPan		spCenter, $00
+	dc.b nG3
+	sPan		spRight, $00
+	dc.b sHold, nG3
+	sPan		spCenter, $00
+	dc.b nEb2
+	sPan		spRight, $00
+	dc.b sHold, nEb2
+	sPan		spCenter, $00
+	dc.b nAb3
+	sPan		spRight, $00
+	dc.b sHold, nAb3
+	sPan		spCenter, $00
+	dc.b nG2
+	sPan		spRight, $00
+	dc.b sHold, nG2
+	sPan		spCenter, $00
+	dc.b nB3
+	sPan		spRight, $00
+	dc.b sHold, nB3
+	sLoop		$00, $03, Snd_Invin_Loop06
+	sStop
+
+; FM2 Data
+Snd_Invin_FM2:
+	sPan		spCenter, $00
+	dc.b nRst, $10
+	sVoice		$00
+	saVol		$13
+
+Snd_Invin_Loop04:
+	dc.b nC4
+
+Snd_Invin_Loop03:
+	dc.b $20
+	sLoop		$00, $0F, Snd_Invin_Loop03
+	dc.b nG3
+	sLoop		$01, $02, Snd_Invin_Loop04
+
+Snd_Invin_Loop05:
+	dc.b nC4
+	sLoop		$00, $0F, Snd_Invin_Loop05
+	dc.b nG3, $10
+	sStop
+
+; FM3 Data
+Snd_Invin_FM3:
+	sPan		spLeft, $00
+	dc.b nRst, $20
+	sVoice		$00
+	saVol		$0F
+
+Snd_Invin_Loop02:
+	sPan		spCenter, $00
+	dc.b nG3
+	sPan		spLeft, $00
+	dc.b sHold, nG3
+	sPan		spCenter, $00
+	dc.b nD3
+	sPan		spLeft, $00
+	dc.b sHold, nD3
+	sPan		spCenter, $00
+	dc.b nBb3
+	sPan		spLeft, $00
+	dc.b sHold, nBb3
+	sPan		spCenter, $00
+	dc.b nF3
+	sPan		spLeft, $00
+	dc.b sHold, nF3
+	sPan		spCenter, $00
+	dc.b nBb3
+	sPan		spLeft, $00
+	dc.b sHold, nBb3
+	sPan		spCenter, $00
+	dc.b nG3
+	sPan		spLeft, $00
+	dc.b sHold, nG3
+	sPan		spCenter, $00
+	dc.b nD3
+	sPan		spLeft, $00
+	dc.b sHold, nD3
+	sPan		spCenter, $00
+	dc.b nB3
+	sPan		spLeft, $00
+	dc.b sHold, nB3
+	sLoop		$00, $02, Snd_Invin_Loop02
+	sPan		spCenter, $00
+	dc.b nG3
+	sPan		spLeft, $00
+	dc.b sHold, nG3
+	sPan		spCenter, $00
+	dc.b nD3
+	sPan		spLeft, $00
+	dc.b sHold, nD3
+	sPan		spCenter, $00
+	dc.b nBb3
+	sPan		spLeft, $00
+	dc.b sHold, nBb3
+	sPan		spCenter, $00
+	dc.b nF3
+	sPan		spLeft, $00
+	dc.b sHold, nF3
+	sPan		spCenter, $00
+	dc.b nBb3
+	sPan		spLeft, $00
+	dc.b sHold, nBb3
+	sPan		spCenter, $00
+	dc.b nG3
+	sPan		spLeft, $00
+	dc.b sHold, nG3
+	sPan		spCenter, $00
+	dc.b nD3
+	sPan		spLeft, $00
+	dc.b sHold, nD3
+	sPan		spCenter, $00
+	dc.b nB3
+	sStop
+
+; FM4 Data
+Snd_Invin_FM4:
+	sPan		spCenter, $00
+	dc.b nRst, $08
+	sVoice		$00
+	saVol		$17
+	sPan		spRight, $00
+
+Snd_Invin_Loop01:
+	dc.b nC3, $10, nC4, nG3, nC4, nEb3, nC4, nD3, nC4, nAb2, nC4, nBb3
+	dc.b nC4, nG3, nC4, nF3, nC4, nEb2, nC4, nBb3, nC4, nAb3, nC4, nG3
+	dc.b nC4, nG2, nC4, nD3, nC4, nB3, nC4, nB3, nG3
+	sLoop		$00, $02, Snd_Invin_Loop01
+	dc.b nC3, nC4, nG3, nC4, nEb3, nC4, nD3, nC4, nAb2, nC4, nBb3, nC4
+	dc.b nG3, nC4, nF3, nC4, nEb2, nC4, nBb3, nC4, nAb3, nC4, nG3, nC4
+	dc.b nG2, nC4, nD3, nC4, nB3, nC4, nB3, nG3, $08
+	sStop
+
+; FM5 Data
+Snd_Invin_FM5:
+	sVoice		$01
+	sPan		spCenter, $00
+
+Snd_Invin_Loop00:
+	dc.b nC2, $7F, sHold, $01, nAb1, $7F, sHold, $01, nEb1, $7F, sHold, $01
+	dc.b nG1, $7F, sHold, $01
+	sLoop		$00, $03, Snd_Invin_Loop00
+	sStop
+
+; FM6 Data
+Snd_Invin_FM6:
+	sPan		spCenter, $00
+	dc.b nRst, $7F, $7F, $7F, $7F, $04
+	sVoice		$02
+	saVol		$0D
+	sModAMPS	$00, $02, $07, $03
+	dc.b nG5, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nEb5, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nD5, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nEb5, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nEb5
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nD5
+	sPan		spLeft, $00
+	dc.b sHold, nD5
+	sPan		spCenter, $00
+	dc.b nC5, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nAb4, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nG4, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nAb4, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nG4
+	sPan		spLeft, $00
+	dc.b sHold, nG4
+	sPan		spCenter, $00
+	dc.b nF4
+	sPan		spLeft, $00
+	dc.b sHold, nF4
+	sPan		spCenter, $00
+	dc.b nBb4, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nAb4, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nG4, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nAb4, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nBb4
+	sPan		spLeft, $00
+	dc.b sHold, nBb4
+	sPan		spCenter, $00
+	dc.b nG4
+	sPan		spLeft, $00
+	dc.b sHold, nG4
+	sPan		spCenter, $00
+	dc.b nB4, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nD5, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nG5, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nB5, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nD6
+	sPan		spLeft, $00
+	dc.b sHold, nD6
+	sPan		spCenter, $00
+	dc.b nB5
+	sPan		spLeft, $00
+	dc.b sHold, nB5
+	sPan		spCenter, $00
+	dc.b nG5, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nEb5, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nD5, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nEb5, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nEb5
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nD5
+	sPan		spLeft, $00
+	dc.b sHold, nD5
+	sPan		spCenter, $00
+	dc.b nC5, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nAb4, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nG4, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nAb4, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nG4
+	sPan		spLeft, $00
+	dc.b sHold, nG4
+	sPan		spCenter, $00
+	dc.b nF4
+	sPan		spLeft, $00
+	dc.b sHold, nF4
+	sPan		spCenter, $00
+	dc.b nBb4, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nAb4, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nG4, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nAb4, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nBb4
+	sPan		spLeft, $00
+	dc.b sHold, nBb4
+	sPan		spCenter, $00
+	dc.b nG4
+	sPan		spLeft, $00
+	dc.b sHold, nG4
+	sPan		spCenter, $00
+	dc.b nB4, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nD5, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nG5, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nB5, $10
+	sPan		spLeft, $00
+	dc.b sHold, $08
+	sPan		spCenter, $00
+	dc.b nD6
+	sPan		spLeft, $00
+	dc.b sHold, nD6
+	sPan		spCenter, $00
+	dc.b nB5
+	sPan		spLeft, $00
+	dc.b sHold, nB5
+	sStop
+
+; PSG1 Data
+Snd_Invin_PSG1:
+	dc.b nRst, $7F, $7F, $7F, $7F, $08
+	saVol		$70
+	dc.b nC2
+
+Snd_Invin_Loop13:
+	dc.b $04
+	saVol		-$08
+	sLoop		$00, $06, Snd_Invin_Loop13
+	dc.b $03
+	saVol		-$08
+	dc.b $61, nRst, $04
+	saVol		$38
+
+Snd_Invin_Loop14:
+	dc.b nAb1
+	saVol		-$08
+	sLoop		$00, $06, Snd_Invin_Loop14
+	dc.b $03
+	saVol		-$08
+	dc.b $61, nRst, $04
+	saVol		$38
+
+Snd_Invin_Loop15:
+	ssDetune	$01
+	dc.b nEb1
+	saVol		-$08
+	sLoop		$00, $06, Snd_Invin_Loop15
+	ssDetune	$01
+	dc.b $03
+	saVol		-$08
+	ssDetune	$01
+	dc.b $61, nRst, $04
+	saVol		$38
+
+Snd_Invin_Loop16:
+	dc.b nB1
+	saVol		-$08
+	sLoop		$00, $06, Snd_Invin_Loop16
+	dc.b $03
+	saVol		-$08
+	dc.b $61, nRst, $09
+	saVol		$38
+
+Snd_Invin_Loop17:
+	ssDetune	$00
+	dc.b nC2, $02
+	saVol		-$08
+	sLoop		$00, $0B, Snd_Invin_Loop17
+	ssDetune	$00
+	dc.b $61, nRst, $09
+	saVol		$58
+	dc.b nEb2
+
+Snd_Invin_Loop18:
+	dc.b $02
+	saVol		-$08
+	sLoop		$00, $0B, Snd_Invin_Loop18
+	dc.b $61, nRst, $09
+	saVol		$58
+	dc.b nEb2
+
+Snd_Invin_Loop19:
+	dc.b $02
+	saVol		-$08
+	sLoop		$00, $0B, Snd_Invin_Loop19
+	dc.b $61, nRst, $09
+	saVol		$58
+	dc.b nD2
+
+Snd_Invin_Loop1A:
+	dc.b $02
+	saVol		-$08
+	sLoop		$00, $0B, Snd_Invin_Loop1A
+	dc.b $61
+	sStop
+
+; PSG2 Data
+Snd_Invin_PSG2:
+	dc.b nRst, $04
+	saVol		$70
+
+Snd_Invin_Loop08:
+	dc.b nG2
+	saVol		-$08
+	sLoop		$00, $06, Snd_Invin_Loop08
+	dc.b $03
+	saVol		-$08
+	dc.b $61, nRst, $04
+	saVol		$38
+
+Snd_Invin_Loop09:
+	dc.b nC2
+	saVol		-$08
+	sLoop		$00, $06, Snd_Invin_Loop09
+	dc.b $03
+	saVol		-$08
+	dc.b $61, nRst, $04
+	saVol		$38
+
+Snd_Invin_Loop0A:
+	ssDetune	$01
+	dc.b nBb1
+	saVol		-$08
+	sLoop		$00, $06, Snd_Invin_Loop0A
+	ssDetune	$01
+	dc.b $03
+	saVol		-$08
+	ssDetune	$01
+	dc.b $61, nRst, $04
+	saVol		$38
+
+Snd_Invin_Loop0B:
+	ssDetune	$00
+	dc.b nD2
+	saVol		-$08
+	sLoop		$00, $06, Snd_Invin_Loop0B
+	ssDetune	$00
+	dc.b $03
+	saVol		-$08
+	ssDetune	$00
+	dc.b $61, nRst, $04
+	saVol		$38
+
+Snd_Invin_Loop0C:
+	dc.b nG2
+	saVol		-$08
+	sLoop		$00, $06, Snd_Invin_Loop0C
+	dc.b $03
+	saVol		-$08
+	dc.b $61, nRst, $04
+	saVol		$38
+
+Snd_Invin_Loop0D:
+	dc.b nC2
+	saVol		-$08
+	sLoop		$00, $06, Snd_Invin_Loop0D
+	dc.b $03
+	saVol		-$08
+	dc.b $61, nRst, $04
+	saVol		$38
+
+Snd_Invin_Loop0E:
+	ssDetune	$01
+	dc.b nBb1
+	saVol		-$08
+	sLoop		$00, $06, Snd_Invin_Loop0E
+	ssDetune	$01
+	dc.b $03
+	saVol		-$08
+	ssDetune	$01
+	dc.b $61, nRst, $04
+	saVol		$38
+
+Snd_Invin_Loop0F:
+	ssDetune	$00
+	dc.b nD2
+	saVol		-$08
+	sLoop		$00, $06, Snd_Invin_Loop0F
+	ssDetune	$00
+	dc.b $03
+	saVol		-$08
+	ssDetune	$00
+	dc.b $61, nRst, $09
+	saVol		$38
+	dc.b nG2
+
+Snd_Invin_Loop10:
+	dc.b $02
+	saVol		-$08
+	sLoop		$00, $0B, Snd_Invin_Loop10
+	dc.b $21, nBb2, $20, nEb2, nRst, $09
+	saVol		$58
+	dc.b nAb2
+
+Snd_Invin_Loop11:
+	dc.b $02
+	saVol		-$08
+	sLoop		$00, $0B, Snd_Invin_Loop11
+	dc.b $21, nG2, $10, nAb2, nG2, nF2, nRst, $09
+	saVol		$58
+	dc.b nBb2
+
+Snd_Invin_Loop12:
+	dc.b $02
+	saVol		-$08
+	sLoop		$00, $0B, Snd_Invin_Loop12
+	dc.b $11, nAb2, $08, nBb2, nC3, $10, nD3, nEb3, nBb2, nB2, nEb2
+	ssDetune	$01
+	dc.b nB1, nEb1, nD0, $08, nEb0, nG0, nB0
+	ssDetune	$00
+	dc.b nD1
+	ssDetune	$01
+	dc.b nEb1
+	ssDetune	$00
+	dc.b nG1
+	ssDetune	$01
+	dc.b nB1
+	sStop
+
+; PSG3 Data
+Snd_Invin_PSG3:
+	sNoisePSG	snWhitePSG3
+	dc.b nA5, $08
+
+Snd_Invin_Loop07:
+	dc.b nBb3, nB3
+	ssDetune	$FF
+	dc.b nC4, nCs4
+	ssDetune	$00
+	dc.b nD4, nEb4
+	ssDetune	$FF
+	dc.b nE4
+	ssDetune	$00
+	dc.b nF4, nFs4, nG4, nAb4, nA4
+	ssDetune	$FF
+	dc.b nBb4, nB4
+	ssDetune	$00
+	dc.b nC5, $28
+	ssDetune	$FF
+	dc.b nB4, $08
+	ssDetune	$00
+	dc.b nA4, nG4, nF4
+	ssDetune	$FF
+	dc.b nE4
+	ssDetune	$00
+	dc.b nD4
+	ssDetune	$FF
+	dc.b nC4
+	ssDetune	$00
+	dc.b nB3, nA3, nG3, nF3, nE3, $48, nA3, $08, nBb3, nB3
+	ssDetune	$FF
+	dc.b nC4, nCs4
+	ssDetune	$00
+	dc.b nD4, nEb4
+	ssDetune	$FF
+	dc.b nE4
+	ssDetune	$00
+	dc.b nF4, nFs4, nG4, nAb4, nA4
+	ssDetune	$FF
+	dc.b nBb4, nB4
+	ssDetune	$00
+	dc.b nC5
+	ssDetune	$FF
+	dc.b nB4, nBb4
+	ssDetune	$00
+	dc.b nA4, nAb4, nG4, nF4
+	ssDetune	$FF
+	dc.b nE4
+	ssDetune	$00
+	dc.b nG3, nA3
+	sLoop		$00, $02, Snd_Invin_Loop07
+	dc.b nBb3, nB3
+	ssDetune	$FF
+	dc.b nC4, nCs4
+	ssDetune	$00
+	dc.b nD4, nEb4
+	ssDetune	$FF
+	dc.b nE4
+	ssDetune	$00
+	dc.b nF4, nFs4, nG4, nAb4, nA4
+	ssDetune	$FF
+	dc.b nBb4, nB4
+	ssDetune	$00
+	dc.b nC5, $28
+	ssDetune	$FF
+	dc.b nB4, $08
+	ssDetune	$00
+	dc.b nA4, nG4, nF4
+	ssDetune	$FF
+	dc.b nE4
+	ssDetune	$00
+	dc.b nD4
+	ssDetune	$FF
+	dc.b nC4
+	ssDetune	$00
+	dc.b nB3, nA3, nG3, nF3, nE3, $48, nA3, $08, nBb3, nB3
+	ssDetune	$FF
+	dc.b nC4, nCs4
+	ssDetune	$00
+	dc.b nD4, nEb4
+	ssDetune	$FF
+	dc.b nE4
+	ssDetune	$00
+	dc.b nF4, nFs4, nG4, nAb4, nA4
+	ssDetune	$FF
+	dc.b nBb4, nB4
+	ssDetune	$00
+	dc.b nC5
+	ssDetune	$FF
+	dc.b nB4, nBb4
+	ssDetune	$00
+	dc.b nA4, nAb4, nG4, nF4
+	ssDetune	$FF
+	dc.b nE4
+	ssDetune	$00
+	dc.b nG3
+	sStop
+
+
+
+
+Snd_Invin_DAC2:
+	sStop

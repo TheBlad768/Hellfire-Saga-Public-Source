@@ -1,0 +1,774 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Sonic 3 and Knuckles Tile Injector File for ROMulan
+;
+; Built by Stealth, 2011-01-03 (Partial build)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;
+; Setup Directives ;
+;;;;;;;;;;;;;;;;;;;;
+
+MaxSize	$400000				;Maximum Genesis ROM size
+
+Dispose	$0981C0	$09D5C0			;Sonic and Knuckles Collision Index Data
+Dispose	$194400	$1E36C4			;Sonic and Knuckles Tile, Block, and Meta Data
+
+Dispose	$3A566A	$3FFF20			;Sonic 3 Tile, Block, and Meta Data
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; General Reference Replacement Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;AIZ Data Reloading (Level Events)
+;;;
+
+StartSeg Big_Endian $01C4EE
+
+		DWORD	Block_AIZ1_Main
+
+EndSeg
+
+StartSeg Big_Endian $01C4FE
+
+		DWORD	Tile_AIZ1_Main
+
+EndSeg
+
+StartSeg Big_Endian $01C5E6
+
+		DWORD	Meta_AIZ1_Main
+
+EndSeg
+
+StartSeg Big_Endian $01C706
+
+		DWORD	Block_AIZ1_Bombing
+
+EndSeg
+
+;StartSeg Big_Endian $01C715
+
+;		DWORD	AIZ_Bombing_Accessory_Tiles
+
+;EndSeg
+
+StartSeg Big_Endian $01C706
+
+		DWORD	Tile_AIZ1_Bombing
+
+EndSeg
+
+StartSeg Big_Endian $01C82E
+
+		DWORD	Block_AIZ1_Bombing
+
+EndSeg
+
+StartSeg Big_Endian $01C83E
+
+		DWORD	Tile_AIZ1_Bombing
+
+EndSeg
+
+;;;
+;DEZ Data Reloading (Level Events)
+;;;
+
+StartSeg Big_Endian $0593B8
+
+		DWORD	Block_DEZ2_1
+
+EndSeg
+
+StartSeg Big_Endian $0593D8
+
+		DWORD	Tile_DEZ2_1
+
+EndSeg
+
+;;;
+;AIZ (Ending) Data Reloading (Level Events)
+;;;
+
+StartSeg Big_Endian $05AC18
+
+		DWORD	Meta_AIZ1
+
+EndSeg
+
+StartSeg Big_Endian $05AC2A
+
+		DWORD	Block_AIZ1_0
+
+EndSeg
+
+StartSeg Big_Endian $05AC3A
+
+		DWORD	Block_AIZ1_Main
+
+EndSeg
+
+StartSeg Big_Endian $05AC5A
+
+		DWORD	Tile_AIZ1_0
+
+EndSeg
+
+StartSeg Big_Endian $05AC6A
+
+		DWORD	Tile_AIZ1_Main
+
+EndSeg
+
+;;;
+;SSZ (Ending) Data Reloading (Level Events)
+;;;
+
+StartSeg Big_Endian $05ADD4
+
+		DWORD	Meta_SSZ2
+
+EndSeg
+
+StartSeg Big_Endian $05ADE6
+
+		DWORD	Block_SSZ2
+
+EndSeg
+
+StartSeg Big_Endian $05ADF6
+
+		DWORD	Tile_SSZ2
+
+EndSeg
+
+
+;;;;;;;;;;;;;;;;;;;;;;;
+; Fixed Data Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Big_Endian $096000	;Replace the Angle Array
+
+		include	"Collisn/SK/Angles.bin"
+
+EndSeg
+
+StartSeg Big_Endian $096100	;Replace the normal-oriented Height Maps
+
+		include	"Collisn/SK/HMaps.bin"
+
+EndSeg
+
+StartSeg Big_Endian $098100	;Replace the rotated Height Maps
+
+		include	"Collisn/SK/HMapsR.bin"
+
+EndSeg
+
+StartSeg ColPointers Big_Endian $0049E8	;Replace the Collision Index Pointers
+
+		DWORD	Solid_AIZ1
+		DWORD	Solid_AIZ2
+		DWORD	Solid_HCZ1
+		DWORD	Solid_HCZ2
+		DWORD	Solid_MGZ1
+		DWORD	Solid_MGZ2
+		DWORD	Solid_CNZ
+		DWORD	Solid_CNZ
+		DWORD	Solid_FBZ
+		DWORD	Solid_FBZ
+		DWORD	Solid_ICZ1
+		DWORD	Solid_ICZ2
+		DWORD	Solid_LBZ1
+		DWORD	Solid_LBZ2
+		DWORD	Solid_MHZ
+		DWORD	Solid_MHZ
+		DWORD	Solid_SOZ
+		DWORD	Solid_SOZ
+		DWORD	Solid_LRZ1
+		DWORD	Solid_LRZ2
+		DWORD	Solid_SSZ1
+		DWORD	Solid_SSZ2
+		DWORD	Solid_DEZ
+		DWORD	Solid_DEZ
+		DWORD	Solid_DDZ
+		DWORD	Solid_DDZ
+		DWORD	Solid_Pachinko
+		DWORD	Solid_Pachinko
+		DWORD	Solid_ALZ
+		DWORD	Solid_ALZ
+		DWORD	Solid_BPZ
+		DWORD	Solid_BPZ
+		DWORD	Solid_DPZ
+		DWORD	Solid_DPZ
+		DWORD	Solid_CGZ
+		DWORD	Solid_CGZ
+		DWORD	Solid_EMZ
+		DWORD	Solid_EMZ
+		DWORD	Solid_Gumball
+		DWORD	Solid_Gumball
+		DWORD	Solid_Pachinko
+		DWORD	Solid_Pachinko
+		DWORD	Solid_Slots
+		DWORD	Solid_Slots
+		DWORD	Solid_LRZBoss
+		DWORD	Solid_HPZ
+		DWORD	Solid_HPZ
+		DWORD	Solid_HPZ
+
+EndSeg
+
+StartSeg MainLoadBlocks Big_Endian $091F0C	;Replace the Main Level Load Array
+
+	DWORD	Tile_AIZ1_0+$B000000
+	DWORD	Tile_AIZ1_1+$B000000
+	DWORD	Block_AIZ1_0+$A000000
+	DWORD	Block_AIZ1_1+$A000000
+	DWORD	Meta_AIZ1
+	DWORD	Meta_AIZ1
+	DWORD	Tile_AIZ2_0+$C000000
+	DWORD	Tile_AIZ2_1+$C000000
+	DWORD	Block_AIZ2_0+$B000000
+	DWORD	Block_AIZ2_1+$B000000
+	DWORD	Meta_AIZ2
+	DWORD	Meta_AIZ2
+	DWORD	Tile_HCZ_0+$E000000
+	DWORD	Tile_HCZ1_1+$F000000
+	DWORD	Block_HCZ_0+$C000000
+	DWORD	Block_HCZ1_1+$C000000
+	DWORD	Meta_HCZ_0
+	DWORD	Meta_HCZ1_1
+	DWORD	Tile_HCZ_0+$10000000
+	DWORD	Tile_HCZ2_1+$11000000
+	DWORD	Block_HCZ_0+$D000000
+	DWORD	Block_HCZ2_1+$D000000
+	DWORD	Meta_HCZ_0
+	DWORD	Meta_HCZ2_1
+	DWORD	Tile_MGZ_0+$12000000
+	DWORD	Tile_MGZ1_1+$12000000
+	DWORD	Block_MGZ_0+$E000000
+	DWORD	Block_MGZ1_1+$E000000
+	DWORD	Meta_MGZ_0
+	DWORD	Meta_MGZ1_1
+	DWORD	Tile_MGZ_0+$14000000
+	DWORD	Tile_MGZ2_1+$14000000
+	DWORD	Block_MGZ_0+$F000000
+	DWORD	Block_MGZ2_1+$F000000
+	DWORD	Meta_MGZ_0
+	DWORD	Meta_MGZ2_1
+	DWORD	Tile_CNZ+$16000000
+	DWORD	Tile_CNZ+$17000000
+	DWORD	Block_CNZ+$10000000
+	DWORD	Block_CNZ+$10000000
+	DWORD	Meta_CNZ
+	DWORD	Meta_CNZ
+	DWORD	Tile_CNZ+$18000000
+	DWORD	Tile_CNZ+$19000000
+	DWORD	Block_CNZ+$11000000
+	DWORD	Block_CNZ+$11000000
+	DWORD	Meta_CNZ
+	DWORD	Meta_CNZ
+	DWORD	Tile_FBZ+$1A000000
+	DWORD	Tile_FBZ+$1A000000
+	DWORD	Block_FBZ+$12000000
+	DWORD	Block_FBZ+$12000000
+	DWORD	Meta_FBZ
+	DWORD	Meta_FBZ
+	DWORD	Tile_FBZ+$1C000000
+	DWORD	Tile_FBZ+$1C000000
+	DWORD	Block_FBZ+$13000000
+	DWORD	Block_FBZ+$13000000
+	DWORD	Meta_FBZ
+	DWORD	Meta_FBZ
+	DWORD	Tile_ICZ_0+$1E000000
+	DWORD	Tile_ICZ1_1+$1E000000
+	DWORD	Block_ICZ_0+$14000000
+	DWORD	Block_ICZ1_1+$14000000
+	DWORD	Meta_ICZ_0
+	DWORD	Meta_ICZ1_1
+	DWORD	Tile_ICZ_0+$20000000
+	DWORD	Tile_ICZ2_1+$20000000
+	DWORD	Block_ICZ_0+$15000000
+	DWORD	Block_ICZ2_1+$15000000
+	DWORD	Meta_ICZ_0
+	DWORD	Meta_ICZ2_1
+	DWORD	Tile_LBZ_0+$22000000
+	DWORD	Tile_LBZ1_1+$22000000
+	DWORD	Block_LBZ_0+$16000000
+	DWORD	Block_LBZ1_1+$16000000
+	DWORD	Meta_LBZ1
+	DWORD	Meta_LBZ1
+	DWORD	Tile_LBZ_0+$24000000
+	DWORD	Tile_LBZ2_1+$25000000
+	DWORD	Block_LBZ_0+$17000000
+	DWORD	Block_LBZ2_1+$17000000
+	DWORD	Meta_LBZ2
+	DWORD	Meta_LBZ2
+	DWORD	Tile_MHZ_0+$26000000
+	DWORD	Tile_MHZ_1+$26000000
+	DWORD	Block_MHZ_0+$18000000
+	DWORD	Block_MHZ_1+$18000000
+	DWORD	Meta_MHZ_0
+	DWORD	Meta_MHZ_1
+	DWORD	Tile_MHZ_0+$28000000
+	DWORD	Tile_MHZ_1+$28000000
+	DWORD	Block_MHZ_0+$19000000
+	DWORD	Block_MHZ_1+$19000000
+	DWORD	Meta_MHZ_0
+	DWORD	Meta_MHZ_1
+	DWORD	Tile_SOZ_0+$2A000000
+	DWORD	Tile_SOZ1_1+$2A000000
+	DWORD	Block_SOZ_0+$1A000000
+	DWORD	Block_SOZ1_1+$1A000000
+	DWORD	Meta_SOZ
+	DWORD	Meta_SOZ
+	DWORD	Tile_SOZ_0+$2C000000
+	DWORD	Tile_SOZ2_1+$2C000000
+	DWORD	Block_SOZ_0+$1B000000
+	DWORD	Block_SOZ2_1+$1B000000
+	DWORD	Meta_SOZ
+	DWORD	Meta_SOZ
+	DWORD	Tile_LRZ_0+$2E000000
+	DWORD	Tile_LRZ1_1+$2F000000
+	DWORD	Block_LRZ_0+$1C000000
+	DWORD	Block_LRZ1_1+$1C000000
+	DWORD	Meta_LRZ_0
+	DWORD	Meta_LRZ1_1
+	DWORD	Tile_LRZ_0+$30000000
+	DWORD	Tile_LRZ2_1+$30000000
+	DWORD	Block_LRZ_0+$1D000000
+	DWORD	Block_LRZ2_1+$1D000000
+	DWORD	Meta_LRZ_0
+	DWORD	Meta_LRZ2_1
+	DWORD	Tile_SSZ1_0+$32000000
+	DWORD	Tile_SSZ1_1+$32000000
+	DWORD	Block_SSZ1_0+$1E000000
+	DWORD	Block_SSZ1_1+$1E000000
+	DWORD	Meta_SSZ1_0
+	DWORD	Meta_SSZ1_1
+	DWORD	Tile_SSZ2+$34000000
+	DWORD	Tile_SSZ2+$34000000
+	DWORD	Block_SSZ2+$1F000000
+	DWORD	Block_SSZ2+$1F000000
+	DWORD	Meta_SSZ2
+	DWORD	Meta_SSZ2
+	DWORD	Tile_DEZ_0+$36000000
+	DWORD	Tile_DEZ1_1+$36000000
+	DWORD	Block_DEZ_0+$20000000
+	DWORD	Block_DEZ1_1+$20000000
+	DWORD	Meta_DEZ
+	DWORD	Meta_DEZ
+	DWORD	Tile_DEZ_0+$38000000
+	DWORD	Tile_DEZ2_1+$38000000
+	DWORD	Block_DEZ_0+$21000000
+	DWORD	Block_DEZ2_1+$21000000
+	DWORD	Meta_DEZ
+	DWORD	Meta_DEZ
+	DWORD	Tile_DDZ+$3A000000
+	DWORD	Tile_DDZ+$3A000000
+	DWORD	Block_DDZ+$22000000
+	DWORD	Block_DDZ+$22000000
+	DWORD	Meta_DDZ
+	DWORD	Meta_DDZ
+	DWORD	Tile_DDZ+$3C000000
+	DWORD	Tile_DDZ+$3C000000
+	DWORD	Block_DDZ+$23000000
+	DWORD	Block_DDZ+$23000000
+	DWORD	Meta_DDZ
+	DWORD	Meta_DDZ
+	DWORD	Tile_AIZ1_0+$B000000
+	DWORD	Tile_AIZ1_Main+$B000000
+	DWORD	Block_AIZ1_0+$2A000000
+	DWORD	Block_AIZ1_Main+$2A000000
+	DWORD	Meta_AIZ1
+	DWORD	Meta_AIZ1
+	DWORD	Tile_SSZ2+$40000000
+	DWORD	Tile_SSZ2+$40000000
+	DWORD	Block_SSZ2+$25000000
+	DWORD	Block_SSZ2+$25000000
+	DWORD	Meta_SSZ2
+	DWORD	Meta_SSZ2
+	DWORD	Tile_ALZ+$42000000
+	DWORD	Tile_ALZ+$42000000
+	DWORD	Block_ALZ+$26000000
+	DWORD	Block_ALZ+$26000000
+	DWORD	Meta_ALZ
+	DWORD	Meta_ALZ
+	DWORD	Tile_ALZ+$42000000
+	DWORD	Tile_ALZ+$42000000
+	DWORD	Block_ALZ+$27000000
+	DWORD	Block_ALZ+$27000000
+	DWORD	Meta_ALZ
+	DWORD	Meta_ALZ
+	DWORD	Tile_BPZ+$43000000
+	DWORD	Tile_BPZ+$43000000
+	DWORD	Block_BPZ+$28000000
+	DWORD	Block_BPZ+$28000000
+	DWORD	Meta_BPZ
+	DWORD	Meta_BPZ
+	DWORD	Tile_BPZ+$43000000
+	DWORD	Tile_BPZ+$43000000
+	DWORD	Block_BPZ+$29000000
+	DWORD	Block_BPZ+$29000000
+	DWORD	Meta_BPZ
+	DWORD	Meta_BPZ
+	DWORD	Tile_DPZ+$44000000
+	DWORD	Tile_DPZ+$44000000
+	DWORD	Block_DPZ+$34000000
+	DWORD	Block_DPZ+$34000000
+	DWORD	Meta_DPZ
+	DWORD	Meta_DPZ
+	DWORD	Tile_DPZ+$44000000
+	DWORD	Tile_DPZ+$44000000
+	DWORD	Block_DPZ+$34000000
+	DWORD	Block_DPZ+$34000000
+	DWORD	Meta_DPZ
+	DWORD	Meta_DPZ
+	DWORD	Tile_CGZ+$45000000
+	DWORD	Tile_CGZ+$45000000
+	DWORD	Block_CGZ+$35000000
+	DWORD	Block_CGZ+$35000000
+	DWORD	Meta_CGZ
+	DWORD	Meta_CGZ
+	DWORD	Tile_CGZ+$45000000
+	DWORD	Tile_CGZ+$45000000
+	DWORD	Block_CGZ+$35000000
+	DWORD	Block_CGZ+$35000000
+	DWORD	Meta_CGZ
+	DWORD	Meta_CGZ
+	DWORD	Tile_EMZ+$46000000
+	DWORD	Tile_EMZ+$46000000
+	DWORD	Block_EMZ+$36000000
+	DWORD	Block_EMZ+$36000000
+	DWORD	Meta_EMZ
+	DWORD	Meta_EMZ
+	DWORD	Tile_EMZ+$46000000
+	DWORD	Tile_EMZ+$46000000
+	DWORD	Block_EMZ+$36000000
+	DWORD	Block_EMZ+$36000000
+	DWORD	Meta_EMZ
+	DWORD	Meta_EMZ
+	DWORD	Tile_Gumball+$47000000
+	DWORD	Tile_Gumball+$47000000
+	DWORD	Block_Gumball+$33000000
+	DWORD	Block_Gumball+$33000000
+	DWORD	Meta_Gumball
+	DWORD	Meta_Gumball
+	DWORD	Tile_Gumball+$47000000
+	DWORD	Tile_Gumball+$47000000
+	DWORD	Block_Gumball+$33000000
+	DWORD	Block_Gumball+$33000000
+	DWORD	Meta_Gumball
+	DWORD	Meta_Gumball
+	DWORD	Tile_Pachinko+$50000000
+	DWORD	Tile_Pachinko+$50000000
+	DWORD	Block_Pachinko+$37000000
+	DWORD	Block_Pachinko+$37000000
+	DWORD	Meta_Pachinko
+	DWORD	Meta_Pachinko
+	DWORD	Tile_Pachinko+$50000000
+	DWORD	Tile_Pachinko+$50000000
+	DWORD	Block_Pachinko+$37000000
+	DWORD	Block_Pachinko+$37000000
+	DWORD	Meta_Pachinko
+	DWORD	Meta_Pachinko
+	DWORD	Tile_Slots+$51000000
+	DWORD	Tile_Slots+$51000000
+	DWORD	Block_Slots+$38000000
+	DWORD	Block_Slots+$38000000
+	DWORD	Meta_Slots
+	DWORD	Meta_Slots
+	DWORD	Tile_Slots+$51000000
+	DWORD	Tile_Slots+$51000000
+	DWORD	Block_Slots+$38000000
+	DWORD	Block_Slots+$38000000
+	DWORD	Meta_Slots
+	DWORD	Meta_Slots
+	DWORD	Tile_HPZ_0+$48000000
+	DWORD	Tile_LRZ3_1+$48000000
+	DWORD	Block_HPZ_0+$3E000000
+	DWORD	Block_LRZ3_1+$3E000000
+	DWORD	Meta_HPZ_0
+	DWORD	Meta_LRZ3_1
+	DWORD	Tile_HPZ_0+$48000000
+	DWORD	Tile_HPZ_1+$48000000
+	DWORD	Block_HPZ_0+$3F000000
+	DWORD	Block_HPZ_1+$3F000000
+	DWORD	Meta_HPZ_0
+	DWORD	Meta_HPZ_1
+	DWORD	Tile_DEZ3+$4C000000
+	DWORD	Tile_DEZ3+$4C000000
+	DWORD	Block_DEZ3+$40000000
+	DWORD	Block_DEZ3+$40000000
+	DWORD	Meta_DEZ3
+	DWORD	Meta_DEZ3
+	DWORD	Tile_HPZ_0+$48000000
+	DWORD	Tile_HPZ_1+$48000000
+	DWORD	Block_HPZ_0+$3F000000
+	DWORD	Block_HPZ_1+$3F000000
+	DWORD	Meta_HPZ_0
+	DWORD	Meta_HPZ_1
+
+EndSeg
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Moveable Data Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Big_Endian
+
+;;;
+;Sonic3
+;;;
+
+	Tile_AIZ1_0:	include	"Levels/AIZ/Tile/8/1_0.bin"
+	Tile_AIZ1_1:	include	"Levels/AIZ/Tile/8/1_1.bin"
+	Tile_AIZ1_Main:	include	"Levels/AIZ/Tile/8/1_Main.bin"
+	Tile_AIZ2_0:	include	"Levels/AIZ/Tile/8/2_0.bin"
+	Tile_AIZ2_1:	include	"Levels/AIZ/Tile/8/2_1.bin"
+	Tile_AIZBombing:	include	"Levels/AIZ/Tile/8/Bombing.bin"
+	Tile_HCZ_0:	include	"Levels/HCZ/Tile/8/0.bin"
+	Tile_HCZ1_1:	include	"Levels/HCZ/Tile/8/1_1.bin"
+	Tile_HCZ2_1:	include	"Levels/HCZ/Tile/8/2_1.bin"
+	Tile_MGZ_0:	include	"Levels/MGZ/Tile/0.bin"
+	Tile_MGZ1_1:	include	"Levels/MGZ/Tile/8/1_1.bin"
+	Tile_MGZ2_1:	include	"Levels/MGZ/Tile/8/2_1.bin"
+	Tile_CNZ:	include	"Levels/CNZ/Tile/8/0.bin"
+	Tile_ICZ_0:	include	"Levels/ICZ/Tile/8/0.bin"
+	Tile_ICZ1_1:	include	"Levels/ICZ/Tile/8/1_1.bin"
+	Tile_ICZ2_1:	include	"Levels/ICZ/Tile/8/2_1.bin"
+	Tile_LBZ_0:	include	"Levels/LBZ/Tile/8/0.bin"
+	Tile_LBZ1_1:	include	"Levels/LBZ/Tile/8/1_1.bin"
+	Tile_LBZ2_1:	include	"Levels/LBZ/Tile/8/2_1.bin"
+	Tile_LBZDeathEgg:	include	"Levels/LBZ/Tile/8/DeathEgg.bin"
+	Tile_ALZ:	include	"Levels/ALZ/Tile/8/0.bin"
+	Tile_BPZ:	include	"Levels/BPZ/Tile/8/0.bin"
+	Tile_DPZ:	include	"Levels/DPZ/Tile/8/0.bin"
+	Tile_CGZ:	include	"Levels/CGZ/Tile/8/0.bin"
+	Tile_EMZ:	include	"Levels/EMZ/Tile/8/0.bin"
+	Tile_Gumball:	include	"Levels/Gumball/Tile/0.bin"
+
+EndSeg
+
+StartSeg Big_Endian
+
+;;;
+;Sonic and Knuckles
+;;;
+
+	Tile_FBZ:	include	"Levels/FBZ/Tile/8/0.bin"
+	Tile_MHZ_0:	include	"Levels/MHZ/Tile/8/0.bin"
+	Tile_MHZ_1:	include	"Levels/MHZ/Tile/8/1.bin"
+	Tile_MHZ_Ex:	include	"Levels/MHZ/Tile/8/FBZShip.bin"
+	Tile_SOZ_0:	include	"Levels/SOZ/Tile/8/0.bin"
+	Tile_SOZ1_1:	include	"Levels/SOZ/Tile/8/1_1.bin"
+	Tile_SOZ1_Ex:	include	"Levels/SOZ/Tile/8/1_Ex.bin"
+	Tile_SOZ2_1:	include	"Levels/SOZ/Tile/8/2_1.bin"
+	Tile_SOZ2_Ex:	include	"Levels/SOZ/Tile/8/2_Ex.bin"
+	Tile_LRZ_0:	include	"Levels/LRZ/Tile/8/0.bin"
+	Tile_LRZ1_1:	include	"Levels/LRZ/Tile/8/1_1.bin"
+	Tile_LRZ2_1:	include	"Levels/LRZ/Tile/8/2_1.bin"
+	Tile_HPZ_0:	include	"Levels/HPZ/Tile/8/0.bin"
+	Tile_LRZ3_1:	include	"Levels/LRZ/Tile/8/3_1.bin"
+	Tile_HPZ_1:	include	"Levels/HPZ/Tile/8/1.bin"
+	Tile_SSZ1_0:	include	"Levels/SSZ/Tile/8/1_0.bin"
+	Tile_SSZ1_1:	include	"Levels/SSZ/Tile/8/1_1.bin"
+	Tile_SSZ1_Ex:	include	"Levels/SSZ/Tile/8/1_Ex.bin"
+	Tile_SSZ2:	include	"Levels/SSZ/Tile/8/2.bin"
+	Tile_DEZ_0:	include	"Levels/DEZ/Tile/8/0.bin"
+	Tile_DEZ1_1:	include	"Levels/DEZ/Tile/8/1_1.bin"
+	Tile_DEZ2_1:	include	"Levels/DEZ/Tile/8/2_1.bin"
+	Tile_DEZ3:	include	"Levels/DEZ/Tile/8/3.bin"
+	Tile_DDZ:	include	"Levels/DDZ/Tile/8/0.bin"
+	Tile_Pachinko:	include	"Levels/Pachinko/Tile/8/0.bin"
+	Tile_Slots:	include	"Levels/Slots/Tile/8/0.bin"
+
+EndSeg
+
+StartSeg Big_Endian
+
+;;;
+;Sonic3
+;;;
+
+	Block_AIZ1_0:	include	"Levels/AIZ/Tile/16/1_0.bin"
+	Block_AIZ1_1:	include	"Levels/AIZ/Tile/16/1_1.bin"
+	Block_AIZ1_Main:	include	"Levels/AIZ/Tile/16/Main.bin"
+	Block_AIZ2_0:	include	"Levels/AIZ/Tile/16/2_0.bin"
+	Block_AIZ2_1:	include	"Levels/AIZ/Tile/16/2_1.bin"
+	Block_AIZBombing:	include	"Levels/AIZ/Tile/16/Bombing.bin"
+	Block_HCZ_0:	include	"Levels/HCZ/Tile/16/0.bin"
+	Block_HCZ1_1:	include	"Levels/HCZ/Tile/16/1_1.bin"
+	Block_HCZ2_1:	include	"Levels/HCZ/Tile/16/2_1.bin"
+	Block_MGZ_0:	include	"Levels/MGZ/Tile/16/0.bin"
+	Block_MGZ1_1:	include	"Levels/MGZ/Tile/16/1_1.bin"
+	Block_MGZ2_1:	include	"Levels/MGZ/Tile/16/2_1.bin"
+	Block_CNZ:	include	"Levels/CNZ/Tile/16/0.bin"
+	Block_ICZ_0:	include	"Levels/ICZ/Tile/16/0.bin"
+	Block_ICZ1_1:	include	"Levels/ICZ/Tile/16/1_1.bin"
+	Block_ICZ2_1:	include	"Levels/ICZ/Tile/16/2_1.bin"
+	Block_LBZ_0:	include	"Levels/LBZ/Tile/16/0.bin"
+	Block_LBZ1_1:	include	"Levels/LBZ/Tile/16/1_1.bin"
+	Block_LBZ2_1:	include	"Levels/LBZ/Tile/16/2_1.bin"
+	Block_LBZDeathEgg:	include	"Levels/LBZ/Tile/16/DeathEgg.bin"
+	Block_ALZ:	include	"Levels/ALZ/Tile/16/0.bin"
+	Block_BPZ:	include	"Levels/BPZ/Tile/16/0.bin"
+	Block_DPZ:	include	"Levels/DPZ/Tile/16/0.bin"
+	Block_CGZ:	include	"Levels/CGZ/Tile/16/0.bin"
+	Block_EMZ:	include	"Levels/EMZ/Tile/16/0.bin"
+	Block_Gumball:	include	"Levels/Gumball/Tile/16/0.bin"
+
+EndSeg
+
+StartSeg Big_Endian
+
+;;;
+;Sonic and Knuckles
+;;;
+
+	Block_FBZ:	include	"Levels/FBZ/Tile/16/0.bin"
+	Block_MHZ_0:	include	"Levels/MHZ/Tile/16/0.bin"
+	Block_MHZ_1:	include	"Levels/MHZ/Tile/16/1.bin"
+	Block_MHZ_Ex:	include	"Levels/MHZ/Tile/16/FBZShip.bin"
+	Block_SOZ_0:	include	"Levels/SOZ/Tile/16/0.bin"
+	Block_SOZ1_1:	include	"Levels/SOZ/Tile/16/1_1.bin"
+	Block_SOZ1_Ex:	include	"Levels/SOZ/Tile/16/1_Ex.bin"
+	Block_SOZ2_1:	include	"Levels/SOZ/Tile/16/2_1.bin"
+	Block_SOZ2_Ex:	include	"Levels/SOZ/Tile/16/2_Ex.bin"
+	Block_LRZ_0:	include	"Levels/LRZ/Tile/16/0.bin"
+	Block_LRZ1_1:	include	"Levels/LRZ/Tile/16/1_1.bin"
+	Block_LRZ2_1:	include	"Levels/LRZ/Tile/16/2_1.bin"
+	Block_HPZ_0:	include	"Levels/HPZ/Tile/16/0.bin"
+	Block_LRZ3_1:	include	"Levels/LRZ/Tile/16/3_1.bin"
+	Block_HPZ_1:	include	"Levels/HPZ/Tile/16/1.bin"
+	Block_SSZ1_0:	include	"Levels/SSZ/Tile/16/1_0.bin"
+	Block_SSZ1_1:	include	"Levels/SSZ/Tile/16/1_1.bin"
+	Block_SSZ1_Ex:	include	"Levels/SSZ/Tile/16/1_Ex.bin"
+	Block_SSZ2:	include	"Levels/SSZ/Tile/16/2.bin"
+	Block_DEZ_0:	include	"Levels/DEZ/Tile/16/0.bin"
+	Block_DEZ1_1:	include	"Levels/DEZ/Tile/16/1_1.bin"
+	Block_DEZ2_1:	include	"Levels/DEZ/Tile/16/2_1.bin"
+	Block_DEZ3:	include	"Levels/DEZ/Tile/16/3.bin"
+	Block_DDZ:	include	"Levels/DDZ/Tile/16/0.bin"
+	Block_Pachinko:	include	"Levels/Pachinko/Tile/16/0.bin"
+	Block_Slots:	include	"Levels/Slots/Tile/16/0.bin"
+
+EndSeg
+
+StartSeg Big_Endian
+
+;;;
+;Sonic3
+;;;
+
+	Meta_AIZ1:	include	"Levels/AIZ/Tile/128/1.bin"
+	Meta_AIZMain:	include	"Levels/AIZ/Tile/128/Main.bin"
+	Meta_AIZ2:	include	"Levels/AIZ/Tile/128/2.bin"
+	Meta_HCZ_0:	include	"Levels/HCZ/Tile/128/0.bin"
+	Meta_HCZ1_1:	include	"Levels/HCZ/Tile/128/1_1.bin"
+	Meta_HCZ2_1:	include	"Levels/HCZ/Tile/128/2_1.bin"
+	Meta_MGZ_0:	include	"Levels/MGZ/Tile/128/0.bin"
+	Meta_MGZ1_1:	include	"Levels/MGZ/Tile/128/1_1.bin"
+	Meta_MGZ2_1:	include	"Levels/MGZ/Tile/128/2_1.bin"
+	Meta_MGZ2_Quake:	include	"Levels/MGZ/Tile/128/2_Quake.bin"
+	Meta_CNZ:	include	"Levels/CNZ/Tile/128/0.bin"
+	Meta_ICZ_0:	include	"Levels/ICZ/Tile/128/0.bin"
+	Meta_ICZ1_1:	include	"Levels/ICZ/Tile/128/1_1.bin"
+	Meta_ICZ2_1:	include	"Levels/ICZ/Tile/128/2_1.bin"
+	Meta_LBZ1:	include	"Levels/LBZ/Tile/128/1.bin"
+	Meta_LBZ2:	include	"Levels/LBZ/Tile/128/2.bin"
+	Meta_LBZDeathEgg:	include	"Levels/LBZ/Tile/128/DeathEgg.bin"
+	Meta_ALZ:	include	"Levels/ALZ/Tile/128/0.bin"
+	Meta_BPZ:	include	"Levels/BPZ/Tile/128/0.bin"
+	Meta_DPZ:	include	"Levels/DPZ/Tile/128/0.bin"
+	Meta_CGZ:	include	"Levels/CGZ/Tile/128/0.bin"
+	Meta_EMZ:	include	"Levels/EMZ/Tile/128/0.bin"
+	Meta_Gumball:	include	"Levels/Gumball/Tile/128/0.bin"
+
+EndSeg
+
+StartSeg Big_Endian
+
+;;;
+;Sonic and Knuckles
+;;;
+
+	Meta_FBZ:	include	"Levels/FBZ/Tile/128/0.bin"
+	Meta_MHZ_0:	include	"Levels/MHZ/Tile/128/0.bin"
+	Meta_MHZ_1:	include	"Levels/MHZ/Tile/128/1.bin"
+	Meta_MHZ_Ex:	include	"Levels/MHZ/Tile/128/FBZShip.bin"
+	Meta_SOZ:	include	"Levels/SOZ/Tile/128/0.bin"
+	Meta_LRZ_0:	include	"Levels/LRZ/Tile/128/0.bin"
+	Meta_LRZ1_1:	include	"Levels/LRZ/Tile/128/1_1.bin"
+	Meta_LRZ2_1:	include	"Levels/LRZ/Tile/128/2_1.bin"
+	Meta_HPZ_0:	include	"Levels/HPZ/Tile/128/0.bin"
+	Meta_LRZ3_1:	include	"Levels/LRZ/Tile/128/3_1.bin"
+	Meta_HPZ_1:	include	"Levels/HPZ/Tile/128/1.bin"
+	Meta_SSZ1_0:	include	"Levels/SSZ/Tile/128/1_0.bin"
+	Meta_SSZ1_1:	include	"Levels/SSZ/Tile/128/1_1.bin"
+	Meta_SSZ1_Ex:	include	"Levels/SSZ/Tile/128/1_Ex.bin"
+	Meta_SSZ2:	include	"Levels/SSZ/Tile/128/2.bin"
+	Meta_DEZ:	include	"Levels/DEZ/Tile/128/0.bin"
+	Meta_DEZ3:	include	"Levels/DEZ/Tile/128/3.bin"
+	Meta_DDZ:	include	"Levels/DDZ/Tile/128/0.bin"
+	Meta_Pachinko:	include	"Levels/Pachinko/Tile/128/0.bin"
+	Meta_Slots:	include	"Levels/Slots/Tile/128/0.bin"
+
+EndSeg
+
+
+;;;
+;Collision Indexes
+;;;
+
+StartSeg Big_Endian
+
+;;;
+;Sonic3
+;;;
+
+	Solid_AIZ1:	include	"Levels/AIZ/Collisn/1.bin"
+	Solid_AIZ2:	include	"Levels/AIZ/Collisn/2.bin"
+	Solid_HCZ1:	include	"Levels/HCZ/Collisn/1.bin"
+	Solid_HCZ2:	include	"Levels/HCZ/Collisn/2.bin"
+	Solid_MGZ1:	include	"Levels/MGZ/Collisn/1.bin"
+	Solid_MGZ2:	include	"Levels/MGZ/Collisn/2.bin"
+	Solid_CNZ:	include	"Levels/CNZ/Collisn/1.bin"
+	Solid_ICZ1:	include	"Levels/ICZ/Collisn/1.bin"
+	Solid_ICZ2:	include	"Levels/ICZ/Collisn/2.bin"
+	Solid_LBZ1:	include	"Levels/LBZ/Collisn/1.bin"
+	Solid_LBZ2:	include	"Levels/LBZ/Collisn/2.bin"
+	Solid_ALZ:	include	"Levels/ALZ/Collisn/1.bin"
+	Solid_BPZ:	include	"Levels/BPZ/Collisn/1.bin"
+	Solid_DPZ:	include	"Levels/DPZ/Collisn/1.bin"
+	Solid_CGZ:	include	"Levels/CGZ/Collisn/1.bin"
+	Solid_EMZ:	include	"Levels/EMZ/Collisn/1.bin"
+	Solid_Gumball:	include	"Levels/Gumball/Collisn/1.bin"
+
+EndSeg
+
+StartSeg Big_Endian
+
+;;;
+;Sonic and Knuckles
+;;;
+
+	Solid_FBZ:	include	"Levels/FBZ/Collisn/1.bin"
+	Solid_MHZ:	include	"Levels/MHZ/Collisn/1.bin"
+;			include	"Levels/Unused/Collisn/1.bin"
+	Solid_SOZ:	include	"Levels/SOZ/Collisn/1.bin"
+	Solid_LRZ1:	include	"Levels/LRZ/Collisn/1.bin"
+	Solid_LRZ2:	include	"Levels/LRZ/Collisn/2.bin"
+	Solid_SSZ1:	include	"Levels/SSZ/Collisn/1.bin"
+	Solid_SSZ2:	include	"Levels/SSZ/Collisn/2.bin"
+	Solid_DEZ:	include	"Levels/DEZ/Collisn/1.bin"
+	Solid_DDZ:	include	"Levels/DDZ/Collisn/1.bin"
+	Solid_Pachinko:	include	"Levels/Pachinko/Collisn/1.bin"
+	Solid_Slots:	include	"Levels/Slots/Collisn/1.bin"
+	Solid_LRZBoss:	include	"Levels/LRZ/Collisn/3.bin"
+	Solid_HPZ:	include	"Levels/HPZ/Collisn/1.bin"
+
+EndSeg

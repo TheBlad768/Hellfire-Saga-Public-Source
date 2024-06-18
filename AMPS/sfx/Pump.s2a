@@ -1,0 +1,11 @@
+Sound_49_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$80, ctFM5, Sound_49_FM5, $EC, $00
+
+; FM5 Data
+Sound_49_FM5:
+	sVoice		$07
+	dc.b nBb2, $10
+	sStop

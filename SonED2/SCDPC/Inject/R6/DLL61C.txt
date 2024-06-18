@@ -1,0 +1,55 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Sonic CD for PC (DirectX Version) DLL61C.DLL Injector File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Little_Endian $1AA90 $2
+
+		include "R6/Obj/XStart1C.bin"
+
+EndSeg
+
+StartSeg Little_Endian $1AA92 $2
+
+		include "R6/Obj/YStart1C.bin"
+
+EndSeg
+
+StartSeg Little_Endian $1A2B0 $540
+
+		include "R6/Pal/PC/1C/0_1.bin"
+		include "R6/Pal/PC/1C/2.bin"
+		include "R6/Pal/PC/1C/3.bin"
+		include "R6/Pal/PC/1C/4.bin"
+		include "R6/Pal/PC/1C/5.bin"
+		include "R6/Pal/PC/1C/6.bin"
+		include "R6/Pal/PC/1C/BossCycl.bin"			;Unused
+
+EndSeg
+
+StartSeg Little_Endian $19298 $E70
+
+		include "R6/Obj/1.bin" Swap16
+
+EndSeg
+
+StartSeg Little_Endian $1AAB8 $2508
+
+		include "R6/Col/Ang1C.bin"
+		include "R6/Col/HM1C.bin"
+		BYTE	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+		include "R6/Col/HMR1C.bin"
+		BYTE	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+		include "R6/Col/Idx1C.bin"
+
+EndSeg
+
+StartSeg Little_Endian $1CFC0 $400
+
+		include "R6/FGPC/1C.bin"
+		include "R6/BGPC/1C.bin"
+
+EndSeg
+
+

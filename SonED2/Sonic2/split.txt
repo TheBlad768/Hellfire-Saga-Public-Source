@@ -1,0 +1,692 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Sonic the Hedgehog 2 (Rev 01) Batch Extraction File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;
+; File and folder setup
+;;;;;;;;;;;;;;;;;;;;;;;
+
+;GetFile "Please select a clean Sonic the Hedgehog 2 (Rev 01) ROM file"
+;LoadFile #got
+LoadFile "sonic2.bin"
+
+;GetPath "Please select the destination folder for the data"
+;DestPath #Got
+
+MakePath "Palettes"
+MakePath "Palettes/Ending"
+MakePath "Palettes/Title"
+MakePath "Levels"
+MakePath "Levels/00_EHZ"
+MakePath "Levels/00_EHZ/Pal"
+MakePath "Levels/00_EHZ/Tile"
+MakePath "Levels/00_EHZ/Layout"
+MakePath "Levels/00_EHZ/Collisn"
+MakePath "Levels/00_EHZ/Obj"
+MakePath "Levels/00_EHZ/Rng"
+MakePath "Levels/00_EHZ/Start"
+MakePath "Levels/01"
+MakePath "Levels/01/Pal"
+MakePath "Levels/01/Tile"
+MakePath "Levels/01/Layout"
+MakePath "Levels/01/Collisn"
+MakePath "Levels/01/Obj"
+MakePath "Levels/01/Rng"
+MakePath "Levels/01/Start"
+MakePath "Levels/02_WZ"
+MakePath "Levels/02_WZ/Pal"
+MakePath "Levels/02_WZ/Tile"
+MakePath "Levels/02_WZ/Layout"
+MakePath "Levels/02_WZ/Collisn"
+MakePath "Levels/02_WZ/Obj"
+MakePath "Levels/02_WZ/Rng"
+MakePath "Levels/02_WZ/Start"
+MakePath "Levels/03"
+MakePath "Levels/03/Pal"
+MakePath "Levels/03/Tile"
+MakePath "Levels/03/Layout"
+MakePath "Levels/03/Collisn"
+MakePath "Levels/03/Obj"
+MakePath "Levels/03/Rng"
+MakePath "Levels/03/Start"
+MakePath "Levels/04_MTZ"
+MakePath "Levels/04_MTZ/Pal"
+MakePath "Levels/04_MTZ/Tile"
+MakePath "Levels/04_MTZ/Layout"
+MakePath "Levels/04_MTZ/Collisn"
+MakePath "Levels/04_MTZ/Obj"
+MakePath "Levels/04_MTZ/Rng"
+MakePath "Levels/04_MTZ/Start"
+MakePath "Levels/05_MTZ"
+MakePath "Levels/05_MTZ/Pal"
+MakePath "Levels/05_MTZ/Tile"
+MakePath "Levels/05_MTZ/Layout"
+MakePath "Levels/05_MTZ/Collisn"
+MakePath "Levels/05_MTZ/Obj"
+MakePath "Levels/05_MTZ/Rng"
+MakePath "Levels/05_MTZ/Start"
+MakePath "Levels/06_WFZ"
+MakePath "Levels/06_WFZ/Pal"
+MakePath "Levels/06_WFZ/Tile"
+MakePath "Levels/06_WFZ/Tile/8C"
+MakePath "Levels/06_WFZ/Tile/8U"
+MakePath "Levels/06_WFZ/Layout"
+MakePath "Levels/06_WFZ/Collisn"
+MakePath "Levels/06_WFZ/Obj"
+MakePath "Levels/06_WFZ/Rng"
+MakePath "Levels/06_WFZ/Start"
+MakePath "Levels/07_HTZ"
+MakePath "Levels/07_HTZ/Pal"
+MakePath "Levels/07_HTZ/Tile"
+MakePath "Levels/07_HTZ/Tile/8C"
+MakePath "Levels/07_HTZ/Tile/8U"
+MakePath "Levels/07_HTZ/Tile/16C"
+MakePath "Levels/07_HTZ/Tile/16U"
+MakePath "Levels/07_HTZ/Layout"
+MakePath "Levels/07_HTZ/Collisn"
+MakePath "Levels/07_HTZ/Obj"
+MakePath "Levels/07_HTZ/Rng"
+MakePath "Levels/07_HTZ/Start"
+MakePath "Levels/08_HPZ"
+MakePath "Levels/08_HPZ/Pal"
+MakePath "Levels/08_HPZ/Tile"
+MakePath "Levels/08_HPZ/Layout"
+MakePath "Levels/08_HPZ/Collisn"
+MakePath "Levels/08_HPZ/Obj"
+MakePath "Levels/08_HPZ/Rng"
+MakePath "Levels/08_HPZ/Start"
+MakePath "Levels/09"
+MakePath "Levels/09/Pal"
+MakePath "Levels/09/Tile"
+MakePath "Levels/09/Layout"
+MakePath "Levels/09/Collisn"
+MakePath "Levels/09/Obj"
+MakePath "Levels/09/Rng"
+MakePath "Levels/09/Start"
+MakePath "Levels/0A_OOZ"
+MakePath "Levels/0A_OOZ/Pal"
+MakePath "Levels/0A_OOZ/Tile"
+MakePath "Levels/0A_OOZ/Layout"
+MakePath "Levels/0A_OOZ/Collisn"
+MakePath "Levels/0A_OOZ/Obj"
+MakePath "Levels/0A_OOZ/Rng"
+MakePath "Levels/0A_OOZ/Start"
+MakePath "Levels/0B_MCZ"
+MakePath "Levels/0B_MCZ/Pal"
+MakePath "Levels/0B_MCZ/Tile"
+MakePath "Levels/0B_MCZ/Layout"
+MakePath "Levels/0B_MCZ/Collisn"
+MakePath "Levels/0B_MCZ/Obj"
+MakePath "Levels/0B_MCZ/Rng"
+MakePath "Levels/0B_MCZ/Start"
+MakePath "Levels/0D_CPZ"
+MakePath "Levels/0D_CPZ/Pal"
+MakePath "Levels/0D_CPZ/Tile"
+MakePath "Levels/0D_CPZ/Layout"
+MakePath "Levels/0D_CPZ/Collisn"
+MakePath "Levels/0D_CPZ/Obj"
+MakePath "Levels/0D_CPZ/Rng"
+MakePath "Levels/0D_CPZ/Start"
+MakePath "Levels/0C_CNZ"
+MakePath "Levels/0C_CNZ/Pal"
+MakePath "Levels/0C_CNZ/Tile"
+MakePath "Levels/0C_CNZ/Layout"
+MakePath "Levels/0C_CNZ/Collisn"
+MakePath "Levels/0C_CNZ/Obj"
+MakePath "Levels/0C_CNZ/Rng"
+MakePath "Levels/0C_CNZ/Start"
+MakePath "Levels/0E_DEZ"
+MakePath "Levels/0E_DEZ/Pal"
+MakePath "Levels/0E_DEZ/Tile"
+MakePath "Levels/0E_DEZ/Layout"
+MakePath "Levels/0E_DEZ/Collisn"
+MakePath "Levels/0E_DEZ/Obj"
+MakePath "Levels/0E_DEZ/Rng"
+MakePath "Levels/0E_DEZ/Start"
+MakePath "Levels/0F_ARZ"
+MakePath "Levels/0F_ARZ/Pal"
+MakePath "Levels/0F_ARZ/Tile"
+MakePath "Levels/0F_ARZ/Layout"
+MakePath "Levels/0F_ARZ/Collisn"
+MakePath "Levels/0F_ARZ/Obj"
+MakePath "Levels/0F_ARZ/Rng"
+MakePath "Levels/0F_ARZ/Start"
+MakePath "Levels/10_SCZ"
+MakePath "Levels/10_SCZ/Pal"
+MakePath "Levels/10_SCZ/Tile"
+MakePath "Levels/10_SCZ/Layout"
+MakePath "Levels/10_SCZ/Collisn"
+MakePath "Levels/10_SCZ/Obj"
+MakePath "Levels/10_SCZ/Rng"
+MakePath "Levels/10_SCZ/Start"
+MakePath "Collisn"
+MakePath "SStage"
+MakePath "SStage/Pal"
+MakePath "SStage/Maps"
+MakePath "SStage/Comp"
+MakePath "SStage/UCmp"
+MakePath "Misc"
+
+
+;;;;;;;;;;;;;;;;;;;;;;
+; Palette Data Extract
+;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;Special Cases
+;;;
+
+Extract $001E5A $001E7A-$001E5A "Palettes/Title/Water.bin"
+Extract $001E7A $001E9A-$001E7A "Levels/00_EHZ/Pal/WatrFall.bin"
+Extract $001E7A $001E9A-$001E7A "Levels/0F_ARZ/Pal/WatrFall.bin"	;Same as EHZ
+Extract $001E9A $001F1A-$001E9A "Levels/07_HTZ/Pal/Lava.bin"
+Extract $001F1A $001F2A-$001F1A "Levels/02_WZ/Pal/Conveyor.bin"
+Extract $001F2A $001F36-$001F2A "Levels/04_MTZ/Pal/Cycle1.bin"
+Extract $001F36 $001F42-$001F36 "Levels/04_MTZ/Pal/Cycle2.bin"
+Extract $001F42 $001F56-$001F42 "Levels/04_MTZ/Pal/Cycle3.bin"
+Extract $001F56 $001F66-$001F56 "Levels/08_HPZ/Pal/Cycle.bin"
+Extract $001F66 $001F76-$001F66 "Levels/08_HPZ/Pal/UWCycle.bin"
+Extract $001F76 $001F86-$001F76 "Levels/0A_OOZ/Pal/Oil.bin"
+Extract $001F86 $001F8E-$001F86 "Levels/0B_MCZ/Pal/Lantern.bin"
+Extract $001F8E $001FB2-$001F8E "Levels/0C_CNZ/Pal/Cycle1.bin"
+Extract $001F8E $001FB2-$001F8E "Levels/0C_CNZ/Pal/Cycle2.bin"		;Same as CNZ Cycle 1
+Extract $001FB2 $001FC4-$001FB2 "Levels/0C_CNZ/Pal/Cycle3.bin"
+Extract $001FC4 $001FEC-$001FC4 "Levels/0C_CNZ/Pal/Cycle4.bin"
+Extract $001FEC $001FFE-$001FEC "Palettes/unk_1FEC.bin"
+Extract $001FFE $002012-$001FFE "Palettes/unk_1FFE.bin"
+Extract $002012 $002022-$002012 "Palettes/unk_2012.bin"
+Extract $002022 $002058-$002022 "Levels/0D_CPZ/Pal/Cycle1.bin"
+Extract $002058 $002082-$002058 "Levels/0D_CPZ/Pal/Cycle2.bin"
+Extract $002082 $0020A2-$002082 "Levels/0D_CPZ/Pal/Cycle3.bin"
+Extract $0020A2 $0020C2-$0020A2 "Levels/06_WFZ/Pal/FireCycl.bin"
+Extract $0020C2 $0020E2-$0020C2 "Palettes/unk_20C2.bin"
+Extract $0020E2 $002126-$0020E2 "Levels/0D_CPZ/Pal/Cycle4.bin"
+Extract $002126 $00213E-$002126 "Palettes/unk_2126.bin"
+
+Extract $002246 $0022C6-$002246 "Palettes/SuprSonc.bin"
+Extract $0022C6 $002346-$0022C6 "Levels/0D_CPZ/Pal/UWSuper.bin"
+Extract $002346 $0023C6-$002346 "Levels/0F_ARZ/Pal/UWSuper.bin"
+
+Extract $0026D6 $0026E2-$0026D6 "Palettes/SegaUnu.bin"
+Extract $0026E2 $002712-$0026E2 "Palettes/SegaUnu2.bin"
+
+;;;
+;Normal Listing
+;;;
+
+Extract $0028C2 $002942-$0028C2 "Palettes/Sega.bin"
+Extract $002942 $002962-$002942 "Palettes/Title/Screen.bin"
+Extract $002962 $0029E2-$002962 "Palettes/Pal02.bin"
+Extract $0029E2 $002A22-$0029E2 "Palettes/MenuBG.bin"
+Extract $002A22 $002A82-$002A22 "Levels/00_EHZ/Pal/Main.bin"
+Extract $002A22 $002A82-$002A22 "Levels/01/Pal/Main.bin"		;EHZ
+Extract $002A22 $002A82-$002A22 "Levels/03/Pal/Main.bin"		;EHZ
+Extract $002A22 $002A82-$002A22 "Levels/09/Pal/Main.bin"		;EHZ
+Extract $002A82 $002AE2-$002A82 "Levels/02_WZ/Pal/Main.bin"
+Extract $002AE2 $002B42-$002AE2 "Levels/04_MTZ/Pal/Main.bin"
+Extract $002AE2 $002B42-$002AE2 "Levels/05_MTZ/Pal/Main.bin"
+Extract $002B42 $002BA2-$002B42 "Levels/06_WFZ/Pal/Main.bin"
+Extract $002BA2 $002C02-$002BA2 "Levels/07_HTZ/Pal/Main.bin"
+Extract $002C02 $002C62-$002C02 "Levels/08_HPZ/Pal/Main.bin"
+Extract $002C62 $002CE2-$002C62 "Levels/08_HPZ/Pal/Water.bin"
+Extract $002CE2 $002D42-$002CE2 "Levels/0A_OOZ/Pal/Main.bin"
+Extract $002D42 $002DA2-$002D42 "Levels/0B_MCZ/Pal/Main.bin"
+Extract $002DA2 $002E02-$002DA2 "Levels/0C_CNZ/Pal/Main.bin"
+Extract $002E02 $002E62-$002E02 "Levels/0D_CPZ/Pal/Main.bin"
+Extract $002E62 $002EE2-$002E62 "Levels/0D_CPZ/Pal/Water.bin"
+Extract $002EE2 $002F42-$002EE2 "Levels/0E_DEZ/Pal/Main.bin"
+Extract $002F42 $002FA2-$002F42 "Levels/0F_ARZ/Pal/Main.bin"
+Extract $002FA2 $003022-$002FA2 "Levels/0F_ARZ/Pal/Water.bin"
+Extract $003022 $003082-$003022 "Levels/10_SCZ/Pal/Main.bin"
+Extract $003022 $003082-$003022 "Levels/06_WFZ/Pal/Main.bin"		;SCZ
+Extract $003082 $0030A2-$003082 "Palettes/Pal19.bin"
+Extract $0030A2 $0030C2-$0030A2 "Palettes/Pal1A.bin"
+Extract $0030C2 $0030E2-$0030C2 "Levels/0A_OOZ/Pal/Boss.bin"
+Extract $0030E2 $003162-$0030E2 "Palettes/Menu.bin"
+Extract $003162 $0031C2-$003162 "SStage/Pal/Main.bin"
+Extract $0031C2 $0031E2-$0031C2 "SStage/Pal/1.bin"
+Extract $0031E2 $003202-$0031E2 "SStage/Pal/2.bin"
+Extract $003202 $003222-$003202 "SStage/Pal/3.bin"
+Extract $003222 $003242-$003222 "SStage/Pal/4.bin"
+Extract $003242 $003262-$003242 "SStage/Pal/5.bin"
+Extract $003262 $003282-$003262 "SStage/Pal/6.bin"
+Extract $003282 $0032A2-$003282 "SStage/Pal/7.bin"
+Extract $0032A2 $0032C2-$0032A2 "SStage/Pal/2p_1.bin"
+Extract $0032C2 $0032E2-$0032C2 "SStage/Pal/2p_2.bin"
+Extract $0032E2 $003302-$0032E2 "SStage/Pal/2p_3.bin"
+Extract $003302 $003382-$003302 "SStage/Pal/Results.bin"
+
+;;;
+;Other Special Cases
+;;;
+
+Extract $009880 $009A60-$009880 "Palettes/LSIcons.bin"
+Extract $00A0FE $00A1D6-$00A0FE "Palettes/Ending/Cycle.bin"
+Extract $00AC7E $00AC9E-$00AC7E "Palettes/Ending/Sonic.bin"
+Extract $00AC9E $00ACDE-$00AC9E "Palettes/Ending/SonicFar.bin"
+Extract $00ACDE $00AD1E-$00ACDE "Palettes/Ending/BG.bin"
+Extract $00AD1E $00AD3E-$00AD1E "Palettes/Ending/Photos.bin"
+Extract $00AD3E $00AD5E-$00AD3E "Palettes/Ending/SuprSonc.bin"
+Extract $0133EC $01340C-$0133EC "Palettes/Title/Sonic.bin"
+Extract $01340C $01342C-$01340C "Palettes/Title/Background.bin"
+Extract $01342C $01344C-$01342C "Palettes/Title/Emblem.bin"
+Extract $035F92 $035FBC-$035F92 "SStage/Pal/Emerald.bin"
+Extract $03A4A4 $03A514-$03A4A4 "Palettes/Sega2.bin"
+Extract $03A51A $03A58A-$03A51A "Palettes/Sega3.bin"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Player Start Position Data Extract
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+Extract $00C1D0 $00C1D4-$00C1D0 "Levels/00_EHZ/Start/1.bin"
+Extract $00C1D4 $00C1D8-$00C1D4 "Levels/00_EHZ/Start/2.bin"
+Extract $00C1D8 $00C1DC-$00C1D8 "Levels/01/Start/1.bin"
+Extract $00C1DC $00C1E0-$00C1DC "Levels/01/Start/2.bin"
+Extract $00C1E0 $00C1E4-$00C1E0 "Levels/02_WZ/Start/1.bin"
+Extract $00C1E4 $00C1E8-$00C1E4 "Levels/02_WZ/Start/2.bin"
+Extract $00C1E8 $00C1EC-$00C1E8 "Levels/03/Start/1.bin"
+Extract $00C1EC $00C1F0-$00C1EC "Levels/03/Start/2.bin"
+Extract $00C1F0 $00C1F4-$00C1F0 "Levels/04_MTZ/Start/1.bin"
+Extract $00C1F4 $00C1F8-$00C1F4 "Levels/04_MTZ/Start/2.bin"
+Extract $00C1F8 $00C1FC-$00C1F8 "Levels/05_MTZ/Start/1.bin"
+Extract $00C1FC $00C200-$00C1FC "Levels/05_MTZ/Start/2.bin"
+Extract $00C200 $00C204-$00C200 "Levels/06_WFZ/Start/1.bin"
+Extract $00C204 $00C208-$00C204 "Levels/06_WFZ/Start/2.bin"
+Extract $00C208 $00C20C-$00C208 "Levels/07_HTZ/Start/1.bin"
+Extract $00C20C $00C210-$00C20C "Levels/07_HTZ/Start/2.bin"
+Extract $00C210 $00C214-$00C210 "Levels/08_HPZ/Start/1.bin"
+Extract $00C214 $00C218-$00C214 "Levels/08_HPZ/Start/2.bin"
+Extract $00C218 $00C21C-$00C218 "Levels/09/Start/1.bin"
+Extract $00C21C $00C220-$00C21C "Levels/09/Start/2.bin"
+Extract $00C220 $00C224-$00C220 "Levels/0A_OOZ/Start/1.bin"
+Extract $00C224 $00C228-$00C224 "Levels/0A_OOZ/Start/2.bin"
+Extract $00C228 $00C22C-$00C228 "Levels/0B_MCZ/Start/1.bin"
+Extract $00C22C $00C230-$00C22C "Levels/0B_MCZ/Start/2.bin"
+Extract $00C230 $00C234-$00C230 "Levels/0C_CNZ/Start/1.bin"
+Extract $00C234 $00C238-$00C234 "Levels/0C_CNZ/Start/2.bin"
+Extract $00C238 $00C23C-$00C238 "Levels/0D_CPZ/Start/1.bin"
+Extract $00C23C $00C240-$00C23C "Levels/0D_CPZ/Start/2.bin"
+Extract $00C240 $00C244-$00C240 "Levels/0E_DEZ/Start/1.bin"
+Extract $00C244 $00C248-$00C244 "Levels/0E_DEZ/Start/2.bin"
+Extract $00C248 $00C24C-$00C248 "Levels/0F_ARZ/Start/1.bin"
+Extract $00C24C $00C250-$00C24C "Levels/0F_ARZ/Start/2.bin"
+Extract $00C250 $00C254-$00C250 "Levels/10_SCZ/Start/1.bin"
+Extract $00C254 $00C258-$00C254 "Levels/10_SCZ/Start/2.bin"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Level Graphic Data Extract
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+Extract $095C24 $0985A4-$095C24 "Levels/00_EHZ/Tile/8.bin"
+Extract $095C24 $0985A4-$095C24 "Levels/01/Tile/8.bin"			;EHZ
+Extract $095C24 $0985A4-$095C24 "Levels/02_WZ/Tile/8.bin"		;EHZ
+Extract $095C24 $0985A4-$095C24 "Levels/03/Tile/8.bin"			;EHZ
+Extract $095C24 $0985A4-$095C24 "Levels/09/Tile/8.bin"			;EHZ
+Extract $095C24 $0985A4-$095C24 "Levels/07_HTZ/Tile/8C/Pri.bin"		;EHZ
+Extract $098AB4 $099D34-$098AB4 "Levels/07_HTZ/Tile/8C/Sup.bin"		;HTZ Patch ($3F80)
+Extract $09DB64 $0A06C4-$09DB64 "Levels/04_MTZ/Tile/8.bin"
+Extract $09DB64 $0A06C4-$09DB64 "Levels/05_MTZ/Tile/8.bin"
+Extract $0A4204 $0A6834-$0A4204 "Levels/0A_OOZ/Tile/8.bin"
+Extract $0A4204 $0A6834-$0A4204 "Levels/08_HPZ/Tile/8.bin"		;OOZ
+Extract $0A9D74 $0AD454-$0A9D74 "Levels/0B_MCZ/Tile/8.bin"
+Extract $0B0894 $0B2CF4-$0B0894 "Levels/0C_CNZ/Tile/8.bin"
+Extract $0B6174 $0B90F4-$0B6174 "Levels/0D_CPZ/Tile/8.bin"
+Extract $0B6174 $0B90F4-$0B6174 "Levels/0E_DEZ/Tile/8.bin"		;CPZ
+Extract $0BCC24 $0C1434-$0BCC24 "Levels/0F_ARZ/Tile/8.bin"
+Extract $0C5004 $0C7EC4-$0C5004 "Levels/10_SCZ/Tile/8.bin"
+Extract $0C5004 $0C7EC4-$0C5004 "Levels/06_WFZ/Tile/8C/Pri.bin"		;SCZ
+Extract $0C7EC4 $0C85E4-$0C7EC4 "Levels/06_WFZ/Tile/8C/Sup.bin"		;WFZ Patch ($60E0)
+
+Extern	"#Batch/derecmp" "kd"	"Levels/06_WFZ/Tile/8C"		"Levels/06_WFZ/Tile/8U"
+Extern	"#Batch/TilPatch"	"Levels/06_WFZ/Tile/8U/Pri.bin"	"Levels/06_WFZ/Tile/8U/Sup.bin" "60E0"
+Extern	"#Batch/derecmp" "kc"	"Levels/06_WFZ/Tile/8U"		"Levels/06_WFZ/Tile/8C"
+Copy				"Levels/06_WFZ/Tile/8C/Pri.bin"	"Levels/06_WFZ/Tile/8.bin"
+Extern	"#Batch/derecmp" "kd"	"Levels/07_HTZ/Tile/8C"		"Levels/07_HTZ/Tile/8U"
+Extern	"#Batch/TilPatch"	"Levels/07_HTZ/Tile/8U/Pri.bin"	"Levels/07_HTZ/Tile/8U/Sup.bin" "3F80"
+Extern	"#Batch/derecmp" "kc"	"Levels/07_HTZ/Tile/8U"		"Levels/07_HTZ/Tile/8C"
+Copy				"Levels/07_HTZ/Tile/8C/Pri.bin"	"Levels/07_HTZ/Tile/8.bin"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+; Collision Data Extract
+;;;;;;;;;;;;;;;;;;;;;;;;
+
+Extract $042D50 $042E50-$042D50 "Collisn/AngleMap.bin"
+Extract $042E50 $043E50-$042E50 "Collisn/HMaps.bin"
+Extract $043E50 $044E50-$043E50 "Collisn/HMapsR.bin"
+
+Extract $044E50 $044F40-$044E50 "Levels/00_EHZ/Collisn/0.bin"
+Extract $044E50 $044F40-$044E50 "Levels/07_HTZ/Collisn/0.bin"		;EHZ0
+Extract $044E50 $044F40-$044E50 "Levels/01/Collisn/0.bin"		;EHZ0
+Extract $044E50 $044F40-$044E50 "Levels/03/Collisn/0.bin"		;EHZ0
+Extract $044E50 $044F40-$044E50 "Levels/09/Collisn/0.bin"		;EHZ0
+Extract $044F40 $045040-$044F40 "Levels/00_EHZ/Collisn/1.bin"
+Extract $044F40 $045040-$044F40 "Levels/07_HTZ/Collisn/1.bin"		;EHZ1
+Extract $044F40 $045040-$044F40 "Levels/01/Collisn/1.bin"		;EHZ1
+Extract $044F40 $045040-$044F40 "Levels/03/Collisn/1.bin"		;EHZ1
+Extract $044F40 $045040-$044F40 "Levels/09/Collisn/1.bin"		;EHZ1
+Extract $045040 $045100-$045040 "Levels/04_MTZ/Collisn/0.bin"
+Extract $045040 $045100-$045040 "Levels/04_MTZ/Collisn/1.bin"		;MTZ0
+Extract $045040 $045100-$045040 "Levels/02_WZ/Collisn/0.bin"		;MTZ0
+Extract $045040 $045100-$045040 "Levels/05_MTZ/Collisn/0.bin"
+Extract $045040 $045100-$045040 "Levels/05_MTZ/Collisn/1.bin"		;MTZ0
+Extract $045040 $045100-$045040 "Levels/02_WZ/Collisn/1.bin"		;MTZ0
+Extract $045100 $045200-$045100 "Levels/0A_OOZ/Collisn/0.bin"
+Extract $045100 $045200-$045100 "Levels/0A_OOZ/Collisn/1.bin"		;OOZ0
+Extract $045100 $045200-$045100 "Levels/08_HPZ/Collisn/0.bin"
+Extract $045100 $045200-$045100 "Levels/08_HPZ/Collisn/1.bin"		;OOZ0
+Extract $045200 $0452A0-$045200 "Levels/0B_MCZ/Collisn/0.bin"
+Extract $045200 $0452A0-$045200 "Levels/0B_MCZ/Collisn/1.bin"		;MCZ0
+Extract $0452A0 $045330-$0452A0 "Levels/0C_CNZ/Collisn/0.bin"
+Extract $045330 $0453C0-$045330 "Levels/0C_CNZ/Collisn/1.bin"
+Extract $0453C0 $0454E0-$0453C0 "Levels/0D_CPZ/Collisn/0.bin"
+Extract $0453C0 $0454E0-$0453C0 "Levels/0E_DEZ/Collisn/0.bin"		;CPZ0
+Extract $0454E0 $045610-$0454E0 "Levels/0D_CPZ/Collisn/1.bin"
+Extract $0454E0 $045610-$0454E0 "Levels/0E_DEZ/Collisn/1.bin"		;CPZ1
+Extract $045610 $045760-$045610 "Levels/0F_ARZ/Collisn/0.bin"
+Extract $045760 $0458C0-$045760 "Levels/0F_ARZ/Collisn/1.bin"
+Extract $0458C0 $0459A0-$0458C0 "Levels/10_SCZ/Collisn/0.bin"
+Extract $0458C0 $0459A0-$0458C0 "Levels/06_WFZ/Collisn/0.bin"		;SCZ0
+Extract $0459A0 $045A80-$0459A0 "Levels/10_SCZ/Collisn/1.bin"
+Extract $0459A0 $045A80-$0459A0 "Levels/06_WFZ/Collisn/1.bin"		;SCZ1
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Level Layout Data Extract
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+Extract $045AC4 $045C84-$045AC4 "Levels/00_EHZ/Layout/1.bin"
+Extract $045AC4 $045C84-$045AC4 "Levels/01/Layout/1.bin"		;EHZ1
+Extract $045AC4 $045C84-$045AC4 "Levels/01/Layout/2.bin"		;EHZ1
+Extract $045AC4 $045C84-$045AC4 "Levels/02_WZ/Layout/1.bin"		;EHZ1
+Extract $045AC4 $045C84-$045AC4 "Levels/02_WZ/Layout/2.bin"		;EHZ1
+Extract $045AC4 $045C84-$045AC4 "Levels/03/Layout/1.bin"		;EHZ1
+Extract $045AC4 $045C84-$045AC4 "Levels/03/Layout/2.bin"		;EHZ1
+Extract $045AC4 $045C84-$045AC4 "Levels/09/Layout/1.bin"		;EHZ1
+Extract $045AC4 $045C84-$045AC4 "Levels/09/Layout/2.bin"		;EHZ1
+Extract $045C84 $045E74-$045C84 "Levels/00_EHZ/Layout/2.bin"
+Extract $045E74 $0462A4-$045E74 "Levels/04_MTZ/Layout/1.bin"
+Extract $0462A4 $046684-$0462A4 "Levels/04_MTZ/Layout/2.bin"
+Extract $046684 $046B04-$046684 "Levels/05_MTZ/Layout/1.bin"
+Extract $046684 $046B04-$046684 "Levels/05_MTZ/Layout/2.bin"		;MTZ2_1
+Extract $046B04 $046DD4-$046B04 "Levels/06_WFZ/Layout/1.bin"
+Extract $046B04 $046DD4-$046B04 "Levels/06_WFZ/Layout/2.bin"		;WFZ1
+Extract $046DD4 $047044-$046DD4 "Levels/07_HTZ/Layout/1.bin"
+Extract $047044 $047404-$047044 "Levels/07_HTZ/Layout/2.bin"
+Extract $047404 $047784-$047404 "Levels/0A_OOZ/Layout/1.bin"
+Extract $047404 $047784-$047404 "Levels/08_HPZ/Layout/1.bin"		;OOZ1
+Extract $047404 $047784-$047404 "Levels/08_HPZ/Layout/2.bin"		;OOZ1
+Extract $047784 $047B24-$047784 "Levels/0A_OOZ/Layout/2.bin"
+Extract $047B24 $047D24-$047B24 "Levels/0B_MCZ/Layout/1.bin"
+Extract $047D24 $047FF4-$047D24 "Levels/0B_MCZ/Layout/2.bin"
+Extract $047FF4 $0483C4-$047FF4 "Levels/0C_CNZ/Layout/1.bin"
+Extract $0483C4 $048774-$0483C4 "Levels/0C_CNZ/Layout/2.bin"
+Extract $048774 $048A84-$048774 "Levels/0D_CPZ/Layout/1.bin"
+Extract $048A84 $048DE4-$048A84 "Levels/0D_CPZ/Layout/2.bin"
+Extract $048DE4 $048E94-$048DE4 "Levels/0E_DEZ/Layout/1.bin"
+Extract $048DE4 $048E94-$048DE4 "Levels/0E_DEZ/Layout/2.bin"		;DEZ1
+Extract $048E94 $049264-$048E94 "Levels/0F_ARZ/Layout/1.bin"
+Extract $049264 $049634-$049264 "Levels/0F_ARZ/Layout/2.bin"
+Extract $049634 $049714-$049634 "Levels/10_SCZ/Layout/1.bin"
+Extract $049634 $049714-$049634 "Levels/10_SCZ/Layout/2.bin"		;SCZ1
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Level Block Data Extract
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;
+; Normal
+;;;;
+
+Extract $094E74 $095C24-$094E74 "Levels/00_EHZ/Tile/16.bin"
+Extract $094E74 $095C24-$094E74 "Levels/01/Tile/16.bin"			;EHZ
+Extract $094E74 $095C24-$094E74 "Levels/02_WZ/Tile/16.bin"		;EHZ
+Extract $094E74 $095C24-$094E74 "Levels/03/Tile/16.bin"			;EHZ
+Extract $094E74 $095C24-$094E74 "Levels/09/Tile/16.bin"			;EHZ
+Extract $094E74 $095C24-$094E74 "Levels/07_HTZ/Tile/16C/Pri.bin"	;EHZ
+Extract $0985A4 $098AB4-$0985A4 "Levels/07_HTZ/Tile/16C/Sup.bin"	;HTZ Patch (980)
+Extract $09CFD4 $09DB64-$09CFD4 "Levels/04_MTZ/Tile/16.bin"
+Extract $09CFD4 $09DB64-$09CFD4 "Levels/05_MTZ/Tile/16.bin"
+Extract $0A3364 $0A4204-$0A3364 "Levels/0A_OOZ/Tile/16.bin"
+Extract $0A3364 $0A4204-$0A3364 "Levels/08_HPZ/Tile/16.bin"		;OOZ
+Extract $0A8D04 $0A9D74-$0A8D04 "Levels/0B_MCZ/Tile/16.bin"
+Extract $0AFFC4 $0B0894-$0AFFC4 "Levels/0C_CNZ/Tile/16.bin"
+Extract $0B5234 $0B6174-$0B5234 "Levels/0D_CPZ/Tile/16.bin"
+Extract $0B5234 $0B6174-$0B5234 "Levels/0E_DEZ/Tile/16.bin"		;CPZ
+Extract $0BB944 $0BCC24-$0BB944 "Levels/0F_ARZ/Tile/16.bin"
+Extract $0C4074 $0C5004-$0C4074 "Levels/10_SCZ/Tile/16.bin"
+Extract $0C4074 $0C5004-$0C4074 "Levels/06_WFZ/Tile/16.bin"		;SCZ
+
+Extern	"#Batch/derecmp" "kd"	"Levels/07_HTZ/Tile/16C"		"Levels/07_HTZ/Tile/16U"
+Extern	"#Batch/TilPatch"	"Levels/07_HTZ/Tile/16U/Pri.bin"	"Levels/07_HTZ/Tile/16U/Sup.bin" "980"
+Extern	"#Batch/derecmp" "kc"	"Levels/07_HTZ/Tile/16U"		"Levels/07_HTZ/Tile/16C"
+Copy				"Levels/07_HTZ/Tile/16C/Pri.bin"	"Levels/07_HTZ/Tile/16.bin"
+
+;;;;
+; Animated
+;;;;
+
+Extract $040372 $0403EE-$040372 "Levels/00_EHZ/Tile/Ani16.bin"
+Extract $040372 $0403EE-$040372 "Levels/07_HTZ/Tile/Ani16.bin"		;EHZ
+Extract $0403EE $0404C2-$0403EE "Levels/04_MTZ/Tile/Ani16.bin"
+Extract $0403EE $0404C2-$0403EE "Levels/05_MTZ/Tile/Ani16.bin"
+Extract $0404C2 $0405B6-$0404C2 "Levels/08_HPZ/Tile/Ani16.bin"
+Extract $0405B6 $04061A-$0405B6 "Levels/0A_OOZ/Tile/Ani16.bin"
+Extract $04061A $0406BE-$04061A "Levels/0C_CNZ/Tile/Ani16.bin"
+Extract $0406BE $040762-$0406BE "Levels/0C_CNZ/Tile/Ani16_2P.bin"
+Extract $040762 $04076E-$040762 "Levels/0D_CPZ/Tile/Ani16.bin"
+Extract $04076E $04077A-$04076E "Levels/0E_DEZ/Tile/Ani16.bin"
+Extract $04077A $0407BE-$04077A "Levels/0F_ARZ/Tile/Ani16.bin"
+Extract $0407BE $0407C0-$0407BE "Levels/01/Tile/Ani16.bin"		;Blank
+Extract $0407BE $0407C0-$0407BE "Levels/02_WZ/Tile/Ani16.bin"		;Blank
+Extract $0407BE $0407C0-$0407BE "Levels/03/Tile/Ani16.bin"		;Blank
+Extract $0407BE $0407C0-$0407BE "Levels/09/Tile/Ani16.bin"		;Blank
+Extract $0407BE $0407C0-$0407BE "Levels/0B_MCZ/Tile/Ani16.bin"		;Blank
+Extract $0407BE $0407C0-$0407BE "Levels/10_SCZ/Tile/Ani16.bin"		;Blank
+Extract $0407BE $0407C0-$0407BE "Levels/06_WFZ/Tile/Ani16.bin"		;Blank
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Level Metatile Data Extract
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+Extract $099D34 $09CFD4-$099D34 "Levels/00_EHZ/Tile/128.bin"
+Extract $099D34 $09CFD4-$099D34 "Levels/01/Tile/128.bin"		;EHZ
+Extract $099D34 $09CFD4-$099D34 "Levels/02_WZ/Tile/128.bin"		;EHZ
+Extract $099D34 $09CFD4-$099D34 "Levels/03/Tile/128.bin"		;EHZ
+Extract $099D34 $09CFD4-$099D34 "Levels/09/Tile/128.bin"		;EHZ
+Extract $099D34 $09CFD4-$099D34 "Levels/07_HTZ/Tile/128.bin"		;EHZ
+Extract $0A06C4 $0A3364-$0A06C4 "Levels/04_MTZ/Tile/128.bin"
+Extract $0A06C4 $0A3364-$0A06C4 "Levels/05_MTZ/Tile/128.bin"
+Extract $0A6834 $0A8D04-$0A6834 "Levels/0A_OOZ/Tile/128.bin"
+Extract $0A6834 $0A8D04-$0A6834 "Levels/08_HPZ/Tile/128.bin"		;OOZ
+Extract $0AD454 $0AFFC4-$0AD454 "Levels/0B_MCZ/Tile/128.bin"
+Extract $0B2CF4 $0B5234-$0B2CF4 "Levels/0C_CNZ/Tile/128.bin"
+Extract $0B90F4 $0BB944-$0B90F4 "Levels/0D_CPZ/Tile/128.bin"
+Extract $0B90F4 $0BB944-$0B90F4 "Levels/0E_DEZ/Tile/128.bin"
+Extract $0C1434 $0C4074-$0C1434 "Levels/0F_ARZ/Tile/128.bin"
+Extract $0C85E4 $0CA904-$0C85E4 "Levels/10_SCZ/Tile/128.bin"
+Extract $0C85E4 $0CA904-$0C85E4 "Levels/06_WFZ/Tile/128.bin"		;SCZ
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Special Stage Mappings Data Extract
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+Extract $0CA904 $0CADA8-$0CA904 "SStage/Maps/Up_1.bin"
+Extract $0CADA8 $0CB376-$0CADA8 "SStage/Maps/Up_2.bin"
+Extract $0CB376 $0CB92E-$0CB376 "SStage/Maps/Up_3.bin"
+Extract $0CB92E $0CBF92-$0CB92E "SStage/Maps/Up_4.bin"
+Extract $0CBF92 $0CC5BE-$0CBF92 "SStage/Maps/Up_5.bin"
+Extract $0CC5BE $0CCC7A-$0CC5BE "SStage/Maps/Up_6.bin"
+Extract $0CCC7A $0CD282-$0CCC7A "SStage/Maps/Up_7.bin"
+Extract $0CD282 $0CD7C0-$0CD282 "SStage/Maps/Up_8.bin"
+Extract $0CD7C0 $0CDD44-$0CD7C0 "SStage/Maps/Up_9.bin"
+Extract $0CDD44 $0CE2BE-$0CDD44 "SStage/Maps/Up_10.bin"
+Extract $0CE2BE $0CE7DE-$0CE2BE "SStage/Maps/Up_11.bin"
+Extract $0CE7DE $0CEC52-$0CE7DE "SStage/Maps/Up_12.bin"
+Extract $0CEC52 $0CF0BC-$0CEC52 "SStage/Maps/Up_13.bin"
+Extract $0CF0BC $0CF580-$0CF0BC "SStage/Maps/Up_14.bin"
+Extract $0CF580 $0CFA00-$0CF580 "SStage/Maps/Up_15.bin"
+Extract $0CFA00 $0CFE4A-$0CFA00 "SStage/Maps/Up_16.bin"
+Extract $0CFE4A $0D028C-$0CFE4A "SStage/Maps/Up_17.bin"
+Extract $0D028C $0D090A-$0D028C "SStage/Maps/Strait_1.bin"
+Extract $0D090A $0D0EA6-$0D090A "SStage/Maps/Strait_2.bin"
+Extract $0D0EA6 $0D1400-$0D0EA6 "SStage/Maps/Strait_3.bin"
+Extract $0D1400 $0D19FC-$0D1400 "SStage/Maps/Strait_4.bin"
+Extract $0D19FC $0D1EAC-$0D19FC "SStage/Maps/Down_1.bin"
+Extract $0D1EAC $0D23AE-$0D1EAC "SStage/Maps/Down_2.bin"
+Extract $0D23AE $0D27C6-$0D23AE "SStage/Maps/Down_3.bin"
+Extract $0D27C6 $0D2C14-$0D27C6 "SStage/Maps/Down_4.bin"
+Extract $0D2C14 $0D3092-$0D2C14 "SStage/Maps/Down_5.bin"
+Extract $0D3092 $0D3522-$0D3092 "SStage/Maps/Down_6.bin"
+Extract $0D3522 $0D39EC-$0D3522 "SStage/Maps/Down_7.bin"
+Extract $0D39EC $0D3F78-$0D39EC "SStage/Maps/Down_8.bin"
+Extract $0D3F78 $0D4660-$0D3F78 "SStage/Maps/Down_9.bin"
+Extract $0D4660 $0D4DA6-$0D4660 "SStage/Maps/Down_10.bin"
+Extract $0D4DA6 $0D53FC-$0D4DA6 "SStage/Maps/Down_11.bin"
+Extract $0D53FC $0D5958-$0D53FC "SStage/Maps/Down_12.bin"
+Extract $0D5958 $0D5F02-$0D5958 "SStage/Maps/Down_13.bin"
+Extract $0D5F02 $0D6596-$0D5F02 "SStage/Maps/Down_14.bin"
+Extract $0D6596 $0D6BAA-$0D6596 "SStage/Maps/Down_15.bin"
+Extract $0D6BAA $0D702E-$0D6BAA "SStage/Maps/Down_16.bin"
+Extract $0D702E $0D749C-$0D702E "SStage/Maps/Down_17.bin"
+Extract $0D749C $0D7912-$0D749C "SStage/Maps/Right_1.bin"
+Extract $0D7912 $0D7DAA-$0D7912 "SStage/Maps/Right_2.bin"
+Extract $0D7DAA $0D8250-$0D7DAA "SStage/Maps/Right_3.bin"
+Extract $0D8250 $0D85F8-$0D8250 "SStage/Maps/Right_4.bin"
+Extract $0D85F8 $0D89EC-$0D85F8 "SStage/Maps/Right_5.bin"
+Extract $0D89EC $0D8E24-$0D89EC "SStage/Maps/Right_6.bin"
+Extract $0D8E24 $0D92B6-$0D8E24 "SStage/Maps/Right_7.bin"
+Extract $0D92B6 $0D9778-$0D92B6 "SStage/Maps/Right_8.bin"
+Extract $0D9778 $0D9B80-$0D9778 "SStage/Maps/Right_9.bin"
+Extract $0D9B80 $0DA016-$0D9B80 "SStage/Maps/Right_10.bin"
+Extract $0DA016 $0DA4CE-$0DA016 "SStage/Maps/Right_11.bin"
+Extract $0DA4CE $0DAB20-$0DA4CE "SStage/Maps/BRight_1.bin"
+Extract $0DAB20 $0DB086-$0DAB20 "SStage/Maps/BRight_2.bin"
+Extract $0DB086 $0DB5AE-$0DB086 "SStage/Maps/BRight_3.bin"
+Extract $0DB5AE $0DBB62-$0DB5AE "SStage/Maps/BRight_4.bin"
+Extract $0DBB62 $0DC154-$0DBB62 "SStage/Maps/BRight_5.bin"
+Extract $0DC154 $0DC5E8-$0DC154 "SStage/Maps/BRight_6.bin"
+Extract $0DC5E8 $0DCA38-$0DC5E8 "SStage/Maps/BRight_7.bin"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Special Stage Graphic Data Extract
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+Extract $0DCA38 $0DCD68-$0DCA38 "SStage/Art.bin"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Special Stage Layout Data Extract
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+Extract $0E24FE $0E34EE-$0E24FE "SStage/Comp/Prspctv.bin" 		;"Perspective data" (Kosinski)
+Extract $0E34EE $0E35F2-$0E34EE "SStage/Comp/Layouts.bin" 		;(Nemesis)
+Extract $0E35F2 $0E427D-$0E35F2 "SStage/Comp/Objects.bin" 		;(Kosinski)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Sprite Placement Data Extract
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;
+; Rings
+;;;;
+
+Extract $0E4344 $0E456A-$0E4344 "Levels/00_EHZ/Rng/1.bin"
+Extract $0E456A $0E47AC-$0E456A "Levels/00_EHZ/Rng/2.bin"
+Extract $0E47AC $0E47AE-$0E47AC "Levels/01/Rng/1.bin"
+Extract $0E47AE $0E47B0-$0E47AE "Levels/01/Rng/2.bin"
+Extract $0E47B0 $0E47B2-$0E47B0 "Levels/02_WZ/Rng/1.bin"
+Extract $0E47B2 $0E47B4-$0E47B2 "Levels/02_WZ/Rng/2.bin"
+Extract $0E47B4 $0E47B6-$0E47B4 "Levels/03/Rng/1.bin"
+Extract $0E47B6 $0E47B8-$0E47B6 "Levels/03/Rng/2.bin"
+Extract $0E47B8 $0E4A2A-$0E47B8 "Levels/04_MTZ/Rng/1.bin"
+Extract $0E4A2A $0E4C48-$0E4A2A "Levels/04_MTZ/Rng/2.bin"
+Extract $0E4C48 $0E4D72-$0E4C48 "Levels/05_MTZ/Rng/1.bin"
+Extract $0E4D72 $0E4D74-$0E4D72 "Levels/05_MTZ/Rng/2.bin"
+Extract $0E4D74 $0E4EAA-$0E4D74 "Levels/07_HTZ/Rng/1.bin"
+Extract $0E4EAA $0E50E8-$0E4EAA "Levels/07_HTZ/Rng/2.bin"
+Extract $0E50E8 $0E525A-$0E50E8 "Levels/08_HPZ/Rng/1.bin"
+Extract $0E525A $0E525C-$0E525A "Levels/08_HPZ/Rng/2.bin"
+Extract $0E525C $0E525E-$0E525C "Levels/09/Rng/1.bin"
+Extract $0E525E $0E5260-$0E525E "Levels/09/Rng/2.bin"
+Extract $0E5260 $0E5422-$0E5260 "Levels/0A_OOZ/Rng/1.bin"
+Extract $0E5422 $0E5598-$0E5422 "Levels/0A_OOZ/Rng/2.bin"
+Extract $0E5598 $0E570E-$0E5598 "Levels/0B_MCZ/Rng/1.bin"
+Extract $0E570E $0E5944-$0E570E "Levels/0B_MCZ/Rng/2.bin"
+Extract $0E5944 $0E5B7E-$0E5944 "Levels/0C_CNZ/Rng/1.bin"
+Extract $0E5B7E $0E5E2C-$0E5B7E "Levels/0C_CNZ/Rng/2.bin"
+Extract $0E5E2C $0E5F9E-$0E5E2C "Levels/0D_CPZ/Rng/1.bin"
+Extract $0E5F9E $0E6150-$0E5F9E "Levels/0D_CPZ/Rng/2.bin"
+Extract $0E6150 $0E6152-$0E6150 "Levels/0E_DEZ/Rng/1.bin"
+Extract $0E6152 $0E6154-$0E6152 "Levels/0E_DEZ/Rng/2.bin"
+Extract $0E6154 $0E6292-$0E6154 "Levels/06_WFZ/Rng/1.bin"
+Extract $0E6292 $0E6294-$0E6292 "Levels/06_WFZ/Rng/2.bin"
+Extract $0E6294 $0E642E-$0E6294 "Levels/0F_ARZ/Rng/1.bin"
+Extract $0E642E $0E6684-$0E642E "Levels/0F_ARZ/Rng/2.bin"
+Extract $0E6684 $0E66D6-$0E6684 "Levels/10_SCZ/Rng/1.bin"
+Extract $0E66D6 $0E66D8-$0E66D6 "Levels/10_SCZ/Rng/2.bin"
+
+;;;;
+; Sprites
+;;;;
+
+Extract $01781A $01795E-$01781A "Levels/0C_CNZ/Obj/Bump1.bin"
+Extract $01795E $017AA2-$01795E "Levels/0C_CNZ/Obj/Bump2.bin"
+Extract $01802A $018492-$01802A "Levels/0C_CNZ/Obj/2P_1.bin"
+Extract $018492 $018888-$018492 "Levels/0C_CNZ/Obj/2P_2.bin"
+
+Extract $0E684A $0E6B7A-$0E684A "Levels/00_EHZ/Obj/1.bin"
+Extract $0E6B7A $0E6F34-$0E6B7A "Levels/00_EHZ/Obj/2.bin"
+Extract $0E6F34 $0E73C0-$0E6F34 "Levels/04_MTZ/Obj/1.bin"
+Extract $0E73C0 $0E78EE-$0E73C0 "Levels/04_MTZ/Obj/2.bin"
+Extract $0E78EE $0E7F48-$0E78EE "Levels/05_MTZ/Obj/1.bin"
+Extract $0E78EE $0E7F48-$0E78EE "Levels/05_MTZ/Obj/2.bin"		;MTZ2_1
+Extract $0E7F48 $0E82FC-$0E7F48 "Levels/06_WFZ/Obj/1.bin"
+Extract $0E82FC $0E8302-$0E82FC "Levels/06_WFZ/Obj/2.bin"
+Extract $0E8302 $0E8668-$0E8302 "Levels/07_HTZ/Obj/1.bin"
+Extract $0E8668 $0E8C80-$0E8668 "Levels/07_HTZ/Obj/2.bin"
+Extract $0E8C80 $0E8D94-$0E8C80 "Levels/08_HPZ/Obj/1.bin"
+Extract $0E8D94 $0E8D9A-$0E8D94 "Levels/08_HPZ/Obj/2.bin"
+Extract $0E8DA0 $0E9214-$0E8DA0 "Levels/0A_OOZ/Obj/1.bin"
+Extract $0E9214 $0E968E-$0E9214 "Levels/0A_OOZ/Obj/2.bin"
+Extract $0E968E $0E99A0-$0E968E "Levels/0B_MCZ/Obj/1.bin"
+Extract $0E99A0 $0E9D1E-$0E99A0 "Levels/0B_MCZ/Obj/2.bin"
+Extract $0E9D1E $0EA3D8-$0E9D1E "Levels/0C_CNZ/Obj/1.bin"
+Extract $0EA3D8 $0EA9D2-$0EA3D8 "Levels/0C_CNZ/Obj/2.bin"
+Extract $0EA9D2 $0EAD6E-$0EA9D2 "Levels/0D_CPZ/Obj/1.bin"
+Extract $0EAD6E $0EB230-$0EAD6E "Levels/0D_CPZ/Obj/2.bin"
+Extract $0EB230 $0EB254-$0EB230 "Levels/0E_DEZ/Obj/1.bin"
+Extract $0EB254 $0EB25A-$0EB254 "Levels/0E_DEZ/Obj/2.bin"
+Extract $0EB25A $0EB6A4-$0EB25A "Levels/0F_ARZ/Obj/1.bin"
+Extract $0EB6A4 $0EBBDE-$0EB6A4 "Levels/0F_ARZ/Obj/2.bin"
+Extract $0EBBDE $0EBD4C-$0EBBDE "Levels/10_SCZ/Obj/1.bin"
+Extract $0EBD4C $0EBD52-$0EBD4C "Levels/10_SCZ/Obj/2.bin"
+
+Extract $0EBD52 $0EBD58-$0EBD52 "Levels/01/Obj/1.bin"			;Blank
+Extract $0EBD52 $0EBD58-$0EBD52 "Levels/01/Obj/2.bin"			;Blank
+Extract $0EBD52 $0EBD58-$0EBD52 "Levels/02_WZ/Obj/1.bin"		;Blank
+Extract $0EBD52 $0EBD58-$0EBD52 "Levels/02_WZ/Obj/2.bin"		;Blank
+Extract $0EBD52 $0EBD58-$0EBD52 "Levels/03/Obj/1.bin"			;Blank
+Extract $0EBD52 $0EBD58-$0EBD52 "Levels/03/Obj/2.bin"			;Blank
+Extract $0EBD52 $0EBD58-$0EBD52 "Levels/09/Obj/1.bin"			;Blank
+Extract $0EBD52 $0EBD58-$0EBD52 "Levels/09/Obj/2.bin"			;Blank
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+; Special Code Extract ;
+;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;Titlecard Loading
+;;;
+
+Extract $0157A4 $0157C2-$0157A4 "Misc/TCLoad.bin"			;TC Load Routine uses relative addressing, it needs to be moved too
+Extract $0157C4 $0157D0-$0157C4 "Misc/TCLoad2.bin"			;TC Load Routine uses relative addressing, it needs to be moved too
+Extract $0157D2 $015820-$0157D2 "Misc/TCLoad3.bin"			;TC Load Routine uses relative addressing, it needs to be moved too

@@ -1,0 +1,130 @@
+AMPS optimizer notes:
+* optimizer will take input data as a generic stream and will also output as a generic stream. It is up to the caller to implement the specific behavior attached to their use case
+* no specific output format is to be expected
+* every line starts a new statement, and each statement must be in correct format (will be strict). Newlines can only be \n
+* no empty lines should be present
+* line must start with statement identifier, must not have spaces or tabs!
+* values are either in hex ($FF) or decimal (255). Values can be signed or unsigned as desired (unless otherwise stated)
+* all referenced labels must exist
+* all arguments which it makes sense to give them equates, should have equates. For example, DAC notes, PSG4 notes, arguments to PSG noise command, etc should have the appropriate equate applied. converter will not do this for you.
+* all code must be valid for SMPS2ASM format, invalid code will be rejected
+* all code must comply with smps2asm caveats. For example, enabling hold flag on the first note of a song is illegal.
+* header format must comply with specific modifications
+
+
+creating comments:
+* comments can be any text string on a single line
+* comments do not have to contain an actual comment (or text)
+* comments must not be multiline; use multiple comments for that
+* comments should not influence how an assembler will interpret the data (so no hacky code-generating comments!!!)
+* optimizer will impose a structure of newlines on the output, but comments may be specifically added as a part of the data to aid in something. This feature *may* decrease the optimizer's ability to fully optimize the output file!
+* few examples of how comments may be used
+;; this is a comment that will appear at the beginning of the line!
+;	; this comment is indented
+;
+;	message "Remember to check this area for bugs"
+
+
+creating labels:
+* labels can use A-Z, a-z, 0-9, _, and . symbols, but should comply with assembler specifications (both ASM68K and AS). For example, label can not start with a number
+* labels may only be used once (despite . being the local label symbol by default, it will not be treated as a local label by input data)
+* label names may not be kept. Label names are only for indetifying relationships in code
+* label names will have a special formula for creation which can be influenced by the header
+* example of creating a new label
+
+:HelloWorld_FM1
+
+
+creating notes:
+* notes work little different in optimizer. It has no limitation in length of a note, so it should not use the hold flag to extend notes. Optimizer will automatically do this.
+* notes must be valid for the current channel. PSG in specific has more limitations on enabled notes
+* note names are case insensitive, but should preferably follow the style set out by SMPS2ASM
+* notes or holds and their associated lengths should be in the same line
+* an entry must contain a hold or a note, plus the length at all times
+* note length must only be an unsigned 16-bit number
+* note names must follow the current SMPS2ASM convention. This convention might change between drivers.
+* note format example:
+
++ sHold:$01 nRst:$1234 nAs6:$01 nC0:12
+
+
+creating commands:
+* commands will use the native SMPS2ASM name and argument structure
+* commands and values will be processed, so their arguments must match SMPS2ASM (not too many, few, or incorrect arguments)
+* optimizer may change commands or remove them
+* few command examples:
+
+-ssPortaTgtNote nA4
+-sRet
+-sModAMPS $00 $01 $04 $20
+
+
+creating command alias:
+* command alias allows using a different name for a command. The alias will be outputted to file, but will be processed as the target command
+* command alias can not replace an existing command
+* multiple command aliases with the same name can not be made
+* command aliases can not be deleted
+* example of creating an alias for ssVol:
+
+?alias ssVol ssVolPSG
+
+
+creating fm voices:
+* fm voices can be initialized anywhere
+* fm voices use a special format to give it a name and ensure start and end points
+* fm voices must have an unique name
+* fm voices are assumed to use the correct format; if not, this will cause massive issues
+* fm voices are not guaranteed to appear in any specific order. They may also be merged together
+* fm voice example:
+
+?fmvoice start ExampleName
+-spAlgorithm $04
+-spFeedback $04
+	[...]
+-spTotalLv $07 $16 $00 $00
+?fmvoice end
+
+
+header format:
+* header contains information about the upcoming track
+* header also contains metadata about the conversion
+
+* how to start the header:
+?header start version=1.0
+
+* next, defined enabled features, according to their name in AMPS. example:
+?header features FEATURE_MODULATION FEATURE_PORTAMENTO FEATURE_MODENV FEATURE_FM3SM
+
+* next, some information about the song flags. These are necessary to configure optimizer. Some flags are required to be defined
+* label - The base label for the song, to use for label generation
+* opt - Number that explains the level of optimization. 0 = no optimization. 1 = basic simple optimizations. 2 = optimizations that require adding commands. 3 = optimizations that allow modifying or removing commands. 4 = optimizations that require heavily modifying the structure of the code. 5 = Enable all optimizations that are possible with features.
+* type - 0 for music, 1 for sfx
+* quiet - 1 for disabling console output.
+* fixvoices - 1 for enabling automatic voice fix. This will shift voices a few ticks if possible, and too many voices loaded in a single tick.
+* tempo - The tempo value for a music track. Must not be enabled for SFX.
+* nouw - 1 for disabling underwater mode for this music track. Must not be enabled for SFX.
+* backup - 1 for enabling music back-up for this music track. Must not be enabled for SFX.
+* nopal - 1 for disabling PAL speed fix. Must not be enabled for SFX.
+
+* few example configurations:
+?header flags label=TestSongLabel opt=0 type=1 quiet=0 
+?header flags label=TestSongLabel opt=5 type=0 fixvoices=1 tempo=$1FE
+?header flags tempo=$00F2 nopal=1 nouw=1 label=CoolTest fixvoices=1
+
+* next, channels must be configured. In music mode, only the channel ID and target label is required, but in SFX mode, an additional priority is used.
+* valid channels are for music: FM1, FM2, FM3, FM4, FM5, FM6, DAC1, DAC2, PSG1, PSG2, PSG3, PSG4
+* additionally, to enable FM3 special mode at song start, instead of FM3, you can use: FM3OP1, FM3OP2, FM3OP3, FM3OP4
+* valid channels for sfx are: FM2, FM4, FM5, DAC1, PSG1, PSG2, PSG3, PSG4
+* note: if a sfx or a song uses PSG4, it can not use the sNoisePSG command. This will break the PSG mode.
+
+* few example configurations:
+?header channel FM1 TestSong_FM1
+?header channel FM3OP3 TestSong_FM3OP3
+?header channel PSG3 TestSFX_PSG3 $80
+
+* finally, header must be ended:
+?header end
+
+
+* ending the tracker file
+:-

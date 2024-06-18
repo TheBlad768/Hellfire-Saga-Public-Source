@@ -1,0 +1,12 @@
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$80, ctFM5, Sound_SegaKick_FM5,	$00, $05
+
+; FM5 Data
+Sound_SegaKick_FM5:
+	dc.b nRst, $02
+	sVoice		$3D
+	sModAMPS	$00, $01, $C0, $FF
+	dc.b nC0, $06
+	sStop

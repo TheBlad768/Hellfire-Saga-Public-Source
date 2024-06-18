@@ -1,0 +1,103 @@
+<head>
+<title>SonED2 - SonED2 Art Exporting</title>
+</head>
+<body>
+<b><center>SonED2 - SonED2 Art Exporting</center></b><br>
+<br>
+Most graphical data used in SonED2 can be exported to image files. All output
+files are 256-color TGA files of the sizes determined by the type and
+amount of data to export. These options appear in the "Misc" menu under
+"Export to image", according to the type of Project that is currently loaded:<br>
+<br>
+<li><b><a href="#Level">Standard Level Projects</a></b>
+<ul>
+ <li><a href="#Tiles">Tiles</a>
+ <li><a href="#Blocks">Blocks</a>
+ <li><a href="#Chunks">Chunks</a>
+ <li><a href="#Solidity">Solidity</a>
+ <li><a href="#Map">Level Maps</a>
+</ul>
+<br>
+<li><b><a href="#S1SS">Sonic 1 Rotating Special Stage Projects</a></b>
+<ul>
+ <li><a href="#S1SSLayout">Layout Maps</a>
+</ul>
+
+<br><a name="Level">
+<b>Standard Level Projects</b><br>
+<ul>
+<a name="Tiles">
+ <b>Tiles</b><br>
+ <br>
+ <ul>
+  8x8 Tiles are dumped in vertical list format running in 4 columns,
+  one for each palette row variation.<br>
+ </ul>
+
+ <br>
+ <br><a name="Blocks">
+ <b>Blocks</b><br>
+ <br>
+ <ul>
+  16x16 Blocks are dumped in vertical list format, running 1 column.<br>
+ </ul>
+
+ <br>
+ <br><a name="Chunks">
+ <b>Chunks</b><br>
+ <br>
+ <ul>
+  Chunks are dumped in a vertical list, running 2 columns.<br>
+ </ul>
+
+ <br>
+ <br><a name="Solidity">
+ <b>Solidity</b><br>
+ <br>
+ <ul>
+  Solidity is dumped in a chart format running 20 entries wide,
+  displaying each Height Map and its corresponding Angle value.<br>
+ </ul>
+
+ <br>
+ <br><a name="Map">
+ <b>Level Maps</b><br>
+ <br>
+ <ul>
+  Level maps are dumped as a full image, as seen by scrolling
+  through them in SonED2 or in-game. Either one of the two
+  planes (A, foreground or B, background) can be dumped with
+  only "High" priority tiles, only "Low" priority tiles, or both showing.<br>
+  <br>Plane
+  A dumps can also take advantage of the following additional output settings,
+  which must be toggled within the drop-down menu prior to selecting Plane A for exporting:<br>
+  <br>
+                   <ul><table>
+                   <tr><td nowrap><b>Include Solidity Path 0</b></td><td> - </td><td>The map is overlaid with a visual representation of the solidity for Path 0. Cannot be used with "Include Solidity Path 1".</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b>Include Solidity Path 1</b></td><td> - </td><td>The map is overlaid with a visual representation of the solidity for Path 1. Cannot be used with "Include Solidity Path 0".</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b>Include Angles In Solidity</b></td><td> - </td><td>The angle values of each of the Height Maps are overlaid onto the solidity</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b>Include Known Objects</b></td><td> - </td><td>All "Known" Objects (Objects with art defined within the Object Listing File) are drawn onto the map image, below the "High" plane. Cannot be used with "Include All Objects".</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b>Include All Objects</b></td><td> - </td><td>All Objects are drawn onto the map image, below the "High" plane. "Invisible" Objects, and Objects that are not defined within the Object Listing File are represented by a placeholder graphic. Cannot be used with "Include Known Objects".</td></tr>
+                   </table></ul>
+ </ul>
+</ul>
+
+<br>
+<br><a name="S1SS">
+<b>Sonic 1 Rotating Special Stage Projects</b><br>
+<ul>
+<a name="S1SSLayout">
+ <b>Layout Maps</b><br>
+ <br>
+ <ul>
+  Sonic 1 Special Stage Layout maps are dumped as a full image, as seen by scrolling
+  through them in SonED2 or in-game.<br>
+ </ul>
+</ul>
+
+</body>
+</html>

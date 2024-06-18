@@ -1,0 +1,546 @@
+<head>
+<title>Sonic the Hedgehog CD (PC DirectX Version) ROMulan Package</title>
+</head>
+<body>
+<b><center>Sonic the Hedgehog CD (PC DirectX Version) ROMulan Package</center></b><br>
+<br>
+The files contained herein are for use with <a href="http://stealth.hapisan.com/ROMulan">ROMulan</a> and <a href="http://stealth.hapisan.com/SonED">SonED2</a>, to provide a means of editing the levels of the PC DirectX of "Sonic the Hedgehog CD".<br>
+<br>
+Please visit the <a href="http://stealth.hapisan.com/Forum">official forum</a> for discussion on mods made using this package, to submit additions to the scripts, or to report any errors in the official distribution.<br>
+<br>
+
+<li><b><a href="#Setup">Setup and Basic Usage</a></b><br>
+<br>
+<li><b><a href="#Files">File Listing</a></b><br>
+<br>
+<li><b><a href="#Notes">Game Notes</a></b><br>
+<ul>
+ <li><a href="#SharedData">Separate Level Data, Shared Object Location Data</a><br>
+ <li><a href="#DataSize">Data File Size Restrictions</a><br>
+ <li><a href="#Animated">Animated Tiles and Palettes</a><br>
+ <li><a href="#CrossingPaths">Loops and Crossing Paths</a><br>
+ <li><a href="#SpinTunnels">Spin Tunnels</a><br>
+ <li><a href="#LevelBoundaries">Level Boundaries</a><br>
+ <li><a href="#Water">Fixed and Dynamic Water Heights</a><br>
+ <li><a href="#Current">Tidal Tempest Water Currents</a><br>
+ <li><a href="#QQZBG">Quartz Quadrant Inside/Outside Background Swap</a><br>
+ <li><a href="#SSZX">Stardust Speedway Interwinding "X" Paths</a><br>
+ <li><a href="#SSZP">Stardust Speedway Path Swap Panels</a><br>
+ <li><a href="#MMZC">Metallic Madness In-Front/Behind Flipping Curtains</a><br>
+ <li><a href="#BossArena">Boss Arenas</a><br>
+</ul>
+
+<br>
+<br>
+<br><a name="Setup">
+<b>Setup and Basic Usage</b>
+<ul>
+ This script set is "<b>destructive</b>". <i>This means that the input game files will be modified during the injection process</i>.
+ If the files become corrupt, or the original data must be restored for any reason, the desired files must be restored manually from another unmodified source before performing the Split again.<br>
+ <br>
+ <br>
+ <b>One-Time Setup Steps</b>
+ <ul>
+  <li>Navigate to the folder that contains "<b>soniccd.exe</b>", create a folder named "<b>ROMulan</b>". <i>The full path name of this folder must not contain any spaces</i><br>
+  <li>Unpack all files from this archive into the newly-created "<b>ROMulan</b>" folder<br>
+  <li>Run the included Batch File "<b>split.txt</b>" using ROMulan or SonED2's built-in ROMulan functionality  to retrieve the game's data<br>
+ </ul>
+ <br>
+ <br>
+ <b>Every Time Level Editing Steps</b>
+ <ul>
+  <li>Using SonED2's <b>"Open Project" option</b> in the "File" menu, navigate to the <b>"Projects" folder</b> included with this fileset and open any of the included Project Files to edit its corresponding level<br>
+  <li>Make any changes using SonED2 as described in its own documentation<br>
+  <li>Use SonED2's <b>"Save Project" option</b> by selecting it in the "File" menu or pressing <b>F3</b> to save the changes to their respective files (<i>This is important as the edited data is SonED2-internal; ROMulan expects to find all necessary data in the files listed by the injector script</i>)<br>
+ </ul>
+ <br>
+ <br>
+ <b>Other Modifications</b><br>
+ <ul>
+  <li>With the proper knowledge of the game, other changes can be made by modifying the two Batch Files and/or the <b>Injector Files contained in the "Inject" folder</b> as described by the ROMulan documentation. For relevant information, see the "<a href="#Notes">Game Notes</a>" section.<br>
+ </ul>
+ <br>
+ <br>
+ <b>Every Time Finalization Steps</b>
+ <ul>
+  <li>Run the included Batch File "<b>inject.txt</b>" using ROMulan or SonED2's built-in ROMulan functionality to inject the changes into the game<br>
+  <li>Run "<b>soniccd.exe</b>" from the folder just above the "inject.txt" script. The process is now complete<br>
+ </ul>
+</ul>
+
+<br>
+<br><a name="Files">
+<b>File Listing</b>
+<ul>
+ This section provides a complete listing of the folders and files included with this package, each with a brief description. Note that other files and folders will also appear in this folder after "split.txt" has been run, which belong to the data that was extracted from the game.<br>
+ <br>
+ <li><b>/_dlls</b> - DLLs used by "derecmp.exe" for data compression and decompression</a><br>
+ <br>
+ <ul><table>
+  <tr><td nowrap><li><b>Enigma.dll</b></td><td> - </td><td>DLL used by "derecmp.exe", containing functions for compressing and decompressing data with the "Enigma" format</td></tr>
+  <tr><td nowrap><li><b>Kosinski.dll</b></td><td> - </td><td>DLL used by "derecmp.exe", containing functions for compressing and decompressing data with the "Kosinski" format</td></tr>
+  <tr><td nowrap><li><b>Nemesis.dll</b></td><td> - </td><td>DLL used by "derecmp.exe", containing functions for compressing and decompressing data with the "Nemesis" format</td></tr>
+  </table>
+  <br><br>
+ </ul>
+
+ <li><b>/_Inject</b> - Injector Files for inserting data back into each of the game's DLL and data files, called by "Inject.txt"</a><br>
+ <br>
+ <ul>
+        <li><b>/R1</b> - Injector Files for "R1" / Palmtree Panic</a><br>
+	<br>
+        <ul><table>
+        <tr><td nowrap><li><b>DLL11A.txt</b></td><td> - </td><td>Injector File handling most data for Palmtree Panic Zone 1 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL11B.txt</b></td><td> - </td><td>Injector File handling most data for Palmtree Panic Zone 1 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL11C.txt</b></td><td> - </td><td>Injector File handling most data for Palmtree Panic Zone 1 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL11D.txt</b></td><td> - </td><td>Injector File handling most data for Palmtree Panic Zone 1 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL12A.txt</b></td><td> - </td><td>Injector File handling most data for Palmtree Panic Zone 2 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL12B.txt</b></td><td> - </td><td>Injector File handling most data for Palmtree Panic Zone 2 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL12C.txt</b></td><td> - </td><td>Injector File handling most data for Palmtree Panic Zone 2 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL12D.txt</b></td><td> - </td><td>Injector File handling most data for Palmtree Panic Zone 2 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL13C.txt</b></td><td> - </td><td>Injector File handling most data for Palmtree Panic Zone 3 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL13D.txt</b></td><td> - </td><td>Injector File handling most data for Palmtree Panic Zone 3 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP11A.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Palmtree Panic Zone 1 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP11B.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Palmtree Panic Zone 1 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP11C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Palmtree Panic Zone 1 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP11D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Palmtree Panic Zone 1 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP12A.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Palmtree Panic Zone 2 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP12B.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Palmtree Panic Zone 2 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP12C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Palmtree Panic Zone 2 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP12D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Palmtree Panic Zone 2 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP13C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Palmtree Panic Zone 3 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP13D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Palmtree Panic Zone 3 Bad Future, inserted into the game file of the same name</td></tr>
+        </table></ul>
+	<br>
+
+        <li><b>/R3</b> - Injector Files for "R3" / Collision Chaos</a><br>
+	<br>
+        <ul><table>
+        <tr><td nowrap><li><b>DLL31A.txt</b></td><td> - </td><td>Injector File handling most data for Collision Chaos Zone 1 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL31B.txt</b></td><td> - </td><td>Injector File handling most data for Collision Chaos Zone 1 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL31C.txt</b></td><td> - </td><td>Injector File handling most data for Collision Chaos Zone 1 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL31D.txt</b></td><td> - </td><td>Injector File handling most data for Collision Chaos Zone 1 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL32A.txt</b></td><td> - </td><td>Injector File handling most data for Collision Chaos Zone 2 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL32B.txt</b></td><td> - </td><td>Injector File handling most data for Collision Chaos Zone 2 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL32C.txt</b></td><td> - </td><td>Injector File handling most data for Collision Chaos Zone 2 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL32D.txt</b></td><td> - </td><td>Injector File handling most data for Collision Chaos Zone 2 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL33C.txt</b></td><td> - </td><td>Injector File handling most data for Collision Chaos Zone 3 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL33D.txt</b></td><td> - </td><td>Injector File handling most data for Collision Chaos Zone 3 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP31A.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Collision Chaos Zone 1 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP31B.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Collision Chaos Zone 1 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP31C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Collision Chaos Zone 1 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP31D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Collision Chaos Zone 1 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP32A.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Collision Chaos Zone 2 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP32B.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Collision Chaos Zone 2 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP32C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Collision Chaos Zone 2 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP32D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Collision Chaos Zone 2 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP33C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Collision Chaos Zone 3 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP33D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Collision Chaos Zone 3 Bad Future, inserted into the game file of the same name</td></tr>
+        </table></ul>
+	<br>
+
+        <li><b>/R4</b> - Injector Files for "R4" / Tidal Tempest</a><br>
+	<br>
+        <ul><table>
+        <tr><td nowrap><li><b>DLL41A.txt</b></td><td> - </td><td>Injector File handling most data for Tidal Tempest Zone 1 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL41B.txt</b></td><td> - </td><td>Injector File handling most data for Tidal Tempest Zone 1 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL41C.txt</b></td><td> - </td><td>Injector File handling most data for Tidal Tempest Zone 1 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL41D.txt</b></td><td> - </td><td>Injector File handling most data for Tidal Tempest Zone 1 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL42A.txt</b></td><td> - </td><td>Injector File handling most data for Tidal Tempest Zone 2 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL42B.txt</b></td><td> - </td><td>Injector File handling most data for Tidal Tempest Zone 2 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL42C.txt</b></td><td> - </td><td>Injector File handling most data for Tidal Tempest Zone 2 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL42D.txt</b></td><td> - </td><td>Injector File handling most data for Tidal Tempest Zone 2 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL43C.txt</b></td><td> - </td><td>Injector File handling most data for Tidal Tempest Zone 3 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL43D.txt</b></td><td> - </td><td>Injector File handling most data for Tidal Tempest Zone 3 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP41A.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Tidal Tempest Zone 1 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP41B.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Tidal Tempest Zone 1 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP41C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Tidal Tempest Zone 1 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP41D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Tidal Tempest Zone 1 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP42A.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Tidal Tempest Zone 2 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP42B.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Tidal Tempest Zone 2 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP42C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Tidal Tempest Zone 2 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP42D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Tidal Tempest Zone 2 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP43C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Tidal Tempest Zone 3 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP43D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Tidal Tempest Zone 3 Bad Future, inserted into the game file of the same name</td></tr>
+        </table></ul>
+	<br>
+
+        <li><b>/R5</b> - Injector Files for "R5" / Quartz Quadrant</a><br>
+	<br>
+        <ul><table>
+        <tr><td nowrap><li><b>DLL51A.txt</b></td><td> - </td><td>Injector File handling most data for Quartz Quadrant Zone 1 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL51B.txt</b></td><td> - </td><td>Injector File handling most data for Quartz Quadrant Zone 1 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL51C.txt</b></td><td> - </td><td>Injector File handling most data for Quartz Quadrant Zone 1 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL51D.txt</b></td><td> - </td><td>Injector File handling most data for Quartz Quadrant Zone 1 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL52A.txt</b></td><td> - </td><td>Injector File handling most data for Quartz Quadrant Zone 2 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL52B.txt</b></td><td> - </td><td>Injector File handling most data for Quartz Quadrant Zone 2 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL52C.txt</b></td><td> - </td><td>Injector File handling most data for Quartz Quadrant Zone 2 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL52D.txt</b></td><td> - </td><td>Injector File handling most data for Quartz Quadrant Zone 2 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL53C.txt</b></td><td> - </td><td>Injector File handling most data for Quartz Quadrant Zone 3 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL53D.txt</b></td><td> - </td><td>Injector File handling most data for Quartz Quadrant Zone 3 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP51A.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Quartz Quadrant Zone 1 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP51B.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Quartz Quadrant Zone 1 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP51C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Quartz Quadrant Zone 1 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP51D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Quartz Quadrant Zone 1 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP52A.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Quartz Quadrant Zone 2 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP52B.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Quartz Quadrant Zone 2 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP52C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Quartz Quadrant Zone 2 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP52D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Quartz Quadrant Zone 2 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP53C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Quartz Quadrant Zone 3 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP53D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Quartz Quadrant Zone 3 Bad Future, inserted into the game file of the same name</td></tr>
+        </table></ul>
+	<br>
+
+        <li><b>/R6</b> - Injector Files for "R6" / Wacky Workbench</a><br>
+	<br>
+        <ul><table>
+        <tr><td nowrap><li><b>DLL61A.txt</b></td><td> - </td><td>Injector File handling most data for Wacky Workbench Zone 1 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL61B.txt</b></td><td> - </td><td>Injector File handling most data for Wacky Workbench Zone 1 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL61C.txt</b></td><td> - </td><td>Injector File handling most data for Wacky Workbench Zone 1 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL61D.txt</b></td><td> - </td><td>Injector File handling most data for Wacky Workbench Zone 1 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL62A.txt</b></td><td> - </td><td>Injector File handling most data for Wacky Workbench Zone 2 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL62B.txt</b></td><td> - </td><td>Injector File handling most data for Wacky Workbench Zone 2 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL62C.txt</b></td><td> - </td><td>Injector File handling most data for Wacky Workbench Zone 2 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL62D.txt</b></td><td> - </td><td>Injector File handling most data for Wacky Workbench Zone 2 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL63C.txt</b></td><td> - </td><td>Injector File handling most data for Wacky Workbench Zone 3 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL63D.txt</b></td><td> - </td><td>Injector File handling most data for Wacky Workbench Zone 3 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP61A.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Wacky Workbench Zone 1 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP61B.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Wacky Workbench Zone 1 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP61C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Wacky Workbench Zone 1 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP61D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Wacky Workbench Zone 1 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP62A.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Wacky Workbench Zone 2 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP62B.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Wacky Workbench Zone 2 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP62C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Wacky Workbench Zone 2 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP62D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Wacky Workbench Zone 2 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP63C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Wacky Workbench Zone 3 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP63D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Wacky Workbench Zone 3 Bad Future, inserted into the game file of the same name</td></tr>
+        </table></ul>
+	<br>
+
+        <li><b>/R7</b> - Injector Files for "R7" / Stardust Speedway</a><br>
+	<br>
+        <ul><table>
+        <tr><td nowrap><li><b>DLL71A.txt</b></td><td> - </td><td>Injector File handling most data for Stardust Speedway Zone 1 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL71B.txt</b></td><td> - </td><td>Injector File handling most data for Stardust Speedway Zone 1 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL71C.txt</b></td><td> - </td><td>Injector File handling most data for Stardust Speedway Zone 1 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL71D.txt</b></td><td> - </td><td>Injector File handling most data for Stardust Speedway Zone 1 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL72A.txt</b></td><td> - </td><td>Injector File handling most data for Stardust Speedway Zone 2 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL72B.txt</b></td><td> - </td><td>Injector File handling most data for Stardust Speedway Zone 2 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL72C.txt</b></td><td> - </td><td>Injector File handling most data for Stardust Speedway Zone 2 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL72D.txt</b></td><td> - </td><td>Injector File handling most data for Stardust Speedway Zone 2 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL73C.txt</b></td><td> - </td><td>Injector File handling most data for Stardust Speedway Zone 3 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL73D.txt</b></td><td> - </td><td>Injector File handling most data for Stardust Speedway Zone 3 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP71A.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Stardust Speedway Zone 1 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP71B.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Stardust Speedway Zone 1 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP71C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Stardust Speedway Zone 1 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP71D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Stardust Speedway Zone 1 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP72A.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Stardust Speedway Zone 2 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP72B.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Stardust Speedway Zone 2 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP72C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Stardust Speedway Zone 2 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP72D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Stardust Speedway Zone 2 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP73C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Stardust Speedway Zone 3 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP73D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Stardust Speedway Zone 3 Bad Future, inserted into the game file of the same name</td></tr>
+        </table></ul>
+	<br>
+
+        <li><b>/R8</b> - Injector Files for "R8" / Metallic Madness</a><br>
+	<br>
+        <ul><table>
+        <tr><td nowrap><li><b>DLL81A.txt</b></td><td> - </td><td>Injector File handling most data for Metallic Madness Zone 1 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL81B.txt</b></td><td> - </td><td>Injector File handling most data for Metallic Madness Zone 1 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL81C.txt</b></td><td> - </td><td>Injector File handling most data for Metallic Madness Zone 1 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL81D.txt</b></td><td> - </td><td>Injector File handling most data for Metallic Madness Zone 1 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL82A.txt</b></td><td> - </td><td>Injector File handling most data for Metallic Madness Zone 2 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL82B.txt</b></td><td> - </td><td>Injector File handling most data for Metallic Madness Zone 2 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL82C.txt</b></td><td> - </td><td>Injector File handling most data for Metallic Madness Zone 2 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL82D.txt</b></td><td> - </td><td>Injector File handling most data for Metallic Madness Zone 2 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL83C.txt</b></td><td> - </td><td>Injector File handling most data for Metallic Madness Zone 3 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>DLL83D.txt</b></td><td> - </td><td>Injector File handling most data for Metallic Madness Zone 3 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP81A.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Metallic Madness Zone 1 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP81B.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Metallic Madness Zone 1 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP81C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Metallic Madness Zone 1 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP81D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Metallic Madness Zone 1 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP82A.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Metallic Madness Zone 2 Present, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP82B.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Metallic Madness Zone 2 Past, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP82C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Metallic Madness Zone 2 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP82D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Metallic Madness Zone 2 Bad Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP83C.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Metallic Madness Zone 3 Good Future, inserted into the game file of the same name</td></tr>
+        <tr><td nowrap><li><b>TCMP83D.txt</b></td><td> - </td><td>Injector File handling 8x8 Tile data for Metallic Madness Zone 3 Bad Future, inserted into the game file of the same name</td></tr>
+        </table></ul>
+	<br>
+
+  <br><br>
+ </ul>
+
+ <li><b>/Project</b> - This is the primary folder containing Object Listing Files and a full set of SonED2 Standard Level Project Files for Sonic the Hedgehog CD, based on the data created by "split.txt"</a><br>
+	<br>
+        <ul>
+        <li><b>/objdef</b> - Object Listing Files and supporting graphics files that define the Objects used in Sonic the Hedgehog CD for SonED2's Object Editor</a><br>
+	<br>
+        <ul><table>
+        <tr><td nowrap><li><b>R1obj.lst</b></td><td> - </td><td>Object Listing File, which defines Object descriptions, setting data, and in-editor graphic displays for "R1" / Palmtree Panic</td></tr>
+        <tr><td nowrap><li><b>R1obj1.tga</b></td><td> - </td><td>Graphic file containing some of the global Object graphics for "R1" / Palmtree Panic</td></tr>
+        <tr><td nowrap><li><b>R3obj.lst</b></td><td> - </td><td>Object Listing File, which defines Object descriptions, setting data, and in-editor graphic displays for "R3" / Collision Chaos</td></tr>
+        <tr><td nowrap><li><b>R3obj1.tga</b></td><td> - </td><td>Graphic file containing some of the global Object graphics for "R3" / Collision Chaos</td></tr>
+        <tr><td nowrap><li><b>R4obj.lst</b></td><td> - </td><td>Object Listing File, which defines Object descriptions, setting data, and in-editor graphic displays for "R4" / Tidal Tempest</td></tr>
+        <tr><td nowrap><li><b>R4obj1.tga</b></td><td> - </td><td>Graphic file containing some of the global Object graphics for "R4" / Tidal Tempest</td></tr>
+        <tr><td nowrap><li><b>R5obj.lst</b></td><td> - </td><td>Object Listing File, which defines Object descriptions, setting data, and in-editor graphic displays for "R5" / Quartz Quadrant</td></tr>
+        <tr><td nowrap><li><b>R5obj1.tga</b></td><td> - </td><td>Graphic file containing some of the global Object graphics for "R5" / Quartz Quadrant</td></tr>
+        <tr><td nowrap><li><b>R6obj.lst</b></td><td> - </td><td>Object Listing File, which defines Object descriptions, setting data, and in-editor graphic displays for "R6" / Wacky Workbench</td></tr>
+        <tr><td nowrap><li><b>R6obj1.tga</b></td><td> - </td><td>Graphic file containing some of the global Object graphics for "R6" / Wacky Workbench</td></tr>
+        <tr><td nowrap><li><b>R7obj.lst</b></td><td> - </td><td>Object Listing File, which defines Object descriptions, setting data, and in-editor graphic displays for "R7" / Stardust Speedway</td></tr>
+        <tr><td nowrap><li><b>R7obj1.tga</b></td><td> - </td><td>Graphic file containing some of the global Object graphics for "R7" / Stardust Speedway</td></tr>
+        <tr><td nowrap><li><b>R8obj.lst</b></td><td> - </td><td>Object Listing File, which defines Object descriptions, setting data, and in-editor graphic displays for "R8" / Metallic Madness</td></tr>
+        <tr><td nowrap><li><b>R8obj1.tga</b></td><td> - </td><td>Graphic file containing some of the global Object graphics for "R8" / Metallic Madness</td></tr>
+        </table></ul>
+	<br>
+        <table>
+        <tr><td nowrap><li><b>11A.sep</b></td><td> - </td><td>Palmtree Panic Zone 1 Present</td></tr>
+        <tr><td nowrap><li><b>11B.sep</b></td><td> - </td><td>Palmtree Panic Zone 1 Past</td></tr>
+        <tr><td nowrap><li><b>11C.sep</b></td><td> - </td><td>Palmtree Panic Zone 1 Good Future</td></tr>
+        <tr><td nowrap><li><b>11D.sep</b></td><td> - </td><td>Palmtree Panic Zone 1 Bad Future</td></tr>
+        <tr><td nowrap><li><b>12A.sep</b></td><td> - </td><td>Palmtree Panic Zone 2 Present</td></tr>
+        <tr><td nowrap><li><b>12B.sep</b></td><td> - </td><td>Palmtree Panic Zone 2 Past</td></tr>
+        <tr><td nowrap><li><b>12C.sep</b></td><td> - </td><td>Palmtree Panic Zone 2 Good Future</td></tr>
+        <tr><td nowrap><li><b>12D.sep</b></td><td> - </td><td>Palmtree Panic Zone 2 Bad Future</td></tr>
+        <tr><td nowrap><li><b>13C.sep</b></td><td> - </td><td>Palmtree Panic Zone 3 Good Future</td></tr>
+        <tr><td nowrap><li><b>13D.sep</b></td><td> - </td><td>Palmtree Panic Zone 3 Bad Future</td></tr>
+        <tr><td nowrap><li><b>31A.sep</b></td><td> - </td><td>Collision Chaos Zone 1 Present</td></tr>
+        <tr><td nowrap><li><b>31B.sep</b></td><td> - </td><td>Collision Chaos Zone 1 Past</td></tr>
+        <tr><td nowrap><li><b>31C.sep</b></td><td> - </td><td>Collision Chaos Zone 1 Good Future</td></tr>
+        <tr><td nowrap><li><b>31D.sep</b></td><td> - </td><td>Collision Chaos Zone 1 Bad Future</td></tr>
+        <tr><td nowrap><li><b>32A.sep</b></td><td> - </td><td>Collision Chaos Zone 2 Present</td></tr>
+        <tr><td nowrap><li><b>32B.sep</b></td><td> - </td><td>Collision Chaos Zone 2 Past</td></tr>
+        <tr><td nowrap><li><b>32C.sep</b></td><td> - </td><td>Collision Chaos Zone 2 Good Future</td></tr>
+        <tr><td nowrap><li><b>32D.sep</b></td><td> - </td><td>Collision Chaos Zone 2 Bad Future</td></tr>
+        <tr><td nowrap><li><b>33C.sep</b></td><td> - </td><td>Collision Chaos Zone 3 Good Future</td></tr>
+        <tr><td nowrap><li><b>33D.sep</b></td><td> - </td><td>Collision Chaos Zone 3 Bad Future</td></tr>
+        <tr><td nowrap><li><b>41A.sep</b></td><td> - </td><td>Tidal Tempest Zone 1 Present</td></tr>
+        <tr><td nowrap><li><b>41B.sep</b></td><td> - </td><td>Tidal Tempest Zone 1 Past</td></tr>
+        <tr><td nowrap><li><b>41C.sep</b></td><td> - </td><td>Tidal Tempest Zone 1 Good Future</td></tr>
+        <tr><td nowrap><li><b>41D.sep</b></td><td> - </td><td>Tidal Tempest Zone 1 Bad Future</td></tr>
+        <tr><td nowrap><li><b>42A.sep</b></td><td> - </td><td>Tidal Tempest Zone 2 Present</td></tr>
+        <tr><td nowrap><li><b>42B.sep</b></td><td> - </td><td>Tidal Tempest Zone 2 Past</td></tr>
+        <tr><td nowrap><li><b>42C.sep</b></td><td> - </td><td>Tidal Tempest Zone 2 Good Future</td></tr>
+        <tr><td nowrap><li><b>42D.sep</b></td><td> - </td><td>Tidal Tempest Zone 2 Bad Future</td></tr>
+        <tr><td nowrap><li><b>43C.sep</b></td><td> - </td><td>Tidal Tempest Zone 3 Good Future</td></tr>
+        <tr><td nowrap><li><b>43D.sep</b></td><td> - </td><td>Tidal Tempest Zone 3 Bad Future</td></tr>
+        <tr><td nowrap><li><b>51A.sep</b></td><td> - </td><td>Quartz Quadrant Zone 1 Present</td></tr>
+        <tr><td nowrap><li><b>51B.sep</b></td><td> - </td><td>Quartz Quadrant Zone 1 Past</td></tr>
+        <tr><td nowrap><li><b>51C.sep</b></td><td> - </td><td>Quartz Quadrant Zone 1 Good Future</td></tr>
+        <tr><td nowrap><li><b>51D.sep</b></td><td> - </td><td>Quartz Quadrant Zone 1 Bad Future</td></tr>
+        <tr><td nowrap><li><b>52A.sep</b></td><td> - </td><td>Quartz Quadrant Zone 2 Present</td></tr>
+        <tr><td nowrap><li><b>52B.sep</b></td><td> - </td><td>Quartz Quadrant Zone 2 Past</td></tr>
+        <tr><td nowrap><li><b>52C.sep</b></td><td> - </td><td>Quartz Quadrant Zone 2 Good Future</td></tr>
+        <tr><td nowrap><li><b>52D.sep</b></td><td> - </td><td>Quartz Quadrant Zone 2 Bad Future</td></tr>
+        <tr><td nowrap><li><b>53C.sep</b></td><td> - </td><td>Quartz Quadrant Zone 3 Good Future</td></tr>
+        <tr><td nowrap><li><b>53D.sep</b></td><td> - </td><td>Quartz Quadrant Zone 3 Bad Future</td></tr>
+        <tr><td nowrap><li><b>61A.sep</b></td><td> - </td><td>Wacky Workbench Zone 1 Present</td></tr>
+        <tr><td nowrap><li><b>61B.sep</b></td><td> - </td><td>Wacky Workbench Zone 1 Past</td></tr>
+        <tr><td nowrap><li><b>61C.sep</b></td><td> - </td><td>Wacky Workbench Zone 1 Good Future</td></tr>
+        <tr><td nowrap><li><b>61D.sep</b></td><td> - </td><td>Wacky Workbench Zone 1 Bad Future</td></tr>
+        <tr><td nowrap><li><b>62A.sep</b></td><td> - </td><td>Wacky Workbench Zone 2 Present</td></tr>
+        <tr><td nowrap><li><b>62B.sep</b></td><td> - </td><td>Wacky Workbench Zone 2 Past</td></tr>
+        <tr><td nowrap><li><b>62C.sep</b></td><td> - </td><td>Wacky Workbench Zone 2 Good Future</td></tr>
+        <tr><td nowrap><li><b>62D.sep</b></td><td> - </td><td>Wacky Workbench Zone 2 Bad Future</td></tr>
+        <tr><td nowrap><li><b>63C.sep</b></td><td> - </td><td>Wacky Workbench Zone 3 Good Future</td></tr>
+        <tr><td nowrap><li><b>63D.sep</b></td><td> - </td><td>Wacky Workbench Zone 3 Bad Future</td></tr>
+        <tr><td nowrap><li><b>71A.sep</b></td><td> - </td><td>Stardust Speedway Zone 1 Present</td></tr>
+        <tr><td nowrap><li><b>71B.sep</b></td><td> - </td><td>Stardust Speedway Zone 1 Past</td></tr>
+        <tr><td nowrap><li><b>71C.sep</b></td><td> - </td><td>Stardust Speedway Zone 1 Good Future</td></tr>
+        <tr><td nowrap><li><b>71D.sep</b></td><td> - </td><td>Stardust Speedway Zone 1 Bad Future</td></tr>
+        <tr><td nowrap><li><b>72A.sep</b></td><td> - </td><td>Stardust Speedway Zone 2 Present</td></tr>
+        <tr><td nowrap><li><b>72B.sep</b></td><td> - </td><td>Stardust Speedway Zone 2 Past</td></tr>
+        <tr><td nowrap><li><b>72C.sep</b></td><td> - </td><td>Stardust Speedway Zone 2 Good Future</td></tr>
+        <tr><td nowrap><li><b>72D.sep</b></td><td> - </td><td>Stardust Speedway Zone 2 Bad Future</td></tr>
+        <tr><td nowrap><li><b>73C.sep</b></td><td> - </td><td>Stardust Speedway Zone 3 Good Future</td></tr>
+        <tr><td nowrap><li><b>73D.sep</b></td><td> - </td><td>Stardust Speedway Zone 3 Bad Future</td></tr>
+        <tr><td nowrap><li><b>81A.sep</b></td><td> - </td><td>Metallic Madness Zone 1 Present</td></tr>
+        <tr><td nowrap><li><b>81B.sep</b></td><td> - </td><td>Metallic Madness Zone 1 Past</td></tr>
+        <tr><td nowrap><li><b>81C.sep</b></td><td> - </td><td>Metallic Madness Zone 1 Good Future</td></tr>
+        <tr><td nowrap><li><b>81D.sep</b></td><td> - </td><td>Metallic Madness Zone 1 Bad Future</td></tr>
+        <tr><td nowrap><li><b>82A.sep</b></td><td> - </td><td>Metallic Madness Zone 2 Present</td></tr>
+        <tr><td nowrap><li><b>82B.sep</b></td><td> - </td><td>Metallic Madness Zone 2 Past</td></tr>
+        <tr><td nowrap><li><b>82C.sep</b></td><td> - </td><td>Metallic Madness Zone 2 Good Future</td></tr>
+        <tr><td nowrap><li><b>82D.sep</b></td><td> - </td><td>Metallic Madness Zone 2 Bad Future</td></tr>
+        <tr><td nowrap><li><b>83C.sep</b></td><td> - </td><td>Metallic Madness Zone 3 Good Future</td></tr>
+        <tr><td nowrap><li><b>83D.sep</b></td><td> - </td><td>Metallic Madness Zone 3 Bad Future</td></tr>
+        </table>
+	<br><br>
+	</ul>
+
+                   <table>
+                   <tr><td nowrap><b><li>CDPosFix.exe</b></td><td> - </td><td>This program is used to combine Player Start Position data for use with SonED2, and split the data for reinsertion into the game files</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>derecmp.exe</b></td><td> - </td><td>This program is used for compressing and decompressing Tile data with the formats used in the SegaCD version, for compatibility</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>inject.txt</b></td><td> - </td><td>This is the "Batch File" that is used to perform input data conversions and initiate Injection</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>mscompress.exe</b></td><td> - </td><td>This program is used for compressing data using the same format as Microsoft's "COMPRESS.EXE", used for 8x8 Tile data</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>msexpand.exe</b></td><td> - </td><td>This program is used for decompressing data using the same format as Microsoft's "COMPRESS.EXE", used for 8x8 Tile data</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>PCLevCon.exe</b></td><td> - </td><td>This program is used to convert the level layout data so that it can be read by SonED2</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>PCPALCON.EXE</b></td><td> - </td><td>This program is used to convert palette data between PC and Megadrive/Genesis formats</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td nowrap><b><li>split.txt</b></td><td> - </td><td>This is the "Batch File" that is used to split data from the game file and perform output data conversions</td></tr>
+                   </table>
+
+	</ul>
+
+<br>
+<br><a name="Notes">
+<b>Game Notes</b>
+<ul><a name="SharedData">
+ <b>Separate Level Data, Shared Object Location Data</b><br>
+ <br>
+ <ul>
+  Due to the one-program-per-level nature of this game, no two levels share Tile or Palette data. This means that different Acts within the same Zone and Time Period can use their own Tilesets and Palettes for either subtle or major changes. This is used in the original game to better vary level layout by creating different sets of Chunks for each level.<br>
+  <br>
+  Object Layout Data is shared between Time Periods within the same Act. This is necessary because all Objects for all Time Periods must exist within the data in order for the game to keep track of which Objects have been interacted with in each Time Period. For this reason, the Objects contain Time Period flags, for defining whether or not they do or don't "exist" (show up) in each of the three Time Periods (Past, Present, Good/Bad Future).<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="DataSize">
+ <b>Data File Size Restrictions</b><br>
+ <br>
+ <ul>
+  Because some of the data is contained within a PC executable file, it cannot be relocated.<br>
+  <br>
+  No data file for this game can grow larger than its original, as it must be placed in the exact location it was extracted from. If it were to become larger, it would overwrite other vital data and cause serious errors.<br>
+  <br>
+  The "Plane Size" of the level should not be modified, and the number of Objects used for the level should not be increased beyond its original value.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="Animated">
+ <b>Animated Tiles and Palettes</b><br>
+ <br>
+ <ul>
+  Certain Tiles and Palette entries are animated/cycled during gameplay. This behavior is not accounted for in the current script set version; these animations and the data that they use are not available for editing. Any modifications to these Tile or Palette entries will be overridden by these animations during gameplay.<br>
+  <br>
+  In this game, the Tile data contains number and/or special character graphics at these positions, which is what will be displayed in SonED2.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="CrossingPaths">
+ <b>Loops and Crossing Paths</b><br>
+ <br>
+ <ul>
+  This game uses a one-path collision system, meaning that Chunks within the level layout must be actively changed during gameplay to accomplish Loops. Other crossing/dual path mechanics are level-specific.<br>
+  <br>
+  Each Zone in this game can be given two Chunk IDs to define as "Loops". These Chunks <i>must</i> be followed immediately by a visibly-identical copy, with the original having solidity filled in on the right half, and the copy having solidity filled in on the left half (For example, if Chunks 4 and 8 are "Loop" Chunks, they must be made solid on the right side, and must also have copies in Chunks 5 and 9, made solid on the left side). The original and copy are swapped back and forth in-game depending on which side the player is moving toward them from.<br>
+  <br>
+  When placing these Chunks into the Level Layout, they <i>must</i> be "flagged". This can be accomplished in SonED2 by hovering over the Chunk within the Level Layout and pressing spacebar. The Status view will then add the word "(Loop)" to the displayed Chunk ID. When "grabbing" a Chunk from the layout that has already been "flagged", drawing that Chunk to the layout will automatically draw it as "flagged".<br>
+  <br>
+  The current script set version does not support changing the Chunk IDs for "Loops"; any "Loops" drawn into a level must use the same Chunk IDs as the "Loops" in the original, unmodified level.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="SpinTunnels">
+ <b>Spin Tunnels</b><br>
+ <br>
+ <ul>
+  This game uses a "Force Spin Object" to achieve forced-spin tunnels.<br>
+  <br>
+  These Objects will cause the player to enter a spinning state automatically, and will forceably apply velocity in a certain direction based on their settings.<br>
+  <br>
+  This is still standard spinning state, which allows jumping, and standing up when slowed to 0 velocity.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="LevelBoundaries">
+ <b>Level Boundaries</b><br>
+ <br>
+ <ul>
+  For the most part, Level Boundaries (the area within which the screen is allowed to scroll across the level during gameplay) are not dynamically altered in this game, meaning that the initial (and persistent) settings can be modified.<br>
+  <br>
+  However, the current script set version does not support this; Level Boundary data is not available for editing.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="Water">
+ <b>Fixed and Dynamic Water Heights</b><br>
+ <br>
+ <ul>
+  The current script set version does not support affecting "water"; Which levels do and don't contain water, the Y position of the water at level start, the events that change the Y position of the water, and the Y positions that the water is moved to are not available for editing.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="Current">
+ <b>Tidal Tempest Water Currents</b><br>
+ <br>
+ <ul>
+  The water currents in Tidal Tempest are controlled by standard Objects, which are movable and modifiable in SonED2's Object Editor.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="QQZBG">
+ <b>Quartz Quadrant Inside/Outside Background Swap</b><br>
+ <br>
+ <ul>
+  Quartz Quadrant has two backgrounds that are swapped back and forth during gameplay to represent an "indoor" area and an "outdoor" area. This is accomplished by reloading layout, tile, and palette data based on the player's location.<br>
+  <br>
+  The current script set version does not support modifying this behavior; the locations, tileset, layout, and palette data are not available for editing.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="SSZX">
+ <b>Stardust Speedway Interwinding "X" Paths</b><br>
+ <br>
+ <ul>
+  The winding "X"-shaped paths in Stardust Speedway are similar to loops in that the Chunks must be "loop" flagged within the layout to function, and must be immediately followed by a visibly-identical copy with a secondary solidity setup.<br>
+  <br>
+  The primary Chunk must contain solidity leading uphill from the lower-left to the upper-right, with the copy containing solidity leading downhill from the upper-left to the lower-right.<br>
+  <br>
+  This is a level-specific mechanic.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="SSZP">
+ <b>Stardust Speedway Path Swap Panels</b><br>
+ <br>
+ <ul>
+  The dual-path sections of Stardust Speedway that are affected by the flipping blue sphere panels are similar to loops in that the Chunks must be "loop" flagged within the layout to function, and must be immediately followed by a visibly-identical copy with a secondary solidity setup.<br>
+  <br>
+  The primary Chunk must contain solidity for the "in front" portion, with the copy containing solidity for the "behind" portion.<br>
+  <br>
+  This is a level-specific mechanic.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="MMZC">
+ <b>Metallic Madness In-Front/Behind Flipping Curtains</b><br>
+ <br>
+ <ul>
+  The dual-path sections of Metallic Madness that allow travel in front of and behind the vertical flipping curtains are similar to loops in that the Chunks must be "loop" flagged within the layout to function, and must be immediately followed by a visibly-identical copy with a secondary solidity setup.<br>
+  <br>
+  The primary Chunk must contain solidity for the "in front" portion, with the copy containing solidity for the "behind" portion.<br>
+  <br>
+  This is a level-specific mechanic.<br>
+ </ul>
+
+ <br>
+ <br>
+ <br><a name="BossArena">
+ <b>Boss Arenas</b><br>
+ <br>
+ <ul>
+  Boss events are triggered by standard Objects, which are movable in SonED2's Object Editor, but be aware that moving them or modifying the surrounding area could cause undesireable results in some cases.<br>
+ </ul>
+</ul>
+
+</body>
+</html>

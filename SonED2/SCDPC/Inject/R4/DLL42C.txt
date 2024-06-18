@@ -1,0 +1,53 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Sonic CD for PC (DirectX Version) DLL42C.DLL Injector File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Little_Endian $12174 $2
+
+		include "R4/Obj/XStart2C.bin"
+
+EndSeg
+
+StartSeg Little_Endian $121ED $2
+
+		include "R4/Obj/YStart2C.bin"
+
+EndSeg
+
+StartSeg Little_Endian $18880 $340
+
+		include "R4/Pal/PC/2C/0_1.bin"
+		include "R4/Pal/PC/2C/2.bin"
+		include "R4/Pal/PC/2C/3.bin"
+		include "R4/Pal/PC/2C/4.bin"
+		include "R4/Pal/PC/2C/5.bin"
+
+EndSeg
+
+StartSeg Little_Endian $19358 $D58
+
+		include "R4/Obj/2.bin" Swap16
+
+EndSeg
+
+StartSeg Little_Endian $1A0B8 $2508
+
+		include "R4/Col/Ang2C.bin"
+		include "R4/Col/HM2C.bin"
+		BYTE	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+		include "R4/Col/HMR2C.bin"
+		BYTE	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+		include "R4/Col/Idx2C.bin"
+
+EndSeg
+
+StartSeg Little_Endian $1C5C0 $400
+
+		include "R4/FGPC/2C.bin"
+		include "R4/BGPC/2C.bin"
+
+EndSeg
+
+

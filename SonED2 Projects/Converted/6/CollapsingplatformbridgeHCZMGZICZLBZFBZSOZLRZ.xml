@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Namespace="SonED2.Zone6" TypeName="CollapsingplatformbridgeHCZMGZICZLBZFBZSOZLRZ" Language="cs" Name="Collapsing platform/bridge - HCZ/MGZ/ICZ/LBZ/FBZ/SOZ/LRZ" Image="Image1" RememberState="false" DefaultSubtype="40" Debug="false" xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromBitmap id="Image1" filename="Sprites/s3objsprite2-6.png" />
+    <ImageFromBitmap id="Image2" filename="Sprites/s3objsprite2-7.png" />
+  </Images>
+  <Properties>
+    <BitsProperty name="Property1" type="Enum1" startbit="0" length="6" />
+    <BitsProperty name="Property2" type="Enum2" startbit="6" length="1" />
+    <BitsProperty name="Property3" type="Enum3" startbit="7" length="1" />
+  </Properties>
+  <Enums>
+    <Enum name="Enum1">
+      <EnumMember name="8 frame delay" />
+      <EnumMember name="12 frame delay" />
+      <EnumMember name="16 frame delay" />
+      <EnumMember name="20 frame delay" />
+      <EnumMember name="24 frame delay" />
+      <EnumMember name="28 frame delay" />
+      <EnumMember name="32 frame delay" />
+      <EnumMember name="36 frame delay" />
+      <EnumMember name="40 frame delay" />
+      <EnumMember name="44 frame delay" />
+      <EnumMember name="48 frame delay" />
+      <EnumMember name="52 frame delay" />
+      <EnumMember name="56 frame delay" />
+      <EnumMember name="60 frame delay" />
+      <EnumMember name="64 frame delay" />
+      <EnumMember name="68 frame delay" />
+      <EnumMember name="72 frame delay" />
+      <EnumMember name="76 frame delay" />
+      <EnumMember name="80 frame delay" />
+      <EnumMember name="84 frame delay" />
+      <EnumMember name="88 frame delay" />
+      <EnumMember name="92 frame delay" />
+      <EnumMember name="96 frame delay" />
+      <EnumMember name="100 frame delay" />
+      <EnumMember name="104 frame delay" />
+      <EnumMember name="108 frame delay" />
+      <EnumMember name="112 frame delay" />
+      <EnumMember name="116 frame delay" />
+      <EnumMember name="120 frame delay" />
+      <EnumMember name="124 frame delay" />
+      <EnumMember name="128 frame delay" />
+      <EnumMember name="132 frame delay" />
+      <EnumMember name="136 frame delay" />
+      <EnumMember name="140 frame delay" />
+      <EnumMember name="144 frame delay" />
+      <EnumMember name="148 frame delay" />
+      <EnumMember name="152 frame delay" />
+      <EnumMember name="156 frame delay" />
+      <EnumMember name="160 frame delay" />
+      <EnumMember name="164 frame delay" />
+      <EnumMember name="168 frame delay" />
+      <EnumMember name="172 frame delay" />
+      <EnumMember name="176 frame delay" />
+      <EnumMember name="180 frame delay" />
+      <EnumMember name="184 frame delay" />
+      <EnumMember name="188 frame delay" />
+      <EnumMember name="192 frame delay" />
+      <EnumMember name="196 frame delay" />
+      <EnumMember name="200 frame delay" />
+      <EnumMember name="204 frame delay" />
+      <EnumMember name="208 frame delay" />
+      <EnumMember name="212 frame delay" />
+      <EnumMember name="216 frame delay" />
+      <EnumMember name="220 frame delay" />
+      <EnumMember name="224 frame delay" />
+      <EnumMember name="228 frame delay" />
+      <EnumMember name="232 frame delay" />
+      <EnumMember name="236 frame delay" />
+      <EnumMember name="240 frame delay" />
+      <EnumMember name="244 frame delay" />
+      <EnumMember name="248 frame delay" />
+      <EnumMember name="252 frame delay" />
+      <EnumMember name="255 frame delay" />
+      <EnumMember name="255 frame delay2" />
+    </Enum>
+    <Enum name="Enum2">
+      <EnumMember name="Collapsing Bridge" />
+      <EnumMember name="Collapsing Ledge" />
+    </Enum>
+    <Enum name="Enum3">
+      <EnumMember name="Normal Collapse" />
+      <EnumMember name="Collapse Depending On Player Position" />
+    </Enum>
+  </Enums>
+  <Display>
+    <DisplayOption>
+      <Condition property="Property2" value="Collapsing Ledge" />
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="-16" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property2" value="Collapsing Bridge" />
+      <ImageRef image="Image2">
+        <Offset X="-64" Y="-16" />
+      </ImageRef>
+    </DisplayOption>
+  </Display>
+</ObjDef>

@@ -1,0 +1,21 @@
+Sound60_SpindashRev_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$A1, ctFM5, Sound60_SpindashRev_FM5, $FE, $00
+
+; FM5 Data
+Sound60_SpindashRev_FM5:
+	sSpinRev
+	sVoice		$06
+	sModAMPS	$00, $01, $20, $F6
+	dc.b nG5, $16, sHold
+	sModOff
+	dc.b nG6, $18, sHold
+
+Sound60_SpindashRev_Loop00:
+	dc.b $04, sHold
+	saVol		$03
+	sLoop		$00, $10, Sound60_SpindashRev_Loop00
+	sSpinReset
+	sStop

@@ -1,0 +1,676 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Sonic the Hedgehog (Rev 00) Injector File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;
+; Setup Directives ;
+;;;;;;;;;;;;;;;;;;;;
+
+MaxSize	$400000				;Maximum Genesis ROM size
+
+Dispose	$002168	$0029A8			;Palette Pointers and Data
+Dispose	$01DB12	$01DC00			;Padding
+Dispose	$03BCF2	$05CC62			;Level Tile, Block, and Metatile Data
+Dispose	$0627FC	$062900			;Padding
+Dispose	$064A00	$065432			;Solidity Index Lists
+Dispose	$065432	$066AD6			;Special Stage Layout Data
+Dispose	$068BD6	$06A324			;Level Layout Offsets and Data
+Dispose	$06AF64	$06B000			;Padding
+Dispose	$06B000	$071366			;Sprite Layout Offsets and Data
+Dispose	$071366	$071990			;Padding
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; General Reference Replacement Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+StartSeg Big_Endian $0020FE
+
+	DWORD PalPointers
+
+EndSeg
+
+StartSeg Big_Endian $00211A
+
+	DWORD PalPointers
+
+EndSeg
+
+StartSeg Big_Endian $002132
+
+	DWORD PalPointers
+
+EndSeg
+
+StartSeg Big_Endian $00214E
+
+	DWORD PalPointers
+
+EndSeg
+
+StartSeg Big_Endian $003076 ;Title Screen Block Load Reference
+
+	DWORD Block_GHZ
+
+EndSeg
+
+StartSeg Big_Endian $003084 ;Title Screen Metatile Load Reference
+
+	DWORD Meta_GHZ
+
+EndSeg
+
+StartSeg Big_Endian $0030F2 ;Title Screen Tile Load Reference
+
+	DWORD Tile_GHZ_0
+
+EndSeg
+
+StartSeg Big_Endian $006D44
+
+	DWORD Level_Index
+
+EndSeg
+
+StartSeg Big_Endian $00D8FA
+
+	DWORD ObjPos_Index
+
+EndSeg
+
+StartSeg Big_Endian $012482
+
+	DWORD ObjPos_Index
+
+EndSeg
+
+StartSeg Big_Endian $0163A6
+
+	DWORD ObjPos_Index
+
+EndSeg
+
+StartSeg Big_Endian $0163A6
+
+	DWORD ObjPos_Index
+
+EndSeg
+
+StartSeg Big_Endian $01D698	;GHZ Pattern Load List
+
+	DWORD Tile_GHZ_0				;GHZ Patterns Page 0
+	 WORD 0						;VRAM Offset for Page 0 start (Must remain 0)
+	DWORD Tile_GHZ_1				;GHZ Patterns Page 1
+	 WORD $39A0					;VRAM Offset for Page 1 start (Must be equal to the size of the uncompressed data for Page 1)
+
+EndSeg
+
+StartSeg Big_Endian $01D708	;LZ Pattern Loading
+
+	DWORD Tile_LZ
+
+EndSeg
+
+StartSeg Big_Endian $01D7A2	;MZ Pattern Loading
+
+	DWORD Tile_MZ
+
+EndSeg
+
+StartSeg Big_Endian $01D800	;SLZ Pattern Loading
+
+	DWORD Tile_SLZ
+
+EndSeg
+
+StartSeg Big_Endian $01D85E	;SYZ Pattern Loading
+
+	DWORD Tile_SYZ
+
+EndSeg
+
+StartSeg Big_Endian $01D8B0	;SBZ Pattern Loading
+
+	DWORD Tile_SBZ
+
+EndSeg
+
+StartSeg Big_Endian $01DA70	;End Pattern Loading
+
+	DWORD Tile_GHZ_0				;GHZ Patterns Page 0
+	 WORD 0						;VRAM Offset for Page 0 start (Must remain 0)
+	DWORD Tile_GHZ_1				;GHZ Patterns Page 1
+	 WORD $39A0					;VRAM Offset for Page 1 start (Must be equal to the size of the uncompressed data for Page 1)
+
+EndSeg
+
+;;;;;;;;;;;;;;;;;;;;;;;
+; Fixed Data Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Big_Endian $062900	;Replace the Angle Array
+
+		include	"Collisn/Angles.bin"
+
+EndSeg
+
+StartSeg Big_Endian $062A00	;Replace the normal-oriented Height Maps
+
+		include	"Collisn/HMaps.bin"
+
+EndSeg
+
+StartSeg Big_Endian $063A00	;Replace the rotated Height Maps
+
+		include	"Collisn/HMapsR.bin"
+
+EndSeg
+
+StartSeg Big_Endian $001B66	;Replace the Cycling Palette Data
+
+	Pal_TitleCyc:		include "Palettes/Title_C.bin"
+	Pal_GHZCyc:		include "Levels/GHZ/Pal/C.bin"
+	Pal_LZCyc1:		include "Levels/LZ/Pal/CWater.bin"
+	Pal_LZCyc2:		include "Levels/LZ/Pal/CBelt.bin"
+	Pal_LZCyc3:		include "Levels/LZ/Pal/CBeltWtr.bin"
+	Pal_SBZ3Cyc1:		include "Levels/SBZ/Pal/3CW.bin"
+	Pal_SLZCyc:		include "Levels/SLZ/Pal/C.bin"
+	Pal_SYZCyc1:		include "Levels/SYZ/Pal/C1.bin"
+	Pal_SYZCyc2:		include "Levels/SYZ/Pal/C2.bin"
+
+	Pal_SBZCycList:		WORD 8                  ; Number of Entries - 1
+
+				BYTE 7, 8               ; Duration in frames, Number of color entries
+				WORD Pal_SBZCyc1        ; Palette Pointer (Must be stored as (signed) WORD, meaning that these palettes can only appear before address $008000)
+				WORD $FB50              ; Address of these colors in the RAM mirror of the palette
+
+				BYTE $D, 8
+				WORD Pal_SBZCyc2
+				WORD $FB52
+
+				BYTE $E, 8
+				WORD Pal_SBZCyc3
+				WORD $FB6E
+
+				BYTE $B, 8
+				WORD Pal_SBZCyc5
+				WORD $FB70
+
+				BYTE 7, 8
+				WORD Pal_SBZCyc6
+				WORD $FB72
+
+				BYTE $1C, $10
+				WORD Pal_SBZCyc7
+				WORD $FB7E
+
+				BYTE 3, 3
+				WORD Pal_SBZCyc8
+				WORD $FB78
+
+				BYTE 3, 3
+				WORD Pal_SBZCyc8+2
+				WORD $FB7A
+
+				BYTE 3, 3
+				WORD Pal_SBZCyc8+4
+				WORD $FB7C
+
+	Pal_SBZCycList2:	WORD 6
+
+				BYTE 7, 8
+				WORD Pal_SBZCyc1
+				WORD $FB50
+
+				BYTE $D, 8
+				WORD Pal_SBZCyc2
+				WORD $FB52
+
+				BYTE 9, 8
+				WORD Pal_SBZCyc9
+				WORD $FB70
+
+				BYTE 7, 8
+				WORD Pal_SBZCyc6
+				WORD $FB72
+
+				BYTE 3, 3
+				WORD Pal_SBZCyc8
+				WORD $FB78
+
+				BYTE 3, 3
+				WORD Pal_SBZCyc8+2
+				WORD $FB7A
+
+				BYTE 3, 3
+				WORD Pal_SBZCyc8+4
+				WORD $FB7C
+
+	Pal_SBZCyc1:		include "Levels/SBZ/Pal/C1.bin"
+	Pal_SBZCyc2:		include "Levels/SBZ/Pal/C2.bin"
+	Pal_SBZCyc3:		include "Levels/SBZ/Pal/C3.bin"
+	Pal_SBZCyc4:		include "Levels/SBZ/Pal/C4.bin"
+	Pal_SBZCyc5:		include "Levels/SBZ/Pal/C5.bin"
+	Pal_SBZCyc6:		include "Levels/SBZ/Pal/C6.bin"
+	Pal_SBZCyc7:		include "Levels/SBZ/Pal/C7.bin"
+	Pal_SBZCyc8:		include "Levels/SBZ/Pal/C8.bin"
+	Pal_SBZCyc9:		include "Levels/SBZ/Pal/C9.bin"
+	Pal_SBZCyc10:		include "Levels/SBZ/Pal/C10.bin"
+
+EndSeg
+
+StartSeg ColPointers Big_Endian $004100	;Replace the Collision Index Pointers
+
+	DWORD Col_GHZ
+	DWORD Col_LZ
+	DWORD Col_MZ
+	DWORD Col_SLZ
+	DWORD Col_SYZ
+	DWORD Col_SBZ
+
+EndSeg
+
+StartSeg Big_Endian $00606C	;Replace the Ending Scenes Start Position Array
+
+	include	"Levels/GHZ/Start/E1.bin"
+	include	"Levels/MZ/Start/E1.bin"
+	include	"Levels/SYZ/Start/E1.bin"
+	include	"Levels/LZ/Start/E1.bin"
+	include	"Levels/SLZ/Start/E1.bin"
+	include	"Levels/SBZ/Start/E1.bin"
+	include	"Levels/SBZ/Start/E2.bin"
+	include	"Levels/GHZ/Start/E2.bin"
+
+EndSeg
+
+StartSeg Big_Endian $006112	;Replace the Level Start Position Array
+
+	include	"Levels/GHZ/Start/1.bin"
+	include	"Levels/GHZ/Start/2.bin"
+	include	"Levels/GHZ/Start/3.bin"
+	include	"Levels/GHZ/Start/4.bin"
+	include	"Levels/LZ/Start/1.bin"
+	include	"Levels/LZ/Start/2.bin"
+	include	"Levels/LZ/Start/3.bin"
+	include	"Levels/LZ/Start/4.bin"
+	include	"Levels/MZ/Start/1.bin"
+	include	"Levels/MZ/Start/2.bin"
+	include	"Levels/MZ/Start/3.bin"
+	include	"Levels/MZ/Start/4.bin"
+	include	"Levels/SLZ/Start/1.bin"
+	include	"Levels/SLZ/Start/2.bin"
+	include	"Levels/SLZ/Start/3.bin"
+	include	"Levels/SLZ/Start/4.bin"
+	include	"Levels/SYZ/Start/1.bin"
+	include	"Levels/SYZ/Start/2.bin"
+	include	"Levels/SYZ/Start/3.bin"
+	include	"Levels/SYZ/Start/4.bin"
+	include	"Levels/SBZ/Start/1.bin"
+	include	"Levels/SBZ/Start/2.bin"
+	include	"Levels/SBZ/Start/3.bin"
+	include	"Levels/SBZ/Start/4.bin"
+	include	"Levels/End/Start/1.bin"
+	include	"Levels/End/Start/2.bin"
+	include	"Levels/End/Start/3.bin"
+	include	"Levels/End/Start/4.bin"
+
+EndSeg
+
+StartSeg SS_LayoutIndex Big_Endian $01B64C	;Replace the Special Stage Layout Pointers
+
+	DWORD SS_1
+	DWORD SS_2
+	DWORD SS_3
+	DWORD SS_4
+	DWORD SS_5
+	DWORD SS_6
+
+EndSeg
+
+StartSeg SS_StartLoc Big_Endian $01B664	;Replace the Special Stage Start Position Array
+
+	include	"SStage/Start/1.bin"
+	include	"SStage/Start/2.bin"
+	include	"SStage/Start/3.bin"
+	include	"SStage/Start/4.bin"
+	include	"SStage/Start/5.bin"
+	include	"SStage/Start/6.bin"
+
+EndSeg
+
+StartSeg MainLoadBlocks Big_Endian $01D5A2	;Replace the Main Level Load Array
+
+	DWORD Tile_GHZ_1+$4000000			;TilesPtr  + (PLC1 * 10^6)
+	DWORD Block_GHZ+$5000000			;BlocksPtr + (PLC2 * 10^6)
+	DWORD Meta_GHZ					;MetatilesPtr
+	 BYTE 0, $81, 4, 4				;Unused, Music(unused), Palette(unused), Palette
+	DWORD Tile_LZ+$6000000
+	DWORD Block_LZ+$7000000
+	DWORD Meta_LZ
+	 BYTE 0, $82, 5, 5
+	DWORD Tile_MZ+$8000000
+	DWORD Block_MZ+$9000000
+	DWORD Meta_MZ
+	 BYTE 0, $83, 6, 6
+	DWORD Tile_SLZ+$A000000
+	DWORD Block_SLZ+$B000000
+	DWORD Meta_SLZ
+	 BYTE 0, $84, 7, 7
+	DWORD Tile_SYZ+$C000000
+	DWORD Block_SYZ+$D000000
+	DWORD Meta_SYZ
+	 BYTE 0, $85, 8, 8
+	DWORD Tile_SBZ+$E000000
+	DWORD Block_SBZ+$F000000
+	DWORD Meta_SBZ
+	 BYTE 0, $86, 9, 9
+	DWORD Tile_GHZ_1				; Main load data for ending scene
+	DWORD Block_GHZ
+	DWORD Meta_GHZ
+	 BYTE 0, $86, $13, $13
+
+EndSeg
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Moveable Data Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg PalPointers Big_Endian
+
+	DWORD Pal_SegaBG				; Palette Pointer
+	 WORD $FB00					; Address of these colors in the RAM mirror of the palette
+	 WORD $1F					; Number of colors in palette ((N / 2) - 1)
+	DWORD Pal_Title
+	 WORD $FB00
+	 WORD $1F
+	DWORD Pal_LevelSel
+	 WORD $FB00
+	 WORD $1F
+	DWORD Pal_Sonic
+	 WORD $FB00
+	 WORD 7
+	DWORD Pal_GHZ
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_LZ
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_MZ
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_SLZ
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_SYZ
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_SBZ1
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_Special
+	 WORD $FB00
+	 WORD $1F
+	DWORD Pal_LZWater
+	 WORD $FB00
+	 WORD $1F
+	DWORD Pal_SBZ3
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_SBZ3Water
+	 WORD $FB00
+	 WORD $1F
+	DWORD Pal_SBZ2
+	 WORD $FB20
+	 WORD $17
+	DWORD Pal_LZSonWater
+	 WORD $FB00
+	 WORD 7
+	DWORD Pal_SBZ3SonWat
+	 WORD $FB00
+	 WORD 7
+	DWORD Pal_SpeResult
+	 WORD $FB00
+	 WORD $1F
+	DWORD Pal_SpeContinue
+	 WORD $FB00
+	 WORD $F
+	DWORD Pal_Ending
+	 WORD $FB00
+	 WORD $1F
+
+	Pal_SegaBG:			include	"Palettes/sega_BG.bin"
+	Pal_Title:			include	"Palettes/title.bin"
+	Pal_LevelSel:			include	"Palettes/levelsel.bin"
+	Pal_Sonic:			include	"Palettes/sonic.bin"
+	Pal_GHZ:			include	"Levels/GHZ/Pal/Pal.bin"
+	Pal_LZ:				include	"Levels/LZ/Pal/Pal.bin"
+	Pal_LZWater:			include	"Levels/LZ/Pal/Water.bin"
+	Pal_MZ:				include	"Levels/MZ/Pal/Pal.bin"
+	Pal_SLZ:			include	"Levels/SLZ/Pal/Pal.bin"
+	Pal_SYZ:			include	"Levels/SYZ/Pal/Pal.bin"
+	Pal_SBZ1:			include	"Levels/SBZ/Pal/Pal1.bin"
+	Pal_SBZ2:			include	"Levels/SBZ/Pal/Pal2.bin"
+	Pal_Special:			include	"SStage/Pal/Pal.bin"
+	Pal_SBZ3:			include	"Levels/SBZ/Pal/Pal3.bin"
+	Pal_SBZ3Water:			include	"Levels/SBZ/Pal/Pal3Watr.bin"
+	Pal_LZSonWater:			include	"Levels/LZ/Pal/SonWatr.bin"
+	Pal_SBZ3SonWat:			include	"Levels/SBZ/Pal/SonWatr.bin"
+	Pal_SpeResult:			include	"SStage/Pal/Result.bin"
+	Pal_SpeContinue:		include	"SStage/Pal/Cont.bin"
+	Pal_Ending:			include	"Levels/End/Pal/Pal.bin"
+
+EndSeg
+
+StartSeg Big_Endian
+
+	Block_GHZ:	include	"Levels/GHZ/Tile/16.bin"
+	Tile_GHZ_0:	include	"Levels/GHZ/Tile/8_0.bin"
+	Tile_GHZ_1:	include	"Levels/GHZ/Tile/8_1.bin"
+	Meta_GHZ:	include	"Levels/GHZ/Tile/256.bin"
+
+	Block_LZ:	include	"Levels/LZ/Tile/16.bin"
+	Tile_LZ:	include	"Levels/LZ/Tile/8.bin"
+	Meta_LZ:	include	"Levels/LZ/Tile/256.bin"
+
+	Block_MZ:	include	"Levels/MZ/Tile/16.bin"
+	Tile_MZ:	include	"Levels/MZ/Tile/8.bin"
+	Meta_MZ:	include	"Levels/MZ/Tile/256.bin"
+
+	Block_SLZ:	include	"Levels/SLZ/Tile/16.bin"
+	Tile_SLZ:	include	"Levels/SLZ/Tile/8.bin"
+	Meta_SLZ:	include	"Levels/SLZ/Tile/256.bin"
+
+	Block_SYZ:	include	"Levels/SYZ/Tile/16.bin"
+	Tile_SYZ:	include	"Levels/SYZ/Tile/8.bin"
+	Meta_SYZ:	include	"Levels/SYZ/Tile/256.bin"
+
+	Block_SBZ:	include	"Levels/SBZ/Tile/16.bin"
+	Tile_SBZ:	include	"Levels/SBZ/Tile/8.bin"
+	Meta_SBZ:	include	"Levels/SBZ/Tile/256.bin"
+
+EndSeg
+
+StartSeg Big_Endian
+
+	Col_GHZ:	include	"Levels/GHZ/HMIndex.bin"
+	Col_LZ:		include	"Levels/LZ/HMIndex.bin"
+	Col_MZ:		include	"Levels/MZ/HMIndex.bin"
+	Col_SLZ:	include	"Levels/SLZ/HMIndex.bin"
+	Col_SYZ:	include	"Levels/SYZ/HMIndex.bin"
+	Col_SBZ:	include	"Levels/SBZ/HMIndex.bin"
+
+EndSeg
+
+StartSeg Big_Endian
+
+	SS_1:	include	"SStage/1.bin"
+	SS_2:	include	"SStage/2.bin"
+	SS_3:	include	"SStage/3.bin"
+	SS_4:	include	"SStage/4.bin"
+	SS_5:	include	"SStage/5.bin"
+	SS_6:	include	"SStage/6.bin"
+
+EndSeg
+
+StartSeg Level_Index Big_Endian
+
+	WORD Level_GHZ1-Level_Index,       Level_GHZBG-Level_Index,      Level_GHZ1_Blank-Level_Index
+	WORD Level_GHZ2-Level_Index,       Level_GHZBG-Level_Index,      Level_GHZ2_Blank-Level_Index
+	WORD Level_GHZ3-Level_Index,       Level_GHZBG-Level_Index,      Level_GHZ3_Blank-Level_Index
+	WORD Level_GHZ4_Blank-Level_Index, Level_GHZ4_Blank-Level_Index, Level_GHZ4_Blank-Level_Index
+	WORD Level_LZ1-Level_Index,        Level_LZBG-Level_Index,       Level_LZ1_Blank-Level_Index
+	WORD Level_LZ2-Level_Index,        Level_LZBG-Level_Index,       Level_LZ2_Blank-Level_Index
+	WORD Level_LZ3-Level_Index,        Level_LZBG-Level_Index,       Level_LZ3_Blank-Level_Index
+	WORD Level_SBZ3-Level_Index,       Level_LZBG-Level_Index,       Level_LZ4_Blank-Level_Index
+	WORD Level_MZ1-Level_Index,        Level_MZ1BG-Level_Index,      Level_MZ1-Level_Index
+	WORD Level_MZ2-Level_Index,        Level_MZ2BG-Level_Index,      Level_MZ2_Blank-Level_Index
+	WORD Level_MZ3-Level_Index,        Level_MZ3BG-Level_Index,      Level_MZ3_Blank-Level_Index
+	WORD Level_MZ4_Blank-Level_Index,  Level_MZ4_Blank-Level_Index,  Level_MZ4_Blank-Level_Index
+	WORD Level_SLZ1-Level_Index,       Level_SLZBG-Level_Index,      Level_SLZ_Blank-Level_Index
+	WORD Level_SLZ2-Level_Index,       Level_SLZBG-Level_Index,      Level_SLZ_Blank-Level_Index
+	WORD Level_SLZ3-Level_Index,       Level_SLZBG-Level_Index,      Level_SLZ_Blank-Level_Index
+	WORD Level_SLZ_Blank-Level_Index,  Level_SLZ_Blank-Level_Index,  Level_SLZ_Blank-Level_Index
+	WORD Level_SYZ1-Level_Index,       Level_SYZBG-Level_Index,      Level_SYZ1_Blank-Level_Index
+	WORD Level_SYZ2-Level_Index,       Level_SYZBG-Level_Index,      Level_SYZ2_Blank-Level_Index
+	WORD Level_SYZ3-Level_Index,       Level_SYZBG-Level_Index,      Level_SYZ3_Blank-Level_Index
+	WORD Level_SYZ4_Blank-Level_Index, Level_SYZ4_Blank-Level_Index, Level_SYZ4_Blank-Level_Index
+	WORD Level_SBZ1-Level_Index,       Level_SBZ1BG-Level_Index,     Level_SBZ1BG-Level_Index
+	WORD Level_SBZ2-Level_Index,       Level_SBZ2BG-Level_Index,     Level_SBZ2BG-Level_Index
+	WORD Level_SBZ2-Level_Index,       Level_SBZ2BG-Level_Index,     Level_SBZ3_Blank-Level_Index
+	WORD Level_SBZ4_Blank-Level_Index, Level_SBZ4_Blank-Level_Index, Level_SBZ4_Blank-Level_Index
+	WORD Level_End-Level_Index,        Level_GHZBG-Level_Index,      Level_End_Blank-Level_Index
+	WORD Level_End-Level_Index,        Level_GHZBG-Level_Index,      Level_End_Blank-Level_Index
+	WORD Level_End_Blank-Level_Index,  Level_End_Blank-Level_Index,  Level_End_Blank-Level_Index
+	WORD Level_End_Blank-Level_Index,  Level_End_Blank-Level_Index,  Level_End_Blank-Level_Index
+
+	Level_GHZ1:		include "Levels/GHZ/FG/1.BIN"
+	Level_GHZ1_Blank:	BYTE 0,0,0,0
+	Level_GHZ2:		include "Levels/GHZ/FG/2.BIN"
+	Level_GHZ2_Blank:	BYTE 0,0,0,0
+	Level_GHZ3:		include "Levels/GHZ/FG/3.BIN"
+	Level_GHZBG:		include "Levels/GHZ/BG/1.BIN"
+	Level_GHZ3_Blank:	BYTE 0,0,0,0
+	Level_GHZ4_Blank:	BYTE 0,0,0,0
+	Level_LZ1:		include "Levels/LZ/FG/1.BIN"
+	Level_LZBG:		include "Levels/LZ/BG/1.BIN"
+	Level_LZ1_Blank:	BYTE 0,0,0,0
+	Level_LZ2:		include "Levels/LZ/FG/2.BIN"
+	Level_LZ2_Blank:	BYTE 0,0,0,0
+	Level_LZ3:		include "Levels/LZ/FG/3.BIN"
+	Level_LZ3_Blank:	BYTE 0,0,0,0
+	Level_SBZ3:		include "Levels/SBZ/FG/3.BIN"
+	Level_LZ4_Blank:	BYTE 0,0,0,0
+	Level_MZ1:		include "Levels/MZ/FG/1.BIN"
+	Level_MZ1BG:		include "Levels/MZ/BG/1.BIN"
+	Level_MZ2:		include "Levels/MZ/FG/2.BIN"
+	Level_MZ2BG:		include "Levels/MZ/BG/2.BIN"
+	Level_MZ2_Blank:	BYTE 0,0,0,0
+	Level_MZ3:		include "Levels/MZ/FG/3.BIN"
+	Level_MZ3BG:		include "Levels/MZ/BG/3.BIN"
+	Level_MZ3_Blank:	BYTE 0,0,0,0
+	Level_MZ4_Blank:	BYTE 0,0,0,0
+	Level_SLZ1:		include "Levels/SLZ/FG/1.BIN"
+	Level_SLZBG:		include "Levels/SLZ/BG/1.BIN"
+	Level_SLZ2:		include "Levels/SLZ/FG/2.BIN"
+	Level_SLZ3:		include "Levels/SLZ/FG/3.BIN"
+	Level_SLZ_Blank:	BYTE 0,0,0,0
+	Level_SYZ1:		include "Levels/SYZ/FG/1.BIN"
+	Level_SYZBG:		include "Levels/SYZ/BG/1.BIN"
+	Level_SYZ1_Blank:	BYTE 0,0,0,0
+	Level_SYZ2:		include "Levels/SYZ/FG/2.BIN"
+	Level_SYZ2_Blank:	BYTE 0,0,0,0
+	Level_SYZ3:		include "Levels/SYZ/FG/3.BIN"
+	Level_SYZ3_Blank:	BYTE 0,0,0,0
+	Level_SYZ4_Blank:	BYTE 0,0,0,0
+	Level_SBZ1:		include "Levels/SBZ/FG/1.BIN"
+	Level_SBZ1BG:		include "Levels/SBZ/BG/1.BIN"
+	Level_SBZ2:		include "Levels/SBZ/FG/2.BIN"
+	Level_SBZ2BG:		include "Levels/SBZ/BG/2.BIN"
+	Level_SBZ3_Blank:	BYTE 0,0,0,0
+	Level_SBZ4_Blank:	BYTE 0,0,0,0
+	Level_End:		include "Levels/End/FG/1.BIN"
+	Level_End_Blank:	BYTE 0,0,0,0
+
+EndSeg
+
+StartSeg ObjPos_Index Big_Endian
+
+	WORD ObjPos_GHZ1-ObjPos_Index,    ObjPos_Null-ObjPos_Index
+	WORD ObjPos_GHZ2-ObjPos_Index,    ObjPos_Null-ObjPos_Index
+	WORD ObjPos_GHZ3-ObjPos_Index,    ObjPos_Null-ObjPos_Index
+	WORD ObjPos_GHZ1-ObjPos_Index,    ObjPos_Null-ObjPos_Index
+	WORD ObjPos_LZ1-ObjPos_Index,     ObjPos_Null-ObjPos_Index
+	WORD ObjPos_LZ2-ObjPos_Index,     ObjPos_Null-ObjPos_Index
+	WORD ObjPos_LZ3-ObjPos_Index,     ObjPos_Null-ObjPos_Index
+	WORD ObjPos_SBZ3-ObjPos_Index,    ObjPos_Null-ObjPos_Index
+	WORD ObjPos_MZ1-ObjPos_Index,     ObjPos_Null-ObjPos_Index
+	WORD ObjPos_MZ2-ObjPos_Index,     ObjPos_Null-ObjPos_Index
+	WORD ObjPos_MZ3-ObjPos_Index,     ObjPos_Null-ObjPos_Index
+	WORD ObjPos_MZ1-ObjPos_Index,     ObjPos_Null-ObjPos_Index
+	WORD ObjPos_SLZ1-ObjPos_Index,    ObjPos_Null-ObjPos_Index
+	WORD ObjPos_SLZ2-ObjPos_Index,    ObjPos_Null-ObjPos_Index
+	WORD ObjPos_SLZ3-ObjPos_Index,    ObjPos_Null-ObjPos_Index
+	WORD ObjPos_SLZ1-ObjPos_Index,    ObjPos_Null-ObjPos_Index
+	WORD ObjPos_SYZ1-ObjPos_Index,    ObjPos_Null-ObjPos_Index
+	WORD ObjPos_SYZ2-ObjPos_Index,    ObjPos_Null-ObjPos_Index
+	WORD ObjPos_SYZ3-ObjPos_Index,    ObjPos_Null-ObjPos_Index
+	WORD ObjPos_SYZ1-ObjPos_Index,    ObjPos_Null-ObjPos_Index
+	WORD ObjPos_SBZ1-ObjPos_Index,    ObjPos_Null-ObjPos_Index
+	WORD ObjPos_SBZ2-ObjPos_Index,    ObjPos_Null-ObjPos_Index
+	WORD ObjPos_FZ-ObjPos_Index,      ObjPos_Null-ObjPos_Index
+	WORD ObjPos_SBZ1-ObjPos_Index,    ObjPos_Null-ObjPos_Index
+	WORD ObjPos_End-ObjPos_Index,     ObjPos_Null-ObjPos_Index
+	WORD ObjPos_End-ObjPos_Index,     ObjPos_Null-ObjPos_Index
+	WORD ObjPos_End-ObjPos_Index,     ObjPos_Null-ObjPos_Index
+	WORD ObjPos_End-ObjPos_Index,     ObjPos_Null-ObjPos_Index
+	WORD ObjPos_LZ1pf1-ObjPos_Index,  ObjPos_LZ1pf2-ObjPos_Index
+	WORD ObjPos_LZ2pf1-ObjPos_Index,  ObjPos_LZ2pf2-ObjPos_Index
+	WORD ObjPos_LZ3pf1-ObjPos_Index,  ObjPos_LZ3pf2-ObjPos_Index
+	WORD ObjPos_LZ1pf1-ObjPos_Index,  ObjPos_LZ1pf2-ObjPos_Index
+	WORD ObjPos_SBZ1pf1-ObjPos_Index, ObjPos_SBZ1pf2-ObjPos_Index
+	WORD ObjPos_SBZ1pf3-ObjPos_Index, ObjPos_SBZ1pf4-ObjPos_Index
+	WORD ObjPos_SBZ1pf5-ObjPos_Index, ObjPos_SBZ1pf6-ObjPos_Index
+	WORD ObjPos_SBZ1pf1-ObjPos_Index, ObjPos_SBZ1pf2-ObjPos_Index
+
+				WORD $FFFF, $0000, $0000	;Object position data prefix
+	ObjPos_GHZ1:		include	"Levels/GHZ/Obj/1.bin"
+	ObjPos_GHZ2:		include	"Levels/GHZ/Obj/2.bin"
+	ObjPos_GHZ3:		include	"Levels/GHZ/Obj/3.bin"
+	ObjPos_LZ1:		include	"Levels/LZ/Obj/1.bin"
+	ObjPos_LZ2:		include	"Levels/LZ/Obj/2.bin"
+	ObjPos_LZ3:		include	"Levels/LZ/Obj/3.bin"
+	ObjPos_SBZ3:		include	"Levels/SBZ/Obj/3.bin"
+	ObjPos_LZ1pf1:		include	"Levels/LZ/Obj/Plat/1_1.bin"
+	ObjPos_LZ1pf2:		include	"Levels/LZ/Obj/Plat/1_2.bin"
+	ObjPos_LZ2pf1:		include	"Levels/LZ/Obj/Plat/2_1.bin"
+	ObjPos_LZ2pf2:		include	"Levels/LZ/Obj/Plat/2_2.bin"
+	ObjPos_LZ3pf1:		include	"Levels/LZ/Obj/Plat/3_1.bin"
+	ObjPos_LZ3pf2:		include	"Levels/LZ/Obj/Plat/3_2.bin"
+	ObjPos_MZ1:		include	"Levels/MZ/Obj/1.bin"
+	ObjPos_MZ2:		include	"Levels/MZ/Obj/2.bin"
+	ObjPos_MZ3:		include	"Levels/MZ/Obj/3.bin"
+	ObjPos_SLZ1:		include	"Levels/SLZ/Obj/1.bin"
+	ObjPos_SLZ2:		include	"Levels/SLZ/Obj/2.bin"
+	ObjPos_SLZ3:		include	"Levels/SLZ/Obj/3.bin"
+	ObjPos_SYZ1:		include	"Levels/SYZ/Obj/1.bin"
+	ObjPos_SYZ2:		include	"Levels/SYZ/Obj/2.bin"
+	ObjPos_SYZ3:		include	"Levels/SYZ/Obj/3.bin"
+	ObjPos_SBZ1:		include	"Levels/SBZ/Obj/1.bin"
+	ObjPos_SBZ2:		include	"Levels/SBZ/Obj/2.bin"
+	ObjPos_FZ:		include	"Levels/SBZ/Obj/FZ.bin"
+	ObjPos_SBZ1pf1:		include	"Levels/SBZ/Obj/Plat/1_1.bin"
+	ObjPos_SBZ1pf2:		include	"Levels/SBZ/Obj/Plat/1_2.bin"
+	ObjPos_SBZ1pf3:		include	"Levels/SBZ/Obj/Plat/1_3.bin"
+	ObjPos_SBZ1pf4:		include	"Levels/SBZ/Obj/Plat/1_4.bin"
+	ObjPos_SBZ1pf5:		include	"Levels/SBZ/Obj/Plat/1_5.bin"
+	ObjPos_SBZ1pf6:		include	"Levels/SBZ/Obj/Plat/1_6.bin"
+	ObjPos_End:		include	"Levels/End/Obj/1.bin"
+	ObjPos_Null:		WORD $FFFF, $0000, $0000
+
+EndSeg
+

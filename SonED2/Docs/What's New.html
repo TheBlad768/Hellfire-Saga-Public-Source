@@ -1,0 +1,227 @@
+<html>
+<head>
+<title>SonED2 v11.05.19 - What's new</title>
+</head>
+<body>
+<b><center>SonED2 v11.05.19</center></b><br>
+<b>v11.05.19</b><br>
+<ul>
+<br>
+ <li>All 16bit DOS programs previously included with the ROMulan file sets for Sonic CD and Chaotix have been replaced with Win32 console versions, which will work in 64bit Windows<br>
+<br>
+<b>BugFixes:</b><br>
+<br>
+ <li>Holding "Ctrl" to change Object values by 10(hex), broken in the previous update, now works again<br>
+<br>
+ <li>The Tile Editor was acting as if the "Ctrl" key was being held if it were pressed at least once in the Object Editor. This now only happens when the key is actually being held; non-"Ctrl"-modified keypresses now work properly again<br>
+</ul>
+<br>
+<b><center>SonED2 v11.04.12</center></b><br>
+<b>v11.04.12</b><br>
+<ul>
+ <li>While hovering over an Object in the Object Editor, holding Ctrl and pressing an Arrow Key will now move the Object in the corresponding direction by one pixel at a time, according to the hotkey repeat timer. This method will ignore the "Snap-To-Grid" setting<br>
+<br>
+ <li>A "Cursor Position" entry has been added to the Status Display for the Level Editor to specify the 2D X and Y map coordinates and 1D map array entry ID of the tile position that is currently being pointed to<br>
+<br>
+ <li>The Status Display in the Level and Object Editors can now be toggled off and back on by using the "Tab" key<br>
+<br>
+<b>BugFixes:</b><br>
+<br>
+ <li>When Objects were moved such that their drawing would begin above the top of the level, they would become invisible and inaccessible in the editor. Objects may now be moved all the way to "0" on the Y axis and still be both visible and editable<br>
+</ul>
+<br>
+<b>v11.03.27</b><br>
+<ul>
+ <li>Specifying a Rings Layout format other than 0 for a Project will now cause double-right-click on an empty space in the Object Editor to insert a Rings Layout format Ring regardless of the Objects Layout format that was specified<br>
+<br>
+ <li>In the Object Editor, the A/Z, S/X, and D/C keys will now wrap their corresponding settings around when the minimum/maximum value has been reached, and (when applicable), holding CTRL to modify by 10 hex (16 dec) will no longer be ignored in favor of midifying by 1 when the difference between the current value and the max/min value is 16 or less <br>
+<br>
+ <li>The "Block ___ Column _ Palette lines/priorities don't match" warning for the Sonic 2 split-screen compatibility feature originally listed Block IDs in decimal. These IDs are now displayed as hex, as they (and other IDs) are in the rest of the editor<br>
+<br>
+ <li>The program no longer attempts to use 8-bit color when in full-screen mode without the "Translucent Cursor" option selected. This eliminates color problems under these conditions with newer video drivers that do not properly support 8-bit color mode<br>
+<br>
+ <li>On startup, the Object editor will now automatically center around Start Position 0 if Start Positions were specified within the loaded Project File<br>
+<br>
+ <li>Player Start Positions are now drawn onto Level Layout map dumps when using either of the two "Include ___ Objects" options<br>
+<br>
+<b>BugFixes:</b><br>
+<br>
+ <li>Pressing "G" for switching a Tile's Display Priority was accepted when pointing above the Block Editor, causing it to read/write out of range and crash the program. The keypress is now only accepted when the mouse is actually inside the Block Editor, disallowing out-of-bounds reads/writes and preventing the crash<br>
+<br>
+ <li>While levels greater in height/width than 0xFF could be read, edited, and saved, the plane resize operation would crash the program when the new target size was greater in width/height than 0xFF due to it being overlooked when all Plane Size operations were updated for the newer formats' WORD-length size settings, rendering the new Plane array too small and causing out-of-bounds writes during the adjustment. This has been corrected, and planes may now be successfully resized in excess of 0xFF on either axis<br>
+<br>
+ <li>Handling of the "DefaultParam" property for Object Types in the Object Listing File was not properly updated for Chaotix's WORD-length parameter value, causing the upper byte of this setting to be ignored. This property will now correctly accept WORD-values greater than 0xFF<br>
+<br>
+ <li>The X key would not increase an Object's "Parameter" value beyond 0xFF for Chaotix-format Objects. This key now allows full use of Chaotix's WORD-length "Parameter" value<br>
+<br>
+ <li>SonED2's Object handling code was structured for a maximum of 2 Player Start positions, causing issues when attempts were made to use 3 or more. Any number of Start Positions (up to FF) may now be used with no issue<br>
+<br>
+ <li>The "Total ???" Status display element for the Object Editor will now display even when the cursor is not hovering over a placed Object/Ring. "Rings" and "Misc" are now only included when their respective settings in the currently-loaded Project File have been used to load those types of data<br>
+<br>
+ <li>When hovering the cursor over a "Misc" Object in the Object Editor, the Status display would always list it as "Unknown Misc Object" when using the customizable Level Project File format because it only tested for the original "Sonic 2 Level Project" format. The Status now displays the correct information for the Casino Night Zone Special Bumper Objects when they are loaded by a new-format "Level Project"<br>
+<br>
+ <li>When dumping Level Layout maps and including Sonic CD-style Objects, every Object was drawn to the map regardless of Time Period settings. Now, only Objects that are flagged for the Time Periods that are currently set to display within the editor are drawn<br>
+</ul>
+<br>
+<b>v11.02.24</b><br>
+<ul>
+ <li><a href="../ReadMe.html">Documentation</a> has been revised and moved to HTML<br>
+<br>
+ <li>Because the TGA format is more widely-supported than PCX, SonED2 can now accept
+     TGA image files in addition to the existing PCX support. All image file export
+     options will now output TGA image files rather than PCX<br>
+<br>
+ <li><a href="Level%20Editor.html#S22P">Option to convert the level's tileset for use in Sonic 2's split-screen competition mode</a>.<br>
+<br>
+ <li>Multi-page tile support for games that use more than one "page" of Tiles, Blocks,
+     or Chunks to further vary level layout. Insert, delete, expand, and contract
+     features will resize the appropriate page depending on the tile/page selected.
+     Pages can be selected for viewing individually by the settings below Tile Census,
+     and the tile ripper has been updated with settings to control on which page tile
+     redundancy checking begins, and on which page to append the new tiles. This
+     applies to the next three listed updates:<br>
+<br>
+ <li>Support for Sonic 3 (and Knuckles), "Sonic Crackers", Knuckles' Chaotix, and
+     Sonic CD level data editing<br>
+<br>
+ <li>Native support for GHZ's split 8x8 tile set. For projects, this requires the addition of the
+     "Num 8x8 Pages" entry just before the tileset's filename in any (old-style) custom Sonic 1
+     project files. It should be set to 1 for all levels other than GHZ. For GHZ, it
+     should be set to 2, followed by <i>two</i> 8x8 tile entries giving the names of <i>both</i>
+     tile data files (Previous versions required manually merging the tiles before
+     load, and manually separating after save). Project Files created before this update are still
+     functional (If a number is not detected, it is assumed that there is only one file)<br>
+<br>
+ <li>Generic "<a href="Project%20Types/Level.html">Level Project</a>" format. Where applicable, Data format, compression type,
+     and number of pages are specified for each data type to control how the data are
+     read/written. (The old game-specific project formats are still functional)<br>
+<br>
+ <li>Player start location support (under new project format). Information for adding
+     the representative graphic has been added to "<a href="Object%20Listing%20Files.html">Object Def</a>" documentation<br>
+<br>
+ <li>Level Layout importing support- In addition to tile graphics, the <a href="Art%20Importing.html">tile ripper</a> can
+     now import map layout data from the image. The layout is imported to the
+     "<a href="Level Editor.html#Editors">Plane Clipboard</a>", and can be <a href="Level Editor.html#Pasting">pasted</a> anywhere within the level<br>
+<br>
+ <li>Integrated "<a href="ROMulan.html">ROMulan</a>" functionality for accessing and re-implementing ROM data
+     without the use of an external program<br>
+<br>
+ <li><a href="S1SS%20Editor.html">Sonic 1 Special Stage Editor</a>, with animated wall objects<br>
+<br>
+ <li>Tile listing selection in the Tile Editor is now displayed and controlled by the
+     <a href="Tile Editor.html#Census">Tile Census</a> area. "Maximum" values have been removed from the census because they
+     actually vary depending on the nature of the game<br>
+<br>
+ <li>The tiny arrows in the Tile Editor have been removed in favor of an easier-to-use
+ method for changing these values using the mouse- Left-click the option's name or value
+ to increase, and Right-click to decrease. All previously-available keyboard hotkeys are still available as well<br>
+<br>
+ <li>Keyboard hotkeys have been added for <a href="Tile Editor.html#ChangeColor">adjusting the RGB components</a> of <a href="Tile Editor.html#Palette">palette entries</a>
+     in the <a href="Tile Editor.html">Tile Editor</a><br>
+<br>
+ <li>When the <a href="Tile Editor.html#Palette">standard and accessory palettes</a> have been switched from within in the <a href="Tile Editor.html">Tile Editor</a>,
+     they no longer need to be switched back before saving the project or attempting an <a href="Tile Editor.html#AltPalette">alpha blend</a>.
+     The palette colors will be saved to the correct files and the blend will be performed from the
+     standard palette onto the accessory palette, even if the accessory palette is currently swapped into indexes 0-63<br>
+<br>
+ <li>When <a href="Tile Editor.html#GrabTile">"grabbing" a Tile from a Block</a>, the currently selected color is now automatically updated so that the Tile Editor will draw the Tile using the palette row that was assigned to the Tile within the Block it was "grabbed" from<br>
+<br>
+ <li>Palette colors can now be <a href="Tile Editor.html#GrabColor">"grabbed" from a Tile</a><br>
+<br>
+ <li>Most value-changing hotkeys now have a delayed repeat- holding the key for more than half a second will cause it to start repeating</a><br>
+<br>
+ <li>Message Window now automatically comes to the front when level data ripping begins<br>
+<br>
+ <li>Old Message Window has been replaced with a Console Window<br>
+<br>
+ <li>SonED2 no longer hogs CPU time when it doesn't have focus<br>
+<br>
+ <li>Implemented a better font<br>
+<br>
+ <li>Chose a new version numbering system, "YY.MM.DD", which maintains release dates and will simplify the numbering of minor updates<br>
+<br>
+<b>BugFixes:</b><br>
+<br>
+ <li>Double-Right-Clicking to place a Ring in Sonic 1 didn't set the Ring Object's "Remember Sprite State" flag.
+     This placement method now sets the flag properly<br>
+<br>
+ <li>Tile Ripper didn't actually optimize out flipped/mirrored duplicates of existing
+     16x16 blocks. 16x16 graphic sections that can be created by flipping/mirroring
+     already-existing blocks will now use those blocks instead of producing new ones<br>
+<br>
+ <li>SonED2 now restores its drawing surface and buffer pointers properly after having
+     switched to another DirectX program while in Windowed mode, so editor contents
+     continue to display properly without having to switch into and out of full-screen
+     mode, or restart the program<br>
+<br>
+ <li>Scrollable range (both by keypress and scrollbars) for Level, Object, and Tile
+     editors have been corrected so that data smaller than one screen in either height
+     or width will not enable scrolling on that axis<br>
+<br>
+ <li>Main window now has focus on startup rather than message window<br>
+<br>
+ <li>In Sonic 1, Chunks "flagged" as loops in the level layout would be altered when
+     using insert/delete functions on the Chunk list because this effectively caused
+     them to read as being of a higher ID than the inserted/deleted Chunk, signaling
+     that they needed to be shifted. They are now taken for their actual ID and are only
+     shifted if they are actually farther into the list than the inserted/deleted Chunk<br>
+<br>
+ <li>Certain "hotkeys" no longer repeat. Most notably, F3 does not save a project more than once
+     if still held when saving is complete<br>
+</ul>
+<br>
+<b>v1.03</b><br>
+<ul>
+<b>BugFixes:</b><br>
+<br>
+ <li>Removed some mistakenly-included early development code that caused keys
+     1, 2, 3, and 4 to modify the editor's level layout size settings without
+     correcting the level data array, causing accidental data loss upon accidental
+     stray keypresses. The proper keys for resizing the level are (and have been)
+     Ctrl+Arrows<br>
+</ul>
+<br>
+<b>v1.02</b><br>
+<ul>
+ <li>Update to the Sonic 1 Object Def files by Hivebrain (graphics for GHZ and various
+     misc sprites, object def text and settings tweaks)<br>
+<br>
+<b>BugFixes:</b><br>
+<br>
+ <li>Though the previous version properly accounted for the "Remember Sprite State"
+     flag, it was still handled improperly during save. The flag saves now, and a
+     feature to set all sprites in the level to their default "Remember Sprite State"
+     setting (SHIFT+0) can be used to correct improper flag states (but not otherwise
+     damaged sprites). (This is not automatic because it would contradict the ability
+     to manually toggle the flag for each sprite)<br>
+<br>
+ <li>Minimum/maximum sprite setting values weren't properly enforced when using the
+     A/Z keys, allowing the value to go below 0 or above FF, causing the program to
+     read beyond the end of the object def data and crash. The limit is now properly
+     enforced<br>
+</ul>
+<br>
+<b>v1.01</b><br>
+<ul>
+<b>BugFixes:</b><br>
+<br>
+ <li>Misinformation about sprite storage in Sonic 1 led to a misuse of a flag
+     stored in the sprite type, causing some sprites to vanish during gameplay.
+     This flag is now recognized as the "Remember Sprite State" flag and handled
+     appropriately (This problem wasn't present in SonED because the original
+     object def files treated the full value as if it were the real ID)<br>
+<br>
+ <li>A typo caused Height map lists smaller than 256 entries would only expand to
+     255. The final entry is now available<br>
+<br>
+ <li>A typo in the Sonic 2 Object Def rendered the "Egg Prison" sprite unselectable.
+     The problem is corrected in the current def, enabling the sprite to be selected
+     for editing and/or moving<br>
+</ul>
+<br>
+<b>v1.00</b><br>
+<ul>
+ <li>First release<br>
+</ul>
+</body>
+</html>

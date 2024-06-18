@@ -1,0 +1,3757 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Knuckles' Chaotix (JU / 5) Injector File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;
+; Setup Directives ;
+;;;;;;;;;;;;;;;;;;;;
+
+Define	LastPage		$1000000		;This page of tiles/mappings is the last for this "layer" (FG/BG)
+Define	NoNewLayer		$2000000		;All tiles/mappings pages of this type are loaded for the same "layer"
+
+MaxSize				$400000			;Maximum Genesis ROM size
+
+Dispose				$22E974	$22F1AC		;Original level data pointers list
+Dispose				$22F1AC	$22F3B4		;Original solidity data pointers list
+Dispose				$22F3B4	$2B32B0		;Original level map, tile, and solidity data (83EEA)
+Dispose				$2B32B0	$2B4B74		;Original MD palette pointers and data
+Dispose				$2B4B74	$2B52B4		;Original Level Size Data Pointers and Data
+Dispose				$2BDE18	$2BDE42		;Original Boss Level Size Data
+Dispose				$2DA05E	$2F83DA		;Original Sprite Placement Data
+Dispose				$2F83DA	$300000		;Original End-ROM padding
+
+Translate			$000000	$080000	$880000	;32x shuffling of Genesis ROM address space
+Translate			$200000	$300000	$900000	;32x shuffling of Genesis ROM address space
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; General Reference Replacement Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Big_Endian $4EBA			;Replace the reference to the sprite pointer listing within the sprite pointer load routine
+
+		DWORD	Objlayout_Ptrs		;Point to the level object layout pointer segment
+
+EndSeg
+
+StartSeg Big_Endian $9482			;Replace the reference to the solidity index pointer listing within the solidity index pointer load routine
+
+		DWORD	Solid_Index		;Point to the solidity index pointer segment
+
+EndSeg
+
+StartSeg Big_Endian $939E			;Replace this reference to the level size setup data pointer listing
+
+		DWORD	LevSize_Data		;Point to the Level Size Setup segment
+
+EndSeg
+
+StartSeg Big_Endian $1369E			;Replace the reference to the level palette pointer listing
+
+		DWORD	MD_Palette_Index	;Point to the level palette pointer/data segment
+
+EndSeg
+
+StartSeg Big_Endian $2F7EE			;Replace this reference to the level index listing
+
+		DWORD	Level_Index		;Point to the level index/data segment
+
+EndSeg
+
+StartSeg Big_Endian $2FB24			;Replace this reference to the level size setup data pointer listing
+
+		DWORD	LevSize_Data		;Point to the Level Size Setup segment
+
+EndSeg
+
+StartSeg Big_Endian $302C2			;Replace this reference to the level index listing
+
+		DWORD	Level_Index		;Point to the level index/data segment
+
+EndSeg
+
+StartSeg Big_Endian $319C0			;Replace the reference to the level tiles pointer listing
+
+		DWORD	LevelTile_Ptrs		;Point to the level tile pointer segment
+
+EndSeg
+
+StartSeg Big_Endian $31ADA			;Replace the reference to the level index listing within the level layout load routine
+
+		DWORD	Level_Index		;Point to the level index/data segment
+
+EndSeg
+
+StartSeg Big_Endian $31F80			;Replace the reference to the level tiles pointer listing within the level tile pointer load routine
+
+		DWORD	LevelTile_Ptrs		;Point to the level tile pointer segment
+
+EndSeg
+
+StartSeg Big_Endian $320C8			;Replace the reference to the level palette pointer listing
+
+		DWORD	MD_Palette_Index	;Point to the level palette pointer/data segment
+
+EndSeg
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Boss Level Load Reference Replacement Segments   ;
+;                                                  ;
+; SSZ and TTZ load special boss level data that is ;
+; not listed with the normal level data pointers   ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Big_Endian $2D6F2
+
+		DWORD	PalPtr_SSZBoss
+
+EndSeg
+
+StartSeg Big_Endian $2D88C
+
+		DWORD	SSZB_FG_Tiles
+
+EndSeg
+
+StartSeg Big_Endian $2D8BA
+
+		DWORD	SSZ45MD_BG_Tiles_Sec
+
+EndSeg
+
+StartSeg Big_Endian $2D8FC
+
+		DWORD	SSZB_FG_Blocks
+
+EndSeg
+
+StartSeg Big_Endian $2D918
+
+		DWORD	SSZ45MD_BG_Blocks_Sec
+
+EndSeg
+
+StartSeg Big_Endian $2D930
+
+		DWORD	SSZB_FG_Chunks
+
+EndSeg
+
+StartSeg Big_Endian $2D948
+
+		DWORD	SSZB_BG_Chunks
+
+EndSeg
+
+StartSeg Big_Endian $2D960
+
+		DWORD	SSZB_FG_Layout
+
+EndSeg
+
+StartSeg Big_Endian $2D978
+
+		DWORD	SSZB_BG_Layout
+
+EndSeg
+
+StartSeg Big_Endian $2D988
+
+		DWORD	SSZB_Solids
+
+EndSeg
+
+StartSeg Big_Endian $2D9E8
+
+		DWORD	LS_FG_SSZBoss
+
+EndSeg
+
+StartSeg Big_Endian $2DA00
+
+		DWORD	LS_BG_SSZBoss
+
+EndSeg
+
+StartSeg Big_Endian $2DFE0
+
+		DWORD	TTZB_FG_Tiles
+
+EndSeg
+
+StartSeg Big_Endian $2E018
+
+		DWORD	TTZB_FG_Blocks
+
+EndSeg
+
+StartSeg Big_Endian $2E030
+
+		DWORD	TTZB_FG_Chunks
+
+EndSeg
+
+StartSeg Big_Endian $2E04A
+
+		DWORD	TTZB_FG_Layout
+
+EndSeg
+
+StartSeg Big_Endian $2E05C
+
+		DWORD	TTZB_Solids
+
+EndSeg
+
+StartSeg Big_Endian $2E0C2
+
+		DWORD	PalPtr_TTZBoss
+
+EndSeg
+
+StartSeg Big_Endian $2E138
+
+		DWORD	LS_FG_TTZBoss
+
+EndSeg
+
+;;;;;;;;;;;;;;;;;;;;;;;
+; Fixed Data Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Big_Endian $22D000		;Replace the normal-oriented Height Maps
+
+		include	"Collisn/HMaps.bin"
+
+EndSeg
+
+StartSeg Big_Endian $22C000		;Replace the rotated Height Maps
+
+		include	"Collisn/HMapsR.bin"
+
+EndSeg
+
+StartSeg Big_Endian $22E000		;Replace the Angle Array
+
+		include	"Collisn/Angles.bin"
+
+EndSeg
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Moveable Data Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Objlayout_Ptrs Big_Endian	;Level Object Layout Pointers
+
+		DWORD SLPtrs_BBZ
+		DWORD SLPtrs_SSZ
+		DWORD SLPtrs_AAZ
+		DWORD SLPtrs_TTZ
+		DWORD SLPtrs_MMZ
+		DWORD SLPtrs_Train
+		DWORD SLPtrs_Intro
+		DWORD SLPtrs_World
+	SLPtrs_BBZ:
+		DWORD SLPtrs_BBZ0
+ 		DWORD SLPtrs_BBZ1
+		DWORD SLPtrs_BBZ2
+		DWORD SLPtrs_BBZ3
+		DWORD SLPtrs_BBZ4
+		DWORD SLPtrs_BBZ5
+		DWORD SLPtrs_BBZ6
+	SLPtrs_SSZ:
+		DWORD SLPtrs_SSZ0
+		DWORD SLPtrs_SSZ1
+		DWORD SLPtrs_SSZ2
+		DWORD SLPtrs_SSZ3
+		DWORD SLPtrs_SSZ4
+		DWORD SLPtrs_SSZ5
+		DWORD SLPtrs_SSZ6
+	SLPtrs_AAZ:
+		DWORD SLPtrs_AAZ0
+		DWORD SLPtrs_AAZ1
+		DWORD SLPtrs_AAZ2
+		DWORD SLPtrs_AAZ3
+		DWORD SLPtrs_AAZ4
+		DWORD SLPtrs_AAZ5
+		DWORD SLPtrs_AAZ6
+	SLPtrs_TTZ:
+		DWORD SLPtrs_TTZ0
+		DWORD SLPtrs_TTZ1
+		DWORD SLPtrs_TTZ2
+		DWORD SLPtrs_TTZ3
+		DWORD SLPtrs_TTZ4
+		DWORD SLPtrs_TTZ5
+		DWORD SLPtrs_TTZ6
+	SLPtrs_MMZ:
+		DWORD SLPtrs_MMZ0
+		DWORD SLPtrs_MMZ1
+		DWORD SLPtrs_MMZ2
+		DWORD SLPtrs_MMZ3
+		DWORD SLPtrs_MMZ4
+		DWORD SLPtrs_MMZ5
+		DWORD SLPtrs_MMZ6
+	SLPtrs_Train:
+		DWORD SLPtrs_Train0
+		DWORD SLPtrs_Train1
+		DWORD SLPtrs_Train2
+		DWORD SLPtrs_Train3
+		DWORD SLPtrs_Train4
+		DWORD SLPtrs_Train5
+		DWORD SLPtrs_Train6
+	SLPtrs_Intro:
+		DWORD SLPtrs_Intro0
+		DWORD SLPtrs_Intro1
+		DWORD SLPtrs_Intro2
+		DWORD SLPtrs_Intro3
+		DWORD SLPtrs_Intro4
+		DWORD SLPtrs_Intro5
+		DWORD SLPtrs_Intro6
+	SLPtrs_World:
+		DWORD SLPtrs_World0
+		DWORD SLPtrs_World1
+		DWORD SLPtrs_World2
+		DWORD SLPtrs_World3
+		DWORD SLPtrs_World4
+		DWORD SLPtrs_World5
+		DWORD SLPtrs_World6
+	SLPtrs_BBZ0:
+		DWORD SLPtrs_BBZ0M
+		DWORD SLPtrs_BBZ0D
+		DWORD SLPtrs_BBZ0S
+		DWORD SLPtrs_BBZ0N
+ 	SLPtrs_BBZ1:
+ 		DWORD SLPtrs_BBZ1M
+		DWORD SLPtrs_BBZ1D
+		DWORD SLPtrs_BBZ1S
+		DWORD SLPtrs_BBZ1N
+	SLPtrs_BBZ2:
+		DWORD SLPtrs_BBZ2M
+		DWORD SLPtrs_BBZ2D
+		DWORD SLPtrs_BBZ2S
+		DWORD SLPtrs_BBZ2N
+	SLPtrs_BBZ3:
+		DWORD SLPtrs_BBZ3M
+		DWORD SLPtrs_BBZ3D
+		DWORD SLPtrs_BBZ3S
+		DWORD SLPtrs_BBZ3N
+	SLPtrs_BBZ4:
+		DWORD SLPtrs_BBZ4M
+		DWORD SLPtrs_BBZ4D
+		DWORD SLPtrs_BBZ4S
+		DWORD SLPtrs_BBZ4N
+	SLPtrs_BBZ5:
+		DWORD SLPtrs_BBZ5M
+		DWORD SLPtrs_BBZ5D
+		DWORD SLPtrs_BBZ5S
+		DWORD SLPtrs_BBZ5N
+	SLPtrs_BBZ6:
+		DWORD SLPtrs_BBZ6M
+		DWORD SLPtrs_BBZ6D
+		DWORD SLPtrs_BBZ6S
+		DWORD SLPtrs_BBZ6N
+	SLPtrs_SSZ0:
+		DWORD SLPtrs_SSZ0M
+		DWORD SLPtrs_SSZ0D
+		DWORD SLPtrs_SSZ0S
+		DWORD SLPtrs_SSZ0N
+	SLPtrs_SSZ1:
+		DWORD SLPtrs_SSZ1M
+		DWORD SLPtrs_SSZ1D
+		DWORD SLPtrs_SSZ1S
+		DWORD SLPtrs_SSZ1N
+	SLPtrs_SSZ2:
+		DWORD SLPtrs_SSZ2M
+		DWORD SLPtrs_SSZ2D
+		DWORD SLPtrs_SSZ2S
+		DWORD SLPtrs_SSZ2N
+	SLPtrs_SSZ3:
+		DWORD SLPtrs_SSZ3M
+		DWORD SLPtrs_SSZ3D
+		DWORD SLPtrs_SSZ3S
+		DWORD SLPtrs_SSZ3N
+	SLPtrs_SSZ4:
+		DWORD SLPtrs_SSZ4M
+		DWORD SLPtrs_SSZ4D
+		DWORD SLPtrs_SSZ4S
+		DWORD SLPtrs_SSZ4N
+	SLPtrs_SSZ5:
+		DWORD SLPtrs_SSZ5M
+		DWORD SLPtrs_SSZ5D
+		DWORD SLPtrs_SSZ5S
+		DWORD SLPtrs_SSZ5N
+	SLPtrs_SSZ6:
+		DWORD SLPtrs_SSZ6M
+		DWORD SLPtrs_SSZ6D
+		DWORD SLPtrs_SSZ6S
+		DWORD SLPtrs_SSZ6N
+	SLPtrs_AAZ0:
+		DWORD SLPtrs_AAZ0M
+		DWORD SLPtrs_AAZ0D
+		DWORD SLPtrs_AAZ0S
+		DWORD SLPtrs_AAZ0N
+	SLPtrs_AAZ1:
+		DWORD SLPtrs_AAZ1M
+		DWORD SLPtrs_AAZ1D
+		DWORD SLPtrs_AAZ1S
+		DWORD SLPtrs_AAZ1N
+	SLPtrs_AAZ2:
+		DWORD SLPtrs_AAZ2M
+		DWORD SLPtrs_AAZ2D
+		DWORD SLPtrs_AAZ2S
+		DWORD SLPtrs_AAZ2N
+	SLPtrs_AAZ3:
+		DWORD SLPtrs_AAZ3M
+		DWORD SLPtrs_AAZ3D
+		DWORD SLPtrs_AAZ3S
+		DWORD SLPtrs_AAZ3N
+	SLPtrs_AAZ4:
+		DWORD SLPtrs_AAZ4M
+		DWORD SLPtrs_AAZ4D
+		DWORD SLPtrs_AAZ4S
+		DWORD SLPtrs_AAZ4N
+	SLPtrs_AAZ5:
+		DWORD SLPtrs_AAZ5M
+		DWORD SLPtrs_AAZ5D
+		DWORD SLPtrs_AAZ5S
+		DWORD SLPtrs_AAZ5N
+	SLPtrs_AAZ6:
+		DWORD SLPtrs_AAZ6M
+		DWORD SLPtrs_AAZ6D
+		DWORD SLPtrs_AAZ6S
+		DWORD SLPtrs_AAZ6N
+	SLPtrs_TTZ0:
+		DWORD SLPtrs_TTZ0M
+		DWORD SLPtrs_TTZ0D
+		DWORD SLPtrs_TTZ0S
+		DWORD SLPtrs_TTZ0N
+	SLPtrs_TTZ1:
+		DWORD SLPtrs_TTZ1M
+		DWORD SLPtrs_TTZ1D
+		DWORD SLPtrs_TTZ1S
+		DWORD SLPtrs_TTZ1N
+	SLPtrs_TTZ2:
+		DWORD SLPtrs_TTZ2M
+		DWORD SLPtrs_TTZ2D
+		DWORD SLPtrs_TTZ2S
+		DWORD SLPtrs_TTZ2N
+	SLPtrs_TTZ3:
+		DWORD SLPtrs_TTZ3M
+		DWORD SLPtrs_TTZ3D
+		DWORD SLPtrs_TTZ3S
+		DWORD SLPtrs_TTZ3N
+	SLPtrs_TTZ4:
+		DWORD SLPtrs_TTZ4M
+		DWORD SLPtrs_TTZ4D
+		DWORD SLPtrs_TTZ4S
+		DWORD SLPtrs_TTZ4N
+	SLPtrs_TTZ5:
+		DWORD SLPtrs_TTZ5M
+		DWORD SLPtrs_TTZ5D
+		DWORD SLPtrs_TTZ5S
+		DWORD SLPtrs_TTZ5N
+	SLPtrs_TTZ6:
+		DWORD SLPtrs_TTZ6M
+		DWORD SLPtrs_TTZ6D
+		DWORD SLPtrs_TTZ6S
+		DWORD SLPtrs_TTZ6N
+	SLPtrs_MMZ0:
+		DWORD SLPtrs_MMZ0M
+		DWORD SLPtrs_MMZ0D
+		DWORD SLPtrs_MMZ0S
+		DWORD SLPtrs_MMZ0N
+	SLPtrs_MMZ1:
+		DWORD SLPtrs_MMZ1M
+		DWORD SLPtrs_MMZ1D
+		DWORD SLPtrs_MMZ1S
+		DWORD SLPtrs_MMZ1N
+	SLPtrs_MMZ2:
+		DWORD SLPtrs_MMZ2M
+		DWORD SLPtrs_MMZ2D
+		DWORD SLPtrs_MMZ2S
+		DWORD SLPtrs_MMZ2N
+	SLPtrs_MMZ3:
+		DWORD SLPtrs_MMZ3M
+		DWORD SLPtrs_MMZ3D
+		DWORD SLPtrs_MMZ3S
+		DWORD SLPtrs_MMZ3N
+	SLPtrs_MMZ4:
+		DWORD SLPtrs_MMZ4M
+		DWORD SLPtrs_MMZ4D
+		DWORD SLPtrs_MMZ4S
+		DWORD SLPtrs_MMZ4N
+	SLPtrs_MMZ5:
+		DWORD SLPtrs_MMZ5M
+		DWORD SLPtrs_MMZ5D
+		DWORD SLPtrs_MMZ5S
+		DWORD SLPtrs_MMZ5N
+	SLPtrs_MMZ6:
+		DWORD SLPtrs_MMZ6M
+		DWORD SLPtrs_MMZ6D
+		DWORD SLPtrs_MMZ6S
+		DWORD SLPtrs_MMZ6N
+	SLPtrs_Train0:
+		DWORD SLPtrs_Train0M
+		DWORD SLPtrs_Train0D
+		DWORD SLPtrs_Train0S
+		DWORD SLPtrs_Train0N
+	SLPtrs_Train1:
+		DWORD SLPtrs_Train1M
+		DWORD SLPtrs_Train1D
+		DWORD SLPtrs_Train1S
+		DWORD SLPtrs_Train1N
+	SLPtrs_Train2:
+		DWORD SLPtrs_Train2M
+		DWORD SLPtrs_Train2D
+		DWORD SLPtrs_Train2S
+		DWORD SLPtrs_Train2N
+	SLPtrs_Train3:
+		DWORD SLPtrs_Train3M
+		DWORD SLPtrs_Train3D
+		DWORD SLPtrs_Train3S
+		DWORD SLPtrs_Train3N
+	SLPtrs_Train4:
+		DWORD SLPtrs_Train4M
+		DWORD SLPtrs_Train4D
+		DWORD SLPtrs_Train4S
+		DWORD SLPtrs_Train4N
+	SLPtrs_Train5:
+		DWORD SLPtrs_Train5M
+		DWORD SLPtrs_Train5D
+		DWORD SLPtrs_Train5S
+		DWORD SLPtrs_Train5N
+	SLPtrs_Train6:
+		DWORD SLPtrs_Train6M
+		DWORD SLPtrs_Train6D
+		DWORD SLPtrs_Train6S
+		DWORD SLPtrs_Train6N
+	SLPtrs_Intro0:
+		DWORD SLPtrs_Intro0M
+		DWORD SLPtrs_Intro0D
+		DWORD SLPtrs_Intro0S
+		DWORD SLPtrs_Intro0N
+	SLPtrs_Intro1:
+		DWORD SLPtrs_Intro1M
+		DWORD SLPtrs_Intro1D
+		DWORD SLPtrs_Intro1S
+		DWORD SLPtrs_Intro1N
+	SLPtrs_Intro2:
+		DWORD SLPtrs_Intro2M
+		DWORD SLPtrs_Intro2D
+		DWORD SLPtrs_Intro2S
+		DWORD SLPtrs_Intro2N
+	SLPtrs_Intro3:
+		DWORD SLPtrs_Intro3M
+		DWORD SLPtrs_Intro3D
+		DWORD SLPtrs_Intro3S
+		DWORD SLPtrs_Intro3N
+	SLPtrs_Intro4:
+		DWORD SLPtrs_Intro4M
+		DWORD SLPtrs_Intro4D
+		DWORD SLPtrs_Intro4S
+		DWORD SLPtrs_Intro4N
+	SLPtrs_Intro5:
+		DWORD SLPtrs_Intro5M
+		DWORD SLPtrs_Intro5D
+		DWORD SLPtrs_Intro5S
+		DWORD SLPtrs_Intro5N
+	SLPtrs_Intro6:
+		DWORD SLPtrs_Intro6M
+		DWORD SLPtrs_Intro6D
+		DWORD SLPtrs_Intro6S
+		DWORD SLPtrs_Intro6N
+	SLPtrs_World0:
+		DWORD SLPtrs_World0M
+		DWORD SLPtrs_World0D
+		DWORD SLPtrs_World0S
+		DWORD SLPtrs_World0N
+	SLPtrs_World1:
+		DWORD SLPtrs_World1M
+		DWORD SLPtrs_World1D
+		DWORD SLPtrs_World1S
+		DWORD SLPtrs_World1N
+	SLPtrs_World2:
+		DWORD SLPtrs_World2M
+		DWORD SLPtrs_World2D
+		DWORD SLPtrs_World2S
+		DWORD SLPtrs_World2N
+	SLPtrs_World3:
+		DWORD SLPtrs_World3M
+		DWORD SLPtrs_World3D
+		DWORD SLPtrs_World3S
+		DWORD SLPtrs_World3N
+	SLPtrs_World4:
+		DWORD SLPtrs_World4M
+		DWORD SLPtrs_World4D
+		DWORD SLPtrs_World4S
+		DWORD SLPtrs_World4N
+	SLPtrs_World5:
+		DWORD SLPtrs_World5M
+		DWORD SLPtrs_World5D
+		DWORD SLPtrs_World5S
+		DWORD SLPtrs_World5N
+	SLPtrs_World6:
+		DWORD SLPtrs_World6M
+		DWORD SLPtrs_World6D
+		DWORD SLPtrs_World6S
+		DWORD SLPtrs_World6N
+	SLPtrs_BBZ0M:	DWORD ObjLoc_BBZ1M
+	SLPtrs_BBZ0D:	DWORD ObjLoc_BBZ1D
+	SLPtrs_BBZ0S:	DWORD ObjLoc_BBZ1S
+	SLPtrs_BBZ0N:	DWORD ObjLoc_BBZ1N
+ 	SLPtrs_BBZ1M:	DWORD ObjLoc_BBZ1M
+	SLPtrs_BBZ1D:	DWORD ObjLoc_BBZ1D
+	SLPtrs_BBZ1S:	DWORD ObjLoc_BBZ1S
+	SLPtrs_BBZ1N:	DWORD ObjLoc_BBZ1N
+	SLPtrs_BBZ2M:	DWORD ObjLoc_BBZ2M
+	SLPtrs_BBZ2D:	DWORD ObjLoc_BBZ2D
+	SLPtrs_BBZ2S:	DWORD ObjLoc_BBZ2S
+	SLPtrs_BBZ2N:	DWORD ObjLoc_BBZ2N
+	SLPtrs_BBZ3M:	DWORD ObjLoc_BBZ3M
+	SLPtrs_BBZ3D:	DWORD ObjLoc_BBZ3D
+	SLPtrs_BBZ3S:	DWORD ObjLoc_BBZ3S
+	SLPtrs_BBZ3N:	DWORD ObjLoc_BBZ3N
+	SLPtrs_BBZ4M:	DWORD ObjLoc_BBZ4M
+	SLPtrs_BBZ4D:	DWORD ObjLoc_BBZ4D
+	SLPtrs_BBZ4S:	DWORD ObjLoc_BBZ4S
+	SLPtrs_BBZ4N:	DWORD ObjLoc_BBZ4N
+	SLPtrs_BBZ5M:	DWORD ObjLoc_BBZ5M
+	SLPtrs_BBZ5D:	DWORD ObjLoc_BBZ5D
+	SLPtrs_BBZ5S:	DWORD ObjLoc_BBZ5S
+	SLPtrs_BBZ5N:	DWORD ObjLoc_BBZ5N
+	SLPtrs_BBZ6M:	DWORD ObjLoc_BBZ1M
+	SLPtrs_BBZ6D:	DWORD ObjLoc_BBZ1D
+	SLPtrs_BBZ6S:	DWORD ObjLoc_BBZ1S
+	SLPtrs_BBZ6N:	DWORD ObjLoc_BBZ1N
+	SLPtrs_SSZ0M:	DWORD ObjLoc_SSZ1M
+	SLPtrs_SSZ0D:	DWORD ObjLoc_SSZ1D
+	SLPtrs_SSZ0S:	DWORD ObjLoc_SSZ1S
+	SLPtrs_SSZ0N:	DWORD ObjLoc_SSZ1N
+	SLPtrs_SSZ1M:	DWORD ObjLoc_SSZ1M
+	SLPtrs_SSZ1D:	DWORD ObjLoc_SSZ1D
+	SLPtrs_SSZ1S:	DWORD ObjLoc_SSZ1S
+	SLPtrs_SSZ1N:	DWORD ObjLoc_SSZ1N
+	SLPtrs_SSZ2M:	DWORD ObjLoc_SSZ2M
+	SLPtrs_SSZ2D:	DWORD ObjLoc_SSZ2D
+	SLPtrs_SSZ2S:	DWORD ObjLoc_SSZ2S
+	SLPtrs_SSZ2N:	DWORD ObjLoc_SSZ2N
+	SLPtrs_SSZ3M:	DWORD ObjLoc_SSZ3M
+	SLPtrs_SSZ3D:	DWORD ObjLoc_SSZ3D
+	SLPtrs_SSZ3S:	DWORD ObjLoc_SSZ3S
+	SLPtrs_SSZ3N:	DWORD ObjLoc_SSZ3N
+	SLPtrs_SSZ4M:	DWORD ObjLoc_SSZ4M
+	SLPtrs_SSZ4D:	DWORD ObjLoc_SSZ4D
+	SLPtrs_SSZ4S:	DWORD ObjLoc_SSZ4S
+	SLPtrs_SSZ4N:	DWORD ObjLoc_SSZ4N
+	SLPtrs_SSZ5M:	DWORD ObjLoc_SSZ5M
+	SLPtrs_SSZ5D:	DWORD ObjLoc_SSZ5D
+	SLPtrs_SSZ5S:	DWORD ObjLoc_SSZ5S
+	SLPtrs_SSZ5N:	DWORD ObjLoc_SSZ5N
+	SLPtrs_SSZ6M:	DWORD ObjLoc_SSZ1M
+	SLPtrs_SSZ6D:	DWORD ObjLoc_SSZ1D
+	SLPtrs_SSZ6S:	DWORD ObjLoc_SSZ1S
+	SLPtrs_SSZ6N:	DWORD ObjLoc_SSZ1N
+	SLPtrs_AAZ0M:	DWORD ObjLoc_AAZ1M
+	SLPtrs_AAZ0D:	DWORD ObjLoc_AAZ1D
+	SLPtrs_AAZ0S:	DWORD ObjLoc_AAZ1S
+	SLPtrs_AAZ0N:	DWORD ObjLoc_AAZ1N
+	SLPtrs_AAZ1M:	DWORD ObjLoc_AAZ1M
+	SLPtrs_AAZ1D:	DWORD ObjLoc_AAZ1D
+	SLPtrs_AAZ1S:	DWORD ObjLoc_AAZ1S
+	SLPtrs_AAZ1N:	DWORD ObjLoc_AAZ1N
+	SLPtrs_AAZ2M:	DWORD ObjLoc_AAZ2M
+	SLPtrs_AAZ2D:	DWORD ObjLoc_AAZ2D
+	SLPtrs_AAZ2S:	DWORD ObjLoc_AAZ2S
+	SLPtrs_AAZ2N:	DWORD ObjLoc_AAZ2N
+	SLPtrs_AAZ3M:	DWORD ObjLoc_AAZ3M
+	SLPtrs_AAZ3D:	DWORD ObjLoc_AAZ3D
+	SLPtrs_AAZ3S:	DWORD ObjLoc_AAZ3S
+	SLPtrs_AAZ3N:	DWORD ObjLoc_AAZ3N
+	SLPtrs_AAZ4M:	DWORD ObjLoc_AAZ4M
+	SLPtrs_AAZ4D:	DWORD ObjLoc_AAZ4D
+	SLPtrs_AAZ4S:	DWORD ObjLoc_AAZ4S
+	SLPtrs_AAZ4N:	DWORD ObjLoc_AAZ4N
+	SLPtrs_AAZ5M:	DWORD ObjLoc_AAZ5M
+	SLPtrs_AAZ5D:	DWORD ObjLoc_AAZ5D
+	SLPtrs_AAZ5S:	DWORD ObjLoc_AAZ5S
+	SLPtrs_AAZ5N:	DWORD ObjLoc_AAZ5N
+	SLPtrs_AAZ6M:	DWORD ObjLoc_AAZNULL
+	SLPtrs_AAZ6D:	DWORD ObjLoc_AAZNULL
+	SLPtrs_AAZ6S:	DWORD ObjLoc_AAZNULL
+	SLPtrs_AAZ6N:	DWORD ObjLoc_AAZNULL
+	SLPtrs_TTZ0M:	DWORD ObjLoc_TTZ1M
+	SLPtrs_TTZ0D:	DWORD ObjLoc_TTZ1D
+	SLPtrs_TTZ0S:	DWORD ObjLoc_TTZ1S
+	SLPtrs_TTZ0N:	DWORD ObjLoc_TTZ1N
+	SLPtrs_TTZ1M:	DWORD ObjLoc_TTZ1M
+	SLPtrs_TTZ1D:	DWORD ObjLoc_TTZ1D
+	SLPtrs_TTZ1S:	DWORD ObjLoc_TTZ1S
+	SLPtrs_TTZ1N:	DWORD ObjLoc_TTZ1N
+	SLPtrs_TTZ2M:	DWORD ObjLoc_TTZ2M
+	SLPtrs_TTZ2D:	DWORD ObjLoc_TTZ2D
+	SLPtrs_TTZ2S:	DWORD ObjLoc_TTZ2S
+	SLPtrs_TTZ2N:	DWORD ObjLoc_TTZ2N
+	SLPtrs_TTZ3M:	DWORD ObjLoc_TTZ3M
+	SLPtrs_TTZ3D:	DWORD ObjLoc_TTZ3D
+	SLPtrs_TTZ3S:	DWORD ObjLoc_TTZ3S
+	SLPtrs_TTZ3N:	DWORD ObjLoc_TTZ3N
+	SLPtrs_TTZ4M:	DWORD ObjLoc_TTZ4M
+	SLPtrs_TTZ4D:	DWORD ObjLoc_TTZ4D
+	SLPtrs_TTZ4S:	DWORD ObjLoc_TTZ4S
+	SLPtrs_TTZ4N:	DWORD ObjLoc_TTZ4N
+	SLPtrs_TTZ5M:	DWORD ObjLoc_TTZ5M
+	SLPtrs_TTZ5D:	DWORD ObjLoc_TTZ5D
+	SLPtrs_TTZ5S:	DWORD ObjLoc_TTZ5S
+	SLPtrs_TTZ5N:	DWORD ObjLoc_TTZ5N
+	SLPtrs_TTZ6M:	DWORD ObjLoc_TTZ1M
+	SLPtrs_TTZ6D:	DWORD ObjLoc_TTZ1D
+	SLPtrs_TTZ6S:	DWORD ObjLoc_TTZ1S
+	SLPtrs_TTZ6N:	DWORD ObjLoc_TTZ1N
+	SLPtrs_MMZ0M:	DWORD ObjLoc_MMZ1M
+	SLPtrs_MMZ0D:	DWORD ObjLoc_MMZ1D
+	SLPtrs_MMZ0S:	DWORD ObjLoc_MMZ1S
+	SLPtrs_MMZ0N:	DWORD ObjLoc_MMZ1N
+	SLPtrs_MMZ1M:	DWORD ObjLoc_MMZ1M
+	SLPtrs_MMZ1D:	DWORD ObjLoc_MMZ1D
+	SLPtrs_MMZ1S:	DWORD ObjLoc_MMZ1S
+	SLPtrs_MMZ1N:	DWORD ObjLoc_MMZ1N
+	SLPtrs_MMZ2M:	DWORD ObjLoc_MMZ2M
+	SLPtrs_MMZ2D:	DWORD ObjLoc_MMZ2D
+	SLPtrs_MMZ2S:	DWORD ObjLoc_MMZ2S
+	SLPtrs_MMZ2N:	DWORD ObjLoc_MMZ2N
+	SLPtrs_MMZ3M:	DWORD ObjLoc_MMZ3M
+	SLPtrs_MMZ3D:	DWORD ObjLoc_MMZ3D
+	SLPtrs_MMZ3S:	DWORD ObjLoc_MMZ3S
+	SLPtrs_MMZ3N:	DWORD ObjLoc_MMZ3N
+	SLPtrs_MMZ4M:	DWORD ObjLoc_MMZ4M
+	SLPtrs_MMZ4D:	DWORD ObjLoc_MMZ4D
+	SLPtrs_MMZ4S:	DWORD ObjLoc_MMZ4S
+	SLPtrs_MMZ4N:	DWORD ObjLoc_MMZ4N
+	SLPtrs_MMZ5M:	DWORD ObjLoc_MMZ5M
+	SLPtrs_MMZ5D:	DWORD ObjLoc_MMZ5D
+	SLPtrs_MMZ5S:	DWORD ObjLoc_MMZ5S
+	SLPtrs_MMZ5N:	DWORD ObjLoc_MMZ5N
+	SLPtrs_MMZ6M:	DWORD ObjLoc_MMZ1M
+	SLPtrs_MMZ6D:	DWORD ObjLoc_MMZ1D
+	SLPtrs_MMZ6S:	DWORD ObjLoc_MMZ1S
+	SLPtrs_MMZ6N:	DWORD ObjLoc_MMZ1N
+	SLPtrs_Train0M:	DWORD ObjLoc_Train1
+	SLPtrs_Train0D:	DWORD ObjLoc_Train1
+	SLPtrs_Train0S:	DWORD ObjLoc_Train1
+	SLPtrs_Train0N:	DWORD ObjLoc_Train1
+	SLPtrs_Train1M:	DWORD ObjLoc_Train1
+	SLPtrs_Train1D:	DWORD ObjLoc_Train1
+	SLPtrs_Train1S:	DWORD ObjLoc_Train1
+	SLPtrs_Train1N:	DWORD ObjLoc_Train1
+	SLPtrs_Train2M:	DWORD ObjLoc_Train2
+	SLPtrs_Train2D:	DWORD ObjLoc_Train2
+	SLPtrs_Train2S:	DWORD ObjLoc_Train2
+	SLPtrs_Train2N:	DWORD ObjLoc_Train2
+	SLPtrs_Train3M:	DWORD ObjLoc_Train3
+	SLPtrs_Train3D:	DWORD ObjLoc_Train3
+	SLPtrs_Train3S:	DWORD ObjLoc_Train3
+	SLPtrs_Train3N:	DWORD ObjLoc_Train3
+	SLPtrs_Train4M:	DWORD ObjLoc_Train4
+	SLPtrs_Train4D:	DWORD ObjLoc_Train4
+	SLPtrs_Train4S:	DWORD ObjLoc_Train4
+	SLPtrs_Train4N:	DWORD ObjLoc_Train4
+	SLPtrs_Train5M:	DWORD ObjLoc_Train5
+	SLPtrs_Train5D:	DWORD ObjLoc_Train5
+	SLPtrs_Train5S:	DWORD ObjLoc_Train5
+	SLPtrs_Train5N:	DWORD ObjLoc_Train5
+	SLPtrs_Train6M:	DWORD ObjLoc_Train1
+	SLPtrs_Train6D:	DWORD ObjLoc_Train1
+	SLPtrs_Train6S:	DWORD ObjLoc_Train1
+	SLPtrs_Train6N:	DWORD ObjLoc_Train1
+	SLPtrs_Intro0M:	DWORD ObjLoc_Intro0
+	SLPtrs_Intro0D:	DWORD ObjLoc_Intro0
+	SLPtrs_Intro0S:	DWORD ObjLoc_Intro0
+	SLPtrs_Intro0N:	DWORD ObjLoc_Intro0
+	SLPtrs_Intro1M:	DWORD ObjLoc_Intro1
+	SLPtrs_Intro1D:	DWORD ObjLoc_Intro1
+	SLPtrs_Intro1S:	DWORD ObjLoc_Intro1
+	SLPtrs_Intro1N:	DWORD ObjLoc_Intro1
+	SLPtrs_Intro2M:	DWORD ObjLoc_Intro2
+	SLPtrs_Intro2D:	DWORD ObjLoc_Intro2
+	SLPtrs_Intro2S:	DWORD ObjLoc_Intro2
+	SLPtrs_Intro2N:	DWORD ObjLoc_Intro2
+	SLPtrs_Intro3M:	DWORD ObjLoc_Intro3
+	SLPtrs_Intro3D:	DWORD ObjLoc_Intro3
+	SLPtrs_Intro3S:	DWORD ObjLoc_Intro3
+	SLPtrs_Intro3N:	DWORD ObjLoc_Intro3
+	SLPtrs_Intro4M:	DWORD ObjLoc_Intro4
+	SLPtrs_Intro4D:	DWORD ObjLoc_Intro4
+	SLPtrs_Intro4S:	DWORD ObjLoc_Intro4
+	SLPtrs_Intro4N:	DWORD ObjLoc_Intro4
+	SLPtrs_Intro5M:	DWORD ObjLoc_Tutorial
+	SLPtrs_Intro5D:	DWORD ObjLoc_Tutorial
+	SLPtrs_Intro5S:	DWORD ObjLoc_Tutorial
+	SLPtrs_Intro5N:	DWORD ObjLoc_Tutorial
+	SLPtrs_Intro6M:	DWORD ObjLoc_Intro1
+	SLPtrs_Intro6D:	DWORD ObjLoc_Intro1
+	SLPtrs_Intro6S:	DWORD ObjLoc_Intro1
+	SLPtrs_Intro6N:	DWORD ObjLoc_Intro1
+	SLPtrs_World0M:	DWORD ObjLoc_World
+	SLPtrs_World0D:	DWORD ObjLoc_World
+	SLPtrs_World0S:	DWORD ObjLoc_World
+	SLPtrs_World0N:	DWORD ObjLoc_World
+	SLPtrs_World1M:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World1D:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World1S:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World1N:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World2M:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World2D:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World2S:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World2N:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World3M:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World3D:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World3S:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World3N:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World4M:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World4D:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World4S:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World4N:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World5M:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World5D:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World5S:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World5N:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World6M:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World6D:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World6S:	DWORD ObjLoc_WorldNULL
+	SLPtrs_World6N:	DWORD ObjLoc_WorldNULL
+
+EndSeg
+
+StartSeg MD_Palette_Index Big_Endian	;Megadrive format palette pointers and data Segment
+
+	LPPtrBBZ0M:	WORD Pal_BBZ123M-LPPtrBBZ0M
+ 	LPPtrBBZ0D:	WORD Pal_BBZ123D-LPPtrBBZ0D
+ 	LPPtrBBZ0S:	WORD Pal_BBZ123S-LPPtrBBZ0S
+ 	LPPtrBBZ0N:	WORD Pal_BBZ123N-LPPtrBBZ0N
+ 	LPPtrBBZ1M:	WORD Pal_BBZ123M-LPPtrBBZ1M
+ 	LPPtrBBZ1D:	WORD Pal_BBZ123D-LPPtrBBZ1D
+ 	LPPtrBBZ1S:	WORD Pal_BBZ123S-LPPtrBBZ1S
+ 	LPPtrBBZ1N:	WORD Pal_BBZ123N-LPPtrBBZ1N
+	LPPtrBBZ2M:	WORD Pal_BBZ123M-LPPtrBBZ2M
+	LPPtrBBZ2D:	WORD Pal_BBZ123D-LPPtrBBZ2D
+	LPPtrBBZ2S:	WORD Pal_BBZ123S-LPPtrBBZ2S
+	LPPtrBBZ2N:	WORD Pal_BBZ123N-LPPtrBBZ2N
+	LPPtrBBZ3M:	WORD Pal_BBZ123M-LPPtrBBZ3M
+	LPPtrBBZ3D:	WORD Pal_BBZ123D-LPPtrBBZ3D
+	LPPtrBBZ3S:	WORD Pal_BBZ123S-LPPtrBBZ3S
+	LPPtrBBZ3N:	WORD Pal_BBZ123N-LPPtrBBZ3N
+	LPPtrBBZ4M:	WORD Pal_BBZ4M-LPPtrBBZ4M
+	LPPtrBBZ4D:	WORD Pal_BBZ4D-LPPtrBBZ4D
+	LPPtrBBZ4S:	WORD Pal_BBZ4S-LPPtrBBZ4S
+	LPPtrBBZ4N:	WORD Pal_BBZ4N-LPPtrBBZ4N
+	LPPtrBBZ5M:	WORD Pal_BBZ5M-LPPtrBBZ5M
+	LPPtrBBZ5D:	WORD Pal_BBZ5D-LPPtrBBZ5D
+	LPPtrBBZ5S:	WORD Pal_BBZ5S-LPPtrBBZ5S
+	LPPtrBBZ5N:	WORD Pal_BBZ5N-LPPtrBBZ5N
+	LPPtrBBZ6M:	WORD Pal_BBZ5M-LPPtrBBZ6M
+	LPPtrBBZ6D:	WORD Pal_BBZ5D-LPPtrBBZ6D
+	LPPtrBBZ6S:	WORD Pal_BBZ5S-LPPtrBBZ6S
+	LPPtrBBZ6N:	WORD Pal_BBZ5N-LPPtrBBZ6N
+	LPPtrSSZ0M:	WORD Pal_SSZM-LPPtrSSZ0M
+	LPPtrSSZ0D:	WORD Pal_SSZD-LPPtrSSZ0D
+	LPPtrSSZ0S:	WORD Pal_SSZ12S-LPPtrSSZ0S
+	LPPtrSSZ0N:	WORD Pal_SSZN-LPPtrSSZ0N
+	LPPtrSSZ1M:	WORD Pal_SSZM-LPPtrSSZ1M
+	LPPtrSSZ1D:	WORD Pal_SSZD-LPPtrSSZ1D
+	LPPtrSSZ1S:	WORD Pal_SSZ12S-LPPtrSSZ1S
+	LPPtrSSZ1N:	WORD Pal_SSZN-LPPtrSSZ1N
+	LPPtrSSZ2M:	WORD Pal_SSZM-LPPtrSSZ2M
+	LPPtrSSZ2D:	WORD Pal_SSZD-LPPtrSSZ2D
+	LPPtrSSZ2S:	WORD Pal_SSZ12S-LPPtrSSZ2S
+	LPPtrSSZ2N:	WORD Pal_SSZN-LPPtrSSZ2N
+	LPPtrSSZ3M:	WORD Pal_SSZM-LPPtrSSZ3M
+	LPPtrSSZ3D:	WORD Pal_SSZD-LPPtrSSZ3D
+	LPPtrSSZ3S:	WORD Pal_SSZ345S-LPPtrSSZ3S
+	LPPtrSSZ3N:	WORD Pal_SSZN-LPPtrSSZ3N
+	LPPtrSSZ4M:	WORD Pal_SSZM-LPPtrSSZ4M
+	LPPtrSSZ4D:	WORD Pal_SSZD-LPPtrSSZ4D
+	LPPtrSSZ4S:	WORD Pal_SSZ345S-LPPtrSSZ4S
+	LPPtrSSZ4N:	WORD Pal_SSZN-LPPtrSSZ4N
+	LPPtrSSZ5M:	WORD Pal_SSZM-LPPtrSSZ5M
+	LPPtrSSZ5D:	WORD Pal_SSZD-LPPtrSSZ5D
+	LPPtrSSZ5S:	WORD Pal_SSZ345S-LPPtrSSZ5S
+	LPPtrSSZ5N:	WORD Pal_SSZN-LPPtrSSZ5N
+	LPPtrSSZ6M:	WORD Pal_SSZM-LPPtrSSZ6M
+	LPPtrSSZ6D:	WORD Pal_SSZD-LPPtrSSZ6D
+	LPPtrSSZ6S:	WORD Pal_SSZ345S-LPPtrSSZ6S
+	LPPtrSSZ6N:	WORD Pal_SSZN-LPPtrSSZ6N
+	LPPtrAAZ0M:	WORD Pal_AAZ12MD-LPPtrAAZ0M
+	LPPtrAAZ0D:	WORD Pal_AAZ12MD-LPPtrAAZ0D
+	LPPtrAAZ0S:	WORD Pal_AAZ12SN-LPPtrAAZ0S
+	LPPtrAAZ0N:	WORD Pal_AAZ12SN-LPPtrAAZ0N
+	LPPtrAAZ1M:	WORD Pal_AAZ12MD-LPPtrAAZ1M
+	LPPtrAAZ1D:	WORD Pal_AAZ12MD-LPPtrAAZ1D
+	LPPtrAAZ1S:	WORD Pal_AAZ12SN-LPPtrAAZ1S
+	LPPtrAAZ1N:	WORD Pal_AAZ12SN-LPPtrAAZ1N
+	LPPtrAAZ2M:	WORD Pal_AAZ12MD-LPPtrAAZ2M
+	LPPtrAAZ2D:	WORD Pal_AAZ12MD-LPPtrAAZ2D
+	LPPtrAAZ2S:	WORD Pal_AAZ12SN-LPPtrAAZ2S
+	LPPtrAAZ2N:	WORD Pal_AAZ12SN-LPPtrAAZ2N
+	LPPtrAAZ3M:	WORD Pal_AAZ34-LPPtrAAZ3M
+	LPPtrAAZ3D:	WORD Pal_AAZ34-LPPtrAAZ3D
+	LPPtrAAZ3S:	WORD Pal_AAZ34-LPPtrAAZ3S
+	LPPtrAAZ3N:	WORD Pal_AAZ34-LPPtrAAZ3N
+	LPPtrAAZ4M:	WORD Pal_AAZ34-LPPtrAAZ4M
+	LPPtrAAZ4D:	WORD Pal_AAZ34-LPPtrAAZ4D
+	LPPtrAAZ4S:	WORD Pal_AAZ34-LPPtrAAZ4S
+	LPPtrAAZ4N:	WORD Pal_AAZ34-LPPtrAAZ4N
+	LPPtrAAZ5M:	WORD Pal_AAZ5-LPPtrAAZ5M
+	LPPtrAAZ5D:	WORD Pal_AAZ5-LPPtrAAZ5D
+	LPPtrAAZ5S:	WORD Pal_AAZ5-LPPtrAAZ5S
+	LPPtrAAZ5N:	WORD Pal_AAZ5-LPPtrAAZ5N
+	LPPtrAAZ6M:	WORD Pal_AAZ5-LPPtrAAZ6M
+	LPPtrAAZ6D:	WORD Pal_AAZ5-LPPtrAAZ6D
+	LPPtrAAZ6S:	WORD Pal_AAZ5-LPPtrAAZ6S
+	LPPtrAAZ6N:	WORD Pal_AAZ5-LPPtrAAZ6N
+	LPPtrTTZ0M:	WORD Pal_TTZ12M-LPPtrTTZ0M
+	LPPtrTTZ0D:	WORD Pal_TTZ12D-LPPtrTTZ0D
+	LPPtrTTZ0S:	WORD Pal_TTZ1234S-LPPtrTTZ0S
+	LPPtrTTZ0N:	WORD Pal_TTZ12N-LPPtrTTZ0N
+	LPPtrTTZ1M:	WORD Pal_TTZ12M-LPPtrTTZ1M
+	LPPtrTTZ1D:	WORD Pal_TTZ12D-LPPtrTTZ1D
+	LPPtrTTZ1S:	WORD Pal_TTZ1234S-LPPtrTTZ1S
+	LPPtrTTZ1N:	WORD Pal_TTZ12N-LPPtrTTZ1N
+	LPPtrTTZ2M:	WORD Pal_TTZ12M-LPPtrTTZ2M
+	LPPtrTTZ2D:	WORD Pal_TTZ12D-LPPtrTTZ2D
+	LPPtrTTZ2S:	WORD Pal_TTZ1234S-LPPtrTTZ2S
+	LPPtrTTZ2N:	WORD Pal_TTZ12N-LPPtrTTZ2N
+	LPPtrTTZ3M:	WORD Pal_TTZ34M-LPPtrTTZ3M
+	LPPtrTTZ3D:	WORD Pal_TTZ34D-LPPtrTTZ3D
+	LPPtrTTZ3S:	WORD Pal_TTZ1234S-LPPtrTTZ3S
+	LPPtrTTZ3N:	WORD Pal_TTZ34N-LPPtrTTZ3N
+	LPPtrTTZ4M:	WORD Pal_TTZ34M-LPPtrTTZ4M
+	LPPtrTTZ4D:	WORD Pal_TTZ34D-LPPtrTTZ4D
+	LPPtrTTZ4S:	WORD Pal_TTZ1234S-LPPtrTTZ4S
+	LPPtrTTZ4N:	WORD Pal_TTZ34N-LPPtrTTZ4N
+	LPPtrTTZ5M:	WORD Pal_TTZ5M-LPPtrTTZ5M
+	LPPtrTTZ5D:	WORD Pal_TTZ5D-LPPtrTTZ5D
+	LPPtrTTZ5S:	WORD Pal_TTZ5S-LPPtrTTZ5S
+	LPPtrTTZ5N:	WORD Pal_TTZ5N-LPPtrTTZ5N
+	LPPtrTTZ6M:	WORD Pal_TTZ5M-LPPtrTTZ6M
+	LPPtrTTZ6D:	WORD Pal_TTZ5D-LPPtrTTZ6D
+	LPPtrTTZ6S:	WORD Pal_TTZ5S-LPPtrTTZ6S
+	LPPtrTTZ6N:	WORD Pal_TTZ5N-LPPtrTTZ6N
+	LPPtrMMZ0M:	WORD Pal_MMZM-LPPtrMMZ0M
+	LPPtrMMZ0D:	WORD Pal_MMZD-LPPtrMMZ0D
+	LPPtrMMZ0S:	WORD Pal_MMZS-LPPtrMMZ0S
+	LPPtrMMZ0N:	WORD Pal_MMZN-LPPtrMMZ0N
+	LPPtrMMZ1M:	WORD Pal_MMZM-LPPtrMMZ1M
+	LPPtrMMZ1D:	WORD Pal_MMZD-LPPtrMMZ1D
+	LPPtrMMZ1S:	WORD Pal_MMZS-LPPtrMMZ1S
+	LPPtrMMZ1N:	WORD Pal_MMZN-LPPtrMMZ1N
+	LPPtrMMZ2M:	WORD Pal_MMZM-LPPtrMMZ2M
+	LPPtrMMZ2D:	WORD Pal_MMZD-LPPtrMMZ2D
+	LPPtrMMZ2S:	WORD Pal_MMZS-LPPtrMMZ2S
+	LPPtrMMZ2N:	WORD Pal_MMZN-LPPtrMMZ2N
+	LPPtrMMZ3M:	WORD Pal_MMZM-LPPtrMMZ3M
+	LPPtrMMZ3D:	WORD Pal_MMZD-LPPtrMMZ3D
+	LPPtrMMZ3S:	WORD Pal_MMZS-LPPtrMMZ3S
+	LPPtrMMZ3N:	WORD Pal_MMZN-LPPtrMMZ3N
+	LPPtrMMZ4M:	WORD Pal_MMZM-LPPtrMMZ4M
+	LPPtrMMZ4D:	WORD Pal_MMZD-LPPtrMMZ4D
+	LPPtrMMZ4S:	WORD Pal_MMZS-LPPtrMMZ4S
+	LPPtrMMZ4N:	WORD Pal_MMZN-LPPtrMMZ4N
+	LPPtrMMZ5M:	WORD Pal_MMZM-LPPtrMMZ5M
+	LPPtrMMZ5D:	WORD Pal_MMZD-LPPtrMMZ5D
+	LPPtrMMZ5S:	WORD Pal_MMZS-LPPtrMMZ5S
+	LPPtrMMZ5N:	WORD Pal_MMZN-LPPtrMMZ5N
+	LPPtrMMZ6M:	WORD Pal_MMZM-LPPtrMMZ6M
+	LPPtrMMZ6D:	WORD Pal_MMZD-LPPtrMMZ6D
+	LPPtrMMZ6S:	WORD Pal_MMZS-LPPtrMMZ6S
+	LPPtrMMZ6N:	WORD Pal_MMZN-LPPtrMMZ6N
+	LPPtrTrain0M:	WORD Pal_TrainingM-LPPtrTrain0M
+	LPPtrTrain0D:	WORD Pal_TrainingD-LPPtrTrain0D
+	LPPtrTrain0S:	WORD Pal_TrainingS-LPPtrTrain0S
+	LPPtrTrain0N:	WORD Pal_TrainingN-LPPtrTrain0N
+	LPPtrTrain1M:	WORD Pal_TrainingM-LPPtrTrain1M
+	LPPtrTrain1D:	WORD Pal_TrainingD-LPPtrTrain1D
+	LPPtrTrain1S:	WORD Pal_TrainingS-LPPtrTrain1S
+	LPPtrTrain1N:	WORD Pal_TrainingN-LPPtrTrain1N
+	LPPtrTrain2M:	WORD Pal_TrainingM-LPPtrTrain2M
+	LPPtrTrain2D:	WORD Pal_TrainingD-LPPtrTrain2D
+	LPPtrTrain2S:	WORD Pal_TrainingS-LPPtrTrain2S
+	LPPtrTrain2N:	WORD Pal_TrainingN-LPPtrTrain2N
+	LPPtrTrain3M:	WORD Pal_TrainingM-LPPtrTrain3M
+	LPPtrTrain3D:	WORD Pal_TrainingD-LPPtrTrain3D
+	LPPtrTrain3S:	WORD Pal_TrainingS-LPPtrTrain3S
+	LPPtrTrain3N:	WORD Pal_TrainingN-LPPtrTrain3N
+	LPPtrTrain4M:	WORD Pal_TrainingM-LPPtrTrain4M
+	LPPtrTrain4D:	WORD Pal_TrainingD-LPPtrTrain4D
+	LPPtrTrain4S:	WORD Pal_TrainingS-LPPtrTrain4S
+	LPPtrTrain4N:	WORD Pal_TrainingN-LPPtrTrain4N
+	LPPtrTrain5M:	WORD Pal_TrainingM-LPPtrTrain5M
+	LPPtrTrain5D:	WORD Pal_TrainingD-LPPtrTrain5D
+	LPPtrTrain5S:	WORD Pal_TrainingS-LPPtrTrain5S
+	LPPtrTrain5N:	WORD Pal_TrainingN-LPPtrTrain5N
+	LPPtrTrain6M:	WORD Pal_TrainingM-LPPtrTrain6M
+	LPPtrTrain6D:	WORD Pal_TrainingD-LPPtrTrain6D
+	LPPtrTrain6S:	WORD Pal_TrainingS-LPPtrTrain6S
+	LPPtrTrain6N:	WORD Pal_TrainingN-LPPtrTrain6N
+	LPPtrIntro0M:	WORD Pal_TrainingM-LPPtrIntro0M
+	LPPtrIntro0D:	WORD Pal_TrainingD-LPPtrIntro0D
+	LPPtrIntro0S:	WORD Pal_TrainingS-LPPtrIntro0S
+	LPPtrIntro0N:	WORD Pal_TrainingN-LPPtrIntro0N
+	LPPtrIntro1M:	WORD Pal_TrainingM-LPPtrIntro1M
+	LPPtrIntro1D:	WORD Pal_TrainingD-LPPtrIntro1D
+	LPPtrIntro1S:	WORD Pal_TrainingS-LPPtrIntro1S
+	LPPtrIntro1N:	WORD Pal_TrainingN-LPPtrIntro1N
+	LPPtrIntro2M:	WORD Pal_TrainingM-LPPtrIntro2M
+	LPPtrIntro2D:	WORD Pal_TrainingD-LPPtrIntro2D
+	LPPtrIntro2S:	WORD Pal_TrainingS-LPPtrIntro2S
+	LPPtrIntro2N:	WORD Pal_TrainingN-LPPtrIntro2N
+	LPPtrIntro3M:	WORD Pal_TrainingM-LPPtrIntro3M
+	LPPtrIntro3D:	WORD Pal_TrainingD-LPPtrIntro3D
+	LPPtrIntro3S:	WORD Pal_TrainingS-LPPtrIntro3S
+	LPPtrIntro3N:	WORD Pal_TrainingN-LPPtrIntro3N
+	LPPtrIntro4M:	WORD Pal_TrainingM-LPPtrIntro4M
+	LPPtrIntro4D:	WORD Pal_TrainingD-LPPtrIntro4D
+	LPPtrIntro4S:	WORD Pal_TrainingS-LPPtrIntro4S
+	LPPtrIntro4N:	WORD Pal_TrainingN-LPPtrIntro4N
+	LPPtrIntro5M:	WORD Pal_Tutorial-LPPtrIntro5M
+	LPPtrIntro5D:	WORD Pal_Tutorial-LPPtrIntro5D
+	LPPtrIntro5S:	WORD Pal_Tutorial-LPPtrIntro5S
+	LPPtrIntro5N:	WORD Pal_Tutorial-LPPtrIntro5N
+	LPPtrIntro6M:	WORD Pal_Tutorial-LPPtrIntro6M
+	LPPtrIntro6D:	WORD Pal_Tutorial-LPPtrIntro6D
+	LPPtrIntro6S:	WORD Pal_Tutorial-LPPtrIntro6S
+	LPPtrIntro6N:	WORD Pal_Tutorial-LPPtrIntro6N
+	LPPtrWorld0M:	WORD Pal_WorldEntM-LPPtrWorld0M
+	LPPtrWorld0D:	WORD Pal_WorldEntD-LPPtrWorld0D
+	LPPtrWOrld0S:	WORD Pal_WorldEntS-LPPtrWOrld0S
+	LPPtrWorld0N:	WORD Pal_WorldEntN-LPPtrWorld0N
+	LPPtrWorld1M:	WORD Pal_FinalBoss-LPPtrWorld1M
+	LPPtrWorld1D:	WORD Pal_FinalBoss-LPPtrWorld1D
+	LPPtrWorld1S:	WORD Pal_FinalBoss-LPPtrWorld1S
+	LPPtrWorld1N:	WORD Pal_FinalBoss-LPPtrWorld1N
+	LPPtrWorld2M:	WORD Pal_FinalBoss-LPPtrWorld2M
+	LPPtrWorld2D:	WORD Pal_NULL-LPPtrWorld2D
+	LPPtrWorld2S:	WORD Pal_NULL-LPPtrWorld2S
+	LPPtrWorld2N:	WORD Pal_NULL-LPPtrWorld2N
+	LPPtrWorld3M:	WORD Pal_NULL-LPPtrWorld3M
+	LPPtrWorld3D:	WORD Pal_NULL-LPPtrWorld3D
+	LPPtrWorld3S:	WORD Pal_NULL-LPPtrWorld3S
+	LPPtrWorld3N:	WORD Pal_NULL-LPPtrWorld3N
+	LPPtrWorld4M:	WORD Pal_NULL-LPPtrWorld4M
+	LPPtrWorld4D:	WORD Pal_NULL-LPPtrWorld4D
+	LPPtrWorld4S:	WORD Pal_NULL-LPPtrWorld4S
+	LPPtrWorld4N:	WORD Pal_NULL-LPPtrWorld4N
+	LPPtrWorld5M:	WORD Pal_NULL-LPPtrWorld5M
+	LPPtrWorld5D:	WORD Pal_NULL-LPPtrWorld5D
+	LPPtrWorld5S:	WORD Pal_NULL-LPPtrWorld5S
+	LPPtrWorld5N:	WORD Pal_NULL-LPPtrWorld5N
+	LPPtrWorld6M:	WORD Pal_NULL-LPPtrWorld6M
+	LPPtrWorld6D:	WORD Pal_NULL-LPPtrWorld6D
+	LPPtrWorld6S:	WORD Pal_NULL-LPPtrWorld6S
+	LPPtrWorld6N:	WORD Pal_NULL-LPPtrWorld6N
+
+	Pal_BBZ123M:	include	"Levels/BBZ/Pal/13M.bin"
+	Pal_BBZ123D:	include	"Levels/BBZ/Pal/13D.bin"
+	Pal_BBZ123S:	include	"Levels/BBZ/Pal/13S.bin"
+	Pal_BBZ123N:	include	"Levels/BBZ/Pal/13N.bin"
+	Pal_BBZ4M:	include	"Levels/BBZ/Pal/4M.bin"
+	Pal_BBZ4D:	include	"Levels/BBZ/Pal/4D.bin"
+	Pal_BBZ4S:	include	"Levels/BBZ/Pal/4S.bin"
+	Pal_BBZ4N:	include	"Levels/BBZ/Pal/4N.bin"
+	Pal_BBZ5M:	include	"Levels/BBZ/Pal/5M.bin"
+	Pal_BBZ5D:	include	"Levels/BBZ/Pal/5D.bin"
+	Pal_BBZ5S:	include	"Levels/BBZ/Pal/5S.bin"
+	Pal_BBZ5N:	include	"Levels/BBZ/Pal/5N.bin"
+
+	Pal_SSZM:	include	"Levels/SSZ/Pal/15M.bin"
+	Pal_SSZD:	include	"Levels/SSZ/Pal/15D.bin"
+	Pal_SSZ12S:	include	"Levels/SSZ/Pal/12S.bin"
+	Pal_SSZ345S:	include	"Levels/SSZ/Pal/35S.bin"
+	Pal_SSZN:	include	"Levels/SSZ/Pal/15N.bin"
+
+	Pal_AAZ12MD:	include	"Levels/AAZ/Pal/12MD.bin"
+	Pal_AAZ12SN:	include	"Levels/AAZ/Pal/12SN.bin"
+	Pal_AAZ34:	include	"Levels/AAZ/Pal/34MN.bin"
+	Pal_AAZ5:	include	"Levels/AAZ/Pal/5MN.bin"
+
+	Pal_TTZ12M:	include	"Levels/TTZ/Pal/12M.bin"
+	Pal_TTZ34M:	include	"Levels/TTZ/Pal/34M.bin"
+	Pal_TTZ5M:	include	"Levels/TTZ/Pal/5M.bin"
+	Pal_TTZ12D:	include	"Levels/TTZ/Pal/12D.bin"
+	Pal_TTZ34D:	include	"Levels/TTZ/Pal/34D.bin"
+	Pal_TTZ5D:	include	"Levels/TTZ/Pal/5D.bin"
+	Pal_TTZ1234S:	include	"Levels/TTZ/Pal/14S.bin"
+	Pal_TTZ5S:	include	"Levels/TTZ/Pal/5S.bin"
+	Pal_TTZ12N:	include	"Levels/TTZ/Pal/12N.bin"
+	Pal_TTZ34N:	include	"Levels/TTZ/Pal/34N.bin"
+	Pal_TTZ5N:	include	"Levels/TTZ/Pal/5N.bin"
+
+	Pal_MMZM:	include	"Levels/MMZ/Pal/15M.bin"
+	Pal_MMZD:	include	"Levels/MMZ/Pal/15D.bin"
+	Pal_MMZS:	include	"Levels/MMZ/Pal/15S.bin"
+	Pal_MMZN:	include	"Levels/MMZ/Pal/15N.bin"
+
+	Pal_TrainingM:	include	"Levels/Intro/Pal/15M.bin"
+	Pal_TrainingD:	include	"Levels/Intro/Pal/15D.bin"
+	Pal_TrainingS:	include	"Levels/Intro/Pal/15S.bin"
+	Pal_TrainingN:	include	"Levels/Intro/Pal/15N.bin"
+
+	Pal_Tutorial:	include	"Levels/Tutorial/Pal/15M.bin"
+
+	Pal_WorldEntM:	include	"Levels/Entrance/Pal/15M.bin"
+	Pal_WorldEntD:	include	"Levels/Entrance/Pal/15D.bin"
+	Pal_WorldEntS:	include	"Levels/Entrance/Pal/15S.bin"
+	Pal_WorldEntN:	include	"Levels/Entrance/Pal/15N.bin"
+
+	Pal_FinalBoss:	include	"Levels/Entrance/Pal/2MN.bin"
+
+   Pal_NULL:		DWORD		$FFFFFFFF
+
+EndSeg
+
+StartSeg MD_Boss_Palette_Index Big_Endian	;Megadrive format palette pointers and data Segment for Boss Levels
+
+	PalPtr_TTZBoss:	WORD Pal_TTZBossM-PalPtr_TTZBoss
+			WORD Pal_TTZBossD-PalPtr_TTZBoss
+			WORD Pal_TTZBossS-PalPtr_TTZBoss
+			WORD Pal_TTZBossN-PalPtr_TTZBoss
+	Pal_TTZBossM:	include "Levels/TTZ/Pal/BossM.bin"
+	Pal_TTZBossD:	include "Levels/TTZ/Pal/BossD.bin"
+	Pal_TTZBossS:	include "Levels/TTZ/Pal/BossS.bin"
+	Pal_TTZBossN:	include "Levels/TTZ/Pal/BossN.bin"
+
+	PalPtr_SSZBoss:	WORD Pal_SSZBossM-PalPtr_SSZBoss
+			WORD Pal_SSZBossD-PalPtr_SSZBoss
+			WORD Pal_SSZBossS-PalPtr_SSZBoss
+			WORD Pal_SSZBossN-PalPtr_SSZBoss
+	Pal_SSZBossM:	include "Levels/SSZ/Pal/BossM.bin"
+	Pal_SSZBossD:	include "Levels/SSZ/Pal/BossD.bin"
+	Pal_SSZBossS:	include "Levels/SSZ/Pal/BossS.bin"
+	Pal_SSZBossN:	include "Levels/SSZ/Pal/BossN.bin"
+
+EndSeg
+
+StartSeg LevelTile_Ptrs Big_Endian	;Level tile data pointers
+
+	LTPtrBBZ0M:	WORD BBZ12MDSN_TilePtr-LTPtrBBZ0M
+ 	LTPtrBBZ0D:	WORD BBZ12MDSN_TilePtr-LTPtrBBZ0D
+ 	LTPtrBBZ0S:	WORD BBZ12MDSN_TilePtr-LTPtrBBZ0S
+ 	LTPtrBBZ0N:	WORD BBZ12MDSN_TilePtr-LTPtrBBZ0N
+ 	LTPtrBBZ1M:	WORD BBZ12MDSN_TilePtr-LTPtrBBZ1M
+ 	LTPtrBBZ1D:	WORD BBZ12MDSN_TilePtr-LTPtrBBZ1D
+ 	LTPtrBBZ1S:	WORD BBZ12MDSN_TilePtr-LTPtrBBZ1S
+ 	LTPtrBBZ1N:	WORD BBZ12MDSN_TilePtr-LTPtrBBZ1N
+ 	LTPtrBBZ2M:	WORD BBZ12MDSN_TilePtr-LTPtrBBZ2M
+ 	LTPtrBBZ2D:	WORD BBZ12MDSN_TilePtr-LTPtrBBZ2D
+ 	LTPtrBBZ2S:	WORD BBZ12MDSN_TilePtr-LTPtrBBZ2S
+ 	LTPtrBBZ2N:	WORD BBZ12MDSN_TilePtr-LTPtrBBZ2N
+	LTPtrBBZ3M:	WORD BBZ3MDSN_TilePtr-LTPtrBBZ3M
+	LTPtrBBZ3D:	WORD BBZ3MDSN_TilePtr-LTPtrBBZ3D
+	LTPtrBBZ3S:	WORD BBZ3MDSN_TilePtr-LTPtrBBZ3S
+	LTPtrBBZ3N:	WORD BBZ3MDSN_TilePtr-LTPtrBBZ3N
+	LTPtrBBZ4M:	WORD BBZ4MDSN_TilePtr-LTPtrBBZ4M
+	LTPtrBBZ4D:	WORD BBZ4MDSN_TilePtr-LTPtrBBZ4D
+	LTPtrBBZ4S:	WORD BBZ4MDSN_TilePtr-LTPtrBBZ4S
+	LTPtrBBZ4N:	WORD BBZ4MDSN_TilePtr-LTPtrBBZ4N
+	LTPtrBBZ5M:	WORD BBZ5MDSN_TilePtr-LTPtrBBZ5M
+	LTPtrBBZ5D:	WORD BBZ5MDSN_TilePtr-LTPtrBBZ5D
+	LTPtrBBZ5S:	WORD BBZ5MDSN_TilePtr-LTPtrBBZ5S
+	LTPtrBBZ5N:	WORD BBZ5MDSN_TilePtr-LTPtrBBZ5N
+	LTPtrBBZ6M:	WORD BBZ5MDSN_TilePtr-LTPtrBBZ6M
+	LTPtrBBZ6D:	WORD BBZ5MDSN_TilePtr-LTPtrBBZ6D
+	LTPtrBBZ6S:	WORD BBZ5MDSN_TilePtr-LTPtrBBZ6S
+	LTPtrBBZ6N:	WORD BBZ5MDSN_TilePtr-LTPtrBBZ6N
+	LTPtrSSZ0M:	WORD SSZ12MD_TilePtr-LTPtrSSZ0M
+	LTPtrSSZ0D:	WORD SSZ12MD_TilePtr-LTPtrSSZ0D
+	LTPtrSSZ0S:	WORD SSZ12SN_TilePtr-LTPtrSSZ0S
+	LTPtrSSZ0N:	WORD SSZ12SN_TilePtr-LTPtrSSZ0N
+	LTPtrSSZ1M:	WORD SSZ12MD_TilePtr-LTPtrSSZ1M
+	LTPtrSSZ1D:	WORD SSZ12MD_TilePtr-LTPtrSSZ1D
+	LTPtrSSZ1S:	WORD SSZ12SN_TilePtr-LTPtrSSZ1S
+	LTPtrSSZ1N:	WORD SSZ12SN_TilePtr-LTPtrSSZ1N
+	LTPtrSSZ2M:	WORD SSZ12MD_TilePtr-LTPtrSSZ2M
+	LTPtrSSZ2D:	WORD SSZ12MD_TilePtr-LTPtrSSZ2D
+	LTPtrSSZ2S:	WORD SSZ12SN_TilePtr-LTPtrSSZ2S
+	LTPtrSSZ2N:	WORD SSZ12SN_TilePtr-LTPtrSSZ2N
+	LTPtrSSZ3M:	WORD SSZ3MD_TilePtr-LTPtrSSZ3M
+	LTPtrSSZ3D:	WORD SSZ3MD_TilePtr-LTPtrSSZ3D
+	LTPtrSSZ3S:	WORD SSZ3SN_TilePtr-LTPtrSSZ3S
+	LTPtrSSZ3N:	WORD SSZ3SN_TilePtr-LTPtrSSZ3N
+	LTPtrSSZ4M:	WORD SSZ45MD_TilePtr-LTPtrSSZ4M
+	LTPtrSSZ4D:	WORD SSZ45MD_TilePtr-LTPtrSSZ4D
+	LTPtrSSZ4S:	WORD SSZ45SN_TilePtr-LTPtrSSZ4S
+	LTPtrSSZ4N:	WORD SSZ45SN_TilePtr-LTPtrSSZ4N
+	LTPtrSSZ5M:	WORD SSZ45MD_TilePtr-LTPtrSSZ5M
+	LTPtrSSZ5D:	WORD SSZ45MD_TilePtr-LTPtrSSZ5D
+	LTPtrSSZ5S:	WORD SSZ45SN_TilePtr-LTPtrSSZ5S
+	LTPtrSSZ5N:	WORD SSZ45SN_TilePtr-LTPtrSSZ5N
+	LTPtrSSZ6M:	WORD SSZ45MD_TilePtr-LTPtrSSZ6M
+	LTPtrSSZ6D:	WORD SSZ45MD_TilePtr-LTPtrSSZ6D
+	LTPtrSSZ6S:	WORD SSZ45SN_TilePtr-LTPtrSSZ6S
+	LTPtrSSZ6N:	WORD SSZ45SN_TilePtr-LTPtrSSZ6N
+	LTPtrAAZ0M:	WORD AAZ12MDSN_TilePtr-LTPtrAAZ0M
+	LTPtrAAZ0D:	WORD AAZ12MDSN_TilePtr-LTPtrAAZ0D
+	LTPtrAAZ0S:	WORD AAZ12MDSN_TilePtr-LTPtrAAZ0S
+	LTPtrAAZ0N:	WORD AAZ12MDSN_TilePtr-LTPtrAAZ0N
+	LTPtrAAZ1M:	WORD AAZ12MDSN_TilePtr-LTPtrAAZ1M
+	LTPtrAAZ1D:	WORD AAZ12MDSN_TilePtr-LTPtrAAZ1D
+	LTPtrAAZ1S:	WORD AAZ12MDSN_TilePtr-LTPtrAAZ1S
+	LTPtrAAZ1N:	WORD AAZ12MDSN_TilePtr-LTPtrAAZ1N
+	LTPtrAAZ2M:	WORD AAZ12MDSN_TilePtr-LTPtrAAZ2M
+	LTPtrAAZ2D:	WORD AAZ12MDSN_TilePtr-LTPtrAAZ2D
+	LTPtrAAZ2S:	WORD AAZ12MDSN_TilePtr-LTPtrAAZ2S
+	LTPtrAAZ2N:	WORD AAZ12MDSN_TilePtr-LTPtrAAZ2N
+	LTPtrAAZ3M:	WORD AAZ3MDSN_TilePtr-LTPtrAAZ3M
+	LTPtrAAZ3D:	WORD AAZ3MDSN_TilePtr-LTPtrAAZ3D
+	LTPtrAAZ3S:	WORD AAZ3MDSN_TilePtr-LTPtrAAZ3S
+	LTPtrAAZ3N:	WORD AAZ3MDSN_TilePtr-LTPtrAAZ3N
+	LTPtrAAZ4M:	WORD AAZ4MDSN_TilePtr-LTPtrAAZ4M
+	LTPtrAAZ4D:	WORD AAZ4MDSN_TilePtr-LTPtrAAZ4D
+	LTPtrAAZ4S:	WORD AAZ4MDSN_TilePtr-LTPtrAAZ4S
+	LTPtrAAZ4N:	WORD AAZ4MDSN_TilePtr-LTPtrAAZ4N
+	LTPtrAAZ5M:	WORD AAZ5MDSN_TilePtr-LTPtrAAZ5M
+	LTPtrAAZ5D:	WORD AAZ5MDSN_TilePtr-LTPtrAAZ5D
+	LTPtrAAZ5S:	WORD AAZ5MDSN_TilePtr-LTPtrAAZ5S
+	LTPtrAAZ5N:	WORD AAZ5MDSN_TilePtr-LTPtrAAZ5N
+	LTPtrAAZ6M:	WORD AAZ5MDSN_TilePtr-LTPtrAAZ6M
+	LTPtrAAZ6D:	WORD AAZ5MDSN_TilePtr-LTPtrAAZ6D
+	LTPtrAAZ6S:	WORD AAZ5MDSN_TilePtr-LTPtrAAZ6S
+	LTPtrAAZ6N:	WORD AAZ5MDSN_TilePtr-LTPtrAAZ6N
+	LTPtrTTZ0M:	WORD TTZ4MDSN_TilePtr-LTPtrTTZ0M
+	LTPtrTTZ0D:	WORD TTZ4MDSN_TilePtr-LTPtrTTZ0D
+	LTPtrTTZ0S:	WORD TTZ4MDSN_TilePtr-LTPtrTTZ0S
+	LTPtrTTZ0N:	WORD TTZ4MDSN_TilePtr-LTPtrTTZ0N
+	LTPtrTTZ1M:	WORD TTZ12MDSN_TilePtr-LTPtrTTZ1M
+	LTPtrTTZ1D:	WORD TTZ12MDSN_TilePtr-LTPtrTTZ1D
+	LTPtrTTZ1S:	WORD TTZ12MDSN_TilePtr-LTPtrTTZ1S
+	LTPtrTTZ1N:	WORD TTZ12MDSN_TilePtr-LTPtrTTZ1N
+	LTPtrTTZ2M:	WORD TTZ12MDSN_TilePtr-LTPtrTTZ2M
+	LTPtrTTZ2D:	WORD TTZ12MDSN_TilePtr-LTPtrTTZ2D
+	LTPtrTTZ2S:	WORD TTZ12MDSN_TilePtr-LTPtrTTZ2S
+	LTPtrTTZ2N:	WORD TTZ12MDSN_TilePtr-LTPtrTTZ2N
+	LTPtrTTZ3M:	WORD TTZ3MDSN_TilePtr-LTPtrTTZ3M
+	LTPtrTTZ3D:	WORD TTZ3MDSN_TilePtr-LTPtrTTZ3D
+	LTPtrTTZ3S:	WORD TTZ3MDSN_TilePtr-LTPtrTTZ3S
+	LTPtrTTZ3N:	WORD TTZ3MDSN_TilePtr-LTPtrTTZ3N
+	LTPtrTTZ4M:	WORD TTZ4MDSN_TilePtr-LTPtrTTZ4M
+	LTPtrTTZ4D:	WORD TTZ4MDSN_TilePtr-LTPtrTTZ4D
+	LTPtrTTZ4S:	WORD TTZ4MDSN_TilePtr-LTPtrTTZ4S
+	LTPtrTTZ4N:	WORD TTZ4MDSN_TilePtr-LTPtrTTZ4N
+	LTPtrTTZ5M:	WORD TTZ5MDSN_TilePtr-LTPtrTTZ5M
+	LTPtrTTZ5D:	WORD TTZ5MDSN_TilePtr-LTPtrTTZ5D
+	LTPtrTTZ5S:	WORD TTZ5MDSN_TilePtr-LTPtrTTZ5S
+	LTPtrTTZ5N:	WORD TTZ5MDSN_TilePtr-LTPtrTTZ5N
+	LTPtrTTZ6M:	WORD TTZBMDSN_TilePtr-LTPtrTTZ6M
+	LTPtrTTZ6D:	WORD TTZBMDSN_TilePtr-LTPtrTTZ6D
+	LTPtrTTZ6S:	WORD TTZBMDSN_TilePtr-LTPtrTTZ6S
+	LTPtrTTZ6N:	WORD TTZBMDSN_TilePtr-LTPtrTTZ6N
+	LTPtrMMZ0M:	WORD MMZ1MDSN_TilePtr-LTPtrMMZ0M
+	LTPtrMMZ0D:	WORD MMZ1MDSN_TilePtr-LTPtrMMZ0D
+	LTPtrMMZ0S:	WORD MMZ1MDSN_TilePtr-LTPtrMMZ0S
+	LTPtrMMZ0N:	WORD MMZ1MDSN_TilePtr-LTPtrMMZ0N
+	LTPtrMMZ1M:	WORD MMZ1MDSN_TilePtr-LTPtrMMZ1M
+	LTPtrMMZ1D:	WORD MMZ1MDSN_TilePtr-LTPtrMMZ1D
+	LTPtrMMZ1S:	WORD MMZ1MDSN_TilePtr-LTPtrMMZ1S
+	LTPtrMMZ1N:	WORD MMZ1MDSN_TilePtr-LTPtrMMZ1N
+	LTPtrMMZ2M:	WORD MMZ2MDSN_TilePtr-LTPtrMMZ2M
+	LTPtrMMZ2D:	WORD MMZ2MDSN_TilePtr-LTPtrMMZ2D
+	LTPtrMMZ2S:	WORD MMZ2MDSN_TilePtr-LTPtrMMZ2S
+	LTPtrMMZ2N:	WORD MMZ2MDSN_TilePtr-LTPtrMMZ2N
+	LTPtrMMZ3M:	WORD MMZ3MDSN_TilePtr-LTPtrMMZ3M
+	LTPtrMMZ3D:	WORD MMZ3MDSN_TilePtr-LTPtrMMZ3D
+	LTPtrMMZ3S:	WORD MMZ3MDSN_TilePtr-LTPtrMMZ3S
+	LTPtrMMZ3N:	WORD MMZ3MDSN_TilePtr-LTPtrMMZ3N
+	LTPtrMMZ4M:	WORD MMZ4MDSN_TilePtr-LTPtrMMZ4M
+	LTPtrMMZ4D:	WORD MMZ4MDSN_TilePtr-LTPtrMMZ4D
+	LTPtrMMZ4S:	WORD MMZ4MDSN_TilePtr-LTPtrMMZ4S
+	LTPtrMMZ4N:	WORD MMZ4MDSN_TilePtr-LTPtrMMZ4N
+	LTPtrMMZ5M:	WORD MMZ5MDSN_TilePtr-LTPtrMMZ5M
+	LTPtrMMZ5S:	WORD MMZ5MDSN_TilePtr-LTPtrMMZ5S
+	LTPtrMMZ5D:	WORD MMZ5MDSN_TilePtr-LTPtrMMZ5D
+	LTPtrMMZ5N:	WORD MMZ5MDSN_TilePtr-LTPtrMMZ5N
+	LTPtrMMZ6M:	WORD MMZ5MDSN_TilePtr-LTPtrMMZ6M
+	LTPtrMMZ6D:	WORD MMZ5MDSN_TilePtr-LTPtrMMZ6D
+	LTPtrMMZ6S:	WORD MMZ5MDSN_TilePtr-LTPtrMMZ6S
+	LTPtrMMZ6N:	WORD MMZ5MDSN_TilePtr-LTPtrMMZ6N
+	LTPtrTrain0M:	WORD Training_TilePtr-LTPtrTrain0M
+	LTPtrTrain0D:	WORD Training_TilePtr-LTPtrTrain0D
+	LTPtrTrain0S:	WORD Training_TilePtr-LTPtrTrain0S
+	LTPtrTrain0N:	WORD Training_TilePtr-LTPtrTrain0N
+	LTPtrTrain1M:	WORD Training_TilePtr-LTPtrTrain1M
+	LTPtrTrain1D:	WORD Training_TilePtr-LTPtrTrain1D
+	LTPtrTrain1S:	WORD Training_TilePtr-LTPtrTrain1S
+	LTPtrTrain1N:	WORD Training_TilePtr-LTPtrTrain1N
+	LTPtrTrain2M:	WORD Training_TilePtr-LTPtrTrain2M
+	LTPtrTrain2D:	WORD Training_TilePtr-LTPtrTrain2D
+	LTPtrTrain2S:	WORD Training_TilePtr-LTPtrTrain2S
+	LTPtrTrain2N:	WORD Training_TilePtr-LTPtrTrain2N
+	LTPtrTrain3M:	WORD Training_TilePtr-LTPtrTrain3M
+	LTPtrTrain3D:	WORD Training_TilePtr-LTPtrTrain3D
+	LTPtrTrain3S:	WORD Training_TilePtr-LTPtrTrain3S
+	LTPtrTrain3N:	WORD Training_TilePtr-LTPtrTrain3N
+	LTPtrTrain4M:	WORD Training_TilePtr-LTPtrTrain4M
+	LTPtrTrain4D:	WORD Training_TilePtr-LTPtrTrain4D
+	LTPtrTrain4S:	WORD Training_TilePtr-LTPtrTrain4S
+	LTPtrTrain4N:	WORD Training_TilePtr-LTPtrTrain4N
+	LTPtrTrain5M:	WORD Training_TilePtr-LTPtrTrain5M
+	LTPtrTrain5D:	WORD Training_TilePtr-LTPtrTrain5D
+	LTPtrTrain5S:	WORD Training_TilePtr-LTPtrTrain5S
+	LTPtrTrain5N:	WORD Training_TilePtr-LTPtrTrain5N
+	LTPtrTrain6M:	WORD Training_TilePtr-LTPtrTrain6M
+	LTPtrTrain6D:	WORD Training_TilePtr-LTPtrTrain6D
+	LTPtrTrain6S:	WORD Training_TilePtr-LTPtrTrain6S
+	LTPtrTrain6N:	WORD Training_TilePtr-LTPtrTrain6N
+	LTPtrIntro0M:	WORD Training_TilePtr-LTPtrIntro0M
+	LTPtrIntro0D:	WORD Training_TilePtr-LTPtrIntro0D
+	LTPtrIntro0S:	WORD Training_TilePtr-LTPtrIntro0S
+	LTPtrIntro0N:	WORD Training_TilePtr-LTPtrIntro0N
+	LTPtrIntro1M:	WORD Training_TilePtr-LTPtrIntro1M
+	LTPtrIntro1D:	WORD Training_TilePtr-LTPtrIntro1D
+	LTPtrIntro1S:	WORD Training_TilePtr-LTPtrIntro1S
+	LTPtrIntro1N:	WORD Training_TilePtr-LTPtrIntro1N
+	LTPtrIntro2M:	WORD Training_TilePtr-LTPtrIntro2M
+	LTPtrIntro2D:	WORD Training_TilePtr-LTPtrIntro2D
+	LTPtrIntro2S:	WORD Training_TilePtr-LTPtrIntro2S
+	LTPtrIntro2N:	WORD Training_TilePtr-LTPtrIntro2N
+	LTPtrIntro3M:	WORD Training_TilePtr-LTPtrIntro3M
+	LTPtrIntro3D:	WORD Training_TilePtr-LTPtrIntro3D
+	LTPtrIntro3S:	WORD Training_TilePtr-LTPtrIntro3S
+	LTPtrIntro3N:	WORD Training_TilePtr-LTPtrIntro3N
+	LTPtrIntro4M:	WORD Training_TilePtr-LTPtrIntro4M
+	LTPtrIntro4D:	WORD Training_TilePtr-LTPtrIntro4D
+	LTPtrIntro4S:	WORD Training_TilePtr-LTPtrIntro4S
+	LTPtrIntro4N:	WORD Training_TilePtr-LTPtrIntro4N
+	LTPtrIntro5M:	WORD Tutorial_TilePtr-LTPtrIntro5M
+	LTPtrIntro5D:	WORD Tutorial_TilePtr-LTPtrIntro5D
+	LTPtrIntro5S:	WORD Tutorial_TilePtr-LTPtrIntro5S
+	LTPtrIntro5N:	WORD Tutorial_TilePtr-LTPtrIntro5N
+	LTPtrIntro6M:	WORD Tutorial_TilePtr-LTPtrIntro6M
+	LTPtrIntro6D:	WORD Tutorial_TilePtr-LTPtrIntro6D
+	LTPtrIntro6S:	WORD Tutorial_TilePtr-LTPtrIntro6S
+	LTPtrIntro6N:	WORD Tutorial_TilePtr-LTPtrIntro6N
+	LTPtrWorld0M:	WORD WorldEnt_TilePtr-LTPtrWorld0M
+	LTPtrWorld0D:	WORD WorldEnt_TilePtr-LTPtrWorld0D
+	LTPtrWorld0S:	WORD WorldEnt_TilePtr-LTPtrWorld0S
+	LTPtrWorld0N:	WORD WorldEnt_TilePtr-LTPtrWorld0N
+	LTPtrWorld1M:	WORD WorldEnt_TilePtr-LTPtrWorld1M
+	LTPtrWorld1D:	WORD WorldEnt_TilePtr-LTPtrWorld1D
+	LTPtrWorld1S:	WORD WorldEnt_TilePtr-LTPtrWorld1S
+	LTPtrWorld1N:	WORD WorldEnt_TilePtr-LTPtrWorld1N
+	LTPtrWorld2M:	WORD FinalBoss_TilePtr-LTPtrWorld2M
+	LTPtrWorld2D:	WORD NULL_TilePtr-LTPtrWorld2D
+	LTPtrWorld2S:	WORD NULL_TilePtr-LTPtrWorld2S
+	LTPtrWorld2N:	WORD NULL_TilePtr-LTPtrWorld2N
+	LTPtrWorld3M:	WORD NULL_TilePtr-LTPtrWorld3M
+	LTPtrWorld3D:	WORD NULL_TilePtr-LTPtrWorld3D
+	LTPtrWorld3S:	WORD NULL_TilePtr-LTPtrWorld3S
+	LTPtrWorld3N:	WORD NULL_TilePtr-LTPtrWorld3N
+	LTPtrWorld4M:	WORD NULL_TilePtr-LTPtrWorld4M
+	LTPtrWorld4D:	WORD NULL_TilePtr-LTPtrWorld4D
+	LTPtrWorld4S:	WORD NULL_TilePtr-LTPtrWorld4S
+	LTPtrWorld4N:	WORD NULL_TilePtr-LTPtrWorld4N
+	LTPtrWorld5M:	WORD NULL_TilePtr-LTPtrWorld5M
+	LTPtrWorld5D:	WORD NULL_TilePtr-LTPtrWorld5D
+	LTPtrWorld5S:	WORD NULL_TilePtr-LTPtrWorld5S
+	LTPtrWorld5N:	WORD NULL_TilePtr-LTPtrWorld5N
+	LTPtrWorld6M:	WORD NULL_TilePtr-LTPtrWorld6M
+	LTPtrWorld6D:	WORD NULL_TilePtr-LTPtrWorld6D
+	LTPtrWorld6S:	WORD NULL_TilePtr-LTPtrWorld6S
+	LTPtrWorld6N:	WORD NULL_TilePtr-LTPtrWorld6N
+
+	BBZ12MDSN_TilePtr:
+		DWORD BBZ_FG_Tiles_Pri
+		DWORD BBZ12_FG_Tiles_Sec
+		DWORD 0
+		DWORD BBZ_BG_Tiles_Pri
+		DWORD BBZ12_BG_Tiles_Sec
+		DWORD $FFFFFFFF
+	BBZ3MDSN_TilePtr:
+		DWORD BBZ_FG_Tiles_Pri
+		DWORD BBZ3_FG_Tiles_Sec
+		DWORD 0
+		DWORD BBZ_BG_Tiles_Pri
+		DWORD BBZ3_BG_Tiles_Sec
+		DWORD $FFFFFFFF
+	BBZ4MDSN_TilePtr:
+		DWORD BBZ_FG_Tiles_Pri
+		DWORD BBZ4_FG_Tiles_Sec
+		DWORD 0
+		DWORD BBZ_BG_Tiles_Pri
+		DWORD BBZ4_BG_Tiles_Sec
+		DWORD $FFFFFFFF
+	BBZ5MDSN_TilePtr:
+		DWORD BBZ_FG_Tiles_Pri
+		DWORD BBZ5_FG_Tiles_Sec
+		DWORD 0
+		DWORD BBZ_BG_Tiles_Pri
+		DWORD BBZ5_BG_Tiles_Sec
+		DWORD $FFFFFFFF
+	SSZ12MD_TilePtr:
+		DWORD SSZ_FG_Tiles_Pri
+		DWORD SSZ12_FG_Tiles_Sec
+		DWORD 0
+		DWORD SSZ_BG_Tiles_Pri
+		DWORD SSZ12MD_BG_Tiles_Sec
+		DWORD $FFFFFFFF
+	SSZ12SN_TilePtr:
+		DWORD SSZ_FG_Tiles_Pri
+		DWORD SSZ12_FG_Tiles_Sec
+		DWORD 0
+		DWORD SSZ_BG_Tiles_Pri
+		DWORD SSZ12SN_BG_Tiles_Sec
+		DWORD $FFFFFFFF
+	SSZ3MD_TilePtr:
+		DWORD SSZ_FG_Tiles_Pri
+		DWORD SSZ3_FG_Tiles_Sec
+		DWORD 0
+		DWORD SSZ_BG_Tiles_Pri
+		DWORD SSZ3MD_BG_Tiles_Sec
+		DWORD $FFFFFFFF
+	SSZ3SN_TilePtr:
+		DWORD SSZ_FG_Tiles_Pri
+		DWORD SSZ3_FG_Tiles_Sec
+		DWORD 0
+		DWORD SSZ_BG_Tiles_Pri
+		DWORD SSZ3SN_BG_Tiles_Sec
+		DWORD $FFFFFFFF
+	SSZ45MD_TilePtr:
+		DWORD SSZ_FG_Tiles_Pri
+		DWORD SSZ45_FG_Tiles_Sec
+		DWORD 0
+		DWORD SSZ_BG_Tiles_Pri
+		DWORD SSZ45MD_BG_Tiles_Sec
+		DWORD $FFFFFFFF
+	SSZ45SN_TilePtr:
+		DWORD SSZ_FG_Tiles_Pri
+		DWORD SSZ45_FG_Tiles_Sec
+		DWORD 0
+		DWORD SSZ_BG_Tiles_Pri
+		DWORD SSZ45SN_BG_Tiles_Sec
+		DWORD $FFFFFFFF
+	AAZ12MDSN_TilePtr:
+		DWORD AAZ_FG_Tiles_Pri
+		DWORD AAZ12_FG_Tiles_Sec
+		DWORD 0
+		DWORD AAZ12_BG_Tiles_Pri
+		DWORD AAZ12_BG_Tiles_Sec
+		DWORD $FFFFFFFF
+	AAZ3MDSN_TilePtr:
+		DWORD AAZ_FG_Tiles_Pri
+		DWORD AAZ3_FG_Tiles_Sec
+		DWORD 0
+		DWORD AAZ34_BG_Tiles
+		DWORD $FFFFFFFF
+	AAZ4MDSN_TilePtr:
+		DWORD AAZ_FG_Tiles_Pri
+		DWORD AAZ4_FG_Tiles_Sec
+		DWORD 0
+		DWORD AAZ34_BG_Tiles
+		DWORD $FFFFFFFF
+	AAZ5MDSN_TilePtr:
+		DWORD AAZ_FG_Tiles_Pri
+		DWORD AAZ5_FG_Tiles_Pri
+		DWORD 0
+		DWORD AAZ5_BG_Tiles
+		DWORD $FFFFFFFF
+		DWORD TTZ_BG_Tiles_Pri
+		DWORD TTZ34_BG_Tiles_Sec
+		DWORD $FFFFFFFF
+	TTZ12MDSN_TilePtr:
+		DWORD TTZ_FG_Tiles_Pri
+		DWORD 0
+		DWORD TTZ_BG_Tiles_Pri
+		DWORD TTZ12_BG_Tiles_Sec
+		DWORD $FFFFFFFF
+	TTZ3MDSN_TilePtr:
+		DWORD TTZ_FG_Tiles_Pri
+		DWORD TTZ3_FG_Tiles_Sec
+		DWORD 0
+		DWORD TTZ_BG_Tiles_Pri
+		DWORD TTZ34_BG_Tiles_Sec
+		DWORD $FFFFFFFF
+	TTZ4MDSN_TilePtr:
+		DWORD TTZ_FG_Tiles_Pri
+		DWORD 0
+		DWORD TTZ_BG_Tiles_Pri
+		DWORD TTZ34_BG_Tiles_Sec
+		DWORD $FFFFFFFF
+	TTZ5MDSN_TilePtr:
+		DWORD TTZ_FG_Tiles_Pri
+		DWORD TTZ5_FG_Tiles_Sec
+		DWORD 0
+		DWORD TTZ_BG_Tiles_Pri
+		DWORD TTZ5_BG_Tiles_Sec
+		DWORD $FFFFFFFF
+	TTZBMDSN_TilePtr:
+		DWORD TTZB_FG_Tiles
+		DWORD 0
+		DWORD TTZ_BG_Tiles_Pri
+		DWORD TTZ5_BG_Tiles_Sec
+		DWORD $FFFFFFFF
+	MMZ1MDSN_TilePtr:
+		DWORD MMZ_Tiles_Pri
+		DWORD MMZ1_Tiles_Sec
+		DWORD $FFFFFFFF
+	MMZ2MDSN_TilePtr:
+		DWORD MMZ_Tiles_Pri
+		DWORD $FFFFFFFF
+	MMZ3MDSN_TilePtr:
+		DWORD MMZ_Tiles_Pri
+		DWORD MMZ3_Tiles_Sec
+		DWORD $FFFFFFFF
+	MMZ4MDSN_TilePtr:
+		DWORD MMZ_Tiles_Pri
+		DWORD MMZ4_Tiles_Sec
+		DWORD $FFFFFFFF
+	MMZ5MDSN_TilePtr:
+		DWORD MMZ_Tiles_Pri
+		DWORD MMZ5_Tiles_Sec
+		DWORD $FFFFFFFF
+	Training_TilePtr:
+		DWORD Trainig_Tiles_Pri
+		DWORD Training_Tiles_Sec
+		DWORD $FFFFFFFF
+	Tutorial_TilePtr:
+		DWORD Tutorial_FG_Tiles_Pri
+		DWORD Tutorial_FG_Tiles_Sec
+		DWORD 0
+		DWORD Tutorial_BG_Tiles
+		DWORD $FFFFFFFF
+	WorldEnt_TilePtr:
+		DWORD WorldEnt_FG_Tiles
+		DWORD 0
+		DWORD WorldEnt_BG_Tiles
+		DWORD $FFFFFFFF
+	FinalBoss_TilePtr:
+		DWORD FinalBoss_Tiles
+		DWORD $FFFFFFFF
+	NULL_TilePtr:
+		DWORD $FFFFFFFF
+
+EndSeg
+
+StartSeg Level_Index Big_Endian	;Level Layout and Mappings Pointers Segment
+
+	BPLPtrBBZ0M:	WORD BBZ1_MapPtr-BPLPtrBBZ0M
+	BPLPtrBBZ0D:	WORD BBZ1_MapPtr-BPLPtrBBZ0D
+	BPLPtrBBZ0S:	WORD BBZ1_MapPtr-BPLPtrBBZ0S
+	BPLPtrBBZ0N:	WORD BBZ1_MapPtr-BPLPtrBBZ0N
+	BPLPtrBBZ1M:	WORD BBZ1_MapPtr-BPLPtrBBZ1M
+	BPLPtrBBZ1D:	WORD BBZ1_MapPtr-BPLPtrBBZ1D
+	BPLPtrBBZ1S:	WORD BBZ1_MapPtr-BPLPtrBBZ1S
+	BPLPtrBBZ1N:	WORD BBZ1_MapPtr-BPLPtrBBZ1N
+	BPLPtrBBZ2M:	WORD BBZ2_MapPtr-BPLPtrBBZ2M
+	BPLPtrBBZ2D:	WORD BBZ2_MapPtr-BPLPtrBBZ2D
+	BPLPtrBBZ2S:	WORD BBZ2_MapPtr-BPLPtrBBZ2S
+	BPLPtrBBZ2N:	WORD BBZ2_MapPtr-BPLPtrBBZ2N
+	BPLPtrBBZ3M:	WORD BBZ3_MapPtr-BPLPtrBBZ3M
+	BPLPtrBBZ3D:	WORD BBZ3_MapPtr-BPLPtrBBZ3D
+	BPLPtrBBZ3S:	WORD BBZ3_MapPtr-BPLPtrBBZ3S
+	BPLPtrBBZ3N:	WORD BBZ3_MapPtr-BPLPtrBBZ3N
+	BPLPtrBBZ4M:	WORD BBZ4_MapPtr-BPLPtrBBZ4M
+	BPLPtrBBZ4D:	WORD BBZ4_MapPtr-BPLPtrBBZ4D
+	BPLPtrBBZ4S:	WORD BBZ4_MapPtr-BPLPtrBBZ4S
+	BPLPtrBBZ4N:	WORD BBZ4_MapPtr-BPLPtrBBZ4N
+	BPLPtrBBZ5M:	WORD BBZ5_MapPtr-BPLPtrBBZ5M
+	BPLPtrBBZ5D:	WORD BBZ5_MapPtr-BPLPtrBBZ5D
+	BPLPtrBBZ5S:	WORD BBZ5_MapPtr-BPLPtrBBZ5S
+	BPLPtrBBZ5N:	WORD BBZ5_MapPtr-BPLPtrBBZ5N
+	BPLPtrBBZ6M:	WORD BBZ5_MapPtr-BPLPtrBBZ6M
+	BPLPtrBBZ6D:	WORD BBZ5_MapPtr-BPLPtrBBZ6D
+	BPLPtrBBZ6S:	WORD BBZ5_MapPtr-BPLPtrBBZ6S
+	BPLPtrBBZ6N:	WORD BBZ5_MapPtr-BPLPtrBBZ6N
+	BPLPtrSSZ0M:	WORD SSZ1MD_MapPtr-BPLPtrSSZ0M
+	BPLPtrSSZ0D:	WORD SSZ1MD_MapPtr-BPLPtrSSZ0D
+	BPLPtrSSZ0S:	WORD SSZ1SN_MapPtr-BPLPtrSSZ0S
+	BPLPtrSSZ0N:	WORD SSZ1SN_MapPtr-BPLPtrSSZ0N
+	BPLPtrSSZ1M:	WORD SSZ1MD_MapPtr-BPLPtrSSZ1M
+	BPLPtrSSZ1D:	WORD SSZ1MD_MapPtr-BPLPtrSSZ1D
+	BPLPtrSSZ1S:	WORD SSZ1SN_MapPtr-BPLPtrSSZ1S
+	BPLPtrSSZ1N:	WORD SSZ1SN_MapPtr-BPLPtrSSZ1N
+	BPLPtrSSZ2M:	WORD SSZ2MD_MapPtr-BPLPtrSSZ2M
+	BPLPtrSSZ2D:	WORD SSZ2MD_MapPtr-BPLPtrSSZ2D
+	BPLPtrSSZ2S:	WORD SSZ2SN_MapPtr-BPLPtrSSZ2S
+	BPLPtrSSZ2N:	WORD SSZ2SN_MapPtr-BPLPtrSSZ2N
+	BPLPtrSSZ3M:	WORD SSZ3MD_MapPtr-BPLPtrSSZ3M
+	BPLPtrSSZ3D:	WORD SSZ3MD_MapPtr-BPLPtrSSZ3D
+	BPLPtrSSZ3S:	WORD SSZ3SN_MapPtr-BPLPtrSSZ3S
+	BPLPtrSSZ3N:	WORD SSZ3SN_MapPtr-BPLPtrSSZ3N
+	BPLPtrSSZ4M:	WORD SSZ4MD_MapPtr-BPLPtrSSZ4M
+	BPLPtrSSZ4D:	WORD SSZ4MD_MapPtr-BPLPtrSSZ4D
+	BPLPtrSSZ4S:	WORD SSZ4SN_MapPtr-BPLPtrSSZ4S
+	BPLPtrSSZ4N:	WORD SSZ4SN_MapPtr-BPLPtrSSZ4N
+	BPLPtrSSZ5M:	WORD SSZ5MD_MapPtr-BPLPtrSSZ5M
+	BPLPtrSSZ5D:	WORD SSZ5MD_MapPtr-BPLPtrSSZ5D
+	BPLPtrSSZ5S:	WORD SSZ5SN_MapPtr-BPLPtrSSZ5S
+	BPLPtrSSZ5N:	WORD SSZ5SN_MapPtr-BPLPtrSSZ5N
+	BPLPtrSSZ6M:	WORD SSZ5MD_MapPtr-BPLPtrSSZ6M
+	BPLPtrSSZ6D:	WORD SSZ5MD_MapPtr-BPLPtrSSZ6D
+	BPLPtrSSZ6S:	WORD SSZ5SN_MapPtr-BPLPtrSSZ6S
+	BPLPtrSSZ6N:	WORD SSZ5SN_MapPtr-BPLPtrSSZ6N
+	BPLPtrAAZ0M:	WORD AAZ1_MapPtr-BPLPtrAAZ0M
+	BPLPtrAAZ0D:	WORD AAZ1_MapPtr-BPLPtrAAZ0D
+	BPLPtrAAZ0S:	WORD AAZ1_MapPtr-BPLPtrAAZ0S
+	BPLPtrAAZ0N:	WORD AAZ1_MapPtr-BPLPtrAAZ0N
+	BPLPtrAAZ1M:	WORD AAZ1_MapPtr-BPLPtrAAZ1M
+	BPLPtrAAZ1D:	WORD AAZ1_MapPtr-BPLPtrAAZ1D
+	BPLPtrAAZ1S:	WORD AAZ1_MapPtr-BPLPtrAAZ1S
+	BPLPtrAAZ1N:	WORD AAZ1_MapPtr-BPLPtrAAZ1N
+	BPLPtrAAZ2M:	WORD AAZ2_MapPtr-BPLPtrAAZ2M
+	BPLPtrAAZ2D:	WORD AAZ2_MapPtr-BPLPtrAAZ2D
+	BPLPtrAAZ2S:	WORD AAZ2_MapPtr-BPLPtrAAZ2S
+	BPLPtrAAZ2N:	WORD AAZ2_MapPtr-BPLPtrAAZ2N
+	BPLPtrAAZ3M:	WORD AAZ3_MapPtr-BPLPtrAAZ3M
+	BPLPtrAAZ3D:	WORD AAZ3_MapPtr-BPLPtrAAZ3D
+	BPLPtrAAZ3S:	WORD AAZ3_MapPtr-BPLPtrAAZ3S
+	BPLPtrAAZ3N:	WORD AAZ3_MapPtr-BPLPtrAAZ3N
+	BPLPtrAAZ4M:	WORD AAZ4_MapPtr-BPLPtrAAZ4M
+	BPLPtrAAZ4D:	WORD AAZ4_MapPtr-BPLPtrAAZ4D
+	BPLPtrAAZ4S:	WORD AAZ4_MapPtr-BPLPtrAAZ4S
+	BPLPtrAAZ4N:	WORD AAZ4_MapPtr-BPLPtrAAZ4N
+	BPLPtrAAZ5M:	WORD AAZ5_MapPtr-BPLPtrAAZ5M
+	BPLPtrAAZ5D:	WORD AAZ5_MapPtr-BPLPtrAAZ5D
+	BPLPtrAAZ5S:	WORD AAZ5_MapPtr-BPLPtrAAZ5S
+	BPLPtrAAZ5N:	WORD AAZ5_MapPtr-BPLPtrAAZ5N
+	BPLPtrAAZ6M:	WORD AAZ5_MapPtr-BPLPtrAAZ6M
+	BPLPtrAAZ6D:	WORD AAZ5_MapPtr-BPLPtrAAZ6D
+	BPLPtrAAZ6S:	WORD AAZ5_MapPtr-BPLPtrAAZ6S
+	BPLPtrAAZ6N:	WORD AAZ5_MapPtr-BPLPtrAAZ6N
+	BPLPtrTTZ0M:	WORD TTZ1MDS_MapPtr-BPLPtrTTZ0M
+	BPLPtrTTZ0D:	WORD TTZ1MDS_MapPtr-BPLPtrTTZ0D
+	BPLPtrTTZ0S:	WORD TTZ1MDS_MapPtr-BPLPtrTTZ0S
+	BPLPtrTTZ0N:	WORD TTZ1MDS_MapPtr-BPLPtrTTZ0N
+	BPLPtrTTZ1M:	WORD TTZ1MDS_MapPtr-BPLPtrTTZ1M
+	BPLPtrTTZ1D:	WORD TTZ1MDS_MapPtr-BPLPtrTTZ1D
+	BPLPtrTTZ1S:	WORD TTZ1MDS_MapPtr-BPLPtrTTZ1S
+	BPLPtrTTZ1N:	WORD TTZ1N_MapPtr-BPLPtrTTZ1N
+	BPLPtrTTZ2M:	WORD TTZ2MDS_MapPtr-BPLPtrTTZ2M
+	BPLPtrTTZ2D:	WORD TTZ2MDS_MapPtr-BPLPtrTTZ2D
+	BPLPtrTTZ2S:	WORD TTZ2MDS_MapPtr-BPLPtrTTZ2S
+	BPLPtrTTZ2N:	WORD TTZ2N_MapPtr-BPLPtrTTZ2N
+	BPLPtrTTZ3M:	WORD TTZ3MDS_MapPtr-BPLPtrTTZ3M
+	BPLPtrTTZ3D:	WORD TTZ3MDS_MapPtr-BPLPtrTTZ3D
+	BPLPtrTTZ3S:	WORD TTZ3MDS_MapPtr-BPLPtrTTZ3S
+	BPLPtrTTZ3N:	WORD TTZ3N_MapPtr-BPLPtrTTZ3N
+	BPLPtrTTZ4M:	WORD TTZ4MDS_MapPtr-BPLPtrTTZ4M
+	BPLPtrTTZ4D:	WORD TTZ4MDS_MapPtr-BPLPtrTTZ4D
+	BPLPtrTTZ4S:	WORD TTZ4MDS_MapPtr-BPLPtrTTZ4S
+	BPLPtrTTZ4N:	WORD TTZ4N_MapPtr-BPLPtrTTZ4N
+	BPLPtrTTZ5M:	WORD TTZ5_MDS_MapPtr-BPLPtrTTZ5M
+	BPLPtrTTZ5D:	WORD TTZ5_MDS_MapPtr-BPLPtrTTZ5D
+	BPLPtrTTZ5S:	WORD TTZ5_MDS_MapPtr-BPLPtrTTZ5S
+	BPLPtrTTZ5N:	WORD TTZ5N_MapPtr-BPLPtrTTZ5N
+	BPLPtrTTZ6M:	WORD TTZNULL_MapPtr-BPLPtrTTZ6M
+	BPLPtrTTZ6D:	WORD TTZNULL_MapPtr-BPLPtrTTZ6D
+	BPLPtrTTZ6S:	WORD TTZNULL_MapPtr-BPLPtrTTZ6S
+	BPLPtrTTZ6N:	WORD TTZNULL_MapPtr-BPLPtrTTZ6N
+	BPLPtrMMZ0M:	WORD MMZ1_MapPtr-BPLPtrMMZ0M
+	BPLPtrMMZ0D:	WORD MMZ1_MapPtr-BPLPtrMMZ0D
+	BPLPtrMMZ0S:	WORD MMZ1_MapPtr-BPLPtrMMZ0S
+	BPLPtrMMZ0N:	WORD MMZ1_MapPtr-BPLPtrMMZ0N
+	BPLPtrMMZ1M:	WORD MMZ1_MapPtr-BPLPtrMMZ1M
+	BPLPtrMMZ1D:	WORD MMZ1_MapPtr-BPLPtrMMZ1D
+	BPLPtrMMZ1S:	WORD MMZ1_MapPtr-BPLPtrMMZ1S
+	BPLPtrMMZ1N:	WORD MMZ1_MapPtr-BPLPtrMMZ1N
+	BPLPtrMMZ2M:	WORD MMZ2_MapPtr-BPLPtrMMZ2M
+	BPLPtrMMZ2D:	WORD MMZ2_MapPtr-BPLPtrMMZ2D
+	BPLPtrMMZ2S:	WORD MMZ2_MapPtr-BPLPtrMMZ2S
+	BPLPtrMMZ2N:	WORD MMZ2_MapPtr-BPLPtrMMZ2N
+	BPLPtrMMZ3M:	WORD MMZ3_MapPtr-BPLPtrMMZ3M
+	BPLPtrMMZ3D:	WORD MMZ3_MapPtr-BPLPtrMMZ3D
+	BPLPtrMMZ3S:	WORD MMZ3_MapPtr-BPLPtrMMZ3S
+	BPLPtrMMZ3N:	WORD MMZ3_MapPtr-BPLPtrMMZ3N
+	BPLPtrMMZ4M:	WORD MMZ4_MapPtr-BPLPtrMMZ4M
+	BPLPtrMMZ4D:	WORD MMZ4_MapPtr-BPLPtrMMZ4D
+	BPLPtrMMZ4S:	WORD MMZ4_MapPtr-BPLPtrMMZ4S
+	BPLPtrMMZ4N:	WORD MMZ4_MapPtr-BPLPtrMMZ4N
+	BPLPtrMMZ5M:	WORD MMZ5_MapPtr-BPLPtrMMZ5M
+	BPLPtrMMZ5D:	WORD MMZ5_MapPtr-BPLPtrMMZ5D
+	BPLPtrMMZ5S:	WORD MMZ5_MapPtr-BPLPtrMMZ5S
+	BPLPtrMMZ5N:	WORD MMZ5_MapPtr-BPLPtrMMZ5N
+	BPLPtrMMZ6M:	WORD MMZ5_MapPtr-BPLPtrMMZ6M
+	BPLPtrMMZ6D:	WORD MMZ5_MapPtr-BPLPtrMMZ6D
+	BPLPtrMMZ6S:	WORD MMZ5_MapPtr-BPLPtrMMZ6S
+	BPLPtrMMZ6N:	WORD MMZ5_MapPtr-BPLPtrMMZ6N
+	BPLPtrTrain0M:	WORD Training1_MapPtr-BPLPtrTrain0M
+	BPLPtrTrain0D:	WORD Training1_MapPtr-BPLPtrTrain0D
+	BPLPtrTrain0S:	WORD Training1_MapPtr-BPLPtrTrain0S
+	BPLPtrTrain0N:	WORD Training1_MapPtr-BPLPtrTrain0N
+	BPLPtrTrain1M:	WORD Training1_MapPtr-BPLPtrTrain1M
+	BPLPtrTrain1D:	WORD Training1_MapPtr-BPLPtrTrain1D
+	BPLPtrTrain1S:	WORD Training1_MapPtr-BPLPtrTrain1S
+	BPLPtrTrain1N:	WORD Training1_MapPtr-BPLPtrTrain1N
+	BPLPtrTrain2M:	WORD Training2_MapPtr-BPLPtrTrain2M
+	BPLPtrTrain2D:	WORD Training2_MapPtr-BPLPtrTrain2D
+	BPLPtrTrain2S:	WORD Training2_MapPtr-BPLPtrTrain2S
+	BPLPtrTrain2N:	WORD Training2_MapPtr-BPLPtrTrain2N
+	BPLPtrTrain3M:	WORD Training3_MapPtr-BPLPtrTrain3M
+	BPLPtrTrain3D:	WORD Training3_MapPtr-BPLPtrTrain3D
+	BPLPtrTrain3S:	WORD Training3_MapPtr-BPLPtrTrain3S
+	BPLPtrTrain3N:	WORD Training3_MapPtr-BPLPtrTrain3N
+	BPLPtrTrain4M:	WORD Training4_MapPtr-BPLPtrTrain4M
+	BPLPtrTrain4D:	WORD Training4_MapPtr-BPLPtrTrain4D
+	BPLPtrTrain4S:	WORD Training4_MapPtr-BPLPtrTrain4S
+	BPLPtrTrain4N:	WORD Training4_MapPtr-BPLPtrTrain4N
+	BPLPtrTrain5M:	WORD TrainNULL_MapPtr-BPLPtrTrain5M
+	BPLPtrTrain5D:	WORD TrainNULL_MapPtr-BPLPtrTrain5D
+	BPLPtrTrain5S:	WORD TrainNULL_MapPtr-BPLPtrTrain5S
+	BPLPtrTrain5N:	WORD TrainNULL_MapPtr-BPLPtrTrain5N
+	BPLPtrTrain6M:	WORD TrainNULL_MapPtr-BPLPtrTrain6M
+	BPLPtrTrain6D:	WORD TrainNULL_MapPtr-BPLPtrTrain6D
+	BPLPtrTrain6S:	WORD TrainNULL_MapPtr-BPLPtrTrain6S
+	BPLPtrTrain6N:	WORD TrainNULL_MapPtr-BPLPtrTrain6N
+	BPLPtrIntro0M:	WORD Intro0_MapPtr-BPLPtrIntro0M
+	BPLPtrIntro0D:	WORD Intro0_MapPtr-BPLPtrIntro0D
+	BPLPtrIntro0S:	WORD Intro0_MapPtr-BPLPtrIntro0S
+	BPLPtrIntro0N:	WORD Intro0_MapPtr-BPLPtrIntro0N
+	BPLPtrIntro1M:	WORD Intro1_MapPtr-BPLPtrIntro1M
+	BPLPtrIntro1D:	WORD Intro1_MapPtr-BPLPtrIntro1D
+	BPLPtrIntro1S:	WORD Intro1_MapPtr-BPLPtrIntro1S
+	BPLPtrIntro1N:	WORD Intro1_MapPtr-BPLPtrIntro1N
+	BPLPtrIntro2M:	WORD Intro2_MapPtr-BPLPtrIntro2M
+	BPLPtrIntro2D:	WORD Intro2_MapPtr-BPLPtrIntro2D
+	BPLPtrIntro2S:	WORD Intro2_MapPtr-BPLPtrIntro2S
+	BPLPtrIntro2N:	WORD Intro2_MapPtr-BPLPtrIntro2N
+	BPLPtrIntro3M:	WORD Intro3_MapPtr-BPLPtrIntro3M
+	BPLPtrIntro3D:	WORD Intro3_MapPtr-BPLPtrIntro3D
+	BPLPtrIntro3S:	WORD Intro3_MapPtr-BPLPtrIntro3S
+	BPLPtrIntro3N:	WORD Intro3_MapPtr-BPLPtrIntro3N
+	BPLPtrIntro4M:	WORD Intro4_MapPtr-BPLPtrIntro4M
+	BPLPtrIntro4D:	WORD Intro4_MapPtr-BPLPtrIntro4D
+	BPLPtrIntro4S:	WORD Intro4_MapPtr-BPLPtrIntro4S
+	BPLPtrIntro4N:	WORD Intro4_MapPtr-BPLPtrIntro4N
+	BPLPtrIntro5M:	WORD Tut1_MapPtr-BPLPtrIntro5M
+	BPLPtrIntro5D:	WORD Tut2_MapPtr-BPLPtrIntro5D
+	BPLPtrIntro5S:	WORD Tut3_MapPtr-BPLPtrIntro5S
+	BPLPtrIntro5N:	WORD Tut4_MapPtr-BPLPtrIntro5N
+	BPLPtrIntro6M:	WORD Tut5_MapPtr-BPLPtrIntro6M
+	BPLPtrIntro6D:	WORD Tut6_MapPtr-BPLPtrIntro6D
+	BPLPtrIntro6S:	WORD Tut7_MapPtr-BPLPtrIntro6S
+	BPLPtrIntro6N:	WORD TutNULL_MapPtr-BPLPtrIntro6N
+	BPLPtrWorld0M:	WORD WorldEnt_MapPtr-BPLPtrWorld0M
+	BPLPtrWorld0D:	WORD WorldEnt_MapPtr-BPLPtrWorld0D
+	BPLPtrWorld0S:	WORD WorldEnt_MapPtr-BPLPtrWorld0S
+	BPLPtrWorld0N:	WORD WorldEnt_MapPtr-BPLPtrWorld0N
+	BPLPtrWorld1M:	WORD WorldEnt_MapPtr-BPLPtrWorld1M
+	BPLPtrWorld1D:	WORD WorldEnt_MapPtr-BPLPtrWorld1D
+	BPLPtrWorld1S:	WORD WorldEnt_MapPtr-BPLPtrWorld1S
+	BPLPtrWorld1N:	WORD WorldEnt_MapPtr-BPLPtrWorld1N
+	BPLPtrWorld2M:	WORD FinalBoss_MapPtr-BPLPtrWorld2M
+	BPLPtrWorld2D:	WORD NULL_MapPtr-BPLPtrWorld2D
+	BPLPtrWorld2S:	WORD NULL_MapPtr-BPLPtrWorld2S
+	BPLPtrWorld2N:	WORD NULL_MapPtr-BPLPtrWorld2N
+	BPLPtrWorld3M:	WORD NULL_MapPtr-BPLPtrWorld3M
+	BPLPtrWorld3D:	WORD NULL_MapPtr-BPLPtrWorld3D
+	BPLPtrWorld3S:	WORD NULL_MapPtr-BPLPtrWorld3S
+	BPLPtrWorld3N:	WORD NULL_MapPtr-BPLPtrWorld3N
+	BPLPtrWorld4M:	WORD NULL_MapPtr-BPLPtrWorld4M
+	BPLPtrWorld4D:	WORD NULL_MapPtr-BPLPtrWorld4D
+	BPLPtrWorld4S:	WORD NULL_MapPtr-BPLPtrWorld4S
+	BPLPtrWorld4N:	WORD NULL_MapPtr-BPLPtrWorld4N
+	BPLPtrWorld5M:	WORD NULL_MapPtr-BPLPtrWorld5M
+	BPLPtrWorld5D:	WORD NULL_MapPtr-BPLPtrWorld5D
+	BPLPtrWorld5S:	WORD NULL_MapPtr-BPLPtrWorld5S
+	BPLPtrWorld5N:	WORD NULL_MapPtr-BPLPtrWorld5N
+	BPLPtrWorld6M:	WORD NULL_MapPtr-BPLPtrWorld6M
+	BPLPtrWorld6D:	WORD NULL_MapPtr-BPLPtrWorld6D
+	BPLPtrWorld6S:	WORD NULL_MapPtr-BPLPtrWorld6S
+	BPLPtrWorld6N:	WORD NULL_MapPtr-BPLPtrWorld6N
+
+	BBZ1_MapPtr:
+		DWORD BBZ_FG_Blocks_Pri
+		DWORD BBZ12_FG_Blocks_Sec+LastPage
+		DWORD BBZ_BG_Blocks_Pri
+		DWORD BBZ12_BG_Blocks_Sec+LastPage
+		DWORD BBZ_FG_Chunks_Pri
+		DWORD BBZ1_FG_Chunks_Sec+LastPage
+		DWORD BBZ_BG_Chunks_Pri
+		DWORD BBZ12_BG_Chunks_Sec+LastPage
+		DWORD BBZ1_FG_Layout
+		DWORD BBZ12_BG_Layout
+	BBZ2_MapPtr:
+		DWORD BBZ_FG_Blocks_Pri
+		DWORD BBZ12_FG_Blocks_Sec+LastPage
+		DWORD BBZ_BG_Blocks_Pri
+		DWORD BBZ12_BG_Blocks_Sec+LastPage
+		DWORD BBZ_FG_Chunks_Pri
+		DWORD BBZ2_FG_Chunks_Sec+LastPage
+		DWORD BBZ_BG_Chunks_Pri
+		DWORD BBZ12_BG_Chunks_Sec+LastPage
+		DWORD BBZ2_FG_Layout
+		DWORD BBZ12_BG_Layout
+	BBZ3_MapPtr:
+		DWORD BBZ_FG_Blocks_Pri
+		DWORD BBZ3_FG_Blocks_Sec+LastPage
+		DWORD BBZ_BG_Blocks_Pri
+		DWORD BBZ3_BG_Blocks_Sec+LastPage
+		DWORD BBZ_FG_Chunks_Pri
+		DWORD BBZ3_FG_Chunks_Sec+LastPage
+		DWORD BBZ_BG_Chunks_Pri
+		DWORD BBZ3_BG_Chunks_Sec+LastPage
+		DWORD BBZ3_FG_Layout
+		DWORD BBZ3_BG_Layout
+	BBZ4_MapPtr:
+		DWORD BBZ_FG_Blocks_Pri
+		DWORD BBZ4_FG_Blocks_Sec+LastPage
+		DWORD BBZ_BG_Blocks_Pri
+		DWORD BBZ4_BG_Blocks_Sec+LastPage
+		DWORD BBZ_FG_Chunks_Pri
+		DWORD BBZ4_FG_Chunks_Sec+LastPage
+		DWORD BBZ_BG_Chunks_Pri
+		DWORD BBZ4_BG_Chunks_Sec+LastPage
+		DWORD BBZ4_FG_Layout
+		DWORD BBZ4_BG_Layout
+	BBZ5_MapPtr:
+		DWORD BBZ_FG_Blocks_Pri
+		DWORD BBZ5_FG_Blocks_Sec+LastPage
+		DWORD BBZ_BG_Blocks_Pri
+		DWORD BBZ5_BG_Blocks_Sec+LastPage
+		DWORD BBZ_FG_Chunks_Pri
+		DWORD BBZ5_FG_Chunks_Sec+LastPage
+		DWORD BBZ_BG_Chunks_Pri
+		DWORD BBZ5_BG_Chunks_Sec+LastPage
+		DWORD BBZ5_FG_Layout
+		DWORD BBZ5_BG_Layout
+	SSZ1MD_MapPtr:
+		DWORD SSZ_FG_Blocks_Pri
+		DWORD SSZ12_FG_Blocks_Sec+LastPage
+		DWORD SSZ_BG_Blocks_Pri
+		DWORD SSZ12MD_BG_Blocks_Sec+LastPage
+		DWORD SSZ_FG_Chunks_Pri
+		DWORD SSZ12_FG_Chunks_Sec+LastPage
+		DWORD SSZ_BG_Chunks_Pri
+		DWORD SSZ12MD_BG_Chunks_Sec+LastPage
+		DWORD SSZ1_FG_Layout
+		DWORD SSZ12MD_BG_Layout
+	SSZ1SN_MapPtr:
+		DWORD SSZ_FG_Blocks_Pri
+		DWORD SSZ12_FG_Blocks_Sec+LastPage
+		DWORD SSZ_BG_Blocks_Pri
+		DWORD SSZ12SN_BG_Blocks_Sec+LastPage
+		DWORD SSZ_FG_Chunks_Pri
+		DWORD SSZ12_FG_Chunks_Sec+LastPage
+		DWORD SSZ_BG_Chunks_Pri
+		DWORD SSZ12SN_BG_Chunks_Sec+LastPage
+		DWORD SSZ1_FG_Layout
+		DWORD SSZ12SN_BG_Layout
+	SSZ2MD_MapPtr:
+		DWORD SSZ_FG_Blocks_Pri
+		DWORD SSZ12_FG_Blocks_Sec+LastPage
+		DWORD SSZ_BG_Blocks_Pri
+		DWORD SSZ12MD_BG_Blocks_Sec+LastPage
+		DWORD SSZ_FG_Chunks_Pri
+		DWORD SSZ12_FG_Chunks_Sec+LastPage
+		DWORD SSZ_BG_Chunks_Pri
+		DWORD SSZ12MD_BG_Chunks_Sec+LastPage
+		DWORD SSZ2_FG_Layout
+		DWORD SSZ12MD_BG_Layout
+	SSZ2SN_MapPtr:
+		DWORD SSZ_FG_Blocks_Pri
+		DWORD SSZ12_FG_Blocks_Sec+LastPage
+		DWORD SSZ_BG_Blocks_Pri
+		DWORD SSZ12SN_BG_Blocks_Sec+LastPage
+		DWORD SSZ_FG_Chunks_Pri
+		DWORD SSZ12_FG_Chunks_Sec+LastPage
+		DWORD SSZ_BG_Chunks_Pri
+		DWORD SSZ12SN_BG_Chunks_Sec+LastPage
+		DWORD SSZ2_FG_Layout
+		DWORD SSZ12SN_BG_Layout
+	SSZ3MD_MapPtr:
+		DWORD SSZ_FG_Blocks_Pri
+		DWORD SSZ3_FG_Blocks_Sec+LastPage
+		DWORD SSZ_BG_Blocks_Pri
+		DWORD SSZ3MD_BG_Blocks_Sec+LastPage
+		DWORD SSZ_FG_Chunks_Pri
+		DWORD SSZ3_FG_Chunks_Sec+LastPage
+		DWORD SSZ_BG_Chunks_Pri
+		DWORD SSZ3MD_BG_Chunks_Sec+LastPage
+		DWORD SSZ3_FG_Layout
+		DWORD SSZ3MD_BG_Layout
+	SSZ3SN_MapPtr:
+		DWORD SSZ_FG_Blocks_Pri
+		DWORD SSZ3_FG_Blocks_Sec+LastPage
+		DWORD SSZ_BG_Blocks_Pri
+		DWORD SSZ3SN_BG_Blocks_Sec+LastPage
+		DWORD SSZ_FG_Chunks_Pri
+		DWORD SSZ3_FG_Chunks_Sec+LastPage
+		DWORD SSZ_BG_Chunks_Pri
+		DWORD SSZ3SN_BG_Chunks_Sec+LastPage
+		DWORD SSZ3_FG_Layout
+		DWORD SSZ3SN_BG_Layout
+	SSZ4MD_MapPtr:
+		DWORD SSZ_FG_Blocks_Pri
+		DWORD SSZ45_FG_Blocks_Sec+LastPage
+		DWORD SSZ_BG_Blocks_Pri
+		DWORD SSZ45MD_BG_Blocks_Sec+LastPage
+		DWORD SSZ_FG_Chunks_Pri
+		DWORD SSZ45_FG_Chunks_Sec+LastPage
+		DWORD SSZ_BG_Chunks_Pri
+		DWORD SSZ45MD_BG_Chunks_Sec+LastPage
+		DWORD SSZ4_FG_Layout
+		DWORD SSZ45MD_BG_Layout
+	SSZ4SN_MapPtr:
+		DWORD SSZ_FG_Blocks_Pri
+		DWORD SSZ45_FG_Blocks_Sec+LastPage
+		DWORD SSZ_BG_Blocks_Pri
+		DWORD SSZ45SN_BG_Blocks_Sec+LastPage
+		DWORD SSZ_FG_Chunks_Pri
+		DWORD SSZ45_FG_Chunks_Sec+LastPage
+		DWORD SSZ_BG_Chunks_Pri
+		DWORD SSZ45SN_BG_Chunks_Sec+LastPage
+		DWORD SSZ4_FG_Layout
+		DWORD SSZ45SN_BG_Layout
+	SSZ5MD_MapPtr:
+		DWORD SSZ_FG_Blocks_Pri
+		DWORD SSZ45_FG_Blocks_Sec+LastPage
+		DWORD SSZ_BG_Blocks_Pri
+		DWORD SSZ45MD_BG_Blocks_Sec+LastPage
+		DWORD SSZ_FG_Chunks_Pri
+		DWORD SSZ45_FG_Chunks_Sec+LastPage
+		DWORD SSZ_BG_Chunks_Pri
+		DWORD SSZ45MD_BG_Chunks_Sec+LastPage
+		DWORD SSZ5_FG_Layout
+		DWORD SSZ45MD_BG_Layout
+	SSZ5SN_MapPtr:
+		DWORD SSZ_FG_Blocks_Pri
+		DWORD SSZ45_FG_Blocks_Sec+LastPage
+		DWORD SSZ_BG_Blocks_Pri
+		DWORD SSZ45SN_BG_Blocks_Sec+LastPage
+		DWORD SSZ_FG_Chunks_Pri
+		DWORD SSZ45_FG_Chunks_Sec+LastPage
+		DWORD SSZ_BG_Chunks_Pri
+		DWORD SSZ45SN_BG_Chunks_Sec+LastPage
+		DWORD SSZ5_FG_Layout
+		DWORD SSZ45SN_BG_Layout
+	AAZ1_MapPtr:
+		DWORD AAZ_FG_Blocks_Pri
+		DWORD AAZ12_FG_Blocks_Sec+LastPage
+		DWORD AAZ12_BG_Blocks_Pri
+		DWORD AAZ12_BG_Blocks_Sec+LastPage
+		DWORD AAZ_FG_Chunks_Pri
+		DWORD AAZ12_FG_Chunks_Sec+LastPage
+		DWORD AAZ12_BG_Chunks_Pri
+		DWORD AAZ12_BG_Chunks_Sec+LastPage
+		DWORD AAZ1_FG_Layout
+		DWORD AAZ12_BG_Layout
+	AAZ2_MapPtr:
+		DWORD AAZ_FG_Blocks_Pri
+		DWORD AAZ12_FG_Blocks_Sec+LastPage
+		DWORD AAZ12_BG_Blocks_Pri
+		DWORD AAZ12_BG_Blocks_Sec+LastPage
+		DWORD AAZ_FG_Chunks_Pri
+		DWORD AAZ12_FG_Chunks_Sec+LastPage
+		DWORD AAZ12_BG_Chunks_Pri
+		DWORD AAZ12_BG_Chunks_Sec+LastPage
+		DWORD AAZ2_FG_Layout
+		DWORD AAZ12_BG_Layout
+	AAZ3_MapPtr:
+		DWORD AAZ_FG_Blocks_Pri
+		DWORD AAZ3_FG_Blocks_Sec+LastPage
+		DWORD AAZ34_BG_Blocks+LastPage
+		DWORD AAZ_FG_Chunks_Pri
+		DWORD AAZ3_FG_Chunks_Sec+LastPage
+		DWORD AAZ34_BG_Chunks+LastPage
+		DWORD AAZ3_FG_Layout
+		DWORD AAZ34_BG_Layout
+	AAZ4_MapPtr:
+		DWORD AAZ_FG_Blocks_Pri
+		DWORD AAZ4_FG_Blocks_Sec+LastPage
+		DWORD AAZ34_BG_Blocks+LastPage
+		DWORD AAZ_FG_Chunks_Pri
+		DWORD AAZ4_FG_Chunks_Sec+LastPage
+		DWORD AAZ34_BG_Chunks+LastPage
+		DWORD AAZ4_FG_Layout
+		DWORD AAZ34_BG_Layout
+	AAZ5_MapPtr:
+		DWORD AAZ_FG_Blocks_Pri
+		DWORD AAZ5_FG_Blocks_Sec+LastPage
+		DWORD AAZ5_BG_Blocks+LastPage
+		DWORD AAZ_FG_Chunks_Pri
+		DWORD AAZ5_FG_Chunks_Sec+LastPage
+		DWORD AAZ5_BG_Chunks+LastPage
+		DWORD AAZ5_FG_Layout
+		DWORD AAZ5_BG_Layout
+	TTZ1MDS_MapPtr:
+		DWORD TTZ_FG_Blocks_Pri+LastPage
+		DWORD TTZ_BG_Blocks_Pri
+		DWORD TTZ12_BG_Blocks_Sec+LastPage
+		DWORD TTZ_FG_Chunks_Pri
+		DWORD TTZ1_FG_Chunks_Sec+LastPage
+		DWORD TTZ_BG_Chunks_Pri
+		DWORD TTZ12_BG_Chunks_Sec+LastPage
+		DWORD TTZ1_FG_Layout
+		DWORD TTZ1234MDS_BG_Layout
+	TTZ1N_MapPtr:
+		DWORD TTZ_FG_Blocks_Pri+LastPage
+		DWORD TTZ_BG_Blocks_Pri
+		DWORD TTZ12_BG_Blocks_Sec+LastPage
+		DWORD TTZ_FG_Chunks_Pri
+		DWORD TTZ1_FG_Chunks_Sec+LastPage
+		DWORD TTZ_BG_Chunks_Pri
+		DWORD TTZ12_BG_Chunks_Sec+LastPage
+		DWORD TTZ1_FG_Layout
+		DWORD TTZ1234N_BG_Layout
+	TTZ2MDS_MapPtr:
+		DWORD TTZ_FG_Blocks_Pri+LastPage
+		DWORD TTZ_BG_Blocks_Pri
+		DWORD TTZ12_BG_Blocks_Sec+LastPage
+		DWORD TTZ_FG_Chunks_Pri
+		DWORD TTZ2_FG_Chunks_Sec+LastPage
+		DWORD TTZ_BG_Chunks_Pri
+		DWORD TTZ12_BG_Chunks_Sec+LastPage
+		DWORD TTZ2_FG_Layout
+		DWORD TTZ1234MDS_BG_Layout
+	TTZ2N_MapPtr:
+		DWORD TTZ_FG_Blocks_Pri+LastPage
+		DWORD TTZ_BG_Blocks_Pri
+		DWORD TTZ12_BG_Blocks_Sec+LastPage
+		DWORD TTZ_FG_Chunks_Pri
+		DWORD TTZ2_FG_Chunks_Sec+LastPage
+		DWORD TTZ_BG_Chunks_Pri
+		DWORD TTZ12_BG_Chunks_Sec+LastPage
+		DWORD TTZ2_FG_Layout
+		DWORD TTZ1234N_BG_Layout
+	TTZ3MDS_MapPtr:
+		DWORD TTZ_FG_Blocks_Pri
+		DWORD TTZ3_FG_Blocks_Sec+LastPage
+		DWORD TTZ_BG_Blocks_Pri
+		DWORD TTZ34_BG_Blocks_Sec+LastPage
+		DWORD TTZ_FG_Chunks_Pri
+		DWORD TTZ3_FG_Chunks_Sec+LastPage
+		DWORD TTZ_BG_Chunks_Pri
+		DWORD TTZ34_BG_Chunks_Sec+LastPage
+		DWORD TTZ3_FG_Layout
+		DWORD TTZ1234MDS_BG_Layout
+	TTZ3N_MapPtr:
+		DWORD TTZ_FG_Blocks_Pri
+		DWORD TTZ3_FG_Blocks_Sec+LastPage
+		DWORD TTZ_BG_Blocks_Pri
+		DWORD TTZ34_BG_Blocks_Sec+LastPage
+		DWORD TTZ_FG_Chunks_Pri
+		DWORD TTZ3_FG_Chunks_Sec+LastPage
+		DWORD TTZ_BG_Chunks_Pri
+		DWORD TTZ34_BG_Chunks_Sec+LastPage
+		DWORD TTZ3_FG_Layout
+		DWORD TTZ1234N_BG_Layout
+	TTZ4MDS_MapPtr:
+		DWORD TTZ_FG_Blocks_Pri+LastPage
+		DWORD TTZ_BG_Blocks_Pri
+		DWORD TTZ34_BG_Blocks_Sec+LastPage
+		DWORD TTZ_FG_Chunks_Pri
+		DWORD TTZ4_FG_Chunks_Sec+LastPage
+		DWORD TTZ_BG_Chunks_Pri
+		DWORD TTZ34_BG_Chunks_Sec+LastPage
+		DWORD TTZ4_FG_Layout
+		DWORD TTZ1234MDS_BG_Layout
+	TTZ4N_MapPtr:
+		DWORD TTZ_FG_Blocks_Pri+LastPage
+		DWORD TTZ_BG_Blocks_Pri
+		DWORD TTZ34_BG_Blocks_Sec+LastPage
+		DWORD TTZ_FG_Chunks_Pri
+		DWORD TTZ4_FG_Chunks_Sec+LastPage
+		DWORD TTZ_BG_Chunks_Pri
+		DWORD TTZ34_BG_Chunks_Sec+LastPage
+		DWORD TTZ4_FG_Layout
+		DWORD TTZ1234N_BG_Layout
+	TTZ5_MDS_MapPtr:
+		DWORD TTZ_FG_Blocks_Pri
+		DWORD TTZ5_FG_Blocks_Sec+LastPage
+		DWORD TTZ_BG_Blocks_Pri
+		DWORD TTZ5_BG_Blocks_Sec+LastPage
+		DWORD TTZ_FG_Chunks_Pri
+		DWORD TTZ5_FG_Chunks_Sec+LastPage
+		DWORD TTZ_BG_Chunks_Pri
+		DWORD TTZ5_BG_Chunks_Sec+LastPage
+		DWORD TTZ5_FG_Layout
+		DWORD TTZ5MDS_BG_Layout
+	TTZ5N_MapPtr:
+		DWORD TTZ_FG_Blocks_Pri
+		DWORD TTZ5_FG_Blocks_Sec+LastPage
+		DWORD TTZ_BG_Blocks_Pri
+		DWORD TTZ5_BG_Blocks_Sec+LastPage
+		DWORD TTZ_FG_Chunks_Pri
+		DWORD TTZ5_FG_Chunks_Sec+LastPage
+		DWORD TTZ_BG_Chunks_Pri
+		DWORD TTZ5_BG_Chunks_Sec+LastPage
+		DWORD TTZ5_FG_Layout
+		DWORD TTZ5N_BG_Layout
+	TTZNULL_MapPtr:
+		DWORD $FFFFFFFF
+	MMZ1_MapPtr:
+		DWORD MMZ_Blocks_Pri
+		DWORD MMZ1_Blocks_Sec+LastPage+NoNewLayer
+		DWORD MMZ_Chunks_Pri
+		DWORD MMZ1_Chunks_Sec+LastPage+NoNewLayer
+		DWORD MMZ1_FG_Layout
+		DWORD MMZ1_BG_Layout
+	MMZ2_MapPtr:
+		DWORD MMZ_Blocks_Pri+LastPage+NoNewLayer
+		DWORD MMZ_Chunks_Pri
+		DWORD MMZ2_Chunks_Sec+LastPage+NoNewLayer
+		DWORD MMZ2_FG_Layout
+		DWORD MMZ2_BG_Layout
+	MMZ3_MapPtr:
+		DWORD MMZ_Blocks_Pri
+		DWORD MMZ345_Blocks_Sec
+		DWORD MMZ3_Blocks_Third+LastPage+NoNewLayer
+		DWORD MMZ_Chunks_Pri
+		DWORD MMZ3_Chunks_Sec+LastPage+NoNewLayer
+		DWORD MMZ3_FG_Layout
+		DWORD MMZ3_BG_Layout
+	MMZ4_MapPtr:
+		DWORD MMZ_Blocks_Pri
+		DWORD MMZ345_Blocks_Sec
+		DWORD MMZ45_Blocks_Third
+		DWORD MMZ4_Blocks_Fourth+LastPage+NoNewLayer
+		DWORD MMZ_Chunks_Pri
+		DWORD MMZ4_Chunks_Sec+LastPage+NoNewLayer
+		DWORD MMZ4_FG_Layout
+		DWORD MMZ4_BG_Layout
+	MMZ5_MapPtr:
+		DWORD MMZ_Blocks_Pri
+		DWORD MMZ345_Blocks_Sec
+		DWORD MMZ45_Blocks_Third
+		DWORD MMZ5_Blocks_Fourth+LastPage+NoNewLayer
+		DWORD MMZ_Chunks_Pri
+		DWORD MMZ5_Chunks_Sec+LastPage+NoNewLayer
+		DWORD MMZ5_FG_Layout
+		DWORD MMZ5_BG_Layout
+	Training1_MapPtr:
+		DWORD Training_Blocks+LastPage+NoNewLayer
+		DWORD Training_Chunks+LastPage+NoNewLayer
+		DWORD Training1_FG_Layout
+		DWORD Training_BG_Layout
+	Training2_MapPtr:
+		DWORD Training_Blocks+LastPage+NoNewLayer
+		DWORD Training_Chunks+LastPage+NoNewLayer
+		DWORD Training2_FG_Layout
+		DWORD Training_BG_Layout
+	Training3_MapPtr:
+		DWORD Training_Blocks+LastPage+NoNewLayer
+		DWORD Training_Chunks+LastPage+NoNewLayer
+		DWORD Training3_FG_Layout
+		DWORD Training_BG_Layout
+	Training4_MapPtr:
+		DWORD Training_Blocks+LastPage+NoNewLayer
+		DWORD Training_Chunks+LastPage+NoNewLayer
+		DWORD Training4_FG_Layout
+		DWORD Training_BG_Layout
+	TrainNULL_MapPtr:
+		DWORD $FFFFFFFF
+	Intro0_MapPtr:
+		DWORD Training_Blocks+LastPage+NoNewLayer
+		DWORD Training_Chunks+LastPage+NoNewLayer
+		DWORD Intro01_FG_Layout
+		DWORD Training_BG_Layout
+	Intro1_MapPtr:
+		DWORD Training_Blocks+LastPage+NoNewLayer
+		DWORD Training_Chunks+LastPage+NoNewLayer
+		DWORD Intro01_FG_Layout
+		DWORD Training_BG_Layout
+	Intro2_MapPtr:
+		DWORD Training_Blocks+LastPage+NoNewLayer
+		DWORD Training_Chunks+LastPage+NoNewLayer
+		DWORD Intro2_FG_Layout
+		DWORD Training_BG_Layout
+	Intro3_MapPtr:
+		DWORD Training_Blocks+LastPage+NoNewLayer
+		DWORD Training_Chunks+LastPage+NoNewLayer
+		DWORD Intro3_FG_Layout
+		DWORD Training_BG_Layout
+	Intro4_MapPtr:
+		DWORD Training_Blocks+LastPage+NoNewLayer
+		DWORD Training_Chunks+LastPage+NoNewLayer
+		DWORD Intro4_FG_Layout
+		DWORD Training_BG_Layout
+	Tut1_MapPtr:
+		DWORD Tutorial_FG_Blocks+LastPage
+		DWORD Tutorial_BG_Blocks+LastPage
+		DWORD Tutorial_FG_Chunks+LastPage
+		DWORD Tutorial_BG_Chunks+LastPage
+		DWORD Tutorial1_FG_Layout
+		DWORD Tutorial_BG_Layout
+	Tut2_MapPtr:
+		DWORD Tutorial_FG_Blocks+LastPage
+		DWORD Tutorial_BG_Blocks+LastPage
+		DWORD Tutorial_FG_Chunks+LastPage
+		DWORD Tutorial_BG_Chunks+LastPage
+		DWORD Tutorial2_FG_Layout
+		DWORD Tutorial_BG_Layout
+	Tut3_MapPtr:
+		DWORD Tutorial_FG_Blocks+LastPage
+		DWORD Tutorial_BG_Blocks+LastPage
+		DWORD Tutorial_FG_Chunks+LastPage
+		DWORD Tutorial_BG_Chunks+LastPage
+		DWORD Tutorial3_FG_Layout
+		DWORD Tutorial_BG_Layout
+	Tut4_MapPtr:
+		DWORD Tutorial_FG_Blocks+LastPage
+		DWORD Tutorial_BG_Blocks+LastPage
+		DWORD Tutorial_FG_Chunks+LastPage
+		DWORD Tutorial_BG_Chunks+LastPage
+		DWORD Tutorial45_FG_Layout
+		DWORD Tutorial_BG_Layout
+	Tut5_MapPtr:
+		DWORD Tutorial_FG_Blocks+LastPage
+		DWORD Tutorial_BG_Blocks+LastPage
+		DWORD Tutorial_FG_Chunks+LastPage
+		DWORD Tutorial_BG_Chunks+LastPage
+		DWORD Tutorial45_FG_Layout
+		DWORD Tutorial_BG_Layout
+	Tut6_MapPtr:
+		DWORD Tutorial_FG_Blocks+LastPage
+		DWORD Tutorial_BG_Blocks+LastPage
+		DWORD Tutorial_FG_Chunks+LastPage
+		DWORD Tutorial_BG_Chunks+LastPage
+		DWORD Tutorial67_FG_Layout
+		DWORD Tutorial_BG_Layout
+	Tut7_MapPtr:
+		DWORD Tutorial_FG_Blocks+LastPage
+		DWORD Tutorial_BG_Blocks+LastPage
+		DWORD Tutorial_FG_Chunks+LastPage
+		DWORD Tutorial_BG_Chunks+LastPage
+		DWORD Tutorial67_FG_Layout
+		DWORD Tutorial_BG_Layout
+	TutNULL_MapPtr:
+		DWORD $FFFFFFFF
+	WorldEnt_MapPtr:
+		DWORD WorldEnt_FG_Blocks+LastPage
+		DWORD WorldEnt_BG_Blocks+LastPage
+		DWORD WorldEnt_FG_Chunks+LastPage
+		DWORD WorldEnt_BG_Chunks+LastPage
+		DWORD WorldEnt_FG_Layout
+		DWORD WorldEnt_BG_Layout
+	FinalBoss_MapPtr:
+		DWORD FinalBoss_Blocks+LastPage+NoNewLayer
+		DWORD FinalBoss_Chunks+LastPage+NoNewLayer
+		DWORD FinalBoss_FG_Layout
+		DWORD FinalBoss_BG_Layout
+	NULL_MapPtr:
+		DWORD $FFFFFFFF
+
+EndSeg
+
+StartSeg Solid_Index Big_Endian	;Solidity index list pointers and data
+
+	SIPtrBBZ0M:	WORD BBZ12_SolidPtr-SIPtrBBZ0M
+ 	SIPtrBBZ0D:	WORD BBZ12_SolidPtr-SIPtrBBZ0D
+ 	SIPtrBBZ0S:	WORD BBZ12_SolidPtr-SIPtrBBZ0S
+ 	SIPtrBBZ0N:	WORD BBZ12_SolidPtr-SIPtrBBZ0N
+ 	SIPtrBBZ1M:	WORD BBZ12_SolidPtr-SIPtrBBZ1M
+ 	SIPtrBBZ1D:	WORD BBZ12_SolidPtr-SIPtrBBZ1D
+ 	SIPtrBBZ1S:	WORD BBZ12_SolidPtr-SIPtrBBZ1S
+ 	SIPtrBBZ1N:	WORD BBZ12_SolidPtr-SIPtrBBZ1N
+ 	SIPtrBBZ2M:	WORD BBZ12_SolidPtr-SIPtrBBZ2M
+ 	SIPtrBBZ2D:	WORD BBZ12_SolidPtr-SIPtrBBZ2D
+ 	SIPtrBBZ2S:	WORD BBZ12_SolidPtr-SIPtrBBZ2S
+ 	SIPtrBBZ2N:	WORD BBZ12_SolidPtr-SIPtrBBZ2N
+	SIPtrBBZ3M:	WORD BBZ345_SolidPtr-SIPtrBBZ3M
+	SIPtrBBZ3D:	WORD BBZ345_SolidPtr-SIPtrBBZ3D
+	SIPtrBBZ3S:	WORD BBZ345_SolidPtr-SIPtrBBZ3S
+	SIPtrBBZ3N:	WORD BBZ345_SolidPtr-SIPtrBBZ3N
+	SIPtrBBZ4M:	WORD BBZ345_SolidPtr-SIPtrBBZ4M
+	SIPtrBBZ4D:	WORD BBZ345_SolidPtr-SIPtrBBZ4D
+	SIPtrBBZ4S:	WORD BBZ345_SolidPtr-SIPtrBBZ4S
+	SIPtrBBZ4N:	WORD BBZ345_SolidPtr-SIPtrBBZ4N
+	SIPtrBBZ5M:	WORD BBZ345_SolidPtr-SIPtrBBZ5M
+	SIPtrBBZ5D:	WORD BBZ345_SolidPtr-SIPtrBBZ5D
+	SIPtrBBZ5S:	WORD BBZ345_SolidPtr-SIPtrBBZ5S
+	SIPtrBBZ5N:	WORD BBZ345_SolidPtr-SIPtrBBZ5N
+	SIPtrBBZ6M:	WORD BBZ345_SolidPtr-SIPtrBBZ6M
+	SIPtrBBZ6D:	WORD BBZ345_SolidPtr-SIPtrBBZ6D
+	SIPtrBBZ6S:	WORD BBZ345_SolidPtr-SIPtrBBZ6S
+	SIPtrBBZ6N:	WORD BBZ345_SolidPtr-SIPtrBBZ6N
+	SIPtrSSZ0M:	WORD SSZ12_SolidPtr-SIPtrSSZ0M
+	SIPtrSSZ0D:	WORD SSZ12_SolidPtr-SIPtrSSZ0D
+	SIPtrSSZ0S:	WORD SSZ12_SolidPtr-SIPtrSSZ0S
+	SIPtrSSZ0N:	WORD SSZ12_SolidPtr-SIPtrSSZ0N
+	SIPtrSSZ1M:	WORD SSZ12_SolidPtr-SIPtrSSZ1M
+	SIPtrSSZ1D:	WORD SSZ12_SolidPtr-SIPtrSSZ1D
+	SIPtrSSZ1S:	WORD SSZ12_SolidPtr-SIPtrSSZ1S
+	SIPtrSSZ1N:	WORD SSZ12_SolidPtr-SIPtrSSZ1N
+	SIPtrSSZ2M:	WORD SSZ12_SolidPtr-SIPtrSSZ2M
+	SIPtrSSZ2D:	WORD SSZ12_SolidPtr-SIPtrSSZ2D
+	SIPtrSSZ2S:	WORD SSZ12_SolidPtr-SIPtrSSZ2S
+	SIPtrSSZ2N:	WORD SSZ12_SolidPtr-SIPtrSSZ2N
+	SIPtrSSZ3M:	WORD SSZ3_SolidPtr-SIPtrSSZ3M
+	SIPtrSSZ3D:	WORD SSZ3_SolidPtr-SIPtrSSZ3D
+	SIPtrSSZ3S:	WORD SSZ3_SolidPtr-SIPtrSSZ3S
+	SIPtrSSZ3N:	WORD SSZ3_SolidPtr-SIPtrSSZ3N
+	SIPtrSSZ4M:	WORD SSZ_45_SolidPtr-SIPtrSSZ4M
+	SIPtrSSZ4D:	WORD SSZ_45_SolidPtr-SIPtrSSZ4D
+	SIPtrSSZ4S:	WORD SSZ_45_SolidPtr-SIPtrSSZ4S
+	SIPtrSSZ4N:	WORD SSZ_45_SolidPtr-SIPtrSSZ4N
+	SIPtrSSZ5M:	WORD SSZ_45_SolidPtr-SIPtrSSZ5M
+	SIPtrSSZ5D:	WORD SSZ_45_SolidPtr-SIPtrSSZ5D
+	SIPtrSSZ5S:	WORD SSZ_45_SolidPtr-SIPtrSSZ5S
+	SIPtrSSZ5N:	WORD SSZ_45_SolidPtr-SIPtrSSZ5N
+	SIPtrSSZ6M:	WORD SSZ_45_SolidPtr-SIPtrSSZ6M
+	SIPtrSSZ6D:	WORD SSZ_45_SolidPtr-SIPtrSSZ6D
+	SIPtrSSZ6S:	WORD SSZ_45_SolidPtr-SIPtrSSZ6S
+	SIPtrSSZ6N:	WORD SSZ_45_SolidPtr-SIPtrSSZ6N
+	SIPtrAAZ0M:	WORD AAZ12_SolidPtr-SIPtrAAZ0M
+	SIPtrAAZ0D:	WORD AAZ12_SolidPtr-SIPtrAAZ0D
+	SIPtrAAZ0S:	WORD AAZ12_SolidPtr-SIPtrAAZ0S
+	SIPtrAAZ0N:	WORD AAZ12_SolidPtr-SIPtrAAZ0N
+	SIPtrAAZ1M:	WORD AAZ12_SolidPtr-SIPtrAAZ1M
+	SIPtrAAZ1D:	WORD AAZ12_SolidPtr-SIPtrAAZ1D
+	SIPtrAAZ1S:	WORD AAZ12_SolidPtr-SIPtrAAZ1S
+	SIPtrAAZ1N:	WORD AAZ12_SolidPtr-SIPtrAAZ1N
+	SIPtrAAZ2M:	WORD AAZ12_SolidPtr-SIPtrAAZ2M
+	SIPtrAAZ2D:	WORD AAZ12_SolidPtr-SIPtrAAZ2D
+	SIPtrAAZ2S:	WORD AAZ12_SolidPtr-SIPtrAAZ2S
+	SIPtrAAZ2N:	WORD AAZ12_SolidPtr-SIPtrAAZ2N
+	SIPtrAAZ3M:	WORD AAZ34_SolidPtr-SIPtrAAZ3M
+	SIPtrAAZ3D:	WORD AAZ34_SolidPtr-SIPtrAAZ3D
+	SIPtrAAZ3S:	WORD AAZ34_SolidPtr-SIPtrAAZ3S
+	SIPtrAAZ3N:	WORD AAZ34_SolidPtr-SIPtrAAZ3N
+	SIPtrAAZ4M:	WORD AAZ34_SolidPtr-SIPtrAAZ4M
+	SIPtrAAZ4D:	WORD AAZ34_SolidPtr-SIPtrAAZ4D
+	SIPtrAAZ4S:	WORD AAZ34_SolidPtr-SIPtrAAZ4S
+	SIPtrAAZ4N:	WORD AAZ34_SolidPtr-SIPtrAAZ4N
+	SIPtrAAZ5M:	WORD AAZ5_SolidPtr-SIPtrAAZ5M
+	SIPtrAAZ5D:	WORD AAZ5_SolidPtr-SIPtrAAZ5D
+	SIPtrAAZ5S:	WORD AAZ5_SolidPtr-SIPtrAAZ5S
+	SIPtrAAZ5N:	WORD AAZ5_SolidPtr-SIPtrAAZ5N
+	SIPtrAAZ6M:	WORD AAZ5_SolidPtr-SIPtrAAZ6M
+	SIPtrAAZ6D:	WORD AAZ5_SolidPtr-SIPtrAAZ6D
+	SIPtrAAZ6S:	WORD AAZ5_SolidPtr-SIPtrAAZ6S
+	SIPtrAAZ6N:	WORD AAZ5_SolidPtr-SIPtrAAZ6N
+	SIPtrTTZ0M:	WORD TTZ12_SolidPtr-SIPtrTTZ0M
+	SIPtrTTZ0D:	WORD TTZ12_SolidPtr-SIPtrTTZ0D
+	SIPtrTTZ0S:	WORD TTZ12_SolidPtr-SIPtrTTZ0S
+	SIPtrTTZ0N:	WORD TTZ12_SolidPtr-SIPtrTTZ0N
+	SIPtrTTZ1M:	WORD TTZ12_SolidPtr-SIPtrTTZ1M
+	SIPtrTTZ1D:	WORD TTZ12_SolidPtr-SIPtrTTZ1D
+	SIPtrTTZ1S:	WORD TTZ12_SolidPtr-SIPtrTTZ1S
+	SIPtrTTZ1N:	WORD TTZ12_SolidPtr-SIPtrTTZ1N
+	SIPtrTTZ2M:	WORD TTZ12_SolidPtr-SIPtrTTZ2M
+	SIPtrTTZ2D:	WORD TTZ12_SolidPtr-SIPtrTTZ2D
+	SIPtrTTZ2S:	WORD TTZ12_SolidPtr-SIPtrTTZ2S
+	SIPtrTTZ2N:	WORD TTZ12_SolidPtr-SIPtrTTZ2N
+	SIPtrTTZ3M:	WORD TTZ3_SolidPtr-SIPtrTTZ3M
+	SIPtrTTZ3D:	WORD TTZ3_SolidPtr-SIPtrTTZ3D
+	SIPtrTTZ3S:	WORD TTZ3_SolidPtr-SIPtrTTZ3S
+	SIPtrTTZ3N:	WORD TTZ3_SolidPtr-SIPtrTTZ3N
+	SIPtrTTZ4M:	WORD TTZ4_SolidPtr-SIPtrTTZ4M
+	SIPtrTTZ4D:	WORD TTZ4_SolidPtr-SIPtrTTZ4D
+	SIPtrTTZ4S:	WORD TTZ4_SolidPtr-SIPtrTTZ4S
+	SIPtrTTZ4N:	WORD TTZ4_SolidPtr-SIPtrTTZ4N
+	SIPtrTTZ5M:	WORD TTZ5_SolidPtr-SIPtrTTZ5M
+	SIPtrTTZ5D:	WORD TTZ5_SolidPtr-SIPtrTTZ5D
+	SIPtrTTZ5S:	WORD TTZ5_SolidPtr-SIPtrTTZ5S
+	SIPtrTTZ5N:	WORD TTZ5_SolidPtr-SIPtrTTZ5N
+	SIPtrTTZ6M:	WORD TTZB_SolidPtr-SIPtrTTZ6M
+	SIPtrTTZ6D:	WORD TTZB_SolidPtr-SIPtrTTZ6D
+	SIPtrTTZ6S:	WORD TTZB_SolidPtr-SIPtrTTZ6S
+	SIPtrTTZ6N:	WORD TTZB_SolidPtr-SIPtrTTZ6N
+	SIPtrMMZ0M:	WORD MMZ_SolidPtr-SIPtrMMZ0M
+	SIPtrMMZ0D:	WORD MMZ_SolidPtr-SIPtrMMZ0D
+	SIPtrMMZ0S:	WORD MMZ_SolidPtr-SIPtrMMZ0S
+	SIPtrMMZ0N:	WORD MMZ_SolidPtr-SIPtrMMZ0N
+	SIPtrMMZ1M:	WORD MMZ_SolidPtr-SIPtrMMZ1M
+	SIPtrMMZ1D:	WORD MMZ_SolidPtr-SIPtrMMZ1D
+	SIPtrMMZ1S:	WORD MMZ_SolidPtr-SIPtrMMZ1S
+	SIPtrMMZ1N:	WORD MMZ_SolidPtr-SIPtrMMZ1N
+	SIPtrMMZ2M:	WORD MMZ_SolidPtr-SIPtrMMZ2M
+	SIPtrMMZ2D:	WORD MMZ_SolidPtr-SIPtrMMZ2D
+	SIPtrMMZ2S:	WORD MMZ_SolidPtr-SIPtrMMZ2S
+	SIPtrMMZ2N:	WORD MMZ_SolidPtr-SIPtrMMZ2N
+	SIPtrMMZ3M:	WORD MMZ_SolidPtr-SIPtrMMZ3M
+	SIPtrMMZ3D:	WORD MMZ_SolidPtr-SIPtrMMZ3D
+	SIPtrMMZ3S:	WORD MMZ_SolidPtr-SIPtrMMZ3S
+	SIPtrMMZ3N:	WORD MMZ_SolidPtr-SIPtrMMZ3N
+	SIPtrMMZ4M:	WORD MMZ_SolidPtr-SIPtrMMZ4M
+	SIPtrMMZ4D:	WORD MMZ_SolidPtr-SIPtrMMZ4D
+	SIPtrMMZ4S:	WORD MMZ_SolidPtr-SIPtrMMZ4S
+	SIPtrMMZ4N:	WORD MMZ_SolidPtr-SIPtrMMZ4N
+	SIPtrMMZ5M:	WORD MMZ_SolidPtr-SIPtrMMZ5M
+	SIPtrMMZ5D:	WORD MMZ_SolidPtr-SIPtrMMZ5D
+	SIPtrMMZ5S:	WORD MMZ_SolidPtr-SIPtrMMZ5S
+	SIPtrMMZ5N:	WORD MMZ_SolidPtr-SIPtrMMZ5N
+	SIPtrMMZ6M:	WORD MMZ_SolidPtr-SIPtrMMZ6M
+	SIPtrMMZ6D:	WORD MMZ_SolidPtr-SIPtrMMZ6D
+	SIPtrMMZ6S:	WORD MMZ_SolidPtr-SIPtrMMZ6S
+	SIPtrMMZ6N:	WORD MMZ_SolidPtr-SIPtrMMZ6N
+	SIPtrTrain0M:	WORD Training_SolidPtr-SIPtrTrain0M
+	SIPtrTrain0D:	WORD Training_SolidPtr-SIPtrTrain0D
+	SIPtrTrain0S:	WORD Training_SolidPtr-SIPtrTrain0S
+	SIPtrTrain0N:	WORD Training_SolidPtr-SIPtrTrain0N
+	SIPtrTrain1M:	WORD Training_SolidPtr-SIPtrTrain1M
+	SIPtrTrain1D:	WORD Training_SolidPtr-SIPtrTrain1D
+	SIPtrTrain1S:	WORD Training_SolidPtr-SIPtrTrain1S
+	SIPtrTrain1N:	WORD Training_SolidPtr-SIPtrTrain1N
+	SIPtrTrain2M:	WORD Training_SolidPtr-SIPtrTrain2M
+	SIPtrTrain2D:	WORD Training_SolidPtr-SIPtrTrain2D
+	SIPtrTrain2S:	WORD Training_SolidPtr-SIPtrTrain2S
+	SIPtrTrain2N:	WORD Training_SolidPtr-SIPtrTrain2N
+	SIPtrTrain3M:	WORD Training_SolidPtr-SIPtrTrain3M
+	SIPtrTrain3D:	WORD Training_SolidPtr-SIPtrTrain3D
+	SIPtrTrain3S:	WORD Training_SolidPtr-SIPtrTrain3S
+	SIPtrTrain3N:	WORD Training_SolidPtr-SIPtrTrain3N
+	SIPtrTrain4M:	WORD Training_SolidPtr-SIPtrTrain4M
+	SIPtrTrain4D:	WORD Training_SolidPtr-SIPtrTrain4D
+	SIPtrTrain4S:	WORD Training_SolidPtr-SIPtrTrain4S
+	SIPtrTrain4N:	WORD Training_SolidPtr-SIPtrTrain4N
+	SIPtrTrain5M:	WORD Training_SolidPtr-SIPtrTrain5M
+	SIPtrTrain5D:	WORD Training_SolidPtr-SIPtrTrain5D
+	SIPtrTrain5S:	WORD Training_SolidPtr-SIPtrTrain5S
+	SIPtrTrain5N:	WORD Training_SolidPtr-SIPtrTrain5N
+	SIPtrTrain6M:	WORD Training_SolidPtr-SIPtrTrain6M
+	SIPtrTrain6D:	WORD Training_SolidPtr-SIPtrTrain6D
+	SIPtrTrain6S:	WORD Training_SolidPtr-SIPtrTrain6S
+	SIPtrTrain6N:	WORD Training_SolidPtr-SIPtrTrain6N
+	SIPtrIntro0M:	WORD Training_SolidPtr-SIPtrIntro0M
+	SIPtrIntro0D:	WORD Training_SolidPtr-SIPtrIntro0D
+	SIPtrIntro0S:	WORD Training_SolidPtr-SIPtrIntro0S
+	SIPtrIntro0N:	WORD Training_SolidPtr-SIPtrIntro0N
+	SIPtrIntro1M:	WORD Training_SolidPtr-SIPtrIntro1M
+	SIPtrIntro1D:	WORD Training_SolidPtr-SIPtrIntro1D
+	SIPtrIntro1S:	WORD Training_SolidPtr-SIPtrIntro1S
+	SIPtrIntro1N:	WORD Training_SolidPtr-SIPtrIntro1N
+	SIPtrIntro2M:	WORD Training_SolidPtr-SIPtrIntro2M
+	SIPtrIntro2D:	WORD Training_SolidPtr-SIPtrIntro2D
+	SIPtrIntro2S:	WORD Training_SolidPtr-SIPtrIntro2S
+	SIPtrIntro2N:	WORD Training_SolidPtr-SIPtrIntro2N
+	SIPtrIntro3M:	WORD Training_SolidPtr-SIPtrIntro3M
+	SIPtrIntro3D:	WORD Training_SolidPtr-SIPtrIntro3D
+	SIPtrIntro3S:	WORD Training_SolidPtr-SIPtrIntro3S
+	SIPtrIntro3N:	WORD Training_SolidPtr-SIPtrIntro3N
+	SIPtrIntro4M:	WORD Training_SolidPtr-SIPtrIntro4M
+	SIPtrIntro4D:	WORD Training_SolidPtr-SIPtrIntro4D
+	SIPtrIntro4S:	WORD Training_SolidPtr-SIPtrIntro4S
+	SIPtrIntro4N:	WORD Training_SolidPtr-SIPtrIntro4N
+	SIPtrIntro5M:	WORD Tutorial_SolidPtr-SIPtrIntro5M
+	SIPtrIntro5D:	WORD Tutorial_SolidPtr-SIPtrIntro5D
+	SIPtrIntro5S:	WORD Tutorial_SolidPtr-SIPtrIntro5S
+	SIPtrIntro5N:	WORD Tutorial_SolidPtr-SIPtrIntro5N
+	SIPtrIntro6M:	WORD Tutorial_SolidPtr-SIPtrIntro6M
+	SIPtrIntro6D:	WORD Tutorial_SolidPtr-SIPtrIntro6D
+	SIPtrIntro6S:	WORD Tutorial_SolidPtr-SIPtrIntro6S
+	SIPtrIntro6N:	WORD Tutorial_SolidPtr-SIPtrIntro6N
+	SIPtrWorld0M:	WORD WorldEnt_SolidPtr-SIPtrWorld0M
+	SIPtrWorld0D:	WORD WorldEnt_SolidPtr-SIPtrWorld0D
+	SIPtrWorld0S:	WORD WorldEnt_SolidPtr-SIPtrWorld0S
+	SIPtrWorld0N:	WORD WorldEnt_SolidPtr-SIPtrWorld0N
+	SIPtrWorld1M:	WORD WorldEnt_SolidPtr-SIPtrWorld1M
+	SIPtrWorld1D:	WORD WorldEnt_SolidPtr-SIPtrWorld1D
+	SIPtrWorld1S:	WORD WorldEnt_SolidPtr-SIPtrWorld1S
+	SIPtrWorld1N:	WORD WorldEnt_SolidPtr-SIPtrWorld1N
+	SIPtrWorld2M:	WORD NULL_SolidPtr-SIPtrWorld2M
+	SIPtrWorld2D:	WORD NULL_SolidPtr-SIPtrWorld2D
+	SIPtrWorld2S:	WORD NULL_SolidPtr-SIPtrWorld2S
+	SIPtrWorld2N:	WORD NULL_SolidPtr-SIPtrWorld2N
+	SIPtrWorld3M:	WORD NULL_SolidPtr-SIPtrWorld3M
+	SIPtrWorld3D:	WORD NULL_SolidPtr-SIPtrWorld3D
+	SIPtrWorld3S:	WORD NULL_SolidPtr-SIPtrWorld3S
+	SIPtrWorld3N:	WORD NULL_SolidPtr-SIPtrWorld3N
+	SIPtrWorld4M:	WORD NULL_SolidPtr-SIPtrWorld4M
+	SIPtrWorld4D:	WORD NULL_SolidPtr-SIPtrWorld4D
+	SIPtrWorld4S:	WORD NULL_SolidPtr-SIPtrWorld4S
+	SIPtrWorld4N:	WORD NULL_SolidPtr-SIPtrWorld4N
+	SIPtrWorld5M:	WORD NULL_SolidPtr-SIPtrWorld5M
+	SIPtrWorld5D:	WORD NULL_SolidPtr-SIPtrWorld5D
+	SIPtrWorld5S:	WORD NULL_SolidPtr-SIPtrWorld5S
+	SIPtrWorld5N:	WORD NULL_SolidPtr-SIPtrWorld5N
+	SIPtrWorld6M:	WORD NULL_SolidPtr-SIPtrWorld6M
+	SIPtrWorld6D:	WORD NULL_SolidPtr-SIPtrWorld6D
+	SIPtrWorld6S:	WORD NULL_SolidPtr-SIPtrWorld6S
+	SIPtrWorld6N:	WORD NULL_SolidPtr-SIPtrWorld6N
+
+	BBZ12_SolidPtr:		DWORD BBZ12_Solids
+	BBZ345_SolidPtr:	DWORD BBZ345_Solids
+	SSZ12_SolidPtr:		DWORD SSZ12_Solids
+	SSZ3_SolidPtr:		DWORD SSZ3_Solids
+	SSZ_45_SolidPtr:	DWORD SSZ45_Solids
+	AAZ12_SolidPtr:		DWORD AAZ12_Solids
+	AAZ34_SolidPtr:		DWORD AAZ34_Solids
+	AAZ5_SolidPtr:		DWORD AAZ5_Solids
+	TTZ12_SolidPtr:		DWORD TTZ124_Solids
+	TTZ3_SolidPtr:		DWORD TTZ3_Solids
+	TTZ4_SolidPtr:		DWORD TTZ124_Solids
+	TTZ5_SolidPtr:		DWORD TTZ5_Solids
+	TTZB_SolidPtr:		DWORD TTZB_Solids
+	MMZ_SolidPtr:		DWORD MMZ_Solids
+	Training_SolidPtr:	DWORD Training_Solids
+	Tutorial_SolidPtr:	DWORD Training56_Solids
+	WorldEnt_SolidPtr:	DWORD WorldEnt_Solids
+	NULL_SolidPtr:		DWORD $FFFFFFFF
+
+EndSeg
+
+StartSeg Level_Data Big_Endian	;Level Layout and Mappings Data Segment
+
+;;;;
+;Botanic Base Zone
+;;;;
+
+	BBZ_FG_Tiles_Pri:	include	"Levels/BBZ/8x8/0_15MN.bin"
+	BBZ12_FG_Tiles_Sec:	include	"Levels/BBZ/8x8/1_12MN.bin"
+	BBZ3_FG_Tiles_Sec:	include	"Levels/BBZ/8x8/1_3MN.bin"
+	BBZ4_FG_Tiles_Sec:	include	"Levels/BBZ/8x8/1_4MN.bin"
+	BBZ5_FG_Tiles_Sec:	include	"Levels/BBZ/8x8/1_5MN.bin"
+
+	BBZ_FG_Blocks_Pri:	include	"Levels/BBZ/16x16/0_15MN.bin"
+	BBZ12_FG_Blocks_Sec:	include	"Levels/BBZ/16x16/1_12MN.bin"
+	BBZ3_FG_Blocks_Sec:	include	"Levels/BBZ/16x16/1_3MN.bin"
+	BBZ4_FG_Blocks_Sec:	include	"Levels/BBZ/16x16/1_4MN.bin"
+	BBZ5_FG_Blocks_Sec:	include	"Levels/BBZ/16x16/1_5MN.bin"
+
+	BBZ_FG_Chunks_Pri:	include	"Levels/BBZ/128x128/0_15MN.bin"
+	BBZ1_FG_Chunks_Sec:	include	"Levels/BBZ/128x128/1_1MN.bin"
+	BBZ2_FG_Chunks_Sec:	include	"Levels/BBZ/128x128/1_2MN.bin"
+	BBZ3_FG_Chunks_Sec:	include	"Levels/BBZ/128x128/1_3MN.bin"
+	BBZ4_FG_Chunks_Sec:	include	"Levels/BBZ/128x128/1_4MN.bin"
+	BBZ5_FG_Chunks_Sec:	include	"Levels/BBZ/128x128/1_5MN.bin"
+
+	BBZ1_FG_Layout:		include	"Levels/BBZ/FG/1MN.bin"
+	BBZ2_FG_Layout:		include	"Levels/BBZ/FG/2MN.bin"
+	BBZ3_FG_Layout:		include	"Levels/BBZ/FG/3MN.bin"
+	BBZ4_FG_Layout:		include	"Levels/BBZ/FG/4MN.bin"
+	BBZ5_FG_Layout:		include	"Levels/BBZ/FG/5MN.bin"
+
+	BBZ_BG_Tiles_Pri:	include	"Levels/BBZ/8x8/2_15MN.bin"
+	BBZ12_BG_Tiles_Sec:	include	"Levels/BBZ/8x8/3_12MN.bin"
+	BBZ3_BG_Tiles_Sec:	include	"Levels/BBZ/8x8/3_3MN.bin"
+	BBZ4_BG_Tiles_Sec:	include	"Levels/BBZ/8x8/3_4MN.bin"
+	BBZ5_BG_Tiles_Sec:	include	"Levels/BBZ/8x8/3_5MN.bin"
+
+	BBZ_BG_Blocks_Pri:	include	"Levels/BBZ/16x16/2_15MN.bin"
+	BBZ12_BG_Blocks_Sec:	include	"Levels/BBZ/16x16/3_12MN.bin"
+	BBZ3_BG_Blocks_Sec:	include	"Levels/BBZ/16x16/3_3MN.bin"
+	BBZ4_BG_Blocks_Sec:	include	"Levels/BBZ/16x16/3_4MN.bin"
+	BBZ5_BG_Blocks_Sec:	include	"Levels/BBZ/16x16/3_5MN.bin"
+
+	BBZ_BG_Chunks_Pri:	include	"Levels/BBZ/128x128/2_15MN.bin"
+	BBZ12_BG_Chunks_Sec:	include	"Levels/BBZ/128x128/3_12MN.bin"
+	BBZ3_BG_Chunks_Sec:	include	"Levels/BBZ/128x128/3_3MN.bin"
+	BBZ4_BG_Chunks_Sec:	include	"Levels/BBZ/128x128/3_4MN.bin"
+	BBZ5_BG_Chunks_Sec:	include	"Levels/BBZ/128x128/3_5MN.bin"
+
+	BBZ12_BG_Layout:	include	"Levels/BBZ/BG/12MN.bin"
+	BBZ3_BG_Layout:		include	"Levels/BBZ/BG/3MN.bin"
+	BBZ4_BG_Layout:		include	"Levels/BBZ/BG/4MN.bin"
+	BBZ5_BG_Layout:		include	"Levels/BBZ/BG/5MN.bin"
+
+;;;;
+;Speed Slider Zone
+;;;;
+
+	SSZ_FG_Tiles_Pri:	include	"Levels/SSZ/8x8/0_15MN.bin"
+	SSZ12_FG_Tiles_Sec:	include	"Levels/SSZ/8x8/1_12MN.bin"
+	SSZ3_FG_Tiles_Sec:	include	"Levels/SSZ/8x8/1_3MN.bin"
+	SSZ45_FG_Tiles_Sec:	include	"Levels/SSZ/8x8/1_45MN.bin"
+	SSZB_FG_Tiles:		include	"Levels/SSZ/8x8/0_Boss.bin"
+
+	SSZ_FG_Blocks_Pri:	include	"Levels/SSZ/16x16/0_15MN.bin"
+	SSZ12_FG_Blocks_Sec:	include	"Levels/SSZ/16x16/1_12MN.bin"
+	SSZ3_FG_Blocks_Sec:	include	"Levels/SSZ/16x16/1_3MN.bin"
+	SSZ45_FG_Blocks_Sec:	include	"Levels/SSZ/16x16/1_45MN.bin"
+	SSZB_FG_Blocks:		include	"Levels/SSZ/16x16/0_Boss.bin"
+
+	SSZ_FG_Chunks_Pri:	include	"Levels/SSZ/128x128/0_15MN.bin"
+	SSZ12_FG_Chunks_Sec:	include	"Levels/SSZ/128x128/1_12MN.bin"
+	SSZ3_FG_Chunks_Sec:	include	"Levels/SSZ/128x128/1_3MN.bin"
+	SSZ45_FG_Chunks_Sec:	include	"Levels/SSZ/128x128/1_45MN.bin"
+	SSZB_FG_Chunks:		include	"Levels/SSZ/128x128/0_Boss.bin"
+
+	SSZ1_FG_Layout:		include	"Levels/SSZ/FG/1MN.bin"
+	SSZ2_FG_Layout:		include	"Levels/SSZ/FG/2MN.bin"
+	SSZ3_FG_Layout:		include	"Levels/SSZ/FG/3MN.bin"
+	SSZ4_FG_Layout:		include	"Levels/SSZ/FG/4MN.bin"
+	SSZ5_FG_Layout:		include	"Levels/SSZ/FG/5MN.bin"
+	SSZB_FG_Layout:		include	"Levels/SSZ/FG/Boss.bin"
+
+	SSZ_BG_Tiles_Pri:	include	"Levels/SSZ/8x8/2_15MN.bin"
+	SSZ12MD_BG_Tiles_Sec:	include	"Levels/SSZ/8x8/3_12MD.bin"
+	SSZ12SN_BG_Tiles_Sec:	include	"Levels/SSZ/8x8/3_12SN.bin"
+	SSZ3MD_BG_Tiles_Sec:	include	"Levels/SSZ/8x8/3_3MD.bin"
+	SSZ3SN_BG_Tiles_Sec:	include	"Levels/SSZ/8x8/3_3SN.bin"
+	SSZ45MD_BG_Tiles_Sec:	include	"Levels/SSZ/8x8/3_45MD.bin"
+	SSZ45SN_BG_Tiles_Sec:	include	"Levels/SSZ/8x8/3_45SN.bin"
+
+	SSZ_BG_Blocks_Pri:	include	"Levels/SSZ/16x16/2_15MN.bin"
+	SSZ12MD_BG_Blocks_Sec:	include	"Levels/SSZ/16x16/3_12MD.bin"
+	SSZ12SN_BG_Blocks_Sec:	include	"Levels/SSZ/16x16/3_12SN.bin"
+	SSZ3MD_BG_Blocks_Sec:	include	"Levels/SSZ/16x16/3_3MD.bin"
+	SSZ3SN_BG_Blocks_Sec:	include	"Levels/SSZ/16x16/3_3SN.bin"
+	SSZ45MD_BG_Blocks_Sec:	include	"Levels/SSZ/16x16/3_45MD.bin"
+	SSZ45SN_BG_Blocks_Sec:	include	"Levels/SSZ/16x16/3_45SN.bin"
+
+	SSZ_BG_Chunks_Pri:	include	"Levels/SSZ/128x128/2_15MN.bin"
+	SSZ12MD_BG_Chunks_Sec:	include	"Levels/SSZ/128x128/3_12MD.bin"
+	SSZ12SN_BG_Chunks_Sec:	include	"Levels/SSZ/128x128/3_12SN.bin"
+	SSZ3MD_BG_Chunks_Sec:	include	"Levels/SSZ/128x128/3_3MD.bin"
+	SSZ3SN_BG_Chunks_Sec:	include	"Levels/SSZ/128x128/3_3SN.bin"
+	SSZ45MD_BG_Chunks_Sec:	include	"Levels/SSZ/128x128/3_45MD.bin"
+	SSZ45SN_BG_Chunks_Sec:	include	"Levels/SSZ/128x128/3_45SN.bin"
+	SSZB_BG_Chunks:		include	"Levels/SSZ/128x128/1_Boss.bin"
+
+	SSZ12MD_BG_Layout:	include	"Levels/SSZ/BG/12MD.bin"
+	SSZ12SN_BG_Layout:	include	"Levels/SSZ/BG/12SN.bin"
+	SSZ3MD_BG_Layout:	include	"Levels/SSZ/BG/3MD.bin"
+	SSZ3SN_BG_Layout:	include	"Levels/SSZ/BG/3SN.bin"
+	SSZ45MD_BG_Layout:	include	"Levels/SSZ/BG/45MD.bin"
+	SSZ45SN_BG_Layout:	include	"Levels/SSZ/BG/45SN.bin"
+	SSZB_BG_Layout:		include	"Levels/SSZ/BG/Boss.bin"
+
+
+;;;;
+;Amazing Arena Zone
+;;;;
+
+	AAZ_FG_Tiles_Pri:	include	 "Levels/AAZ/8x8/0_15MN.bin"
+	AAZ12_FG_Tiles_Sec:	include	 "Levels/AAZ/8x8/1_12MN.bin"
+	AAZ3_FG_Tiles_Sec:	include	 "Levels/AAZ/8x8/1_3MN.bin"
+	AAZ4_FG_Tiles_Sec:	include	 "Levels/AAZ/8x8/1_4MN.bin"
+	AAZ5_FG_Tiles_Pri:	include	 "Levels/AAZ/8x8/1_5MN.bin"
+
+	AAZ_FG_Blocks_Pri:	include	 "Levels/AAZ/16x16/0_15MN.bin"
+	AAZ12_FG_Blocks_Sec:	include	 "Levels/AAZ/16x16/1_12MN.bin"
+	AAZ3_FG_Blocks_Sec:	include	 "Levels/AAZ/16x16/1_3MN.bin"
+	AAZ4_FG_Blocks_Sec:	include	 "Levels/AAZ/16x16/1_4MN.bin"
+	AAZ5_FG_Blocks_Sec:	include	 "Levels/AAZ/16x16/1_5MN.bin"
+
+	AAZ_FG_Chunks_Pri:	include	 "Levels/AAZ/128x128/0_15MN.bin"
+	AAZ12_FG_Chunks_Sec:	include	 "Levels/AAZ/128x128/1_12MN.bin"
+	AAZ3_FG_Chunks_Sec:	include	 "Levels/AAZ/128x128/1_3MN.bin"
+	AAZ4_FG_Chunks_Sec:	include	 "Levels/AAZ/128x128/1_4MN.bin"
+	AAZ5_FG_Chunks_Sec:	include	 "Levels/AAZ/128x128/1_5MN.bin"
+
+	AAZ1_FG_Layout:		include	 "Levels/AAZ/FG/1MN.bin"
+	AAZ2_FG_Layout:		include	 "Levels/AAZ/FG/2MN.bin"
+	AAZ3_FG_Layout:		include	 "Levels/AAZ/FG/3MN.bin"
+	AAZ4_FG_Layout:		include	 "Levels/AAZ/FG/4MN.bin"
+	AAZ5_FG_Layout:		include	 "Levels/AAZ/FG/5MN.bin"
+
+	AAZ12_BG_Tiles_Pri:	include	 "Levels/AAZ/8x8/2_12MN.bin"
+	AAZ12_BG_Tiles_Sec:	include	 "Levels/AAZ/8x8/3_12MN.bin"
+	AAZ34_BG_Tiles:		include	 "Levels/AAZ/8x8/2_34MN.bin"
+	AAZ5_BG_Tiles:		include	 "Levels/AAZ/8x8/2_5MN.bin"
+
+	AAZ12_BG_Blocks_Pri:	include	 "Levels/AAZ/16x16/2_12MN.bin"
+	AAZ12_BG_Blocks_Sec:	include	 "Levels/AAZ/16x16/3_12MN.bin"
+	AAZ34_BG_Blocks:	include	 "Levels/AAZ/16x16/2_34MN.bin"
+	AAZ5_BG_Blocks:		include	 "Levels/AAZ/16x16/2_5MN.bin"
+
+	AAZ12_BG_Chunks_Pri:	include	 "Levels/AAZ/128x128/2_12MN.bin"
+	AAZ12_BG_Chunks_Sec:	include	 "Levels/AAZ/128x128/3_12MN.bin"
+	AAZ34_BG_Chunks:	include	 "Levels/AAZ/128x128/2_34MN.bin"
+	AAZ5_BG_Chunks:		include	 "Levels/AAZ/128x128/2_5MN.bin"
+
+	AAZ12_BG_Layout:	include	 "Levels/AAZ/BG/12MN.bin"
+	AAZ34_BG_Layout:	include	 "Levels/AAZ/BG/34MN.bin"
+	AAZ5_BG_Layout:		include	 "Levels/AAZ/BG/5MN.bin"
+
+;;;;
+;Techno Tower Zone
+;;;;
+
+	TTZ_FG_Tiles_Pri:	include	 "Levels/TTZ/8x8/0_15MN.bin"
+	TTZB_FG_Tiles:		include	 "Levels/TTZ/8x8/0_Boss.bin"
+	TTZ3_FG_Tiles_Sec:	include	 "Levels/TTZ/8x8/1_3MN.bin"
+	TTZ5_FG_Tiles_Sec:	include	 "Levels/TTZ/8x8/1_5MN.bin"
+	TTZB_FG_Tiles:		include	 "Levels/TTZ/8x8/0_Boss.bin"
+
+	TTZ_FG_Blocks_Pri:	include	 "Levels/TTZ/16x16/0_15MN.bin"
+	TTZ3_FG_Blocks_Sec:	include	 "Levels/TTZ/16x16/1_3MN.bin"
+	TTZ5_FG_Blocks_Sec:	include	 "Levels/TTZ/16x16/1_5MN.bin"
+	TTZB_FG_Blocks:		include	 "Levels/TTZ/16x16/0_Boss.bin"
+
+	TTZ_FG_Chunks_Pri:	include	 "Levels/TTZ/128x128/0_15MN.bin"
+	TTZ1_FG_Chunks_Sec:	include	 "Levels/TTZ/128x128/1_1MN.bin"
+	TTZ2_FG_Chunks_Sec:	include	 "Levels/TTZ/128x128/1_2MN.bin"
+	TTZ3_FG_Chunks_Sec:	include	 "Levels/TTZ/128x128/1_3MN.bin"
+	TTZ4_FG_Chunks_Sec:	include	 "Levels/TTZ/128x128/1_4MN.bin"
+	TTZ5_FG_Chunks_Sec:	include	 "Levels/TTZ/128x128/1_5MN.bin"
+	TTZB_FG_Chunks:		include	 "Levels/TTZ/128x128/0_Boss.bin"
+
+	TTZ1_FG_Layout:		include	 "Levels/TTZ/FG/1MN.bin"
+	TTZ2_FG_Layout:		include	 "Levels/TTZ/FG/2MN.bin"
+	TTZ3_FG_Layout:		include	 "Levels/TTZ/FG/3MN.bin"
+	TTZ4_FG_Layout:		include	 "Levels/TTZ/FG/4MN.bin"
+	TTZ5_FG_Layout:		include	 "Levels/TTZ/FG/5MN.bin"
+	TTZB_FG_Layout:		include	 "Levels/TTZ/FG/Boss.bin"
+
+	TTZ_BG_Tiles_Pri:	include	 "Levels/TTZ/8x8/2_15MN.bin"
+	TTZ12_BG_Tiles_Sec:	include	 "Levels/TTZ/8x8/3_12MN.bin"
+	TTZ34_BG_Tiles_Sec:	include	 "Levels/TTZ/8x8/3_34MN.bin"
+	TTZ5_BG_Tiles_Sec:	include	 "Levels/TTZ/8x8/3_5MN.bin"
+
+	TTZ_BG_Blocks_Pri:	include	 "Levels/TTZ/16x16/2_15MN.bin"
+	TTZ12_BG_Blocks_Sec:	include	 "Levels/TTZ/16x16/3_12MN.bin"
+	TTZ34_BG_Blocks_Sec:	include	 "Levels/TTZ/16x16/3_34MN.bin"
+	TTZ5_BG_Blocks_Sec:	include	 "Levels/TTZ/16x16/3_5MN.bin"
+
+	TTZ_BG_Chunks_Pri:	include	 "Levels/TTZ/128x128/2_15MN.bin"
+	TTZ12_BG_Chunks_Sec:	include	 "Levels/TTZ/128x128/3_12MN.bin"
+	TTZ34_BG_Chunks_Sec:	include	 "Levels/TTZ/128x128/3_34MN.bin"
+	TTZ5_BG_Chunks_Sec:	include	 "Levels/TTZ/128x128/3_5MN.bin"
+
+	TTZ1234MDS_BG_Layout:	include	 "Levels/TTZ/BG/14MS.bin"
+	TTZ1234N_BG_Layout:	include	 "Levels/TTZ/BG/14N.bin"
+	TTZ5MDS_BG_Layout:	include	 "Levels/TTZ/BG/5MS.bin"
+	TTZ5N_BG_Layout:	include	 "Levels/TTZ/BG/5N.bin"
+
+;;;;
+;Marina Madness Zone
+;;;;
+
+	MMZ_Tiles_Pri:		include	 "Levels/MMZ/8x8/0_15MN.bin"
+	MMZ1_Tiles_Sec:		include	 "Levels/MMZ/8x8/1_1MN.bin"
+	MMZ3_Tiles_Sec:		include	 "Levels/MMZ/8x8/1_3MN.bin"
+	MMZ4_Tiles_Sec:		include	 "Levels/MMZ/8x8/1_4MN.bin"
+	MMZ5_Tiles_Sec:		include	 "Levels/MMZ/8x8/1_5MN.bin"
+
+	MMZ_Blocks_Pri:		include	 "Levels/MMZ/16x16/0_15MN.bin"
+	MMZ345_Blocks_Sec:	include	 "Levels/MMZ/16x16/1_35MN.bin"
+	MMZ45_Blocks_Third:	include	 "Levels/MMZ/16x16/2_45MN.bin"
+	MMZ1_Blocks_Sec:	include	 "Levels/MMZ/16x16/1_1MN.bin"
+	MMZ3_Blocks_Third:	include	 "Levels/MMZ/16x16/3_3MN.bin"
+	MMZ4_Blocks_Fourth:	include	 "Levels/MMZ/16x16/3_4MN.bin"
+	MMZ5_Blocks_Fourth:	include	 "Levels/MMZ/16x16/3_5MN.bin"
+
+	MMZ_Chunks_Pri:		include	 "Levels/MMZ/128x128/0_15MN.bin"
+	MMZ1_Chunks_Sec:	include	 "Levels/MMZ/128x128/1_1MN.bin"
+	MMZ2_Chunks_Sec:	include	 "Levels/MMZ/128x128/1_2MN.bin"
+	MMZ3_Chunks_Sec:	include	 "Levels/MMZ/128x128/1_3MN.bin"
+	MMZ4_Chunks_Sec:	include	 "Levels/MMZ/128x128/1_4MN.bin"
+	MMZ5_Chunks_Sec:	include	 "Levels/MMZ/128x128/1_5MN.bin"
+
+	MMZ1_FG_Layout:		include	 "Levels/MMZ/FG/1MN.bin"
+	MMZ2_FG_Layout:		include	 "Levels/MMZ/FG/2MN.bin"
+	MMZ3_FG_Layout:		include	 "Levels/MMZ/FG/3MN.bin"
+	MMZ4_FG_Layout:		include	 "Levels/MMZ/FG/4MN.bin"
+	MMZ5_FG_Layout:		include	 "Levels/MMZ/FG/5MN.bin"
+
+	MMZ1_BG_Layout:		include	 "Levels/MMZ/BG/1MN.bin"
+	MMZ2_BG_Layout:		include	 "Levels/MMZ/BG/2MN.bin"
+	MMZ3_BG_Layout:		include	 "Levels/MMZ/BG/3MN.bin"
+	MMZ4_BG_Layout:		include	 "Levels/MMZ/BG/4MN.bin"
+	MMZ5_BG_Layout:		include	 "Levels/MMZ/BG/5MN.bin"
+
+;;;;
+;Training Levels
+;;;;
+
+	Trainig_Tiles_Pri:	include	 "Levels/Intro/8x8/0_15MN.bin"
+	Training_Tiles_Sec:	include	 "Levels/Intro/8x8/1_15MN.bin"
+
+	Training_Blocks:	include	 "Levels/Intro/16x16/0_15MN.bin"
+
+	Training_Chunks:	include	 "Levels/Intro/128x128/0_15MN.bin"
+
+	Training1_FG_Layout:	include	 "Levels/Intro/FG/1MN.bin"
+	Training2_FG_Layout:	include	 "Levels/Intro/FG/2MN.bin"
+	Training3_FG_Layout:	include	 "Levels/Intro/FG/3MN.bin"
+	Training4_FG_Layout:	include	 "Levels/Intro/FG/4MN.bin"
+
+	Training_BG_Layout:	include	 "Levels/Intro/BG/15MN.bin"
+
+;;;;
+;Intro and Tutorial Levels
+;;;;
+
+;Intro (These use Training art data)
+	Intro01_FG_Layout:	include	 "Levels/Tutorial/FG/01MN.bin"
+	Intro2_FG_Layout:	include	 "Levels/Tutorial/FG/2MN.bin"
+	Intro3_FG_Layout:	include	 "Levels/Tutorial/FG/3MN.bin"
+	Intro4_FG_Layout:	include	 "Levels/Tutorial/FG/4MN.bin"
+
+;Tutorial
+	Tutorial_FG_Tiles_Pri:	include	 "Levels/Tutorial/8x8/0_56MN.bin"
+	Tutorial_FG_Tiles_Sec:	include	 "Levels/Tutorial/8x8/1_56MN.bin"
+	Tutorial_BG_Tiles:	include	 "Levels/Tutorial/8x8/2_56MN.bin"
+
+	Tutorial_FG_Blocks:	include	 "Levels/Tutorial/16x16/0_56MN.bin"
+	Tutorial_BG_Blocks:	include	 "Levels/Tutorial/16x16/1_56MN.bin"
+
+	Tutorial_FG_Chunks:	include	 "Levels/Tutorial/128x128/0_56MN.bin"
+	Tutorial_BG_Chunks:	include	 "Levels/Tutorial/128x128/1_56MN.bin"
+
+	Tutorial1_FG_Layout:	include	 "Levels/Tutorial/FG/5M.bin"
+	Tutorial2_FG_Layout:	include	 "Levels/Tutorial/FG/5D.bin"
+	Tutorial3_FG_Layout:	include	 "Levels/Tutorial/FG/5S.bin"
+	Tutorial45_FG_Layout:	include	 "Levels/Tutorial/FG/5N6M.bin"
+	Tutorial67_FG_Layout:	include	 "Levels/Tutorial/FG/6DS.bin"
+
+	Tutorial_BG_Layout:	include	 "Levels/Tutorial/BG/56MN.bin"
+
+;;;;
+;World Entrance and Final Boss Levels
+;;;;
+
+;World Entrance
+	WorldEnt_FG_Tiles:	include	 "Levels/Entrance/8x8/0_01MN.bin"
+
+	WorldEnt_FG_Blocks:	include	 "Levels/Entrance/16x16/0_01MN.bin"
+
+	WorldEnt_FG_Chunks:	include	 "Levels/Entrance/128x128/0_01MN.bin"
+
+	WorldEnt_FG_Layout:	include	 "Levels/Entrance/FG/01MN.bin"
+
+	WorldEnt_BG_Tiles:	include	 "Levels/Entrance/8x8/1_01MN.bin"
+
+	WorldEnt_BG_Blocks:	include	 "Levels/Entrance/16x16/1_01MN.bin"
+
+	WorldEnt_BG_Chunks:	include	 "Levels/Entrance/128x128/1_01MN.bin"
+
+	WorldEnt_BG_Layout:	include	 "Levels/Entrance/BG/01MN.bin"
+
+;Boss
+	FinalBoss_Tiles:	include	 "Levels/Entrance/8x8/0_2M.bin"
+
+	FinalBoss_Blocks:	include	 "Levels/Entrance/16x16/0_2M.bin"
+
+	FinalBoss_Chunks:	include	 "Levels/Entrance/128x128/0_2M.bin"
+
+	FinalBoss_FG_Layout:	include	 "Levels/Entrance/FG/2M.bin"
+
+	FinalBoss_BG_Layout:	include	 "Levels/Entrance/BG/2M.bin"
+
+;;;;
+;Solidity Index Lists
+;;;;
+
+	BBZ12_Solids:		include	"Levels/BBZ/Collisn/12.bin"
+	BBZ345_Solids:		include	"Levels/BBZ/Collisn/35.bin"
+
+	SSZ12_Solids:		include	"Levels/SSZ/Collisn/12.bin"
+	SSZ3_Solids:		include	"Levels/SSZ/Collisn/3.bin"
+	SSZ45_Solids:		include	"Levels/SSZ/Collisn/45.bin"
+	SSZB_Solids:		include	"Levels/SSZ/Collisn/Boss.bin"
+
+	AAZ12_Solids:		include	"Levels/AAZ/Collisn/12.bin"
+	AAZ34_Solids:		include	"Levels/AAZ/Collisn/34.bin"
+	AAZ5_Solids:		include	"Levels/AAZ/Collisn/5.bin"
+
+	TTZ124_Solids:		include	"Levels/TTZ/Collisn/14.bin"
+	TTZ3_Solids:		include	"Levels/TTZ/Collisn/3.bin"
+	TTZ5_Solids:		include	"Levels/TTZ/Collisn/5.bin"
+	TTZB_Solids:		include	"Levels/TTZ/Collisn/Boss.bin"
+
+	MMZ_Solids:		include	"Levels/MMZ/Collisn/15.bin"
+
+	Training_Solids:	include	"Levels/Intro/Collisn/15.bin"
+
+	Training56_Solids:	include	"Levels/Tutorial/Collisn/56.bin"
+
+	WorldEnt_Solids:	include	"Levels/Entrance/Collisn/01.bin"
+
+EndSeg
+
+StartSeg LevSize_Data Big_Endian	;Level Size and other Setup Data
+
+	LSPtrLst_BBZ0M:	WORD 	LSPtr_BBZ01MN-LSPtrLst_BBZ0M
+	LSPtrLst_BBZ0D:	WORD 	LSPtr_BBZ01MN-LSPtrLst_BBZ0D
+	LSPtrLst_BBZ0S:	WORD 	LSPtr_BBZ01MN-LSPtrLst_BBZ0S
+	LSPtrLst_BBZ0N:	WORD 	LSPtr_BBZ01MN-LSPtrLst_BBZ0N
+	LSPtrLst_BBZ1M:	WORD 	LSPtr_BBZ01MN-LSPtrLst_BBZ1M
+	LSPtrLst_BBZ1D:	WORD 	LSPtr_BBZ01MN-LSPtrLst_BBZ1D
+	LSPtrLst_BBZ1S:	WORD 	LSPtr_BBZ01MN-LSPtrLst_BBZ1S
+	LSPtrLst_BBZ1N:	WORD 	LSPtr_BBZ01MN-LSPtrLst_BBZ1N
+	LSPtrLst_BBZ2M:	WORD 	LSPtr_BBZ2MN-LSPtrLst_BBZ2M
+	LSPtrLst_BBZ2D:	WORD 	LSPtr_BBZ2MN-LSPtrLst_BBZ2D
+	LSPtrLst_BBZ2S:	WORD 	LSPtr_BBZ2MN-LSPtrLst_BBZ2S
+	LSPtrLst_BBZ2N:	WORD 	LSPtr_BBZ2MN-LSPtrLst_BBZ2N
+	LSPtrLst_BBZ3M:	WORD 	LSPtr_BBZ3MN-LSPtrLst_BBZ3M
+	LSPtrLst_BBZ3D:	WORD 	LSPtr_BBZ3MN-LSPtrLst_BBZ3D
+	LSPtrLst_BBZ3S:	WORD 	LSPtr_BBZ3MN-LSPtrLst_BBZ3S
+	LSPtrLst_BBZ3N:	WORD 	LSPtr_BBZ3MN-LSPtrLst_BBZ3N
+	LSPtrLst_BBZ4M:	WORD 	LSPtr_BBZ4MN-LSPtrLst_BBZ4M
+	LSPtrLst_BBZ4D:	WORD 	LSPtr_BBZ4MN-LSPtrLst_BBZ4D
+	LSPtrLst_BBZ4S:	WORD 	LSPtr_BBZ4MN-LSPtrLst_BBZ4S
+	LSPtrLst_BBZ4N:	WORD 	LSPtr_BBZ4MN-LSPtrLst_BBZ4N
+	LSPtrLst_BBZ5M:	WORD 	LSPtr_BBZ56MN-LSPtrLst_BBZ5M
+	LSPtrLst_BBZ5D:	WORD 	LSPtr_BBZ56MN-LSPtrLst_BBZ5D
+	LSPtrLst_BBZ5S:	WORD 	LSPtr_BBZ56MN-LSPtrLst_BBZ5S
+	LSPtrLst_BBZ5N:	WORD 	LSPtr_BBZ56MN-LSPtrLst_BBZ5N
+	LSPtrLst_BBZ6M:	WORD 	LSPtr_BBZ56MN-LSPtrLst_BBZ6M
+	LSPtrLst_BBZ6D:	WORD 	LSPtr_BBZ56MN-LSPtrLst_BBZ6D
+	LSPtrLst_BBZ6S:	WORD 	LSPtr_BBZ56MN-LSPtrLst_BBZ6S
+	LSPtrLst_BBZ6N:	WORD 	LSPtr_BBZ56MN-LSPtrLst_BBZ6N
+	LSPtrLst_SSZ0M:	WORD 	LSPtr_SSZ01MD-LSPtrLst_SSZ0M
+	LSPtrLst_SSZ0D:	WORD 	LSPtr_SSZ01MD-LSPtrLst_SSZ0D
+	LSPtrLst_SSZ0S:	WORD 	LSPtr_SSZ01SN-LSPtrLst_SSZ0S
+	LSPtrLst_SSZ0N:	WORD 	LSPtr_SSZ01SN-LSPtrLst_SSZ0N
+	LSPtrLst_SSZ1M:	WORD 	LSPtr_SSZ01MD-LSPtrLst_SSZ1M
+	LSPtrLst_SSZ1D:	WORD 	LSPtr_SSZ01MD-LSPtrLst_SSZ1D
+	LSPtrLst_SSZ1S:	WORD 	LSPtr_SSZ01SN-LSPtrLst_SSZ1S
+	LSPtrLst_SSZ1N:	WORD 	LSPtr_SSZ01SN-LSPtrLst_SSZ1N
+	LSPtrLst_SSZ2M:	WORD 	LSPtr_SSZ2MD-LSPtrLst_SSZ2M
+	LSPtrLst_SSZ2D:	WORD 	LSPtr_SSZ2MD-LSPtrLst_SSZ2D
+	LSPtrLst_SSZ2S:	WORD 	LSPtr_SSZ2SN-LSPtrLst_SSZ2S
+	LSPtrLst_SSZ2N:	WORD 	LSPtr_SSZ2SN-LSPtrLst_SSZ2N
+	LSPtrLst_SSZ3M:	WORD 	LSPtr_SSZ3MD-LSPtrLst_SSZ3M
+	LSPtrLst_SSZ3D:	WORD 	LSPtr_SSZ3MD-LSPtrLst_SSZ3D
+	LSPtrLst_SSZ3S:	WORD 	LSPtr_SSZ3SN-LSPtrLst_SSZ3S
+	LSPtrLst_SSZ3N:	WORD 	LSPtr_SSZ3SN-LSPtrLst_SSZ3N
+	LSPtrLst_SSZ4M:	WORD 	LSPtr_SSZ4MD-LSPtrLst_SSZ4M
+	LSPtrLst_SSZ4D:	WORD 	LSPtr_SSZ4MD-LSPtrLst_SSZ4D
+	LSPtrLst_SSZ4S:	WORD 	LSPtr_SSZ4SN-LSPtrLst_SSZ4S
+	LSPtrLst_SSZ4N:	WORD 	LSPtr_SSZ4SN-LSPtrLst_SSZ4N
+	LSPtrLst_SSZ5M:	WORD 	LSPtr_SSZ5MD-LSPtrLst_SSZ5M
+	LSPtrLst_SSZ5D:	WORD 	LSPtr_SSZ5MD-LSPtrLst_SSZ5D
+	LSPtrLst_SSZ5S:	WORD 	LSPtr_SSZ5SN-LSPtrLst_SSZ5S
+	LSPtrLst_SSZ5N:	WORD 	LSPtr_SSZ5SN-LSPtrLst_SSZ5N
+	LSPtrLst_SSZ6M:	WORD 	LSPtr_SSZ5MD-LSPtrLst_SSZ6M
+	LSPtrLst_SSZ6D:	WORD 	LSPtr_SSZ5MD-LSPtrLst_SSZ6D
+	LSPtrLst_SSZ6S:	WORD 	LSPtr_SSZ5SN-LSPtrLst_SSZ6S
+	LSPtrLst_SSZ6N:	WORD 	LSPtr_SSZ5SN-LSPtrLst_SSZ6N
+	LSPtrLst_AAZ0M:	WORD 	LSPtr_AAZ01MN-LSPtrLst_AAZ0M
+	LSPtrLst_AAZ0D:	WORD 	LSPtr_AAZ01MN-LSPtrLst_AAZ0D
+	LSPtrLst_AAZ0S:	WORD 	LSPtr_AAZ01MN-LSPtrLst_AAZ0S
+	LSPtrLst_AAZ0N:	WORD 	LSPtr_AAZ01MN-LSPtrLst_AAZ0N
+	LSPtrLst_AAZ1M:	WORD 	LSPtr_AAZ01MN-LSPtrLst_AAZ1M
+	LSPtrLst_AAZ1D:	WORD 	LSPtr_AAZ01MN-LSPtrLst_AAZ1D
+	LSPtrLst_AAZ1S:	WORD 	LSPtr_AAZ01MN-LSPtrLst_AAZ1S
+	LSPtrLst_AAZ1N:	WORD 	LSPtr_AAZ01MN-LSPtrLst_AAZ1N
+	LSPtrLst_AAZ2M:	WORD 	LSPtr_AAZ2MN-LSPtrLst_AAZ2M
+	LSPtrLst_AAZ2D:	WORD 	LSPtr_AAZ2MN-LSPtrLst_AAZ2D
+	LSPtrLst_AAZ2S:	WORD 	LSPtr_AAZ2MN-LSPtrLst_AAZ2S
+	LSPtrLst_AAZ2N:	WORD 	LSPtr_AAZ2MN-LSPtrLst_AAZ2N
+	LSPtrLst_AAZ3M:	WORD 	LSPtr_AAZ3MN-LSPtrLst_AAZ3M
+	LSPtrLst_AAZ3D:	WORD 	LSPtr_AAZ3MN-LSPtrLst_AAZ3D
+	LSPtrLst_AAZ3S:	WORD 	LSPtr_AAZ3MN-LSPtrLst_AAZ3S
+	LSPtrLst_AAZ3N:	WORD 	LSPtr_AAZ3MN-LSPtrLst_AAZ3N
+	LSPtrLst_AAZ4M:	WORD 	LSPtr_AAZ4MN-LSPtrLst_AAZ4M
+	LSPtrLst_AAZ4D:	WORD 	LSPtr_AAZ4MN-LSPtrLst_AAZ4D
+	LSPtrLst_AAZ4S:	WORD 	LSPtr_AAZ4MN-LSPtrLst_AAZ4S
+	LSPtrLst_AAZ4N:	WORD 	LSPtr_AAZ4MN-LSPtrLst_AAZ4N
+	LSPtrLst_AAZ5M:	WORD 	LSPtr_AAZ56MN-LSPtrLst_AAZ5M
+	LSPtrLst_AAZ5D:	WORD 	LSPtr_AAZ56MN-LSPtrLst_AAZ5D
+	LSPtrLst_AAZ5S:	WORD 	LSPtr_AAZ56MN-LSPtrLst_AAZ5S
+	LSPtrLst_AAZ5N:	WORD 	LSPtr_AAZ56MN-LSPtrLst_AAZ5N
+	LSPtrLst_AAZ6M:	WORD 	LSPtr_AAZ56MN-LSPtrLst_AAZ6M
+	LSPtrLst_AAZ6D:	WORD 	LSPtr_AAZ56MN-LSPtrLst_AAZ6D
+	LSPtrLst_AAZ6S:	WORD 	LSPtr_AAZ56MN-LSPtrLst_AAZ6S
+	LSPtrLst_AAZ6N:	WORD 	LSPtr_AAZ56MN-LSPtrLst_AAZ6N
+	LSPtrLst_TTZ0M:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ0M
+	LSPtrLst_TTZ0D:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ0D
+	LSPtrLst_TTZ0S:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ0S
+	LSPtrLst_TTZ0N:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ0N
+	LSPtrLst_TTZ1M:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ1M
+	LSPtrLst_TTZ1D:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ1D
+	LSPtrLst_TTZ1S:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ1S
+	LSPtrLst_TTZ1N:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ1N
+	LSPtrLst_TTZ2M:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ2M
+	LSPtrLst_TTZ2D:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ2D
+	LSPtrLst_TTZ2S:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ2S
+	LSPtrLst_TTZ2N:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ2N
+	LSPtrLst_TTZ3M:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ3M
+	LSPtrLst_TTZ3D:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ3D
+	LSPtrLst_TTZ3S:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ3S
+	LSPtrLst_TTZ3N:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ3N
+	LSPtrLst_TTZ4M:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ4M
+	LSPtrLst_TTZ4D:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ4D
+	LSPtrLst_TTZ4S:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ4S
+	LSPtrLst_TTZ4N:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ4N
+	LSPtrLst_TTZ5M:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ5M
+	LSPtrLst_TTZ5D:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ5D
+	LSPtrLst_TTZ5S:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ5S
+	LSPtrLst_TTZ5N:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ5N
+	LSPtrLst_TTZ6M:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ6M
+	LSPtrLst_TTZ6D:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ6D
+	LSPtrLst_TTZ6S:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ6S
+	LSPtrLst_TTZ6N:	WORD 	LSPtr_TTZ06MN-LSPtrLst_TTZ6N
+	LSPtrLst_MMZ0M:	WORD 	LSPtr_MMZ01MN-LSPtrLst_MMZ0M
+	LSPtrLst_MMZ0D:	WORD 	LSPtr_MMZ01MN-LSPtrLst_MMZ0D
+	LSPtrLst_MMZ0S:	WORD 	LSPtr_MMZ01MN-LSPtrLst_MMZ0S
+	LSPtrLst_MMZ0N:	WORD 	LSPtr_MMZ01MN-LSPtrLst_MMZ0N
+	LSPtrLst_MMZ1M:	WORD 	LSPtr_MMZ01MN-LSPtrLst_MMZ1M
+	LSPtrLst_MMZ1D:	WORD 	LSPtr_MMZ01MN-LSPtrLst_MMZ1D
+	LSPtrLst_MMZ1S:	WORD 	LSPtr_MMZ01MN-LSPtrLst_MMZ1S
+	LSPtrLst_MMZ1N:	WORD 	LSPtr_MMZ01MN-LSPtrLst_MMZ1N
+	LSPtrLst_MMZ2M:	WORD 	LSPtr_MMZ2MN-LSPtrLst_MMZ2M
+	LSPtrLst_MMZ2D:	WORD 	LSPtr_MMZ2MN-LSPtrLst_MMZ2D
+	LSPtrLst_MMZ2S:	WORD 	LSPtr_MMZ2MN-LSPtrLst_MMZ2S
+	LSPtrLst_MMZ2N:	WORD 	LSPtr_MMZ2MN-LSPtrLst_MMZ2N
+	LSPtrLst_MMZ3M:	WORD 	LSPtr_MMZ3MN-LSPtrLst_MMZ3M
+	LSPtrLst_MMZ3D:	WORD 	LSPtr_MMZ3MN-LSPtrLst_MMZ3D
+	LSPtrLst_MMZ3S:	WORD 	LSPtr_MMZ3MN-LSPtrLst_MMZ3S
+	LSPtrLst_MMZ3N:	WORD 	LSPtr_MMZ3MN-LSPtrLst_MMZ3N
+	LSPtrLst_MMZ4M:	WORD 	LSPtr_MMZ4MN-LSPtrLst_MMZ4M
+	LSPtrLst_MMZ4D:	WORD 	LSPtr_MMZ4MN-LSPtrLst_MMZ4D
+	LSPtrLst_MMZ4S:	WORD 	LSPtr_MMZ4MN-LSPtrLst_MMZ4S
+	LSPtrLst_MMZ4N:	WORD 	LSPtr_MMZ4MN-LSPtrLst_MMZ4N
+	LSPtrLst_MMZ5M:	WORD 	LSPtr_MMZ56MN-LSPtrLst_MMZ5M
+	LSPtrLst_MMZ5D:	WORD 	LSPtr_MMZ56MN-LSPtrLst_MMZ5D
+	LSPtrLst_MMZ5S:	WORD 	LSPtr_MMZ56MN-LSPtrLst_MMZ5S
+	LSPtrLst_MMZ5N:	WORD 	LSPtr_MMZ56MN-LSPtrLst_MMZ5N
+	LSPtrLst_MMZ6M:	WORD 	LSPtr_MMZ56MN-LSPtrLst_MMZ6M
+	LSPtrLst_MMZ6D:	WORD 	LSPtr_MMZ56MN-LSPtrLst_MMZ6D
+	LSPtrLst_MMZ6S:	WORD 	LSPtr_MMZ56MN-LSPtrLst_MMZ6S
+	LSPtrLst_MMZ6N:	WORD 	LSPtr_MMZ56MN-LSPtrLst_MMZ6N
+	LSPtrLst_Train0M:	WORD 	LSPtr_Train01MN-LSPtrLst_Train0M
+	LSPtrLst_Train0D:	WORD 	LSPtr_Train01MN-LSPtrLst_Train0D
+	LSPtrLst_Train0S:	WORD 	LSPtr_Train01MN-LSPtrLst_Train0S
+	LSPtrLst_Train0N:	WORD 	LSPtr_Train01MN-LSPtrLst_Train0N
+	LSPtrLst_Train1M:	WORD 	LSPtr_Train01MN-LSPtrLst_Train1M
+	LSPtrLst_Train1D:	WORD 	LSPtr_Train01MN-LSPtrLst_Train1D
+	LSPtrLst_Train1S:	WORD 	LSPtr_Train01MN-LSPtrLst_Train1S
+	LSPtrLst_Train1N:	WORD 	LSPtr_Train01MN-LSPtrLst_Train1N
+	LSPtrLst_Train2M:	WORD 	LSPtr_Train2MN-LSPtrLst_Train2M
+	LSPtrLst_Train2D:	WORD 	LSPtr_Train2MN-LSPtrLst_Train2D
+	LSPtrLst_Train2S:	WORD 	LSPtr_Train2MN-LSPtrLst_Train2S
+	LSPtrLst_Train2N:	WORD 	LSPtr_Train2MN-LSPtrLst_Train2N
+	LSPtrLst_Train3M:	WORD 	LSPtr_Train3MN-LSPtrLst_Train3M
+	LSPtrLst_Train3D:	WORD 	LSPtr_Train3MN-LSPtrLst_Train3D
+	LSPtrLst_Train3S:	WORD 	LSPtr_Train3MN-LSPtrLst_Train3S
+	LSPtrLst_Train3N:	WORD 	LSPtr_Train3MN-LSPtrLst_Train3N
+	LSPtrLst_Train4M:	WORD 	LSPtr_Train4MN-LSPtrLst_Train4M
+	LSPtrLst_Train4D:	WORD 	LSPtr_Train4MN-LSPtrLst_Train4D
+	LSPtrLst_Train4S:	WORD 	LSPtr_Train4MN-LSPtrLst_Train4S
+	LSPtrLst_Train4N:	WORD 	LSPtr_Train4MN-LSPtrLst_Train4N
+	LSPtrLst_Train5M:	WORD 	LSPtr_Train56MN-LSPtrLst_Train5M
+	LSPtrLst_Train5D:	WORD 	LSPtr_Train56MN-LSPtrLst_Train5D
+	LSPtrLst_Train5S:	WORD 	LSPtr_Train56MN-LSPtrLst_Train5S
+	LSPtrLst_Train5N:	WORD 	LSPtr_Train56MN-LSPtrLst_Train5N
+	LSPtrLst_Train6M:	WORD 	LSPtr_Train56MN-LSPtrLst_Train6M
+	LSPtrLst_Train6D:	WORD 	LSPtr_Train56MN-LSPtrLst_Train6D
+	LSPtrLst_Train6S:	WORD 	LSPtr_Train56MN-LSPtrLst_Train6S
+	LSPtrLst_Train6N:	WORD 	LSPtr_Train56MN-LSPtrLst_Train6N
+	LSPtrLst_Intro0M:	WORD 	LSPtr_Intro0MN-LSPtrLst_Intro0M
+	LSPtrLst_Intro0D:	WORD 	LSPtr_Intro0MN-LSPtrLst_Intro0D
+	LSPtrLst_Intro0S:	WORD 	LSPtr_Intro0MN-LSPtrLst_Intro0S
+	LSPtrLst_Intro0N:	WORD 	LSPtr_Intro0MN-LSPtrLst_Intro0N
+	LSPtrLst_Intro1M:	WORD 	LSPtr_Intro1MN-LSPtrLst_Intro1M
+	LSPtrLst_Intro1D:	WORD 	LSPtr_Intro1MN-LSPtrLst_Intro1D
+	LSPtrLst_Intro1S:	WORD 	LSPtr_Intro1MN-LSPtrLst_Intro1S
+	LSPtrLst_Intro1N:	WORD 	LSPtr_Intro1MN-LSPtrLst_Intro1N
+	LSPtrLst_Intro2M:	WORD 	LSPtr_Intro2MN-LSPtrLst_Intro2M
+	LSPtrLst_Intro2D:	WORD 	LSPtr_Intro2MN-LSPtrLst_Intro2D
+	LSPtrLst_Intro2S:	WORD 	LSPtr_Intro2MN-LSPtrLst_Intro2S
+	LSPtrLst_Intro2N:	WORD 	LSPtr_Intro2MN-LSPtrLst_Intro2N
+	LSPtrLst_Intro3M:	WORD 	LSPtr_Intro3MN-LSPtrLst_Intro3M
+	LSPtrLst_Intro3D:	WORD 	LSPtr_Intro3MN-LSPtrLst_Intro3D
+	LSPtrLst_Intro3S:	WORD 	LSPtr_Intro3MN-LSPtrLst_Intro3S
+	LSPtrLst_Intro3N:	WORD 	LSPtr_Intro3MN-LSPtrLst_Intro3N
+	LSPtrLst_Intro4M:	WORD 	LSPtr_Intro4MN-LSPtrLst_Intro4M
+	LSPtrLst_Intro4D:	WORD 	LSPtr_Intro4MN-LSPtrLst_Intro4D
+	LSPtrLst_Intro4S:	WORD 	LSPtr_Intro4MN-LSPtrLst_Intro4S
+	LSPtrLst_Intro4N:	WORD 	LSPtr_Intro4MN-LSPtrLst_Intro4N
+	LSPtrLst_Intro5M:	WORD 	LSPtr_Intro5M-LSPtrLst_Intro5M
+	LSPtrLst_Intro5D:	WORD 	LSPtr_Intro5D-LSPtrLst_Intro5D
+	LSPtrLst_Intro5S:	WORD 	LSPtr_Intro5S-LSPtrLst_Intro5S
+	LSPtrLst_Intro5N:	WORD 	LSPtr_Intro5N-LSPtrLst_Intro5N
+	LSPtrLst_Intro6M:	WORD 	LSPtr_Intro6M-LSPtrLst_Intro6M
+	LSPtrLst_Intro6D:	WORD 	LSPtr_Intro6D-LSPtrLst_Intro6D
+	LSPtrLst_Intro6S:	WORD 	LSPtr_Intro6S-LSPtrLst_Intro6S
+	LSPtrLst_Intro6N:	WORD 	LSPtr_Intro6N-LSPtrLst_Intro6N
+	LSPtrLst_World0M:	WORD 	LSPtr_World01MN-LSPtrLst_World0M
+	LSPtrLst_World0D:	WORD 	LSPtr_World01MN-LSPtrLst_World0D
+	LSPtrLst_World0S:	WORD 	LSPtr_World01MN-LSPtrLst_World0S
+	LSPtrLst_World0N:	WORD 	LSPtr_World01MN-LSPtrLst_World0N
+	LSPtrLst_World1M:	WORD 	LSPtr_World01MN-LSPtrLst_World1M
+	LSPtrLst_World1D:	WORD 	LSPtr_World01MN-LSPtrLst_World1D
+	LSPtrLst_World1S:	WORD 	LSPtr_World01MN-LSPtrLst_World1S
+	LSPtrLst_World1N:	WORD 	LSPtr_World01MN-LSPtrLst_World1N
+	LSPtrLst_World2M:	WORD 	LSPtr_World2M-LSPtrLst_World2M
+	LSPtrLst_World2D:	WORD 	LSPtr_World26MN-LSPtrLst_World2D
+	LSPtrLst_World2S:	WORD 	LSPtr_World26MN-LSPtrLst_World2S
+	LSPtrLst_World2N:	WORD 	LSPtr_World26MN-LSPtrLst_World2N
+	LSPtrLst_World3M:	WORD 	LSPtr_World26MN-LSPtrLst_World3M
+	LSPtrLst_World3D:	WORD 	LSPtr_World26MN-LSPtrLst_World3D
+	LSPtrLst_World3S:	WORD 	LSPtr_World26MN-LSPtrLst_World3S
+	LSPtrLst_World3N:	WORD 	LSPtr_World26MN-LSPtrLst_World3N
+	LSPtrLst_World4M:	WORD 	LSPtr_World26MN-LSPtrLst_World4M
+	LSPtrLst_World4D:	WORD 	LSPtr_World26MN-LSPtrLst_World4D
+	LSPtrLst_World4S:	WORD 	LSPtr_World26MN-LSPtrLst_World4S
+	LSPtrLst_World4N:	WORD 	LSPtr_World26MN-LSPtrLst_World4N
+	LSPtrLst_World5M:	WORD 	LSPtr_World26MN-LSPtrLst_World5M
+	LSPtrLst_World5D:	WORD 	LSPtr_World26MN-LSPtrLst_World5D
+	LSPtrLst_World5S:	WORD 	LSPtr_World26MN-LSPtrLst_World5S
+	LSPtrLst_World5N:	WORD 	LSPtr_World26MN-LSPtrLst_World5N
+	LSPtrLst_World6M:	WORD 	LSPtr_World26MN-LSPtrLst_World6M
+	LSPtrLst_World6D:	WORD 	LSPtr_World26MN-LSPtrLst_World6D
+	LSPtrLst_World6S:	WORD 	LSPtr_World26MN-LSPtrLst_World6S
+	LSPtrLst_World6N:	WORD 	LSPtr_World26MN-LSPtrLst_World6N
+
+	LSPtr_BBZ01MN:		DWORD LS_FG_BBZ01MN
+				DWORD LS_BG_BBZ01MN
+				DWORD $FFFFFFFF
+	LSPtr_BBZ2MN:		DWORD LS_FG_BBZ2MN
+				DWORD LS_BG_BBZ2MN
+				DWORD $FFFFFFFF
+	LSPtr_BBZ3MN:		DWORD LS_FG_BBZ356MN
+				DWORD LS_BG_BBZ356MN
+				DWORD $FFFFFFFF
+	LSPtr_BBZ4MN:		DWORD LS_FG_BBZ4MN
+				DWORD LS_BG_BBZ4MN
+				DWORD $FFFFFFFF
+	LSPtr_BBZ56MN:		DWORD LS_FG_BBZ356MN
+				DWORD LS_BG_BBZ356MN
+				DWORD $FFFFFFFF
+	LSPtr_SSZ01MD:		DWORD LS_FG_SSZ01MN
+				DWORD LS_BG_SSZ02MD
+				DWORD $FFFFFFFF
+	LSPtr_SSZ2MD:		DWORD LS_FG_SSZ2MN
+				DWORD LS_BG_SSZ02MD
+				DWORD $FFFFFFFF
+	LSPtr_SSZ01SN:		DWORD LS_FG_SSZ01MN
+				DWORD LS_BG_SSZ02SN
+				DWORD $FFFFFFFF
+	LSPtr_SSZ2SN:		DWORD LS_FG_SSZ2MN
+				DWORD LS_BG_SSZ02SN
+				DWORD $FFFFFFFF
+	LSPtr_SSZ3MD:		DWORD LS_FG_SSZ3MN
+				DWORD LS_BG_SSZ35MD
+				DWORD $FFFFFFFF
+	LSPtr_SSZ4MD:		DWORD LS_FG_SSZ4MN
+				DWORD LS_BG_SSZ35MD
+				DWORD $FFFFFFFF
+	LSPtr_SSZ3SN:		DWORD LS_FG_SSZ3MN
+				DWORD LS_BG_SSZ35SN
+				DWORD $FFFFFFFF
+	LSPtr_SSZ4SN:		DWORD LS_FG_SSZ4MN
+				DWORD LS_BG_SSZ35SN
+				DWORD $FFFFFFFF
+	LSPtr_SSZ5MD:		DWORD LS_FG_SSZ5MN
+				DWORD LS_BG_SSZ35MD
+				DWORD $FFFFFFFF
+	LSPtr_SSZ5SN:		DWORD LS_FG_SSZ5MN
+				DWORD LS_BG_SSZ35SN
+				DWORD $FFFFFFFF
+	LSPtr_AAZ01MN:		DWORD LS_FG_AAZ01MN
+				DWORD LS_BG_AAZ01MN
+				DWORD $FFFFFFFF
+	LSPtr_AAZ2MN:		DWORD LS_FG_AAZ2MN
+				DWORD LS_BG_AAZ2MN
+				DWORD $FFFFFFFF
+	LSPtr_AAZ3MN:		DWORD LS_FG_AAZ3MN
+				DWORD LS_BG_AAZ34MN
+				DWORD $FFFFFFFF
+	LSPtr_AAZ4MN:		DWORD LS_FG_AAZ4MN
+				DWORD LS_BG_AAZ34MN
+				DWORD $FFFFFFFF
+	LSPtr_AAZ56MN:		DWORD LS_FG_AAZ56MN
+				DWORD LS_BG_AAZ56MN
+				DWORD $FFFFFFFF
+	LSPtr_TTZ06MN:		DWORD LS_FG_TTZ06MN
+				DWORD LS_BG_TTZ06MN
+				DWORD $FFFFFFFF
+	LSPtr_MMZ01MN:		DWORD LS_FG_MMZ01MN
+				DWORD LS_BG_MMZ01MN
+				DWORD $FFFFFFFF
+	LSPtr_MMZ2MN:		DWORD LS_FGBG_MMZ2MN
+				DWORD LS_FGBG_MMZ2MN
+				DWORD $FFFFFFFF
+	LSPtr_MMZ3MN:		DWORD LS_FGBG_MMZ3MN
+				DWORD LS_FGBG_MMZ3MN
+				DWORD $FFFFFFFF
+	LSPtr_MMZ4MN:		DWORD LS_FGBG_MMZ4MN
+				DWORD LS_FGBG_MMZ4MN
+				DWORD $FFFFFFFF
+	LSPtr_MMZ56MN:		DWORD LS_FGBG_MMZ56MN
+				DWORD LS_FGBG_MMZ56MN
+				DWORD $FFFFFFFF
+	LSPtr_Train01MN:	DWORD LS_FG_Train01MN
+				DWORD LS_BG_Train01MN
+				DWORD $FFFFFFFF
+	LSPtr_Train2MN:		DWORD LS_FG_Train2MN
+				DWORD LS_BG_Train2MN
+				DWORD $FFFFFFFF
+	LSPtr_Train3MN:		DWORD LS_FG_Train3MN
+				DWORD LS_BG_Train3MN
+				DWORD $FFFFFFFF
+	LSPtr_Train4MN:		DWORD LS_FG_Train4MN
+				DWORD LS_BG_Train4MN
+				DWORD $FFFFFFFF
+	LSPtr_Train56MN:	DWORD $FFFFFFFF
+	LSPtr_Intro0MN:		DWORD LS_FG_Intro0MN
+				DWORD LS_BG_Intro01MN
+				DWORD $FFFFFFFF
+	LSPtr_Intro1MN:		DWORD LS_FG_Intro1MN
+				DWORD LS_BG_Intro01MN
+				DWORD $FFFFFFFF
+	LSPtr_Intro2MN:		DWORD LS_FG_Intro2MN
+				DWORD LS_BG_Intro2MN
+				DWORD $FFFFFFFF
+	LSPtr_Intro3MN:		DWORD LS_FG_Intro3MN
+				DWORD LS_BG_Intro3MN
+				DWORD $FFFFFFFF
+	LSPtr_Intro4MN:		DWORD LS_FG_Intro4MN
+				DWORD LS_BG_Intro4MN
+				DWORD $FFFFFFFF
+	LSPtr_Intro5M:		DWORD LS_FG_Intro5M
+				DWORD LS_BG_Intro5MN
+				DWORD $FFFFFFFF
+	LSPtr_Intro5D:		DWORD LS_FG_Intro5D
+				DWORD LS_BG_Intro5MN
+				DWORD $FFFFFFFF
+	LSPtr_Intro5S:		DWORD LS_FG_Intro4S
+				DWORD LS_BG_Intro5MN
+				DWORD $FFFFFFFF
+	LSPtr_Intro5N:		DWORD LS_FG_Intro5N
+				DWORD LS_BG_Intro5MN
+				DWORD $FFFFFFFF
+	LSPtr_Intro6M:		DWORD LS_FG_Intro6M
+				DWORD LS_BG_Intro5MN
+				DWORD $FFFFFFFF
+	LSPtr_Intro6D:		DWORD LS_FG_Intro6S
+				DWORD LS_BG_Intro5MN
+				DWORD $FFFFFFFF
+	LSPtr_Intro6S:		DWORD LS_FG_Intro6S
+				DWORD LS_BG_Intro5MN
+				DWORD $FFFFFFFF
+	LSPtr_Intro6N:		DWORD $FFFFFFFF
+	LSPtr_World01MN:	DWORD LS_FG_World01MN
+				DWORD LS_BG_World01MN
+				DWORD $FFFFFFFF
+	LSPtr_World2M:		DWORD LS_FG_World2M
+				DWORD LS_BG_World2M
+				DWORD $FFFFFFFF
+	LSPtr_World26MN:	DWORD $FFFFFFFF
+
+	LS_FG_BBZ01MN:		include "Levels/BBZ/FG/FGSt01MN.bin"   ;2-word data (Plane X Start (Player X Start - $A0), Plane Y Start (Player Y Start - $70))
+				include "Levels/BBZ/FG/Size01MN.bin"   ;2-byte data (Plane Width, Plane Height)
+				WORD $FC0                              ;Plane X2 Boundary
+				WORD 0                                 ;Plane X1 Boundary
+				WORD $800                              ;Plane Y2 Boundary
+				WORD 0                                 ;Plane Y1 Boundary
+	LS_BG_BBZ01MN:		WORD 0
+				WORD $80
+				include "Levels/BBZ/BG/Size01MN.bin"
+				WORD $C0
+				WORD 0
+				WORD $180
+				WORD 0
+	LS_FG_BBZ2MN:		include "Levels/BBZ/FG/FGSt2MN.bin"
+				include "Levels/BBZ/FG/Size2MN.bin"
+				WORD $FC0
+				WORD 0
+				WORD $A00
+				WORD 0
+	LS_BG_BBZ2MN:		WORD 0
+				WORD $DB
+				include "Levels/BBZ/BG/Size2MN.bin"
+				WORD $C0
+				WORD 0
+				WORD $180
+				WORD 0
+	LS_FG_BBZ4MN:		include "Levels/BBZ/FG/FGSt4MN.bin"
+				include "Levels/BBZ/FG/Size4MN.bin"
+				WORD $FC0
+				WORD 0
+				WORD $C80
+				WORD 0
+	LS_BG_BBZ4MN:		WORD 0
+				WORD $DF
+				include "Levels/BBZ/BG/Size4MN.bin"
+				WORD $C0
+				WORD 0
+				WORD $180
+				WORD 0
+	LS_FG_BBZ356MN:		include "Levels/BBZ/FG/FGSt36MN.bin"
+				include "Levels/BBZ/FG/Size36MN.bin"
+				WORD $FC0
+				WORD 0
+				WORD $C80
+				WORD 0
+	LS_BG_BBZ356MN:		WORD 0
+				WORD $9E
+				include "Levels/BBZ/BG/Size36MN.bin"
+				WORD $C0
+				WORD 0
+				WORD $180
+				WORD 0
+	LS_FG_SSZ01MN:		include "Levels/SSZ/FG/FGSt01MN.bin"
+				include "Levels/SSZ/FG/Size01MN.bin"
+				WORD $1540
+				WORD 0
+				WORD $810
+				WORD 0
+	LS_FG_SSZ2MN:		include "Levels/SSZ/FG/FGSt2MN.bin"
+				include "Levels/SSZ/FG/Size2MN.bin"
+				WORD $1740
+				WORD 0
+				WORD $810
+				WORD 0
+	LS_FG_SSZ3MN:		include "Levels/SSZ/FG/FGSt3MN.bin"
+				include "Levels/SSZ/FG/Size3MN.bin"
+				WORD $16C0
+				WORD 0
+				WORD $910
+				WORD 0
+	LS_FG_SSZ4MN:		include "Levels/SSZ/FG/FGSt4MN.bin"
+				include "Levels/SSZ/FG/Size4MN.bin"
+				WORD $17C0
+				WORD 0
+				WORD $910
+				WORD 0
+	LS_FG_SSZ5MN:		include "Levels/SSZ/FG/FGSt5MN.bin"
+				include "Levels/SSZ/FG/Size5MN.bin"
+				WORD $1BC0
+				WORD 0
+				WORD $A10
+				WORD 0
+	LS_BG_SSZ02MD:		WORD 0
+				WORD $320
+				include "Levels/SSZ/BG/Size02MD.bin"
+				WORD $C0
+				WORD 0
+				WORD $310
+				WORD 0
+	LS_BG_SSZ02SN:		WORD 0
+				WORD $3A0
+				include "Levels/SSZ/BG/Size02SN.bin"
+				WORD $C0
+				WORD 0
+				WORD $410
+				WORD 0
+	LS_BG_SSZ35MD:		WORD 0
+				WORD $355
+				include "Levels/SSZ/BG/Size35MD.bin"
+				WORD $C0
+				WORD 0
+				WORD $410
+				WORD 0
+	LS_BG_SSZ35SN:		WORD 0
+				WORD $421
+				include "Levels/SSZ/BG/Size35SN.bin"
+				WORD $C0
+				WORD 0
+				WORD $510
+				WORD 0
+	LS_FG_AAZ01MN:		include "Levels/AAZ/FG/FGSt01MN.bin"
+				include "Levels/AAZ/FG/Size01MN.bin"
+				WORD $9C0
+				WORD 0
+				WORD $1000
+				WORD 0
+	LS_BG_AAZ01MN:		WORD $60
+				WORD $770
+				include "Levels/AAZ/BG/Size01MN.bin"
+				WORD $FFFF
+				WORD 0
+				WORD $FFFF
+				WORD 0
+	LS_FG_AAZ2MN:		include "Levels/AAZ/FG/FGSt2MN.bin"
+				include "Levels/AAZ/FG/Size2MN.bin"
+				WORD $9C0
+				WORD 0
+				WORD $1000
+				WORD 0
+	LS_BG_AAZ2MN:		WORD $60
+				WORD $780
+				include "Levels/AAZ/BG/Size2MN.bin"
+				WORD $FFFF
+				WORD 0
+				WORD $FFFF
+				WORD 0
+	LS_FG_AAZ3MN:		include "Levels/AAZ/FG/FGSt3MN.bin"
+				include "Levels/AAZ/FG/Size3MN.bin"
+				WORD $F40
+				WORD 0
+				WORD $F80
+				WORD 0
+	LS_BG_AAZ34MN:		WORD $50
+				WORD $780
+				include "Levels/AAZ/BG/Size34MN.bin"
+				WORD $FFFF
+				WORD 0
+				WORD $FFFF
+				WORD 0
+	LS_FG_AAZ4MN:		include "Levels/AAZ/FG/FGSt4MN.bin"
+				include "Levels/AAZ/FG/Size4MN.bin"
+				WORD $9C0
+				WORD 0
+				WORD $1000
+				WORD 0
+	LS_FG_AAZ56MN:		include "Levels/AAZ/FG/FGSt56MN.bin"
+				include "Levels/AAZ/FG/Size56MN.bin"
+				WORD $FC0
+				WORD 0
+				WORD $1000
+				WORD 0
+	LS_BG_AAZ56MN:		WORD $50
+				WORD $520
+				include "Levels/AAZ/BG/Size56MN.bin"
+				WORD $FFFF
+				WORD 0
+				WORD $FFFF
+				WORD 0
+	LS_FG_TTZ06MN:		include "Levels/TTZ/FG/FGSt06MN.bin"
+				include "Levels/TTZ/FG/Size06MN.bin"
+				WORD $EC0
+				WORD 0
+				WORD $F00
+				WORD 0
+	LS_BG_TTZ06MN:		WORD 0
+				WORD $25F
+				include "Levels/TTZ/BG/Size06MN.bin"
+				WORD $C0
+				WORD 0
+				WORD $300
+				WORD 0
+	LS_FG_MMZ01MN:		include "Levels/MMZ/FG/FGSt01MN.bin"
+				include "Levels/MMZ/FG/Size01MN.bin"
+				WORD $EC0
+				WORD 0
+				WORD $700
+				WORD 0
+	LS_BG_MMZ01MN:		WORD 0
+				WORD $680
+				include "Levels/MMZ/BG/Size01MN.bin"
+				WORD $EC0
+				WORD 0
+				WORD $780
+				WORD 0
+	LS_FGBG_MMZ2MN:		include "Levels/MMZ/FG/FGSt2MN.bin"
+				include "Levels/MMZ/FG/Size2MN.bin"
+				WORD $EC0
+				WORD 0
+				WORD $700
+				WORD 0
+	LS_FGBG_MMZ3MN:		include "Levels/MMZ/FG/FGSt3MN.bin"
+				include "Levels/MMZ/FG/Size3MN.bin"
+				WORD $EC0
+				WORD 0
+				WORD $700
+				WORD 0
+	LS_FGBG_MMZ4MN:		include "Levels/MMZ/FG/FGSt4MN.bin"
+				include "Levels/MMZ/FG/Size4MN.bin"
+				WORD $EC0
+				WORD 0
+				WORD $700
+				WORD 0
+	LS_FGBG_MMZ56MN:	include "Levels/MMZ/FG/FGSt56MN.bin"
+				include "Levels/MMZ/FG/Size56MN.bin"
+				WORD $EC0
+				WORD 0
+				WORD $700
+				WORD 0
+	LS_FG_Train01MN:	include "Levels/Intro/FG/FGSt01MN.bin"
+				include "Levels/Intro/FG/Size01MN.bin"
+				WORD $3EC0
+				WORD 0
+				WORD $7FFF
+				WORD 0
+	LS_BG_Train01MN:	WORD 0
+				WORD 0
+				include "Levels/Intro/BG/Size01MN.bin"
+				WORD $C0
+				WORD 0
+				WORD $100
+				WORD 0
+	LS_FG_Train2MN:		include "Levels/Intro/FG/FGSt2MN.bin"
+				include "Levels/Intro/FG/Size2MN.bin"
+				WORD $6C0
+				WORD 0
+				WORD $1F00
+				WORD 0
+	LS_BG_Train2MN:		WORD 0
+				WORD $FE
+				include "Levels/Intro/BG/Size2MN.bin"
+				WORD $C0
+				WORD 0
+				WORD $100
+				WORD 0
+	LS_FG_Train3MN:		include "Levels/Intro/FG/FGSt3MN.bin"
+				include "Levels/Intro/FG/Size3MN.bin"
+				WORD $6C0
+				WORD 0
+				WORD $700
+				WORD 0
+	LS_BG_Train3MN:		WORD 0
+				WORD $E8
+				include "Levels/Intro/BG/Size3MN.bin"
+				WORD $C0
+				WORD 0
+				WORD $100
+				WORD 0
+	LS_FG_Train4MN:		include "Levels/Intro/FG/FGSt4MN.bin"
+				include "Levels/Intro/FG/Size4MN.bin"
+				WORD $1740
+				WORD 0
+				WORD $800
+				WORD 0
+	LS_BG_Train4MN:		WORD 0
+				WORD $87
+				include "Levels/Intro/BG/Size4MN.bin"
+				WORD $C0
+				WORD 0
+				WORD $100
+				WORD 0
+	LS_FG_Intro0MN:		include "Levels/Tutorial/FG/FGSt0MN.bin"
+				include "Levels/Tutorial/FG/Size0MN.bin"
+				WORD $C00
+				WORD 0
+				WORD $300
+				WORD 0
+	LS_FG_Intro1MN:		include "Levels/Tutorial/FG/FGSt1MN.bin"
+				include "Levels/Tutorial/FG/Size1MN.bin"
+				WORD $1EC0
+				WORD $F00
+				WORD $300
+				WORD 0
+	LS_FG_Intro2MN:		include "Levels/Tutorial/FG/FGSt2MN.bin"
+				include "Levels/Tutorial/FG/Size2MN.bin"
+				WORD $D40
+				WORD 0
+				WORD $400
+				WORD 0
+	LS_FG_Intro3MN:		include "Levels/Tutorial/FG/FGSt3MN.bin"
+				include "Levels/Tutorial/FG/Size3MN.bin"
+				WORD $2C0
+				WORD 0
+				WORD $F00
+				WORD 0
+	LS_FG_Intro4MN:		include "Levels/Tutorial/FG/FGSt4MN.bin"
+				include "Levels/Tutorial/FG/Size4MN.bin"
+				WORD $6C0
+				WORD 0
+				WORD $600
+				WORD 0
+	LS_BG_Intro01MN:	WORD 0
+				WORD $F4
+				include "Levels/Tutorial/BG/Size01MN.bin"
+				WORD $C0
+				WORD 0
+				WORD $100
+				WORD 0
+	LS_BG_Intro2MN:		WORD 0
+				WORD $EF
+				include "Levels/Tutorial/BG/Size2MN.bin"
+				WORD $C0
+				WORD 0
+				WORD $100
+				WORD 0
+	LS_BG_Intro3MN:		WORD 0
+				WORD $FD
+				include "Levels/Tutorial/BG/Size3MN.bin"
+				WORD $C0
+				WORD 0
+				WORD $100
+				WORD 0
+	LS_BG_Intro4MN:		WORD 0
+				WORD $100
+				include "Levels/Tutorial/BG/Size4MN.bin"
+				WORD $C0
+				WORD 0
+				WORD $100
+				WORD 0
+	LS_FG_Intro5M:		include "Levels/Tutorial/FG/FGSt5M.bin"
+				include "Levels/Tutorial/FG/Size5M.bin"
+				WORD $7FFF
+				WORD 0
+				WORD $7FFF
+				WORD 0
+	LS_FG_Intro5D:		include "Levels/Tutorial/FG/FGSt5D.bin"
+				include "Levels/Tutorial/FG/Size5D.bin"
+				WORD $7FFF
+				WORD 0
+				WORD $7FFF
+				WORD 0
+	LS_FG_Intro4S:		include "Levels/Tutorial/FG/FGSt5S.bin"
+				include "Levels/Tutorial/FG/Size5S.bin"
+				WORD $7FFF
+				WORD 0
+				WORD $7FFF
+				WORD 0
+	LS_FG_Intro5N:		include "Levels/Tutorial/FG/FGSt5N.bin"
+				include "Levels/Tutorial/FG/Size5N.bin"
+				WORD $7FFF
+				WORD 0
+				WORD $7FFF
+				WORD 0
+	LS_FG_Intro6M:		include "Levels/Tutorial/FG/FGSt6M.bin"
+				include "Levels/Tutorial/FG/Size6M.bin"
+				WORD $7FFF
+				WORD 0
+				WORD $7FFF
+				WORD 0
+	LS_FG_Intro6S:		include "Levels/Tutorial/FG/FGSt6D.bin"
+				include "Levels/Tutorial/FG/Size6D.bin"
+				WORD $7FFF
+				WORD 0
+				WORD $7FFF
+				WORD 0
+	LS_BG_Intro5MN:		WORD 0
+				WORD $100
+				include "Levels/Tutorial/BG/Size56MN.bin"
+				WORD $C0
+				WORD 0
+				WORD $100
+				WORD 0
+	LS_FG_World01MN:	include "Levels/Entrance/FG/FGSt01MN.bin"
+				include "Levels/Entrance/FG/Size01MN.bin"
+				WORD $1EC0
+				WORD 0
+				WORD 0
+				WORD 0
+	LS_BG_World01MN:	WORD 0
+				WORD 0
+				include "Levels/Entrance/BG/Size01MN.bin"
+				WORD $7FFF
+				WORD 0
+				WORD 0
+				WORD 0
+	LS_FG_World2M:		include "Levels/Entrance/FG/FGSt2M.bin"
+				include "Levels/Entrance/FG/Size2M.bin"
+				WORD $540
+				WORD 0
+				WORD $400
+				WORD 0
+	LS_BG_World2M:		WORD $20
+				WORD $20
+				include "Levels/Entrance/BG/Size2M.bin"
+				WORD $C0
+				WORD 0
+				WORD $100
+				WORD 0
+
+EndSeg
+
+StartSeg LevSize_Boss_Data Big_Endian	;Level Size and other Setup Data for Boss Levels
+
+	LS_FG_SSZBoss:		include "Levels/SSZ/FG/FGStBoss.bin"
+				include "Levels/SSZ/FG/SizeBoss.bin"
+				WORD $70
+				WORD $70
+				WORD $A0
+				WORD $A0
+	LS_BG_SSZBoss:		WORD 0
+				WORD 0
+				include "Levels/SSZ/BG/SizeBoss.bin"
+				WORD 0
+				WORD 0
+				WORD 0
+				WORD 0
+	LS_FG_TTZBoss:		include "Levels/TTZ/FG/FGStBoss.bin"
+				include "Levels/TTZ/FG/SizeBoss.bin"
+				WORD $140
+				WORD 0
+				WORD $A0
+				WORD 0
+
+EndSeg
+
+StartSeg Objlayout_Data Big_Endian	;Level Object Layout Data
+
+	ObjLoc_BBZ1M:		include	"Levels/BBZ/Sprites/1M.bin"
+	ObjLoc_BBZ1D:		include	"Levels/BBZ/Sprites/1D.bin"
+	ObjLoc_BBZ1S:		include	"Levels/BBZ/Sprites/1S.bin"
+	ObjLoc_BBZ1N:		include	"Levels/BBZ/Sprites/1N.bin"
+	ObjLoc_BBZ2M:		include	"Levels/BBZ/Sprites/2M.bin"
+	ObjLoc_BBZ2D:		include	"Levels/BBZ/Sprites/2D.bin"
+	ObjLoc_BBZ2S:		include	"Levels/BBZ/Sprites/2S.bin"
+	ObjLoc_BBZ2N:		include	"Levels/BBZ/Sprites/2N.bin"
+	ObjLoc_BBZ3M:		include	"Levels/BBZ/Sprites/3M.bin"
+	ObjLoc_BBZ3D:		include	"Levels/BBZ/Sprites/3D.bin"
+	ObjLoc_BBZ3S:		include	"Levels/BBZ/Sprites/3S.bin"
+	ObjLoc_BBZ3N:		include	"Levels/BBZ/Sprites/3N.bin"
+	ObjLoc_BBZ4M:		include	"Levels/BBZ/Sprites/4M.bin"
+	ObjLoc_BBZ4D:		include	"Levels/BBZ/Sprites/4D.bin"
+	ObjLoc_BBZ4S:		include	"Levels/BBZ/Sprites/4S.bin"
+	ObjLoc_BBZ4N:		include	"Levels/BBZ/Sprites/4N.bin"
+	ObjLoc_BBZ5M:		include	"Levels/BBZ/Sprites/5M.bin"
+	ObjLoc_BBZ5D:		include	"Levels/BBZ/Sprites/5D.bin"
+	ObjLoc_BBZ5S:		include	"Levels/BBZ/Sprites/5S.bin"
+	ObjLoc_BBZ5N:		include	"Levels/BBZ/Sprites/5N.bin"
+
+	ObjLoc_SSZ1M:		include	"Levels/SSZ/Sprites/1M.bin"
+	ObjLoc_SSZ1D:		include	"Levels/SSZ/Sprites/1D.bin"
+	ObjLoc_SSZ1S:		include	"Levels/SSZ/Sprites/1S.bin"
+	ObjLoc_SSZ1N:		include	"Levels/SSZ/Sprites/1N.bin"
+	ObjLoc_SSZ2M:		include	"Levels/SSZ/Sprites/2M.bin"
+	ObjLoc_SSZ2D:		include	"Levels/SSZ/Sprites/2D.bin"
+	ObjLoc_SSZ2S:		include	"Levels/SSZ/Sprites/2S.bin"
+	ObjLoc_SSZ2N:		include	"Levels/SSZ/Sprites/2N.bin"
+	ObjLoc_SSZ3M:		include	"Levels/SSZ/Sprites/3M.bin"
+	ObjLoc_SSZ3D:		include	"Levels/SSZ/Sprites/3D.bin"
+	ObjLoc_SSZ3S:		include	"Levels/SSZ/Sprites/3S.bin"
+	ObjLoc_SSZ3N:		include	"Levels/SSZ/Sprites/3N.bin"
+	ObjLoc_SSZ4M:		include	"Levels/SSZ/Sprites/4M.bin"
+	ObjLoc_SSZ4D:		include	"Levels/SSZ/Sprites/4D.bin"
+	ObjLoc_SSZ4S:		include	"Levels/SSZ/Sprites/4S.bin"
+	ObjLoc_SSZ4N:		include	"Levels/SSZ/Sprites/4N.bin"
+	ObjLoc_SSZ5M:		include	"Levels/SSZ/Sprites/5M.bin"
+	ObjLoc_SSZ5D:		include	"Levels/SSZ/Sprites/5D.bin"
+	ObjLoc_SSZ5S:		include	"Levels/SSZ/Sprites/5S.bin"
+	ObjLoc_SSZ5N:		include	"Levels/SSZ/Sprites/5N.bin"
+
+	ObjLoc_AAZ1M:		include	"Levels/AAZ/Sprites/1M.bin"
+	ObjLoc_AAZ1D:		include	"Levels/AAZ/Sprites/1D.bin"
+	ObjLoc_AAZ1S:		include	"Levels/AAZ/Sprites/1S.bin"
+	ObjLoc_AAZ1N:		include	"Levels/AAZ/Sprites/1N.bin"
+	ObjLoc_AAZ2M:		include	"Levels/AAZ/Sprites/2M.bin"
+	ObjLoc_AAZ2D:		include	"Levels/AAZ/Sprites/2D.bin"
+	ObjLoc_AAZ2S:		include	"Levels/AAZ/Sprites/2S.bin"
+	ObjLoc_AAZ2N:		include	"Levels/AAZ/Sprites/2N.bin"
+	ObjLoc_AAZ3M:		include	"Levels/AAZ/Sprites/3M.bin"
+	ObjLoc_AAZ3D:		include	"Levels/AAZ/Sprites/3D.bin"
+	ObjLoc_AAZ3S:		include	"Levels/AAZ/Sprites/3S.bin"
+	ObjLoc_AAZ3N:		include	"Levels/AAZ/Sprites/3N.bin"
+	ObjLoc_AAZ4M:		include	"Levels/AAZ/Sprites/4M.bin"
+	ObjLoc_AAZ4D:		include	"Levels/AAZ/Sprites/4D.bin"
+	ObjLoc_AAZ4S:		include	"Levels/AAZ/Sprites/4S.bin"
+	ObjLoc_AAZ4N:		include	"Levels/AAZ/Sprites/4N.bin"
+	ObjLoc_AAZ5M:		include	"Levels/AAZ/Sprites/5M.bin"
+	ObjLoc_AAZ5D:		include	"Levels/AAZ/Sprites/5D.bin"
+	ObjLoc_AAZ5S:		include	"Levels/AAZ/Sprites/5S.bin"
+	ObjLoc_AAZ5N:		include	"Levels/AAZ/Sprites/5N.bin"
+	ObjLoc_AAZNULL:	include	"Levels/AAZ/Sprites/6MN.bin"
+
+	ObjLoc_TTZ1M:		include	"Levels/TTZ/Sprites/1M.bin"
+	ObjLoc_TTZ1D:		include	"Levels/TTZ/Sprites/1D.bin"
+	ObjLoc_TTZ1S:		include	"Levels/TTZ/Sprites/1S.bin"
+	ObjLoc_TTZ1N:		include	"Levels/TTZ/Sprites/1N.bin"
+	ObjLoc_TTZ2M:		include	"Levels/TTZ/Sprites/2M.bin"
+	ObjLoc_TTZ2D:		include	"Levels/TTZ/Sprites/2D.bin"
+	ObjLoc_TTZ2S:		include	"Levels/TTZ/Sprites/2S.bin"
+	ObjLoc_TTZ2N:		include	"Levels/TTZ/Sprites/2N.bin"
+	ObjLoc_TTZ3M:		include	"Levels/TTZ/Sprites/3M.bin"
+	ObjLoc_TTZ3D:		include	"Levels/TTZ/Sprites/3D.bin"
+	ObjLoc_TTZ3S:		include	"Levels/TTZ/Sprites/3S.bin"
+	ObjLoc_TTZ3N:		include	"Levels/TTZ/Sprites/3N.bin"
+	ObjLoc_TTZ4M:		include	"Levels/TTZ/Sprites/4M.bin"
+	ObjLoc_TTZ4D:		include	"Levels/TTZ/Sprites/4D.bin"
+	ObjLoc_TTZ4S:		include	"Levels/TTZ/Sprites/4S.bin"
+	ObjLoc_TTZ4N:		include	"Levels/TTZ/Sprites/4N.bin"
+	ObjLoc_TTZ5M:		include	"Levels/TTZ/Sprites/5M.bin"
+	ObjLoc_TTZ5D:		include	"Levels/TTZ/Sprites/5D.bin"
+	ObjLoc_TTZ5S:		include	"Levels/TTZ/Sprites/5S.bin"
+	ObjLoc_TTZ5N:		include	"Levels/TTZ/Sprites/5N.bin"
+
+	ObjLoc_MMZ1M:		include	"Levels/MMZ/Sprites/1M.bin"
+	ObjLoc_MMZ1D:		include	"Levels/MMZ/Sprites/1D.bin"
+	ObjLoc_MMZ1S:		include	"Levels/MMZ/Sprites/1S.bin"
+	ObjLoc_MMZ1N:		include	"Levels/MMZ/Sprites/1N.bin"
+	ObjLoc_MMZ2M:		include	"Levels/MMZ/Sprites/2M.bin"
+	ObjLoc_MMZ2D:		include	"Levels/MMZ/Sprites/2D.bin"
+	ObjLoc_MMZ2S:		include	"Levels/MMZ/Sprites/2S.bin"
+	ObjLoc_MMZ2N:		include	"Levels/MMZ/Sprites/2N.bin"
+	ObjLoc_MMZ3M:		include	"Levels/MMZ/Sprites/3M.bin"
+	ObjLoc_MMZ3D:		include	"Levels/MMZ/Sprites/3D.bin"
+	ObjLoc_MMZ3S:		include	"Levels/MMZ/Sprites/3S.bin"
+	ObjLoc_MMZ3N:		include	"Levels/MMZ/Sprites/3N.bin"
+	ObjLoc_MMZ4M:		include	"Levels/MMZ/Sprites/4M.bin"
+	ObjLoc_MMZ4D:		include	"Levels/MMZ/Sprites/4D.bin"
+	ObjLoc_MMZ4S:		include	"Levels/MMZ/Sprites/4S.bin"
+	ObjLoc_MMZ4N:		include	"Levels/MMZ/Sprites/4N.bin"
+	ObjLoc_MMZ5M:		include	"Levels/MMZ/Sprites/5M.bin"
+	ObjLoc_MMZ5D:		include	"Levels/MMZ/Sprites/5D.bin"
+	ObjLoc_MMZ5S:		include	"Levels/MMZ/Sprites/5S.bin"
+	ObjLoc_MMZ5N:		include	"Levels/MMZ/Sprites/5N.bin"
+
+	ObjLoc_Train1:		include	"Levels/Intro/Sprites/Conv/1MN.bin"
+	ObjLoc_Train2:		include	"Levels/Intro/Sprites/2MN.bin"
+	ObjLoc_Train3:		include	"Levels/Intro/Sprites/3MN.bin"
+	ObjLoc_Train4:		include	"Levels/Intro/Sprites/4MN.bin"
+	ObjLoc_Train5:		include	"Levels/Intro/Sprites/5MN.bin"
+
+	ObjLoc_Intro0:		include	"Levels/Tutorial/Sprites/0MN.bin"
+	ObjLoc_Intro1:		include	"Levels/Tutorial/Sprites/1MN.bin"
+	ObjLoc_Intro2:		include	"Levels/Tutorial/Sprites/2MN.bin"
+	ObjLoc_Intro3:		include	"Levels/Tutorial/Sprites/3MN.bin"
+	ObjLoc_Intro4:		include	"Levels/Tutorial/Sprites/4MN.bin"
+	ObjLoc_Tutorial:	include	"Levels/Tutorial/Sprites/5MN.bin"
+
+	ObjLoc_World:		include	"Levels/Entrance/Sprites/0MN.bin"
+
+	ObjLoc_WorldNULL:	WORD		$FFFF
+
+EndSeg

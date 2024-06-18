@@ -1,0 +1,19 @@
+Sound3E_Roll_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$80, ctFM4, Sound3E_Roll_FM4, $0C, $05
+
+; FM4 Data
+Sound3E_Roll_FM4:
+	sVoice		$01
+	dc.b nRst, $01
+	sModAMPS	$03, $01, $09, $FF
+	dc.b nCs6, $25
+	sModOff
+
+Sound3E_Roll_Loop00:
+	saVol		$01
+	dc.b sHold, nG6, $02
+	sLoop		$00, $2A, Sound3E_Roll_Loop00
+	sStop

@@ -1,0 +1,224 @@
+<html>
+<head>
+<title>SonED2 v11.05.19</title>
+</head>
+<body>
+<b><center>SonED2 v11.05.19</center></b><br>
+Welcome to SonED2, the Sonic the Hedgehog data editor. SonED2 is the successor to the original SonED utility, with
+added and enhanced features, and much greater stability. It contains various editing features designed to help create
+all-new levels for the original Sonic the Hedgehog series of games.<br>
+<br>
+<b>Index:</b><br>
+<ul>
+<li><b><a href="#Contents">Documentation Contents</b></a><br>
+<li><b><a href="#Usage">Basic Usage Overview</b></a><br>
+<li><b><a href="#ROMulan">Simplified Use With ROMulan Integration</b></a><br>
+<li><b><a href="#License">License</b></a><br>
+<li><b><a href="#Site">Official Site and Discussion Forum</b></a><br>
+<li><b><a href="#Credits">Credits</b></a><br>
+
+</ul>
+
+<br>
+<a name="Contents">
+<b>Documentation Contents</b><br>
+<ul>
+The following is a list of the other documents in this set, each of which
+provide functionality and usage details about certain SonED2 features:<br>
+<br>
+<ul>
+
+<li><a href="Docs/What's New.html">What's New</a> - Details the changes that have been made between different SonED2 versions<br>
+<br>
+
+<b>Standard Level Editors:</b><br>
+<br>
+<li><a href="Docs/Tile Editor.html">Tile, Palette, and Solidity Editor</a> - Modify the palette, the multi-step tile graphics, and the solidity data that are used to construct levels<br>
+<li><a href="Docs/Level Editor.html">Level Layout Editor</a> - Place the tile graphics to construct the level<br>
+<li><a href="Docs/Object Editor.html">Object Layout Editor</a> - Place, move, and modify the enemies, items, and obstacles that populate the level<br>
+<br>
+
+<b>Specialized Editors:</b><br>
+<br>
+<li><a href="Docs/S1SS Editor.html">Sonic 1 Special Stage Editor</a> - Modify the maps for the rotating Sonic 1 Special Stages<br>
+<br>
+
+<b>SonED2 data files:</b><br>
+<br>
+<li><a href="Docs/Project Files.html">Project Files</a> - An overview of how editing project files are used by SonED2<br>
+<ul>
+   <li><a href="Docs/Project Types/Level.html">Standard Level Projects</a> - Specifics on the Project File format for editing standard gameplay levels<br>
+   <li><a href="Docs/Project Types/S1SS.html">S1 Special Stage Projects</a> - Specifics on the Project File format for editing Sonic 1's Rotating Special Stages<br>
+</ul>
+<li><a href="Docs/Object Listing Files.html">Gameplay Object Listing Files</a> - Specifics on the files that supply graphic and property data for gameplay objects to SonED2<br>
+<li><a href="Docs/S1SS Object Files.html">S1 Special Stage Map Object Listing Files</a> - Specifics on the files that supply graphic and property data for Sonic 1 Special Stage "objects" to SonED2<br>
+<br>
+
+<b>Import/Export options:</b><br>
+<br>
+<li><a href="Docs/Art Importing.html">Art and Level Importing</a> - Import art and/or level layout from PCX or TGA graphic images<br>
+<li><a href="Docs/Image Export.html">Tile and Level Image Exporting</a> - Export TGA images containing lists of Tiles, or full standard gameplay level layouts with or without overlays<br>
+<li><a href="Docs/E02 Export.html">E02 Level Exporting</a> - Export standard gameplay levels into the format used by the E02 Game Engine<br>
+<br>
+
+<b>Miscellaneous features:</b><br>
+<br>
+<li><a href="Docs/ROMulan.html">ROMulan</a> - An overview of the integrated file extraction/injection utility<br>
+</ul>
+</ul>
+
+<br>
+<a name="Usage">
+<b>Basic Usage Overview</b><br>
+<ul>Unlike its predecessor, SonED2 is designed to work with individual
+files, which means that data has to be extracted before editing, and
+then reinserted when editing is complete. This allows the user to have
+more control over their data layout, and also allows for making changes,
+additions, and deletions that alter the data size without having to
+worry about hardcoded placement systems overwriting other data or code,
+leaving unnecessarily large unused gaps, or creating conflicts with other
+editing utilities.<br>
+<br>
+Because SonED2 edits individual files, it is "project"-based, meaning
+that it is necessary to obtain or create a "<a href="Docs/Project Files.html">Project File</a>" that specifies which data
+files should be loaded and how they should be interpreted. "Project Files" are plain text files, although
+they are given the file extension .sep to identify them to SonED2 and
+the user. These files contain the filenames of the data files required
+to begin a particular editing project, and a few settings values when
+necessary. Different types of projects use different formats for the
+"Project File", which are explained by the "Project File" documentation.<br>
+<br>
+At program-start, a logo screen is presented as a placeholder until a
+"Project" is loaded. Using the file menu, open a "Project File", and
+if the data in that file is correct, the appropriate editor will start
+and the data referenced by the "Project File" will be displayed and
+ready for editing.<br>
+<br>
+The "Save Project" selection will save all currently-loaded data to the
+files specified by the "Project File" that was used to open them. For
+reference, the path and filename of the "Project File" are shown in the
+window's titlebar. The "Project File" may be altered before using "Save
+Project" if different names are desired. Pressing <b>F3</b> will also save the
+current "Project".<br>
+<br>
+SonED2 will function in a window or in full-screen mode. When an editor
+is active, the "Editors" menu contains an option to switch to full-screen
+mode. The <b>F4</b> key may also be used to switch into or out of full-screen
+mode. It is the only way to switch back to windowed mode. While in
+windowed mode, the menu and scrollbars are available. To turn them off or
+back on, the <b>F2</b> key may be used.<br>
+<br>
+For editing specifics, please refer to each editor's documentation.<br>
+<br>
+This is an advanced tool for advanced users, so less experienced users
+shouldn't expect to delve straight in without having a few problems.
+Reading and understanding all documentation is essential.<br></ul>
+
+<br>
+<a name="ROMulan">
+<b>Simplified Use With ROMulan Integration</b><br>
+<ul>As an alternative to fully manual data placement, SonED2 includes
+<a href="ROMulan.html">ROMulan</a> functionality. This allows the use
+of modifiable and expandable scripts to specify unused and otherwise
+disposable sections of the target file into which the data may be
+placed without the risk of creating conflicts, and at the same time,
+automatically update all references to the data for their new locations.<br>
+<br>
+SonED2 is accompanied by such scripts for several of the games it supports,
+which include only what is required for level layout and level graphic editing.
+However, the existing scripts may be modified and augmented with additional
+scripts to allow for the simultaneous placement of other data, as well. Combining
+scripts for simultaneous injection of multiple data types will eliminate the risk
+of conflicts in placement that could occur between separate utilities or injections.<br>
+<br>
+Each of the included ROMulan Extract/Inject script sets also includes
+a full set of default project files for the game for which it was designed. <br>
+<br>
+Usage is very simple:<br>
+<br>
+<ul>
+ One-time:<br>
+<li>Navigate to the SonED2 folder to find and unpack the archive for the desired script set.<br>
+<li>Follow the script set's instructions as to what game file to copy, where to copy it to, and what filename to give it.<br>
+<li>Use SonED2's "Run Batch" File Menu option to run the set's "split" script.<br>
+ <br>
+ Every time:<br>
+<li>Use the "Open Project" File Menu option to load the project file for the desired level.<br>
+<li>Edit the level in any way as described by the SonED2 documentation.<br>
+<li>Use the "Save Project" File Menu option or the F3 key to save the level project. This is imperative; by nature, ROMulan uses only files stored on the disk, not the data currently-loaded into SonED2.<br>
+<li>Use SonED2's "Run Batch" option to run the set's "inject" script.<br>
+<li>Test the resulting game-file(s), whose names are given by the script set's documentation. The process is now complete.<br>
+</ul>
+</ul>
+
+<br>
+<a name="License">
+<b>License</b><br>
+<ul>Sonic the Hedgehog and all related material that is supported by SonED2
+remain property of Sonic Team / SEGA. Any other material that may share
+similar data formats are likewise the property of their respective creator(s). SonED2 is intended for
+use as a creative tool, not full-scale copyright infringement. Use of
+SonED2 in violation of any law is strictly a decision on the part of the
+end-user. The user agrees to take sole responsibility for such actions,
+and as such, implies that they are aware of applicable laws and penalties.<br>
+<br>
+License to use and distribute this utility freely is granted only under the following conditions:<br>
+<br>
+<ul><li>Any material whose creation is due in any way at all to SonED2 may not be exchanged for profit, regardless of the content of the material or the authors' legal status in relation to any existing intellectual property. In order to use SonED2 for any profitable and/or commercial purpose, special license must be obtained from SonED2 author Stealth.<br>
+<li>Any projects making use of SonED2 should in some way credit the utility and/or Stealth. It is preferable, at minimum, that this reference be made in addition to any other existing credits listing under a heading such as "Utilities".<br>
+<li>Any redistribution must be made freely, requiring no form of compensation whatsoever, and may not be included as part of any sort of package. <br>
+<li>Any redistribution must not be modified; SonED2 may only be redistributed as it was originally packaged. The archive, its file contents, and the files themselves must not be modified in any way, and may not be accompanied by any material that was not a part of the original distribution.<br></ul>
+<br>
+Special permission is granted to host or otherwise reproduce this documentation in viewable form on any site that hosts redistributions of SonED2, so long as none of its contents are modified, omitted, or ammended.<br>
+</ul>
+
+<br>
+<a name="Site">
+<b>Official Site and Discussion Forum</b><br>
+<ul>
+SonED2 and ROMulan updates will be noted on the Organized Chaos homesite:<br>
+<ul><a href="http://stealth.hapisan.com">http://stealth.hapisan.com</a></ul>
+<br>
+The following is the official SonED2 homesite:<br>
+<ul><a href="http://stealth.hapisan.com/SonED">http://stealth.hapisan.com/SonED</a></ul>
+<br>
+Visit the official forum for bug reports, usage and support discussion, and discussion of projects created using SonED2 and ROMulan:<br>
+<ul><a href="http://stealth.hapisan.com/Forum">http://stealth.hapisan.com/Forum</a></ul>
+</ul>
+
+<br>
+<a name="Credits">
+<b>Credits</b><br>
+<ul>
+SonED2 is created by Stealth (mstealtha@aol.com) of Organized Chaos. Please make note in any project
+for which SonED2 is used.<br>
+<br>
+SonED2 uses the KENS compression/decompression library, created by
+David Declerck (ChaosIsLight@aol.com) using code and methods developed
+by various contributors. For more information, please see the <a href="KENS/README.TXT">KENS
+documentation</a>. The DLL versions distributed with SonED2 were modified by Stealth
+and jman to correct for data and crash errors that were discovered after some of the functions
+were put to more extensive use; please be aware that replacing these files is likely to cause instability
+and data corruption under certain conditions. Use of any other versions of these files is not supported.<br>
+<br>
+Special thanks to:<br>
+<br>
+<ul>
+MSmoke<br>
+The Chaos Emerald<br>
+Damian Grove / Saxman<br>
+Brett Kosinski<br>
+Nemesis<br>
+Dr Ivo<br>
+Hivebrain<br>
+Ultima<br>
+jman<br>
+RobJoe<br>
+Aquaslash<br>
+MarkeyJester<br>
+Liz<br>
+Any other past or future contributors<br>
+</ul>
+
+</body>
+</html>

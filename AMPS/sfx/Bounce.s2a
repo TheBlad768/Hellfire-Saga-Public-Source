@@ -1,0 +1,47 @@
+Snd_music_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$80, ctFM5, Sound_113_FM5, $00, $0E
+
+; FM5 Data
+Sound_113_FM5:
+	sVoice		pBounce4
+	dc.b nD1, $06, sHold
+	ssDetune	$09
+	dc.b $01, sHold
+	ssDetune	$13
+	dc.b $01, sHold
+	ssDetune	$EC
+	dc.b nEb1, sHold
+	ssDetune	$F6
+	dc.b $01, sHold
+	ssDetune	$00
+	dc.b $01, sHold
+	ssDetune	$F7
+	dc.b nE1, sHold
+	ssDetune	$00
+	dc.b $01, nRst, $04
+	saVol		$09
+	dc.b nD1, $02, sHold
+	ssDetune	$09
+	dc.b $01, sHold
+	ssDetune	$13
+	dc.b $01, sHold
+	ssDetune	$EC
+	dc.b nEb1, sHold
+	ssDetune	$F6
+	dc.b $01, sHold
+	ssDetune	$00
+	dc.b $01, sHold
+	ssDetune	$F7
+	dc.b nE1, sHold
+	ssDetune	$00
+	dc.b $01, nRst, $04
+
+	; Natsumi: This is a bit easier lol
+	sCmdYM		$80, $FF	; op1: Decay level $F, reelase rate $F
+	sCmdYM		$84, $FF	; op2: Decay level $F, reelase rate $F
+	sCmdYM		$88, $FF	; op3: Decay level $F, reelase rate $F
+	sCmdYM		$8C, $FF	; op4: Decay level $F, reelase rate $F
+	sStop

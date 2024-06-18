@@ -1,0 +1,713 @@
+<html>
+<head>
+<title>SonED2 - Standard Level Project Format</title>
+</head>
+<body>
+<b><center>SonED2 - Standard Level Project Format</center></b><br>
+<br>
+This type of project allows for editing Tiles/Blocks/Chunks, Level
+Layout, and Object Layout for standard gameplay levels. The format
+varies slightly at several points depending on the type of data
+being referenced, so
+it is important to pay attention to how the fields are used under
+different circumstances. For complete and functional example usage,
+please see the Project Files within the included ROMulan packages.<br>
+<br>Regardless of their exact contents, the
+following sections are always used in every Standard Level Project File, in this order:<br>
+<br>
+<li><a href="#Type">[Project Type, Level ID, and Object Def references]</a><br>
+<ul>
+ <li>Type:<br>
+ <li>Zone ID:<br>
+ <li>Act ID:<br>
+ <li>Object Def:<br>
+ <li>Object Palette:<br>
+</ul>
+<li><a href="#Tiles">[Tiles]</a><br>
+<ul>
+ <li>8x8 Compression:<br>
+ <li>Num 8x8 Pages:<br>
+ <ul>
+ <li>8x8 Tiles Page ?:<br>
+ </ul>
+</ul>
+<li><a href="#Blocks">[Blocks]</a><br>
+<ul>
+ <li>16x16 Compression:<br>
+ <li>Num 16x16 Pages:<br>
+ <ul>
+ <li>Page? 8x8 Page:<br>
+ <li>16x16 Tiles Page ?:<br>
+ </ul>
+</ul>
+<li><a href="#Metas">[Metatiles/Chunks]</a><br>
+<ul>
+ <li>Metatile Size:<br>
+ <li>Metatile Compression:<br>
+ <li>Num Metatile Pages:<br>
+ <ul>
+ <li>Page? 16x16 Page:<br>
+ <li>Metatile Tiles Page ?:<br>
+ </ul>
+</ul>
+<li><a href="#Level">[Level Layout]</a><br>
+<ul>
+ <li>Layout Format:<br>
+ <li>Layout Compression:<br>
+ <br>
+ <li>(Sonic 1 / Sonic CD)<br>
+ <ul>
+  <li>FG Level Layout:<br>
+  <li>BG 128x128 Page:<br>
+  <li>BG Level Layout:<br>
+ </ul>
+ <br>
+ <li>(Sonic 2)<br>
+ <li>(Sonic 3 (& Knuckles))<br>
+ <ul>
+  <li>BG 128x128 Page:<br>
+  <li>Level Layout:<br>
+ </ul>
+ <br>
+ <li>(Knuckles' Chaotix / Sonic Crackers)<br>
+ <ul>
+  <li>FG Size:<br>
+  <li>FG Level Layout:<br>
+  <li>BG 128x128 Page:<br>
+  <li>BG Size:<br>
+  <li>BG Level Layout:<br>
+ </ul>
+</ul>
+<li><a href="#Objects">[Object Layout]</a><br>
+<ul>
+ <li>Objects Format:<br>
+ <br>
+ <li>(No Objects)<br>
+ <ul>
+  <li>(Nothing here)<br>
+ </ul>
+ <br>
+ <li>(Sonic 1)<br>
+ <li>(Sonic 2)<br>
+ <li>(Sonic 3 (& Knuckles))<br>
+ <li>(Knuckles' Chaotix / Sonic Crackers)<br>
+ <ul>
+  <li>Objects:<br>
+ </ul>
+ <br>
+ <li>(Sonic CD)<br>
+ <ul>
+  <li>Objects Time:<br>
+  <li>Objects:<br>
+ </ul>
+</ul>
+<li><a href="#Rings">[Rings Layout]</a><br>
+<ul>
+ <li>Rings Format:<br>
+ <br>
+ <li>(No Separate Rings Layout)<br>
+ <ul>
+  <li>(Nothing here)<br>
+ </ul>
+ <br>
+ <li>(Sonic 2)<br>
+ <li>(Sonic 3 (& Knuckles))<br>
+ <ul>
+  <li>Rings:<br>
+ </ul>
+</ul>
+<li><a href="#Misc">["Misc" Layout]</a><br>
+<ul>
+ <li>Misc Format:<br>
+ <br>
+ <li>(No "Misc" Objects)<br>
+ <ul>
+  <li>(Nothing here)</a><br>
+ </ul>
+ <br>
+ <li>(Sonic 2 Casino Night Zone Bumpers)<br>
+ <ul>
+  <li>Misc:<br>
+ </ul>
+</ul>
+<li><a href="#StartPositions">[Player Start Positions]</a><br>
+<ul>
+ <li>Num Start Positions:<br>
+ <ul>
+ <li>Start Position ?:<br>
+ </ul>
+</ul>
+<li><a href="#Palettes">[Palettes]</a><br>
+<ul>
+ <li>Number of files:<br>
+ <ul>
+ <li>Start index:<br>
+ <li>Number of entries:<br>
+ <li>File:<br>
+ </ul>
+</ul>
+<li><a href="#CollisionMaps">[Collision Maps]</a><br>
+<ul>
+ <li>Collision Map Format:<br>
+ <li>Collision Array:<br>
+ <li>Rotated Collision Array:<br>
+ <li>Angle Array:<br>
+</ul>
+<li><a href="#CollisionIndexes">[Collision Indexes]</a><br>
+<ul>
+ <li>Collision Index Format:<br>
+ <li>Collision Index Compression:<br>
+ <br>
+ <li>(Sonic 1 / Sonic CD)<br>
+ <li>(Sonic 3)<br>
+ <li>(Sonic & Knuckles)<br>
+ <li>(Knuckles' Chaotix / Sonic Crackers)<br>
+ <ul>
+  <li>Collision Index:<br>
+ </ul>
+ <br>
+ <li>(Sonic 2)<br>
+ <ul>
+  <li>Collision Index 0:<br>
+  <li>Collision Index 1:<br>
+ </ul>
+</ul>
+<li><a href="#GameName">[Game Name]</a><br>
+<ul>
+ <li>Game Name:<br>
+</ul>
+
+<br>
+<br><a name="Type">
+<b>[Project Type, Level ID, and Object Def References]</b><br>
+<ul>
+ The structure of this section never changes. It contains the following general setup data:<br>
+ <br>
+ <b>Type:</b><br>
+ <ul>
+  The first line in any Project File is the "Type" identifier. This Project's "Type" should read "Level"<br>
+  <br>
+  <ul><pre>Type: Level</pre></ul><br>
+ </ul>
+ <b>Zone ID:</b><br>
+ <b>Act ID:</b><br>
+ <ul>
+  These are used internally by SonED2 in cases such as assigning more than one set of art and/or state settings to a single Object ID in the Object Listing, which are determined by the level being edited. These values should be set equal to the Zone ID and Act ID of the level within its parent game. Remember that these refer to the game-internal values, not the gameplay order of the levels, or the values shown on-screen.<br>
+  <br>
+  <ul><pre>Zone ID: 0
+Act ID:  0</pre></ul><br>
+ </ul>
+ <b>Object Def:</b><br>
+ <ul>
+  This is the path and filename of the Object Listing file that contains graphic and settings information for displaying the objects in this level. This filename must <b>not</b> be accompanied by an extension; the extension ".lst" will be added by SonED2 when loading the list, and this filename will also be used to generate the filename strings for each of the accompanying graphics files<br>
+  <br>
+  <ul><pre>Object Def: ObjDef\s1obj</pre></ul><br>
+ </ul>
+ <b>Object Palette:</b><br>
+ <ul>
+  This is the path and filename of a PCX or TGA graphics file from which to load extra colors for displaying "Object" graphics in SonED2. The colors from indexes 192-255 will be loaded from this image and made available for use by Object graphics loaded by an Object Listing File. Normally it is preferable to store those graphics such that they use indexes 0-63, and thus, are subjected to the level palette the same way they are in-game, however, these extra colors are available in case any special-case global visual aid graphics are desired, or in the case of Objects that don't actually use the Genesis/Megadrive palette, such as Chaotix's 32X Sprites<br>
+  <br>
+  <ul><pre>Object Palette: ObjDef\s1obj.tga</pre></ul><br>
+ </ul>
+</ul>
+
+<br><a name="Tiles">
+<b>[8x8 Tiles]</b><br>
+<ul>
+ This section specifies how to load the 8x8 Tile graphic data:<br>
+ <br>
+ <b>8x8 Compression:</b><br>
+ <ul>
+  This entry specifies the <a href="../Project Files.html#Compression">type of compression</a> that is used on the 8x8 Tile graphic data<br>
+  <br>
+  <ul><pre>8x8 Compression: 3</pre></ul><br>
+ </ul>
+ <b>Num 8x8 Pages:</b><br>
+ <ul>
+  This value specifies the number of 8x8 Tile graphic "pages" that should be loaded. Each "page" is stored as a separate file, so this specifies the number of filenames that will be supplied:<br>
+  <br>
+  <ul><pre>Num 8x8 Pages: 2</pre><br>
+  </ul>
+  <b>8x8 Tiles Page ?:</b><br>
+  <ul>
+   This is a path and filename of the 8x8 Tile graphic data file to load<br>
+   <br>
+   <ul><pre>8x8 Tiles Page 0: ..\Levels\GHZ\Tile\8_0.bin</pre></ul><br>
+  </ul>
+ </ul>
+</ul>
+
+<br><a name="Blocks">
+<b>[Blocks]</b><br>
+<ul>
+ This section specifies how to load the 16x16 Block Mappings data:<br>
+ <br>
+ <b>16x16 Compression:</b><br>
+ <ul>
+  This entry specifies the <a href="../Project Files.html#Compression">type of compression</a> that is used on the 16x16 Block Mappings data<br>
+  <br>
+  <ul><pre>16x16 Compression: 2</pre></ul><br>
+ </ul>
+ <b>Num 16x16 Pages:</b><br>
+ <ul>
+  This value specifies the number of 16x16 Block Mappings "pages" that should be loaded. Each "page" is stored as a separate file, so this specifies the number of filenames that will be supplied:<br>
+  <br>
+  <ul><pre>Num 16x16 Pages: 1</pre><br>
+  </ul>
+  <b>Page? 8x8 Page:</b><br>
+  <b>16x16 Tiles Page ?:</b><br>
+  <ul>
+   Each 16x16 Block Mappings "page" will need both of these entries, which specify ID number the 8x8 Tile Page that the Blocks reference, and the filename of the Block data file, respectively<br>
+   <br>
+   <ul><pre>Page0 8x8 Page:     0
+16x16 Tiles Page 0: ..\Levels\GHZ\Tile\16.bin</pre></ul><br>
+  </ul>
+ </ul>
+</ul>
+
+<br><a name="Metas">
+<b>[Metatiles/Chunks]</b><br>
+<ul>
+ This section specifies how to load the MetaTile Mappings data:<br>
+ <br>
+ <b>Metatile Size:</b><br>
+ <ul>
+  This entry specifies the height and width size (in pixels) of the Metatiles/Chunks. Valid sizes are either "128" or "256"<br>
+  <br>
+  <ul><pre>Metatile Size: 256</pre></ul><br>
+ </ul>
+ <b>Metatile Compression:</b><br>
+ <ul>
+  This entry specifies the <a href="../Project Files.html#Compression">type of compression</a> that is used on the Metatile data<br>
+  <br>
+  <ul><pre>Metatile Compression: 2</pre></ul><br>
+ </ul>
+ <b>Num Metatile Pages:</b><br>
+ <ul>
+  This value specifies the number of Metatile "pages" that should be loaded. Each "page" is stored as a separate file, so this specifies the number of filenames that will be supplied:<br>
+  <br>
+  <ul><pre>Num Metatile Pages: 1</pre><br>
+  </ul>
+  <b>Page? 16x16 Page:</b><br>
+  <b>Metatile Tiles Page ?:</b><br>
+  <ul>
+   Each Metatile "page" will need both of these entries, which specify ID number the 16x16 Block Mapping Page that the Metatiles reference, and the filename of the Metatile data file, respectively<br>
+   <br>
+   <ul><pre>Page0 16x16 Page:      0
+Metatile Tiles Page 0: ..\Levels\GHZ\Tile\256.bin</pre></ul><br>
+  </ul>
+ </ul>
+</ul>
+
+
+
+<br><a name="Level">
+<b>[Level Layout]</b><br>
+<ul>
+ This section specifies how to load the Level Layout data. The first two entries are always the same, while the following entries differ depending on the "Layout Format" setting:<br>
+ <br>
+ <b>Layout Format:</b><br>
+ <ul>
+  This entry specifies the format in which the (uncompressed) level data is stored. Valid settings are:<br>
+  <br>
+  <ul><table>
+  <tr><td><b>0</b></td><td> - </td><td>Sonic 1 / Sonic CD</td></tr>
+  <tr><td><b>1</b></td><td> - </td><td>Sonic 2</td></tr>
+  <tr><td><b>2</b></td><td> - </td><td>Sonic 3 (& Knuckles)</td></tr>
+  <tr><td><b>3</b></td><td> - </td><td>Knuckles' Chaotix / Sonic Crackers</td></tr>
+  </table></ul>
+  <br>
+  <ul>
+   <pre>Layout Format:         0</pre><br>
+  </ul>
+ </ul>
+ <b>Layout Compression:</b><br>
+ <ul>
+  This entry specifies the <a href="../Project Files.html#Compression">type of compression</a> that is used on the Level Layout data<br>
+  <br>
+  <ul>
+   <pre>Layout Compression:    0</pre><br>
+  </ul>
+ </ul>
+ <b>(Sonic 1 / Sonic CD)</b><br>
+ <ul>
+  These games use the same data format, and store foreground and background data separately:<br>
+  <br>
+  <b>FG Level Layout:</b><br>
+  <b>BG 128x128 Page:</b><br>
+  <b>BG Level Layout:</b><br>
+  <ul>
+   These entries specify the path and filename of the file containing the data for the foreground (Plane A), the Metatile page that the background draws its tiles from, and the path and filename of the file containing the data for the background (Plane B), respectively<br>
+   <ul>
+    <pre>FG Level Layout:       ..\Levels\GHZ\FG\1.bin
+BG 128x128 Page:       0
+BG Level Layout:       ..\Levels\GHZ\BG\1.bin</pre><br>
+   </ul>
+  </ul>
+ </ul>
+ <br>
+ <b>(Sonic 2)</b><br>
+ <b>(Sonic 3 (& Knuckles))</b><br>
+ <ul>
+  These games use different data formats for Level Layout, but they both store foreground and background data together:<br>
+  <br>
+  <b>BG 128x128 Page:</b><br>
+  <b>Level Layout:</b><br>
+  <ul>
+   These entries specify the Metatile page that the background draws its tiles from, and the path and filename of the one file containing the data for the both the foreground and background (Planes A and B), respectively<br>
+   <ul>
+    <pre>BG 128x128 Page:       0
+Level Layout:       	..\Levels\00_EHZ\Layout\1.bin</pre><br>
+   </ul>
+  </ul>
+ </ul>
+ <br>
+ <b>(Knuckles' Chaotix / Sonic Crackers)</b><br>
+ <ul>
+  These games use the same data format. While they store foreground and background data separately just as with Sonic 1, this format is different in that the Layout plane sizes are stored separately from the Layout data itself:<br>
+  <br>
+  <b>FG Size:</b><br>
+  <b>FG Level Layout:</b><br>
+  <b>BG 128x128 Page:</b><br>
+  <b>BG Size:</b><br>
+  <b>BG Level Layout:</b><br>
+  <ul>
+   These entries specify the following information, in this order- the path and filename of the file containing the height and width size data for the foreground (Plane A), the path and filename of the file containing the layout data for the foreground (Plane A), the Metatile page that the background draws its tiles from, the path and filename of the file containing the height and width size data for the background (Plane B), and the path and filename of the file containing the layout data for the background (Plane B), respectively<br>
+   <ul>
+    <pre>FG Size:              ..\..\Levels\BBZ\FG\Size01MN.bin
+FG Level Layout:      ..\..\Levels\BBZ\FG\1MN.bin
+BG 128x128 Page:      2
+BG Size:              ..\..\Levels\BBZ\BG\Size01MN.bin
+BG Level Layout:      ..\..\Levels\BBZ\BG\12MN.bin</pre><br>
+   </ul>
+  </ul>
+ </ul>
+</ul>
+
+
+<br><a name="Objects">
+<b>[Object Layout]</b><br>
+<ul>
+ This section specifies how to load the Object Layout data. The first entry is always the same, while the following entries differ depending on the "Objects Format" setting:<br>
+ <br>
+ <b>Objects Format:</b><br>
+ <ul>
+  This entry specifies the format in which the Object Layout data is stored. Valid settings are:<br>
+  <br>
+  <ul><table>
+  <tr><td><b>0</b></td><td> - </td><td>No Objects</td></tr>
+  <tr><td><b>1</b></td><td> - </td><td>Sonic 1</td></tr>
+  <tr><td><b>2</b></td><td> - </td><td>Sonic CD</td></tr>
+  <tr><td><b>3</b></td><td> - </td><td>Sonic 2</td></tr>
+  <tr><td><b>4</b></td><td> - </td><td>Sonic 3 (& Knuckles)</td></tr>
+  <tr><td><b>5</b></td><td> - </td><td>Knuckles' Chaotix / Sonic Crackers</td></tr>
+  </table></ul>
+  <br>
+  <ul>
+   <pre>Objects Format:         0</pre><br>
+  </ul>
+ </ul>
+ <b>(No Objects)</b><br>
+ <ul>
+  This setting should be used when there are no Objects to load. In this case, there are no other entries in this section.<br>
+  <ul>
+   <ul>
+   </ul>
+  </ul>
+ </ul>
+ <br>
+ <b>(Sonic 1)</b><br>
+ <b>(Sonic 2)</b><br>
+ <b>(Sonic 3 (& Knuckles))</b><br>
+ <b>(Knuckles' Chaotix / Sonic Crackers)</b><br>
+ <ul>
+  These settings use different data formats, but each of them only requires the name of the data file to be entered:<br>
+  <br>
+  <b>Objects:</b><br>
+  <ul>
+   This entry specifies the path and filename of the file containing the Object Layout data<br>
+   <ul>
+    <pre>Objects:       ..\Levels\GHZ\Obj\1.bin</pre><br>
+   </ul>
+  </ul>
+ </ul>
+ <b>(Sonic CD)</b><br>
+ <ul>
+  Unlike the others, this setting requires two entries:<br>
+  <br>
+  <b>Objects Time:</b><br>
+  <ul>
+   This entry specifies the time period of the Objects that should be displayed by default when the Project File is loaded. Valid settings are:<br>
+   <br>
+   <ul><table>
+   <tr><td><b>A</b></td><td> - </td><td>"Present"</td></tr>
+   <tr><td><b>B</b></td><td> - </td><td>"Past"</td></tr>
+   <tr><td><b>C</b></td><td> - </td><td>"Future"</td></tr>
+   <tr><td><b>D</b></td><td> - </td><td>"Future"</td></tr>
+   </table></ul><br>
+   Note that "C" and "D" have the same effect, as Objects in this format only use one flag for "Future", rather than separating "Good Future" and "Bad Future".<br>
+   <br>
+   <ul>
+    <pre>Objects Time:         A</pre><br>
+   </ul>
+  </ul>
+  <br>
+  <b>Objects:</b><br>
+  <ul>
+   This entry specifies the path and filename of the file containing the Object Layout data<br>
+   <ul>
+    <pre>Objects:       ..\Levels\GHZ\Obj\1.bin</pre><br>
+   </ul>
+  </ul>
+ </ul>
+</ul>
+
+<br><a name="Rings">
+<b>[Rings Layout]</b><br>
+<ul>
+ This section specifies how to load the Ring Layout data. The first entry is always the same, while the following entries differ depending on the "Rings Format" setting:<br>
+ <br>
+ <b>Rings Format:</b><br>
+ <ul>
+  This entry specifies the format in which the Ring Layout data is stored. Valid settings are:<br>
+  <br>
+  <ul><table>
+  <tr><td><b>0</b></td><td> - </td><td>No Separate Rings Layout</td></tr>
+  <tr><td><b>1</b></td><td> - </td><td>Sonic 2</td></tr>
+  <tr><td><b>2</b></td><td> - </td><td>Sonic 3 (& Knuckles)</td></tr>
+  </table></ul>
+ </ul>
+ <br>
+ <b>(No Separate Rings Layout)</b><br>
+ <ul>
+  This setting should be used when the target game does not store Rings separately from other Objects, or when there are no Rings to load at all. In this case, there are no other entries in this section.<br>
+  <ul>
+   <ul>
+   </ul>
+  </ul>
+ </ul>
+ <br>
+ <b>(Sonic 2)</b><br>
+ <b>(Sonic 3 (& Knuckles))</b><br>
+ <ul>
+  These settings use different data formats, but each of them only requires the name of the data file to be entered:<br>
+  <br>
+  <b>Rings:</b><br>
+  <ul>
+   This entry specifies the path and filename of the file containing the Ring Layout data<br>
+   <ul>
+    <pre>Rings:                 ..\Levels\0C_CNZ\Rng\1.bin</pre><br>
+   </ul>
+  </ul>
+ </ul>
+</ul>
+
+<br><a name="Misc">
+<b>["Misc" Layout]</b><br>
+<ul>
+ This section specifies how to load the "Misc" Objects Layout data. The first entry is always the same, while the following entries differ depending on the "Misc Format" setting:<br>
+ <br>
+ <b>Misc Format:</b><br>
+ <ul>
+  This entry specifies the format in which the "Misc" Object Layout data is stored. Valid settings are:<br>
+  <br>
+  <ul><table>
+  <tr><td><b>0</b></td><td> - </td><td>No "Misc" Objects</td></tr>
+  <tr><td><b>1</b></td><td> - </td><td>Sonic 2 Casino Night Zone Bumpers</td></tr>
+  </table></ul>
+ </ul>
+ <br>
+ <b>(No "Misc" Objects)</b><br>
+ <ul>
+  This setting should be used when the target game does not store certain special Objects separately from other Objects, or when there are no special Objects to load at all. In this case, there are no other entries in this section.<br>
+  <ul>
+   <ul>
+   </ul>
+  </ul>
+ </ul>
+ <br>
+ <b>(Sonic 2 Casino Night Zone Bumpers)</b><br>
+ <ul>
+  This setting only requires the name of the data file to be entered:<br>
+  <br>
+  <b>Misc:</b><br>
+  <ul>
+   This entry specifies the path and filename of the file containing the "Misc" Object Layout data<br>
+   <ul>
+    <pre>Misc:                  ..\Levels\0C_CNZ\Obj\Bump1.bin</pre><br>
+   </ul>
+  </ul>
+ </ul>
+</ul>
+
+<br><a name="StartPositions">
+<b>[Player Start Positions]</b><br>
+<ul>
+ This section specifies how to load the Player Start Positions data. The graphics that represent these positions within the editor are <a href="../Object%20Listing%20Files.html#Sprites">loaded by the Object Listing File</a><br>
+ <br>
+ <b>Num Start Positions:</b><br>
+ <ul>
+  This entry specifies the number of Player Start Positions that should be loaded. The value entered here determines the number of entries that should follow:<br>
+  <br>
+  <ul>
+   <pre>Num Start Positions:   1</pre><br>
+  </ul>
+  <b>Start Position ?:</b><br>
+  <ul>
+   This entry specifies the path and filename of the file containing the Player Start Position data<br>
+   <br>
+   <ul>
+    <pre>Start Position 0:      ..\Levels\GHZ\Start\1.bin</pre><br>
+   </ul>
+  </ul>
+ </ul>
+</ul>
+
+<br><a name="Palettes">
+<b>[Palettes]</b><br>
+<ul>
+ This section specifies how to load the Palette Color Data. The Genesis/Megadrive palette only has 64 entries, but an additional color space of 64 is available in the editor for creating "underwater" and other accessory palettes that can be flip/flopped with the primary palette during editing<br>
+ <br>
+ Palette data is typically stored in pieces, such as the usual separation between the "Main" palette section (player and global objects, indexes 0-15, usually unchanging) and the "Level" palette section (indexes 16-63, different for every level), so, generally more than one file will need to be loaded at a time<br>
+ <br>
+ <b>Number of files:</b><br>
+ <ul>
+  This entry specifies the number of Palette Color Data files to load<br>
+  <br>
+  <ul><pre>Number of files: 2</pre></ul><br>
+  The data for loading each palette section is listed immediately below in the following format:<br>
+  <br>
+  <b>Start index:</b><br>
+  <ul>
+   This entry specifies where to place the incoming data in the palette. The value entered here is the palette index into which the data for the first color will be placed<br>
+   <br>
+   <ul><pre>Start index:        0</pre></ul><br>
+  </ul>
+  <b>Number of entries:</b><br>
+  <ul>
+   This entry specifies the number of palette color entries that should be loaded from the file<br>
+   <br>
+   <ul><pre>Number of entries: 16</pre></ul><br>
+  </ul>
+  <b>File:</b><br>
+  <ul>
+   This entry specifies the path and filename of the file containing the Palette Color Data<br>
+   <br>
+   <ul><pre>File:              ..\Palettes\Sonic.bin</pre></ul><br>
+  </ul>
+ </ul>
+</ul>
+
+<br><a name="CollisionMaps">
+<b>[Collision Maps]</b><br>
+<ul>
+ This section specifies how to load the Collision Height Map and Angle data<br>
+ <br>
+ <b>Collision Map Format:</b><br>
+ <ul>
+  This entry specifies the format in which the Collision Height Map data is stored. Valid settings are:<br>
+  <br>
+  <ul>
+   <table>
+   <tr><td><b>0</b></td><td> - </td><td>Sonic 1, CD, 2, 3 (& Knuckles)</td></tr>
+   <tr><td><b>1</b></td><td> - </td><td>Knuckles' Chaotix / Sonic Crackers</td></tr>
+   </table>
+  </ul>
+  <br>
+  <ul><pre>Collision Map Format:    0</pre></ul><br>
+ </ul>
+ <b>Collision Array:</b><br>
+ <ul>
+  This entry specifies the path and filename of the file containing the normal-oriented Collision Height Map data<br>
+  <br>
+  <ul><pre>Collision Array:         ..\Collisn\HMaps.bin</pre></ul><br>
+ </ul>
+ <b>Rotated Collision Array:</b><br>
+ <ul>
+  This entry specifies the path and filename of the file containing the 90-degree rotated version of the Collision Height Map data<br>
+  <br>
+  <ul><pre>Rotated Collision Array: ..\Collisn\HMapsR.bin</pre></ul><br>
+ </ul>
+ <b>Angle Array:</b><br>
+ <ul>
+  This entry specifies the path and filename of the file containing the Angles data<br>
+  <br>
+  <ul><pre>Angle Array:             ..\Collisn\Angles.bin</pre></ul><br>
+ </ul>
+</ul>
+
+<br><a name="CollisionIndexes">
+<b>[Collision Indexes]</b><br>
+<ul>
+ This section specifies how to load the Collision Index data<br>
+ <br>
+ <b>Collision Index Format:</b><br>
+ <ul>
+  This entry specifies the format in which the Collision Index data is stored. Valid settings are:<br>
+  <br>
+  <ul>
+   <table>
+   <tr><td><b>0</b></td><td> - </td><td>Sonic 1 / Sonic CD</td></tr>
+   <tr><td><b>1</b></td><td> - </td><td>Sonic 2</td></tr>
+   <tr><td><b>2</b></td><td> - </td><td>Sonic 3</td></tr>
+   <tr><td><b>3</b></td><td> - </td><td>Sonic & Knuckles</td></tr>
+   <tr><td><b>4</b></td><td> - </td><td>Knuckles' Chaotix / Sonic Crackers</td></tr>
+   </table>
+  </ul>
+  <br>
+  <ul><pre>Collision Index Format:      0</pre></ul><br>
+ </ul>
+ <b>Collision Index Compression:</b><br>
+ <ul>
+  This entry specifies the <a href="../Project Files.html#Compression">type of compression</a> that is used on the Collision Index data<br>
+  <br>
+  <ul><pre>Collision Index Compression: 0</pre></ul><br>
+ </ul>
+ <br>
+ <b>(Sonic 1 / Sonic CD)</b><br>
+ <b>(Sonic 3)</b><br>
+ <b>(Sonic & Knuckles)</b><br>
+ <b>(Knuckles' Chaotix / Sonic Crackers)</b><br>
+ <ul>
+  These games use different data formats, but each of them only requires the name of the data file to be entered:<br>
+  <br>
+  <b>Collision Index:</b><br>
+  <ul>
+   This entry specifies the path and filename of the file that contains the Collision Index data for both Path 0 and (when applicable) Path 1<br>
+   <br>
+   <ul><pre>Collision Index:             ..\Levels\GHZ\HMIndex.bin</pre></ul><br>
+  </ul>
+ </ul>
+ <br>
+ <b>(Sonic 2)</b><br>
+ <ul>
+  This game stores separate data for each of the two collision paths, and so requires two data file name entries:<br>
+  <br>
+   <b>Collision Index 0:</b><br>
+   <b>Collision Index 1:</b><br>
+   <ul>
+    These entries specify the paths and filenames of the files that contain the Collision Index data for Path 0 and Path 1, respectively<br>
+    <br>
+    <ul><pre>Collision Index 0: ..\Levels\0C_CNZ\Collisn\0.bin
+Collision Index 1: ..\Levels\0C_CNZ\Collisn\1.bin</pre></ul><br>
+   </ul>
+  </ul>
+
+</ul>
+
+
+<br><a name="GameName">
+<b>[Game Name]</b><br>
+<ul>
+ This section allows a Game Name to be given to the Project, which will be displayed in the SonED2 titlebar along with the path and filename of the Project File<br>
+ <br>
+ <b>Game Name:</b><br>
+ <ul>
+  This entry is a text string that names the game that this Project File was created for<br>
+  <br>
+  <ul><pre>Game Name: Sonic 1</pre></ul><br>
+ </ul>
+</ul>
+
+</body>
+</html>

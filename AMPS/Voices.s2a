@@ -1,0 +1,1212 @@
+VoiceBank:
+sPatNum := 0
+	; Voice $00
+	; $04
+	; $37, $72, $77, $49,	$1F, $1F, $1F, $1F
+	; $07, $0A, $07, $0D,	$00, $0B, $00, $0B
+	; $1F, $0F, $1F, $0F,	$23, $80, $23, $80
+	spAlgorithm	$04, Rings
+	spFeedback	$00
+	spDetune	$03, $07, $07, $04
+	spMultiple	$07, $07, $02, $09
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$07, $07, $0A, $0D
+	spDecayRt	$00, $00, $0B, $0B
+	spSustainLv	$01, $01, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$23, $23, $00, $00
+
+	; Voice $01
+	; $3C
+	; $00, $44, $02, $02, 	$1F, $1F, $1F, $15, 	$00, $1F, $00, $00
+	; $00, $00, $00, $00, 	$0F, $0F, $0F, $0F, 	$0D, $00, $28, $00
+	spAlgorithm	$04
+	spFeedback	$07
+	spDetune	$00, $00, $04, $00
+	spMultiple	$00, $02, $04, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $15
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $00, $1F, $00
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$00, $00, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$0D, $28, $00, $00
+
+	; Voice $02
+	; $00
+	; $00, $03, $02, $00, 	$D9, $DF, $1F, $1F, 	$12, $11, $14, $0F
+	; $0A, $00, $0A, $0D, 	$FF, $FF, $FF, $FF, 	$22, $07, $27, $80
+	spAlgorithm	$00
+	spFeedback	$00
+	spDetune	$00, $00, $00, $00
+	spMultiple	$00, $02, $03, $00
+	spRateScale	$03, $00, $03, $00
+	spAttackRt	$19, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$12, $14, $11, $0F
+	spDecayRt	$0A, $0A, $00, $0D
+	spSustainLv	$0F, $0F, $0F, $0F
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$22, $27, $07, $00
+
+	; Voice $03
+	; $30
+	; $30, $30, $30, $30, 	$9E, $D8, $DC, $DC, 	$0E, $0A, $04, $05
+	; $08, $08, $08, $08, 	$BF, $BF, $BF, $BF, 	$14, $3C, $14, $80
+	spAlgorithm	$00
+	spFeedback	$06
+	spDetune	$03, $03, $03, $03
+	spMultiple	$00, $00, $00, $00
+	spRateScale	$02, $03, $03, $03
+	spAttackRt	$1E, $1C, $18, $1C
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0E, $04, $0A, $05
+	spDecayRt	$08, $08, $08, $08
+	spSustainLv	$0B, $0B, $0B, $0B
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$14, $14, $3C, $00
+
+	; Voice $04
+	; $35
+	; $14, $1A, $04, $09, 	$0E, $10, $11, $0E, 	$0C, $15, $03, $06
+	; $16, $0E, $09, $10, 	$2F, $2F, $4F, $4F, 	$2F, $12, $12, $80
+	spAlgorithm	$05
+	spFeedback	$06
+	spDetune	$01, $00, $01, $00
+	spMultiple	$04, $04, $0A, $09
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$0E, $11, $10, $0E
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0C, $03, $15, $06
+	spDecayRt	$16, $09, $0E, $10
+	spSustainLv	$02, $04, $02, $04
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$2F, $12, $12, $00
+
+	; Voice $05
+	; $3B
+	; $3C, $39, $30, $31, 	$DF, $1F, $1F, $DF, 	$04, $05, $04, $01
+	; $04, $04, $04, $02, 	$FF, $0F, $1F, $AF, 	$29, $20, $0F, $80
+	spAlgorithm	$03
+	spFeedback	$07
+	spDetune	$03, $03, $03, $03
+	spMultiple	$0C, $00, $09, $01
+	spRateScale	$03, $00, $00, $03
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$04, $04, $05, $01
+	spDecayRt	$04, $04, $04, $02
+	spSustainLv	$0F, $01, $00, $0A
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$29, $0F, $20, $00
+
+	; Voice $06
+	; $34
+	; $00, $0C, $03, $09, 	$9F, $8F, $8C, $95, 	$00, $00, $00, $00
+	; $00, $00, $00, $00, 	$0F, $0F, $0F, $0F, 	$00, $00, $1D, $00
+	spAlgorithm	$04
+	spFeedback	$06
+	spDetune	$00, $00, $00, $00
+	spMultiple	$00, $03, $0C, $09
+	spRateScale	$02, $02, $02, $02
+	spAttackRt	$1F, $0C, $0F, $15
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $00, $00, $00
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$00, $00, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$00, $1D, $00, $00
+
+	; Voice $07
+	; $20
+	; $00, $00, $00, $00, 	$1F, $1F, $1F, $1F, 	$00, $11, $00, $00
+	; $00, $00, $00, $09, 	$0F, $FF, $FF, $0F, 	$03, $10, $1A, $80
+	spAlgorithm	$00
+	spFeedback	$04
+	spDetune	$00, $00, $00, $00
+	spMultiple	$00, $00, $00, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $00, $11, $00
+	spDecayRt	$00, $00, $00, $09
+	spSustainLv	$00, $0F, $0F, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$03, $1A, $10, $00
+
+	; Voice $08
+	; $0C
+	; $01, $21, $31, $31, 	$1E, $0C, $0E, $1C, 	$0A, $00, $04, $00
+	; $08, $12, $08, $0C, 	$FF, $0F, $BF, $0F, 	$03, $80, $0D, $80
+	spAlgorithm	$04, FireShield
+	spFeedback	$01
+	spDetune	$00, $03, $02, $03
+	spMultiple	$01, $01, $01, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1E, $0E, $0C, $1C
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0A, $04, $00, $00
+	spDecayRt	$08, $08, $12, $0C
+	spSustainLv	$0F, $0B, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$03, $0D, $00, $00
+
+	; Voice $09
+	; $05
+	; $11, $02, $23, $31, 	$0B, $0C, $0E, $1C, 	$0A, $00, $04, $00
+	; $08, $06, $09, $0B, 	$FF, $0F, $BF, $0F, 	$09, $80, $80, $80
+	spAlgorithm	$05, BubbleShield
+	spFeedback	$00
+	spDetune	$01, $02, $00, $03
+	spMultiple	$01, $03, $02, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$0B, $0E, $0C, $1C
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0A, $04, $00, $00
+	spDecayRt	$08, $09, $06, $0B
+	spSustainLv	$0F, $0B, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$09, $00, $00, $00
+
+	; Voice $0A
+	; $04
+	; $02, $01, $22, $21, 	$1F, $1F, $1F, $1F, 	$0B, $00, $0B, $00
+	; $00, $0E, $00, $0E, 	$FF, $0F, $FF, $0F, 	$14, $80, $14, $80
+	spAlgorithm	$04, BubbleAttack
+	spFeedback	$00
+	spDetune	$00, $02, $00, $02
+	spMultiple	$02, $02, $01, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0B, $0B, $00, $00
+	spDecayRt	$00, $00, $0E, $0E
+	spSustainLv	$0F, $0F, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$14, $14, $00, $00
+
+	; Voice $0B
+	; $36
+	; $07, $10, $0E, $0C, 	$1F, $1F, $1F, $1F, 	$00, $00, $00, $00
+	; $00, $0D, $0D, $0E, 	$0F, $0F, $0F, $0F, 	$17, $80, $80, $80
+	spAlgorithm	$06, LightShield
+	spFeedback	$06
+	spDetune	$00, $00, $01, $00
+	spMultiple	$07, $0E, $00, $0C
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $00, $00, $00
+	spDecayRt	$00, $0D, $0D, $0E
+	spSustainLv	$00, $00, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$17, $00, $00, $00
+
+	; Voice $0C
+	; $03
+	; $32, $04, $70, $03, 	$1F, $1F, $1F, $1F, 	$00, $00, $00, $00
+	; $00, $0D, $0C, $0B, 	$0F, $0F, $0F, $0F, 	$08, $0D, $10, $80
+	spAlgorithm	$03, LightAttack
+	spFeedback	$00
+	spDetune	$03, $07, $00, $00
+	spMultiple	$02, $00, $04, $03
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $00, $00, $00
+	spDecayRt	$00, $0C, $0D, $0B
+	spSustainLv	$00, $00, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$08, $10, $0D, $00
+
+	; Voice $0D
+	; $FD
+	; $09, $03, $00, $00, 	$1F, $1F, $1F, $1F, 	$10, $0C, $0C, $0C
+	; $0B, $1F, $10, $05, 	$1F, $2F, $4F, $2F, 	$09, $84, $92, $8E
+	spAlgorithm	$05
+	spFeedback	$07
+	spDetune	$00, $00, $00, $00
+	spMultiple	$09, $00, $03, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$10, $0C, $0C, $0C
+	spDecayRt	$0B, $10, $1F, $05
+	spSustainLv	$01, $04, $02, $02
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$09, $12, $04, $0E
+
+	; Voice $0E
+	; $3C
+	; $0F, $01, $03, $01, 	$1F, $1F, $1F, $1F, 	$19, $12, $19, $0E
+	; $05, $12, $00, $0F, 	$0F, $7F, $FF, $FF, 	$00, $80, $00, $80
+	spAlgorithm	$04
+	spFeedback	$07
+	spDetune	$00, $00, $00, $00
+	spMultiple	$0F, $03, $01, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$19, $19, $12, $0E
+	spDecayRt	$05, $00, $12, $0F
+	spSustainLv	$00, $0F, $07, $0F
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$00, $00, $00, $00
+
+	; Voice $0F
+	; $F9
+	; $21, $30, $10, $32, 	$1F, $1F, $1F, $1F, 	$05, $18, $09, $02
+	; $0B, $1F, $10, $05, 	$1F, $2F, $4F, $2F, 	$0E, $07, $04, $80
+	spAlgorithm	$01
+	spFeedback	$07
+	spDetune	$02, $01, $03, $03
+	spMultiple	$01, $00, $00, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$05, $09, $18, $02
+	spDecayRt	$0B, $10, $1F, $05
+	spSustainLv	$01, $04, $02, $02
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$0E, $04, $07, $00
+
+	; Voice $10
+	; $14
+	; $25, $33, $36, $11, 	$1F, $1F, $1F, $1F, 	$15, $18, $1C, $13
+	; $0B, $08, $0D, $09, 	$0F, $9F, $8F, $0F, 	$24, $05, $0A, $80
+	spAlgorithm	$04, DrownDing
+	spFeedback	$02
+	spDetune	$02, $03, $03, $01
+	spMultiple	$05, $06, $03, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$15, $1C, $18, $13
+	spDecayRt	$0B, $0D, $08, $09
+	spSustainLv	$00, $08, $09, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$24, $0A, $05, $00
+
+	; Voice $11
+	; $39
+	; $21, $30, $10, $31, 	$1F, $1F, $1F, $1F, 	$05, $18, $09, $00
+	; $0B, $1F, $10, $0F, 	$1F, $2F, $4F, $0F, 	$0E, $07, $04, $80
+	spAlgorithm	$01, Bomb
+	spFeedback	$07
+	spDetune	$02, $01, $03, $03
+	spMultiple	$01, $00, $00, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$05, $09, $18, $00
+	spDecayRt	$0B, $10, $1F, $0F
+	spSustainLv	$01, $04, $02, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$0E, $04, $07, $00
+
+	; Voice $12
+	; $3C
+	; $05, $01, $0A, $01, 	$56, $5C, $5C, $5C, 	$0E, $11, $11, $11
+	; $09, $0A, $06, $0A, 	$4F, $3F, $3F, $3F, 	$17, $80, $20, $80
+	spAlgorithm	$04, Lamppost
+	spFeedback	$07
+	spDetune	$00, $00, $00, $00
+	spMultiple	$05, $0A, $01, $01
+	spRateScale	$01, $01, $01, $01
+	spAttackRt	$16, $1C, $1C, $1C
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0E, $11, $11, $11
+	spDecayRt	$09, $06, $0A, $0A
+	spSustainLv	$04, $03, $03, $03
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$17, $20, $00, $00
+
+	; Voice $13
+	; $3E
+	; $00, $05, $04, $04, 	$1F, $1F, $16, $16, 	$00, $00, $00, $00
+	; $00, $13, $11, $10, 	$0F, $0F, $0F, $0F, 	$00, $80, $80, $80
+	spAlgorithm	$06
+	spFeedback	$07
+	spDetune	$00, $00, $00, $00
+	spMultiple	$00, $04, $05, $04
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $16, $1F, $16
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $00, $00, $00
+	spDecayRt	$00, $11, $13, $10
+	spSustainLv	$00, $00, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$00, $00, $00, $00
+
+	; Voice $14
+	; $20
+	; $36, $35, $30, $31, 	$DF, $DF, $9F, $9F, 	$07, $06, $09, $06
+	; $07, $06, $06, $08, 	$2F, $1F, $1F, $FF, 	$16, $30, $13, $80
+	spAlgorithm	$00, Spring1
+	spFeedback	$04
+	spDetune	$03, $03, $03, $03
+	spMultiple	$06, $00, $05, $01
+	spRateScale	$03, $02, $03, $02
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$07, $09, $06, $06
+	spDecayRt	$07, $06, $06, $08
+	spSustainLv	$02, $01, $01, $0F
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$16, $13, $30, $00
+
+	; Voice $15
+	; $20
+	; $31, $33, $30, $31, 	$9F, $9F, $9F, $9F, 	$07, $06, $09, $06
+	; $07, $06, $06, $08, 	$2F, $1F, $1F, $FF, 	$19, $23, $11, $80
+	spAlgorithm	$00, Spring2
+	spFeedback	$04
+	spDetune	$03, $03, $03, $03
+	spMultiple	$01, $00, $03, $01
+	spRateScale	$02, $02, $02, $02
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$07, $09, $06, $06
+	spDecayRt	$07, $06, $06, $08
+	spSustainLv	$02, $01, $01, $0F
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$19, $11, $23, $00
+
+	; Voice $16
+	; $3B
+	; $03, $02, $03, $06, 	$18, $1A, $1A, $96, 	$17, $0E, $0A, $10
+	; $00, $00, $00, $00, 	$FF, $FF, $FF, $FF, 	$00, $28, $39, $80
+	spAlgorithm	$03, Register1
+	spFeedback	$07
+	spDetune	$00, $00, $00, $00
+	spMultiple	$03, $03, $02, $06
+	spRateScale	$00, $00, $00, $02
+	spAttackRt	$18, $1A, $1A, $16
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$17, $0A, $0E, $10
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$0F, $0F, $0F, $0F
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$00, $39, $28, $00
+
+	; Voice $17
+	; $3C
+	; $0F, $00, $00, $00, 	$1F, $1A, $18, $1C, 	$17, $11, $1A, $0E
+	; $00, $0F, $14, $10, 	$1F, $9F, $9F, $2F, 	$07, $80, $26, $8C
+	spAlgorithm	$04, Register2
+	spFeedback	$07
+	spDetune	$00, $00, $00, $00
+	spMultiple	$0F, $00, $00, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $18, $1A, $1C
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$17, $1A, $11, $0E
+	spDecayRt	$00, $14, $0F, $10
+	spSustainLv	$01, $09, $09, $02
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$07, $26, $00, $0C
+
+	; Voice $18
+	; $31
+	; $4B, $F2, $00, $04, 	$0F, $0F, $1F, $1F, 	$0B, $03, $07, $0A
+	; $10, $0B, $16, $0A, 	$FF, $0F, $FF, $0F, 	$50, $07, $10, $80
+	spAlgorithm	$01
+	spFeedback	$06
+	spDetune	$04, $00, $0F, $00
+	spMultiple	$0B, $00, $02, $04
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$0F, $1F, $0F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0B, $07, $03, $0A
+	spDecayRt	$10, $16, $0B, $0A
+	spSustainLv	$0F, $0F, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$50, $10, $07, $00
+
+	; Voice $19
+	; $3A
+	; $21, $31, $10, $30, 	$1B, $11, $1C, $16, 	$14, $1F, $1F, $1F
+	; $02, $0E, $06, $00, 	$3F, $1A, $09, $0F, 	$15, $00, $12, $80
+	spAlgorithm	$02
+	spFeedback	$07
+	spDetune	$02, $01, $03, $03
+	spMultiple	$01, $00, $01, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1B, $1C, $11, $16
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$14, $1F, $1F, $1F
+	spDecayRt	$02, $06, $0E, $00
+	spSustainLv	$03, $00, $01, $00
+	spReleaseRt	$0F, $09, $0A, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$15, $12, $00, $00
+
+	; Voice $1A
+	; $FA
+	; $02, $03, $00, $05, 	$12, $11, $0F, $13, 	$05, $18, $09, $02
+	; $06, $0F, $06, $02, 	$1F, $2F, $4F, $2F, 	$2F, $1A, $0E, $80
+	spAlgorithm	$02
+	spFeedback	$07
+	spDetune	$00, $00, $00, $00
+	spMultiple	$02, $00, $03, $05
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$12, $0F, $11, $13
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$05, $09, $18, $02
+	spDecayRt	$06, $06, $0F, $02
+	spSustainLv	$01, $04, $02, $02
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$2F, $0E, $1A, $00
+
+	; Voice $1B
+	; $3A
+	; $7E, $02, $00, $2F, 	$1D, $15, $1F, $1F, 	$1F, $1C, $0A, $1F
+	; $04, $09, $08, $05, 	$1F, $0F, $0F, $0F, 	$19, $10, $15, $80
+	spAlgorithm	$02
+	spFeedback	$07
+	spDetune	$07, $00, $00, $02
+	spMultiple	$0E, $00, $02, $0F
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1D, $1F, $15, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$1F, $0A, $1C, $1F
+	spDecayRt	$04, $08, $09, $05
+	spSustainLv	$01, $00, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$19, $15, $10, $00
+
+	; Voice $1C
+	; $3B
+	; $3F, $70, $10, $72, 	$0D, $1F, $0E, $1F, 	$0A, $0A, $09, $04
+	; $00, $00, $00, $05, 	$53, $55, $16, $A7, 	$2F, $16, $0B, $05
+	spAlgorithm	$03
+	spFeedback	$07
+	spDetune	$03, $01, $07, $07
+	spMultiple	$0F, $00, $00, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$0D, $0E, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0A, $09, $0A, $04
+	spDecayRt	$00, $00, $00, $05
+	spSustainLv	$05, $01, $05, $0A
+	spReleaseRt	$03, $06, $05, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$2F, $0B, $16, $05
+
+	; Voice $1D
+	; $18
+	; $0A, $0F, $06, $00, 	$1F, $1F, $1F, $1F, 	$00, $07, $14, $12
+	; $00, $08, $00, $00, 	$FF, $87, $FF, $FA, 	$00, $00, $00, $0A
+	spAlgorithm	$00
+	spFeedback	$03
+	spDetune	$00, $00, $00, $00
+	spMultiple	$0A, $06, $0F, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $14, $07, $12
+	spDecayRt	$00, $00, $08, $00
+	spSustainLv	$0F, $0F, $08, $0F
+	spReleaseRt	$0F, $0F, $07, $0A
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$00, $00, $00, $0A
+
+	; Voice $1E
+	; $30
+	; $01, $60, $61, $41, 	$1F, $1F, $1F, $1F, 	$1C, $1F, $1F, $10
+	; $10, $08, $0C, $00, 	$1B, $1A, $0C, $1F, 	$10, $00, $1B, $80
+	spAlgorithm	$00
+	spFeedback	$06
+	spDetune	$00, $06, $06, $04
+	spMultiple	$01, $01, $00, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$1C, $1F, $1F, $10
+	spDecayRt	$10, $0C, $08, $00
+	spSustainLv	$01, $00, $01, $01
+	spReleaseRt	$0B, $0C, $0A, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$10, $1B, $00, $00
+
+	; Voice $1F
+	; $30
+	; $4C, $16, $20, $6F, 	$1F, $1F, $1E, $1F, 	$1F, $1F, $1F, $1F
+	; $09, $0E, $0A, $00, 	$1B, $1A, $1C, $0F, 	$1F, $1A, $0C, $80
+	spAlgorithm	$00
+	spFeedback	$06
+	spDetune	$04, $02, $01, $06
+	spMultiple	$0C, $00, $06, $0F
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1E, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$1F, $1F, $1F, $1F
+	spDecayRt	$09, $0A, $0E, $00
+	spSustainLv	$01, $01, $01, $00
+	spReleaseRt	$0B, $0C, $0A, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1F, $0C, $1A, $00
+
+	; Voice $20
+	; $54
+	; $48, $02, $03, $01, 	$1F, $1F, $1F, $1F, 	$11, $00, $0A, $00
+	; $00, $05, $00, $05, 	$FF, $0F, $FF, $0F, 	$02, $80, $10, $80
+	spAlgorithm	$04
+	spFeedback	$02
+	spDetune	$04, $00, $00, $00
+	spMultiple	$08, $03, $02, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$11, $0A, $00, $00
+	spDecayRt	$00, $00, $05, $05
+	spSustainLv	$0F, $0F, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$02, $10, $00, $00
+
+	; Voice $21
+	; $33
+	; $00, $11, $00, $0F, 	$1B, $1F, $1F, $12, 	$10, $1F, $1D, $1F
+	; $14, $19, $00, $00, 	$11, $0F, $0F, $0F, 	$16, $00, $01, $80
+	spAlgorithm	$03
+	spFeedback	$06
+	spDetune	$00, $00, $01, $00
+	spMultiple	$00, $00, $01, $0F
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1B, $1F, $1F, $12
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$10, $1D, $1F, $1F
+	spDecayRt	$14, $00, $19, $00
+	spSustainLv	$01, $00, $00, $00
+	spReleaseRt	$01, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$16, $01, $00, $00
+
+	; Voice $22
+	; $07
+	; $06, $0C, $02, $01, 	$1C, $1C, $1C, $1C, 	$0E, $0E, $0B, $0B
+	; $00, $00, $00, $00, 	$F7, $F7, $F5, $F6, 	$11, $1D, $0C, $0C
+	spAlgorithm	$07
+	spFeedback	$00
+	spDetune	$00, $00, $00, $00
+	spMultiple	$06, $02, $0C, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1C, $1C, $1C, $1C
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0E, $0B, $0E, $0B
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$0F, $0F, $0F, $0F
+	spReleaseRt	$07, $05, $07, $06
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$11, $0C, $1D, $0C
+
+	; Voice $23
+	; $3D
+	; $00, $00, $00, $00, 	$1E, $1E, $1E, $1E, 	$08, $00, $00, $00
+	; $00, $00, $00, $00, 	$FF, $FF, $FF, $FF, 	$0A, $00, $00, $00
+	spAlgorithm	$05, Explosion3
+	spFeedback	$07
+	spDetune	$00, $00, $00, $00
+	spMultiple	$00, $00, $00, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1E, $1E, $1E, $1E
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$08, $00, $00, $00
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$0F, $0F, $0F, $0F
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$0A, $00, $00, $00
+
+	; Voice $24
+	; $3D
+	; $00, $00, $30, $00, 	$15, $D1, $DC, $5E, 	$05, $04, $0F, $0C
+	; $0D, $00, $0A, $07, 	$0F, $F3, $59, $82, 	$0D, $00, $0F, $00
+	spAlgorithm	$05, Explosion4
+	spFeedback	$07
+	spDetune	$00, $03, $00, $00
+	spMultiple	$00, $00, $00, $00
+	spRateScale	$00, $03, $03, $01
+	spAttackRt	$15, $1C, $11, $1E
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$05, $0F, $04, $0C
+	spDecayRt	$0D, $0A, $00, $07
+	spSustainLv	$00, $05, $0F, $08
+	spReleaseRt	$0F, $09, $03, $02
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$0D, $0F, $00, $00
+
+	; Voice $25
+	; $35
+	; $16, $06, $76, $76, 	$99, $59, $1F, $1F, 	$0D, $07, $07, $08
+	; $0F, $00, $00, $00, 	$F6, $F5, $E4, $F5, 	$02, $00, $3B, $00
+	spAlgorithm	$05, Explosion5
+	spFeedback	$06
+	spDetune	$01, $07, $00, $07
+	spMultiple	$06, $06, $06, $06
+	spRateScale	$02, $00, $01, $00
+	spAttackRt	$19, $1F, $19, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0D, $07, $07, $08
+	spDecayRt	$0F, $00, $00, $00
+	spSustainLv	$0F, $0E, $0F, $0F
+	spReleaseRt	$06, $04, $05, $05
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$02, $3B, $00, $00
+
+	; Voice $26
+	; $02
+	; $30, $41, $60, $00, 	$D7, $C9, $91, $9E, 	$0D, $00, $0A, $05
+	; $00, $00, $00, $05, 	$E7, $55, $CC, $88, 	$07, $14, $00, $00
+	spAlgorithm	$02, Explosion6
+	spFeedback	$00
+	spDetune	$03, $06, $04, $00
+	spMultiple	$00, $00, $01, $00
+	spRateScale	$03, $02, $03, $02
+	spAttackRt	$17, $11, $09, $1E
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0D, $0A, $00, $05
+	spDecayRt	$00, $00, $00, $05
+	spSustainLv	$0E, $0C, $05, $08
+	spReleaseRt	$07, $0C, $05, $08
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$07, $00, $14, $00
+
+	; Voice $27
+	; $3D
+	; $00, $00, $00, $00, 	$1E, $1E, $1E, $1E, 	$08, $00, $00, $00
+	; $00, $00, $00, $00, 	$20, $06, $06, $06, 	$0A, $00, $00, $00
+	spAlgorithm	$05, Explosion7
+	spFeedback	$07
+	spDetune	$00, $00, $00, $00
+	spMultiple	$00, $00, $00, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1E, $1E, $1E, $1E
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$08, $00, $00, $00
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$02, $00, $00, $00
+	spReleaseRt	$00, $06, $06, $06
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$0A, $00, $00, $00
+
+	; Voice $28
+	; $3D
+	; $00, $00, $30, $00, 	$1E, $D1, $DC, $5E, 	$08, $04, $0F, $0C
+	; $0D, $00, $0A, $07, 	$0F, $F3, $59, $82, 	$0A, $00, $0F, $00
+	spAlgorithm	$05, Explosion8
+	spFeedback	$07
+	spDetune	$00, $03, $00, $00
+	spMultiple	$00, $00, $00, $00
+	spRateScale	$00, $03, $03, $01
+	spAttackRt	$1E, $1C, $11, $1E
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$08, $0F, $04, $0C
+	spDecayRt	$0D, $0A, $00, $07
+	spSustainLv	$00, $05, $0F, $08
+	spReleaseRt	$0F, $09, $03, $02
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$0A, $0F, $00, $00
+
+	; Voice $29
+	; $39
+	; $31, $72, $00, $04, 	$1B, $15, $1F, $1F, 	$1F, $1F, $1F, $17
+	; $05, $0D, $08, $00, 	$17, $1C, $0F, $0F, 	$1F, $11, $1C, $80
+	spAlgorithm	$01
+	spFeedback	$07
+	spDetune	$03, $00, $07, $00
+	spMultiple	$01, $00, $02, $04
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1B, $1F, $15, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$1F, $1F, $1F, $17
+	spDecayRt	$05, $08, $0D, $00
+	spSustainLv	$01, $00, $01, $00
+	spReleaseRt	$07, $0F, $0C, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1F, $1C, $11, $00
+
+	; Voice $2A
+	; $01
+	; $01, $B0, $FC, $40, 	$1F, $1F, $1F, $1F, 	$00, $04, $06, $1F
+	; $0B, $10, $10, $0F, 	$0F, $FF, $FF, $05, 	$19, $00, $28, $80
+	spAlgorithm	$01
+	spFeedback	$00
+	spDetune	$00, $0F, $0B, $04
+	spMultiple	$01, $0C, $00, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $06, $04, $1F
+	spDecayRt	$0B, $10, $10, $0F
+	spSustainLv	$00, $0F, $0F, $00
+	spReleaseRt	$0F, $0F, $0F, $05
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$19, $28, $00, $00
+
+	; Voice $2B
+	; $7B
+	; $21, $16, $17, $90, 	$1F, $13, $1F, $0F, 	$12, $10, $05, $12
+	; $05, $02, $01, $03, 	$2F, $4F, $5F, $2F, 	$1A, $08, $1F, $80
+	spAlgorithm	$03
+	spFeedback	$07
+	spDetune	$02, $01, $01, $09
+	spMultiple	$01, $07, $06, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $13, $0F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$12, $05, $10, $12
+	spDecayRt	$05, $01, $02, $03
+	spSustainLv	$02, $05, $04, $02
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1A, $1F, $08, $00
+
+	; Voice $2C
+	; $FA
+	; $21, $30, $10, $32, 	$1F, $0F, $1F, $1F, 	$05, $18, $09, $02
+	; $06, $0F, $06, $02, 	$1F, $07, $4F, $2F, 	$0F, $0E, $0E, $80
+	spAlgorithm	$02
+	spFeedback	$07
+	spDetune	$02, $01, $03, $03
+	spMultiple	$01, $00, $00, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $0F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$05, $09, $18, $02
+	spDecayRt	$06, $06, $0F, $02
+	spSustainLv	$01, $04, $00, $02
+	spReleaseRt	$0F, $0F, $07, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$0F, $0E, $0E, $00
+
+	; Voice $2D
+	; $05
+	; $07, $32, $72, $02, 	$1D, $1D, $1D, $1D, 	$00, $00, $00, $00
+	; $0A, $09, $09, $08, 	$21, $01, $00, $00, 	$1C, $00, $00, $00
+	spAlgorithm	$05, Bounce4
+	spFeedback	$00
+	spDetune	$00, $07, $03, $00
+	spMultiple	$07, $02, $02, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1D, $1D, $1D, $1D
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $00, $00, $00
+	spDecayRt	$0A, $09, $09, $08
+	spSustainLv	$02, $00, $00, $00
+	spReleaseRt	$01, $00, $01, $00
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1C, $00, $00, $00
+
+	; Voice $2E
+	; $FA
+	; $20, $30, $11, $30, 	$0C, $11, $1F, $1F, 	$12, $0E, $11, $04
+	; $1B, $13, $09, $13, 	$1F, $1F, $4F, $2F, 	$0E, $80, $05, $80
+	spAlgorithm	$02
+	spFeedback	$07
+	spDetune	$02, $01, $03, $03
+	spMultiple	$00, $01, $00, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$0C, $1F, $11, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$12, $11, $0E, $04
+	spDecayRt	$1B, $09, $13, $13
+	spSustainLv	$01, $04, $01, $02
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$0E, $05, $00, $00
+
+	; Voice $2F
+	; $38
+	; $08, $08, $08, $08, 	$1F, $1F, $1F, $0E, 	$00, $00, $00, $00
+	; $00, $00, $00, $00, 	$0F, $0F, $0F, $1F, 	$00, $00, $00, $80
+	spAlgorithm	$00
+	spFeedback	$07
+	spDetune	$00, $00, $00, $00
+	spMultiple	$08, $08, $08, $08
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $0E
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $00, $00, $00
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$00, $00, $00, $01
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$00, $00, $00, $00
+
+	; Voice $30
+	; $38
+	; $01, $33, $33, $02, 	$1F, $1F, $1F, $1F, 	$11, $00, $10, $00
+	; $00, $00, $00, $06, 	$FF, $0F, $1F, $0F, 	$00, $13, $10, $80
+	spAlgorithm	$00
+	spFeedback	$07
+	spDetune	$00, $03, $03, $00
+	spMultiple	$01, $03, $03, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$11, $10, $00, $00
+	spDecayRt	$00, $00, $00, $06
+	spSustainLv	$0F, $01, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$00, $10, $13, $00
+
+	; Voice $31
+	; $32
+	; $33, $6F, $10, $03, 	$1F, $1F, $1F, $1F, 	$1F, $1C, $1F, $11
+	; $12, $13, $0D, $00, 	$1F, $2F, $1F, $0A, 	$00, $09, $18, $80
+	spAlgorithm	$02, Attachment1
+	spFeedback	$06
+	spDetune	$03, $01, $06, $00
+	spMultiple	$03, $00, $0F, $03
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$1F, $1F, $1C, $11
+	spDecayRt	$12, $0D, $13, $00
+	spSustainLv	$01, $01, $02, $00
+	spReleaseRt	$0F, $0F, $0F, $0A
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$00, $18, $09, $00
+
+	; Voice $32
+	; $12
+	; $01, $77, $40, $0F, 	$1E, $1F, $1F, $1F, 	$0F, $0C, $0F, $1F
+	; $1B, $1B, $05, $00, 	$0F, $1F, $0F, $0F, 	$1C, $1B, $10, $80
+	spAlgorithm	$02, Attachment2
+	spFeedback	$02
+	spDetune	$00, $04, $07, $00
+	spMultiple	$01, $00, $07, $0F
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1E, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0F, $0F, $0C, $1F
+	spDecayRt	$1B, $05, $1B, $00
+	spSustainLv	$00, $00, $01, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1C, $10, $1B, $00
+
+	; Voice $33
+	; $F2
+	; $2A, $30, $00, $22, 	$0E, $11, $15, $1F, 	$05, $00, $11, $02
+	; $0B, $07, $10, $05, 	$1F, $0F, $4F, $2F, 	$33, $10, $00, $80
+	spAlgorithm	$02
+	spFeedback	$06
+	spDetune	$02, $00, $03, $02
+	spMultiple	$0A, $00, $00, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$0E, $15, $11, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$05, $11, $00, $02
+	spDecayRt	$0B, $10, $07, $05
+	spSustainLv	$01, $04, $00, $02
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$33, $00, $10, $00
+
+	; Voice $34
+	; $0B
+	; $7D, $7A, $33, $14, 	$1D, $1C, $1D, $1D, 	$00, $0D, $01, $08
+	; $00, $02, $01, $01, 	$00, $10, $80, $60, 	$1E, $12, $17, $00
+	spAlgorithm	$03
+	spFeedback	$01
+	spDetune	$07, $03, $07, $01
+	spMultiple	$0D, $03, $0A, $04
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1D, $1D, $1C, $1D
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $01, $0D, $08
+	spDecayRt	$00, $01, $02, $01
+	spSustainLv	$00, $08, $01, $06
+	spReleaseRt	$00, $00, $00, $00
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1E, $17, $12, $00
+
+	; Voice $35
+	; $FA
+	; $21, $30, $10, $32, 	$1F, $1F, $1F, $1F, 	$05, $18, $09, $02
+	; $06, $0F, $06, $02, 	$1F, $2F, $4F, $2F, 	$0F, $0E, $0E, $80
+	spAlgorithm	$02
+	spFeedback	$07
+	spDetune	$02, $01, $03, $03
+	spMultiple	$01, $00, $00, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$05, $09, $18, $02
+	spDecayRt	$06, $06, $0F, $02
+	spSustainLv	$01, $04, $02, $02
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$0F, $0E, $0E, $00
+
+	; Voice $36
+	; $1A
+	; $75, $30, $20, $6F, 	$1F, $1F, $1B, $1F, 	$1F, $1C, $1A, $1F
+	; $08, $10, $09, $00, 	$17, $0F, $0E, $0F, 	$07, $16, $10, $80
+	spAlgorithm	$02
+	spFeedback	$03
+	spDetune	$07, $02, $03, $06
+	spMultiple	$05, $00, $00, $0F
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1B, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$1F, $1A, $1C, $1F
+	spDecayRt	$08, $09, $10, $00
+	spSustainLv	$01, $00, $00, $00
+	spReleaseRt	$07, $0E, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$07, $10, $16, $00
+
+	; Patch $37
+	; $FA
+	; $11, $31, $13, $30,	$0A, $0F, $1F, $1F
+	; $05, $18, $09, $02,	$06, $0F, $06, $02
+	; $0F, $07, $4F, $2F,	$07, $0E, $0E, $80
+	spAlgorithm	$02, SpecialRumble
+	spFeedback	$07
+	spDetune	$01, $01, $03, $03
+	spMultiple	$01, $03, $01, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$0A, $1F, $0F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt 	$05, $09, $18, $02
+	spDecayRt	$06, $06, $0F, $02
+	spSustainLv	$00, $04, $00, $02
+	spReleaseRt	$0F, $0F, $07, $0F
+	spTotalLv	$07, $0E, $0E, $00
+
+	; Patch $38
+	; $3C
+	; $05, $01, $0A, $01,	$56, $5C, $5C, $5C
+	; $0E, $11, $11, $11,	$09, $0A, $06, $0A
+	; $4F, $3F, $3F, $3F,	$1F, $80, $2B, $80
+	spAlgorithm	$04, Bump1
+	spFeedback	$07
+	spDetune	$00, $00, $00, $00
+	spMultiple	$05, $0A, $01, $01
+	spRateScale	$01, $01, $01, $01
+	spAttackRt	$16, $1C, $1C, $1C
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0E, $11, $11, $11
+	spSustainLv	$04, $03, $03, $03
+	spDecayRt	$09, $06, $0A, $0A
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1F, $2B, $00, $00
+
+	; Patch $39
+	; $05
+	; $00, $00, $00, $00,	$1F, $1F, $1F, $1F
+	; $12, $0C, $0C, $0C,	$12, $08, $08, $08
+	; $1F, $5F, $5F, $5F,	$07, $80, $80, $80
+	spAlgorithm	$05, Bump2
+	spFeedback	$00
+	spDetune	$00, $00, $00, $00
+	spMultiple	$00, $00, $00, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$12, $0C, $0C, $0C
+	spSustainLv	$01, $05, $05, $05
+	spDecayRt	$12, $08, $08, $08
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$07, $00, $00, $00
+
+	; Patch $3A
+	; $3C
+	; $00, $01, $01, $00,	$1F, $12, $1A, $1F
+	; $10, $00, $1F, $00,	$09, $13, $0A, $12
+	; $FF, $0F, $FF, $0F,	$00, $80, $00, $80
+	spAlgorithm	$04, Grab
+	spFeedback	$07
+	spDetune	$00, $00, $00, $00
+	spMultiple	$00, $01, $01, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1A, $12, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$10, $1F, $00, $00
+	spSustainLv	$0F, $0F, $00, $00
+	spDecayRt	$09, $0A, $13, $12
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$00, $00, $00, $00
+
+	; Patch $3B
+	; $7A
+	; $1F, $1F, $04, $1F, 	$10, $1F, $18, $10
+	; $10, $16, $0C, $00,	$02, $02, $02, $02
+	; $2F, $2F, $FF, $3F, 	$42, $16, $11, $80
+	spAlgorithm	$02, SuperEmerald
+	spFeedback	$07
+	spDetune	$01, $00, $01, $01
+	spMultiple	$0F, $04, $0F, $0F
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$10, $18, $1F, $10
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$10, $0C, $16, $00
+	spDecayRt	$02, $02, $02, $02
+	spSustainLv	$02, $0F, $02, $03
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$42, $11, $16, $00
+
+	; Patch $3C
+	; $30
+	; $30, $30, $30, $30, 	$9E, $A8, $AC, $DC, 	$0E, $0A, $04, $05
+	; $08, $08, $08, $08, 	$BF, $BF, $BF, $BF, 	$04, $2C, $14, $80
+	spAlgorithm	$00
+	spFeedback	$06
+	spDetune	$03, $03, $03, $03
+	spMultiple	$00, $00, $00, $00
+	spRateScale	$02, $02, $02, $03
+	spAttackRt	$1E, $2C, $28, $1C
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0E, $04, $0A, $05
+	spDecayRt	$08, $08, $08, $08
+	spSustainLv	$0B, $0B, $0B, $0B
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$04, $14, $2C, $00
+
+;	Voice $3D
+;	$3B
+;	$32, $02, $10, $1E, 	$10, $1F, $1F, $12, 	$16, $1E, $19, $1F
+;	$03, $0B, $00, $00, 	$0F, $0D, $0F, $0E, 	$18, $01, $00, $80
+	spAlgorithm	$03
+	spFeedback	$07
+	spDetune	$03, $01, $00, $01
+	spMultiple	$02, $00, $02, $0E
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$10, $1F, $1F, $12
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$16, $19, $1E, $1F
+	spDecayRt	$03, $00, $0B, $00
+	spSustainLv	$00, $00, $00, $00
+	spReleaseRt	$0F, $0F, $0D, $0E
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$18, $00, $01, $00
+
+;	Voice $3E
+;	$01
+;	$70, $30, $00, $12, 	$1F, $1F, $1F, $1F, 	$1F, $0B, $07, $01
+;	$08, $01, $09, $01, 	$CF, $1F, $FF, $FF, 	$04, $03, $02, $80
+	spAlgorithm	$01
+	spFeedback	$00
+	spDetune	$07, $00, $03, $01
+	spMultiple	$00, $00, $00, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$1F, $07, $0B, $01
+	spDecayRt	$08, $09, $01, $01
+	spSustainLv	$0C, $0F, $01, $0F
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$04, $02, $03, $00
+
+;	Voice $3F
+;	$3D
+;	$1E, $7D, $3F, $0C, 	$1F, $1F, $1F, $1F, 	$1F, $1F, $1F, $1F
+;	$10, $00, $00, $00, 	$0E, $0F, $0F, $0F, 	$0E, $87, $88, $88
+	spAlgorithm	$05
+	spFeedback	$07
+	spDetune	$01, $03, $07, $00
+	spMultiple	$0E, $0F, $0D, $0C
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$1F, $1F, $1F, $1F
+	spDecayRt	$10, $00, $00, $00
+	spSustainLv	$00, $00, $00, $00
+	spReleaseRt	$0E, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$0E, $08, $07, $08
+
+;	Voice $40
+;	$3C
+;	$75, $24, $19, $30, 	$1F, $1F, $1F, $1F, 	$1F, $1F, $15, $1F
+;	$0F, $00, $01, $00, 	$0F, $0F, $2F, $0F, 	$08, $80, $10, $80
+	spAlgorithm	$04
+	spFeedback	$07
+	spDetune	$07, $01, $02, $03
+	spMultiple	$05, $09, $04, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$1F, $15, $1F, $1F
+	spDecayRt	$0F, $01, $00, $00
+	spSustainLv	$00, $02, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$08, $10, $00, $00
+
+;	Voice $41
+;	$38
+;	$02, $20, $22, $64, 	$1F, $1F, $1F, $1F, 	$1F, $1F, $1F, $1F
+;	$1B, $10, $10, $00, 	$0F, $0F, $0F, $0F, 	$1D, $10, $02, $80
+	spAlgorithm	$00
+	spFeedback	$07
+	spDetune	$00, $02, $02, $06
+	spMultiple	$02, $02, $00, $04
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$1F, $1F, $1F, $1F
+	spDecayRt	$1B, $10, $10, $00
+	spSustainLv	$00, $00, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1D, $02, $10, $00
+
+;	Voice $42
+;	$3A
+;	$7B, $30, $30, $75, 	$0E, $0F, $0E, $12, 	$1F, $12, $1F, $1F
+;	$00, $00, $07, $00, 	$1F, $0F, $1F, $0F, 	$1A, $1C, $05, $80
+	spAlgorithm	$02
+	spFeedback	$07
+	spDetune	$07, $03, $03, $07
+	spMultiple	$0B, $00, $00, $05
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$0E, $0E, $0F, $12
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$1F, $1F, $12, $1F
+	spDecayRt	$00, $07, $00, $00
+	spSustainLv	$01, $01, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1A, $05, $1C, $00

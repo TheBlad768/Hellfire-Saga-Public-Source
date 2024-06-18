@@ -1,0 +1,29 @@
+Sound_AA_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$03
+	; lowered pitch with the -8 here, change back to 0 for original sound
+	sHeaderSFX	$80, ctFM5, Sound_AA_FM5, -8, $00	
+	sHeaderSFX	$80, ctFM4, Sound_AA_FM4, -8, $00
+	sHeaderSFX	$80, ctFM2, Sound_AA_FM2, -8, $02
+
+; FM5 Data
+Sound_AA_FM5:
+	sVoice		pBump1
+	sJump		Sound_AA_Jump00
+
+; FM4 Data
+Sound_AA_FM4:
+	sVoice		pBump1
+	ssDetune	$07
+	dc.b nRst, $01
+
+Sound_AA_Jump00:
+	dc.b nA4, $20
+	sStop
+
+; FM3 Data
+Sound_AA_FM2:
+	sVoice		pBump2
+	dc.b nCs2, $03
+	sStop

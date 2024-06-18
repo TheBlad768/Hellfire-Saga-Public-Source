@@ -1,0 +1,11 @@
+	sHeaderInit
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$80, ctFM5, Sound_78_FM5,	$E6, $06
+
+; FM5 Data
+Sound_78_FM5:
+	sVoice		$3E
+	sModAMPS	$01, $01, $19, $02
+	dc.b nE5, $2C
+	sStop

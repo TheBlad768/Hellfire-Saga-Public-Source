@@ -1,0 +1,29 @@
+SndB2_Drown_Death_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$02
+	sHeaderSFX	$80, ctFM4, SndB2_Drown_Death_FM4, $0C, $04
+	sHeaderSFX	$80, ctFM5, SndB2_Drown_Death_FM5, $0E, $02
+
+; FM5 Data
+SndB2_Drown_Death_FM5:
+	sVoice		$04
+	sModAMPS	$01, $01, $83, $0C
+
+SndB2_Drown_Death_Loop01:
+	dc.b nA0, $05, $05
+	saVol		$03
+	sLoop		$00, $0A, SndB2_Drown_Death_Loop01
+	sStop
+
+; FM4 Data
+SndB2_Drown_Death_FM4:
+	dc.b nRst, $06
+	sVoice		$04
+	sModAMPS	$01, $01, $6F, $0E
+
+SndB2_Drown_Death_Loop00:
+	dc.b nC1, $04, $05
+	saVol		$03
+	sLoop		$00, $0A, SndB2_Drown_Death_Loop00
+	sStop

@@ -1,0 +1,12 @@
+Sound_44_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$80, ctFM5, Sound_44_FM5, $EE, $00
+
+; FM5 Data
+Sound_44_FM5:
+	sVoice		pBubbleAttack
+	sModAMPS	$03, $01, $32, $2B
+	dc.b nB2, $20
+	sStop

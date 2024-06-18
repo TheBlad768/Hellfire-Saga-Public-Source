@@ -1,0 +1,685 @@
+<html>
+<head>
+<title>ROMulan Data Extractor/Injector</title>
+</head>
+<body>
+<b><center>ROMulan Data Extractor/Injector</center></b><br>
+<br>
+ ROMulan is a tool designed to provide a simple way to extract data from program files for manipulation by an external
+ program, and to then re-integrate the data regardless of its new size. Its primary use is to allow for the editing
+ of video game data outside of the program that uses it. After editing, the data can be re-inserted into the original
+ program even if it has grown larger than the area it used to occupy, as long as it does not increase the size of the
+ original file beyond the specified maximum file size.<br>
+<br>
+<li><a href="#General">General Usage</a><br>
+<br>
+<li><a href="#Entry">Command/Directive Entry</a><br>
+<br>
+<li><a href="#Batch">Batch Command Files</a><br>
+<ul>
+ <li><a href="#GetPath">GetPath</a> PromptString<br>
+ <li><a href="#SrcPath">SrcPath</a> PathName<br>
+ <li><a href="#DestPath">DestPath</a> PathName<br>
+ <li><a href="#MakePath">MakePath</a> PathName<br>
+ <li><a href="#GetFile">GetFile</a> PromptString<br>
+ <li><a href="#LoadFile">LoadFile</a> FileName<br>
+ <li><a href="#Extract">Extract</a> DataStart DataSize FileName (EndianSwitch)<br>
+ <li><a href="#Copy">Copy</a> SourceFileName DestFileName (EndianSwitch)<br>
+ <li><a href="#Extern">Extern</a> FileName Parameters...<br>
+ <li><a href="#WorkPath">WorkPath</a> PathName<br>
+ <li><a href="#Print">Print</a> String<br>
+ <li><a href="#Pause">Pause</a> String<br>
+ <li><a href="#RunBatch">RunBatch</a> FileName<br>
+ <li><a href="#LoadInject">LoadInject</a> FileName<br>
+ <li><a href="#AddInject">AddInject</a> FileName<br>
+ <li><a href="#RunInject">RunInject</a> InputFileName OutputFileName<br>
+</ul>
+<li><a href="#Inject">Injector Files</a><br>
+<ul>
+ <li><a href="#Define">Define</a> String Parameters...<br>
+ <li><a href="#Translate">Translate</a> StartAddr EndAddr Offset<br>
+ <li><a href="#Dispose">Dispose</a> StartAddr EndAddr<br>
+ <li><a href="#MaxSize">MaxSize</a> Size<br>
+ <li><a href="#StartSeg">StartSeg</a> (Name) (Offset (Size))  (Endianness)<br>
+ <li><a href="#EndSeg">EndSeg</a><br>
+ <li><a href="#Label">(Label:)</a><br>
+ <li><a href="#include">include</a> FileName (EndianSwitch)<br>
+ <li><a href="#BYTE">BYTE</a> Data<br>
+ <li><a href="#WORD">WORD</a> Data<br>
+ <li><a href="#DWORD">DWORD</a> Data<br>
+ <li><a href="#String">String</a> String<br>
+</ul>
+<li><a href="#License">License</a><br>
+<br>
+<li><a href="#Site">Official Site and Discussion Forum</a><br>
+<br>
+<li><a href="#Credits">Credits</a><br>
+<br>
+<br><a name="General">
+<b>General Usage</b><br>
+<ul>
+ ROMulan relies on two types of files to perform its function- the "Batch Command File", and the "Injector File".
+ These files contain data that describe the layout of
+ the files being manipulated during extraction or injection, and how to treat the data being manipulated. If "Batch" and "Injector" files
+ already exist that describe the desired program, usage is as simple as instructing ROMulan to call on those files,
+ and then following any prompts that may be presented asking for information such as the name of the source program
+ file, or a destination folder to house the extracted data. Otherwise, the user must know the layout of the target
+ program file(s) and use that information to create the files described in the sections below, which can be more easliy understood
+ by comparing these notes with currently-existing files of each type.<br>
+</ul>
+
+<br><a name="Entry">
+<b>Command/Directive Entry</b><br>
+<ul>
+ Commands for each file type are entered by name, followed by their parameters. Only one command may be entered
+ per line, but a comma may be used to start a new set of parameters for "include" and data directives on the same
+ line, and either of these directives may follow a label definition on the same line. Commands and "identifier"
+ parameters are case-sensitive.<br>
+ <br>
+ Parameters may be separated by space or tab, and the commands/directives themselves may be prefixed by as many
+ space, tab, or newline characters as desired for format purposes. Commands/directives are terminated by either
+ newline or a semicolon (";") character. Use of the semicolon character causes the rest of the line to be treated
+ as a "comment", and thus, ignored.<br>
+ <br>
+ Parameters listed as requiring "strings" must be enclosed in quotes unless otherwise noted. Special parameter
+ strings listed as "identifiers" do not need to be enclosed in quotes, except when they are used to prefix a
+ path/folder string with a special pathname.  In that case, they must be used immediately following the opening
+ quotation mark. To insert a double- or single-quotation mark into a string, it must be prefixed by the backslash
+ ("\") character to signify that it is part of the string ("\"" or "\'"). To insert a single backslash into the
+ string, enter the character twice ("\\").<br>
+ <br>
+ Parameters listed as requiring "values" may be entered in either decimal or hexadecimal form. A value listed
+ with no prefix is interpreted as a decimal value. To enter a hexadecimal value, prefix the number with the "$"
+ character (as in "$FF"). Value parameters for data directives may also be replaced by the name of a "Define"
+ to substitute the value or expression assigned to that "Define", or by the name of a "Label" or "Segment" to
+ substitute the address at which it will appear after insertion. Value parameters may also contain mathematical
+ operators ("+" "-" "*" "/" "&" "|" "^") linking values or the names of Labels, Segments, or Defines into simple
+ expressions (strictly left-to-right evaluation, no order-of-operations), but the expression must not contain spaces or tabs.<br>
+</ul>
+
+<br><a name="Batch">
+<b>Batch Command Files</b><br>
+<ul>
+ The "Batch Command File" is a text file that contains a series of commands for ROMulan to process. This file is used
+ mostly to perform data extraction or to initiate injection, but may also perform certain other functions:<br>
+ <br>
+ <li>Multiple source files can be used for extraction, and multiple injectors can be run with different target files by a single Batch file.<br>
+ <li>External programs may be called by the Batch file to manipulate the data at any time, such as after extraction and prior to editing, or after editing and prior to injection.<br>
+ <li>Subfolders for the extraction process may be created by the Batch file.<br>
+ <li>The Batch file may copy files from the source location to the destination location.<br>
+ <li>The endianness of the data can be inverted on a WORD or DWORD basis during copy or extraction.<br>
+ <li>The user can be prompted to select the files or folder locations to be used throughout the process.<br>
+ <br>
+ The following commands are available for the Batch Command File:<br>
+ <br>
+ <ul><a name="GetPath">
+  <b>GetPath</b> PromptString<br>
+  <br>
+  <ul>
+   Prompt the user to select a path/folder for an operation. The parameter "PromptString" is a string that will be
+   printed to tell the user what they are being asked for
+   <br>
+   <ul>
+    <pre>GetPath "Please select the path containing the source data files"</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="SrcPath">
+  <b>SrcPath</b> PathName<br>
+  <br>
+  <ul>
+   Set the path/folder used for source file operations. The parameter "PathName" can be a string naming the path to
+   use, or the identifier "#Got" can be used to specify the use of the last path selected by the command "GetPath".
+   This sets the path associated with the #Src identifier
+   <br>
+   <ul>
+    <pre>SrcPath "Subfolder"
+SrcPath "c:/folder/subfolder"
+SrcPath #Got</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="DestPath">
+  <b>DestPath</b> PathName<br>
+  <br>
+  <ul>
+   Set the path/folder used for destination file operations. The parameter "PathName" can be a string naming the path
+   to use, or the identifier "#Got" can be used to specify the use of the last path selected by the command "GetPath".
+   The desired folder must already exist. This sets the path associated with the #Dest identifier
+   <br>
+   <ul>
+    <pre>DestPath "Subfolder"
+DestPath "c:/folder/subfolder"
+DestPath #Got</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="MakePath">
+  <b>MakePath</b> PathName<br>
+  <br>
+  <ul>
+   Create a new path/folder. The parameter "PathName" is a string naming either a subpath relative to the destination
+   path, or the full name of a new absolute path. If the path/folder already exists, this command has no effect
+   <br>
+   <ul>
+    <pre>MakePath "SubFolder"</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="GetFile">
+  <b>GetFile</b> PromptString<br>
+  <br>
+  <ul>
+   Prompt the user to select a file for an operation. The parameter "PromptString" is a string that will be printed
+   to tell the user what they are being asked for
+   <br>
+   <ul>
+    <pre>GetFile "Please select the source data file"</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="LoadFile">
+  <b>LoadFile</b> FileName<br>
+  <br>
+  <ul>
+   Load a source file for data extraction. The parameter "FileName" can be either a string naming a file relative to
+   the source path or the full path/name of a file in a fixed location, or the identifier "#Got" can be used to specify
+   the use of the last file selected by the command "GetFile"
+   <br>
+   <ul>
+    <pre>LoadFile "RelativeFile.ext"
+LoadFile "c:/Folder/SubFolder/File.ext"
+LoadFile #Got"</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="Extract">
+  <b>Extract</b> DataStart DataSize FileName (EndianSwitch)<br>
+  <br>
+  <ul>
+   Extract a section of data from the loaded source file. The parameter "DataStart" is a decimal/hex value specifying
+   the starting location of the desired data. "DataSize" is a decimal/hex value specifying the size of the data to
+   extract. "FileName" is a string naming a file relative to the destination path, or the full path/name of a file in
+   a fixed location, in which to place the data. The optional parameter "EndianSwitch" can be either the identifier
+   "Swap16" to invert the endianness of the data on a WORD basis, or "Swap32" to invert the endianness of the data on
+   a DWORD basis. To preserve the endianness of the data, do not include this parameter
+   <br>
+   <ul>
+    <pre>Extract $1000 $10 "RelativeFile.ext" Swap16
+Extract $10 $1000 "c:/Folder/SubFolder/File.ext" Swap32
+Extract $256B $FF "SubFolder/RelativeFile.ext"</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="Copy">
+  <b>Copy</b> SourceFileName DestFileName (EndianSwitch)<br>
+  <br>
+  <ul>
+   Copy a file from one location to another. The parameter "SourceFileName" is a string naming a file relative to the
+   source path, or the full path/name of a file in a fixed location. The parameter "DestFileName" is a string naming
+   a file relative to the destination path, or the full path/name of a file in a fixed location. For either parameter,
+   the identifiers "#Got", "#Src", or "#Dest" can be inserted at the beginning of the strings to specify a different
+   parent path for a relative path/filename than the default for that parameter. The optional parameter "EndianSwitch"
+   can be either the identifier "Swap16" to invert the endianness of the file on a WORD basis, or "Swap32" to invert
+   the endianness of the file on a DWORD basis. To preserve the endianness of the file, do not include this parameter
+   <br>
+   <ul>
+    <pre>Copy "SrcFile.ext" "DestFile.ext"
+Copy "#Dest/SrcFile.ext" "#Src/DestFile.ext" Swap16
+Copy "#Got/SrcFile.ext" "DestFile.ext" Swap32</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="Extern">
+  <b>Extern</b> FileName Parameters...<br>
+  <br>
+  <ul>
+   Call an external program. The parameter "FileName" is a string naming a file relative to the path containing the
+   Batch file being run, or the path/name of a file in a fixed location. "Parameters..." are a series of strings
+   providing the command-line parameters to be used by the external program. The identifiers "#Got", "#Src", or
+   "#Dest" can be inserted at the beginning of any of the strings that represent a path/filename to insert the path
+   associated with that identifier before the rest of the string. Be aware that some external programs may not allow
+   foreward slash ("/") in path strings, so it may be necessary to use backslash, which must be represented as
+   double-backslash ("\\")
+   <br>
+   <ul>
+    <pre>Extern "SomeProgram.exe" "Param1" "Some.fil" "1234"
+Extern "compress" "#Src\\Data.bin" "#Dest\\Data.bin"</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="WorkPath">
+  <b>WorkPath</b> PathName<br>
+  <br>
+  <ul>
+   Set the "Working Path", the path in which all following "Extern" calls will take place. The parameter "PathName"
+   is a string naming either a subpath relative to the current "Working Path", or the full name of an absolute path.
+   The identifiers "#Got", "#Src", or "#Dest" can be inserted at the beginning of (or instead of) the string to
+   insert the path associated with that identifier before the rest of the string
+   <br>
+   <ul>
+    <pre>WorkPath "SubFolder"
+WorkPath "#Dest/SubFolder"
+WorkPath "#Src"</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="Print">
+  <b>Print</b> String<br>
+  <br>
+  <ul>
+   Send the string given by the parameter "String" to the message system
+   <br>
+   <ul>
+    <pre>Print "X complete, now processing Y..."</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="Pause">
+  <b>Pause</b> String<br>
+  <br>
+  <ul>
+   Send the string given by the parameter "String" to the message system and pause processing until the user presses a key
+   <br>
+   <ul>
+    <pre>Pause "Please press any key to continue"</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="RunBatch">
+  <b>RunBatch</b> FileName<br>
+  <br>
+  <ul>
+   Call another Batch file. The parameter "FileName" is a string naming a file relative to the path containing the
+   Batch file being run
+   <br>
+   <ul>
+    <pre>RunBatch "ExtLev1.txt"
+RunBatch "Injector/InjBatL2.txt"</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="LoadInject">
+  <b>LoadInject</b> FileName<br>
+  <br>
+  <ul>
+   Load an Injector file, removing any that were previously loaded. The parameter "FileName" is a string naming a
+   file relative to the path containing the Batch file being run
+   <br>
+   <ul>
+    <pre>LoadInject "Inject.txt"
+LoadInject "Injector/InjLev1.txt"</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="AddInject">
+  <b>AddInject</b> FileName<br>
+  <br>
+  <ul>
+   Load an Injector file, adding to any that were previously loaded. This is useful for keeping separate injector
+   files for different data types, or for combining injectors for different data areas created by different authors
+   at the time of injection. The parameter "FileName" is a string naming a file relative to the path containing the
+   Batch file being run
+   <br>
+   <ul>
+    <pre>AddInject "XtraStuf.txt"
+AddInject "Injector/MoreStuf.txt"</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="RunInject">
+  <b>RunInject</b> InputFileName OutputFileName<br>
+  <br>
+  <ul>
+   Run the loaded Injector file(s). The parameter "InputFileName" is a string naming the unaltered file in which
+   to inject the data. "OutputFileName" is is a string naming the file in which to save the results. The identifiers
+   "#Got", "#Src", or "#Dest" can be inserted at the beginning of the strings to insert the path associated with
+   that identifier before the rest of the string, or the identifier "#Got" may be used in substitution of a full
+   path/file name. Otherwise, if a relative path is used, it is assumed to be relative to the path containing the
+   Batch file being run
+   <br>
+   <ul>
+    <pre>RunInject "SrcFile.ext" "DestFile.ext"
+RunInject "#Src/SrcFile.ext" "#Dest/SrcFile.ext"
+RunInject #Got #Got</pre>
+   </ul>
+  </ul>
+ </ul>
+
+</ul>
+
+
+<br><a name="Inject">
+<b>Injector Files</b><br>
+<ul>
+ The "Injector File" is a text file that contains commands and directives that control the re-insertion of altered
+ data into the original file. In some cases, altered data may grow in size, and thus, cannot be placed at its
+ original location in a precompiled program file. To accommodate this, ROMulan is capable of relocating the
+ data, assuming it is provided with the proper information to do so. <br>
+ <br>
+ This file instructs ROMulan on how large the
+ file can be and what parts of the file can be overwritten by the incoming data in case of relocation, and how to
+ generate offsets and addresses when replacing references to the data with values representing its new location.
+ Data may be entered manually as decimal or hexadecimal values using data directives, or may be taken from a file
+ by using the "include" directive, but it must appear inside a "Segment". <br>
+ <br>
+ "Segments" are used to group data together,
+ and "Labels" are used as pointers to the starting location of any individual data. Segments may be given a specific
+ location at which to be inserted into the destination file, or, if a location is not specified, ROMulan will
+ attempt to place it either within an area of the file noted by the "Dispose" directive if it fits within the given
+ range, or at the end of the file if it will not expand the file beyond its given maximum size.<br>
+ <br>
+ In order for the
+ program being altered to know where relocated data can be found, all references to that data must be replaced using
+ segments containing data that references the starting location in the same format as the original references, that
+ are set to overwrite the original reference. Both Labels and Segments can be used by name when it is necessary to
+ insert values representing their location, and may be used with mathematical operators to generate offsets, or add
+ other data values to the upper portion of the address value when the program expects them to be stored as one.<br>
+ <br>
+ The
+ value generated when a Segment or Label name is used is automatically adjusted by ROMulan when "Translate"
+ directives are used to specify which address ranges are assigned address space that does not directly correspond
+ with the layout of the program/data file itself while the program is being run.<br>
+ <br>
+ The following directives are available for the Injector File:<br>
+ <br>
+ <ul><a name="Define">
+  <b>Define</b> String Parameters...<br>
+  <br>
+  <ul>
+   Instruct ROMulan to treat any occurrence of the string given by the parameter "String" as if it were replaced by
+   the listed parameters when it is used as a parameter to a data directive. The parameter "String" must not be
+   enclosed by quotes, cannot include the space or comma characters or any mathematical operators, and must begin
+   with an alphabetic character. As many parameters as necessary can follow, and they may consist of number values,
+   the names of other Defines, and mathematical operators and may be separated by spaces, but they may not use
+   Label names, commas, or the names of Defines that were not already listed earlier in the current or any
+   previously-loaded Injector file, and must not be enclosed by quotes
+   <br>
+   <ul>
+    <pre>Define ThisValue $FF
+Define ThisExpression $20 + ThisValue</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="Translate">
+  <b>Translate</b> StartAddr EndAddr Offset<br>
+  <br>
+  <ul>
+   Instruct ROMulan to treat addresses within the given range as if they were relative to the given offset. The
+   parameter "StartAddr" is a decimal/hex value representing the start of the address range that must be offset. The
+   "EndAddr" parameter is a decimal/hex value representing the end of this range. "Offset" is a decimal/hex value
+   that is added to any address within this range to create its "logical address", the address at which this data
+   appears during the running of the program
+   <br>
+   <ul>
+    <pre>Translate $000000 $080000 $880000</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="Dispose">
+  <b>Dispose</b> StartAddr EndAddr<br>
+  <br>
+  <ul>
+   Instruct ROMulan that this section of the file can be overwritten by the placement of movable Segments. This
+   directive can be used when this section of the file contains data that is being replaced by a Segment without
+   a set destination, or data that is unused by the program, so that filesize can be minimized by allowing the
+   placement of new data at a position other than the end of the file. This directive must NOT be used for data
+   that is being overwritten by Segments that are given a set destination address. The parameter "StartAddr" is
+   a decimal/hex value representing the start address of the section of the file that can be overwritten. The
+   parameter "EndAddr" is a decimal/hex value representing the ending address of this section
+   <br>
+   <ul>
+    <pre>Dispose $22E974 $22F1AC</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="MaxSize">
+  <b>MaxSize</b> Size<br>
+  <br>
+  <ul>
+   Specify the maximum size of the file, so that when there is an upper limit to the allowable size of the file,
+   injection will cease and a message will be delivered to the user when the data becomes too large to safely
+   insert into the file. The parameter "Size" is a decimal/hex value representing the maximum allowable size of
+   the destination file. It is only necessary to include this directive when the program or a system running the
+   program enforces a limit on the size of the file being manipulated
+   <br>
+   <ul>
+    <pre>MaxSize $400000</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="StartSeg">
+  <b>StartSeg</b> (Name) (Offset (Size))  (Endianness)<br>
+  <br>
+  <ul>
+   Mark the beginning of a Segment. The Segment may be given a name by the "Name" parameter, but its name may
+   not be enclosed in quotes, cannot use the space or comma characters or mathematical operators, and must
+   begin with an alphabetic character. The "Offset" parameter is a decimal/hex value representing a preset
+   location at which to place the Segment within the file. If an offset is specified, "Size" may also be used
+   to supply a maximum size for the Segment to ensure that the new data does not overflow the target region.
+   "Size" may only be specified for segments that are given an explicit offset; the first number value given
+   as a parameter will be interpreted as "Offset". The "Endianness" parameter may be used to specify the
+   byte-order to use when storing values entered by Data (not include) directives by using the identifier
+   "Big_Endian", or "Little_Endian". All parameters to this directive are optional. By default, the Segment
+   has no name, no set offset (it will be placed automatically), and will use Big-Endian storage
+   <br>
+   <ul>
+    <pre>StartSeg ThisSeg $1000 $200 Big_Endian
+StartSeg $2345 Little_Endian
+StartSeg ThisSeg
+StartSeg Little_Endian
+StartSeg $2345
+StartSeg ThisSeg $2345
+StartSeg ThisSeg Little_Endian
+StartSeg</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="EndSeg">
+  <b>EndSeg</b><br>
+  <br>
+  <ul>
+   Mark the end of the segment defined by the last "StartSeg" directive
+   <br>
+   <ul>
+    <pre>EndSeg</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="Label">
+  (<b>Label:</b>)<br>
+  <br>
+  <ul>
+   Labels are used to obtain the address of data they preceed. Labels are created by entering the name of the
+   label, followed by a colon (":"). The colon must immediately follow the label name, and the name must not
+   be enclosed in quotes, cannot use the space or comma characters or mathematical operators, and must begin
+   with an alphabetic character. Data or include directives may follow a label definition on the same line,
+   but the label definition itself must be placed at the start of its own line
+   <br>
+   <ul>
+    <pre>LabelName:
+LabelName: BYTE $FF
+LabelName: include "File.ext"</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="include">
+  <b>include</b> FileName (EndianSwitch)<br>
+  <br>
+  <ul>
+   Insert the data contained in the given file into the current Segment. The parameter "FileName" is a string
+   naming a file relative to the path containing the injector file, or the full path/name of a file in a fixed
+   location, from which to read the data. The optional parameter "EndianSwitch" can be either the identifier
+   "Swap16" to invert the endianness of the data on a WORD basis, or "Swap32" to invert the endianness of the
+   data on a DWORD basis. To preserve the endianness of the data, do not include this parameter
+   <br>
+   <ul>
+    <pre>include "RelativeFile.ext"
+include "SubFolder/RelativeFile.ext" Swap16
+include "C:/Folder/SubFolder/File.ext" Swap32</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="BYTE">
+  <b>BYTE</b> Data<br>
+  <br>
+  <ul>
+   Insert the given data into the current Segment as a one-BYTE value. The parameter "Data" may be a
+   decimal/hex value, a Label or Segment name, or more than one value of one or both types linked by
+   mathematical operators in a simple expression
+   <br>
+   <ul>
+    <pre>BYTE $FF
+BYTE $10, $AB, $FF
+BYTE $10+DefineName
+BYTE LabelName2-LabelName1
+BYTE LabelName
+BYTE LabelName+DefineName</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="WORD">
+  <b>WORD</b> Data<br>
+  <br>
+  <ul>
+   Insert the given data into the current Segment as a two-BYTE value. The parameter "Data" may be a
+   decimal/hex value, a Label or Segment name, or more than one value of one or both types linked by
+   mathematical operators in a simple expression. The value, or the result of the expression will be
+   stored according to the endianness of the current Segment
+   <br>
+   <ul>
+    <pre>WORD $FFFF
+WORD $10, $23, $FFFF
+WORD $10+DefineName
+WORD LabelName2-LabelName1
+WORD LabelName
+WORD LabelName+DefineName</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="DWORD">
+  <b>DWORD</b> Data<br>
+  <br>
+  <ul>
+   Insert the given data into the current Segment as a four-BYTE value. The parameter "Data" may be a
+   decimal/hex value, a Label or Segment name, or more than one value of one or both types linked by
+   mathematical operators in a simple expression. The value, or the result of the expression will be
+   stored according to the endianness of the current Segment
+   <br>
+   <ul>
+    <pre>DWORD $FFFFFFFF
+DWORD $10, $ABCD, $FFFFFFFF
+DWORD $10+DefineName
+DWORD LabelName2-LabelName1
+DWORD LabelName
+DWORD LabelName+DefineName</pre>
+   </ul>
+  </ul>
+ </ul>
+
+ <br>
+ <ul><a name="String">
+  <b>String</b> String<br>
+  <br>
+  <ul>
+   Insert the text string given by the parameter "String" into the current Segment
+   <br>
+   <ul>
+    <pre>String "Replacment Text"</pre>
+   </ul>
+  </ul>
+ </ul>
+</ul>
+
+<a name="License">
+<b>License</b><br>
+<ul>ROMulan is intended for
+use as a creative tool, not full-scale copyright infringement. Use of
+ROMulan in violation of any law is strictly a decision on the part of the
+end-user. The user agrees to take sole responsibility for such actions,
+and as such, implies that they are aware of applicable laws and penalties.<br>
+<br>
+License to use and distribute this utility freely is granted only under the following conditions:<br>
+<br>
+<ul><li>Any material whose creation is due in any way at all to ROMulan may not be exchanged for profit, regardless of the content of the material or the authors' legal status in relation to any existing intellectual property. In order to use ROMulan for any profitable and/or commercial purpose, special license must be obtained from ROMulan author Stealth.<br>
+<li>Any projects making use of ROMulan should in some way credit the utility and/or Stealth. It is preferable, at minimum, that this reference be made in addition to any other existing credits listing under a heading such as "Utilities".<br>
+<li>Any redistribution must be made freely, requiring no form of compensation whatsoever, and may not be included as part of any sort of package. <br>
+<li>Any redistribution must not be modified; ROMulan may only be redistributed as it was originally packaged. The archive, its file contents, and the files themselves must not be modified in any way, and may not be accompanied by any material that was not a part of the original distribution.<br></ul>
+<br>
+Special permission is granted to host or otherwise reproduce this documentation in viewable form on any site that hosts redistributions of ROMulan, so long as none of its contents are modified, omitted, or ammended.<br>
+</ul>
+
+<br>
+<a name="Site">
+<b>Official Site and Discussion Forum</b><br>
+<ul>
+ROMulan program and script updates will be noted on the Organized Chaos homesite:<br>
+<ul><a href="http://stealth.hapisan.com">http://stealth.hapisan.com</a></ul>
+<br>
+The following is the official ROMulan homesite:<br>
+<ul><a href="http://stealth.hapisan.com/ROMulan">http://stealth.hapisan.com/ROMulan</a></ul>
+<br>
+Visit the official forum for bug reports, usage and support discussion, and discussion of projects created using ROMulan:<br>
+<ul><a href="http://stealth.hapisan.com/Forum">http://stealth.hapisan.com/Forum</a></ul>
+</ul>
+
+<br>
+<a name="Credits">
+<b>Credits</b><br>
+<ul>
+ROMulan is created by Stealth (mstealtha@aol.com) of Organized Chaos. Please make note in any project
+for which ROMulan is used.<br>
+</ul>
+
+</body>
+</html>

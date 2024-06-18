@@ -1,0 +1,19 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Sonic CD for PC (DirectX Version) TCMP33C.CM_ Injector File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg Little_Endian $8
+
+	WORD	(TilesEnd-TilesStart)/$20
+EndSeg
+
+StartSeg Little_Endian $0A8C
+
+	TilesStart:
+		include "R3/8U/3C.bin"
+	TilesEnd:
+
+EndSeg
+

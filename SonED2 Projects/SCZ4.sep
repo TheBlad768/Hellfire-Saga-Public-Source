@@ -1,0 +1,64 @@
+Type: Level
+
+Zone ID:    0
+Act ID:     0
+
+Object Def: objdef\s3obj
+Object Palette: objdef\s3obj1.pcx
+
+8x8 Compression:       5
+Num 8x8 Pages:         1
+8x8 Tiles Page 0:      ..\Levels\SCZ\Tiles\4.bin
+
+16x16 Compression:     0
+Num 16x16 Pages:       1
+Page0 8x8 Page:        0
+16x16 Tiles Page 0:    ..\Levels\SCZ\Blocks\4.bin
+
+Metatile Size:         128
+Metatile Compression:  1
+Num Metatile Pages:    1
+Page0 16x16 Page:      0
+Metatile Tiles Page 0: ..\Levels\SCZ\Chunks\4.bin
+
+Layout Format:         2
+Layout Compression:    0
+BG 128x128 Page:      0
+Level Layout:       ..\Levels\SCZ\Layout\4.bin
+
+Objects Format:        4
+Objects:               ..\Levels\SCZ\Object Pos\4.bin
+Rings Format:          2
+Objects:              ..\Levels\SCZ\Ring Pos\4.bin
+Misc Format:           0
+Num Start Positions:   1
+Start Position 0:      ..\Levels\SCZ\Start Location\4.bin
+
+Palettes-
+
+ Number of files: 2
+
+  Palette 0-
+
+   Start index:        0
+   Number of entries: 16
+   File:              ..\Objects\Sonic\Palettes\Sonic.bin
+
+  Palette 1-
+
+   Start index:       16
+   Number of entries: 48
+   File:              ..\Levels\SCZ\Palettes\Sin City Zone.bin
+
+Collision Map Format:    0
+Collision Array:         ..\Misc Data\Height Maps.bin
+Rotated Collision Array: ..\Misc Data\Height Maps Rotated.bin
+Angle Array:             ..\Misc Data\Angle Map.bin
+
+Collision Index Format:      3
+Collision Index Compression: 0
+Collision Index:             ..\Levels\SCZ\Collision\4.bin
+
+Game Name: Sonic 3
+
+-EOF-

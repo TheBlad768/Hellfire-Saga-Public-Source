@@ -1,0 +1,147 @@
+Sound_194_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$80, ctFM5, Sound_194_FM5, $00, $00
+
+; FM5 Data
+Sound_194_FM5:
+	sVoice		pExplosion3
+	saVol		$34
+	sPan		spCenter, $00
+	sVoice		pExplosion4
+	saVol		$D0
+	dc.b nA2, $06, nRst, $01
+	saVol		$05
+	dc.b nA2, nRst
+	sVoice		pExplosion5
+	saVol		$F9
+	dc.b nD5, nRst, nB4, nRst
+	saVol		$04
+	dc.b nBb4, nRst
+	sVoice		pExplosion6
+	saVol		$FB
+	dc.b nA2, $04, nRst, $01
+	saVol		$02
+	dc.b nAb2, nRst, $02
+	sVoice		pExplosion4
+	saVol		$FF
+	dc.b nEb2, nRst, $01
+	sVoice		pExplosion7
+	saVol		$02
+	dc.b nD1, $04, sHold
+	ssDetune	$FA
+	dc.b nEb1, $01, sHold
+	ssDetune	$09
+	dc.b nCs1, sHold
+	ssDetune	$F0
+	dc.b nEb1, sHold
+	ssDetune	$12
+	dc.b nCs1, sHold, nD1, sHold
+	ssDetune	$F4
+	dc.b $01, nRst, $04
+	ssDetune	$00
+	dc.b nD1, sHold
+	ssDetune	$05
+	dc.b $01, sHold
+	ssDetune	$F6
+	dc.b $01, sHold
+	ssDetune	$0F
+	dc.b $01, sHold
+	ssDetune	$ED
+	dc.b $01, sHold, nEb1, sHold
+	ssDetune	$0B
+	dc.b nCs1, nRst, $03
+	ssDetune	$00
+	dc.b nEb1, $04, sHold, nE1, $01, sHold
+	ssDetune	$0A
+	dc.b nD1, sHold
+	ssDetune	$F6
+	dc.b nE1, nRst, $02
+	ssDetune	$00
+	dc.b nD3, $04, sHold
+	ssDetune	$05
+	dc.b $01, sHold
+	ssDetune	$F6
+	dc.b $01, nRst, $02
+	ssDetune	$00
+	dc.b nFs1, $04, sHold
+	ssDetune	$F9
+	dc.b nG1, $01, sHold
+	ssDetune	$06
+	dc.b nF1, sHold
+	ssDetune	$EC
+	dc.b nG1, sHold
+	ssDetune	$12
+	dc.b nF1, sHold
+	ssDetune	$16
+	dc.b nFs1, sHold
+	ssDetune	$F0
+	dc.b $01, sHold
+	ssDetune	$09
+	dc.b $01, sHold
+	ssDetune	$FC
+	dc.b $02, sHold
+	ssDetune	$09
+	dc.b $01, sHold
+	ssDetune	$F0
+	dc.b $01, sHold
+	ssDetune	$16
+	dc.b $01, sHold
+	ssDetune	$12
+	dc.b nF1, sHold
+	ssDetune	$EC
+	dc.b nG1, sHold
+	ssDetune	$06
+	dc.b nF1, sHold
+	ssDetune	$F9
+	dc.b nG1, sHold
+	ssDetune	$00
+	dc.b nF1, sHold
+	ssDetune	$F3
+	dc.b nG1, sHold
+	ssDetune	$0C
+	dc.b nF1, sHold
+	ssDetune	$E6
+	dc.b nG1, sHold
+	ssDetune	$EA
+	dc.b nFs1, sHold
+	ssDetune	$0F
+	dc.b $01, sHold
+	ssDetune	$F6
+	dc.b $01, nRst, $08
+	sVoice		pExplosion4
+	saVol		$01
+	dc.b sHold, $02
+	ssDetune	$00
+	dc.b nCs2, $01, nRst, nEb2, nRst, nCs2, $02, nRst, $01, nEb2, nRst, nCs2
+	dc.b nRst, $02, nEb2, $01, nRst, nCs2, nRst, $02, nEb2, nRst, $01
+
+Sound_194_Loop01:
+	dc.b nCs2, nRst, $03, nEb2, $02, nRst, $01, nCs2, $02, nRst, nEb2, nRst
+
+Sound_194_Loop00:
+	dc.b nCs2, $01, nRst, $02, nEb2, $03, nRst, $01
+	sLoop		$00, $02, Sound_194_Loop00
+	sLoop		$01, $02, Sound_194_Loop01
+	dc.b nCs2, nRst, $03, nEb2, $02, nRst, $01, nCs2, $02, nRst, nEb2, nRst
+	dc.b nCs2, $01, nRst, $03, nEb2, $02, nRst, $01, nCs2, nRst, $02
+	sVoice		pExplosion8
+	dc.b sHold, $01
+	sVoice		pExplosion7
+	saVol		$02
+	dc.b nD1, $02, nRst, nD2, $01, nRst, $03, nG1, $02
+
+Sound_194_Loop02:
+	dc.b nRst, $01
+	saVol		$09
+	dc.b nD2, $02, nRst, $03, nG1, $01
+	sLoop		$00, $02, Sound_194_Loop02
+	dc.b nRst
+	saVol		$09
+	dc.b nD2, $03, nRst, $02, nG1, $01, nRst, $02
+	saVol		$09
+	dc.b nD2, nRst, nG1, nRst, $01
+	saVol		$09
+	dc.b nD2, $02, nRst, $03, nG1, $01, nRst
+	sStop

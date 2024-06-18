@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Namespace="SonED2.Zone6" TypeName="SpinningcupelevatorLBZ" Language="cs" Name="Spinning cup elevator - LBZ" Image="Image1" RememberState="false" Debug="false" xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromBitmap id="Image1" filename="Sprites/s3objsprite2-0.png" />
+  </Images>
+  <Properties>
+    <BitsProperty name="Property1" type="Enum1" startbit="0" length="4" />
+    <BitsProperty name="Property2" type="Enum2" startbit="4" length="2" />
+    <BitsProperty name="Property3" type="Enum3" startbit="6" length="1" />
+    <BitsProperty name="Property4" type="Enum4" startbit="7" length="1" />
+  </Properties>
+  <Enums>
+    <Enum name="Enum1">
+      <EnumMember name="Travel 0 pixels" />
+      <EnumMember name="Travel $60(96) pixels" />
+      <EnumMember name="Travel $C0(192) pixels" />
+      <EnumMember name="Travel $120(288) pixels" />
+      <EnumMember name="Travel $180(384) pixels" />
+      <EnumMember name="Travel $1E0(480) pixels" />
+      <EnumMember name="Travel $240(576) pixels" />
+      <EnumMember name="Travel $2A0(672) pixels" />
+      <EnumMember name="Travel $300(768) pixels" />
+      <EnumMember name="Travel $360(864) pixels" />
+      <EnumMember name="Travel $3C0(960) pixels" />
+      <EnumMember name="Travel $420(1056) pixels" />
+      <EnumMember name="Travel $480(1152) pixels" />
+      <EnumMember name="Travel $4E0(1248) pixels" />
+      <EnumMember name="Travel $540(1344) pixels" />
+      <EnumMember name="Travel $5A0(1440) pixels" />
+    </Enum>
+    <Enum name="Enum2">
+      <EnumMember name="Move Upwards" />
+      <EnumMember name="Move Downwards" />
+      <EnumMember name="Move Downwards (Duplicate)" />
+      <EnumMember name="Move Downwards (Duplicate 2)" />
+    </Enum>
+    <Enum name="Enum3">
+      <EnumMember name="Always Active" />
+      <EnumMember name="Immediately Delete When Playing As Knuckles" />
+    </Enum>
+    <Enum name="Enum4">
+      <EnumMember name="Stop After Movement" />
+      <EnumMember name="Spin And Fling Player After Movement" />
+    </Enum>
+  </Enums>
+  <Display>
+    <DisplayOption>
+      <ImageRef image="Image1">
+        <Offset X="-96" Y="-16" />
+      </ImageRef>
+    </DisplayOption>
+  </Display>
+</ObjDef>

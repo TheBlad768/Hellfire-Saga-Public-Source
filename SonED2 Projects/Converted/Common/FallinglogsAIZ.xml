@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Namespace="SonED2.ZoneCommon" TypeName="FallinglogsAIZ" Language="cs" Name="Falling logs - AIZ" Image="Image1" RememberState="false" Debug="false" xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromBitmap id="Image1" filename="Sprites/s3objsprite1-5.png" />
+  </Images>
+  <Properties>
+    <BitsProperty name="Property1" type="Enum1" startbit="0" length="4" />
+  </Properties>
+  <Enums>
+    <Enum name="Enum1">
+      <EnumMember name="Wait 1 frame" />
+      <EnumMember name="Wait 3 frames" />
+      <EnumMember name="Wait 7 frames" />
+      <EnumMember name="Wait 16 frames" />
+      <EnumMember name="Wait 31 frames" />
+      <EnumMember name="Wait 63 frames" />
+      <EnumMember name="Wait 127 frames" />
+      <EnumMember name="Wait 255 frames" />
+      <EnumMember name="Wait 511 frames" />
+      <EnumMember name="Wait 1023 frames" />
+      <EnumMember name="Wait 2047 frames" />
+      <EnumMember name="Wait 4095 frames" />
+      <EnumMember name="Wait 8191 frames" />
+      <EnumMember name="Wait 16383 frames" />
+      <EnumMember name="Wait 32767 frames" />
+      <EnumMember name="Wait 65535 frames" />
+    </Enum>
+  </Enums>
+  <Display>
+    <DisplayOption>
+      <ImageRef image="Image1">
+        <Offset X="-24" Y="-8" />
+      </ImageRef>
+    </DisplayOption>
+  </Display>
+</ObjDef>

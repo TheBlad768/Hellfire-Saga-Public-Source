@@ -1,0 +1,191 @@
+Snd_Drown_Header:
+	sHeaderInit
+	sHeaderTempo	$A080
+	sHeaderCh	$05, $00
+	sHeaderDAC	Snd_Drown_DAC1
+	sHeaderDAC	Snd_Drown_DAC2,	$04
+	sHeaderFM	Snd_Drown_FM1,	$0C, $08
+	sHeaderFM	Snd_Drown_FM3,	$F4, $40		; AF: SFX now use FM2
+	sHeaderFM	Snd_Drown_FM2,	$E8, $0E
+	sHeaderFM	Snd_Drown_FM4,	$06, $11
+	sHeaderFM	Snd_Drown_FM5,	$0C, $19
+
+;	Voice $00
+;	$3C
+;	$31, $52, $50, $30, 	$52, $53, $52, $53, 	$08, $00, $08, $00
+;	$04, $00, $04, $00, 	$1F, $0F, $1F, $0F, 	$1A, $80, $16, $80
+	spAlgorithm	$04
+	spFeedback	$07
+	spDetune	$03, $05, $05, $03
+	spMultiple	$01, $00, $02, $00
+	spRateScale	$01, $01, $01, $01
+	spAttackRt	$12, $12, $13, $13
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$08, $08, $00, $00
+	spDecayRt	$04, $04, $00, $00
+	spSustainLv	$01, $01, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1A, $16, $00, $00
+
+;	Voice $01
+;	$18
+;	$37, $30, $30, $31, 	$9E, $DC, $1C, $9C, 	$0D, $06, $04, $01
+;	$08, $0A, $03, $05, 	$BF, $BF, $3F, $2F, 	$2C, $22, $14, $80
+	spAlgorithm	$00
+	spFeedback	$03
+	spDetune	$03, $03, $03, $03
+	spMultiple	$07, $00, $00, $01
+	spRateScale	$02, $00, $03, $02
+	spAttackRt	$1E, $1C, $1C, $1C
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0D, $04, $06, $01
+	spDecayRt	$08, $03, $0A, $05
+	spSustainLv	$0B, $03, $0B, $02
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$2C, $14, $22, $00
+
+;	Voice $02
+;	$2C
+;	$52, $58, $34, $34, 	$1F, $12, $1F, $12, 	$00, $0A, $00, $0A
+;	$00, $00, $00, $00, 	$0F, $1F, $0F, $1F, 	$15, $82, $14, $82
+	spAlgorithm	$04
+	spFeedback	$05
+	spDetune	$05, $03, $05, $03
+	spMultiple	$02, $04, $08, $04
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $12, $12
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $00, $0A, $0A
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$00, $00, $01, $01
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$15, $14, $02, $02
+
+;	Voice $03
+;	$07
+;	$34, $31, $54, $51, 	$14, $14, $14, $14, 	$00, $00, $00, $00
+;	$00, $00, $00, $00, 	$0F, $0F, $0F, $0F, 	$91, $91, $91, $91
+	spAlgorithm	$07
+	spFeedback	$00
+	spDetune	$03, $05, $03, $05
+	spMultiple	$04, $04, $01, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$14, $14, $14, $14
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $00, $00, $00
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$00, $00, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$11, $11, $11, $11
+
+
+; FM1 Data
+Snd_Drown_FM1:
+		ssTranspose	$0C
+		ssVol		$08
+	sVoice		$00
+	;sComm		0,$01
+	sGate		$05
+	sCall		Snd_Drown_Call01
+	ssTempo		$00AB
+	sCall		Snd_Drown_Call01
+	ssTempo		$00C0
+	sCall		Snd_Drown_Call01
+	ssTempo		$00D8
+	sCall		Snd_Drown_Call01
+	ssTempo		$00E6
+	sCall		Snd_Drown_Call01
+	dc.b nC5, $06
+	;sComm		0,$01
+	sStop
+
+; FM2 Data
+Snd_Drown_FM2:
+		ssVol		$0E
+		ssTranspose	$E8
+	sVoice		$01
+
+Snd_Drown_Loop03:
+	saVol		$FF
+	sCall		Snd_Drown_Call00
+	sLoop		$00, $0A, Snd_Drown_Loop03
+	dc.b nC5, $06
+	sStop
+
+; FM3 Data
+Snd_Drown_FM3:
+		ssVol		$3E
+		ssTranspose	$F4
+	sVoice		$02
+		sJump		Snd_Drown_Loox03
+
+Snd_Drown_Loop02:
+	saVol		$FE
+	dc.b sHold
+
+Snd_Drown_Loox03:
+	dc.b nC6, $02, sHold, nCs6, sHold, nC6, sHold, nCs6, sHold, nC6, sHold
+	dc.b nCs6, sHold, nC6, sHold, nCs6
+	sLoop		$00, $1E, Snd_Drown_Loop02
+	dc.b nC6, $06
+	sStop
+
+; FM4 Data
+Snd_Drown_FM4:
+		ssVol		$11
+		ssTranspose	$06
+	sVoice		$03
+	sGate		$05
+	dc.b nRst, $03
+
+Snd_Drown_Loop01:
+	sPan		spRight, $00
+	dc.b nC4, $06, nC5
+	sPan		spCenter, $00
+	dc.b nC4, nC5
+	sPan		spLeft, $00
+	dc.b nCs4, nCs5
+	sPan		spCenter, $00
+	dc.b nCs4, nCs5
+	sLoop		$00, $0A, Snd_Drown_Loop01
+	sStop
+
+; FM5 Data
+Snd_Drown_FM5:
+		ssVol		$19
+		ssTranspose	$0C
+	sVoice		$00
+	sGate		$05
+	dc.b nRst, $04
+
+Snd_Drown_Loop00:
+	sPan		spLeft, $00
+	dc.b nC4, $06, nC5
+	sPan		spLeft, $00
+	dc.b nC4, nC5
+	sPan		spRight, $00
+	dc.b nCs4, nCs5
+	sPan		spRight, $00
+	dc.b nCs4, nCs5
+	sLoop		$00, $0A, Snd_Drown_Loop00
+	sStop
+
+; DAC Data
+Snd_Drown_DAC2:
+	dc.b dSnare, $0C
+	sLoop		$00, $28, Snd_Drown_DAC2
+	dc.b dSnare, $06
+
+Snd_Drown_DAC1:
+	sStop
+
+Snd_Drown_Call01:
+	dc.b nC4, $06, nC5, nC4, nC5, nCs4, nCs5, nCs4, nCs5
+
+Snd_Drown_Call00:
+	dc.b nC4, $06, nC5, nC4, nC5, nCs4, nCs5, nCs4, nCs5
+	sRet

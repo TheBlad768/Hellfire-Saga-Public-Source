@@ -1,0 +1,57 @@
+{
+    "Flex": 2,
+    "name": "",
+    "node": "cf57da1b-f320-412a-83dd-da8d54132cb8",
+    "objects": [
+        {
+            "uuid": "57da1bf3-2021-4ac3-9dda-8d54132cb82f",
+            "format": "Sonic 3&K Object.js",
+            "name": "Bleeding Flesh",
+            "palettes": [
+                {
+                    "path": "..\\..\\Sonic\\Palettes\\Sonic.bin",
+                    "length": 1
+                }
+            ],
+            "art": {
+                "path": "KosinskiM Art\\Bleeding flesh.bin",
+                "compression": "Kosinski-M",
+                "offset": 0
+            },
+            "mappings": {
+                "path": "Object Data\\Map - Flesh.bin",
+                "label": ""
+            },
+            "dplcs": {
+                "enabled": false,
+                "path": "",
+                "label": ""
+            }
+        },
+        {
+            "uuid": "cf57da1b-f320-412a-83dd-da8d54132cb8",
+            "format": "Sonic 3&K Object.js",
+            "name": "Blood Drop",
+            "palettes": [
+                {
+                    "path": "..\\..\\Sonic\\Palettes\\Sonic.bin",
+                    "length": 1
+                }
+            ],
+            "art": {
+                "path": "KosinskiM Art\\Blood drop.bin",
+                "compression": "Kosinski-M",
+                "offset": 0
+            },
+            "mappings": {
+                "path": "Object Data\\Map - Flesh.bin",
+                "label": ""
+            },
+            "dplcs": {
+                "enabled": false,
+                "path": "",
+                "label": ""
+            }
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+Sound_52_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$A1, ctPSG3, Sound_52_PSG3, $00+$0C, $18
+
+; PSG3 Data
+Sound_52_PSG3:	; sound effect is same as SpikeMove except PSG3 is quieter
+	sJump		SndB6_Spikes_Move_PSG3

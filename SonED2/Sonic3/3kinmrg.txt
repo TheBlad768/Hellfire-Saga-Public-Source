@@ -1,0 +1,30 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Sonic the Hedgehog 3 & Knuckles "Lock-On" Injector File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;
+; Setup Directives ;
+;;;;;;;;;;;;;;;;;;;;
+
+MaxSize	$400000				;Maximum Genesis ROM size
+
+
+;;;;;;;;;;;;;;;;;;;;;;;
+; SRAM Header Segment ;
+;;;;;;;;;;;;;;;;;;;;;;;
+
+StartSeg $000001B0			;Proper SRAM settings in header to allow SRAM in emulators
+	include	"Misc/SRAMHead.bin"
+EndSeg
+
+
+;;;;;;;;;;;;;;;;;;;
+; Sonic 3 Segment ;
+;;;;;;;;;;;;;;;;;;;
+
+StartSeg				;"Lock-On" Sonic 3
+	include	"s3.bin"
+EndSeg

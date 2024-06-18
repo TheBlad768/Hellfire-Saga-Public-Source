@@ -1,0 +1,209 @@
+Snd_GameOver_Header:
+	sHeaderInit
+	sHeaderTempo	$00FE
+	sHeaderCh	$05, $00
+	sHeaderDAC	Snd_GameOver_DAC
+	sHeaderDAC	Snd_GameOver_DAC
+	sHeaderFM	Snd_GameOver_FM1,	$00, $00
+	sHeaderFM	Snd_GameOver_FM3,	$00, $00		; AF: SFX now use FM2
+	sHeaderFM	Snd_GameOver_FM2,	$00, $00
+	sHeaderFM	Snd_GameOver_FM5,	$00, $00
+	sHeaderFM	Snd_GameOver_FM4,	$00, $00
+;	sHeaderFM	Snd_GameOver_FM6,	$00, $00
+
+Snd_GameOver_Voices:
+;	Voice $00
+;	$38
+;	$6A, $0A, $11, $02, 	$14, $14, $0F, $0F, 	$05, $08, $02, $08
+;	$00, $00, $00, $00, 	$A6, $16, $16, $17, 	$1C, $2D, $28, $00
+	spAlgorithm	$00
+	spFeedback	$07
+	spDetune	$06, $01, $00, $00
+	spMultiple	$0A, $01, $0A, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$14, $0F, $14, $0F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$05, $02, $08, $08
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$0A, $01, $01, $01
+	spReleaseRt	$06, $06, $06, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1C, $28, $2D, $00
+
+;	Voice $01
+;	$3D
+;	$01, $02, $00, $01, 	$1F, $0E, $0E, $0E, 	$07, $1F, $1F, $1F
+;	$00, $00, $00, $00, 	$13, $06, $06, $06, 	$1D, $00, $00, $00
+	spAlgorithm	$05
+	spFeedback	$07
+	spDetune	$00, $00, $00, $00
+	spMultiple	$01, $00, $02, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $0E, $0E, $0E
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$07, $1F, $1F, $1F
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$01, $00, $00, $00
+	spReleaseRt	$03, $06, $06, $06
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1D, $00, $00, $00
+
+; DAC Data
+Snd_GameOver_DAC:
+; FM6 Data
+Snd_GameOver_FM6:
+	sStop
+
+; FM1 Data
+Snd_GameOver_FM1:
+	sVoice		$00
+	saVol		$07
+	sPan		spCenter, $00
+	dc.b nC4, $02, nRst, nC4, $03, nRst, $01
+	saVol		$02
+	dc.b nC4, $06, nRst, $03, nE4, $06, nRst, $02, nEb4, $06, nRst, $03
+	dc.b nB3, $06, nRst, $03, nD4, $11
+	sModAMPS	$00, $02, $10, $03
+	dc.b sHold, $34
+	sModOff
+	dc.b sHold, $09, sHold, nCs4, $01
+	saVol		$01
+	dc.b sHold, nC4, $02
+	saVol		$01
+	dc.b sHold, nB3, $01
+	saVol		$01
+	dc.b sHold, nBb3, $02, nRst
+	saVol		$09
+	dc.b nD4, $09, sHold, nCs4, $02
+	saVol		$01
+	dc.b sHold, nC4, $01
+	saVol		$01
+	dc.b sHold, nB3
+	saVol		$01
+	dc.b sHold, nBb3, $02, nRst, $03
+	saVol		$09
+	dc.b nD4, $08, sHold, nCs4, $02
+	saVol		$01
+	dc.b sHold, nC4, $01
+	saVol		$01
+	dc.b sHold, nB3, $02
+	saVol		$01
+	dc.b sHold, nBb3, $01, nRst, $03
+	saVol		$09
+	dc.b nD4, $09, sHold, nCs4, $01
+	saVol		$01
+	dc.b sHold, nC4
+	saVol		$01
+	dc.b sHold, nB3, $02
+	saVol		$01
+	dc.b sHold, nBb3, $01, nRst, $03
+	sStop
+
+; FM2 Data
+Snd_GameOver_FM2:
+	sVoice		$00
+	saVol		$0D
+	sPan		spCenter, $00
+	dc.b nC4, $05, nRst, $03, nC4, nRst, $01, nC4, $03, nRst, $02
+	saVol		$02
+	dc.b nC4, $06, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $04, nEb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nB3, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nD4, $4E, sHold, nCs4, $02
+	saVol		$01
+	dc.b sHold
+	ssDetune	$00
+	dc.b nC4, $01
+	saVol		$01
+	dc.b sHold
+	ssDetune	$FD
+	dc.b nB3, $02
+
+Snd_GameOver_Loop02:
+	saVol		$01
+	dc.b sHold
+	ssDetune	$FE
+	dc.b nBb3, $01, nRst, $03
+	saVol		$09
+	dc.b nD4, $09, sHold, nCs4, $01
+	saVol		$01
+	dc.b sHold
+	ssDetune	$00
+	dc.b nC4, $02
+	saVol		$01
+	dc.b sHold
+	ssDetune	$FD
+	dc.b nB3, $01
+	sLoop		$00, $02, Snd_GameOver_Loop02
+	saVol		$01
+	dc.b sHold
+	ssDetune	$FE
+	dc.b nBb3, $02, nRst, $03
+	saVol		$55
+	dc.b $08
+	sStop
+
+; FM3 Data
+Snd_GameOver_FM3:
+	sVoice		$00
+	saVol		$19
+	sPan		spLeft, $00
+	dc.b nFs6, $29
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FB
+	dc.b nF6, $7A
+	saVol		$05
+	dc.b nRst
+
+Snd_GameOver_Loop01:
+	dc.b $02
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$05
+	dc.b sHold
+	sLoop		$00, $03, Snd_GameOver_Loop01
+	dc.b nRst
+	saVol		$43
+	dc.b sHold, $06
+	sStop
+
+; FM4 Data
+Snd_GameOver_FM4:
+	sVoice		$00
+	saVol		$19
+	sPan		spRight, $00
+	dc.b nC5, $29
+	saVol		$05
+	dc.b nRst, $02
+	saVol		$FB
+	dc.b nB4, $7A
+	saVol		$05
+	dc.b nRst
+
+Snd_GameOver_Loop00:
+	dc.b $02
+	saVol		$05
+	dc.b sHold, $01
+	saVol		$05
+	dc.b sHold
+	sLoop		$00, $03, Snd_GameOver_Loop00
+	dc.b nRst
+	saVol		$43
+	dc.b sHold, $06
+	sStop
+
+; FM5 Data
+Snd_GameOver_FM5:
+	sVoice		$01
+	saVol		$14
+	sPan		spCenter, $00
+	dc.b nC3, $2B
+	saVol		$07
+	dc.b sHold, $45
+	saVol		$05
+	dc.b sHold, $3D, nRst, $08
+	sStop

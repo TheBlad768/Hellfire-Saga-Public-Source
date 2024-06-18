@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Namespace="SonED2.Zone80" TypeName="FloatingplatformAIZHCZMGZ" Language="cs" Name="Floating platform - AIZ/HCZ/MGZ" Image="Image1" RememberState="false" Debug="false" xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromBitmap id="Image1" filename="Sprites/s3objsprite3-6.png" />
+    <ImageFromBitmap id="Image2" filename="Sprites/s3objsprite4-25.png" />
+    <ImageFromBitmap id="Image3" filename="Sprites/s3objsprite4-26.png" />
+    <ImageFromBitmap id="Image4" filename="Sprites/s3objsprite4-37.png" />
+  </Images>
+  <Properties>
+    <BitsProperty name="Property1" type="Enum1" startbit="0" length="4" />
+    <BitsProperty name="Property2" type="Enum2" startbit="4" length="2" />
+  </Properties>
+  <Enums>
+    <Enum name="Enum1">
+      <EnumMember name="Stationary" />
+      <EnumMember name="Moves left and right 40 pixels" />
+      <EnumMember name="Moves left and right 80 pixels" />
+      <EnumMember name="Moves up and down 40 pixels" />
+      <EnumMember name="Moves up and down 80 pixels" />
+      <EnumMember name="Moves diagonally up 40 pixels and right 80 pixels" />
+      <EnumMember name="Moves diagonally down 40 pixels and right 80 pixels" />
+      <EnumMember name="Moves up and hits ceiling when stood on" />
+      <EnumMember name="Moves in a clockwise 10x10 pixel rectangle" />
+      <EnumMember name="Moves in a clockwise 30x30 pixel rectangle" />
+      <EnumMember name="Moves in a clockwise 50x50 pixel rectangle" />
+      <EnumMember name="Moves in a clockwise 70x70 pixel rectangle" />
+      <EnumMember name="Moves left and right 100 pixels" />
+      <EnumMember name="Invalid" />
+      <EnumMember name="Invalid2" />
+      <EnumMember name="Invalid3" />
+    </Enum>
+    <Enum name="Enum2">
+      <EnumMember name="MGZ" />
+      <EnumMember name="HCZ" />
+      <EnumMember name="AIZ" />
+      <EnumMember name="Invalid" />
+    </Enum>
+  </Enums>
+  <Display>
+    <DisplayOption>
+      <Condition property="Property1" value="Stationary" />
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="-25" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Moves left and right 40 pixels" />
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="-25" />
+      </ImageRef>
+      <ImageRef image="Image2">
+        <Offset X="79" Y="-12" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Moves left and right 80 pixels" />
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="-25" />
+      </ImageRef>
+      <ImageRef image="Image2">
+        <Offset X="143" Y="-12" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Moves up and down 40 pixels" />
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="-25" />
+      </ImageRef>
+      <ImageRef image="Image3">
+        <Offset X="-8" Y="-88" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Moves up and down 80 pixels" />
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="-25" />
+      </ImageRef>
+      <ImageRef image="Image3">
+        <Offset X="-8" Y="-152" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Moves diagonally up 40 pixels and right 80 pixels" />
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="-25" />
+      </ImageRef>
+      <ImageRef image="Image4" xflip="ReverseFlip">
+        <Offset X="143" Y="-88" />
+      </ImageRef>
+      <ImageRef image="Image4" yflip="ReverseFlip">
+        <Offset X="-32" Y="-2" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Moves diagonally down 40 pixels and right 80 pixels" />
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="-85" />
+      </ImageRef>
+      <ImageRef image="Image4" xflip="ReverseFlip" yflip="ReverseFlip">
+        <Offset X="144" Y="-2" />
+      </ImageRef>
+      <ImageRef image="Image4">
+        <Offset X="-32" Y="-85" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Moves in a clockwise 10x10 pixel rectangle" />
+      <ImageRef image="Image1">
+        <Offset X="-48" Y="-41" />
+      </ImageRef>
+      <ImageRef image="Image3">
+        <Offset X="-24" Y="-41" />
+      </ImageRef>
+      <ImageRef image="Image2">
+        <Offset X="32" Y="-28" />
+      </ImageRef>
+      <ImageRef image="Image3" xflip="ReverseFlip" yflip="ReverseFlip">
+        <Offset X="8" Y="14" />
+      </ImageRef>
+      <ImageRef image="Image2" xflip="ReverseFlip">
+        <Offset X="-48" Y="4" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Moves in a clockwise 30x30 pixel rectangle" />
+      <ImageRef image="Image1">
+        <Offset X="-80" Y="-73" />
+      </ImageRef>
+      <ImageRef image="Image3">
+        <Offset X="-56" Y="-73" />
+      </ImageRef>
+      <ImageRef image="Image2">
+        <Offset X="64" Y="-60" />
+      </ImageRef>
+      <ImageRef image="Image3" xflip="ReverseFlip" yflip="ReverseFlip">
+        <Offset X="40" Y="46" />
+      </ImageRef>
+      <ImageRef image="Image2" xflip="ReverseFlip">
+        <Offset X="-80" Y="36" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Moves in a clockwise 50x50 pixel rectangle" />
+      <ImageRef image="Image1">
+        <Offset X="-112" Y="-105" />
+      </ImageRef>
+      <ImageRef image="Image3">
+        <Offset X="-88" Y="-105" />
+      </ImageRef>
+      <ImageRef image="Image2">
+        <Offset X="96" Y="-92" />
+      </ImageRef>
+      <ImageRef image="Image3" xflip="ReverseFlip" yflip="ReverseFlip">
+        <Offset X="72" Y="78" />
+      </ImageRef>
+      <ImageRef image="Image2" xflip="ReverseFlip">
+        <Offset X="-112" Y="68" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Moves in a clockwise 70x70 pixel rectangle" />
+      <ImageRef image="Image1">
+        <Offset X="-144" Y="-137" />
+      </ImageRef>
+      <ImageRef image="Image3">
+        <Offset X="-120" Y="-137" />
+      </ImageRef>
+      <ImageRef image="Image2">
+        <Offset X="128" Y="-124" />
+      </ImageRef>
+      <ImageRef image="Image3" xflip="ReverseFlip" yflip="ReverseFlip">
+        <Offset X="104" Y="110" />
+      </ImageRef>
+      <ImageRef image="Image2" xflip="ReverseFlip">
+        <Offset X="-144" Y="100" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Moves left and right 100 pixels" />
+      <ImageRef image="Image1">
+        <Offset X="-32" Y="-25" />
+      </ImageRef>
+      <ImageRef image="Image2">
+        <Offset X="268" Y="-12" />
+      </ImageRef>
+    </DisplayOption>
+  </Display>
+</ObjDef>

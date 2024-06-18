@@ -1,0 +1,11 @@
+Sound_BlueShield_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$80, ctFM5, Sound_BlueShield_FM5,	$0C, $00
+
+; FM5 Data
+Sound_BlueShield_FM5:
+	sVoice		$3C
+	dc.b nBb2, $05, sHold, nB2, $26
+	sStop

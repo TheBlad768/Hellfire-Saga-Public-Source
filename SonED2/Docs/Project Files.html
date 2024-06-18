@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>SonED2 Project Files</title>
+</head>
+<body>
+<b><center>SonED2 Project Files</center></b><br>
+<br>
+"Project Files" are the files that must be selected by the user to begin
+editing. These files list the filenames of the data files required for
+any editing project and any relevant settings values. The files use the
+extension ".sep" to identify them as "SonED Project Files", but they are
+plain text files that can be opened in any text editor.<br>
+<br>
+<li><a href="#Formatting"><b>Formatting</b></a><br>
+<li><a href="#Type"><b>Project Type</b></a><br>
+<li><a href="#New"><b>Creating New Data</b></a><br>
+<li><a href="#Compression"><b>Data Compression Types</b></a><br>
+<br>
+<br><a name="Formatting">
+<b>Formatting</b><br>
+<ul>
+The basic formatting for "Project File" data is as follows:<br>
+<ul>
+<pre>Description: Data</pre>
+</ul>
+"Description" may be any text that specifies the data type required on each line.
+It is completely ignored by the program and may say anything. The
+colon (:) marks the beginning of the data for each line. Data is only
+read between a colon and a newline, so anything on the following lines
+is regarded as a description/comment and is ignored until another colon is
+found.<br>
+<br>
+It is suggested that the following line appear at the bottom of every
+"Project File":<br>
+<ul>
+<pre>-EOF-</pre></ul>
+Adding this line to the bottom of the file ensures that the last data
+line contains a newline character. If the final data line does not
+include a newline, the project interpreter may crash. Newline must
+be present because it marks the end of the dataline.<br>
+</ul>
+<br><a name="Type">
+<b>Project Type</b><br>
+<ul>
+The first entry in any "Project File" is always the project type specifier.
+Valid type specifiers are:<br>
+<br><ul>
+<li><b><a href="Project Types/Level.html">Level</a></b> - Standard gameplay level<br>
+<li><b><a href="Project Types/S1SS.html">S1SS</a></b> - Sonic 1 Rotating Special Stage<br>
+</ul><br>
+Different project types require different data, so the exact format of the
+"Project File" is dependent on the type specifier. If
+the proper format is not used, either the data will load improperly, or
+SonED2 may crash.<br>
+</ul>
+<br><a name="New">
+<b>Creating New Data</b><br>
+<ul>
+If any data file referenced by the "Project File" does not exist, the corresponding
+data will be blanked out upon "load", and the file will be created with the data
+created in SonED upon project save. If a path is given with the filename, the
+path <b>must</b> already exist.<br>
+</ul>
+<br><a name="Compression">
+<b>Data Compression Types</b><br>
+<ul>
+Many types of data can use some form of compression, and the Project Files will require that the compression
+type be specified. The following are the valid compression type values:<br>
+<ul><br>
+<table>
+<tr><td><b>0</b></td><td> - </td><td>No Compression</td></tr>
+<tr><td><b>1</b></td><td> - </td><td>"Kosinski"</td></tr>
+<tr><td><b>2</b></td><td> - </td><td>"Enigma"</td></tr>
+<tr><td><b>3</b></td><td> - </td><td>"Nemesis"</td></tr>
+<tr><td><b>4</b></td><td> - </td><td>"Saxman"</td></tr>
+<tr><td><b>5</b></td><td> - </td><td>Moduled "Kosinski"</td></tr>
+</table>
+</ul>
+</body>
+</html>

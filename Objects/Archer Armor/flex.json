@@ -1,0 +1,41 @@
+{
+    "Flex": 2,
+    "name": "archer armor",
+    "node": "f25bf9d6-3221-452f-876e-1dfabd9d43e2",
+    "objects": [
+        {
+            "name": "archer",
+            "palettes": [
+                {
+                    "path": "..\\Sonic\\Palettes\\SonicMGZ2.bin",
+                    "length": 1
+                },
+                {
+                    "path": "..\\..\\Levels\\GMZ\\Palettes\\Glance of Malice Zone Act 2.bin",
+                    "length": 3
+                }
+            ],
+            "art": {
+                "path": "Kosinski-M Art\\archerarmor.unc",
+                "compression": "Uncompressed",
+                "accessor": "",
+                "offset": 0
+            },
+            "mappings": {
+                "path": "Object data\\Map - Archer Armor.asm",
+                "format": "Sonic 3&K",
+                "customDefinition": "",
+                "label": "SME_7Vgsz"
+            },
+            "dplcs": {
+                "enabled": true,
+                "path": "Object data\\DPLC - Archer Armor.asm",
+                "format": "Sonic 2/3&K",
+                "customDefinition": "",
+                "label": "DATA8U0EW6T7IV6"
+            },
+            "uuid": "f25bf9d6-3221-452f-876e-1dfabd9d43e2",
+            "format": "Sonic 3&K Object.js"
+        }
+    ]
+}

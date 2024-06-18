@@ -1,0 +1,64 @@
+Type: Level
+
+Zone ID:    7
+Act ID:     0
+
+Object Def: ..\objdef\kcobj
+Object Palette: ..\objdef\kcobj1.pcx
+
+8x8 Compression:      3
+Num 8x8 Pages:        2
+8x8 Tiles Page 0:     ..\..\Levels\Entrance\8x8\0_01MN.bin
+8x8 Tiles Page 1:     ..\..\Levels\Entrance\8x8\1_01MN.bin
+
+16x16 Compression:    2
+Num 16x16 Pages:      2
+Page0 8x8 Page:       0
+16x16 Tiles Page 0:   ..\..\Levels\Entrance\16x16\0_01MN.bin
+Page1 8x8 Page:       1
+16x16 Tiles Page 1:   ..\..\Levels\Entrance\16x16\1_01MN.bin
+
+Metatile Size:        128
+128x128 Compression:  2
+Num 128x128 Pages:    2
+Page0 16x16 Page:     0
+128x128 Tiles Page 0: ..\..\Levels\Entrance\128x128\0_01MN.bin
+Page1 16x16 Page:     1
+128x128 Tiles Page 1: ..\..\Levels\Entrance\128x128\1_01MN.bin
+
+Layout Format:        3
+Layout Compression:   2
+FG Size:          ..\..\Levels\Entrance\FG\Size01MN.bin
+FG Level Layout:  ..\..\Levels\Entrance\FG\01MN.bin
+BG 128x128 Page:  1
+BG Size:          ..\..\Levels\Entrance\BG\Size01MN.bin
+BG Level Layout:  ..\..\Levels\Entrance\BG\01MN.bin
+
+Objects Format:       5
+Objects:          ..\..\Levels\Entrance\Sprites\0MN.bin
+Rings Format:         0
+Misc Format:          0
+Num Start Positions:  0
+
+Palettes-
+
+ Number of files: 1
+
+  Palette 1-
+
+   Start index:       0
+   Number of entries: 64
+   File:              ..\..\Levels\Entrance\Pal\15D.bin
+
+Collision Map Format:    1
+Collision Array:         ..\..\Collisn\HMaps.bin
+Rotated Collision Array: ..\..\Collisn\HMapsR.bin
+Angle Array:             ..\..\Collisn\Angles.bin
+
+Collision Index Format:      4
+Collision Index Compression: 0
+Collision Index:             ..\..\Levels\Entrance\Collisn\01.bin
+
+Game Name: Chaotix
+
+-EOF-

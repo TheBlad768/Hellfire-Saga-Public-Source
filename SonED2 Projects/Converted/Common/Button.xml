@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Namespace="SonED2.ZoneCommon" TypeName="Button" Language="cs" Name="Button" Image="Image1" RememberState="false" Debug="false" xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromBitmap id="Image1" filename="Sprites/s3objsprite4-23.png" />
+  </Images>
+  <Properties>
+    <BitsProperty name="Property1" type="Enum1" startbit="0" length="4" />
+  </Properties>
+  <Enums>
+    <Enum name="Enum1">
+      <EnumMember name="Switch 0" />
+      <EnumMember name="Switch 1" />
+      <EnumMember name="Switch 2" />
+      <EnumMember name="Switch 3" />
+      <EnumMember name="Switch 4" />
+      <EnumMember name="Switch 5" />
+      <EnumMember name="Switch 6" />
+      <EnumMember name="Switch 7" />
+      <EnumMember name="Switch 8" />
+      <EnumMember name="Switch 9" />
+      <EnumMember name="Switch A" />
+      <EnumMember name="Switch B" />
+      <EnumMember name="Switch C" />
+      <EnumMember name="Switch D" />
+      <EnumMember name="Switch E" />
+      <EnumMember name="Switch F" />
+    </Enum>
+  </Enums>
+  <Display>
+    <DisplayOption>
+      <ImageRef image="Image1">
+        <Offset X="-16" Y="-10" />
+      </ImageRef>
+    </DisplayOption>
+  </Display>
+</ObjDef>

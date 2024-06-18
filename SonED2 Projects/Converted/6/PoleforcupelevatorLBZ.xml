@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Namespace="SonED2.Zone6" TypeName="PoleforcupelevatorLBZ" Language="cs" Name="Pole for cup elevator - LBZ" Image="Image1" RememberState="false" Debug="false" xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromBitmap id="Image1" filename="Sprites/s3objsprite2-1.png" />
+  </Images>
+  <Properties>
+    <BitsProperty name="Property1" type="Enum1" startbit="0" length="1" />
+    <BitsProperty name="Property2" type="Enum2" startbit="6" length="1" />
+  </Properties>
+  <Enums>
+    <Enum name="Enum1">
+      <EnumMember name="Small Pole Sprite" />
+      <EnumMember name="Large Pole Sprite" />
+    </Enum>
+    <Enum name="Enum2">
+      <EnumMember name="Always Active" />
+      <EnumMember name="Immediately Delete When Playing As Knuckles" />
+    </Enum>
+  </Enums>
+  <Display>
+    <DisplayOption>
+      <Condition property="Property1" value="Small Pole Sprite" />
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-48" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-32" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="32" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Large Pole Sprite" />
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-96" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-80" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-48" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-32" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="-16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="16" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="32" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="48" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="64" />
+      </ImageRef>
+      <ImageRef image="Image1">
+        <Offset X="-8" Y="80" />
+      </ImageRef>
+    </DisplayOption>
+  </Display>
+</ObjDef>

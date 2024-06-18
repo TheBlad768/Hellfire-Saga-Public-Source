@@ -1,0 +1,4968 @@
+Snd_Options_Header:
+	sHeaderInit
+	sHeaderTempo	$00FE
+	sHeaderCh	$06, $03
+
+	sHeaderDAC	Snd_Options_DAC
+	sHeaderDAC	Snd_Options_DAC
+	sHeaderFM	Snd_Options_FM1,	$00, $FB
+	sHeaderFM	Snd_Options_FM3,	$00, $FB		; AF: SFX now use FM2
+	sHeaderFM	Snd_Options_FM2,	$00, $FB
+	sHeaderFM	Snd_Options_FM4,	$00, $FB
+	sHeaderFM	Snd_Options_FM5,	$00, $FB
+	sHeaderFM	Snd_Options_FM6,	$00, $FB
+	sHeaderPSG	Snd_Options_PSG1,	$00+$0C, $00, $00, vNone
+	sHeaderPSG	Snd_Options_PSG2,	$00+$0C, $00, $00, vNone
+	sHeaderPSG	Snd_Options_PSG3,	$00+$0C, $00, $00, vNone
+
+Snd_Options_Voices:
+;	Voice $00
+;	$3E
+;	$57, $02, $51, $30, 	$17, $1F, $1F, $1F, 	$0D, $02, $01, $01
+;	$00, $01, $01, $01, 	$65, $17, $17, $17, 	$1C, $0A, $00, $00
+	spAlgorithm	$06
+	spFeedback	$07
+	spDetune	$05, $05, $00, $03
+	spMultiple	$07, $01, $02, $00
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$17, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0D, $01, $02, $01
+	spDecayRt	$00, $01, $01, $01
+	spSustainLv	$06, $01, $01, $01
+	spReleaseRt	$05, $07, $07, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1C, $00, $0A, $00
+
+;	Voice $01
+;	$23
+;	$30, $30, $51, $51, 	$17, $17, $17, $17, 	$07, $03, $03, $07
+;	$04, $04, $02, $00, 	$17, $17, $17, $17, 	$18, $18, $18, $00
+	spAlgorithm	$03
+	spFeedback	$04
+	spDetune	$03, $05, $03, $05
+	spMultiple	$00, $01, $00, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$17, $17, $17, $17
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$07, $03, $03, $07
+	spDecayRt	$04, $02, $04, $00
+	spSustainLv	$01, $01, $01, $01
+	spReleaseRt	$07, $07, $07, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$18, $18, $18, $00
+
+;	Voice $02
+;	$24
+;	$38, $58, $56, $36, 	$0B, $0F, $0B, $0F, 	$07, $0B, $07, $07
+;	$08, $00, $08, $00, 	$87, $17, $87, $17, 	$20, $00, $20, $00
+	spAlgorithm	$04
+	spFeedback	$04
+	spDetune	$03, $05, $05, $03
+	spMultiple	$08, $06, $08, $06
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$0B, $0B, $0F, $0F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$07, $07, $0B, $07
+	spDecayRt	$08, $08, $00, $00
+	spSustainLv	$08, $08, $01, $01
+	spReleaseRt	$07, $07, $07, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$20, $20, $00, $00
+
+;	Voice $03
+;	$3A
+;	$32, $02, $02, $02, 	$13, $0F, $0F, $17, 	$06, $0B, $17, $0B
+;	$00, $00, $00, $00, 	$17, $17, $17, $07, 	$1A, $20, $1E, $00
+	spAlgorithm	$02
+	spFeedback	$07
+	spDetune	$03, $00, $00, $00
+	spMultiple	$02, $02, $02, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$13, $0F, $0F, $17
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$06, $17, $0B, $0B
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$01, $01, $01, $00
+	spReleaseRt	$07, $07, $07, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1A, $1E, $20, $00
+
+;	Voice $04
+;	$24
+;	$38, $58, $56, $36, 	$0B, $0F, $0B, $0F, 	$07, $0B, $07, $07
+;	$08, $00, $08, $00, 	$17, $17, $17, $07, 	$20, $00, $20, $00
+	spAlgorithm	$04
+	spFeedback	$04
+	spDetune	$03, $05, $05, $03
+	spMultiple	$08, $06, $08, $06
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$0B, $0B, $0F, $0F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$07, $07, $0B, $07
+	spDecayRt	$08, $08, $00, $00
+	spSustainLv	$01, $01, $01, $00
+	spReleaseRt	$07, $07, $07, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$20, $20, $00, $00
+
+; FM1 Data
+Snd_Options_FM1:
+	sVoice		$00
+	saVol		$1E
+	sPan		spLeft, $00
+	dc.b nD4, $04, nRst, $02, nA4, $05, nRst, $03, nE4, $05, nRst, $02
+	dc.b nA4, $05, nRst, $03, nF4, $05, nRst, $02, nA4, $05, nRst, $03
+	dc.b nG4, $05, nRst, $02, nA4, $05, nRst, $03, nF4, $05, nRst, $02
+	dc.b nA4, $05, nRst, $03, nE4, $05, nRst, $02, nA4, $05, nRst, $03
+	dc.b nD4, $05, nRst, $02, nA4, $05, nRst, $03, nE4, $04, nRst, $03
+	dc.b nA4, $05, nRst, $03, nF4, $04, nRst, $03, nA4, $05, nRst, $02
+	dc.b nG4, $05, nRst, $03, nA4, $05, nRst, $02, nF4, $05, nRst, $03
+	dc.b nA4, $05, nRst, $02, nE4, $05, nRst, $03, nA4, $05, nRst, $02
+	dc.b nC4, $05, nRst, $03, nG4, $05, nRst, $02, nD4, $05, nRst, $03
+	dc.b nG4, $05, nRst, $02, nEb4, $05, nRst, $03, nG4, $05, nRst, $02
+	dc.b nF4, $05, nRst, $03, nG4, $05, nRst, $02, nEb4, $05, nRst, $03
+	dc.b nG4, $05, nRst, $02, nD4, $05, nRst, $03, nG4, $04, nRst, $03
+	dc.b nC4, $05, nRst, $03, nG4, $04, nRst, $03, nD4, $05, nRst, $02
+	dc.b nG4, $05, nRst, $03, nEb4, $05, nRst, $02, nG4, $05, nRst, $03
+	dc.b nF4, $05, nRst, $02, nG4, $05, nRst, $03, nEb4, $05
+
+Snd_Options_Loop16:
+	dc.b nRst, $02, nG4, $05, nRst, $03, nD4, $05
+	sLoop		$00, $02, Snd_Options_Loop16
+	dc.b nRst, $02, nA4, $05, nRst, $03, nE4, $05, nRst, $02, nA4, $05
+	dc.b nRst, $03, nF4, $05, nRst, $02, nA4, $05, nRst, $03, nG4, $04
+	dc.b nRst, $03, nA4, $05, nRst, $03, nF4, $04, nRst, $03, nA4, $05
+	dc.b nRst, $02, nE4, $05, nRst, $03, nA4, $05, nRst, $02, nD4, $05
+	dc.b nRst, $03, nA4, $05, nRst, $02, nE4, $05, nRst, $03, nA4, $05
+	dc.b nRst, $02, nF4, $05, nRst, $03, nA4, $05, nRst, $02, nG4, $05
+	dc.b nRst, $03, nA4, $05, nRst, $02, nF4, $05, nRst, $03, nA4, $05
+	dc.b nRst, $02, nE4, $05, nRst, $03, nA4, $05, nRst, $02, nC4, $05
+	dc.b nRst, $03, nG4, $05, nRst, $02, nD4, $05, nRst, $03, nG4, $04
+	dc.b nRst, $03, nEb4, $05, nRst, $03, nG4, $04, nRst, $03, nF4, $05
+	dc.b nRst, $02, nG4, $05, nRst, $03, nEb4, $05, nRst, $02, nG4, $05
+	dc.b nRst, $03, nD4, $05, nRst, $02, nG4, $05, nRst, $03, nC4, $05
+	dc.b nRst, $02, nG4, $05, nRst, $03, nD4, $05, nRst, $02, nG4, $05
+	dc.b nRst, $03, nEb4, $05, nRst, $02, nG4, $05, nRst, $03, nF4, $05
+	dc.b nRst, $02, nG4, $05, nRst, $03, nEb4, $05, nRst, $02, nG4, $05
+	dc.b nRst, $03, nD4, $05, nRst, $02, nG4, $05, nRst, $03, nD4, $04
+	dc.b nRst, $03, nA4, $05, nRst, $03, nE4, $04, nRst, $03, nA4, $05
+	dc.b nRst, $02, nF4, $05, nRst, $03, nA4, $05, nRst, $02, nG4, $05
+	dc.b nRst, $03, nA4, $05, nRst, $02, nF4, $05, nRst, $03, nA4, $05
+	dc.b nRst, $02, nE4, $05, nRst, $03, nA4, $05, nRst, $02, nD4, $05
+	dc.b nRst, $03, nA4, $05, nRst, $02, nE4, $05, nRst, $03, nA4, $05
+	dc.b nRst, $02, nF4, $05, nRst, $03, nA4, $05, nRst, $02, nG4, $05
+	dc.b nRst, $03, nA4, $05, nRst, $02, nF4, $05, nRst, $03, nA4, $04
+	dc.b nRst, $03, nE4, $05, nRst, $03, nA4, $04, nRst, $03, nC4, $05
+	dc.b nRst, $02, nG4, $05, nRst, $03, nD4, $05, nRst, $02, nG4, $05
+	dc.b nRst, $03, nEb4, $05, nRst, $02, nG4, $05, nRst, $03, nF4, $05
+	dc.b nRst, $02, nG4, $05, nRst, $03, nEb4, $05, nRst, $02, nG4, $05
+	dc.b nRst, $03, nD4, $05, nRst, $02, nG4, $05, nRst, $03, nC4, $05
+	dc.b nRst, $02, nG4, $05, nRst, $03, nD4, $05, nRst, $02, nG4, $05
+	dc.b nRst, $03, nEb4, $04, nRst, $03, nG4, $05, nRst, $03, nF4, $04
+	dc.b nRst, $03, nG4, $05, nRst, $03, nEb4, $04
+
+Snd_Options_Loop17:
+	dc.b nRst, $03, nG4, $05, nRst, $02, nD4, $05
+	sLoop		$00, $02, Snd_Options_Loop17
+	dc.b nRst, $03, nA4, $05, nRst, $02, nE4, $05, nRst, $03, nA4, $05
+	dc.b nRst, $02, nF4, $05, nRst, $03, nA4, $05, nRst, $02, nG4, $05
+	dc.b nRst, $03, nA4, $05, nRst, $02, nF4, $05, nRst, $03, nA4, $05
+	dc.b nRst, $02, nE4, $05, nRst, $03, nA4, $05, nRst, $02, nD4, $05
+	dc.b nRst, $03, nA4, $05, nRst, $02, nE4, $05, nRst, $03, nA4, $04
+	dc.b nRst, $03, nF4, $05, nRst, $02, nA4, $05, nRst, $03, nG4, $05
+	dc.b nRst, $02, nA4, $05, nRst, $03, nF4, $05, nRst, $02, nA4, $05
+	dc.b nRst, $03, nE4, $05, nRst, $02, nA4, $05, nRst, $03, nC4, $05
+	dc.b nRst, $02, nG4, $05, nRst, $03, nD4, $05, nRst, $02, nG4, $05
+	dc.b nRst, $03, nEb4, $05, nRst, $02, nG4, $05, nRst, $03, nF4, $05
+	dc.b nRst, $02, nG4, $05, nRst, $03, nEb4, $05, nRst, $02, nG4, $05
+	dc.b nRst, $03, nD4, $04, nRst, $03, nG4, $05, nRst, $03, nC4, $04
+	dc.b nRst, $03, nG4, $05, nRst, $02, nD4, $05, nRst, $03, nG4, $05
+	dc.b nRst, $02, nEb4, $05, nRst, $03, nG4, $05, nRst, $02, nF4, $05
+	dc.b nRst, $03, nG4, $05, nRst, $02, nEb4, $05
+
+Snd_Options_Loop18:
+	dc.b nRst, $03, nG4, $05, nRst, $02, nD4, $05
+	sLoop		$00, $02, Snd_Options_Loop18
+	dc.b nRst, $03, nA4, $05, nRst, $02, nE4, $05, nRst, $03, nA4, $05
+	dc.b nRst, $02, nF4, $05, nRst, $03
+	saVol		$01
+	dc.b nA4, $05, nRst, $02, nG4, $05, nRst, $03, nA4, $04, nRst, $03
+	dc.b nF4, $05, nRst, $03, nA4, $04, nRst, $03
+	saVol		$01
+	dc.b nE4, $05, nRst, $02, nA4, sHold, $03, nRst, $03, nD4, $05, nRst
+	dc.b $02, nA4, sHold, $03, nRst, $03, nE4, $05, nRst, $02
+	saVol		$01
+	dc.b nA4, sHold, $03, nRst, $03, nF4, $05, nRst, $02, nA4, sHold, $03
+	dc.b nRst, nG4, $05, nRst, $02, nA4, $05, nRst, $03
+	saVol		$01
+	dc.b nF4, $05, nRst, $02, nA4, $05, nRst, $03, nE4, $05, nRst, $02
+	dc.b nA4, $05, nRst, $03, nD4, $05, nRst, $02
+	saVol		$01
+	dc.b nA4, $05, nRst, $03, nE4, $05, nRst, $02, nA4, $05, nRst, $03
+	dc.b nF4, $04, nRst, $03, nA4, $05, nRst, $03
+	saVol		$01
+	dc.b nG4, $04, nRst, $03, nA4, $05, nRst, $02, nF4, sHold, $03, nRst
+	dc.b $03, nA4, $05, nRst, $02, nE4, sHold, $03, nRst, $03
+	saVol		$01
+	dc.b nA4, $05, nRst, $02, nD4, sHold, $03, nRst, $03, nA4, $05, nRst
+	dc.b $02, nE4, sHold, $03, nRst, nA4, $05, nRst, $02
+	saVol		$01
+	dc.b nF4, $05, nRst, $03, nA4, $05, nRst, $02, nG4, $05, nRst, $03
+	dc.b nA4, $05, nRst, $02, nF4, $05, nRst, $03
+	saVol		$01
+	dc.b nA4, $05, nRst, $02, nE4, $05, nRst, $03, nA4, $04, nRst, $03
+	saVol		$F7
+	dc.b nEb4, $05, nRst, $03, nBb4, $04, nRst, $03, nF4, $05, nRst, $03
+	dc.b nBb4, $04, nRst, $03, nFs4, $05, nRst, $02, nBb4, $05, nRst, $03
+	dc.b nAb4, $05, nRst, $02, nBb4, $05, nRst, $03, nFs4, $05, nRst, $02
+	dc.b nBb4, $05, nRst, $03, nF4, $05, nRst, $02, nBb4, $05, nRst, $03
+	dc.b nEb4, $05, nRst, $02, nBb4, $05, nRst, $03, nF4, $05, nRst, $02
+	dc.b nBb4, $05, nRst, $03, nFs4, $05, nRst, $02, nBb4, $05, nRst, $03
+	dc.b nAb4, $05, nRst, $02, nBb4, $05, nRst, $03, nFs4, $04, nRst, $03
+	dc.b nBb4, $05, nRst, $03, nF4, $04, nRst, $03, nBb4, $05, nRst, $03
+	dc.b nCs4, $04, nRst, $03, nAb4, $05, nRst, $02, nEb4, $05, nRst, $03
+	dc.b nAb4, $05, nRst, $02, nE4, $05, nRst, $03, nAb4, $05, nRst, $02
+	dc.b nFs4, $05, nRst, $03, nAb4, $05, nRst, $02, nE4, $05, nRst, $03
+	dc.b nAb4, $05, nRst, $02, nEb4, $05, nRst, $03, nAb4, $05, nRst, $02
+	dc.b nCs4, $05, nRst, $03, nAb4, $05, nRst, $02, nEb4, $05, nRst, $03
+	dc.b nAb4, $05, nRst, $02, nE4, $05, nRst, $03, nAb4, $04, nRst, $03
+	dc.b nFs4, $05, nRst, $03, nAb4, $04, nRst, $03, nE4, $05
+
+Snd_Options_Loop19:
+	dc.b nRst, $02, nAb4, $05, nRst, $03, nEb4, $05
+	sLoop		$00, $02, Snd_Options_Loop19
+	dc.b nRst, $02, nBb4, $05, nRst, $03, nF4, $05, nRst, $02, nBb4, $05
+	dc.b nRst, $03, nFs4, $05, nRst, $02, nBb4, $05, nRst, $03, nAb4, $05
+	dc.b nRst, $02, nBb4, $05, nRst, $03, nFs4, $05, nRst, $02, nBb4, $05
+	dc.b nRst, $03, nF4, $05, nRst, $02, nBb4, $05, nRst, $03, nEb4, $05
+	dc.b nRst, $02, nBb4, $05, nRst, $03, nF4, $05, nRst, $02, nBb4, $05
+	dc.b nRst, $03, nFs4, $04, nRst, $03, nBb4, $05, nRst, $02, nAb4, $05
+	dc.b nRst, $03, nBb4, $05, nRst, $02, nFs4, $05, nRst, $03, nBb4, $05
+	dc.b nRst, $02, nF4, $05, nRst, $03, nBb4, $05, nRst, $02, nCs4, $05
+	dc.b nRst, $03, nAb4, $05, nRst, $02, nEb4, $05, nRst, $03, nAb4, $05
+	dc.b nRst, $02, nE4, $05, nRst, $03, nAb4, $05, nRst, $02, nFs4, $05
+	dc.b nRst, $03, nAb4, $05, nRst, $02, nE4, $05, nRst, $03, nAb4, $05
+	dc.b nRst, $02, nEb4, $05, nRst, $03, nAb4, $04, nRst, $03, nCs4, $05
+	dc.b nRst, $03, nAb4, $04, nRst, $03, nEb4, $05, nRst, $02, nAb4, $05
+	dc.b nRst, $03, nE4, $05, nRst, $02, nAb4, $05, nRst, $03, nFs4, $05
+	dc.b nRst, $02, nAb4, $05, nRst, $03, nE4, $05
+
+Snd_Options_Loop1A:
+	dc.b nRst, $02, nAb4, $05, nRst, $03, nEb4, $05
+	sLoop		$00, $02, Snd_Options_Loop1A
+	dc.b nRst, $02, nBb4, $05, nRst, $03, nF4, $05, nRst, $02, nBb4, $05
+	dc.b nRst, $03, nFs4, $05, nRst, $02, nBb4, $05, nRst, $03, nAb4, $04
+	dc.b nRst, $03, nBb4, $05, nRst, $03, nFs4, $04, nRst, $03, nBb4, $05
+	dc.b nRst, $03, nF4, $04, nRst, $03, nBb4, $05, nRst, $02, nEb4, $05
+	dc.b nRst, $03, nBb4, $05, nRst, $02, nF4, $05, nRst, $03, nBb4, $05
+	dc.b nRst, $02, nFs4, $05, nRst, $03, nBb4, $05, nRst, $02, nAb4, $05
+	dc.b nRst, $03, nBb4, $05, nRst, $02, nFs4, $05, nRst, $03, nBb4, $05
+	dc.b nRst, $02, nF4, $05, nRst, $03, nBb4, $05, nRst, $02, nCs4, $05
+	dc.b nRst, $03, nAb4, $05, nRst, $02, nEb4, $05, nRst, $03, nAb4, $04
+	dc.b nRst, $03, nE4, $05, nRst, $03, nAb4, $04, nRst, $03, nFs4, $05
+	dc.b nRst, $02, nAb4, $05, nRst, $03, nE4, $05, nRst, $02, nAb4, $05
+	dc.b nRst, $03, nEb4, $05, nRst, $02, nAb4, $05, nRst, $03, nCs4, $05
+	dc.b nRst, $02, nAb4, $05, nRst, $03, nEb4, $05, nRst, $02, nAb4, $05
+	dc.b nRst, $03, nE4, $05, nRst, $02, nAb4, $05, nRst, $03, nFs4, $05
+	dc.b nRst, $02, nAb4, $05, nRst, $03, nE4, $05, nRst, $02, nAb4, $05
+	dc.b nRst, $03, nEb4, $05, nRst, $02, nAb4, $05, nRst, $03, nEb4, $04
+	dc.b nRst, $03, nBb4, $05, nRst, $03, nF4, $04, nRst, $03, nBb4, $05
+	dc.b nRst, $02, nFs4, $05, nRst, $03, nBb4, $05, nRst, $02, nAb4, $05
+	dc.b nRst, $03, nBb4, $05, nRst, $02, nFs4, $05, nRst, $03, nBb4, $05
+	dc.b nRst, $02, nF4, $05, nRst, $03, nBb4, $05, nRst, $02, nEb4, $05
+	dc.b nRst, $03, nBb4, $05, nRst, $02, nF4, $05, nRst, $03, nBb4, $05
+	dc.b nRst, $02, nFs4, $05, nRst, $03, nBb4, $05, nRst, $02, nAb4, $05
+	dc.b nRst, $03, nBb4, $05, nRst, $02, nFs4, $05, nRst, $03, nBb4, $04
+	dc.b nRst, $03, nF4, $05, nRst, $03, nBb4, $04, nRst, $03, nCs4, $05
+	dc.b nRst, $02, nAb4, $05, nRst, $03, nEb4, $05, nRst, $02, nAb4, $05
+	dc.b nRst, $03, nE4, $05, nRst, $02, nAb4, $05, nRst, $03, nFs4, $05
+	dc.b nRst, $02, nAb4, $05, nRst, $03, nE4, $05, nRst, $02, nAb4, $05
+	dc.b nRst, $03, nEb4, $05, nRst, $02, nAb4, $05, nRst, $03, nCs4, $05
+	dc.b nRst, $02, nAb4, $05, nRst, $03, nEb4, $05, nRst, $02, nAb4, $05
+	dc.b nRst, $03, nE4, $05, nRst, $02, nAb4, $05, nRst, $03, nFs4, $04
+	dc.b nRst, $03, nAb4, $05, nRst, $03, nE4, $04, nRst, $03, nAb4, $05
+	dc.b nRst, $02, nEb4, $05, nRst, $03, nAb4, $05, nRst, $02, nEb4, sHold
+	dc.b $03, nRst, $03, nBb4, $05, nRst, $02, nF4, sHold, $03, nRst, $03
+	dc.b nBb4, $05, nRst, $02, nFs4, sHold, $03, nRst
+	saVol		$01
+	dc.b nBb4, $05, nRst, $02, nAb4, $05, nRst, $03, nBb4, $05, nRst, $02
+	dc.b nFs4, $05, nRst, $03, nBb4, $05, nRst, $02
+	saVol		$01
+	dc.b nF4, $05, nRst, $03, nBb4, $05, nRst, $02, nEb4, $05, nRst, $03
+	dc.b nBb4, $04, nRst, $03, nF4, $05, nRst, $03
+	saVol		$01
+	dc.b nBb4, $04, nRst, $03, nFs4, $05, nRst, $03, nBb4, $04, nRst, $03
+	dc.b nAb4, $05, nRst, $02, nBb4, sHold, $03, nRst, $03
+	saVol		$01
+	dc.b nFs4, $05, nRst, $02, nBb4, sHold, $03, nRst, $03, nF4, $05, nRst
+	dc.b $02, nBb4, sHold, $03, nRst, $03, nEb4, $05, nRst, $02
+	saVol		$01
+	dc.b nBb4, $05, nRst, $03, nF4, $05, nRst, $02, nBb4, $05, nRst, $03
+	dc.b nFs4, $05, nRst, $02, nBb4, $05, nRst, $03
+	saVol		$01
+	dc.b nAb4, $05, nRst, $02, nBb4, $05, nRst, $03, nFs4, $05, nRst, $02
+	dc.b nBb4, $05, nRst, $03, nF4, $04, nRst, $03
+	saVol		$01
+	dc.b nBb4, $05, nRst, $03, nEb4, $04, nRst, $03, nBb4, $05, nRst, $02
+	dc.b nF4, sHold, $03, nRst, $03, nBb4, $05, nRst, $02
+	saVol		$01
+	dc.b nFs4, sHold, $03, nRst, $03, nBb4, $05, nRst, $02, nAb4, sHold, $03
+	dc.b nRst, $03, nBb4, $05, nRst, $02, nFs4, sHold, $03, nRst
+	saVol		$01
+	dc.b nBb4, $05, nRst, $02, nF4, $05, nRst, $03, nBb4, $05, nRst, $02
+	saVol		$F7
+	dc.b nD4, $01
+	saVol		$E2
+	sPan		spCenter, $00
+	sJump		Snd_Options_FM1
+
+; FM2 Data
+Snd_Options_FM2:
+	sVoice		$01
+	saVol		$13
+	sPan		spCenter, $00
+	dc.b nD2, $59, sHold, $57, nRst, $02, nC2, $5A, sHold, $57, nRst, $03
+	dc.b nD2, $5A, sHold, $57, nRst, $02
+
+Snd_Options_Loop14:
+	dc.b nC2, $5A, sHold, $57, nRst, $03, nD2, $59, sHold, $57, nRst, $03
+	sLoop		$00, $02, Snd_Options_Loop14
+	dc.b nC2, $5A, sHold, $57, nRst, $02, nD2, $26
+	saVol		$01
+	dc.b sHold, $25
+	saVol		$01
+	dc.b sHold, nD2
+	saVol		$01
+	dc.b sHold, $26
+	saVol		$01
+	dc.b sHold, $1B, nRst, $03, sHold, nD2, $07
+	saVol		$01
+	dc.b sHold, $26
+	saVol		$01
+	dc.b sHold, $25
+	saVol		$01
+	dc.b sHold, $25
+	saVol		$01
+	dc.b sHold, $26
+	saVol		$01
+	dc.b sHold, $14, nRst, $02
+	saVol		$FB
+	dc.b nEb2, $5A, sHold, $57, nRst, $03, nCs2, $59
+
+Snd_Options_Loop15:
+	dc.b sHold, $57, nRst, $03, nEb2, $5A, sHold, $57, nRst, $02, nCs2, $5A
+	sLoop		$00, $02, Snd_Options_Loop15
+	dc.b sHold, $57, nRst, $03, nEb2, $59, sHold, $57, nRst, $03, nCs2, $5A
+	dc.b sHold, $57, nRst, $03, nEb2, $25
+	saVol		$01
+	dc.b sHold, nEb2
+	saVol		$01
+	dc.b sHold, $26
+	saVol		$01
+	dc.b sHold, $25
+	saVol		$01
+	dc.b sHold, $1B, nRst, $03, sHold, nEb2, $07
+	saVol		$01
+	dc.b sHold, $26
+	saVol		$01
+	dc.b sHold, $25
+	saVol		$01
+	dc.b sHold, $25
+	saVol		$01
+	dc.b sHold, $26
+	saVol		$01
+	dc.b sHold, $14, nRst, $02
+	saVol		$5F
+	dc.b sHold, $01
+	sVoice		$00
+	saVol		$81
+	sPan		spCenter, $00
+	sJump		Snd_Options_FM2
+
+; FM3 Data
+Snd_Options_FM3:
+	sVoice		$02
+	saVol		$1B
+	sPan		spCenter, $00
+	dc.b nD2, $59, sHold, $57, nRst, $03, nC2, $59, sHold, $57, nRst, $03
+	dc.b nD2, $5A, sHold, $57, nRst, $02, nC2, $5A, sHold, $57, nRst, $03
+	sVoice		$03
+	saVol		$FC
+	dc.b nD3, $57, nRst, $03, nE3, $2A, nRst, $02, nF3, $2A, nRst, $03
+	dc.b nEb3, $57, nRst, $03, nC3, $57, nRst, $03, nD3, $57, nRst, $02
+	dc.b nE3, $2A, nRst, $03, nF3, $2A, nRst, $03, nEb3, $57, nRst, $03
+	dc.b nC3, $2A, nRst, $03, nEb3, $0C, nRst, $02, nD3, $0D, nRst, $02
+	dc.b nC3, $0D, nRst, $03, nD3, $18
+
+Snd_Options_Loop11:
+	saVol		$01
+	dc.b sHold, $19
+	sLoop		$00, $08, Snd_Options_Loop11
+	saVol		$01
+	dc.b sHold, $18
+
+Snd_Options_Loop12:
+	saVol		$01
+	dc.b sHold, $19
+	sLoop		$00, $04, Snd_Options_Loop12
+	saVol		$01
+	dc.b sHold, $08, nRst, $02
+	sVoice		$04
+	saVol		$5A
+	dc.b sHold, $01
+	sVoice		$02
+	saVol		$9C
+	dc.b nEb2, $59, sHold, $57, nRst, $03, nCs2, $59, sHold, $57, nRst, $03
+	dc.b nEb2, $5A, sHold, $57, nRst, $03, nCs2, $59, sHold, $57, nRst, $03
+	sVoice		$03
+	saVol		$FC
+	dc.b nEb3, $57, nRst, $03, nF3, $2A, nRst, $02, nFs3, $2B, nRst, $02
+	dc.b nE3, $57, nRst, $03, nCs3, $57, nRst, $03, nEb3, $57, nRst, $03
+	dc.b nF3, $2A, nRst, $02, nFs3, $2A, nRst, $03, nE3, $57, nRst, $03
+	dc.b nAb3, $23, nRst, $02, nA3, $03, nRst, $01, nBb3, $02, nRst, nB3
+	dc.b $2A, nRst, $03, nBb3, $18
+
+Snd_Options_Loop13:
+	saVol		$01
+	dc.b sHold, $19
+	sLoop		$00, $0B, Snd_Options_Loop13
+	saVol		$01
+	dc.b sHold, $18
+	saVol		$01
+	dc.b sHold, $19
+	saVol		$01
+	dc.b sHold, $08, nRst, $03
+	sVoice		$00
+	saVol		$DB
+	sPan		spCenter, $00
+	sJump		Snd_Options_FM3
+
+; FM4 Data
+Snd_Options_FM4:
+	sVoice		$02
+	saVol		$7F
+	sPan		spCenter, $00
+	dc.b nRst, $0A
+	saVol		$9F
+	ssDetune	$05
+	dc.b nD2, $5A, sHold, $57, nRst, $03, nC2, $59, sHold, $57, nRst, $03
+	dc.b nD2, $5A, sHold, $57, nRst, $02, nC2, $5A, sHold, $57, nRst, $03
+	sVoice		$03
+	saVol		$FC
+	dc.b nD3, $57, nRst, $03
+	ssDetune	$06
+	dc.b nE3, $2A, nRst, $02, nF3, $2B, nRst, $02, nEb3, $57, nRst, $03
+	ssDetune	$05
+	dc.b nC3, $57, nRst, $03, nD3, $57, nRst, $02
+	ssDetune	$06
+	dc.b nE3, $2B, nRst, $02, nF3, $2A, nRst, $03, nEb3, $57, nRst, $03
+	ssDetune	$05
+	dc.b nC3, $2A, nRst, $03
+	ssDetune	$06
+	dc.b nEb3, $0C, nRst, $03
+	ssDetune	$05
+	dc.b nD3, $0C, nRst, $03, nC3, $0C, nRst, $03, nD3, $18
+
+Snd_Options_Loop0F:
+	saVol		$01
+	dc.b sHold, $19
+	sLoop		$00, $0B, Snd_Options_Loop0F
+	saVol		$01
+	dc.b sHold, $18
+	saVol		$01
+	dc.b sHold, $19
+	saVol		$01
+	dc.b sHold, $08, nRst, $02
+	sVoice		$02
+	saVol		$57
+	dc.b sHold, $01
+	saVol		$9F
+	ssDetune	$06
+	dc.b nEb2, $59, sHold, $57, nRst, $03
+	ssDetune	$05
+	dc.b nCs2, $59, sHold, $58, nRst, $02
+	ssDetune	$06
+	dc.b nEb2, $5A, sHold, $57, nRst, $03
+	ssDetune	$05
+	dc.b nCs2, $59, sHold, $57, nRst, $03
+	sVoice		$03
+	saVol		$FC
+	ssDetune	$06
+	dc.b nEb3, $57, nRst, $03, nF3, $2A, nRst, $03
+	ssDetune	$07
+	dc.b nFs3, $2A, nRst, $02
+	ssDetune	$06
+	dc.b nE3, $58, nRst, $02
+	ssDetune	$05
+	dc.b nCs3, $57, nRst, $03
+	ssDetune	$06
+	dc.b nEb3, $57, nRst, $03, nF3, $2A, nRst, $02
+	ssDetune	$07
+	dc.b nFs3, $2B, nRst, $02
+	ssDetune	$06
+	dc.b nE3, $57, nRst, $03
+	ssDetune	$08
+	dc.b nAb3, $23, nRst, $02, nA3, $03, nRst, $01
+	ssDetune	$09
+	dc.b nBb3, $02, nRst, nB3, $2A, nRst, $03, nBb3, $19
+	saVol		$01
+	dc.b sHold, nBb3
+	saVol		$01
+	dc.b sHold, $18
+
+Snd_Options_Loop10:
+	saVol		$01
+	dc.b sHold, $19
+	sLoop		$00, $0A, Snd_Options_Loop10
+	saVol		$01
+	dc.b sHold, $18
+	sVoice		$00
+	saVol		$D9
+	sPan		spCenter, $00
+	ssDetune	$00
+	sJump		Snd_Options_FM4
+
+; FM5 Data
+Snd_Options_FM5:
+	sVoice		$00
+	saVol		$1E
+	sPan		spRight, $00
+	ssDetune	$FD
+	dc.b nD4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $04, nRst, $03
+	ssDetune	$FD
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $04, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nD4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$00
+	dc.b nC4, $04, nRst, $03
+	ssDetune	$FD
+	dc.b nG4, $05, nRst, $03, nD4, $04, nRst, $03, nG4, $05, nRst, $02
+	dc.b nEb4, $05, nRst, $03, nG4, $05, nRst, $02, nF4, $05, nRst, $03
+	dc.b nG4, $05, nRst, $02, nEb4, $05, nRst, $03, nG4, $05, nRst, $02
+	dc.b nD4, $05, nRst, $03, nG4, $05, nRst, $02
+	ssDetune	$00
+	dc.b nC4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nG4, $05, nRst, $02, nD4, $05, nRst, $03, nG4, $05, nRst, $02
+	dc.b nEb4, $05, nRst, $03, nG4, $05, nRst, $02, nF4, $05, nRst, $03
+	dc.b nG4, $05, nRst, $02, nEb4, $05
+
+Snd_Options_Loop08:
+	dc.b nRst, $03, nG4, $04, nRst, $03, nD4, $05
+	sLoop		$00, $02, Snd_Options_Loop08
+	dc.b nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nD4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nG4, $04, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $04, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$00
+	dc.b nC4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nG4, $05, nRst, $02, nD4, $05, nRst, $03, nG4, $05, nRst, $02
+	dc.b nEb4, $05, nRst, $03, nG4, $05, nRst, $02, nF4, $05, nRst, $03
+	dc.b nG4, $05, nRst, $02, nEb4, $05, nRst, $03, nG4, $05, nRst, $02
+	dc.b nD4, $05, nRst, $03, nG4, $05, nRst, $02
+	ssDetune	$00
+	dc.b nC4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nG4, $05, nRst, $02, nD4, $05, nRst, $03, nG4, $04, nRst, $03
+	dc.b nEb4, $05, nRst, $03, nG4, $04, nRst, $03, nF4, $05, nRst, $02
+	dc.b nG4, $05, nRst, $03, nEb4, $05
+
+Snd_Options_Loop09:
+	dc.b nRst, $02, nG4, $05, nRst, $03, nD4, $05
+	sLoop		$00, $02, Snd_Options_Loop09
+	dc.b nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nD4, $04, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $04, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$00
+	dc.b nC4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nG4, $05, nRst, $02, nD4, $05, nRst, $03, nG4, $05, nRst, $02
+	dc.b nEb4, $05, nRst, $03, nG4, $05, nRst, $02, nF4, $05, nRst, $03
+	dc.b nG4, $04, nRst, $03, nEb4, $05, nRst, $03, nG4, $04, nRst, $03
+	dc.b nD4, $05, nRst, $02, nG4, $05, nRst, $03
+	ssDetune	$00
+	dc.b nC4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nG4, $05, nRst, $03, nD4, $05, nRst, $02, nG4, $05, nRst, $03
+	dc.b nEb4, $05, nRst, $02, nG4, $05, nRst, $03, nF4, $05, nRst, $02
+	dc.b nG4, $05, nRst, $03, nEb4, $05
+
+Snd_Options_Loop0A:
+	dc.b nRst, $02, nG4, $05, nRst, $03, nD4, $05
+	sLoop		$00, $02, Snd_Options_Loop0A
+	dc.b nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $04, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nG4, $04, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nD4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$00
+	dc.b nC4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nG4, $04, nRst, $03, nD4, $05, nRst, $03, nG4, $04, nRst, $03
+	dc.b nEb4, $05, nRst, $02, nG4, $05, nRst, $03, nF4, $05, nRst, $02
+	dc.b nG4, $05, nRst, $03, nEb4, $05, nRst, $02, nG4, $05, nRst, $03
+	dc.b nD4, $05, nRst, $02, nG4, $05, nRst, $03
+	ssDetune	$00
+	dc.b nC4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nG4, $05, nRst, $03, nD4, $05, nRst, $02, nG4, $05, nRst, $03
+	dc.b nEb4, $05, nRst, $02, nG4, $05, nRst, $03, nF4, $05, nRst, $02
+	dc.b nG4, $05, nRst, $03, nEb4, $05, nRst, $02, nG4, $05, nRst, $03
+	dc.b nD4, $04, nRst, $03, nG4, $05, nRst, $03, nD4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $04, nRst, $03
+	saVol		$01
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nG4, $04, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nF4, sHold, $03, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	saVol		$01
+	ssDetune	$FE
+	dc.b nE4, sHold, $03, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nD4, sHold, $03, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $03
+	saVol		$01
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	saVol		$01
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nD4, $05, nRst, $03
+	saVol		$01
+	ssDetune	$FC
+	dc.b nA4, $04, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $04, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, sHold, $03, nRst, $03
+	saVol		$01
+	ssDetune	$FD
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, sHold, $03, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, sHold, $03, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $02
+	saVol		$01
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nD4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	saVol		$01
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $04, nRst, $03
+	saVol		$01
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $04, nRst, $03
+	ssDetune	$FC
+	dc.b nA4, $05, nRst, $02
+	saVol		$F7
+	ssDetune	$FD
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02, nAb4, $05, nRst, $03, nBb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $04, nRst, $03
+	ssDetune	$FD
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $04, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03, nAb4, $05, nRst, $02, nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nCs4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nEb4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $04, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nEb4, $04, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nCs4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nE4, $05
+
+Snd_Options_Loop0B:
+	dc.b nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nEb4, $05
+	sLoop		$00, $02, Snd_Options_Loop0B
+	dc.b nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $04, nRst, $03, nAb4, $05, nRst, $03, nBb4, $04, nRst, $03
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nEb4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03, nAb4, $05, nRst, $02, nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nCs4, $04, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nEb4, $04, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $04, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nCs4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nE4, $05
+
+Snd_Options_Loop0C:
+	dc.b nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $04, nRst, $03
+	ssDetune	$FD
+	dc.b nEb4, $05
+	sLoop		$00, $02, Snd_Options_Loop0C
+	dc.b nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $04, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03, nAb4, $05, nRst, $02, nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nEb4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03, nAb4, $04, nRst, $03, nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nFs4, $04, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nCs4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nCs4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $04, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $04, nRst, $03
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $05
+
+Snd_Options_Loop0D:
+	dc.b nRst, $02
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nEb4, $05
+	sLoop		$00, $02, Snd_Options_Loop0D
+	dc.b nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03, nAb4, $05, nRst, $02, nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nEb4, $04, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $04, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02, nAb4, $05, nRst, $03, nBb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nCs4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $04, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $04, nRst, $03
+	ssDetune	$FD
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nAb4, $04, nRst, $03
+	ssDetune	$FE
+	dc.b nCs4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nEb4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$FE
+	dc.b nE4, $05
+
+Snd_Options_Loop0E:
+	dc.b nRst, $02
+	ssDetune	$FC
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nEb4, $05
+	sLoop		$00, $02, Snd_Options_Loop0E
+	dc.b nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $02
+	saVol		$01
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03, nAb4, $05, nRst, $02, nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	saVol		$01
+	ssDetune	$FD
+	dc.b nF4, $04, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nEb4, $04, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nF4, sHold, $03, nRst, $03
+	saVol		$01
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nFs4, sHold, $03, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02, nAb4, sHold, $03, nRst, $03, nBb4, $05, nRst
+	dc.b $02
+	saVol		$01
+	ssDetune	$FD
+	dc.b nFs4, sHold, $03, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nEb4, $05, nRst, $03
+	saVol		$01
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02
+	saVol		$01
+	dc.b nAb4, $05, nRst, $03, nBb4, $04, nRst, $03
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$FC
+	dc.b nBb4, $04, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	saVol		$01
+	ssDetune	$FC
+	dc.b nBb4, sHold, $03, nRst, $03
+	ssDetune	$FD
+	dc.b nEb4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, sHold, $03, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, sHold, $03, nRst, $03
+	saVol		$01
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, sHold, $03, nRst, $03, nAb4, $05, nRst, $02, nBb4, $05, nRst
+	dc.b $03
+	ssDetune	$FD
+	dc.b nFs4, $05, nRst, $02
+	saVol		$01
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$FD
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$FC
+	dc.b nBb4, $05, nRst, $02
+	saVol		$D9
+	sPan		spCenter, $00
+	ssDetune	$00
+	sJump		Snd_Options_FM5
+
+; FM6 Data
+Snd_Options_FM6:
+	sVoice		$00
+	saVol		$7F
+	sPan		spCenter, $00
+	dc.b nRst, $0A
+	saVol		$A9
+	ssDetune	$05
+	dc.b nD4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$05
+	dc.b nD4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$05
+	dc.b nC4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$05
+	dc.b nD4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$05
+	dc.b nD4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$05
+	dc.b nC4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$05
+	dc.b nD4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05
+
+Snd_Options_Loop00:
+	dc.b nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$05
+	dc.b nD4, $05
+	sLoop		$00, $02, Snd_Options_Loop00
+	dc.b nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$05
+	dc.b nD4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $04, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$05
+	dc.b nC4, $04, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$05
+	dc.b nD4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$05
+	dc.b nD4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$05
+	dc.b nC4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$05
+	dc.b nD4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $04, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nEb4, $05
+
+Snd_Options_Loop01:
+	dc.b nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$05
+	dc.b nD4, $05
+	sLoop		$00, $02, Snd_Options_Loop01
+	dc.b nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$05
+	dc.b nD4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$05
+	dc.b nC4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$05
+	dc.b nD4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$05
+	dc.b nD4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$05
+	dc.b nC4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$05
+	dc.b nD4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nEb4, $05
+
+Snd_Options_Loop02:
+	dc.b nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$05
+	dc.b nD4, $05
+	sLoop		$00, $02, Snd_Options_Loop02
+	dc.b nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $04, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$05
+	dc.b nD4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$05
+	dc.b nC4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$05
+	dc.b nD4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$05
+	dc.b nD4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$05
+	dc.b nC4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$05
+	dc.b nD4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nEb4, $05
+
+Snd_Options_Loop03:
+	dc.b nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$05
+	dc.b nD4, $05
+	sLoop		$00, $02, Snd_Options_Loop03
+	dc.b nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	saVol		$01
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $04, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $04, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	saVol		$01
+	ssDetune	$06
+	dc.b nE4, sHold, $03, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$05
+	dc.b nD4, sHold, $03, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, sHold, $03, nRst
+	saVol		$01
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	saVol		$01
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$05
+	dc.b nD4, $05, nRst, $03
+	saVol		$01
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $04, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, sHold, $03, nRst, $03
+	saVol		$01
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, sHold, $03, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, sHold, $03, nRst, $03
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $02
+	saVol		$01
+	ssDetune	$08
+	dc.b nA4, sHold, $03, nRst, $03
+	ssDetune	$05
+	dc.b nD4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	saVol		$01
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nG4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	saVol		$01
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nE4, $04, nRst, $03
+	ssDetune	$08
+	dc.b nA4, $05, nRst, $03
+	saVol		$F7
+	ssDetune	$06
+	dc.b nEb4, $04, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $04, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$05
+	dc.b nCs4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $06, nRst, $02
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$05
+	dc.b nCs4, $04, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, $05
+
+Snd_Options_Loop04:
+	dc.b nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05
+	sLoop		$00, $02, Snd_Options_Loop04
+	dc.b nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $04, nRst, $03
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$05
+	dc.b nCs4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$05
+	dc.b nCs4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, $05
+
+Snd_Options_Loop05:
+	dc.b nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05
+	sLoop		$00, $02, Snd_Options_Loop05
+	dc.b nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nFs4, $04, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$05
+	dc.b nCs4, $04, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$05
+	dc.b nCs4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nE4, $05
+
+Snd_Options_Loop06:
+	dc.b nRst, $02
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nEb4, $05
+	sLoop		$00, $02, Snd_Options_Loop06
+	dc.b nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$05
+	dc.b nCs4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$05
+	dc.b nCs4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nE4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nE4, $05
+
+Snd_Options_Loop07:
+	dc.b nRst, $02
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nEb4, $05
+	sLoop		$00, $02, Snd_Options_Loop07
+	dc.b nRst, $02
+	ssDetune	$09
+	dc.b nBb4, sHold, $03, nRst
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $02
+	saVol		$01
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	saVol		$01
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $04, nRst, $03
+	saVol		$01
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nFs4, sHold, $03, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$08
+	dc.b nAb4, sHold, $03, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	saVol		$01
+	ssDetune	$07
+	dc.b nFs4, sHold, $03, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $03
+	saVol		$01
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	saVol		$01
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $03
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $02
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	saVol		$01
+	dc.b sHold, $01
+	ssDetune	$09
+	dc.b nBb4, sHold, $03, nRst, $03
+	ssDetune	$06
+	dc.b nEb4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, sHold, $03, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, sHold, $03, nRst, $03
+	saVol		$01
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, sHold, $03, nRst, $03
+	ssDetune	$08
+	dc.b nAb4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$07
+	dc.b nFs4, $05, nRst, $02
+	saVol		$01
+	ssDetune	$09
+	dc.b nBb4, $05, nRst, $03
+	ssDetune	$06
+	dc.b nF4, $04
+	saVol		$CF
+	sPan		spCenter, $00
+	ssDetune	$00
+	sJump		Snd_Options_FM6
+
+; PSG1 Data
+Snd_Options_PSG1:
+	saVol		$38
+	ssDetune	$01
+	dc.b nD1, $04
+	saVol		$08
+	ssDetune	$01
+	dc.b $07, nRst, $03
+	saVol		$08
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $05
+	saVol		$08
+	ssDetune	$01
+	dc.b $06
+	saVol		$08
+	ssDetune	$01
+	dc.b $02, nRst
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $04
+	saVol		$08
+	ssDetune	$01
+	dc.b $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $01, nRst, $03
+	ssDetune	$01
+	dc.b nD1, $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $03
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $03
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $05
+	saVol		$08
+	ssDetune	$01
+	dc.b $06
+	saVol		$08
+	ssDetune	$01
+	dc.b $01, nRst, $03
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$02
+	dc.b nC1, $04
+	saVol		$08
+	ssDetune	$02
+	dc.b $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $03
+	ssDetune	$02
+	dc.b nC1, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nC1, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $02, nRst
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $03
+	saVol		-$18
+	ssDetune	$02
+	dc.b nC1, $04
+	saVol		$08
+	ssDetune	$02
+	dc.b $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $03
+	ssDetune	$02
+	dc.b nC1, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nC1, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $02, nRst
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $05
+	saVol		$08
+	ssDetune	$01
+	dc.b $06
+	saVol		$08
+	ssDetune	$01
+	dc.b $01, nRst, $03
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $04, nRst, $03
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $05
+	saVol		$08
+	ssDetune	$01
+	dc.b $06
+	saVol		$08
+	ssDetune	$01
+	dc.b $02, nRst
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $04
+	saVol		$08
+	ssDetune	$01
+	dc.b $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $01, nRst, $03
+	ssDetune	$01
+	dc.b nD1, $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $03
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $05
+	saVol		$08
+	ssDetune	$01
+	dc.b $06
+	saVol		$08
+	ssDetune	$01
+	dc.b $02, nRst
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $03
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$02
+	dc.b nC1, $04
+	saVol		$08
+	ssDetune	$02
+	dc.b $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $03
+	ssDetune	$02
+	dc.b nC1, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nC1, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $02, nRst
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nC1, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $04
+	ssDetune	$02
+	dc.b nC1, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$08
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nC1, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $02, nRst
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $05
+	saVol		$08
+	ssDetune	$01
+	dc.b $06
+	saVol		$08
+	ssDetune	$01
+	dc.b $01, nRst, $03
+	ssDetune	$01
+	dc.b nD1, $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $03
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $03
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $04
+	saVol		$08
+	ssDetune	$01
+	dc.b $06
+	saVol		$08
+	ssDetune	$01
+	dc.b $02, nRst, $03
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $04, nRst, $03
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $04
+	saVol		$08
+	ssDetune	$01
+	dc.b $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $01, nRst, $03
+	ssDetune	$01
+	dc.b nD1, $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $05
+	saVol		$08
+	ssDetune	$01
+	dc.b $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $01, nRst, $02
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nC1, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $04
+	ssDetune	$02
+	dc.b nC1, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nC1, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $02, nRst
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nC1, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $03
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$08
+	ssDetune	$02
+	dc.b nC1, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $03
+	saVol		-$18
+	ssDetune	$02
+	dc.b nC1, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $03
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $04
+	saVol		$08
+	ssDetune	$01
+	dc.b $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $01, nRst, $03
+	ssDetune	$01
+	dc.b nD1, $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $03
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $05
+	saVol		$08
+	ssDetune	$01
+	dc.b $06
+	saVol		$08
+	ssDetune	$01
+	dc.b $02, nRst
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $03
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $04
+	saVol		$08
+	ssDetune	$01
+	dc.b $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $01, nRst, $03
+	ssDetune	$01
+	dc.b nD1, $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $05
+	saVol		$08
+	ssDetune	$01
+	dc.b $06
+	saVol		$08
+	ssDetune	$01
+	dc.b $02, nRst
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nC1, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $03
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$08
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$02
+	dc.b nC1, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $02, nRst
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$02
+	dc.b nC1, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $03
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$08
+	ssDetune	$02
+	dc.b nC1, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $03
+	saVol		-$18
+	ssDetune	$02
+	dc.b nC1, $04
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $02, nRst, $03
+	ssDetune	$02
+	dc.b nC1, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $03
+	saVol		-$08
+	ssDetune	$02
+	dc.b nC1, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $04
+	saVol		$08
+	ssDetune	$01
+	dc.b $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $01, nRst, $03
+	ssDetune	$01
+	dc.b nD1, $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $03
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $03
+	saVol		$08
+	ssDetune	$01
+	dc.b $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $03, nRst, $02
+	ssDetune	$01
+	dc.b nD1, $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $06, nRst, $02
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $05
+	saVol		$08
+	ssDetune	$01
+	dc.b $06
+	saVol		$08
+	ssDetune	$01
+	dc.b $02, nRst
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $03
+	ssDetune	$01
+	dc.b nD1, $04
+	saVol		$08
+	ssDetune	$01
+	dc.b $05
+	saVol		$08
+	ssDetune	$01
+	dc.b $03, nRst, $02
+	saVol		-$10
+	ssDetune	$01
+	dc.b nD1, $04
+	saVol		$08
+	ssDetune	$01
+	dc.b $06
+	saVol		$08
+	ssDetune	$01
+	dc.b $03, nRst, $02
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $06, nRst, $02
+	saVol		$08
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $08
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $05
+	saVol		$08
+	ssDetune	$01
+	dc.b $04
+	saVol		$08
+	ssDetune	$01
+	dc.b $03, nRst
+	ssDetune	$01
+	dc.b nD1, $06
+	saVol		$08
+	ssDetune	$01
+	dc.b nD1, nRst, $03
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $06
+	saVol		$08
+	ssDetune	$01
+	dc.b nD1, nRst, $03
+	saVol		-$10
+	ssDetune	$01
+	dc.b nD1, $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $03
+	ssDetune	$01
+	dc.b nD1, $05
+	saVol		$08
+	ssDetune	$01
+	dc.b $06
+	saVol		$08
+	ssDetune	$01
+	dc.b $02, nRst
+	saVol		-$10
+	ssDetune	$01
+	dc.b nD1, $05
+	saVol		$08
+	ssDetune	$01
+	dc.b nD1
+	saVol		$08
+	ssDetune	$01
+	dc.b $02, nRst, $03
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $06
+	saVol		$08
+	ssDetune	$01
+	dc.b nD1, nRst, $03
+	ssDetune	$01
+	dc.b nD1
+	saVol		$08
+	ssDetune	$01
+	dc.b $06
+	saVol		$08
+	ssDetune	$01
+	dc.b $03, nRst
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $03
+	saVol		-$18
+	ssDetune	$01
+	dc.b nD1, $04
+	saVol		$08
+	ssDetune	$01
+	dc.b $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $01, nRst, $03
+	ssDetune	$01
+	dc.b nD1, $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$01
+	dc.b nD1, $07
+	saVol		$08
+	ssDetune	$01
+	dc.b $06, nRst, $03
+	saVol		-$28
+	dc.b nEb1, $04
+	saVol		$08
+	dc.b $07
+	saVol		$08
+	dc.b $01, nRst, $03, nEb1, $07
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nEb1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nEb1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nEb1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nEb1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nEb1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $03, nEb1, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$08
+	dc.b nEb1, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$18
+	dc.b nEb1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $03, nEb1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nEb1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nCs1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $03, nCs1, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$08
+	dc.b nCs1, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$18
+	dc.b nCs1, $04
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nCs1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nCs1, $08
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$18
+	dc.b nCs1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $03, nCs1, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$08
+	dc.b nCs1, $07
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nCs1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nCs1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nCs1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nEb1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $03, nEb1, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$08
+	dc.b nEb1, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$18
+	dc.b nEb1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nEb1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nEb1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nEb1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $03, nEb1, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$08
+	dc.b nEb1, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$18
+	dc.b nEb1, $04
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, $03, nEb1, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$08
+	dc.b nEb1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nCs1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $03, nCs1, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$08
+	dc.b nCs1, $07
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nCs1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nCs1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nCs1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nCs1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, $03, nCs1, $07
+	saVol		$08
+	dc.b $04, nRst
+	saVol		-$08
+	dc.b nCs1, $07
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nCs1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nCs1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nCs1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nEb1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $03, nEb1, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$08
+	dc.b nEb1, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$18
+	dc.b nEb1, $04
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, $03, nEb1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nEb1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nEb1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $03, nEb1, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$08
+	dc.b nEb1, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$18
+	dc.b nEb1, $04
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nEb1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nEb1, $08
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$18
+	dc.b nCs1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $03, nCs1, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$08
+	dc.b nCs1, $07
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nCs1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nCs1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nCs1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nCs1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nCs1, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$08
+	dc.b nCs1, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$18
+	dc.b nCs1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nCs1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nCs1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nEb1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $03, nEb1, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$08
+	dc.b nEb1, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$18
+	dc.b nEb1, $04
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, $03, nEb1, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$08
+	dc.b nEb1, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$18
+	dc.b nEb1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $03, nEb1, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$08
+	dc.b nEb1, $07
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nEb1, $05
+	saVol		$08
+	dc.b $07
+	saVol		$08
+	dc.b $01, nRst, $02, nEb1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nEb1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nCs1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nCs1, $08
+	saVol		$08
+	dc.b $04, nRst
+	saVol		-$08
+	dc.b nCs1, $07
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$18
+	dc.b nCs1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nCs1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nCs1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nCs1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nCs1, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$08
+	dc.b nCs1, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$18
+	dc.b nCs1, $04
+	saVol		$08
+	dc.b $07
+	saVol		$08
+	dc.b $01, nRst, $03, nCs1, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$08
+	dc.b nCs1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nEb1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $03, nEb1, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$08
+	dc.b nEb1, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$18
+	dc.b nEb1
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $03, nRst, nEb1, $06
+	saVol		$08
+	dc.b nEb1, nRst, $03
+	saVol		-$08
+	dc.b nEb1, $04
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, $03
+	saVol		-$18
+	dc.b nEb1, $07
+	saVol		$08
+	dc.b $05, nRst, $03, nEb1, $04
+	saVol		$08
+	dc.b $05
+	saVol		$08
+	dc.b $03, nRst
+	saVol		-$10
+	dc.b nEb1
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $03, nRst, $02
+	saVol		-$18
+	dc.b nEb1, $07
+	saVol		$08
+	dc.b $06, nRst, $02
+	saVol		$08
+	dc.b nEb1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nEb1, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nEb1, $05
+	saVol		$08
+	dc.b $04
+	saVol		$08
+	dc.b nEb1, nRst, $02, nEb1, $06
+	saVol		$08
+	dc.b nEb1, nRst, $03
+	saVol		-$08
+	dc.b nEb1, $06
+	saVol		$08
+	dc.b nEb1, nRst, $03
+	saVol		-$10
+	dc.b nEb1, $07
+	saVol		$08
+	dc.b $05, nRst, $03, nEb1, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst
+	saVol		-$10
+	dc.b nEb1, $05
+	saVol		$08
+	dc.b nEb1
+	saVol		$08
+	dc.b $03, nRst, $02
+	saVol		-$18
+	dc.b nEb1, $06
+	saVol		$08
+	dc.b nEb1, nRst, $03, nEb1
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $03, nRst
+	saVol		-$08
+	dc.b nEb1, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$18
+	dc.b nEb1, $04
+	saVol		$08
+	dc.b $07
+	saVol		$08
+	dc.b $01, nRst, $03, nEb1, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$08
+	dc.b nEb1, $06
+	saVol		$08
+	dc.b nEb1, nRst, $03
+	saVol		-$60
+	sJump		Snd_Options_PSG1
+
+; PSG2 Data
+Snd_Options_PSG2:
+	saVol		$38
+	ssDetune	$03
+	dc.b nA0, $04
+	saVol		$08
+	ssDetune	$03
+	dc.b $07, nRst, $03
+	saVol		$08
+	ssDetune	$03
+	dc.b nA0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$03
+	dc.b nA0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$03
+	dc.b nA0, $05
+	saVol		$08
+	ssDetune	$03
+	dc.b $06
+	saVol		$08
+	ssDetune	$03
+	dc.b $02, nRst
+	ssDetune	$03
+	dc.b nA0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$03
+	dc.b nA0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$03
+	dc.b nA0, $04
+	saVol		$08
+	ssDetune	$03
+	dc.b $07
+	saVol		$08
+	ssDetune	$03
+	dc.b $01, nRst, $03
+	ssDetune	$03
+	dc.b nA0, $07
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $03
+	saVol		-$08
+	ssDetune	$03
+	dc.b nA0, $07
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $03
+	saVol		-$18
+	ssDetune	$03
+	dc.b nA0, $05
+	saVol		$08
+	ssDetune	$03
+	dc.b $06
+	saVol		$08
+	ssDetune	$03
+	dc.b $01, nRst, $03
+	ssDetune	$03
+	dc.b nA0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$03
+	dc.b nA0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $04, nRst, $03
+	saVol		-$18
+	dc.b nG0, $04
+	saVol		$08
+	dc.b $07
+	saVol		$08
+	dc.b $01, nRst, $03, nG0, $07
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nG0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nG0, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nG0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nG0, $08
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$18
+	dc.b nG0, $04
+	saVol		$08
+	dc.b $07
+	saVol		$08
+	dc.b $01, nRst, $03, nG0, $07
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nG0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nG0, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nG0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nG0, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$18
+	dc.b nA0, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $03, nA0, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$08
+	dc.b nA0, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$18
+	dc.b nA0, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nA0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nA0, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$18
+	dc.b nA0, $04
+	saVol		$08
+	dc.b $07
+	saVol		$08
+	dc.b $01, nRst, $03, nA0, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$08
+	dc.b nA0, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$18
+	dc.b nA0, $04
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nA0, $08
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$08
+	dc.b nA0, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$18
+	dc.b nG0, $04
+	saVol		$08
+	dc.b $07
+	saVol		$08
+	dc.b $01, nRst, $03, nG0, $07
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nG0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nG0, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nG0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nG0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nG0, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $04, nG0, $07
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$08
+	dc.b nG0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nG0, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nG0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nG0, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$18
+	dc.b nA0, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $03, nA0, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$08
+	dc.b nA0, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$18
+	dc.b nA0, $04
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, $03, nA0, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$08
+	dc.b nA0, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$18
+	dc.b nA0, $04
+	saVol		$08
+	dc.b $07
+	saVol		$08
+	dc.b $01, nRst, $03, nA0, $07
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nA0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nA0, $05
+	saVol		$08
+	dc.b $07
+	saVol		$08
+	dc.b $01, nRst, $02, nA0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nA0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nG0, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $04, nG0, $07
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nG0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nG0, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nG0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nG0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nG0, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $03, nG0, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$08
+	dc.b nG0, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$18
+	dc.b nG0, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $03, nG0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nG0, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$18
+	dc.b nA0, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $03, nA0, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$08
+	dc.b nA0, $07
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nA0, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nA0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nA0, $08
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$18
+	dc.b nA0, $04
+	saVol		$08
+	dc.b $07
+	saVol		$08
+	dc.b $01, nRst, $03, nA0, $07
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nA0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nA0, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nA0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nA0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nG0, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $03, nG0, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$08
+	dc.b nG0, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$18
+	dc.b nG0, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, nG0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nG0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nG0, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $01, nRst, $03, nG0, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$08
+	dc.b nG0, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$18
+	dc.b nG0, $04
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst, $03, nG0, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$08
+	dc.b nG0, $08
+	saVol		$08
+	dc.b $04, nRst, $03
+	saVol		-$18
+	dc.b nA0, $04
+	saVol		$08
+	dc.b $07
+	saVol		$08
+	dc.b $01, nRst, $03, nA0, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$08
+	dc.b nA0, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$18
+	dc.b nA0
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $03, nRst, $02, nA0, $07
+	saVol		$08
+	dc.b $06, nRst, $02
+	saVol		-$08
+	dc.b nA0, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst
+	saVol		-$18
+	dc.b nA0, $08
+	saVol		$08
+	dc.b $05, nRst, $03, nA0, $04
+	saVol		$08
+	dc.b $05
+	saVol		$08
+	dc.b $03, nRst, $02
+	saVol		-$10
+	dc.b nA0, $04
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $03, nRst, $02
+	saVol		-$18
+	dc.b nA0, $07
+	saVol		$08
+	dc.b $06, nRst, $02
+	saVol		$08
+	dc.b nA0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$08
+	dc.b nA0, $08
+	saVol		$08
+	dc.b $05, nRst, $02
+	saVol		-$18
+	dc.b nA0, $05
+	saVol		$08
+	dc.b $04
+	saVol		$08
+	dc.b $03, nRst, nA0, $06
+	saVol		$08
+	dc.b nA0, nRst, $03
+	saVol		-$08
+	dc.b nA0, $06
+	saVol		$08
+	dc.b nA0, nRst, $03
+	saVol		-$10
+	dc.b nA0, $07
+	saVol		$08
+	dc.b $05, nRst, $03, nA0, $05
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $02, nRst
+	saVol		-$10
+	dc.b nA0, $05
+	saVol		$08
+	dc.b nA0
+	saVol		$08
+	dc.b $03, nRst, $02
+	saVol		-$18
+	dc.b nA0, $06
+	saVol		$08
+	dc.b nA0, nRst, $03, nA0
+	saVol		$08
+	dc.b $06
+	saVol		$08
+	dc.b $03, nRst
+	saVol		-$08
+	dc.b nA0, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$18
+	dc.b nA0, $04
+	saVol		$08
+	dc.b $07
+	saVol		$08
+	dc.b $01, nRst, $03, nA0, $07
+	saVol		$08
+	dc.b $05, nRst, $03
+	saVol		-$08
+	dc.b nA0, $06
+	saVol		$08
+	dc.b nA0, nRst, $03
+	saVol		-$28
+	ssDetune	$02
+	dc.b nBb0, $04
+	saVol		$08
+	ssDetune	$02
+	dc.b $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $03
+	ssDetune	$02
+	dc.b nBb0, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $03
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $02, nRst
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $03
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $03
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $03
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$03
+	dc.b nAb0, $05
+	saVol		$08
+	ssDetune	$03
+	dc.b $06
+	saVol		$08
+	ssDetune	$03
+	dc.b $01, nRst, $03
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $04, nRst, $03
+	saVol		-$08
+	ssDetune	$03
+	dc.b nAb0, $07
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $03
+	saVol		-$18
+	ssDetune	$03
+	dc.b nAb0, $04
+	saVol		$08
+	ssDetune	$03
+	dc.b $06
+	saVol		$08
+	ssDetune	$03
+	dc.b $02, nRst
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $03
+	saVol		-$18
+	ssDetune	$03
+	dc.b nAb0, $05
+	saVol		$08
+	ssDetune	$03
+	dc.b $06
+	saVol		$08
+	ssDetune	$03
+	dc.b $01, nRst, $03
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $04, nRst, $03
+	saVol		-$08
+	ssDetune	$03
+	dc.b nAb0, $07
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$03
+	dc.b nAb0, $05
+	saVol		$08
+	ssDetune	$03
+	dc.b $06
+	saVol		$08
+	ssDetune	$03
+	dc.b $02, nRst
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $02, nRst
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $02, nRst
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $03
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $03
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $04
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $02, nRst, $03
+	ssDetune	$02
+	dc.b nBb0, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $03
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$03
+	dc.b nAb0, $05
+	saVol		$08
+	ssDetune	$03
+	dc.b $06
+	saVol		$08
+	ssDetune	$03
+	dc.b $01, nRst, $03
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $04, nRst, $03
+	saVol		-$08
+	ssDetune	$03
+	dc.b nAb0, $07
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$03
+	dc.b nAb0, $05
+	saVol		$08
+	ssDetune	$03
+	dc.b $06
+	saVol		$08
+	ssDetune	$03
+	dc.b $02, nRst
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$03
+	dc.b nAb0, $05
+	saVol		$08
+	ssDetune	$03
+	dc.b $06
+	saVol		$08
+	ssDetune	$03
+	dc.b $02, nRst, $03
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $03, nRst, $04
+	saVol		-$08
+	ssDetune	$03
+	dc.b nAb0, $07
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$03
+	dc.b nAb0, $05
+	saVol		$08
+	ssDetune	$03
+	dc.b $06
+	saVol		$08
+	ssDetune	$03
+	dc.b $02, nRst
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $03
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $04
+	saVol		$08
+	ssDetune	$02
+	dc.b $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $03
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $03
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $03
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $04
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $02, nRst
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $03
+	saVol		-$18
+	ssDetune	$03
+	dc.b nAb0, $05
+	saVol		$08
+	ssDetune	$03
+	dc.b $06
+	saVol		$08
+	ssDetune	$03
+	dc.b $01, nRst, $03
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $04, nRst, $03
+	saVol		-$08
+	ssDetune	$03
+	dc.b nAb0, $07
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$03
+	dc.b nAb0, $05
+	saVol		$08
+	ssDetune	$03
+	dc.b $06
+	saVol		$08
+	ssDetune	$03
+	dc.b $02, nRst
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$03
+	dc.b nAb0, $05
+	saVol		$08
+	ssDetune	$03
+	dc.b $06
+	saVol		$08
+	ssDetune	$03
+	dc.b $02, nRst
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $04, nRst, $03
+	saVol		-$08
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$03
+	dc.b nAb0, $05
+	saVol		$08
+	ssDetune	$03
+	dc.b $06
+	saVol		$08
+	ssDetune	$03
+	dc.b $02, nRst
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $03
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $04
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $02, nRst, $03
+	ssDetune	$02
+	dc.b nBb0, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $03
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $03
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $02
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $03
+	saVol		-$18
+	ssDetune	$03
+	dc.b nAb0, $04
+	saVol		$08
+	ssDetune	$03
+	dc.b $06
+	saVol		$08
+	ssDetune	$03
+	dc.b $02, nRst
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $04, nRst
+	saVol		-$08
+	ssDetune	$03
+	dc.b nAb0, $07
+	saVol		$08
+	ssDetune	$03
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$03
+	dc.b nAb0, $05
+	saVol		$08
+	ssDetune	$03
+	dc.b $06
+	saVol		$08
+	ssDetune	$03
+	dc.b $02, nRst
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$03
+	dc.b nAb0, $05
+	saVol		$08
+	ssDetune	$03
+	dc.b $06
+	saVol		$08
+	ssDetune	$03
+	dc.b $02, nRst
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $04, nRst, $03
+	saVol		-$08
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$03
+	dc.b nAb0, $04
+	saVol		$08
+	ssDetune	$03
+	dc.b $07
+	saVol		$08
+	ssDetune	$03
+	dc.b $01, nRst, $03
+	ssDetune	$03
+	dc.b nAb0, $07
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $03
+	saVol		-$08
+	ssDetune	$03
+	dc.b nAb0, $08
+	saVol		$08
+	ssDetune	$03
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $03
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $03
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $03, nRst
+	ssDetune	$02
+	dc.b nBb0, $06
+	saVol		$08
+	ssDetune	$02
+	dc.b nBb0, nRst, $03
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $04
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $02, nRst, $03
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $03
+	ssDetune	$02
+	dc.b nBb0, $04
+	saVol		$08
+	ssDetune	$02
+	dc.b $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $03, nRst
+	saVol		-$10
+	ssDetune	$02
+	dc.b nBb0
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $03, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $06, nRst, $02
+	saVol		$08
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $04
+	saVol		$08
+	ssDetune	$02
+	dc.b nBb0, nRst, $02
+	ssDetune	$02
+	dc.b nBb0, $06
+	saVol		$08
+	ssDetune	$02
+	dc.b nBb0, nRst, $03
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $06
+	saVol		$08
+	ssDetune	$02
+	dc.b nBb0, nRst, $03
+	saVol		-$10
+	ssDetune	$02
+	dc.b nBb0, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $03
+	ssDetune	$02
+	dc.b nBb0, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $02, nRst
+	saVol		-$10
+	ssDetune	$02
+	dc.b nBb0, $05
+	saVol		$08
+	ssDetune	$02
+	dc.b nBb0
+	saVol		$08
+	ssDetune	$02
+	dc.b $03, nRst, $02
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $07, nRst, $02
+	ssDetune	$02
+	dc.b nBb0, $03
+	saVol		$08
+	ssDetune	$02
+	dc.b $06
+	saVol		$08
+	ssDetune	$02
+	dc.b $03, nRst
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $08
+	saVol		$08
+	ssDetune	$02
+	dc.b $04, nRst, $03
+	saVol		-$18
+	ssDetune	$02
+	dc.b nBb0, $04
+	saVol		$08
+	ssDetune	$02
+	dc.b $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $01, nRst, $03
+	ssDetune	$02
+	dc.b nBb0, $07
+	saVol		$08
+	ssDetune	$02
+	dc.b $05, nRst, $03
+	saVol		-$08
+	ssDetune	$02
+	dc.b nBb0, $06
+	saVol		$08
+	ssDetune	$02
+	dc.b nBb0, nRst, $03
+	saVol		-$60
+	sJump		Snd_Options_PSG2
+
+; DAC Data
+Snd_Options_DAC:
+; PSG3 Data
+Snd_Options_PSG3:
+	sStop

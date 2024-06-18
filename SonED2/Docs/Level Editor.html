@@ -1,0 +1,266 @@
+<html>
+<head>
+<title>SonED2 Level Editor</title>
+</head>
+<body>
+<b><center>SonED2 Level Editor</center></b><br>
+<br>
+The Level Editor is used for editing the layout of normal gameplay levels.
+Levels are built by placing "Chunks" onto the level grid with the cursor.
+"Chunks" can be either 256 or 128 pixels in both width and height depending
+on the target game, and are built from 16x16 "Blocks", which are
+built from 8x8 Tiles. They can all be built and modified from within the <a href="Tile Editor.html">Tile Editor</a>, or they may be <a href="Art Importing.html">imported from an image file</a>.<br>
+<br>
+Levels are composed of two planes: Plane A (Foreground) and Plane B (Background, and in some cases, special moving floors).
+These planes are further divided into "High" and "Low" portions by settings within the 16x16 Blocks.<br>
+<br>
+The Level Editor may be used to edit Plane A, Plane B, or its own "clipboard" plane.
+The clipboard plane receives <a href="Art Importing.html">imported plane layout data</a>, but may also be drawn to manually as with Planes A and B. This data may then be pasted onto Plane A or B at any location.<br>
+<br>
+The following features are available in this editor:<br>
+<ul>
+<li><a href="#Status">Status</a><br>
+<li><a href="#Drawing">Drawing to the Level</a><br>
+<li><a href="#Pasting">Pasting from the Clipboard</a><br>
+<li><a href="#Loop">Toggling "Loop" Tile</a><br>
+<li><a href="#Selecting">Selecting or "Grabbing" a Chunk</a><br>
+<li><a href="#Moving">Moving Around the Level</a><br>
+<li><a href="#Resizing">Resizing the Level</a><br>
+<li><a href="#Editors">Switching Between Planes and Other Editing Modes</a><br>
+<li><a href="#Scroll">Altering Scroll Speed</a><br>
+<li><a href="#View">Viewing Controls</a><br>
+<li><a href="#S22P">Split-Screen Mode Compatibility</a><br>
+<li><a href="#Translucency">Translucent Cursor</a><br>
+<br>
+<a name="Status">
+<b>Status</b><br>
+<ul>
+<br>
+The Status Display appears at the upper-left corner of the editor and displays certain level and editor
+information.<br>
+<br>
+This display may be toggled off and back on by pressing "<b>Tab</b>".<br>
+<ul>
+<br>
+<table border="0">
+<tr>
+<td nowrap><b><li>Screen Position</b></td><td> - </td><td>The X and Y world position of the top-left corner of the screen,
+                  shown in hex as with the in-game debug modes</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<td nowrap><b><li>Cursor Position</b></td><td> - </td><td>The X and Y layout position being pointed to by the cursor, followed by its byte position within the data when the map layout is expressed as a linear (1D) array</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Plane Size</b></td><td> - </td><td>The Width and Height of the plane currently selected for editing, measured in Chunks,
+             shown in hex</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<td nowrap><b><li>Current Chunk</b></td><td> - </td><td>The currently-selected Chunk. This Chunk is displayed as the
+                cursor, and will be inserted into the level when "drawing"</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Chunk at Cursor</b></td><td> - </td><td>The ID of the Chunk that is currently placed at the level
+                  position under the cursor</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Solid ???</b></td><td> - </td><td>This entry describes which of the two solidity paths is being
+            drawn over the level, and whether or not the corresponding angle
+            values are shown</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Objects ???</b></td><td> - </td><td>This entry describes how the objects are currently being
+              displayed relative to the high/low planes of the level</td>
+</tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+<tr>
+<td nowrap><b><li>Scroll Speed</b></td><td> - </td><td>The number of pixels that the screen will move when the arrow
+               keys are used for scrolling</td>
+</tr>
+</table>
+</ul>
+</ul>
+
+<br>
+<br>
+<a name="Drawing">
+<b>Drawing to the Level</b><br>
+<ul><br>To draw the currently-selected Chunk onto the currently-selected level plane,
+                       <b>left-click</b> the desired location, or <b>hold the left mouse button and drag</b> across the desired area</ul>
+
+<br>
+<br>
+<a name="Pasting">
+<b>Pasting from the clipboard</b><br>
+<ul><br>To paste the contents of the clipboard onto the currently-selected level plane,
+                       move the cursor to the upper-left corner of the desired area, then <b>hold Ctrl and press P</b></ul>
+
+<br>
+<br>
+<a name="Loop">
+<b>Toggling "Loop" Tile</b><br>
+<ul><br>In games that do not support a two-path level collision system, such as Sonic 1 and Sonic CD, "loops" are kept track of by
+                       an array stored in the program that holds two Chunk
+                       IDs per zone, specifying which two Chunks can act
+                       as "loops". "Loop" Chunks in these game types should
+                       be stored once with solidity traveling up the right
+                       side, and should be immediately followed by a visually
+                       identical copy with solidity traveling
+                       down the left side. The Chunk must also be "flagged"
+                       within the level layout. To do this, hover over the
+                       Chunk and press <b>Spacebar</b>. When a Chunk is
+                       "flagged", its ID shown by the "Chunk at Cursor" status
+                       element will be followed by the word "(Loop)".
+                       If the game's loop Chunk ID array must be modified,
+                       the ID that
+                       should be entered into the array is the
+                       Chunk's real ID plus 0x80 (128). None of this applies
+                       to games that use a two-path level collision system,
+                       as those games use special objects to trigger collision changes instead</ul>
+
+<br>
+<br>
+<a name="Selecting">
+<b>Selecting or "Grabbing" a Chunk</b><br>
+<ul><br>To select a Chunk for drawing, use the <b>A</b> and <b>Z</b> keys to
+                    cycle through the list, <b>right-click</b> the map to "pick up"
+                    the Chunk that is under the cursor's current position, or
+                    use the <b>"Chunk Selector"</b> in the Tile Editor</ul>
+
+<br>
+<br>
+<a name="Moving">
+<b>Moving Around the Level</b><br>
+<ul><br>To scroll around the level area, use the <b>Arrow
+                          Keys</b> to scroll by the "scroll value", or use the
+                          <b>scrollbars</b> surrounding the window. In full-screen
+                          mode, moving the mouse pointer to the <b>edges of the
+                          screen</b> will also scroll. When used in conjunction
+                          with the Arrow Keys, the scroll speed will double</ul>
+
+<br>
+<br>
+<a name="Resizing">
+<b>Resizing the Level</b><br>
+<ul><br><b>Holding Ctrl while pressing the arrow keys</b> will change
+                     the level size. Left and Down increase Width and Height,
+                     Right and Up decrease Width and Height. (This is level
+                     data size, not gameplay boundary size. The in-game boundaries
+                     are determined by another array, and are usually modified by program code during gameplay)</ul>
+
+<br>
+<br>
+<a name="Editors">
+<b>Switching Between Planes and Other Editing Modes</b><br>
+<ul><br>The "Editors" menu has options to switch to any of the other
+              editing modes available to a project using this editor.
+              The following keys also have the same effect:<br><br>
+
+              <ul><table>
+              <tr><td><b>L</b></td><td> - </td><td>Level Editor Plane A (foreground)</td></tr>
+              <tr><td><b>P</b></td><td> - </td><td>Level Editor Plane B (background)</td></tr>
+              <tr><td><b>K</b></td><td> - </td><td>Level Editor Clipboard</td></tr>
+              <tr><td><b>O</b></td><td> - </td><td>Object Editor</td></tr>
+              <tr><td><b>I</b></td><td> - </td><td>Tile Editor</td></tr>
+              </table></ul></ul>
+
+<br>
+<br>
+<a name="Scroll">
+<b>Altering Scroll Speed</b><br>
+<ul><br>The <b>H</b> and <b>N</b> keys increase and decrease the number of
+                        pixels that the screen will scroll when using the
+                        arrow keys or moving the mouse to the screen edges
+                        in full-screen mode</ul>
+
+<br>
+<br>
+<a name="View">
+<b>Viewing Controls</b><br>
+<ul><br>The following keys affect other viewing options:<br><br>
+                   <ul><table>
+                   <tr><td><b>Q</b></td><td> - </td><td>Disable Solidity viewing</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td><b>W</b></td><td> - </td><td>Display Solidity Path 0 Over Level</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td><b>E</b></td><td> - </td><td>Display Solidity Path 1 Over Level (for games that support two-path collision)</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td><b>R</b></td><td> - </td><td>Toggle angle view when viewing solidity path</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td><b>T</b></td><td> - </td><td>Change object viewing status:<ul>
+                       <li>Disabled
+                       <li>Below High Plane (Game View, some objects "hidden" by the foreground)
+                       <li>Above High Plane (All objects on top, total visibility)</ul></td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td><b>Y</b></td><td> - </td><td>Toggles the "Low" plane on or off</td></tr>
+<tr><td> </td></tr><tr><td> </td></tr>
+                   <tr><td><b>U</b></td><td> - </td><td>Toggles the "High" plane on or off</td></tr>
+                   </table></ul>
+</ul>
+</ul>
+
+<br>
+<br>
+<a name="S22P">
+<b>Split-Screen Mode Compatibility</b><br>
+<ul><br>Sonic the Hedgehog 2 features a split-screen competition mode that makes use
+                     of the Megadrive/Genesis's "interlace mode" to double the screen's
+                     vertical resolution. While using this mode, the system switches
+                     from using 8x8 Tiles to 8x16 Tiles, so 16x16 Blocks must be set up in the following way:<br>
+<br>
+                     Within both columns of a 16x16 Block, the two 8x8 Tile entries
+                     must be set to the same palette row and the same drawing priority.
+                     Not following this rule will cause the graphics to display improperly,
+                     because the Block now effectively has two 8x16 Tile entries instead of
+                     four 8x8 Tile entries. In effect, this means that the game will only be reading the
+                     settings for the two 8x8 Tile entries on the upper row, and applying them
+                     to the two entries on the bottom row (Ex: The properties of the lower-left
+                     Tile entry <i>must</i> be set equal to the properties of the upper-left Tile
+                     entry for them to be displayed as they were designed,
+                     because while in "interlace mode", those two Tiles become one double-height
+                     Tile, and only the settings for the upper-left Tile entry will be read and
+                     applied). These two settings cannot be compensated for through automated
+                     conversion; care must be taken to follow this rule while initially designing
+                     the level graphics and layout<br>
+<br>
+                     Using this option will, however, automatically re-arrange and duplicate the
+                     Tiles as needed to construct a full set of proper 8x16 Tiles and compensate
+                     for lower-row Tile entries using different draw direction settings than the
+                     entry immediately above them<br>
+<br>
+                     Because of the nature of this video mode, performing this conversion can
+                     sometimes dramatically increase the number of 8x8 Tiles. This can't be
+                     helped, as while this creates many duplicate 8x8 Tiles, all of the tiles
+                     are actually unique when regarded as 8x16, and are necessary to render
+                     the level the way it was designed. Care should be taken to reduce the
+                     number of 8x8 Tiles that are used in the initial production of the level
+                     so that this process doesn't generate too many to be used in-game<br>
+<br>
+                     To perform this conversion, select the <b>"Make Level 2P Compat" option
+                     in the "Editor" menu</b>. If any Block settings errors are detected,
+                     they will be noted through the message system<br>
+<br>
+                     <i>In terms of the original, unmodified game programs, this mode is only
+                     available in Sonic 2 (Sonic 3 uses normal resolution with smaller graphics).
+                     The option is available at all times in the Level Editor, but it is not
+                     designed to handle "Tile Paging", and so, the conversion will not be
+                     performed when there is more than one 8x8 Tiles page</i>
+</ul>
+
+<br>
+<br>
+<a name="Translucency">
+<b>Translucent Cursor</b><br>
+<ul><br>The Chunk cursor can be made translucent by selecting the
+                     <b>"Translucent Cursor" option in the "Editor" menu</b>, so that
+                     the Tile currently placed at the cursor's position shows
+                     through the Tile that is currently selected for drawing.
+                     This option is off by default, and may reduce performance
+                     on old computer systems as it is slower to render</ul>
+</ul>
+
+</body>
+</html>

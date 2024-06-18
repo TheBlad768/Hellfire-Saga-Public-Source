@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ObjDef xmlns="http://www.sonicretro.org" Namespace="S12005ObjectDefinitions.FDZ" TypeName="StillSprites" Language="cs" Name="Shooter" Image="img1">
+  <Images>
+    <ImageFromMappings id="img1">
+      <ArtFile filename="../Objects/FDZ Shooter/KosinskiM Art/Shooter.bin" compression="KosinskiM" />
+      <MapFile type="ASM" filename="../Objects/FDZ Shooter/Object Data/Map - Shooter.asm" frame="0" startpal="2"/>
+    </ImageFromMappings>
+  </Images>
+  <Subtypes>
+    <Subtype id="00" name="Proximity based" image="img1"/>
+    <Subtype id="A0" name="Time based" image="img1"/>
+  </Subtypes>
+</ObjDef>

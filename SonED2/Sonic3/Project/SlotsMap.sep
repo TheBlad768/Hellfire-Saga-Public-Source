@@ -1,0 +1,32 @@
+Type: S1SS
+
+Object Def: objdef\ssobj
+
+
+Layout Compression:  7
+Layout X Size:       32
+Layout Y Size:       32
+Layout Data:         ..\Levels\Slots\Layout\Maze.bin
+
+Num Start Positions:  1
+Start Position 0:    ..\Levels\Slots\Start\1.bin
+
+Palettes-
+
+ Number of files: 2
+
+  Palette 0-
+
+   Start index:        0
+   Number of entries: 16
+   File:              ..\Palettes\SK\SonTail.bin
+
+  Palette 1-
+
+   Start index:       16
+   Number of entries: 48
+   File:              ..\Levels\Slots\Pal\1.bin
+
+Game Name: Sonic 3 Slot Bonus
+
+-EOF-

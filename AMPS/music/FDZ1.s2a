@@ -1,0 +1,3770 @@
+Snd_Filmore_Header:
+	sHeaderInit
+	sHeaderTempo	$00F5
+	sHeaderCh	$05, $03
+	sHeaderDAC	Snd_Filmore_DAC1
+	sHeaderDAC	Snd_Filmore_DAC2,	$04
+	sHeaderFM	Snd_Filmore_FM1,	$00, $02
+	sHeaderFM	Snd_Filmore_FM2,	$00, $06		; AF: SFX now use FM2
+	sHeaderFM	Snd_Filmore_FM4,	$00, $03
+	sHeaderFM	Snd_Filmore_FM5,	$00, $07
+	sHeaderFM	Snd_Filmore_FM3,	$00, $06
+	sHeaderPSG	Snd_Filmore_PSG2,	$00+$0C, $28, $00, v08
+	sHeaderPSG	Snd_Filmore_PSG1,	$00+$0C, $18, $00, v08
+	sHeaderPSG	Snd_Filmore_PSG3,	$00+$0C, $08, $00, v01
+
+;	Voice $00
+;	$2B
+;	$3E, $51, $50, $50, 	$DF, $DF, $1B, $1F, 	$07, $0E, $07, $04
+;	$07, $01, $01, $01, 	$54, $55, $F6, $77, 	$1F, $1C, $17, $0C
+	spAlgorithm	$03
+	spFeedback	$05
+	spDetune	$03, $05, $05, $05
+	spMultiple	$0E, $00, $01, $00
+	spRateScale	$03, $00, $03, $00
+	spAttackRt	$1F, $1B, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$07, $07, $0E, $04
+	spDecayRt	$07, $01, $01, $01
+	spSustainLv	$05, $0F, $05, $07
+	spReleaseRt	$04, $06, $05, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1F, $17, $1C, $0C
+
+;	Voice $01
+;	$28
+;	$33, $53, $70, $30, 	$DF, $DC, $1F, $1F, 	$14, $05, $01, $01
+;	$00, $01, $00, $1D, 	$11, $21, $10, $F8, 	$0E, $1B, $12, $0C
+	spAlgorithm	$00
+	spFeedback	$05
+	spDetune	$03, $07, $05, $03
+	spMultiple	$03, $00, $03, $00
+	spRateScale	$03, $00, $03, $00
+	spAttackRt	$1F, $1F, $1C, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$14, $01, $05, $01
+	spDecayRt	$00, $00, $01, $1D
+	spSustainLv	$01, $01, $02, $0F
+	spReleaseRt	$01, $00, $01, $08
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$0E, $12, $1B, $0C
+
+;	Voice $02
+;	$38
+;	$53, $51, $51, $51, 	$DF, $DF, $1F, $1F, 	$07, $0E, $07, $04
+;	$04, $03, $03, $08, 	$F7, $31, $71, $67, 	$1B, $11, $10, $0C
+	spAlgorithm	$00
+	spFeedback	$07
+	spDetune	$05, $05, $05, $05
+	spMultiple	$03, $01, $01, $01
+	spRateScale	$03, $00, $03, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$07, $07, $0E, $04
+	spDecayRt	$04, $03, $03, $08
+	spSustainLv	$0F, $07, $03, $06
+	spReleaseRt	$07, $01, $01, $07
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$1B, $10, $11, $0C
+
+;	Voice $03
+;	$3A
+;	$02, $01, $01, $02, 	$0E, $0E, $0E, $13, 	$0E, $0E, $0E, $04
+;	$00, $00, $00, $00, 	$16, $16, $16, $06, 	$18, $17, $1D, $0C
+	spAlgorithm	$02
+	spFeedback	$07
+	spDetune	$00, $00, $00, $00
+	spMultiple	$02, $01, $01, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$0E, $0E, $0E, $13
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0E, $0E, $0E, $04
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$01, $01, $01, $00
+	spReleaseRt	$06, $06, $06, $06
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$18, $1D, $17, $0C
+
+; DAC Data
+Snd_Filmore_DAC2:
+	sPan		spCenter, $00
+
+Snd_Filmore_Jump00:
+	dc.b dKick
+
+Snd_Filmore_Loop00:
+	dc.b $1E
+	sLoop		$00, $07, Snd_Filmore_Loop00
+	dc.b $0F, $04, $04, $03, $04
+
+Snd_Filmore_Loop01:
+	dc.b dSnare, $08, dKick, $07, $08, $8D, $07, dKick, $08, $07
+	sLoop		$00, $02, Snd_Filmore_Loop01
+	dc.b dSnare, $08, dKick, $07, dSnare, $08, $07, $8D, $44, dKick, $07, dSnare
+	dc.b $08, $0F, dKick, $07, dSnare, $08, $07
+
+Snd_Filmore_Loop03:
+	dc.b $8D
+
+Snd_Filmore_Loop02:
+	dc.b $1E, dSnare, $0F, dKick, dKick, $17, $07, dSnare, $08, dKick, $0F, $07
+	dc.b $17, $07, dSnare, $08, dKick, $16, $17, $07, dSnare, $08, dKick, $07
+	dc.b $08, $07
+	sLoop		$00, $02, Snd_Filmore_Loop02
+	sLoop		$01, $02, Snd_Filmore_Loop03
+	dc.b $8D, $1E, dSnare, $0F, dKick, dKick, $17, $07, dSnare, $08, dKick, $0F
+	dc.b $07, $17, $07, dSnare, $08, dKick, $16, $17, $07, dSnare, $08, dKick
+	dc.b $07, $08, $07, $1E, dSnare, $0F, dKick, dKick, $17, $07, dSnare, $08
+	dc.b dKick, $0F, $07, $17, $07, dSnare, $08, dKick, $16, $0F, $0F, dSnare
+	dc.b $1E, $8D
+
+Snd_Filmore_Loop04:
+	dc.b dKick, dKick, dSnare, dKick
+	sLoop		$00, $03, Snd_Filmore_Loop04
+	dc.b dKick, dKick, $08, dSnare, $07, $0F, $0F, $08, $07, $8D
+
+Snd_Filmore_Loop05:
+	dc.b $1E, dSnare, $0F, dKick, dKick, $17, $07, dSnare, $08, dKick, $07, $8D
+	dc.b $08, dKick, $07
+	sLoop		$00, $03, Snd_Filmore_Loop05
+	dc.b $1E, dSnare, $0F, dKick, dKick, $17, $07, dSnare, $08, $07, $08, $07
+	sJump		Snd_Filmore_Jump00
+
+; FM1 Data
+Snd_Filmore_FM1:
+	sVoice		$00
+	sPan		spCenter, $00
+
+Snd_Filmore_Jump05:
+	dc.b nRst, $01, nB2, $1D, nA2, $1E, nG2, nFs2, nF2, $78
+
+Snd_Filmore_LoopDD:
+	dc.b nFs2, $0E, nRst, $01, nFs2, $06, nRst, $02, nFs2, $06, nRst, $01
+	sLoop		$00, $04, Snd_Filmore_LoopDD
+	dc.b nFs2, $2D, nRst, $17, nFs2, $06, nRst, $01, nFs3, $06, nRst, $02
+	dc.b nFs2, $06, nRst, $01, nFs2, $06, nRst, $02, nFs2, $06, nRst, $01
+	dc.b nFs3, $06, nRst, $02, nFs2, $06, nRst, $01
+
+Snd_Filmore_LoopDE:
+	dc.b nB2, $0E, nRst, $01, nB2, $06, nRst, $02, nB2, $07
+	saVol		$03
+	dc.b nB3, $05, nRst, $0A
+	saVol		$FD
+	dc.b nB2, $06, nRst, $02, nB2, $07, nRst, $08, nB2, $0D, nRst, $02
+	dc.b nB2, $07
+	saVol		$03
+	dc.b nB3, $05, nRst, $03
+	saVol		$FD
+	dc.b nB2, $02, nRst, $05, nB2, $0F, nG2, $0E, nRst, $01, nG2, $06
+	dc.b nRst, $02, nG2, $07
+	saVol		$03
+	dc.b nG3, $05, nRst, $0A
+	saVol		$FD
+	dc.b nG2, $06, nRst, $02, nG2, $07, nRst, $08, nA2, $06, nRst, $01
+	dc.b nA2, $06, nRst, $02, nA2, $07
+	saVol		$03
+	dc.b nA3, $05, nRst, $03
+	saVol		$FD
+	dc.b nA2, $02, nRst, $05, nA2, $0F
+	sLoop		$00, $02, Snd_Filmore_LoopDE
+	dc.b nFs2, $0E, nRst, $01, nFs2, $06, nRst, $02, nFs2, $06, nRst, $01
+	saVol		$03
+	dc.b nFs3, $05, nRst, $03
+	saVol		$FD
+	dc.b nFs2, $06, nRst, $01, nFs2, $08, nRst, $16, nBb2, $08, nRst, $07
+	saVol		$03
+	dc.b nBb3, $05, nRst, $03
+	saVol		$FD
+	dc.b nBb2, $06, nRst, $01, nBb2, $08, nRst, $07, nB2, $0E, nRst, $01
+	dc.b nB2, $06, nRst, $02, nB2, $06, nRst, $01
+	saVol		$03
+	dc.b nB3, $05, nRst, $03
+	saVol		$FD
+	dc.b nB2, $06, nRst, $01, nB2, $08, nRst, $16, nAb2, $08, nRst, $07
+	saVol		$03
+	dc.b nAb3, $05, nRst, $03
+	saVol		$FD
+	dc.b nAb2, $06, nRst, $01, nAb2, $08, nRst, $07, nCs3, $0E, nRst, $01
+	dc.b nCs3, $06, nRst, $02, nCs3, $06, nRst, $01
+	saVol		$03
+	dc.b nCs4, $05, nRst, $03
+	saVol		$FD
+	dc.b nCs3, $06, nRst, $01, nCs3, $08, nRst, $16, nA2, $08, nRst, $07
+	saVol		$03
+	dc.b nA3, $05, nRst, $03
+	saVol		$FD
+	dc.b nA2, $06, nRst, $01, nA2, $08, nRst, $07, nD3, $0E, nRst, $01
+	dc.b nD3, $06, nRst, $02, nD3, $07
+	saVol		$03
+	dc.b nD4, $05, nRst, $03
+	saVol		$FD
+	dc.b nD3, $06, nRst, $01, nD3, $08, nRst, $07, nCs3, $0E, nRst, $01
+	dc.b nCs3, $06, nRst, $02, nCs3, $07
+	saVol		$03
+	dc.b nCs4, $05, nRst, $03
+	saVol		$FD
+	dc.b nCs3, $06, nRst, $01, nCs3, $06, nRst, $02, nCs3, $07, nFs2, $0E
+	dc.b nRst, $01, nFs2, $06, nRst, $02, nFs2, $06, nRst, $01
+	saVol		$03
+	dc.b nFs3, $05, nRst, $03
+	saVol		$FD
+	dc.b nFs2, $06, nRst, $01, nFs2, $08, nRst, $16, nBb2, $08, nRst, $07
+	saVol		$03
+	dc.b nBb3, $05, nRst, $03
+	saVol		$FD
+	dc.b nBb2, $06, nRst, $01, nBb2, $08, nRst, $07, nB2, $0E, nRst, $01
+	dc.b nB2, $06, nRst, $02, nB2, $06, nRst, $01
+	saVol		$03
+	dc.b nB3, $05, nRst, $03
+	saVol		$FD
+	dc.b nB2, $06, nRst, $01, nB2, $08, nRst, $16, nAb2, $08, nRst, $07
+	saVol		$03
+	dc.b nAb3, $05, nRst, $03
+	saVol		$FD
+	dc.b nAb2, $06, nRst, $01, nAb2, $08, nRst, $07, nCs3, $0E, nRst, $01
+	dc.b nCs3, $06, nRst, $02, nCs3, $06, nRst, $01
+	saVol		$03
+	dc.b nCs4, $05, nRst, $03
+	saVol		$FD
+	dc.b nCs3, $06, nRst, $01, nCs3, $08, nRst, $16, nA2, $08, nRst, $07
+	saVol		$03
+	dc.b nA3, $05, nRst, $03
+	saVol		$FD
+	dc.b nA2, $06, nRst, $01, nA2, $08, nRst, $07, nD3, $0E, nRst, $01
+	dc.b nD3, $06, nRst, $02, nD3, $07
+	saVol		$03
+	dc.b nD4, $05, nRst, $03
+	saVol		$FD
+	dc.b nD3, $06, nRst, $01, nD3, $08, nRst, $07, nFs3, $0E, nRst, $01
+	dc.b nFs3, $06, nRst, $02, nFs3, $07
+	saVol		$03
+	dc.b nFs4, $05, nRst, $03
+	saVol		$FD
+	dc.b nFs3, $06, nRst, $01, nFs3, $08, nRst, $07
+
+Snd_Filmore_LoopDF:
+	dc.b nG3, $1D, nRst, $01
+	sLoop		$00, $04, Snd_Filmore_LoopDF
+
+Snd_Filmore_LoopE0:
+	dc.b nF3, $1D, nRst, $01
+	sLoop		$00, $04, Snd_Filmore_LoopE0
+
+Snd_Filmore_LoopE1:
+	dc.b nFs3, $1D, nRst, $01
+	sLoop		$00, $06, Snd_Filmore_LoopE1
+	dc.b nFs3, $06, nRst, $02, nFs3, $06, nRst, $01, nFs4, $06, nRst, $02
+	dc.b nFs3, $06, nRst, $01, nFs3, $0F, nFs4, $06, nRst, $02
+	ssDetune	$0F
+	dc.b $01
+	ssDetune	$E3
+	dc.b $01
+	ssDetune	$F2
+	dc.b $01
+	ssDetune	$00
+	dc.b $01
+	ssDetune	$0D
+	dc.b $01
+	ssDetune	$0C
+	dc.b $01
+	ssDetune	$E9
+	dc.b $01
+	ssDetune	$11
+	dc.b nA2
+	ssDetune	$01
+	dc.b sHold, nBb2
+	ssDetune	$F7
+	dc.b sHold, nB2
+	ssDetune	$FF
+	dc.b sHold, $0C
+	ssDetune	$00
+	saVol		$03
+	dc.b nB3, $05, nRst, $03
+	saVol		$FD
+	dc.b nB2, $07, nRst, $08
+	saVol		$03
+	dc.b nB3, $0D, nRst, $02, nB3, $05, nRst, $02
+	saVol		$FD
+	ssDetune	$0F
+	dc.b nA2, $01
+	ssDetune	$00
+	dc.b sHold, nBb2
+	ssDetune	$F7
+	dc.b sHold, nB2
+	ssDetune	$FF
+	dc.b sHold, $0C
+	ssDetune	$00
+	saVol		$03
+	dc.b nB3, $05, nRst, $03
+	saVol		$FD
+	dc.b nB2, $07, nRst, $08, nB2, $07
+	saVol		$03
+	dc.b nB3, $08
+	ssDetune	$EE
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b sHold, nBb3
+	ssDetune	$DF
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b sHold, nA3
+	ssDetune	$E1
+	dc.b sHold, $01
+	ssDetune	$F6
+	dc.b sHold, nAb3
+	ssDetune	$12
+	dc.b sHold, nG3
+	ssDetune	$00
+	saVol		$FD
+	dc.b nG2, $08, nRst, $06
+	ssDetune	$1A
+	dc.b $01
+	saVol		$03
+	ssDetune	$0E
+	dc.b nFs3
+	ssDetune	$00
+	dc.b sHold, nG3, $0E, nRst, $08
+	saVol		$FD
+	dc.b nG2, $0F
+	ssDetune	$F2
+	dc.b sHold, $01
+	ssDetune	$E5
+	dc.b sHold, $01
+	ssDetune	$0E
+	dc.b sHold, nFs2
+	ssDetune	$01
+	dc.b sHold, $01
+	ssDetune	$F4
+	dc.b sHold, $01
+	ssDetune	$16
+	dc.b sHold, nF2
+	ssDetune	$09
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b $0F
+	saVol		$03
+	dc.b nF3, $05, nRst, $0A
+	saVol		$FD
+	dc.b nFs2, $0F
+	saVol		$03
+	dc.b nFs3, $05
+	ssDetune	$F7
+	dc.b sHold, $01
+	ssDetune	$0D
+	dc.b sHold, nF3
+	ssDetune	$F1
+	dc.b sHold, $01
+	ssDetune	$FD
+	dc.b sHold, nE3
+	ssDetune	$11
+	dc.b sHold, nEb3
+	ssDetune	$F7
+	dc.b sHold, $01
+	ssDetune	$0A
+	dc.b sHold, nD3
+	ssDetune	$F3
+	dc.b sHold, $01
+	ssDetune	$FD
+	dc.b sHold, nCs3
+	ssDetune	$0E
+	dc.b sHold, nC3
+	saVol		$FD
+	ssDetune	$11
+	dc.b nA2
+	ssDetune	$01
+	dc.b sHold, nBb2
+	ssDetune	$F7
+	dc.b sHold, nB2
+	ssDetune	$FF
+	dc.b sHold, $0C
+	ssDetune	$00
+	saVol		$03
+	dc.b nB3, $05, nRst, $03
+	saVol		$FD
+	dc.b nB2, $07, nRst, $08
+	saVol		$03
+	dc.b nB3, $0D, nRst, $02, nB3, $05, nRst, $02
+	saVol		$FD
+	ssDetune	$0F
+	dc.b nA2, $01
+	ssDetune	$00
+	dc.b sHold, nBb2
+	ssDetune	$F7
+	dc.b sHold, nB2
+	ssDetune	$FF
+	dc.b sHold, $0C
+	ssDetune	$00
+	saVol		$03
+	dc.b nB3, $05, nRst, $03
+	saVol		$FD
+	dc.b nB2, $07, nRst, $08
+	saVol		$03
+	dc.b nB2, $07, nB3, $08
+	ssDetune	$EE
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b sHold, nBb3
+	ssDetune	$DF
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b sHold, nA3
+	ssDetune	$E1
+	dc.b sHold, $01
+	ssDetune	$F6
+	dc.b sHold, nAb3
+	ssDetune	$12
+	dc.b sHold, nG3
+	ssDetune	$00
+	saVol		$FD
+	dc.b nG2, $08, nRst, $06
+	ssDetune	$1A
+	dc.b $01
+	saVol		$03
+	ssDetune	$0E
+	dc.b nFs3
+	ssDetune	$00
+	dc.b sHold, nG3, $0E, nRst, $08
+	saVol		$FD
+	dc.b nG2, $0F
+	ssDetune	$F2
+	dc.b sHold, $01
+	ssDetune	$E5
+	dc.b sHold, $01
+	ssDetune	$0E
+	dc.b sHold, nFs2
+	ssDetune	$01
+	dc.b sHold, $01
+	ssDetune	$F4
+	dc.b sHold, $01
+	ssDetune	$16
+	dc.b sHold, nF2
+	ssDetune	$09
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b $0F
+	saVol		$03
+	dc.b nF3, $05, nRst, $0A
+	saVol		$FD
+	dc.b nFs2, $0F
+	saVol		$03
+	dc.b nFs3, $05
+	ssDetune	$F7
+	dc.b sHold, $01
+	ssDetune	$0D
+	dc.b sHold, nF3
+	ssDetune	$F1
+	dc.b sHold, $01
+	ssDetune	$FD
+	dc.b sHold, nE3
+	ssDetune	$11
+	dc.b sHold, nEb3
+	ssDetune	$F7
+	dc.b sHold, $01
+	ssDetune	$0A
+	dc.b sHold, nD3
+	ssDetune	$F3
+	dc.b sHold, $01
+	ssDetune	$FD
+	dc.b sHold, nCs3
+	ssDetune	$0E
+	dc.b sHold, nC3
+	ssDetune	$00
+	saVol		$FD
+	sJump		Snd_Filmore_Jump05
+
+; FM2 Data
+Snd_Filmore_FM2:
+	sVoice		$01
+	sPan		spCenter, $00
+
+Snd_Filmore_Jump04:
+	dc.b nRst, $01, nB2, $1D, nA2, $1E, nG2, nFs2, nF2, $78
+
+Snd_Filmore_LoopDA:
+	dc.b nFs2, $0E, nRst, $01, nFs2, $06, nRst, $02, nFs2, $06, nRst, $01
+	sLoop		$00, $04, Snd_Filmore_LoopDA
+	dc.b nFs2, $78
+
+Snd_Filmore_LoopDB:
+	dc.b nB2, $0E, nRst, $01, nB2, $06, nRst, $02, nB2, $07
+	saVol		$03
+	dc.b $05, nRst, $0A
+	saVol		$FD
+	dc.b nB2, $06, nRst, $02, nB2, $07, nRst, $08, nB2, $0D, nRst, $02
+	dc.b nB2, $07
+	saVol		$03
+	dc.b $05, nRst, $03
+	saVol		$FD
+	dc.b nB2, $02, nRst, $05, nB2, $0F, nG2, $0E, nRst, $01, nG2, $06
+	dc.b nRst, $02, nG2, $07
+	saVol		$03
+	dc.b $05, nRst, $0A
+	saVol		$FD
+	dc.b nG2, $06, nRst, $02, nG2, $07, nRst, $08, nA2, $06, nRst, $01
+	dc.b nA2, $06, nRst, $02, nA2, $07
+	saVol		$03
+	dc.b $05, nRst, $03
+	saVol		$FD
+	dc.b nA2, $02, nRst, $05, nA2, $0F
+	sLoop		$00, $02, Snd_Filmore_LoopDB
+	dc.b nFs2, $0E, nRst, $01, nFs2, $06, nRst, $02, nFs2, $06, nRst, $01
+	saVol		$03
+	dc.b nFs2, $05, nRst, $03
+	saVol		$FD
+	dc.b nFs2, $06, nRst, $01, nFs2, $08, nRst, $16, nBb2, $08, nRst, $07
+	saVol		$03
+	dc.b nBb2, $05, nRst, $03
+	saVol		$FD
+	dc.b nBb2, $06, nRst, $01, nBb2, $08, nRst, $07, nB2, $0E, nRst, $01
+	dc.b nB2, $06, nRst, $02, nB2, $06, nRst, $01
+	saVol		$03
+	dc.b nB2, $05, nRst, $03
+	saVol		$FD
+	dc.b nB2, $06, nRst, $01, nB2, $08, nRst, $16, nAb2, $08, nRst, $07
+	saVol		$03
+	dc.b nAb2, $05, nRst, $03
+	saVol		$FD
+	dc.b nAb2, $06, nRst, $01, nAb2, $08, nRst, $07, nCs3, $0E, nRst, $01
+	dc.b nCs3, $06, nRst, $02, nCs3, $06, nRst, $01
+	saVol		$03
+	dc.b nCs3, $05, nRst, $03
+	saVol		$FD
+	dc.b nCs3, $06, nRst, $01, nCs3, $08, nRst, $16, nA2, $08, nRst, $07
+	saVol		$03
+	dc.b nA2, $05, nRst, $03
+	saVol		$FD
+	dc.b nA2, $06, nRst, $01, nA2, $08, nRst, $07, nD3, $0E, nRst, $01
+	dc.b nD3, $06, nRst, $02, nD3, $07
+	saVol		$03
+	dc.b $05, nRst, $03
+	saVol		$FD
+	dc.b nD3, $06, nRst, $01, nD3, $08, nRst, $07, nCs3, $0E, nRst, $01
+	dc.b nCs3, $06, nRst, $02, nCs3, $07
+	saVol		$03
+	dc.b $05, nRst, $03
+	saVol		$FD
+	dc.b nCs3, $06, nRst, $01, nCs3, $06, nRst, $02, nCs3, $07, nFs2, $0E
+	dc.b nRst, $01, nFs2, $06, nRst, $02, nFs2, $06, nRst, $01
+	saVol		$03
+	dc.b nFs2, $05, nRst, $03
+	saVol		$FD
+	dc.b nFs2, $06, nRst, $01, nFs2, $08, nRst, $16, nBb2, $08, nRst, $07
+	saVol		$03
+	dc.b nBb2, $05, nRst, $03
+	saVol		$FD
+	dc.b nBb2, $06, nRst, $01, nBb2, $08, nRst, $07, nB2, $0E, nRst, $01
+	dc.b nB2, $06, nRst, $02, nB2, $06, nRst, $01
+	saVol		$03
+	dc.b nB2, $05, nRst, $03
+	saVol		$FD
+	dc.b nB2, $06, nRst, $01, nB2, $08, nRst, $16, nAb2, $08, nRst, $07
+	saVol		$03
+	dc.b nAb2, $05, nRst, $03
+	saVol		$FD
+	dc.b nAb2, $06, nRst, $01, nAb2, $08, nRst, $07, nCs3, $0E, nRst, $01
+	dc.b nCs3, $06, nRst, $02, nCs3, $06, nRst, $01
+	saVol		$03
+	dc.b nCs3, $05, nRst, $03
+	saVol		$FD
+	dc.b nCs3, $06, nRst, $01, nCs3, $08, nRst, $16, nA2, $08, nRst, $07
+	saVol		$03
+	dc.b nA2, $05, nRst, $03
+	saVol		$FD
+	dc.b nA2, $06, nRst, $01, nA2, $08, nRst, $07, nD3, $0E, nRst, $01
+	dc.b nD3, $06, nRst, $02, nD3, $07
+	saVol		$03
+	dc.b $05, nRst, $03
+	saVol		$FD
+	dc.b nD3, $06, nRst, $01, nD3, $08, nRst, $07, nFs3, $0E, nRst, $01
+	dc.b nFs3, $06, nRst, $02, nFs3, $07
+	saVol		$03
+	dc.b $05, nRst, $03
+	saVol		$FD
+	dc.b nFs3, $06, nRst, $01, nFs3, $08, nRst, $07, nG2, $77, nRst, $01
+	dc.b nF2, $77, nRst, $01, nFs2, $77, nRst, $01, nFs2, $1D, nRst, $01
+	dc.b nFs2, $1D
+
+Snd_Filmore_LoopDC:
+	dc.b nRst, $01, nFs2, $06, nRst, $02, nFs2, $06
+	sLoop		$00, $02, Snd_Filmore_LoopDC
+	dc.b nRst, $01, nFs2, $17
+	ssDetune	$0D
+	dc.b sHold, nF2, $01
+	ssDetune	$E8
+	dc.b sHold, $01
+	ssDetune	$F4
+	dc.b sHold, nE2
+	ssDetune	$00
+	dc.b sHold, nEb2
+	ssDetune	$0A
+	dc.b sHold, nD2, sHold, nCs2
+	ssDetune	$ED
+	dc.b sHold, $01
+	ssDetune	$11
+	dc.b nA2
+	ssDetune	$01
+	dc.b sHold, nBb2
+	ssDetune	$F7
+	dc.b sHold, nB2
+	ssDetune	$FF
+	dc.b sHold, $0C
+	ssDetune	$00
+	saVol		$03
+	dc.b $05, nRst, $03
+	saVol		$FD
+	dc.b nB2, $07, nRst, $08
+	saVol		$03
+	dc.b nB2, $0D, nRst, $02, nB2, $05, nRst, $02
+	saVol		$FD
+	ssDetune	$0F
+	dc.b nA2, $01
+	ssDetune	$00
+	dc.b sHold, nBb2
+	ssDetune	$F7
+	dc.b sHold, nB2
+	ssDetune	$FF
+	dc.b sHold, $0C
+	ssDetune	$00
+	saVol		$03
+	dc.b $05, nRst, $03
+	saVol		$FD
+	dc.b nB2, $07, nRst, $08, nB2, $07
+	saVol		$03
+	dc.b $08
+	ssDetune	$EE
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b sHold, nBb2
+	ssDetune	$DF
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b sHold, nA2
+	ssDetune	$E1
+	dc.b sHold, $01
+	ssDetune	$F6
+	dc.b sHold, nAb2
+	ssDetune	$12
+	dc.b sHold, nG2
+	ssDetune	$00
+	saVol		$FD
+	dc.b $08, nRst, $06
+	ssDetune	$1A
+	dc.b $01
+	saVol		$03
+	ssDetune	$0E
+	dc.b nFs2
+	ssDetune	$00
+	dc.b sHold, nG2, $0E, nRst, $08
+	saVol		$FD
+	dc.b nG2, $0F
+	ssDetune	$F2
+	dc.b sHold, $01
+	ssDetune	$E5
+	dc.b sHold, $01
+	ssDetune	$0E
+	dc.b sHold, nFs2
+	ssDetune	$01
+	dc.b sHold, $01
+	ssDetune	$F4
+	dc.b sHold, $01
+	ssDetune	$16
+	dc.b sHold, nF2
+	ssDetune	$09
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b $0F
+	saVol		$03
+	dc.b $05, nRst, $0A
+	saVol		$FD
+	dc.b nFs2, $0F
+	saVol		$03
+	dc.b $05
+	ssDetune	$F7
+	dc.b sHold, $01
+	ssDetune	$0D
+	dc.b sHold, nF2
+	ssDetune	$F1
+	dc.b sHold, $01
+	ssDetune	$FD
+	dc.b sHold, nE2
+	ssDetune	$11
+	dc.b sHold, nEb2
+	ssDetune	$F7
+	dc.b sHold, $01
+	ssDetune	$0A
+	dc.b sHold, nD2
+	ssDetune	$F3
+	dc.b sHold, $01
+	ssDetune	$FD
+	dc.b sHold, nCs2
+	ssDetune	$0E
+	dc.b sHold, nC2
+	saVol		$FD
+	ssDetune	$11
+	dc.b nA2
+	ssDetune	$01
+	dc.b sHold, nBb2
+	ssDetune	$F7
+	dc.b sHold, nB2
+	ssDetune	$FF
+	dc.b sHold, $0C
+	ssDetune	$00
+	saVol		$03
+	dc.b $05, nRst, $03
+	saVol		$FD
+	dc.b nB2, $07, nRst, $08
+	saVol		$03
+	dc.b nB2, $0D, nRst, $02, nB2, $05, nRst, $02
+	saVol		$FD
+	ssDetune	$0F
+	dc.b nA2, $01
+	ssDetune	$00
+	dc.b sHold, nBb2
+	ssDetune	$F7
+	dc.b sHold, nB2
+	ssDetune	$FF
+	dc.b sHold, $0C
+	ssDetune	$00
+	saVol		$03
+	dc.b $05, nRst, $03
+	saVol		$FD
+	dc.b nB2, $07, nRst, $08, nB2, $07
+	saVol		$03
+	dc.b $08
+	ssDetune	$EE
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b sHold, nBb2
+	ssDetune	$DF
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b sHold, nA2
+	ssDetune	$E1
+	dc.b sHold, $01
+	ssDetune	$F6
+	dc.b sHold, nAb2
+	ssDetune	$12
+	dc.b sHold, nG2
+	ssDetune	$00
+	saVol		$FD
+	dc.b $08, nRst, $06
+	ssDetune	$1A
+	dc.b $01
+	saVol		$03
+	ssDetune	$0E
+	dc.b nFs2
+	ssDetune	$00
+	dc.b sHold, nG2, $0E, nRst, $08
+	saVol		$FD
+	dc.b nG2, $0F
+	ssDetune	$F2
+	dc.b sHold, $01
+	ssDetune	$E5
+	dc.b sHold, $01
+	ssDetune	$0E
+	dc.b sHold, nFs2
+	ssDetune	$01
+	dc.b sHold, $01
+	ssDetune	$F4
+	dc.b sHold, $01
+	ssDetune	$16
+	dc.b sHold, nF2
+	ssDetune	$09
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b $0F
+	saVol		$03
+	dc.b $05, nRst, $0A
+	saVol		$FD
+	dc.b nFs2, $0F
+	saVol		$03
+	dc.b $05
+	ssDetune	$F7
+	dc.b sHold, $01
+	ssDetune	$0D
+	dc.b sHold, nF2
+	ssDetune	$F1
+	dc.b sHold, $01
+	ssDetune	$FD
+	dc.b sHold, nE2
+	ssDetune	$11
+	dc.b sHold, nEb2
+	ssDetune	$F7
+	dc.b sHold, $01
+	ssDetune	$0A
+	dc.b sHold, nD2
+	ssDetune	$F3
+	dc.b sHold, $01
+	ssDetune	$FD
+	dc.b sHold, nCs2
+	ssDetune	$0E
+	dc.b sHold, nC2
+	ssDetune	$00
+	saVol		$FD
+	sJump		Snd_Filmore_Jump04
+
+; FM3 Data
+Snd_Filmore_FM3:
+	sVoice		$02
+	sPan		spLeft, $00
+
+Snd_Filmore_Jump03:
+	dc.b nRst, $01, nFs3, $1D, nE3, $1E, nD3, nCs3, nC3, $78
+
+Snd_Filmore_LoopD6:
+	dc.b nCs3, $0E, nRst, $01, nFs2, $06, nRst, $02, nFs2, $06, nRst, $01
+	sLoop		$00, $04, Snd_Filmore_LoopD6
+	dc.b nCs3, $78
+
+Snd_Filmore_LoopD7:
+	dc.b nB2, $0E, nRst, $01, nB2, $06, nRst, $02, nB2, $07, nB3, $05
+	dc.b nRst, $0A, nB2, $06, nRst, $02, nB2, $07, nRst, $08, nB2, $0D
+	dc.b nRst, $02, nB2, $07, nB3, $05, nRst, $03, nB2, $02, nRst, $05
+	dc.b nB2, $0F, nG2, $0E, nRst, $01, nG2, $06, nRst, $02, nG2, $07
+	dc.b nG3, $05, nRst, $0A, nG2, $06, nRst, $02, nG2, $07, nRst, $08
+	dc.b nA2, $06, nRst, $01, nA2, $06, nRst, $02, nA2, $07, nA3, $05
+	dc.b nRst, $03, nA2, $02, nRst, $05, nA2, $0F
+	sLoop		$00, $02, Snd_Filmore_LoopD7
+	dc.b nFs2, $0E, nRst, $01, nFs2, $06, nRst, $02, nFs2, $06, nRst, $01
+	dc.b nFs3, $05, nRst, $03, nFs2, $06, nRst, $01, nFs2, $08, nRst, $16
+	dc.b nBb2, $08, nRst, $07, nBb3, $05, nRst, $03, nBb2, $06, nRst, $01
+	dc.b nBb2, $08, nRst, $07, nB2, $0E, nRst, $01, nB2, $06, nRst, $02
+	dc.b nB2, $06, nRst, $01, nB3, $05, nRst, $03, nB2, $06, nRst, $01
+	dc.b nB2, $08, nRst, $16, nAb2, $08, nRst, $07, nAb3, $05, nRst, $03
+	dc.b nAb2, $06, nRst, $01, nAb2, $08, nRst, $07, nCs3, $0E, nRst, $01
+	dc.b nCs3, $06, nRst, $02, nCs3, $06, nRst, $01, nCs4, $05, nRst, $03
+	dc.b nCs3, $06, nRst, $01, nCs3, $08, nRst, $16, nA2, $08, nRst, $07
+	dc.b nA3, $05, nRst, $03, nA2, $06, nRst, $01, nA2, $08, nRst, $07
+	dc.b nD3, $0E, nRst, $01, nD3, $06, nRst, $02, nD3, $07, nD4, $05
+	dc.b nRst, $03, nD3, $06, nRst, $01, nD3, $08, nRst, $07, nCs3, $0E
+	dc.b nRst, $01, nCs3, $06, nRst, $02, nCs3, $07, nCs4, $05, nRst, $03
+	dc.b nCs3, $06, nRst, $01, nCs3, $06, nRst, $02, nCs3, $07, nFs2, $0E
+	dc.b nRst, $01, nFs2, $06, nRst, $02, nFs2, $06, nRst, $01, nFs3, $05
+	dc.b nRst, $03, nFs2, $06, nRst, $01, nFs2, $08, nRst, $16, nBb2, $08
+	dc.b nRst, $07, nBb3, $05, nRst, $03, nBb2, $06, nRst, $01, nBb2, $08
+	dc.b nRst, $07, nB2, $0E, nRst, $01, nB2, $06, nRst, $02, nB2, $06
+	dc.b nRst, $01, nB3, $05, nRst, $03, nB2, $06, nRst, $01, nB2, $08
+	dc.b nRst, $16, nAb2, $08, nRst, $07, nAb3, $05, nRst, $03, nAb2, $06
+	dc.b nRst, $01, nAb2, $08, nRst, $07, nCs3, $0E, nRst, $01, nCs3, $06
+	dc.b nRst, $02, nCs3, $06, nRst, $01, nCs4, $05, nRst, $03, nCs3, $06
+	dc.b nRst, $01, nCs3, $08, nRst, $16, nA2, $08, nRst, $07, nA3, $05
+	dc.b nRst, $03, nA2, $06, nRst, $01, nA2, $08, nRst, $07, nD3, $0E
+	dc.b nRst, $01, nD3, $06, nRst, $02, nD3, $07, nD4, $05, nRst, $03
+	dc.b nD3, $06, nRst, $01, nD3, $08, nRst, $07, nFs3, $0E, nRst, $01
+	dc.b nFs3, $06, nRst, $02, nFs3, $07, nFs4, $05, nRst, $03, nFs3, $06
+	dc.b nRst, $01, nFs3, $08, nRst, nD3, $77, nRst, $01, nC3, $77, nRst
+	dc.b $01, nCs3, $77, nRst, $01, nCs3, $1D, nRst, $01, nCs3, $1D
+
+Snd_Filmore_LoopD8:
+	dc.b nRst, $01, nCs3, $07, nRst, $01, nCs3, $06
+	sLoop		$00, $02, Snd_Filmore_LoopD8
+	dc.b nRst, $01, nCs3, $16
+	ssDetune	$09
+	dc.b sHold, nC3, $01
+	ssDetune	$ED
+	dc.b sHold, $01
+	ssDetune	$F7
+	dc.b sHold, nB2
+	ssDetune	$00
+	dc.b sHold, nBb2
+	ssDetune	$0F
+	dc.b sHold, nA2, sHold, nAb2
+	ssDetune	$E3
+	dc.b sHold, $01
+
+Snd_Filmore_LoopD9:
+	ssDetune	$11
+	dc.b nA2
+	ssDetune	$01
+	dc.b sHold, nBb2
+	ssDetune	$F7
+	dc.b sHold, nB2
+	ssDetune	$FF
+	dc.b sHold, $0C
+	ssDetune	$00
+	dc.b nB3, $05, nRst, $03, nB2, $07, nRst, $08, nB3, $0D, nRst, $02
+	dc.b nB3, $05, nRst, $02
+	ssDetune	$0F
+	dc.b nA2, $01
+	ssDetune	$00
+	dc.b sHold, nBb2
+	ssDetune	$F7
+	dc.b sHold, nB2
+	ssDetune	$FF
+	dc.b sHold, $0C
+	ssDetune	$00
+	dc.b nB3, $05, nRst, $03, nB2, $07, nRst, $08, nB2, $07, nB3, $08
+	ssDetune	$EE
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b sHold, nBb3
+	ssDetune	$DF
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b sHold, nA3
+	ssDetune	$E1
+	dc.b sHold, $01
+	ssDetune	$F6
+	dc.b sHold, nAb3
+	ssDetune	$12
+	dc.b sHold, nG3
+	ssDetune	$00
+	dc.b nG2, $08, nRst, $06
+	ssDetune	$1A
+	dc.b $01
+	ssDetune	$0E
+	dc.b nFs3
+	ssDetune	$00
+	dc.b sHold, nG3, $0E, nRst, $08, nG2, $0F
+	ssDetune	$F2
+	dc.b sHold, $01
+	ssDetune	$E5
+	dc.b sHold, $01
+	ssDetune	$0E
+	dc.b sHold, nFs2
+	ssDetune	$01
+	dc.b sHold, $01
+	ssDetune	$F4
+	dc.b sHold, $01
+	ssDetune	$16
+	dc.b sHold, nF2
+	ssDetune	$09
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b $0F, nF3, $05, nRst, $0A, nFs2, $0F, nFs3, $05
+	ssDetune	$F7
+	dc.b sHold, $01
+	ssDetune	$0D
+	dc.b sHold, nF3
+	ssDetune	$F1
+	dc.b sHold, $01
+	ssDetune	$FD
+	dc.b sHold, nE3
+	ssDetune	$11
+	dc.b sHold, nEb3
+	ssDetune	$F7
+	dc.b sHold, $01
+	ssDetune	$0A
+	dc.b sHold, nD3
+	ssDetune	$F3
+	dc.b sHold, $01
+	ssDetune	$FD
+	dc.b sHold, nCs3
+	ssDetune	$0E
+	dc.b sHold, nC3
+	sLoop		$00, $02, Snd_Filmore_LoopD9
+	ssDetune	$00
+	sJump		Snd_Filmore_Jump03
+
+; FM4 Data
+Snd_Filmore_FM4:
+	ssLFO		$08,	$00,	$5,	spCenter
+	sVoice		$03
+	sPan		spCenter, $00
+
+Snd_Filmore_Jump02:
+	dc.b nRst, $08
+	sModAMPS	$00, $01, -$01+02, $03
+	dc.b nFs3, $07, nB3, $08, nD4, $07, nCs4, $08, nFs3, $07, nFs4, $08
+	dc.b nFs3, $07, nE4, $08, nB3, $07, nB4, $08, nB3, $07, nD4, $08
+	dc.b nB3, $07, nB4, $08, nB3, $07, nCs4, $08, nAb3, $07, nF3, $08
+	dc.b nAb3, $07, nCs4, $26, nAb4, $07, nF4, $08, nAb4, $07, nB4, $08
+	dc.b nCs5, $07, nD5, $08, nB4, $07, nFs4, $08, nCs4, $07, nG4, $08
+	dc.b nCs4, $07, nB4, $08, nCs4, $07, nBb4, $08, nCs4, $07, nD5, $08
+	dc.b nFs4, $07, nCs5, $08, nFs4, $07, nG5, $08, nFs4, $07, nFs5, $08
+	dc.b nFs4, $07, nCs4, $08, nD4, $07, nE4, $08, nBb3, $07, nB3, $08
+	dc.b nCs4, $07, nFs3, $08, nAb3, $07, nBb3, $08, nB3, $07, nCs4, $08
+	dc.b nD4, $07, nE4, $08, nBb3, $07, nB3, $08, nCs4, $07
+	dc.b nD4, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop6E:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop6E
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop6F:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop6F
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+05, $03
+	dc.b sHold, $01
+
+Snd_Filmore_Loop70:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop70
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_Loop71:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop71
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_Loop72:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop72
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $04
+	ssDetune	$0A
+	dc.b sHold, nCs4, $01
+	ssDetune	$09
+	dc.b sHold, nC4
+	ssDetune	$ED
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+02, $03
+	ssDetune	$00
+	dc.b nB3, $05, nRst, $03, nCs4, $05, nRst, $02, nD4, $0C
+	ssDetune	$0A
+	dc.b sHold, nCs4, $01
+	ssDetune	$09
+	dc.b sHold, nC4
+	ssDetune	$11
+	dc.b sHold, nB3
+	ssDetune	$00
+	dc.b $05, nRst, $03, nCs4, $05, nRst, $02, nD4, $05, nRst, $0A
+	ssDetune	$10
+	dc.b nE4, $01
+	ssDetune	$03
+	dc.b sHold, nF4
+	ssDetune	$F3
+	dc.b sHold, nFs4
+	ssDetune	$00
+	dc.b sHold, $02, nRst, $0A
+	dc.b nE4, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop73:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop73
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop74:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop74
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+05, $03
+	dc.b sHold, $01
+
+Snd_Filmore_Loop75:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop75
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_Loop76:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop76
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_Loop77:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop77
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $07
+	sModAMPS	$00, $01, -$01+02, $03
+	dc.b nB3
+
+Snd_Filmore_Loop78:
+	dc.b $01
+	dc.b sHold, $01
+	dc.b sHold
+	sLoop		$00, $02, Snd_Filmore_Loop78
+	dc.b $01
+	sModAMPS	$00, $01, -$01+03, $03
+
+Snd_Filmore_Loop79:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop79
+
+Snd_Filmore_Loop7A:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $02, Snd_Filmore_Loop7A
+
+Snd_Filmore_Loop7B:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop7B
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+
+Snd_Filmore_Loop7C:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $02, Snd_Filmore_Loop7C
+
+Snd_Filmore_Loop7D:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop7D
+
+Snd_Filmore_Loop7E:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $02, Snd_Filmore_Loop7E
+	sModAMPS	$00, $01, -$01+05, $03
+
+Snd_Filmore_Loop7F:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop7F
+
+Snd_Filmore_Loop80:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop80
+	sModAMPS	$00, $01, -$01+06, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop81:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop81
+	dc.b sHold, $01
+
+Snd_Filmore_Loop82:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop82
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_Loop83:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop83
+
+Snd_Filmore_Loop84:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $02, Snd_Filmore_Loop84
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $08
+	sModAMPS	$00, $01, -$01+02, $03
+	dc.b nCs4, $07
+	dc.b nD4, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop85:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop85
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop86:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop86
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+05, $03
+	dc.b sHold, $01
+
+Snd_Filmore_Loop87:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop87
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_Loop88:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop88
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_Loop89:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop89
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $04
+	ssDetune	$0A
+	dc.b sHold, nCs4, $01
+	ssDetune	$09
+	dc.b sHold, nC4
+	ssDetune	$11
+	dc.b sHold, nB3
+	sModAMPS	$00, $01, -$01+02, $03
+	ssDetune	$00
+	dc.b $05, nRst, $03, nCs4, $05, nRst, $02, nD4, $0C
+	ssDetune	$0A
+	dc.b sHold, nCs4, $01
+	ssDetune	$09
+	dc.b sHold, nC4
+	ssDetune	$ED
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b nB3, $05, nRst, $03, nCs4, $05, nRst, $02, nD4, $05, nRst, $0A
+	ssDetune	$0C
+	dc.b nE4, $01
+	ssDetune	$01
+	dc.b sHold, nF4
+	ssDetune	$F5
+	dc.b sHold, nFs4
+	ssDetune	$02
+	dc.b sHold, $02
+	ssDetune	$00
+	dc.b nRst, $0A
+	dc.b nE4, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop8A:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop8A
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop8B:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop8B
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+05, $03
+	dc.b sHold, $01
+
+Snd_Filmore_Loop8C:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop8C
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_Loop8D:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop8D
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_Loop8E:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop8E
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $07
+	sModAMPS	$00, $01, -$01+02, $03
+	dc.b nB3
+
+Snd_Filmore_Loop8F:
+	dc.b $01
+	dc.b sHold, $01
+	dc.b sHold
+	sLoop		$00, $02, Snd_Filmore_Loop8F
+	dc.b $01
+	sModAMPS	$00, $01, -$01+03, $03
+
+Snd_Filmore_Loop90:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop90
+
+Snd_Filmore_Loop91:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $02, Snd_Filmore_Loop91
+
+Snd_Filmore_Loop92:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop92
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+
+Snd_Filmore_Loop93:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $02, Snd_Filmore_Loop93
+
+Snd_Filmore_Loop94:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop94
+
+Snd_Filmore_Loop95:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $02, Snd_Filmore_Loop95
+	sModAMPS	$00, $01, -$01+05, $03
+
+Snd_Filmore_Loop96:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop96
+
+Snd_Filmore_Loop97:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop97
+	sModAMPS	$00, $01, -$01+06, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop98:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop98
+	dc.b sHold, $01
+
+Snd_Filmore_Loop99:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop99
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_Loop9A:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop9A
+
+Snd_Filmore_Loop9B:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $02, Snd_Filmore_Loop9B
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $08
+	sModAMPS	$00, $01, -$01+02, $03
+	dc.b nCs4, $05, nRst, $02
+	dc.b nCs4, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop9C:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop9C
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop9D:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop9D
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+05, $03
+	dc.b sHold, $01
+
+Snd_Filmore_Loop9E:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop9E
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_Loop9F:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop9F
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_LoopA0:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_LoopA0
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $04
+	ssDetune	$ED
+	dc.b sHold, $01
+	ssDetune	$FA
+	dc.b sHold, nC4
+	ssDetune	$0C
+	dc.b sHold, nB3
+	sModAMPS	$00, $01, -$01+02, $03
+	ssDetune	$00
+	dc.b nBb3, $05, nRst, $03, nB3, $05, nRst, $02, nCs4, $0C
+	ssDetune	$09
+	dc.b sHold, nC4, $01
+	ssDetune	$08
+	dc.b sHold, nB3
+	ssDetune	$21
+	dc.b sHold, nBb3
+	ssDetune	$00
+	dc.b $05, nRst, $03, nB3, $05, nRst, $02, nCs4, $05, nRst, $03, nE4
+	dc.b $05, nRst, $02, nD4, $05, nRst, $03, nCs4, $05, nRst, $02
+	dc.b nD4, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_LoopA1:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopA1
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_LoopA2:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopA2
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+05, $03
+	dc.b sHold, $01
+
+Snd_Filmore_LoopA3:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopA3
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_LoopA4:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_LoopA4
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_LoopA5:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_LoopA5
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $04
+	ssDetune	$0A
+	dc.b sHold, nCs4, $01, sHold, nC4
+	ssDetune	$EF
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+02, $03
+	ssDetune	$00
+	dc.b nB3, $05, nRst, $03, nCs4, $05, nRst, $02, nD4, $0C
+	ssDetune	$0A
+	dc.b sHold, nCs4, $01
+	ssDetune	$09
+	dc.b sHold, nC4
+	ssDetune	$EE
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b nB3, $05, nRst, $03, nCs4, $05, nRst, $02, nD4, $05, nRst, $03
+	dc.b nFs4, $05, nRst, $02, nE4, $05, nRst, $03, nD4, $05, nRst, $02
+	dc.b nE4, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_LoopA6:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopA6
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_LoopA7:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopA7
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+05, $03
+	dc.b sHold, $01
+
+Snd_Filmore_LoopA8:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopA8
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_LoopA9:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_LoopA9
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_LoopAA:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_LoopAA
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $04
+	ssDetune	$04
+	dc.b sHold, nD4, $01
+	ssDetune	$EF
+	dc.b sHold, nC4
+	ssDetune	$E9
+	dc.b sHold, nBb3
+	sModAMPS	$00, $01, -$01+02, $03
+	ssDetune	$00
+	dc.b nA3, $05, nRst, $03, nCs4, $05, nRst, $02, nE4, $0C
+	ssDetune	$0A
+	dc.b sHold, nD4, $01
+	ssDetune	$FD
+	dc.b sHold, nC4
+	ssDetune	$0E
+	dc.b sHold, nBb3
+	ssDetune	$00
+	dc.b nA3, $05, nRst, $03, nCs4, $05, nRst, $02, nE4, $05, nRst, $03
+	dc.b nG4, $05, nRst, $02, nFs4, $05, nRst, $03, nE4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nE4, $01
+	ssDetune	$F1
+	dc.b sHold, nF4
+	ssDetune	$09
+	dc.b sHold, $01
+	ssDetune	$F7
+	dc.b sHold, nFs4
+	ssDetune	$00
+	dc.b sHold, $13, nE4, $16, nD4, $0F
+	ssDetune	$08
+	dc.b nG4, $01
+	ssDetune	$EC
+	dc.b sHold, nAb4
+	ssDetune	$09
+	dc.b sHold, $01
+	ssDetune	$F5
+	dc.b sHold, nA4
+	ssDetune	$00
+	dc.b sHold, $13, nG4, $16, nFs4, $0F
+	dc.b nCs4, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_LoopAB:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopAB
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_LoopAC:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopAC
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+05, $03
+	dc.b sHold, $01
+
+Snd_Filmore_LoopAD:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopAD
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_LoopAE:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_LoopAE
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_LoopAF:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_LoopAF
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $04
+	ssDetune	$09
+	dc.b sHold, nC4, $01
+	ssDetune	$08
+	dc.b sHold, nB3
+	ssDetune	$EE
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+02, $03
+	ssDetune	$00
+	dc.b nBb3, $05, nRst, $03, nB3, $05, nRst, $02, nCs4, $0C
+	ssDetune	$09
+	dc.b sHold, nC4, $01
+	ssDetune	$08
+	dc.b sHold, nB3
+	ssDetune	$21
+	dc.b sHold, nBb3
+	ssDetune	$00
+	dc.b $05, nRst, $03, nB3, $05, nRst, $02, nCs4, $05, nRst, $03, nE4
+	dc.b $05, nRst, $02, nD4, $05, nRst, $03, nCs4, $05, nRst, $02
+	dc.b nD4, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_LoopB0:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopB0
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_LoopB1:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopB1
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+05, $03
+	dc.b sHold, $01
+
+Snd_Filmore_LoopB2:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopB2
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_LoopB3:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_LoopB3
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_LoopB4:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_LoopB4
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $04
+	ssDetune	$0A
+	dc.b sHold, nCs4, $01, sHold, nC4
+	ssDetune	$EF
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+02, $03
+	ssDetune	$00
+	dc.b nB3, $05, nRst, $03, nCs4, $05, nRst, $02, nD4, $0C
+	ssDetune	$0A
+	dc.b sHold, nCs4, $01
+	ssDetune	$09
+	dc.b sHold, nC4
+	ssDetune	$EE
+	dc.b sHold, $01
+	ssDetune	$00
+	dc.b nB3, $05, nRst, $03, nCs4, $05, nRst, $02, nD4, $05, nRst, $03
+	dc.b nFs4, $05, nRst, $02, nE4, $05, nRst, $03, nD4, $05, nRst, $02
+	dc.b nE4, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_LoopB5:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopB5
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_LoopB6:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopB6
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+05, $03
+	dc.b sHold, $01
+
+Snd_Filmore_LoopB7:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopB7
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_LoopB8:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_LoopB8
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_LoopB9:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_LoopB9
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $04
+	ssDetune	$0A
+	dc.b sHold, nD4, $01
+	ssDetune	$FD
+	dc.b sHold, nC4
+	ssDetune	$0B
+	dc.b sHold, nBb3
+	sModAMPS	$00, $01, -$01+02, $03
+	ssDetune	$00
+	dc.b nA3, $05, nRst, $03, nCs4, $05, nRst, $02, nE4, $0C
+	ssDetune	$0A
+	dc.b sHold, nD4, $01
+	ssDetune	$FD
+	dc.b sHold, nC4
+	ssDetune	$0E
+	dc.b sHold, nBb3
+	ssDetune	$00
+	dc.b nA3, $05, nRst, $03, nCs4, $05, nRst, $02, nE4, $05, nRst, $03
+	dc.b nG4, $05, nRst, $02, nFs4, $05, nRst, $03, nE4, $05, nRst, $02
+	ssDetune	$09
+	dc.b nE4, $01
+	ssDetune	$F1
+	dc.b sHold, nF4
+	ssDetune	$09
+	dc.b sHold, $01
+	ssDetune	$F7
+	dc.b sHold, nFs4
+	ssDetune	$00
+	dc.b sHold, $13, nE4, $16, nFs4, $0F
+	ssDetune	$09
+	dc.b nAb4, $01
+	ssDetune	$EA
+	dc.b sHold, nA4
+	ssDetune	$0A
+	dc.b sHold, $01
+	ssDetune	$F5
+	dc.b sHold, nBb4
+	ssDetune	$00
+	dc.b sHold, $13, nB4, $16
+	ssDetune	$05
+	dc.b $01
+	ssDetune	$F4
+	dc.b sHold, nC5
+	ssDetune	$06
+	dc.b sHold, $01
+	ssDetune	$FB
+	dc.b sHold, nCs5
+	ssDetune	$01
+	dc.b sHold, $0B
+	ssDetune	$00
+	dc.b nD5, $17, nCs5, $16, nB4, $17
+	ssDetune	$11
+	dc.b $01
+	ssDetune	$00
+	dc.b sHold, nC5
+	ssDetune	$ED
+	dc.b sHold, nCs5
+	ssDetune	$00
+	dc.b sHold, $13, nD5, $0F, nB4, nAb4, $17, nF4, $16, nD4, $0F, nB3
+	dc.b $17, nBb3, $16, nAb3, $0F, nB3, $01
+
+Snd_Filmore_LoopBA:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $02, Snd_Filmore_LoopBA
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+
+Snd_Filmore_LoopBB:
+	dc.b sHold, $01
+	sLoop		$00, $06, Snd_Filmore_LoopBB
+
+Snd_Filmore_LoopBC:
+	dc.b sHold, $01
+	sLoop		$00, $06, Snd_Filmore_LoopBC
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+
+Snd_Filmore_LoopBD:
+	dc.b sHold, $01
+	sLoop		$00, $05, Snd_Filmore_LoopBD
+
+Snd_Filmore_LoopBE:
+	dc.b sHold, $01
+	sLoop		$00, $06, Snd_Filmore_LoopBE
+
+Snd_Filmore_LoopBF:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopBF
+	sModAMPS	$00, $01, -$01+05, $03
+
+Snd_Filmore_LoopC0:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopC0
+
+Snd_Filmore_LoopC1:
+	dc.b sHold, $01
+	sLoop		$00, $05, Snd_Filmore_LoopC1
+
+Snd_Filmore_LoopC2:
+	dc.b sHold, $01
+	sLoop		$00, $05, Snd_Filmore_LoopC2
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_LoopC3:
+	dc.b sHold, $01
+	sLoop		$00, $05, Snd_Filmore_LoopC3
+
+Snd_Filmore_LoopC4:
+	dc.b sHold, $01
+	sLoop		$00, $06, Snd_Filmore_LoopC4
+
+Snd_Filmore_LoopC5:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopC5
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_LoopC6:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopC6
+	dc.b sHold, $01
+	dc.b sHold, $02
+
+Snd_Filmore_LoopC7:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopC7
+	dc.b sHold, $02
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $1D, nRst, $01
+	sModAMPS	$00, $01, -$01+02, $03
+	dc.b nB3, $06, nRst, $02
+	ssDetune	$F0
+	dc.b nD4, $01
+	ssDetune	$0C
+	dc.b sHold, nE4
+	ssDetune	$00
+	dc.b sHold, nFs4, $05
+	dc.b $01
+
+Snd_Filmore_LoopC8:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $02, Snd_Filmore_LoopC8
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+
+Snd_Filmore_LoopC9:
+	dc.b sHold, $01
+	sLoop		$00, $06, Snd_Filmore_LoopC9
+
+Snd_Filmore_LoopCA:
+	dc.b sHold, $01
+	sLoop		$00, $06, Snd_Filmore_LoopCA
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+
+Snd_Filmore_LoopCB:
+	dc.b sHold, $01
+	sLoop		$00, $05, Snd_Filmore_LoopCB
+
+Snd_Filmore_LoopCC:
+	dc.b sHold, $01
+	sLoop		$00, $06, Snd_Filmore_LoopCC
+
+Snd_Filmore_LoopCD:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopCD
+	sModAMPS	$00, $01, -$01+05, $03
+
+Snd_Filmore_LoopCE:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopCE
+
+Snd_Filmore_LoopCF:
+	dc.b sHold, $01
+	sLoop		$00, $05, Snd_Filmore_LoopCF
+
+Snd_Filmore_LoopD0:
+	dc.b sHold, $01
+	sLoop		$00, $05, Snd_Filmore_LoopD0
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_LoopD1:
+	dc.b sHold, $01
+	sLoop		$00, $05, Snd_Filmore_LoopD1
+
+Snd_Filmore_LoopD2:
+	dc.b sHold, $01
+	sLoop		$00, $06, Snd_Filmore_LoopD2
+
+Snd_Filmore_LoopD3:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopD3
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_LoopD4:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopD4
+	dc.b sHold, $01
+	dc.b sHold, $02
+
+Snd_Filmore_LoopD5:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_LoopD5
+	dc.b sHold, $02
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $0F
+	ssDetune	$FA
+	dc.b $01
+	ssDetune	$E7
+	dc.b sHold, $01
+	ssDetune	$07
+	dc.b sHold, nF4
+	ssDetune	$EE
+	dc.b sHold, $01
+	ssDetune	$0C
+	dc.b sHold, nE4
+	ssDetune	$FA
+	dc.b sHold, $01
+	ssDetune	$E9
+	dc.b sHold, $01
+	ssDetune	$05
+	dc.b sHold, nEb4
+	ssDetune	$EF
+	dc.b sHold, $01
+	ssDetune	$0A
+	dc.b sHold, nD4
+	ssDetune	$FA
+	dc.b sHold, $01
+	ssDetune	$14
+	dc.b sHold, nCs4
+	ssDetune	$04
+	dc.b sHold, $01
+	ssDetune	$F1
+	dc.b sHold, $01
+	ssDetune	$09
+	dc.b sHold, nC4
+	ssDetune	$FB
+	dc.b sHold, $01
+	ssDetune	$11
+	dc.b sHold, nB3
+	ssDetune	$03
+	dc.b sHold, $01
+	ssDetune	$F2
+	dc.b sHold, $01
+	ssDetune	$10
+	dc.b sHold, nBb3
+	ssDetune	$F6
+	dc.b sHold, $01
+	ssDetune	$1E
+	dc.b sHold, nA3
+	ssDetune	$06
+	dc.b sHold, $01
+	ssDetune	$E7
+	dc.b sHold, $01
+	ssDetune	$0D
+	dc.b sHold, nAb3
+	ssDetune	$F7
+	dc.b sHold, $01
+	ssDetune	$1A
+	dc.b sHold, nG3
+	ssDetune	$05
+	dc.b sHold, $01
+	ssDetune	$E9
+	dc.b sHold, $01
+	ssDetune	$0C
+	dc.b sHold, nFs3
+	sModAMPS	$00, $01, -$01+02, $03
+	ssDetune	$00
+	dc.b $08, nB3, $07, nD4, $08, nFs4, $07, nE4, $08, nB3, $07, nB4
+	dc.b $08, nB3, $07, nD4, $08, nB3, $07, nB4, $08, nB3, $07, nE4
+	dc.b $08, nCs4, $07, nBb4, $08, nCs4, $07, nFs3, $08, nB3, $07, nD4
+	dc.b $08, nFs4, $07, nE4, $08, nB3, $07, nB4, $08, nB3, $07, nD4
+	dc.b $08, nB3, $07, nB4, $08, nB3, $07, nCs4, $08, nBb3, $07, nBb4
+	dc.b $08, nBb3, $07, nFs3, $08, nB3, $07, nD4, $08, nFs4, $07, nE4
+	dc.b $08, nB3, $07, nB4, $08, nB3, $07, nD4, $08, nB3, $07, nB4
+	dc.b $08, nB3, $07, nE4, $08, nCs4, $07, nBb4, $08, nCs4, $07, nFs3
+	dc.b $08, nB3, $07, nD4, $08, nFs4, $07, nE4, $08, nB3, $07, nB4
+	dc.b $08, nB3, $07, nD4, $08, nB3, $07, nB4, $08, nB3, $07, nCs4
+	dc.b $08, nE4, $07, nFs4, $08, nBb4, $07
+	sJump		Snd_Filmore_Jump02
+
+; FM5 Data
+Snd_Filmore_FM5:
+	ssLFO		$08,	$00,	$5,	spRight
+	sVoice		$03
+
+	sPan		spRight, $00
+    ssDetune	-$4
+Snd_Filmore_Jump01:
+	dc.b nRst, $0D
+	sModAMPS	$00, $01, -$01+02, $03
+	dc.b nFs3, $07, nB3, $08, nD4, $07, nCs4, $08, nFs3, $07, nFs4, $08
+	dc.b nFs3, $07, nE4, $08, nB3, $07, nB4, $08, nB3, $07, nD4, $08
+	dc.b nB3, $07, nB4, $08, nB3, $07, nCs4, $08, nAb3, $07, nF3, $08
+	dc.b nAb3, $07, nCs4, $26, nAb4, $07, nF4, $08, nAb4, $07, nB4, $08
+	dc.b nCs5, $07, nD5, $08, nB4, $07, nFs4, $08, nCs4, $07, nG4, $08
+	dc.b nCs4, $07, nB4, $08, nCs4, $07, nBb4, $08, nCs4, $07, nD5, $08
+	dc.b nFs4, $07, nCs5, $08, nFs4, $07, nG5, $08, nFs4, $07, nFs5, $08
+	dc.b nFs4, $07, nCs4, $08, nD4, $07, nE4, $08, nBb3, $07, nB3, $08
+	dc.b nCs4, $07, nFs3, $08, nAb3, $07, nBb3, $08, nB3, $07, nCs4, $08
+	dc.b nD4, $07, nE4, $08, nBb3, $07, nB3, $08, nCs4, $07
+	dc.b nD4, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop06:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop06
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop07:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop07
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+05, $03
+	dc.b sHold, $01
+
+Snd_Filmore_Loop08:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop08
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_Loop09:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop09
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_Loop0A:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop0A
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $04
+	ssDetune	-$4+$0A
+	dc.b sHold, nCs4, $01
+	ssDetune	-$4+$09
+	dc.b sHold, nC4
+	ssDetune	-$4+$ED
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+02, $03
+	ssDetune	-$4+$00
+	dc.b nB3, $05, nRst, $03, nCs4, $05, nRst, $02, nD4, $0C
+	ssDetune	-$4+$0A
+	dc.b sHold, nCs4, $01
+	ssDetune	-$4+$09
+	dc.b sHold, nC4
+	ssDetune	-$4+$11
+	dc.b sHold, nB3
+	ssDetune	-$4+$00
+	dc.b $05, nRst, $03, nCs4, $05, nRst, $02, nD4, $05, nRst, $0A
+	ssDetune	-$4+$10
+	dc.b nE4, $01
+	ssDetune	-$4+$03
+	dc.b sHold, nF4
+	ssDetune	-$4+$F3
+	dc.b sHold, nFs4
+	ssDetune	-$4+$00
+	dc.b sHold, $02, nRst, $0A
+	dc.b nE4, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop0B:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop0B
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop0C:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop0C
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+05, $03
+	dc.b sHold, $01
+
+Snd_Filmore_Loop0D:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop0D
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_Loop0E:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop0E
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_Loop0F:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop0F
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $07
+	sModAMPS	$00, $01, -$01+02, $03
+	dc.b nB3
+
+Snd_Filmore_Loop10:
+	dc.b $01
+	dc.b sHold, $01
+	dc.b sHold
+	sLoop		$00, $02, Snd_Filmore_Loop10
+	dc.b $01
+	sModAMPS	$00, $01, -$01+03, $03
+
+Snd_Filmore_Loop11:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop11
+
+Snd_Filmore_Loop12:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $02, Snd_Filmore_Loop12
+
+Snd_Filmore_Loop13:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop13
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+
+Snd_Filmore_Loop14:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $02, Snd_Filmore_Loop14
+
+Snd_Filmore_Loop15:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop15
+
+Snd_Filmore_Loop16:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $02, Snd_Filmore_Loop16
+	sModAMPS	$00, $01, -$01+05, $03
+
+Snd_Filmore_Loop17:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop17
+
+Snd_Filmore_Loop18:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop18
+	sModAMPS	$00, $01, -$01+06, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop19:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop19
+	dc.b sHold, $01
+
+Snd_Filmore_Loop1A:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop1A
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_Loop1B:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop1B
+
+Snd_Filmore_Loop1C:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $02, Snd_Filmore_Loop1C
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $08
+	sModAMPS	$00, $01, -$01+02, $03
+	dc.b nCs4, $07
+	dc.b nD4, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop1D:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop1D
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop1E:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop1E
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+05, $03
+	dc.b sHold, $01
+
+Snd_Filmore_Loop1F:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop1F
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_Loop20:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop20
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_Loop21:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop21
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $04
+	ssDetune	-$4+$0A
+	dc.b sHold, nCs4, $01
+	ssDetune	-$4+$09
+	dc.b sHold, nC4
+	ssDetune	-$4+$11
+	dc.b sHold, nB3
+	sModAMPS	$00, $01, -$01+02, $03
+	ssDetune	-$4+$00
+	dc.b $05, nRst, $03, nCs4, $05, nRst, $02, nD4, $0C
+	ssDetune	-$4+$0A
+	dc.b sHold, nCs4, $01
+	ssDetune	-$4+$09
+	dc.b sHold, nC4
+	ssDetune	-$4+$ED
+	dc.b sHold, $01
+	ssDetune	-$4+$00
+	dc.b nB3, $05, nRst, $03, nCs4, $05, nRst, $02, nD4, $05, nRst, $0A
+	ssDetune	-$4+$0C
+	dc.b nE4, $01
+	ssDetune	-$4+$01
+	dc.b sHold, nF4
+	ssDetune	-$4+$F5
+	dc.b sHold, nFs4
+	ssDetune	-$4+$02
+	dc.b sHold, $02
+	ssDetune	-$4+$00
+	dc.b nRst, $0A
+	dc.b nE4, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop22:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop22
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop23:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop23
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+05, $03
+	dc.b sHold, $01
+
+Snd_Filmore_Loop24:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop24
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_Loop25:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop25
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_Loop26:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop26
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $07
+	sModAMPS	$00, $01, -$01+02, $03
+	dc.b nB3
+
+Snd_Filmore_Loop27:
+	dc.b $01
+	dc.b sHold, $01
+	dc.b sHold
+	sLoop		$00, $02, Snd_Filmore_Loop27
+	dc.b $01
+	sModAMPS	$00, $01, -$01+03, $03
+
+Snd_Filmore_Loop28:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop28
+
+Snd_Filmore_Loop29:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $02, Snd_Filmore_Loop29
+
+Snd_Filmore_Loop2A:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop2A
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+
+Snd_Filmore_Loop2B:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $02, Snd_Filmore_Loop2B
+
+Snd_Filmore_Loop2C:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop2C
+
+Snd_Filmore_Loop2D:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $02, Snd_Filmore_Loop2D
+	sModAMPS	$00, $01, -$01+05, $03
+
+Snd_Filmore_Loop2E:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop2E
+
+Snd_Filmore_Loop2F:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop2F
+	sModAMPS	$00, $01, -$01+06, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop30:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop30
+	dc.b sHold, $01
+
+Snd_Filmore_Loop31:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop31
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_Loop32:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop32
+
+Snd_Filmore_Loop33:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $02, Snd_Filmore_Loop33
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $08
+	sModAMPS	$00, $01, -$01+02, $03
+	dc.b nCs4, $05, nRst, $02
+	dc.b nCs4, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop34:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop34
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop35:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop35
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+05, $03
+	dc.b sHold, $01
+
+Snd_Filmore_Loop36:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop36
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_Loop37:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop37
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_Loop38:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop38
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $04
+	ssDetune	-$4+$ED
+	dc.b sHold, $01
+	ssDetune	-$4+$FA
+	dc.b sHold, nC4
+	ssDetune	-$4+$0C
+	dc.b sHold, nB3
+	sModAMPS	$00, $01, -$01+02, $03
+	ssDetune	-$4+$00
+	dc.b nBb3, $05, nRst, $03, nB3, $05, nRst, $02, nCs4, $0C
+	ssDetune	-$4+$09
+	dc.b sHold, nC4, $01
+	ssDetune	-$4+$08
+	dc.b sHold, nB3
+	ssDetune	-$4+$21
+	dc.b sHold, nBb3
+	ssDetune	-$4+$00
+	dc.b $05, nRst, $03, nB3, $05, nRst, $02, nCs4, $05, nRst, $03, nE4
+	dc.b $05, nRst, $02, nD4, $05, nRst, $03, nCs4, $05, nRst, $02
+	dc.b nD4, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop39:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop39
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop3A:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop3A
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+05, $03
+	dc.b sHold, $01
+
+Snd_Filmore_Loop3B:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop3B
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_Loop3C:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop3C
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_Loop3D:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop3D
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $04
+	ssDetune	-$4+$0A
+	dc.b sHold, nCs4, $01, sHold, nC4
+	ssDetune	-$4+$EF
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+02, $03
+	ssDetune	-$4+$00
+	dc.b nB3, $05, nRst, $03, nCs4, $05, nRst, $02, nD4, $0C
+	ssDetune	-$4+$0A
+	dc.b sHold, nCs4, $01
+	ssDetune	-$4+$09
+	dc.b sHold, nC4
+	ssDetune	-$4+$EE
+	dc.b sHold, $01
+	ssDetune	-$4+$00
+	dc.b nB3, $05, nRst, $03, nCs4, $05, nRst, $02, nD4, $05, nRst, $03
+	dc.b nFs4, $05, nRst, $02, nE4, $05, nRst, $03, nD4, $05, nRst, $02
+	dc.b nE4, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop3E:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop3E
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop3F:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop3F
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+05, $03
+	dc.b sHold, $01
+
+Snd_Filmore_Loop40:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop40
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_Loop41:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop41
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_Loop42:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop42
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $04
+	ssDetune	-$4+$04
+	dc.b sHold, nD4, $01
+	ssDetune	-$4+$EF
+	dc.b sHold, nC4
+	ssDetune	-$4+$E9
+	dc.b sHold, nBb3
+	sModAMPS	$00, $01, -$01+02, $03
+	ssDetune	-$4+$00
+	dc.b nA3, $05, nRst, $03, nCs4, $05, nRst, $02, nE4, $0C
+	ssDetune	-$4+$0A
+	dc.b sHold, nD4, $01
+	ssDetune	-$4+$FD
+	dc.b sHold, nC4
+	ssDetune	-$4+$0E
+	dc.b sHold, nBb3
+	ssDetune	-$4+$00
+	dc.b nA3, $05, nRst, $03, nCs4, $05, nRst, $02, nE4, $05, nRst, $03
+	dc.b nG4, $05, nRst, $02, nFs4, $05, nRst, $03, nE4, $05, nRst, $02
+	ssDetune	-$4+$09
+	dc.b nE4, $01
+	ssDetune	-$4+$F1
+	dc.b sHold, nF4
+	ssDetune	-$4+$09
+	dc.b sHold, $01
+	ssDetune	-$4+$F7
+	dc.b sHold, nFs4
+	ssDetune	-$4+$00
+	dc.b sHold, $13, nE4, $16, nD4, $0F
+	ssDetune	-$4+$08
+	dc.b nG4, $01
+	ssDetune	-$4+$EC
+	dc.b sHold, nAb4
+	ssDetune	-$4+$09
+	dc.b sHold, $01
+	ssDetune	-$4+$F5
+	dc.b sHold, nA4
+	ssDetune	-$4+$00
+	dc.b sHold, $13, nG4, $16, nFs4, $0F
+	dc.b nCs4, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop43:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop43
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop44:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop44
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+05, $03
+	dc.b sHold, $01
+
+Snd_Filmore_Loop45:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop45
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_Loop46:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop46
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_Loop47:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop47
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $04
+	ssDetune	-$4+$09
+	dc.b sHold, nC4, $01
+	ssDetune	-$4+$08
+	dc.b sHold, nB3
+	ssDetune	-$4+$EE
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+02, $03
+	ssDetune	-$4+$00
+	dc.b nBb3, $05, nRst, $03, nB3, $05, nRst, $02, nCs4, $0C
+	ssDetune	-$4+$09
+	dc.b sHold, nC4, $01
+	ssDetune	-$4+$08
+	dc.b sHold, nB3
+	ssDetune	-$4+$21
+	dc.b sHold, nBb3
+	ssDetune	-$4+$00
+	dc.b $05, nRst, $03, nB3, $05, nRst, $02, nCs4, $05, nRst, $03, nE4
+	dc.b $05, nRst, $02, nD4, $05, nRst, $03, nCs4, $05, nRst, $02
+	dc.b nD4, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop48:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop48
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop49:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop49
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+05, $03
+	dc.b sHold, $01
+
+Snd_Filmore_Loop4A:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop4A
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_Loop4B:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop4B
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_Loop4C:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop4C
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $04
+	ssDetune	-$4+$0A
+	dc.b sHold, nCs4, $01, sHold, nC4
+	ssDetune	-$4+$EF
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+02, $03
+	ssDetune	-$4+$00
+	dc.b nB3, $05, nRst, $03, nCs4, $05, nRst, $02, nD4, $0C
+	ssDetune	-$4+$0A
+	dc.b sHold, nCs4, $01
+	ssDetune	-$4+$09
+	dc.b sHold, nC4
+	ssDetune	-$4+$EE
+	dc.b sHold, $01
+	ssDetune	-$4+$00
+	dc.b nB3, $05, nRst, $03, nCs4, $05, nRst, $02, nD4, $05, nRst, $03
+	dc.b nFs4, $05, nRst, $02, nE4, $05, nRst, $03, nD4, $05, nRst, $02
+	dc.b nE4, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop4D:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop4D
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+	dc.b sHold, $01
+	dc.b sHold, $01
+
+Snd_Filmore_Loop4E:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop4E
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+05, $03
+	dc.b sHold, $01
+
+Snd_Filmore_Loop4F:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop4F
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_Loop50:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop50
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_Loop51:
+	dc.b sHold, $01
+	sLoop		$00, $04, Snd_Filmore_Loop51
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $04
+	ssDetune	-$4+$0A
+	dc.b sHold, nD4, $01
+	ssDetune	-$4+$FD
+	dc.b sHold, nC4
+	ssDetune	-$4+$0B
+	dc.b sHold, nBb3
+	sModAMPS	$00, $01, -$01+02, $03
+	ssDetune	-$4+$00
+	dc.b nA3, $05, nRst, $03, nCs4, $05, nRst, $02, nE4, $0C
+	ssDetune	-$4+$0A
+	dc.b sHold, nD4, $01
+	ssDetune	-$4+$FD
+	dc.b sHold, nC4
+	ssDetune	-$4+$0E
+	dc.b sHold, nBb3
+	ssDetune	-$4+$00
+	dc.b nA3, $05, nRst, $03, nCs4, $05, nRst, $02, nE4, $05, nRst, $03
+	dc.b nG4, $05, nRst, $02, nFs4, $05, nRst, $03, nE4, $05, nRst, $02
+	ssDetune	-$4+$09
+	dc.b nE4, $01
+	ssDetune	-$4+$F1
+	dc.b sHold, nF4
+	ssDetune	-$4+$09
+	dc.b sHold, $01
+	ssDetune	-$4+$F7
+	dc.b sHold, nFs4
+	ssDetune	-$4+$00
+	dc.b sHold, $13, nE4, $16, nFs4, $0F
+	ssDetune	-$4+$09
+	dc.b nAb4, $01
+	ssDetune	-$4+$EA
+	dc.b sHold, nA4
+	ssDetune	-$4+$0A
+	dc.b sHold, $01
+	ssDetune	-$4+$F5
+	dc.b sHold, nBb4
+	ssDetune	-$4+$00
+	dc.b sHold, $13, nB4, $16
+	ssDetune	-$4+$05
+	dc.b $01
+	ssDetune	-$4+$F4
+	dc.b sHold, nC5
+	ssDetune	-$4+$06
+	dc.b sHold, $01
+	ssDetune	-$4+$FB
+	dc.b sHold, nCs5
+	ssDetune	-$4+$01
+	dc.b sHold, $0B
+	ssDetune	-$4+$00
+	dc.b nD5, $17, nCs5, $16, nB4, $17
+	ssDetune	-$4+$11
+	dc.b $01
+	ssDetune	-$4+$00
+	dc.b sHold, nC5
+	ssDetune	-$4+$ED
+	dc.b sHold, nCs5
+	ssDetune	-$4+$00
+	dc.b sHold, $13, nD5, $0F, nB4, nAb4, $17, nF4, $16, nD4, $0F, nB3
+	dc.b $17, nBb3, $16, nAb3, $0F, nB3, $01
+
+Snd_Filmore_Loop52:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $02, Snd_Filmore_Loop52
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+
+Snd_Filmore_Loop53:
+	dc.b sHold, $01
+	sLoop		$00, $06, Snd_Filmore_Loop53
+
+Snd_Filmore_Loop54:
+	dc.b sHold, $01
+	sLoop		$00, $06, Snd_Filmore_Loop54
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+
+Snd_Filmore_Loop55:
+	dc.b sHold, $01
+	sLoop		$00, $05, Snd_Filmore_Loop55
+
+Snd_Filmore_Loop56:
+	dc.b sHold, $01
+	sLoop		$00, $06, Snd_Filmore_Loop56
+
+Snd_Filmore_Loop57:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop57
+	sModAMPS	$00, $01, -$01+05, $03
+
+Snd_Filmore_Loop58:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop58
+
+Snd_Filmore_Loop59:
+	dc.b sHold, $01
+	sLoop		$00, $05, Snd_Filmore_Loop59
+
+Snd_Filmore_Loop5A:
+	dc.b sHold, $01
+	sLoop		$00, $05, Snd_Filmore_Loop5A
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_Loop5B:
+	dc.b sHold, $01
+	sLoop		$00, $05, Snd_Filmore_Loop5B
+
+Snd_Filmore_Loop5C:
+	dc.b sHold, $01
+	sLoop		$00, $06, Snd_Filmore_Loop5C
+
+Snd_Filmore_Loop5D:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop5D
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_Loop5E:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop5E
+	dc.b sHold, $01
+	dc.b sHold, $02
+
+Snd_Filmore_Loop5F:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop5F
+	dc.b sHold, $02
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $1D, nRst, $01
+	sModAMPS	$00, $01, -$01+02, $03
+	dc.b nB3, $06, nRst, $02
+	ssDetune	-$4+$F0
+	dc.b nD4, $01
+	ssDetune	-$4+$0C
+	dc.b sHold, nE4
+	ssDetune	-$4+$00
+	dc.b sHold, nFs4, $05
+	dc.b $01
+
+Snd_Filmore_Loop60:
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sLoop		$00, $02, Snd_Filmore_Loop60
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+03, $03
+
+Snd_Filmore_Loop61:
+	dc.b sHold, $01
+	sLoop		$00, $06, Snd_Filmore_Loop61
+
+Snd_Filmore_Loop62:
+	dc.b sHold, $01
+	sLoop		$00, $06, Snd_Filmore_Loop62
+	dc.b sHold, $01
+	sModAMPS	$00, $01, -$01+04, $03
+
+Snd_Filmore_Loop63:
+	dc.b sHold, $01
+	sLoop		$00, $05, Snd_Filmore_Loop63
+
+Snd_Filmore_Loop64:
+	dc.b sHold, $01
+	sLoop		$00, $06, Snd_Filmore_Loop64
+
+Snd_Filmore_Loop65:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop65
+	sModAMPS	$00, $01, -$01+05, $03
+
+Snd_Filmore_Loop66:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop66
+
+Snd_Filmore_Loop67:
+	dc.b sHold, $01
+	sLoop		$00, $05, Snd_Filmore_Loop67
+
+Snd_Filmore_Loop68:
+	dc.b sHold, $01
+	sLoop		$00, $05, Snd_Filmore_Loop68
+	sModAMPS	$00, $01, -$01+06, $03
+
+Snd_Filmore_Loop69:
+	dc.b sHold, $01
+	sLoop		$00, $05, Snd_Filmore_Loop69
+
+Snd_Filmore_Loop6A:
+	dc.b sHold, $01
+	sLoop		$00, $06, Snd_Filmore_Loop6A
+
+Snd_Filmore_Loop6B:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop6B
+	sModAMPS	$00, $01, -$01+07, $03
+
+Snd_Filmore_Loop6C:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop6C
+	dc.b sHold, $01
+	dc.b sHold, $02
+
+Snd_Filmore_Loop6D:
+	dc.b sHold, $01
+	sLoop		$00, $03, Snd_Filmore_Loop6D
+	dc.b sHold, $02
+	dc.b sHold, $01
+	dc.b sHold, $01
+	dc.b sHold, $0F
+	ssDetune	-$4+$FA
+	dc.b $01
+	ssDetune	-$4+$E7
+	dc.b sHold, $01
+	ssDetune	-$4+$07
+	dc.b sHold, nF4
+	ssDetune	-$4+$EE
+	dc.b sHold, $01
+	ssDetune	-$4+$0C
+	dc.b sHold, nE4
+	ssDetune	-$4+$FA
+	dc.b sHold, $01
+	ssDetune	-$4+$E9
+	dc.b sHold, $01
+	ssDetune	-$4+$05
+	dc.b sHold, nEb4
+	ssDetune	-$4+$EF
+	dc.b sHold, $01
+	ssDetune	-$4+$0A
+	dc.b sHold, nD4
+	ssDetune	-$4+$FA
+	dc.b sHold, $01
+	ssDetune	-$4+$14
+	dc.b sHold, nCs4
+	ssDetune	-$4+$04
+	dc.b sHold, $01
+	ssDetune	-$4+$F1
+	dc.b sHold, $01
+	ssDetune	-$4+$09
+	dc.b sHold, nC4
+	ssDetune	-$4+$FB
+	dc.b sHold, $01
+	ssDetune	-$4+$11
+	dc.b sHold, nB3
+	ssDetune	-$4+$03
+	dc.b sHold, $01
+	ssDetune	-$4+$F2
+	dc.b sHold, $01
+	ssDetune	-$4+$10
+	dc.b sHold, nBb3
+	ssDetune	-$4+$F6
+	dc.b sHold, $01
+	ssDetune	-$4+$1E
+	dc.b sHold, nA3
+	ssDetune	-$4+$06
+	dc.b sHold, $01
+	ssDetune	-$4+$E7
+	dc.b sHold, $01
+	ssDetune	-$4+$0D
+	dc.b sHold, nAb3
+	ssDetune	-$4+$F7
+	dc.b sHold, $01
+	ssDetune	-$4+$1A
+	dc.b sHold, nG3
+	ssDetune	-$4+$05
+	dc.b sHold, $01
+	ssDetune	-$4+$E9
+	dc.b sHold, $01
+	ssDetune	-$4+$0C
+	dc.b sHold, nFs3
+	sModAMPS	$00, $01, -$01+02, $03
+	ssDetune	-$4+$00
+	dc.b $08, nB3, $07, nD4, $08, nFs4, $07, nE4, $08, nB3, $07, nB4
+	dc.b $08, nB3, $07, nD4, $08, nB3, $07, nB4, $08, nB3, $07, nE4
+	dc.b $08, nCs4, $07, nBb4, $08, nCs4, $07, nFs3, $08, nB3, $07, nD4
+	dc.b $08, nFs4, $07, nE4, $08, nB3, $07, nB4, $08, nB3, $07, nD4
+	dc.b $08, nB3, $07, nB4, $08, nB3, $07, nCs4, $08, nBb3, $07, nBb4
+	dc.b $08, nBb3, $07, nFs3, $08, nB3, $07, nD4, $08, nFs4, $07, nE4
+	dc.b $08, nB3, $07, nB4, $08, nB3, $07, nD4, $08, nB3, $07, nB4
+	dc.b $08, nB3, $07, nE4, $08, nCs4, $07, nBb4, $08, nCs4, $07, nFs3
+	dc.b $08, nB3, $07, nD4, $08, nFs4, $07, nE4, $08, nB3, $07, nB4
+	dc.b $08, nB3, $07, nD4, $08, nB3, $07, nB4, $08, nB3, $07, nCs4
+	dc.b $08, nE4, $07, nFs4, $08, nBb4, $02
+	sJump		Snd_Filmore_Jump01
+
+; PSG1 Data
+Snd_Filmore_PSG1:
+	dc.b nB1, $08, nFs2, $07, nB2, $08, nFs2, $07
+	sLoop		$00, $04, Snd_Filmore_PSG1
+	dc.b nAb2, $08, nB2, $07, nD3, $08, nB2, $07, nAb3, $08, nD3, $07
+	dc.b nB3, $08, nAb3, $07, nD4, $08, nB3, $07, nAb3, $08, nD3, $07
+	dc.b nAb3, $08, nD3, $07, nB2, $08, nAb2, $07, nCs2, $1E, nEb2, nE2
+	dc.b nF2, nFs4, $08, nE4, $07, nCs4, $08, nBb3, $07, nFs3, $08, nE3
+	dc.b $07, nCs3, $08, nBb2, $07, nFs2, $08, nAb2, $07, nBb2, $08, nB2
+	dc.b $07, nCs3, $08, nD3, $07, nE3, $08, nCs3, $07, nB1, $08, nRst
+	dc.b $07, nB1, $08, nB2, $07, nRst, $0F, nFs2, $1D, nRst, $01, nFs2
+	dc.b $08, nE2, $07, nD2, $08, nE2, $07, nFs2, $08, nD2, $07, nAb1
+	dc.b $08, nB1, $07, nE2, $08, nB1, $07, nAb2, $08, nE2, $07, nB2
+	dc.b $08, nAb2, $07, nG1, $08, nB1, $07, nE2, $08, nG2, $07, nA1
+	dc.b $08, nCs2, $07, nE2, $08, nFs2, $07, nB1, $08, nRst, $07, nB1
+	dc.b $08, nB2, $07, nRst, $0F, nFs2, $1D, nRst, $01, nFs2, $08, nE2
+	dc.b $07, nD2, $08, nE2, $07, nFs2, $08, nD2, $07, nAb1, $08, nB1
+	dc.b $07, nE2, $08, nB1, $07, nAb2, $08, nE2, $07, nB2, $08, nAb2
+	dc.b $07, nG1, $08, nB1, $07, nE2, $08, nG2, $07, nFs2, $08, nE2
+	dc.b $07, nD2, $08, nCs2, $07, nE1, $08, nBb1, $07, nCs2, $08, nBb1
+	dc.b $07, nE2, $08, nCs2, $07, nE2, $08, nCs2, $07, nG1, $08, nBb1
+	dc.b $07, nCs2, $08, nBb1, $07, nE2, $08, nCs2, $07, nE2, $08, nCs2
+	dc.b $07, nFs1, $08
+
+Snd_Filmore_LoopFE:
+	dc.b nB1, $07, nD2, $08
+	sLoop		$00, $03, Snd_Filmore_LoopFE
+	dc.b nB1, $07, nG1, $08, nB1, $07, nD2, $08, nB1, $07, nAb1, $08
+	dc.b nB1, $07, nD2, $08, nB1, $07, nA1, $08, nE1, $07, nA1, $08
+	dc.b nCs2, $07
+
+Snd_Filmore_LoopFF:
+	dc.b nE2, $08, nRst, $07, nCs2, $08, nD2, $07
+	sLoop		$00, $02, Snd_Filmore_LoopFF
+	dc.b nE2, $08, nRst, $07, nCs2, $08, nRst, $07, nD2, $08, nCs2, $07
+	dc.b nD2, $08, nE2, $07, nFs2, $08, nE2, $07, nFs2, $08, nG2, $07
+	dc.b nA2, $08, nB2, $07, nCs3, $08, nB2, $07, nA2, $08, nG2, $07
+	dc.b nFs2, $08, nE2, $07, nE1, $08, nBb1, $07, nCs2, $08, nBb1, $07
+	dc.b nE2, $08, nCs2, $07, nE2, $08, nCs2, $07, nG1, $08, nBb1, $07
+	dc.b nCs2, $08, nBb1, $07, nE2, $08, nCs2, $07, nE2, $08, nCs2, $07
+	dc.b nFs1, $08
+
+Snd_Filmore_Loop100:
+	dc.b nB1, $07, nD2, $08
+	sLoop		$00, $03, Snd_Filmore_Loop100
+	dc.b nB1, $07, nG1, $08, nB1, $07, nD2, $08, nB1, $07, nAb1, $08
+	dc.b nB1, $07, nD2, $08, nB1, $07, nA1, $08, nE1, $07, nA1, $08
+	dc.b nCs2, $07
+
+Snd_Filmore_Loop101:
+	dc.b nE2, $08, nRst, $07, nCs2, $08, nD2, $07
+	sLoop		$00, $02, Snd_Filmore_Loop101
+	dc.b nE2, $08, nRst, $07, nCs2, $08, nRst, $07, nD2, $08, nCs2, $07
+	dc.b nD2, $08, nE2, $07, nFs2, $08, nE2, $07, nFs2, $08, nG2, $07
+	dc.b nFs1, $08, nBb1, $07, nCs2, $08, nE2, $07, nFs2, $08, nBb2, $07
+	dc.b nCs3, $08, nFs3, $07, nB2, $4B, nG2, $08, nD2, $07, nG2, $08
+	dc.b nB2, $07, nD3, $0F, nF2, $17, nD2, $16, nB1, $0F, nF1, $3C
+	dc.b nFs1, nE1, nFs1, $1E, nBb1, nCs2, nFs2
+
+Snd_Filmore_Loop102:
+	dc.b nD2, nCs2, nE2, nCs2
+	sLoop		$00, $04, Snd_Filmore_Loop102
+	sJump		Snd_Filmore_PSG1
+
+; PSG2 Data
+Snd_Filmore_PSG2:
+	dc.b nRst, $0C
+	ssDetune	$01
+	sJump		Snd_Filmore_PSG1
+
+; PSG3 Data
+Snd_Filmore_PSG3:
+	sNoisePSG	snWhitePSG3
+
+Snd_Filmore_LoopE2:
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		$00
+	dc.b $07
+	sVolEnv		v01
+	saVol		-$10
+	sLoop		$00, $07, Snd_Filmore_LoopE2
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		$00
+	dc.b $07
+	sVolEnv		v01
+	saVol		$18
+	dc.b nEb5, $2D, nA5, nA5, $1E, nEb5, $78
+	saVol		$00
+	dc.b $08
+	sVolEnv		v02
+	saVol		-$18
+
+Snd_Filmore_LoopE3:
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		-$10
+	dc.b $07
+	sVolEnv		v01
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	sLoop		$00, $02, Snd_Filmore_LoopE3
+
+Snd_Filmore_LoopE4:
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		$00
+	dc.b $07
+	sVolEnv		v01
+	saVol		-$10
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	sLoop		$00, $02, Snd_Filmore_LoopE4
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		-$10
+	dc.b $07
+	sVolEnv		v01
+
+Snd_Filmore_LoopE5:
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		$00
+	dc.b $07
+	sVolEnv		v01
+	saVol		-$10
+	sLoop		$00, $03, Snd_Filmore_LoopE5
+
+Snd_Filmore_LoopE6:
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		-$10
+	dc.b $07
+	sVolEnv		v01
+	sLoop		$00, $02, Snd_Filmore_LoopE6
+
+Snd_Filmore_LoopE7:
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		$00
+	dc.b $07
+	sVolEnv		v01
+	saVol		-$10
+	sLoop		$00, $02, Snd_Filmore_LoopE7
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		-$10
+	dc.b $07
+	sVolEnv		v01
+
+Snd_Filmore_LoopE8:
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		$00
+	dc.b $07
+	sVolEnv		v01
+	saVol		-$10
+	sLoop		$00, $02, Snd_Filmore_LoopE8
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		$00
+	dc.b $07
+	sVolEnv		v01
+	saVol		$18
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		-$18
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		-$10
+	dc.b $07
+	sVolEnv		v01
+
+Snd_Filmore_LoopE9:
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		$00
+	dc.b $07
+	sVolEnv		v01
+	saVol		-$10
+	sLoop		$00, $03, Snd_Filmore_LoopE9
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		-$10
+	dc.b $07
+	sVolEnv		v01
+
+Snd_Filmore_LoopEA:
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		$00
+	dc.b $07
+	sVolEnv		v01
+	saVol		-$10
+	sLoop		$00, $03, Snd_Filmore_LoopEA
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		-$10
+	dc.b $07
+	sVolEnv		v01
+
+Snd_Filmore_LoopEB:
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		$00
+	dc.b $07
+	sVolEnv		v01
+	saVol		-$10
+	sLoop		$00, $02, Snd_Filmore_LoopEB
+
+Snd_Filmore_LoopEC:
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		-$10
+	dc.b $07
+	sVolEnv		v01
+	sLoop		$00, $02, Snd_Filmore_LoopEC
+
+Snd_Filmore_LoopED:
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		$00
+	dc.b $07
+	sVolEnv		v01
+	saVol		-$10
+	sLoop		$00, $02, Snd_Filmore_LoopED
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		$00
+	dc.b $07
+	sVolEnv		v01
+	saVol		$18
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		-$18
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		-$10
+	dc.b $07
+	sVolEnv		v01
+
+Snd_Filmore_LoopEE:
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		$00
+	dc.b $07
+	sVolEnv		v01
+	saVol		-$10
+	sLoop		$00, $03, Snd_Filmore_LoopEE
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		-$10
+	dc.b $07
+	sVolEnv		v01
+
+Snd_Filmore_LoopEF:
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		$00
+	dc.b $07
+	sVolEnv		v01
+	saVol		-$10
+	sLoop		$00, $03, Snd_Filmore_LoopEF
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		-$10
+	dc.b $07
+	sVolEnv		v01
+
+Snd_Filmore_LoopF0:
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		$00
+	dc.b $07
+	sVolEnv		v01
+	saVol		-$10
+	sLoop		$00, $02, Snd_Filmore_LoopF0
+
+Snd_Filmore_LoopF1:
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		-$10
+	dc.b $07
+	sVolEnv		v01
+	sLoop		$00, $02, Snd_Filmore_LoopF1
+
+Snd_Filmore_LoopF2:
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	saVol		$00
+	sVolEnv		v01
+	sVolEnv		v02
+	dc.b $08
+	saVol		$00
+	dc.b $07
+	sVolEnv		v01
+	saVol		-$10
+	sLoop		$00, $02, Snd_Filmore_LoopF2
+	dc.b nEb5, $0F
+	sVolEnv		v02
+	sVolEnv		v01
+	dc.b $08
+	sVolEnv		v02
+	dc.b nA5, $07
+	sVolEnv		v01
+	sVolEnv		v02
+	saVol		$10
+	dc.b $1E, $1E, $0F
+	saVol		-$10
+	dc.b $08
+	saVol		$00
+	dc.b $16
+	saVol		$10
+	dc.b $0F
+	sVolEnv		v01
+	saVol		$00
+	sVolEnv		v02
+	dc.b $1E, $1E, $0F
+	saVol		$00
+	dc.b $08
+	saVol		$00
+	dc.b $16, $0F
+	sVolEnv		v01
+	saVol		$00
+	sVolEnv		v02
+	dc.b $1E, $1E
+	sVolEnv		v01
+	saVol		$00
+	sVolEnv		v02
+	dc.b $0F
+	saVol		$00
+	dc.b $08
+	saVol		$00
+	dc.b $16, $0F
+
+Snd_Filmore_LoopF3:
+	sVolEnv		v01
+	saVol		$00
+	sVolEnv		v02
+	dc.b $0F, $08, $07
+	sLoop		$00, $02, Snd_Filmore_LoopF3
+	sVolEnv		v01
+	saVol		$10
+	dc.b nE5, $1E
+	saVol		-$20
+	dc.b nEb5
+	saVol		$28
+	dc.b $08
+	sVolEnv		v02
+	saVol		-$18
+	dc.b nA5, $07
+	sVolEnv		v01
+	saVol		-$10
+	sVolEnv		v02
+	dc.b $08
+	saVol		$10
+	dc.b $07
+	sVolEnv		v01
+	saVol		-$10
+
+Snd_Filmore_LoopF4:
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	sVolEnv		v01
+	saVol		-$10
+	sVolEnv		v02
+	dc.b $08
+	saVol		$00
+	dc.b $07
+	sVolEnv		v01
+	sLoop		$00, $02, Snd_Filmore_LoopF4
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	sVolEnv		v01
+	saVol		-$10
+	dc.b nEb5, $0F, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	sVolEnv		v01
+	saVol		-$10
+	sVolEnv		v02
+	dc.b $08
+	saVol		$10
+	dc.b $07
+	sVolEnv		v01
+	saVol		-$10
+
+Snd_Filmore_LoopF5:
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	sVolEnv		v01
+	saVol		-$10
+	sVolEnv		v02
+	dc.b $08
+	saVol		$00
+	dc.b $07
+	sVolEnv		v01
+	sLoop		$00, $02, Snd_Filmore_LoopF5
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	sVolEnv		v01
+	saVol		-$10
+	dc.b nEb5, $0F, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	sVolEnv		v01
+	saVol		-$10
+	sVolEnv		v02
+	dc.b $08
+	saVol		$10
+	dc.b $07
+	sVolEnv		v01
+	saVol		-$10
+
+Snd_Filmore_LoopF6:
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	sVolEnv		v01
+	saVol		-$10
+	sVolEnv		v02
+	dc.b $08
+	saVol		$00
+	dc.b $07
+	sVolEnv		v01
+	sLoop		$00, $02, Snd_Filmore_LoopF6
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	sVolEnv		v01
+	saVol		-$10
+	dc.b nEb5, $0F, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	sVolEnv		v01
+	saVol		-$10
+	sVolEnv		v02
+	dc.b $08
+	saVol		$10
+	dc.b $07
+	sVolEnv		v01
+	saVol		-$10
+
+Snd_Filmore_LoopF7:
+	dc.b nEb5, $08
+	sVolEnv		v02
+	saVol		$10
+	dc.b nA5, $07
+	sVolEnv		v01
+	saVol		-$10
+	sVolEnv		v02
+	dc.b $08
+	saVol		$00
+	dc.b $07
+	sVolEnv		v01
+	sLoop		$00, $02, Snd_Filmore_LoopF7
+	dc.b nE5, $1E
+	saVol		$00
+	sJump		Snd_Filmore_LoopE2
+
+Snd_Filmore_DAC1:
+	sStop

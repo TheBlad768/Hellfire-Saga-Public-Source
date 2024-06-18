@@ -1,0 +1,15 @@
+Sound_6D_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$80, ctFM5, Sound_6D_FM5, $00, $02
+
+; FM5 Data
+Sound_6D_FM5:
+	sVoice		$36
+
+Sound_6D_Loop00:
+	dc.b nCs3, $0C
+	saVol		$06
+	sLoop		$00, $05, Sound_6D_Loop00
+	sStop

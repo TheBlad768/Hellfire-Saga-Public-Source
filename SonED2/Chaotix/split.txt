@@ -1,0 +1,843 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Knuckles' Chaotix (JU / 5) Batch Extraction File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;
+; File and folder setup
+;;;;;;;;;;;;;;;;;;;;;;;
+
+;GetFile "Please select a clean, binary Chaotix (5) ROM file"
+;LoadFile #got
+LoadFile kc.bin
+
+;GetPath "Please select the destination folder for the data"
+;DestPath c:\dev\soned2\bin\Chaotix
+; #Got
+
+MakePath "Sound"
+MakePath "Sound/Music"
+MakePath "Sound/SFX"
+MakePath "Sound/PWM"
+MakePath "Art"
+MakePath "Art/palettes"
+MakePath "Art/palettes/MD"
+MakePath "Art/palettes/Mars"
+MakePath "Levels"
+MakePath "Levels/BBZ"
+MakePath "Levels/BBZ/8x8"
+MakePath "Levels/BBZ/16x16"
+MakePath "Levels/BBZ/128x128"
+MakePath "Levels/BBZ/FG"
+MakePath "Levels/BBZ/BG"
+MakePath "Levels/BBZ/Collisn"
+MakePath "Levels/BBZ/Pal"
+MakePath "Levels/BBZ/Sprites"
+MakePath "Levels/SSZ"
+MakePath "Levels/SSZ/8x8"
+MakePath "Levels/SSZ/16x16"
+MakePath "Levels/SSZ/128x128"
+MakePath "Levels/SSZ/FG"
+MakePath "Levels/SSZ/BG"
+MakePath "Levels/SSZ/Collisn"
+MakePath "Levels/SSZ/Pal"
+MakePath "Levels/SSZ/Sprites"
+MakePath "Levels/AAZ"
+MakePath "Levels/AAZ/8x8"
+MakePath "Levels/AAZ/16x16"
+MakePath "Levels/AAZ/128x128"
+MakePath "Levels/AAZ/FG"
+MakePath "Levels/AAZ/BG"
+MakePath "Levels/AAZ/Collisn"
+MakePath "Levels/AAZ/Pal"
+MakePath "Levels/AAZ/Sprites"
+MakePath "Levels/TTZ"
+MakePath "Levels/TTZ/8x8"
+MakePath "Levels/TTZ/16x16"
+MakePath "Levels/TTZ/128x128"
+MakePath "Levels/TTZ/FG"
+MakePath "Levels/TTZ/BG"
+MakePath "Levels/TTZ/Collisn"
+MakePath "Levels/TTZ/Pal"
+MakePath "Levels/TTZ/Sprites"
+MakePath "Levels/MMZ"
+MakePath "Levels/MMZ/8x8"
+MakePath "Levels/MMZ/16x16"
+MakePath "Levels/MMZ/128x128"
+MakePath "Levels/MMZ/FG"
+MakePath "Levels/MMZ/BG"
+MakePath "Levels/MMZ/Collisn"
+MakePath "Levels/MMZ/Pal"
+MakePath "Levels/MMZ/Sprites"
+MakePath "Levels/Intro"
+MakePath "Levels/Intro/8x8"
+MakePath "Levels/Intro/16x16"
+MakePath "Levels/Intro/128x128"
+MakePath "Levels/Intro/FG"
+MakePath "Levels/Intro/BG"
+MakePath "Levels/Intro/Collisn"
+MakePath "Levels/Intro/Pal"
+MakePath "Levels/Intro/Sprites"
+MakePath "Levels/Intro/Sprites/Conv"
+MakePath "Levels/Tutorial"
+MakePath "Levels/Tutorial/8x8"
+MakePath "Levels/Tutorial/16x16"
+MakePath "Levels/Tutorial/128x128"
+MakePath "Levels/Tutorial/FG"
+MakePath "Levels/Tutorial/BG"
+MakePath "Levels/Tutorial/Collisn"
+MakePath "Levels/Tutorial/Pal"
+MakePath "Levels/Tutorial/Sprites"
+MakePath "Levels/Entrance"
+MakePath "Levels/Entrance/8x8"
+MakePath "Levels/Entrance/16x16"
+MakePath "Levels/Entrance/128x128"
+MakePath "Levels/Entrance/FG"
+MakePath "Levels/Entrance/BG"
+MakePath "Levels/Entrance/Collisn"
+MakePath "Levels/Entrance/Pal"
+MakePath "Levels/Entrance/Sprites"
+MakePath "Collisn"
+
+;;;;;;;;;;;;;;;;;;;;;;
+; Palette Data Extract
+;;;;;;;;;;;;;;;;;;;;;;
+
+Extract $2B3470  $80 "Levels/BBZ/Pal/13M.bin"
+Extract $2B34F0  $80 "Levels/BBZ/Pal/13D.bin"
+Extract $2B3570  $80 "Levels/BBZ/Pal/13S.bin"
+Extract $2B35F0  $80 "Levels/BBZ/Pal/13N.bin"
+Extract $2B3670  $80 "Levels/BBZ/Pal/4M.bin"
+Extract $2B36F0  $80 "Levels/BBZ/Pal/4D.bin"
+Extract $2B3770  $80 "Levels/BBZ/Pal/4S.bin"
+Extract $2B37F0  $80 "Levels/BBZ/Pal/4N.bin"
+Extract $2B3870  $80 "Levels/BBZ/Pal/5M.bin"
+Extract $2B38F0  $80 "Levels/BBZ/Pal/5D.bin"
+Extract $2B3970  $80 "Levels/BBZ/Pal/5S.bin"
+Extract $2B39F0  $80 "Levels/BBZ/Pal/5N.bin"
+
+Extract $2B3A70  $80 "Levels/SSZ/Pal/15M.bin"
+Extract $2B3AF0  $80 "Levels/SSZ/Pal/15D.bin"
+Extract $2B3B70  $80 "Levels/SSZ/Pal/12S.bin"
+Extract $2B3BF0  $80 "Levels/SSZ/Pal/35S.bin"
+Extract $2B3C70  $80 "Levels/SSZ/Pal/15N.bin"
+
+Extract $2B3CF0  $80 "Levels/AAZ/Pal/12MD.bin"
+Extract $2B3D70  $80 "Levels/AAZ/Pal/12SN.bin"
+Extract $2B3DF0  $80 "Levels/AAZ/Pal/34MN.bin"
+Extract $2B3E70  $80 "Levels/AAZ/Pal/5MN.bin"
+
+Extract $2B3EF0  $80 "Levels/TTZ/Pal/12M.bin"
+Extract $2B3F70  $80 "Levels/TTZ/Pal/34M.bin"
+Extract $2B3FF0  $80 "Levels/TTZ/Pal/5M.bin"
+Extract $2B4070  $80 "Levels/TTZ/Pal/12D.bin"
+Extract $2B40F0  $80 "Levels/TTZ/Pal/34D.bin"
+Extract $2B4170  $80 "Levels/TTZ/Pal/5D.bin"
+Extract $2B41F0  $80 "Levels/TTZ/Pal/14S.bin"
+Extract $2B4270  $80 "Levels/TTZ/Pal/5S.bin"
+Extract $2B42F0  $80 "Levels/TTZ/Pal/12N.bin"
+Extract $2B4370  $80 "Levels/TTZ/Pal/34N.bin"
+Extract $2B43F0  $80 "Levels/TTZ/Pal/5N.bin"
+
+Extract $2B4470  $80 "Levels/MMZ/Pal/15M.bin"
+Extract $2B44F0  $80 "Levels/MMZ/Pal/15D.bin"
+Extract $2B4570  $80 "Levels/MMZ/Pal/15S.bin"
+Extract $2B45F0  $80 "Levels/MMZ/Pal/15N.bin"
+
+Extract $2B4670  $80 "Levels/Intro/Pal/15M.bin"
+Extract $2B46F0  $80 "Levels/Intro/Pal/15D.bin"
+Extract $2B4770  $80 "Levels/Intro/Pal/15S.bin"
+Extract $2B47F0  $80 "Levels/Intro/Pal/15N.bin"
+
+Extract $2B4870  $80 "Levels/Tutorial/Pal/15M.bin"
+
+Extract $2B48F0  $80 "Levels/Entrance/Pal/15M.bin"
+Extract $2B4970  $80 "Levels/Entrance/Pal/15D.bin"
+Extract $2B49F0  $80 "Levels/Entrance/Pal/15S.bin"
+Extract $2B4A70  $80 "Levels/Entrance/Pal/15N.bin"
+
+Extract $2B4AF0  $80 "Levels/Entrance/Pal/2MN.bin"
+
+Extract $2BA35C  $80 "Levels/TTZ/Pal/BossM.bin"
+Extract $2BA3DC  $80 "Levels/TTZ/Pal/BossD.bin"
+Extract $2BA45C  $80 "Levels/TTZ/Pal/BossS.bin"
+Extract $2BA4DC  $80 "Levels/TTZ/Pal/BossN.bin"
+
+Extract $2BA564  $80 "Levels/SSZ/Pal/BossM.bin"
+Extract $2BA5E4  $80 "Levels/SSZ/Pal/BossD.bin"
+Extract $2BA664  $80 "Levels/SSZ/Pal/BossS.bin"
+Extract $2BA6E4  $80 "Levels/SSZ/Pal/BossN.bin"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Level Graphic Data Extract
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;
+;Botanic Base Zone
+;;;;
+
+Extract $22F3B4 13186 "Levels/BBZ/8x8/0_15MN.bin"
+Extract $232736  3760 "Levels/BBZ/8x8/1_12MN.bin"
+Extract $2335E6  3566 "Levels/BBZ/8x8/1_3MN.bin"
+Extract $2343D4  4526 "Levels/BBZ/8x8/1_4MN.bin"
+Extract $235582  4230 "Levels/BBZ/8x8/1_5MN.bin"
+
+Extract $236608  2914 "Levels/BBZ/16x16/0_15MN.bin"
+Extract $23716A   152 "Levels/BBZ/16x16/1_12MN.bin"
+Extract $237202   264 "Levels/BBZ/16x16/1_3MN.bin"
+Extract $23730A   528 "Levels/BBZ/16x16/1_4MN.bin"
+Extract $23751A   534 "Levels/BBZ/16x16/1_5MN.bin"
+
+Extract $237730  7320 "Levels/BBZ/128x128/0_15MN.bin"
+Extract $2393C8   858 "Levels/BBZ/128x128/1_1MN.bin"
+Extract $239722  2056 "Levels/BBZ/128x128/1_2MN.bin"
+Extract $239F2A  4504 "Levels/BBZ/128x128/1_3MN.bin"
+Extract $23B0C2  4960 "Levels/BBZ/128x128/1_4MN.bin"
+Extract $23C422  5074 "Levels/BBZ/128x128/1_5MN.bin"
+
+Extract $23E7F4   622 "Levels/BBZ/FG/1MN.bin"
+Extract $23EA62   752 "Levels/BBZ/FG/2MN.bin"
+Extract $23ED52  1078 "Levels/BBZ/FG/3MN.bin"
+Extract $23F188  1138 "Levels/BBZ/FG/4MN.bin"
+Extract $23F5FA  1146 "Levels/BBZ/FG/5MN.bin"
+
+Extract $23FA74  2296 "Levels/BBZ/8x8/2_15MN.bin"
+Extract $24036C  1680 "Levels/BBZ/8x8/3_12MN.bin"
+Extract $2409FC  2416 "Levels/BBZ/8x8/3_3MN.bin"
+Extract $24136C  1936 "Levels/BBZ/8x8/3_4MN.bin"
+Extract $241AFC  2592 "Levels/BBZ/8x8/3_5MN.bin"
+
+Extract $24251C   292 "Levels/BBZ/16x16/2_15MN.bin"
+Extract $242640   358 "Levels/BBZ/16x16/3_12MN.bin"
+Extract $2427A6   518 "Levels/BBZ/16x16/3_3MN.bin"
+Extract $2429AC   348 "Levels/BBZ/16x16/3_4MN.bin"
+Extract $242B08   420 "Levels/BBZ/16x16/3_5MN.bin"
+
+Extract $242CAC   384 "Levels/BBZ/128x128/2_15MN.bin"
+Extract $242E2C   266 "Levels/BBZ/128x128/3_12MN.bin"
+Extract $242F36   276 "Levels/BBZ/128x128/3_3MN.bin"
+Extract $24304A   272 "Levels/BBZ/128x128/3_4MN.bin"
+Extract $24315A   310 "Levels/BBZ/128x128/3_5MN.bin"
+
+Extract $243290    18 "Levels/BBZ/BG/12MN.bin"
+Extract $2432A2    18 "Levels/BBZ/BG/3MN.bin"
+Extract $2432B4    18 "Levels/BBZ/BG/4MN.bin"
+Extract $2432C6    18 "Levels/BBZ/BG/5MN.bin"
+
+;;;;
+;Speed Slider Zone
+;;;;
+
+Extract $2432D8 11272 "Levels/SSZ/8x8/0_15MN.bin"
+Extract $245EE0  3058 "Levels/SSZ/8x8/1_12MN.bin"
+Extract $246AD2  3860 "Levels/SSZ/8x8/1_3MN.bin"
+Extract $2479E6  4872 "Levels/SSZ/8x8/1_45MN.bin"
+Extract $248CEE  7014 "Levels/SSZ/8x8/0_Boss.bin"
+
+Extract $24A854  3026 "Levels/SSZ/16x16/0_15MN.bin"
+Extract $24B426  1000 "Levels/SSZ/16x16/1_12MN.bin"
+Extract $24B80E  1056 "Levels/SSZ/16x16/1_3MN.bin"
+Extract $24BC2E  1600 "Levels/SSZ/16x16/1_45MN.bin"
+Extract $24C26E  1006 "Levels/SSZ/16x16/0_Boss.bin"
+
+Extract $24C65C 11904 "Levels/SSZ/128x128/0_15MN.bin"
+Extract $24F4DC  3950 "Levels/SSZ/128x128/1_12MN.bin"
+Extract $25044A  4518 "Levels/SSZ/128x128/1_3MN.bin"
+Extract $2515F0  6826 "Levels/SSZ/128x128/1_45MN.bin"
+Extract $25309A   698 "Levels/SSZ/128x128/0_Boss.bin"
+
+Extract $255354   822 "Levels/SSZ/FG/1MN.bin"
+Extract $25568A   926 "Levels/SSZ/FG/2MN.bin"
+Extract $255A28   962 "Levels/SSZ/FG/3MN.bin"
+Extract $255DEA  1030 "Levels/SSZ/FG/4MN.bin"
+Extract $2561F0  1292 "Levels/SSZ/FG/5MN.bin"
+Extract $2566FC    18 "Levels/SSZ/FG/Boss.bin"
+
+Extract $25670E  2474 "Levels/SSZ/8x8/2_15MN.bin"
+Extract $2570B8  5028 "Levels/SSZ/8x8/3_12MD.bin"
+Extract $25845C  4876 "Levels/SSZ/8x8/3_12SN.bin"
+Extract $259768  6350 "Levels/SSZ/8x8/3_3MD.bin"
+Extract $25B036  6304 "Levels/SSZ/8x8/3_3SN.bin"
+Extract $25C8D6  5994 "Levels/SSZ/8x8/3_45MD.bin"
+Extract $25E040  5926 "Levels/SSZ/8x8/3_45SN.bin"
+
+Extract $25F766   242 "Levels/SSZ/16x16/2_15MN.bin"
+Extract $25F858   940 "Levels/SSZ/16x16/3_12MD.bin"
+Extract $25FC04   850 "Levels/SSZ/16x16/3_12SN.bin"
+Extract $25FF56  1188 "Levels/SSZ/16x16/3_3MD.bin"
+Extract $2603FA  1110 "Levels/SSZ/16x16/3_3SN.bin"
+Extract $260850  1026 "Levels/SSZ/16x16/3_45MD.bin"
+Extract $260C52   950 "Levels/SSZ/16x16/3_45SN.bin"
+
+Extract $261008   174 "Levels/SSZ/128x128/2_15MN.bin"
+Extract $2610B6  1310 "Levels/SSZ/128x128/3_12MD.bin"
+Extract $2615D4  1588 "Levels/SSZ/128x128/3_12SN.bin"
+Extract $261C08  1378 "Levels/SSZ/128x128/3_3MD.bin"
+Extract $26216A  1600 "Levels/SSZ/128x128/3_3SN.bin"
+Extract $2627AA  1546 "Levels/SSZ/128x128/3_45MD.bin"
+Extract $262DB4  1594 "Levels/SSZ/128x128/3_45SN.bin"
+Extract $2633EE   134 "Levels/SSZ/128x128/1_Boss.bin"
+
+Extract $263474    30 "Levels/SSZ/BG/12MD.bin"
+Extract $263492    36 "Levels/SSZ/BG/12SN.bin"
+Extract $2634B6    30 "Levels/SSZ/BG/3MD.bin"
+Extract $2634D4    42 "Levels/SSZ/BG/3SN.bin"
+Extract $2634FE    32 "Levels/SSZ/BG/45MD.bin"
+Extract $26351E    42 "Levels/SSZ/BG/45SN.bin"
+Extract $263548    12 "Levels/SSZ/BG/Boss.bin"
+
+;;;;
+;Amazing Arena Zone
+;;;;
+
+Extract $263554 11306 "Levels/AAZ/8x8/0_15MN.bin"
+Extract $26617E  2074 "Levels/AAZ/8x8/1_12MN.bin"
+Extract $266998  4844 "Levels/AAZ/8x8/1_3MN.bin"
+Extract $267C84  5086 "Levels/AAZ/8x8/1_4MN.bin"
+Extract $269062  6874 "Levels/AAZ/8x8/1_5MN.bin"
+
+Extract $26AB3C  2578 "Levels/AAZ/16x16/0_15MN.bin"
+Extract $26B54E   242 "Levels/AAZ/16x16/1_12MN.bin"
+Extract $26B640   532 "Levels/AAZ/16x16/1_3MN.bin"
+Extract $26B854   548 "Levels/AAZ/16x16/1_4MN.bin"
+Extract $26BA78   424 "Levels/AAZ/16x16/1_5MN.bin"
+
+Extract $26BC20  6464 "Levels/AAZ/128x128/0_15MN.bin"
+Extract $26D560  5262 "Levels/AAZ/128x128/1_12MN.bin"
+Extract $26E9EE  5612 "Levels/AAZ/128x128/1_3MN.bin"
+Extract $26FFDA  5948 "Levels/AAZ/128x128/1_4MN.bin"
+Extract $271716  6120 "Levels/AAZ/128x128/1_5MN.bin"
+
+Extract $2746FE   828 "Levels/AAZ/FG/1MN.bin"
+Extract $274A3A   878 "Levels/AAZ/FG/2MN.bin"
+Extract $274DA8  1254 "Levels/AAZ/FG/3MN.bin"
+Extract $27528E   866 "Levels/AAZ/FG/4MN.bin"
+Extract $2755F0  1280 "Levels/AAZ/FG/5MN.bin"
+
+Extract $275AF0  2050 "Levels/AAZ/8x8/2_12MN.bin"
+Extract $2762F2   278 "Levels/AAZ/8x8/3_12MN.bin"
+Extract $276408  3742 "Levels/AAZ/8x8/2_34MN.bin"
+Extract $2772A6  3694 "Levels/AAZ/8x8/2_5MN.bin"
+
+Extract $278114   854 "Levels/AAZ/16x16/2_12MN.bin"
+Extract $2787BA    30 "Levels/AAZ/16x16/3_12MN.bin"
+Extract $2787D8   850 "Levels/AAZ/16x16/2_34MN.bin"
+Extract $278B2A   590 "Levels/AAZ/16x16/2_5MN.bin"
+
+Extract $27846A   848 "Levels/AAZ/128x128/2_12MN.bin"
+Extract $278D78    82 "Levels/AAZ/128x128/3_12MN.bin"
+Extract $278DCA   978 "Levels/AAZ/128x128/2_34MN.bin"
+Extract $27919C   714 "Levels/AAZ/128x128/2_5MN.bin"
+
+Extract $279466    58 "Levels/AAZ/BG/12MN.bin"
+Extract $2794A0    58 "Levels/AAZ/BG/34MN.bin"
+Extract $2794DA    56 "Levels/AAZ/BG/5MN.bin"
+
+;;;;
+;Techno Tower Zone
+;;;;
+
+Extract $279512 12534 "Levels/TTZ/8x8/0_15MN.bin"
+Extract $27C608   214 "Levels/TTZ/8x8/1_3MN.bin"
+Extract $27C6DE  1250 "Levels/TTZ/8x8/1_5MN.bin"
+Extract $27CBC0  7430 "Levels/TTZ/8x8/0_Boss.bin"
+
+Extract $27E8C6  5326 "Levels/TTZ/16x16/0_15MN.bin"
+Extract $27FD94    30 "Levels/TTZ/16x16/1_3MN.bin"
+Extract $27FDB2   242 "Levels/TTZ/16x16/1_5MN.bin"
+Extract $27FEA4  1408 "Levels/TTZ/16x16/0_Boss.bin"
+
+Extract $280424 13494 "Levels/TTZ/128x128/0_15MN.bin"
+Extract $2838DA   480 "Levels/TTZ/128x128/1_1MN.bin"
+Extract $283ABA   724 "Levels/TTZ/128x128/1_2MN.bin"
+Extract $283D8E  1312 "Levels/TTZ/128x128/1_3MN.bin"
+Extract $2842AE   454 "Levels/TTZ/128x128/1_4MN.bin"
+Extract $284474  1706 "Levels/TTZ/128x128/1_5MN.bin"
+Extract $284B1E   832 "Levels/TTZ/128x128/0_Boss.bin"
+
+Extract $286E5E   500 "Levels/TTZ/FG/1MN.bin"
+Extract $287052   540 "Levels/TTZ/FG/2MN.bin"
+Extract $28726E   644 "Levels/TTZ/FG/3MN.bin"
+Extract $2874F2   736 "Levels/TTZ/FG/4MN.bin"
+Extract $2877D2   768 "Levels/TTZ/FG/5MN.bin"
+Extract $287AD2    26 "Levels/TTZ/FG/Boss.bin"
+
+Extract $287AEC  1962 "Levels/TTZ/8x8/2_15MN.bin"
+Extract $288296  2644 "Levels/TTZ/8x8/3_12MN.bin"
+Extract $288CEA  4786 "Levels/TTZ/8x8/3_34MN.bin"
+Extract $289F9C  6092 "Levels/TTZ/8x8/3_5MN.bin"
+
+Extract $28B768   120 "Levels/TTZ/16x16/2_15MN.bin"
+Extract $28B7E0   382 "Levels/TTZ/16x16/3_12MN.bin"
+Extract $28B95E   278 "Levels/TTZ/16x16/3_34MN.bin"
+Extract $28BA74   296 "Levels/TTZ/16x16/3_5MN.bin"
+
+Extract $28BB9C   220 "Levels/TTZ/128x128/2_15MN.bin"
+Extract $28BC78   200 "Levels/TTZ/128x128/3_12MN.bin"
+Extract $28BD40   200 "Levels/TTZ/128x128/3_34MN.bin"
+Extract $28BE08   332 "Levels/TTZ/128x128/3_5MN.bin"
+
+Extract $28BF54    30 "Levels/TTZ/BG/14MS.bin"
+Extract $28BF72    26 "Levels/TTZ/BG/14N.bin"
+Extract $28BF8C    30 "Levels/TTZ/BG/5MS.bin"
+Extract $28BFAA    26 "Levels/TTZ/BG/5N.bin"
+
+;;;;
+;Marina Madness Zone
+;;;;
+
+Extract $28BFC4 16300 "Levels/MMZ/8x8/0_15MN.bin"
+Extract $28FF70   300 "Levels/MMZ/8x8/1_1MN.bin"
+Extract $29009C  1814 "Levels/MMZ/8x8/1_3MN.bin"
+Extract $2907B2  4744 "Levels/MMZ/8x8/1_4MN.bin"
+Extract $291A3A  6872 "Levels/MMZ/8x8/1_5MN.bin"
+
+Extract $293512  3488 "Levels/MMZ/16x16/0_15MN.bin"
+Extract $2942B2    84 "Levels/MMZ/16x16/1_35MN.bin"
+Extract $294306    84 "Levels/MMZ/16x16/2_45MN.bin"
+Extract $29435A    24 "Levels/MMZ/16x16/1_1MN.bin"
+Extract $294372   116 "Levels/MMZ/16x16/3_3MN.bin"
+Extract $2943E6   702 "Levels/MMZ/16x16/3_4MN.bin"
+Extract $2946A4   668 "Levels/MMZ/16x16/3_5MN.bin"
+
+Extract $294940  7606 "Levels/MMZ/128x128/0_15MN.bin"
+Extract $2966F6   602 "Levels/MMZ/128x128/1_1MN.bin"
+Extract $296950    66 "Levels/MMZ/128x128/1_2MN.bin"
+Extract $296992  1446 "Levels/MMZ/128x128/1_3MN.bin"
+Extract $296F38  1766 "Levels/MMZ/128x128/1_4MN.bin"
+Extract $29761E  2618 "Levels/MMZ/128x128/1_5MN.bin"
+
+Extract $298858   460 "Levels/MMZ/FG/1MN.bin"
+Extract $298A24   476 "Levels/MMZ/FG/2MN.bin"
+Extract $298C00   412 "Levels/MMZ/FG/3MN.bin"
+Extract $298D9C   472 "Levels/MMZ/FG/4MN.bin"
+Extract $298F74   504 "Levels/MMZ/FG/5MN.bin"
+
+Extract $29916C   246 "Levels/MMZ/BG/1MN.bin"
+Extract $299262   274 "Levels/MMZ/BG/2MN.bin"
+Extract $299374   274 "Levels/MMZ/BG/3MN.bin"
+Extract $299486   246 "Levels/MMZ/BG/4MN.bin"
+Extract $29957C   188 "Levels/MMZ/BG/5MN.bin"
+
+;;;;
+;Training Levels
+;;;;
+
+Extract $299638  8512 "Levels/Intro/8x8/0_15MN.bin"
+Extract $29B778  8454 "Levels/Intro/8x8/1_15MN.bin"
+
+Extract $29D87E  4574 "Levels/Intro/16x16/0_15MN.bin"
+
+Extract $29EA5C 19056 "Levels/Intro/128x128/0_15MN.bin"
+
+Extract $2A3DCA  1022 "Levels/Intro/FG/1MN.bin"
+Extract $2A41C8  1062 "Levels/Intro/FG/2MN.bin"
+Extract $2A3CCC   254 "Levels/Intro/FG/3MN.bin"
+Extract $2A45EE   818 "Levels/Intro/FG/4MN.bin"
+
+Extract $2A4920    20 "Levels/Intro/BG/15MN.bin"
+
+;;;;
+;Intro and Tutorial Levels
+;;;;
+
+;Intro (These use Training art data)
+Extract $2A4934   404 "Levels/Tutorial/FG/01MN.bin"
+Extract $2A4AC8   308 "Levels/Tutorial/FG/2MN.bin"
+Extract $2A4BFC   270 "Levels/Tutorial/FG/3MN.bin"
+Extract $2A4D0A   238 "Levels/Tutorial/FG/4MN.bin"
+
+;Tutorial
+Extract $2A4DF8  1464 "Levels/Tutorial/8x8/0_56MN.bin"
+Extract $2A53B0  1366 "Levels/Tutorial/8x8/1_56MN.bin"
+Extract $2A5906   932 "Levels/Tutorial/8x8/2_56MN.bin"
+
+Extract $2A5CAA   956 "Levels/Tutorial/16x16/0_56MN.bin"
+Extract $2A6066    90 "Levels/Tutorial/16x16/1_56MN.bin"
+
+Extract $2A60C0  3956 "Levels/Tutorial/128x128/0_56MN.bin"
+Extract $2A7034    58 "Levels/Tutorial/128x128/1_56MN.bin"
+
+Extract $2A786E    20 "Levels/Tutorial/FG/5M.bin"
+Extract $2A7882    34 "Levels/Tutorial/FG/5D.bin"
+Extract $2A78A4    60 "Levels/Tutorial/FG/5S.bin"
+Extract $2A78E0    36 "Levels/Tutorial/FG/5N6M.bin"
+Extract $2A7904    20 "Levels/Tutorial/FG/6DS.bin"
+
+Extract $2A7918    12 "Levels/Tutorial/BG/56MN.bin"
+
+;;;;
+;World Entrance and Final Boss Levels
+;;;;
+
+;World Entrance
+Extract $2A7924 12044 "Levels/Entrance/8x8/0_01MN.bin"
+
+Extract $2AA830  3164 "Levels/Entrance/16x16/0_01MN.bin"
+
+Extract $2AB48C  3348 "Levels/Entrance/128x128/0_01MN.bin"
+
+Extract $2AC9A0    98 "Levels/Entrance/FG/01MN.bin"
+
+Extract $2ACA02  7426 "Levels/Entrance/8x8/1_01MN.bin"
+
+Extract $2AE704  1422 "Levels/Entrance/16x16/1_01MN.bin"
+
+Extract $2AEC92   692 "Levels/Entrance/128x128/1_01MN.bin"
+
+Extract $2AEF46    32 "Levels/Entrance/BG/01MN.bin"
+
+;Boss
+Extract $2AEF66 14786 "Levels/Entrance/8x8/0_2M.bin"
+
+Extract $2B2928  1552 "Levels/Entrance/16x16/0_2M.bin"
+
+Extract $2B2F38   830 "Levels/Entrance/128x128/0_2M.bin"
+
+Extract $2B3276    40 "Levels/Entrance/FG/2M.bin"
+
+Extract $2B329E    18 "Levels/Entrance/BG/2M.bin"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+; Level Size Data Extract
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
+Extract $2BDE18 $4 "Levels/SSZ/FG/FGStBoss.bin"
+Extern  "KCPosFix" "0" "Levels/SSZ/FG/FGStBoss.bin" "Levels/SSZ/FG/PlStBoss.bin"
+Extract $2BDE1C $2 "Levels/SSZ/FG/SizeBoss.bin"
+Extract $2BDE2A $2 "Levels/SSZ/BG/SizeBoss.bin"
+
+Extract $2BDE34 $4 "Levels/TTZ/FG/FGStBoss.bin"
+Extern  "KCPosFix" "0" "Levels/TTZ/FG/FGStBoss.bin" "Levels/TTZ/FG/PlStBoss.bin"
+Extract $2BDE38 $2 "Levels/TTZ/FG/SizeBoss.bin"
+
+Extract $2B4F50 $4 "Levels/BBZ/FG/FGSt01MN.bin"
+Extern  "KCPosFix" "0" "Levels/BBZ/FG/FGSt01MN.bin" "Levels/BBZ/FG/PlSt01MN.bin"
+Extract $2B4F54 $2 "Levels/BBZ/FG/Size01MN.bin"
+Extract $2B4F62 $2 "Levels/BBZ/BG/Size01MN.bin"
+Extract $2B4F6C $4 "Levels/BBZ/FG/FGSt2MN.bin"
+Extern  "KCPosFix" "0" "Levels/BBZ/FG/FGSt2MN.bin" "Levels/BBZ/FG/PlSt2MN.bin"
+Extract $2B4F70 $2 "Levels/BBZ/FG/Size2MN.bin"
+Extract $2B4F7E $2 "Levels/BBZ/BG/Size2MN.bin"
+Extract $2B4F88 $4 "Levels/BBZ/FG/FGSt4MN.bin"
+Extern  "KCPosFix" "0" "Levels/BBZ/FG/FGSt4MN.bin" "Levels/BBZ/FG/PlSt4MN.bin"
+Extract $2B4F8C $2 "Levels/BBZ/FG/Size4MN.bin"
+Extract $2B4F9A $2 "Levels/BBZ/BG/Size4MN.bin"
+Extract $2B4FA4 $4 "Levels/BBZ/FG/FGSt36MN.bin"
+Extern  "KCPosFix" "0" "Levels/BBZ/FG/FGSt36MN.bin" "Levels/BBZ/FG/PlSt36MN.bin"
+Extract $2B4FA8 $2 "Levels/BBZ/FG/Size36MN.bin"
+Extract $2B4FB6 $2 "Levels/BBZ/BG/Size36MN.bin"
+
+Extract $2B4FC0 $4 "Levels/SSZ/FG/FGSt01MN.bin"
+Extern  "KCPosFix" "0" "Levels/SSZ/FG/FGSt01MN.bin" "Levels/SSZ/FG/PlSt01MN.bin"
+Extract $2B4FC4 $2 "Levels/SSZ/FG/Size01MN.bin"
+Extract $2B4FCE $4 "Levels/SSZ/FG/FGSt2MN.bin"
+Extern  "KCPosFix" "0" "Levels/SSZ/FG/FGSt2MN.bin" "Levels/SSZ/FG/PlSt2MN.bin"
+Extract $2B4FD2 $2 "Levels/SSZ/FG/Size2MN.bin"
+Extract $2B4FDC $4 "Levels/SSZ/FG/FGSt3MN.bin"
+Extern  "KCPosFix" "0" "Levels/SSZ/FG/FGSt3MN.bin" "Levels/SSZ/FG/PlSt3MN.bin"
+Extract $2B4FE0 $2 "Levels/SSZ/FG/Size3MN.bin"
+Extract $2B4FEA $4 "Levels/SSZ/FG/FGSt4MN.bin"
+Extern  "KCPosFix" "0" "Levels/SSZ/FG/FGSt4MN.bin" "Levels/SSZ/FG/PlSt4MN.bin"
+Extract $2B4FEE $2 "Levels/SSZ/FG/Size4MN.bin"
+Extract $2B4FF8 $4 "Levels/SSZ/FG/FGSt5MN.bin"
+Extern  "KCPosFix" "0" "Levels/SSZ/FG/FGSt5MN.bin" "Levels/SSZ/FG/PlSt5MN.bin"
+Extract $2B4FFC $2 "Levels/SSZ/FG/Size5MN.bin"
+Extract $2B500A $2 "Levels/SSZ/BG/Size02MD.bin"
+Extract $2B5018 $2 "Levels/SSZ/BG/Size02SN.bin"
+Extract $2B5026 $2 "Levels/SSZ/BG/Size35MD.bin"
+Extract $2B5034 $2 "Levels/SSZ/BG/Size35SN.bin"
+
+Extract $2B503E $4 "Levels/AAZ/FG/FGSt01MN.bin"
+Extern  "KCPosFix" "0" "Levels/AAZ/FG/FGSt01MN.bin" "Levels/AAZ/FG/PlSt01MN.bin"
+Extract $2B5042 $2 "Levels/AAZ/FG/Size01MN.bin"
+Extract $2B5050 $2 "Levels/AAZ/BG/Size01MN.bin"
+Extract $2B505A $4 "Levels/AAZ/FG/FGSt2MN.bin"
+Extern  "KCPosFix" "0" "Levels/AAZ/FG/FGSt2MN.bin" "Levels/AAZ/FG/PlSt2MN.bin"
+Extract $2B505E $2 "Levels/AAZ/FG/Size2MN.bin"
+Extract $2B506C $2 "Levels/AAZ/BG/Size2MN.bin"
+Extract $2B5076 $4 "Levels/AAZ/FG/FGSt3MN.bin"
+Extern  "KCPosFix" "0" "Levels/AAZ/FG/FGSt3MN.bin" "Levels/AAZ/FG/PlSt3MN.bin"
+Extract $2B507A $2 "Levels/AAZ/FG/Size3MN.bin"
+Extract $2B5088 $2 "Levels/AAZ/BG/Size34MN.bin"
+Extract $2B5092 $4 "Levels/AAZ/FG/FGSt4MN.bin"
+Extern  "KCPosFix" "0" "Levels/AAZ/FG/FGSt4MN.bin" "Levels/AAZ/FG/PlSt4MN.bin"
+Extract $2B5096 $2 "Levels/AAZ/FG/Size4MN.bin"
+Extract $2B50A0 $4 "Levels/AAZ/FG/FGSt56MN.bin"
+Extern  "KCPosFix" "0" "Levels/AAZ/FG/FGSt56MN.bin" "Levels/AAZ/FG/PlSt56MN.bin"
+Extract $2B50A4 $2 "Levels/AAZ/FG/Size56MN.bin"
+Extract $2B50B2 $2 "Levels/AAZ/BG/Size56MN.bin"
+
+Extract $2B50BC $4 "Levels/TTZ/FG/FGSt06MN.bin"
+Extern  "KCPosFix" "0" "Levels/TTZ/FG/FGSt06MN.bin" "Levels/TTZ/FG/PlSt06MN.bin"
+Extract $2B50C0 $2 "Levels/TTZ/FG/Size06MN.bin"
+Extract $2B50CE $2 "Levels/TTZ/BG/Size06MN.bin"
+
+Extract $2B50D8 $4 "Levels/MMZ/FG/FGSt01MN.bin"
+Extern  "KCPosFix" "0" "Levels/MMZ/FG/FGSt01MN.bin" "Levels/MMZ/FG/PlSt01MN.bin"
+Extract $2B50DC $2 "Levels/MMZ/FG/Size01MN.bin"
+Extract $2B50EA $2 "Levels/MMZ/BG/Size01MN.bin"
+Extract $2B50F4 $4 "Levels/MMZ/FG/FGSt2MN.bin"
+Extern  "KCPosFix" "0" "Levels/MMZ/FG/FGSt2MN.bin" "Levels/MMZ/FG/PlSt2MN.bin"
+Extract $2B50F8 $2 "Levels/MMZ/FG/Size2MN.bin"
+Extract $2B5102 $4 "Levels/MMZ/FG/FGSt3MN.bin"
+Extern  "KCPosFix" "0" "Levels/MMZ/FG/FGSt3MN.bin" "Levels/MMZ/FG/PlSt3MN.bin"
+Extract $2B5106 $2 "Levels/MMZ/FG/Size3MN.bin"
+Extract $2B5110 $4 "Levels/MMZ/FG/FGSt4MN.bin"
+Extern  "KCPosFix" "0" "Levels/MMZ/FG/FGSt4MN.bin" "Levels/MMZ/FG/PlSt4MN.bin"
+Extract $2B5114 $2 "Levels/MMZ/FG/Size4MN.bin"
+Extract $2B511E $4 "Levels/MMZ/FG/FGSt56MN.bin"
+Extern  "KCPosFix" "0" "Levels/MMZ/FG/FGSt56MN.bin" "Levels/MMZ/FG/PlSt56MN.bin"
+Extract $2B5122 $2 "Levels/MMZ/FG/Size56MN.bin"
+
+Extract $2B512C $4 "Levels/Intro/FG/FGSt01MN.bin"
+Extern  "KCPosFix" "0" "Levels/Intro/FG/FGSt01MN.bin" "Levels/Intro/FG/PlSt01MN.bin"
+Extract $2B5130 $2 "Levels/Intro/FG/Size01MN.bin"
+Extract $2B513E $2 "Levels/Intro/BG/Size01MN.bin"
+Extract $2B5148 $4 "Levels/Intro/FG/FGSt2MN.bin"
+Extern  "KCPosFix" "0" "Levels/Intro/FG/FGSt2MN.bin" "Levels/Intro/FG/PlSt2MN.bin"
+Extract $2B514C $2 "Levels/Intro/FG/Size2MN.bin"
+Extract $2B515A $2 "Levels/Intro/BG/Size2MN.bin"
+Extract $2B5164 $4 "Levels/Intro/FG/FGSt3MN.bin"
+Extern  "KCPosFix" "0" "Levels/Intro/FG/FGSt3MN.bin" "Levels/Intro/FG/PlSt3MN.bin"
+Extract $2B5168 $2 "Levels/Intro/FG/Size3MN.bin"
+Extract $2B5176 $2 "Levels/Intro/BG/Size3MN.bin"
+Extract $2B5180 $4 "Levels/Intro/FG/FGSt4MN.bin"
+Extern  "KCPosFix" "0" "Levels/Intro/FG/FGSt4MN.bin" "Levels/Intro/FG/PlSt4MN.bin"
+Extract $2B5184 $2 "Levels/Intro/FG/Size4MN.bin"
+Extract $2B5192 $2 "Levels/Intro/BG/Size4MN.bin"
+
+Extract $2B519C $4 "Levels/Tutorial/FG/FGSt0MN.bin"
+Extern  "KCPosFix" "0" "Levels/Tutorial/FG/FGSt0MN.bin" "Levels/Tutorial/FG/PlSt0MN.bin"
+Extract $2B51A0 $2 "Levels/Tutorial/FG/Size0MN.bin"
+Extract $2B51AA $4 "Levels/Tutorial/FG/FGSt1MN.bin"
+Extern  "KCPosFix" "0" "Levels/Tutorial/FG/FGSt1MN.bin" "Levels/Tutorial/FG/PlSt1MN.bin"
+Extract $2B51AE $2 "Levels/Tutorial/FG/Size1MN.bin"
+Extract $2B51B8 $4 "Levels/Tutorial/FG/FGSt2MN.bin"
+Extern  "KCPosFix" "0" "Levels/Tutorial/FG/FGSt2MN.bin" "Levels/Tutorial/FG/PlSt2MN.bin"
+Extract $2B51BC $2 "Levels/Tutorial/FG/Size2MN.bin"
+Extract $2B51C6 $4 "Levels/Tutorial/FG/FGSt3MN.bin"
+Extern  "KCPosFix" "0" "Levels/Tutorial/FG/FGSt3MN.bin" "Levels/Tutorial/FG/PlSt3MN.bin"
+Extract $2B51CA $2 "Levels/Tutorial/FG/Size3MN.bin"
+Extract $2B51D4 $4 "Levels/Tutorial/FG/FGSt4MN.bin"
+Extern  "KCPosFix" "0" "Levels/Tutorial/FG/FGSt4MN.bin" "Levels/Tutorial/FG/PlSt4MN.bin"
+Extract $2B51D8 $2 "Levels/Tutorial/FG/Size4MN.bin"
+Extract $2B51E6 $2 "Levels/Tutorial/BG/Size01MN.bin"
+Extract $2B51F4 $2 "Levels/Tutorial/BG/Size2MN.bin"
+Extract $2B5202 $2 "Levels/Tutorial/BG/Size3MN.bin"
+Extract $2B5210 $2 "Levels/Tutorial/BG/Size4MN.bin"
+Extract $2B521A $4 "Levels/Tutorial/FG/FGSt5M.bin"
+Extern  "KCPosFix" "0" "Levels/Tutorial/FG/FGSt5M.bin" "Levels/Tutorial/FG/PlSt5M.bin"
+Extract $2B521E $2 "Levels/Tutorial/FG/Size5M.bin"
+Extract $2B5228 $4 "Levels/Tutorial/FG/FGSt5D.bin"
+Extern  "KCPosFix" "0" "Levels/Tutorial/FG/FGSt5D.bin" "Levels/Tutorial/FG/PlSt5D.bin"
+Extract $2B522C $2 "Levels/Tutorial/FG/Size5D.bin"
+Extract $2B5236 $4 "Levels/Tutorial/FG/FGSt5S.bin"
+Extern  "KCPosFix" "0" "Levels/Tutorial/FG/FGSt5S.bin" "Levels/Tutorial/FG/PlSt5S.bin"
+Extract $2B523A $2 "Levels/Tutorial/FG/Size5S.bin"
+Extract $2B5244 $4 "Levels/Tutorial/FG/FGSt5N.bin"
+Extern  "KCPosFix" "0" "Levels/Tutorial/FG/FGSt5N.bin" "Levels/Tutorial/FG/PlSt5N.bin"
+Extract $2B5248 $2 "Levels/Tutorial/FG/Size5N.bin"
+Extract $2B5252 $4 "Levels/Tutorial/FG/FGSt6M.bin"
+Extern  "KCPosFix" "0" "Levels/Tutorial/FG/FGSt6M.bin" "Levels/Tutorial/FG/PlSt6M.bin"
+Extract $2B5256 $2 "Levels/Tutorial/FG/Size6M.bin"
+Extract $2B5260 $4 "Levels/Tutorial/FG/FGSt6D.bin"
+Extern  "KCPosFix" "0" "Levels/Tutorial/FG/FGSt6D.bin" "Levels/Tutorial/FG/PlSt6D.bin"
+Extract $2B5264 $2 "Levels/Tutorial/FG/Size6D.bin"
+Extract $2B5272 $2 "Levels/Tutorial/BG/Size56MN.bin"
+
+Extract $2B527C $4 "Levels/Entrance/FG/FGSt01MN.bin"
+Extern  "KCPosFix" "0" "Levels/Entrance/FG/FGSt01MN.bin" "Levels/Entrance/FG/PlSt01MN.bin"
+Extract $2B5280 $2 "Levels/Entrance/FG/Size01MN.bin"
+Extract $2B528E $2 "Levels/Entrance/BG/Size01MN.bin"
+Extract $2B5298 $4 "Levels/Entrance/FG/FGSt2M.bin"
+Extern  "KCPosFix" "0" "Levels/Entrance/FG/FGSt2M.bin" "Levels/Entrance/FG/PlSt2M.bin"
+Extract $2B529C $2 "Levels/Entrance/FG/Size2M.bin"
+Extract $2B52AA $2 "Levels/Entrance/BG/Size2M.bin"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Sprite Placement Data Extract
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+Extract $2DA05E   453*2 "Levels/BBZ/Sprites/1M.bin"
+Extract $2DA3E8   449*2 "Levels/BBZ/Sprites/1D.bin"
+Extract $2DA76A   441*2 "Levels/BBZ/Sprites/1S.bin"
+Extract $2DAADC   449*2 "Levels/BBZ/Sprites/1N.bin"
+Extract $2DAE5E   489*2 "Levels/BBZ/Sprites/2M.bin"
+Extract $2DB230   485*2 "Levels/BBZ/Sprites/2D.bin"
+Extract $2DB5FA   489*2 "Levels/BBZ/Sprites/2S.bin"
+Extract $2DB9CC   497*2 "Levels/BBZ/Sprites/2N.bin"
+Extract $2DBDAE   573*2 "Levels/BBZ/Sprites/3M.bin"
+Extract $2DC228   585*2 "Levels/BBZ/Sprites/3D.bin"
+Extract $2DC6BA   609*2 "Levels/BBZ/Sprites/3S.bin"
+Extract $2DCB7C   621*2 "Levels/BBZ/Sprites/3N.bin"
+Extract $2DD056   697*2 "Levels/BBZ/Sprites/4M.bin"
+Extract $2DD5C8   693*2 "Levels/BBZ/Sprites/4D.bin"
+Extract $2DDB32   685*2 "Levels/BBZ/Sprites/4S.bin"
+Extract $2DE08C   677*2 "Levels/BBZ/Sprites/4N.bin"
+Extract $2DE5D6   725*2 "Levels/BBZ/Sprites/5M.bin"
+Extract $2DEB80   685*2 "Levels/BBZ/Sprites/5D.bin"
+Extract $2DF0DA   721*2 "Levels/BBZ/Sprites/5S.bin"
+Extract $2DF67C   683*2 "Levels/BBZ/Sprites/5N.bin"
+
+Extract $2DFBD2   401*2 "Levels/SSZ/Sprites/1M.bin"
+Extract $2DFEF4   425*2 "Levels/SSZ/Sprites/1D.bin"
+Extract $2E0246   417*2 "Levels/SSZ/Sprites/1S.bin"
+Extract $2E0588   449*2 "Levels/SSZ/Sprites/1N.bin"
+Extract $2E090A   481*2 "Levels/SSZ/Sprites/2M.bin"
+Extract $2E0CCC   469*2 "Levels/SSZ/Sprites/2D.bin"
+Extract $2E1076   457*2 "Levels/SSZ/Sprites/2S.bin"
+Extract $2E1408   449*2 "Levels/SSZ/Sprites/2N.bin"
+Extract $2E178A   389*2 "Levels/SSZ/Sprites/3M.bin"
+Extract $2E1A94   441*2 "Levels/SSZ/Sprites/3D.bin"
+Extract $2E1E06  389*2 "Levels/SSZ/Sprites/3S.bin"
+Extract $2E2110   445*2 "Levels/SSZ/Sprites/3N.bin"
+Extract $2E248A   413*2 "Levels/SSZ/Sprites/4M.bin"
+Extract $2E27C4   409*2 "Levels/SSZ/Sprites/4D.bin"
+Extract $2E2AF6   397*2 "Levels/SSZ/Sprites/4S.bin"
+Extract $2E2E10   413*2 "Levels/SSZ/Sprites/4N.bin"
+Extract $2E314A   573*2 "Levels/SSZ/Sprites/5M.bin"
+Extract $2E35C4   593*2 "Levels/SSZ/Sprites/5D.bin"
+Extract $2E3A66   565*2 "Levels/SSZ/Sprites/5S.bin"
+Extract $2E3ED0   571*2 "Levels/SSZ/Sprites/5N.bin"
+
+Extract $2E4346   697*2 "Levels/AAZ/Sprites/1M.bin"
+Extract $2E48B8   669*2 "Levels/AAZ/Sprites/1D.bin"
+Extract $2E4DF2   625*2 "Levels/AAZ/Sprites/1S.bin"
+Extract $2E52D4   629*2 "Levels/AAZ/Sprites/1N.bin"
+Extract $2E57BE   577*2 "Levels/AAZ/Sprites/2M.bin"
+Extract $2E5C40   577*2 "Levels/AAZ/Sprites/2D.bin"
+Extract $2E60C2   601*2 "Levels/AAZ/Sprites/2S.bin"
+Extract $2E6574   593*2 "Levels/AAZ/Sprites/2N.bin"
+Extract $2E6A16   685*2 "Levels/AAZ/Sprites/3M.bin"
+Extract $2E6F70   685*2 "Levels/AAZ/Sprites/3D.bin"
+Extract $2E74CA   721*2 "Levels/AAZ/Sprites/3S.bin"
+Extract $2E7A6C   713*2 "Levels/AAZ/Sprites/3N.bin"
+Extract $2E8FFE   665*2 "Levels/AAZ/Sprites/4M.bin"
+Extract $2E8530   617*2 "Levels/AAZ/Sprites/4D.bin"
+Extract $2E8A02   653*2 "Levels/AAZ/Sprites/4S.bin"
+Extract $2E8F1C   605*2 "Levels/AAZ/Sprites/4N.bin"
+Extract $2E93D6   889*2 "Levels/AAZ/Sprites/5M.bin"
+Extract $2E9AC8   833*2 "Levels/AAZ/Sprites/5D.bin"
+Extract $2EA14A   889*2 "Levels/AAZ/Sprites/5S.bin"
+Extract $2EA83C   841*2 "Levels/AAZ/Sprites/5N.bin"
+Extract $2EAECE     1*2 "Levels/AAZ/Sprites/6MN.bin"
+
+Extract $2EAED2   417*2 "Levels/TTZ/Sprites/1M.bin"
+Extract $2EB214   381*2 "Levels/TTZ/Sprites/1D.bin"
+Extract $2EB50E   413*2 "Levels/TTZ/Sprites/1S.bin"
+Extract $2EB848   377*2 "Levels/TTZ/Sprites/1N.bin"
+Extract $2EBB3A   553*2 "Levels/TTZ/Sprites/2M.bin"
+Extract $2EBF8C   465*2 "Levels/TTZ/Sprites/2D.bin"
+Extract $2EC32E   549*2 "Levels/TTZ/Sprites/2S.bin"
+Extract $2EC778   461*2 "Levels/TTZ/Sprites/2N.bin"
+Extract $2ECB12   585*2 "Levels/TTZ/Sprites/3M.bin"
+Extract $2ECFA4   509*2 "Levels/TTZ/Sprites/3D.bin"
+Extract $2ED39E   561*2 "Levels/TTZ/Sprites/3S.bin"
+Extract $2ED800   485*2 "Levels/TTZ/Sprites/3N.bin"
+Extract $2EDBCA   597*2 "Levels/TTZ/Sprites/4M.bin"
+Extract $2EE074   489*2 "Levels/TTZ/Sprites/4D.bin"
+Extract $2EE446   541*2 "Levels/TTZ/Sprites/4S.bin"
+Extract $2EE880   541*2 "Levels/TTZ/Sprites/4N.bin"
+Extract $2EECBA   669*2 "Levels/TTZ/Sprites/5M.bin"
+Extract $2EF1F4   669*2 "Levels/TTZ/Sprites/5D.bin"
+Extract $2EF72E   673*2 "Levels/TTZ/Sprites/5S.bin"
+Extract $2EFC70   675*2 "Levels/TTZ/Sprites/5N.bin"
+
+Extract $2F01B6   581*2 "Levels/MMZ/Sprites/1M.bin"
+Extract $2F0640   565*2 "Levels/MMZ/Sprites/1D.bin"
+Extract $2F0AAA   613*2 "Levels/MMZ/Sprites/1S.bin"
+Extract $2F0F74   593*2 "Levels/MMZ/Sprites/1N.bin"
+Extract $2F1416   693*2 "Levels/MMZ/Sprites/2M.bin"
+Extract $2F1980   685*2 "Levels/MMZ/Sprites/2D.bin"
+Extract $2F1EDA   713*2 "Levels/MMZ/Sprites/2S.bin"
+Extract $2F246C   705*2 "Levels/MMZ/Sprites/2N.bin"
+Extract $2F29EE   745*2 "Levels/MMZ/Sprites/3M.bin"
+Extract $2F2FC0   757*2 "Levels/MMZ/Sprites/3D.bin"
+Extract $2F35AA   709*2 "Levels/MMZ/Sprites/3S.bin"
+Extract $2F3B34   725*2 "Levels/MMZ/Sprites/3N.bin"
+Extract $2F40DE   693*2 "Levels/MMZ/Sprites/4M.bin"
+Extract $2F4648   677*2 "Levels/MMZ/Sprites/4D.bin"
+Extract $2F4B92   753*2 "Levels/MMZ/Sprites/4S.bin"
+Extract $2F5174   737*2 "Levels/MMZ/Sprites/4N.bin"
+Extract $2F5736   729*2 "Levels/MMZ/Sprites/5M.bin"
+Extract $2F5CE8   729*2 "Levels/MMZ/Sprites/5D.bin"
+Extract $2F629A   741*2 "Levels/MMZ/Sprites/5S.bin"
+Extract $2F6864   735*2 "Levels/MMZ/Sprites/5N.bin"
+
+Extract $2F6E22   437*2 "Levels/Intro/Sprites/Conv/1MN.bin"
+Extern "ObjYAdj" "-1024" "Levels/Intro/Sprites/Conv/1MN.bin" "Levels/Intro/Sprites/1MN.bin"
+Extract $2F718C   697*2 "Levels/Intro/Sprites/2MN.bin"
+Extract $2F76FE   213*2 "Levels/Intro/Sprites/3MN.bin"
+Extract $2F78A8   525*2 "Levels/Intro/Sprites/4MN.bin"
+Extract $2F7CC2     1*2 "Levels/Intro/Sprites/5MN.bin"
+
+Extract $2F7CC4   105*2 "Levels/Tutorial/Sprites/0MN.bin"
+Extract $2F7D96   105*2 "Levels/Tutorial/Sprites/1MN.bin"
+Extract $2F7E68    81*2 "Levels/Tutorial/Sprites/2MN.bin"
+Extract $2F7F0A   257*2 "Levels/Tutorial/Sprites/3MN.bin"
+Extract $2F810C   189*2 "Levels/Tutorial/Sprites/4MN.bin"
+Extract $2F8286     1*2 "Levels/Tutorial/Sprites/5MN.bin"
+
+Extract $2F8288   169*2 "Levels/Entrance/Sprites/0MN.bin"
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+; Collision Data Extract
+;;;;;;;;;;;;;;;;;;;;;;;;
+
+Extract $22C000 $1000 "Collisn/HMapsR.bin"
+Extract $22D000 $1000 "Collisn/HMaps.bin"
+Extract $22E000  $100 "Collisn/Angles.bin"
+
+Extract $23D7F4  $800 "Levels/BBZ/Collisn/12.bin"
+Extract $23DFF4  $800 "Levels/BBZ/Collisn/35.bin"
+
+Extract $253354  $800 "Levels/SSZ/Collisn/12.bin"
+Extract $253B54  $800 "Levels/SSZ/Collisn/3.bin"
+Extract $254354  $800 "Levels/SSZ/Collisn/45.bin"
+Extract $254B54  $800 "Levels/SSZ/Collisn/Boss.bin"
+
+Extract $272EFE  $800 "Levels/AAZ/Collisn/12.bin"
+Extract $2736FE  $800 "Levels/AAZ/Collisn/34.bin"
+Extract $273EFE  $800 "Levels/AAZ/Collisn/5.bin"
+
+Extract $284E5E  $800 "Levels/TTZ/Collisn/14.bin"
+Extract $28565E  $800 "Levels/TTZ/Collisn/3.bin"
+Extract $285E5E  $800 "Levels/TTZ/Collisn/5.bin"
+Extract $28665E  $800 "Levels/TTZ/Collisn/Boss.bin"
+
+Extract $298058  $800 "Levels/MMZ/Collisn/15.bin"
+
+Extract $2A34CC  $800 "Levels/Intro/Collisn/15.bin"
+
+Extract $2A706E  $800 "Levels/Tutorial/Collisn/56.bin"
+
+Extract $2AC1A0  $800 "Levels/Entrance/Collisn/01.bin"
+
+
+;;;;;;;;;;;;;;;;;;;;
+; Sound Data Extract
+;;;;;;;;;;;;;;;;;;;;
+
+Extract $058160  2168 "Sound/PWM/01.bin"
+Extract $0589D8  3584 "Sound/PWM/02.bin"
+Extract $0597D8 12736 "Sound/PWM/03.bin"
+Extract $05C998 12928 "Sound/PWM/04.bin"
+Extract $05FC18  7104 "Sound/PWM/05-07.bin"
+Extract $0617D8  3632 "Sound/PWM/08.bin"
+Extract $062608 21248 "Sound/PWM/09.bin"
+Extract $067908  2080 "Sound/PWM/0A.bin"
+Extract $068128  4992 "Sound/PWM/0B.bin"
+Extract $0694A8  5806 "Sound/PWM/0C.bin"
+Extract $06AB56  7856 "Sound/PWM/0D.bin"
+Extract $06CA06  3248 "Sound/PWM/0E.bin"
+Extract $06D6B6  4576 "Sound/PWM/0F.bin"
+Extract $06E896  3872 "Sound/PWM/10-11.bin"
+Extract $06F7B6  6368 "Sound/PWM/12-13.bin"
+Extract $071096 12016 "Sound/PWM/14-15.bin"
+Extract $073F86    64 "Sound/PWM/16.bin"
+Extract $073FC6    58 "Sound/PWM/Silence.bin"

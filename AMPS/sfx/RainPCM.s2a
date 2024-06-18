@@ -1,0 +1,12 @@
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$A0, ctDAC1, .DAC1, $00, $00
+
+.DAC1
+	dc.b dRainPCM, $60
+
+RainPCM_Loop equ *		; AS is a piece of fucking shit and I hate using it. Please forgive my sins
+	dc.b sHold, $7F		; this is a damn long sample
+	sLoop		$00, $05, RainPCM_Loop
+	sStop

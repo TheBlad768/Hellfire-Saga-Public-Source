@@ -1,0 +1,25 @@
+Sound_54_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$02
+	sHeaderSFX	$80, ctFM2, Sound_54_FM2, $00, $03
+	sHeaderSFX	$A1, ctPSG3, Sound_54_PSG3, $00+$0C, $00
+
+; FM3 Data
+Sound_54_FM2:
+	sVoice		$30
+	sModAMPS	$00, $01, $FA, $00
+	dc.b nC1, $50
+	sStop
+
+; PSG3 Data
+Sound_54_PSG3:
+	sNoisePSG	snWhitePSG3
+	sVolEnv		vNone	; was 0D
+	dc.b nEb5, $08
+
+Sound_54_Loop00:
+	dc.b sHold, $08
+	saVol		$08
+	sLoop		$00, $0A, Sound_54_Loop00
+	sStop

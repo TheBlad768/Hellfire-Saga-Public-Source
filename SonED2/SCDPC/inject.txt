@@ -1,0 +1,2050 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Sonic CD for PC (DirectX Version) Batch Injection File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+; 2011-05-19 - Stealth - Replaced Microsoft "COMPRESS.EXE" for Win64 compatibility
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;GetPath "Please select the folder contianing the source data"
+;SrcPath #Got
+SrcPath "./"
+
+;GetPath "Please select the folder contianing soniccd.exe"
+;DestPath #Got
+DestPath "../"
+
+;;;;;;
+; R1 ;
+;;;;;;
+
+;;;;
+; 1A
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R1/Obj/Start1A.bin" "R1/Obj/XStart1A.bin" "R1/Obj/YStart1A.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1A/0_1.bin" "#src/R1/Pal/PC/1A/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1A/2.bin" "#src/R1/Pal/PC/1A/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1A/3.bin" "#src/R1/Pal/PC/1A/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1A/5.bin" "#src/R1/Pal/PC/1A/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1A/4.bin" "#src/R1/Pal/PC/1A/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1A/Ex.bin" "#src/R1/Pal/PC/1A/Ex.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R1/FG/1A.bin" "#src/R1/FGPC/1A.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R1/BG/1A.bin" "#src/R1/BGPC/1A.bin"
+
+LoadFile "#dest/R1/11A/DLL11A.DLL"
+LoadInject "Inject/R1/DLL11A.txt"
+RunInject  "#dest/R1/11A/DLL11A.DLL"
+
+Copy "R1/256/1A.bin" "R1/11A/Map11A.bin"  Swap16
+
+Copy "R1/16U/1A.bin" "R1/11A/T11A.map" Swap16
+
+LoadFile "#dest/R1/11A/TCMP11A.cm"
+LoadInject "Inject/R1/TCMP11A.txt"
+RunInject  "#dest/R1/11A/TCMP11A.cm"
+Extern     mscompress "#dest\\R1\\11A\\TCMP11A.cm"
+
+;;;;
+; 1B
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R1/Obj/Start1B.bin" "R1/Obj/XStart1B.bin" "R1/Obj/YStart1B.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1B/0_1.bin" "#src/R1/Pal/PC/1B/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1B/2.bin" "#src/R1/Pal/PC/1B/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1B/3.bin" "#src/R1/Pal/PC/1B/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1B/5.bin" "#src/R1/Pal/PC/1B/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1B/4.bin" "#src/R1/Pal/PC/1B/4.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R1/FG/1B.bin" "#src/R1/FGPC/1B.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R1/BG/1B.bin" "#src/R1/BGPC/1B.bin"
+
+LoadFile "#dest/R1/11B/DLL11B.DLL"
+LoadInject "Inject/R1/DLL11B.txt"
+RunInject  "#dest/R1/11B/DLL11B.DLL"
+
+Copy "R1/256/1B.bin" "R1/11B/Map11B.bin"  Swap16
+
+Copy "R1/16U/1B.bin" "R1/11B/T11B.map" Swap16
+
+LoadFile "#dest/R1/11B/TCMP11B.cm"
+LoadInject "Inject/R1/TCMP11B.txt"
+RunInject  "#dest/R1/11B/TCMP11B.cm"
+Extern     mscompress "#dest\\R1\\11B\\TCMP11B.cm"
+
+;;;;
+; 1C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R1/Obj/Start1C.bin" "R1/Obj/XStart1C.bin" "R1/Obj/YStart1C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1C/0_1.bin" "#src/R1/Pal/PC/1C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1C/2.bin" "#src/R1/Pal/PC/1C/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1C/3.bin" "#src/R1/Pal/PC/1C/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1C/4.bin" "#src/R1/Pal/PC/1C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1C/5.bin" "#src/R1/Pal/PC/1C/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R1/FG/1C.bin" "#src/R1/FGPC/1C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R1/BG/1C.bin" "#src/R1/BGPC/1C.bin"
+
+LoadFile "#dest/R1/11C/DLL11C.DLL"
+LoadInject "Inject/R1/DLL11C.txt"
+RunInject  "#dest/R1/11C/DLL11C.DLL"
+
+Copy "R1/256/1C.bin" "R1/11C/Map11C.bin"  Swap16
+
+Copy "R1/16U/1C.bin" "R1/11C/T11C.map" Swap16
+
+LoadFile "#dest/R1/11C/TCMP11C.cm"
+LoadInject "Inject/R1/TCMP11C.txt"
+RunInject  "#dest/R1/11C/TCMP11C.cm"
+Extern     mscompress "#dest\\R1\\11C\\TCMP11C.cm"
+
+;;;;
+; 1D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R1/Obj/Start1D.bin" "R1/Obj/XStart1D.bin" "R1/Obj/YStart1D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1D/0_1.bin" "#src/R1/Pal/PC/1D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1D/2.bin" "#src/R1/Pal/PC/1D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1D/3.bin" "#src/R1/Pal/PC/1D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1D/4.bin" "#src/R1/Pal/PC/1D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/1D/5.bin" "#src/R1/Pal/PC/1D/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R1/FG/1D.bin" "#src/R1/FGPC/1D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R1/BG/1D.bin" "#src/R1/BGPC/1D.bin"
+
+LoadFile "#dest/R1/11D/DLL11D.DLL"
+LoadInject "Inject/R1/DLL11D.txt"
+RunInject  "#dest/R1/11D/DLL11D.DLL"
+
+Copy "R1/256/1D.bin" "R1/11D/Map11D.bin"  Swap16
+
+Copy "R1/16U/1D.bin" "R1/11D/T11D.map" Swap16
+
+LoadFile "#dest/R1/11D/TCMP11D.cm"
+LoadInject "Inject/R1/TCMP11D.txt"
+RunInject  "#dest/R1/11D/TCMP11D.cm"
+Extern     mscompress "#dest\\R1\\11D\\TCMP11D.cm"
+
+;;;;
+; 2A
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R1/Obj/Start2A.bin" "R1/Obj/XStart2A.bin" "R1/Obj/YStart2A.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2A/0_1.bin" "#src/R1/Pal/PC/2A/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2A/2.bin" "#src/R1/Pal/PC/2A/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2A/3.bin" "#src/R1/Pal/PC/2A/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2A/5.bin" "#src/R1/Pal/PC/2A/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2A/4.bin" "#src/R1/Pal/PC/2A/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2A/Ex.bin" "#src/R1/Pal/PC/2A/Ex.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R1/FG/2A.bin" "#src/R1/FGPC/2A.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R1/BG/2A.bin" "#src/R1/BGPC/2A.bin"
+
+LoadFile "#dest/R1/12A/DLL12A.DLL"
+LoadInject "Inject/R1/DLL12A.txt"
+RunInject  "#dest/R1/12A/DLL12A.DLL"
+
+Copy "R1/256/2A.bin" "R1/12A/Map12A.bin"  Swap16
+
+Copy "R1/16U/2A.bin" "R1/12A/T12A.map" Swap16
+
+LoadFile "#dest/R1/12A/TCMP12A.cm"
+LoadInject "Inject/R1/TCMP12A.txt"
+RunInject  "#dest/R1/12A/TCMP12A.cm"
+Extern     mscompress "#dest\\R1\\12A\\TCMP12A.cm"
+
+;;;;
+; 2B
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R1/Obj/Start2B.bin" "R1/Obj/XStart2B.bin" "R1/Obj/YStart2B.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2B/0_1.bin" "#src/R1/Pal/PC/2B/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2B/2.bin" "#src/R1/Pal/PC/2B/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2B/3.bin" "#src/R1/Pal/PC/2B/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2B/5.bin" "#src/R1/Pal/PC/2B/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2B/4.bin" "#src/R1/Pal/PC/2B/4.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R1/FG/2B.bin" "#src/R1/FGPC/2B.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R1/BG/2B.bin" "#src/R1/BGPC/2B.bin"
+
+LoadFile "#dest/R1/12B/DLL12B.DLL"
+LoadInject "Inject/R1/DLL12B.txt"
+RunInject  "#dest/R1/12B/DLL12B.DLL"
+
+Copy "R1/256/2B.bin" "R1/12B/Map12B.bin"  Swap16
+
+Copy "R1/16U/2B.bin" "R1/12B/T12B.map" Swap16
+
+LoadFile "#dest/R1/12B/TCMP12B.cm"
+LoadInject "Inject/R1/TCMP12B.txt"
+RunInject  "#dest/R1/12B/TCMP12B.cm"
+Extern     mscompress "#dest\\R1\\12B\\TCMP12B.cm"
+
+;;;;
+; 2C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R1/Obj/Start2C.bin" "R1/Obj/XStart2C.bin" "R1/Obj/YStart2C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2C/0_1.bin" "#src/R1/Pal/PC/2C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2C/2.bin" "#src/R1/Pal/PC/2C/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2C/3.bin" "#src/R1/Pal/PC/2C/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2C/4.bin" "#src/R1/Pal/PC/2C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2C/5.bin" "#src/R1/Pal/PC/2C/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R1/FG/2C.bin" "#src/R1/FGPC/2C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R1/BG/2C.bin" "#src/R1/BGPC/2C.bin"
+
+LoadFile "#dest/R1/12C/DLL12C.DLL"
+LoadInject "Inject/R1/DLL12C.txt"
+RunInject  "#dest/R1/12C/DLL12C.DLL"
+
+Copy "R1/256/2C.bin" "R1/12C/Map12C.bin"  Swap16
+
+Copy "R1/16U/2C.bin" "R1/12C/T12C.map" Swap16
+
+LoadFile "#dest/R1/12C/TCMP12C.cm"
+LoadInject "Inject/R1/TCMP12C.txt"
+RunInject  "#dest/R1/12C/TCMP12C.cm"
+Extern     mscompress "#dest\\R1\\12C\\TCMP12C.cm"
+
+;;;;
+; 2D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R1/Obj/Start2D.bin" "R1/Obj/XStart2D.bin" "R1/Obj/YStart2D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2D/0_1.bin" "#src/R1/Pal/PC/2D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2D/2.bin" "#src/R1/Pal/PC/2D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2D/3.bin" "#src/R1/Pal/PC/2D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2D/4.bin" "#src/R1/Pal/PC/2D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/2D/5.bin" "#src/R1/Pal/PC/2D/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R1/FG/2D.bin" "#src/R1/FGPC/2D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R1/BG/2D.bin" "#src/R1/BGPC/2D.bin"
+
+LoadFile "#dest/R1/12D/DLL12D.DLL"
+LoadInject "Inject/R1/DLL12D.txt"
+RunInject  "#dest/R1/12D/DLL12D.DLL"
+
+Copy "R1/256/2D.bin" "R1/12D/Map12D.bin"  Swap16
+
+Copy "R1/16U/2D.bin" "R1/12D/T12D.map" Swap16
+
+LoadFile "#dest/R1/12D/TCMP12D.cm"
+LoadInject "Inject/R1/TCMP12D.txt"
+RunInject  "#dest/R1/12D/TCMP12D.cm"
+Extern     mscompress "#dest\\R1\\12D\\TCMP12D.cm"
+
+;;;;
+; 3C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R1/Obj/Start3C.bin" "R1/Obj/XStart3C.bin" "R1/Obj/YStart3C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/3C/0_1.bin" "#src/R1/Pal/PC/3C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/3C/2.bin" "#src/R1/Pal/PC/3C/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/3C/3.bin" "#src/R1/Pal/PC/3C/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/3C/4.bin" "#src/R1/Pal/PC/3C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/3C/5.bin" "#src/R1/Pal/PC/3C/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R1/FG/3C.bin" "#src/R1/FGPC/3C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R1/BG/3C.bin" "#src/R1/BGPC/3C.bin"
+
+LoadFile "#dest/R1/13C/DLL13C.DLL"
+LoadInject "Inject/R1/DLL13C.txt"
+RunInject  "#dest/R1/13C/DLL13C.DLL"
+
+Copy "R1/256/3C.bin" "R1/13C/Map13C.bin"  Swap16
+
+Copy "R1/16U/3C.bin" "R1/13C/T13C.map" Swap16
+
+LoadFile "#dest/R1/13C/TCMP13C.cm"
+LoadInject "Inject/R1/TCMP13C.txt"
+RunInject  "#dest/R1/13C/TCMP13C.cm"
+Extern     mscompress "#dest\\R1\\13C\\TCMP13C.cm"
+
+;;;;
+; 3D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R1/Obj/Start3D.bin" "R1/Obj/XStart3D.bin" "R1/Obj/YStart3D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/3D/0_1.bin" "#src/R1/Pal/PC/3D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/3D/2.bin" "#src/R1/Pal/PC/3D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/3D/3.bin" "#src/R1/Pal/PC/3D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/3D/4.bin" "#src/R1/Pal/PC/3D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R1/Pal/3D/5.bin" "#src/R1/Pal/PC/3D/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R1/FG/3D.bin" "#src/R1/FGPC/3D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R1/BG/3D.bin" "#src/R1/BGPC/3D.bin"
+
+LoadFile "#dest/R1/13D/DLL13D.DLL"
+LoadInject "Inject/R1/DLL13D.txt"
+RunInject  "#dest/R1/13D/DLL13D.DLL"
+
+Copy "R1/256/3D.bin" "R1/13D/Map13D.bin"  Swap16
+
+Copy "R1/16U/3D.bin" "R1/13D/T13D.map" Swap16
+
+LoadFile "#dest/R1/13D/TCMP13D.cm"
+LoadInject "Inject/R1/TCMP13D.txt"
+RunInject  "#dest/R1/13D/TCMP13D.cm"
+Extern     mscompress "#dest\\R1\\13D\\TCMP13D.cm"
+
+;;;;;;
+; R3 ;
+;;;;;;
+
+;;;;
+; 1A
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R3/Obj/Start1A.bin" "R3/Obj/XStart1A.bin" "R3/Obj/YStart1A.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1A/0_1.bin" "#src/R3/Pal/PC/1A/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1A/2.bin" "#src/R3/Pal/PC/1A/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1A/3.bin" "#src/R3/Pal/PC/1A/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1A/4.bin" "#src/R3/Pal/PC/1A/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1A/5.bin" "#src/R3/Pal/PC/1A/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R3/FG/1A.bin" "#src/R3/FGPC/1A.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R3/BG/1A.bin" "#src/R3/BGPC/1A.bin"
+
+LoadFile "#dest/R3/31A/DLL31A.DLL"
+LoadInject "Inject/R3/DLL31A.txt"
+RunInject  "#dest/R3/31A/DLL31A.DLL"
+
+Copy "R3/256/1A.bin" "R3/31A/Map31A.bin"  Swap16
+
+Copy "R3/16U/1A.bin" "R3/31A/T31A.map" Swap16
+
+LoadFile "#dest/R3/31A/TCMP31A.cm"
+LoadInject "Inject/R3/TCMP31A.txt"
+RunInject  "#dest/R3/31A/TCMP31A.cm"
+Extern     mscompress "#dest\\R3\\31A\\TCMP31A.cm"
+
+;;;;
+; 1B
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R3/Obj/Start1B.bin" "R3/Obj/XStart1B.bin" "R3/Obj/YStart1B.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1B/0_1.bin" "#src/R3/Pal/PC/1B/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1B/2.bin" "#src/R3/Pal/PC/1B/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1B/3.bin" "#src/R3/Pal/PC/1B/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1B/4.bin" "#src/R3/Pal/PC/1B/4.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R3/FG/1B.bin" "#src/R3/FGPC/1B.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R3/BG/1B.bin" "#src/R3/BGPC/1B.bin"
+
+LoadFile "#dest/R3/31B/DLL31B.DLL"
+LoadInject "Inject/R3/DLL31B.txt"
+RunInject  "#dest/R3/31B/DLL31B.DLL"
+
+Copy "R3/256/1B.bin" "R3/31B/Map31B.bin"  Swap16
+
+Copy "R3/16U/1B.bin" "R3/31B/T31B.map" Swap16
+
+LoadFile "#dest/R3/31B/TCMP31B.cm"
+LoadInject "Inject/R3/TCMP31B.txt"
+RunInject  "#dest/R3/31B/TCMP31B.cm"
+Extern     mscompress "#dest\\R3\\31B\\TCMP31B.cm"
+
+;;;;
+; 1C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R3/Obj/Start1C.bin" "R3/Obj/XStart1C.bin" "R3/Obj/YStart1C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1C/0_1.bin" "#src/R3/Pal/PC/1C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1C/2.bin" "#src/R3/Pal/PC/1C/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1C/3.bin" "#src/R3/Pal/PC/1C/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1C/7.bin" "#src/R3/Pal/PC/1C/7.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1C/4.bin" "#src/R3/Pal/PC/1C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1C/5.bin" "#src/R3/Pal/PC/1C/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1C/6.bin" "#src/R3/Pal/PC/1C/6.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R3/FG/1C.bin" "#src/R3/FGPC/1C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R3/BG/1C.bin" "#src/R3/BGPC/1C.bin"
+
+LoadFile "#dest/R3/31C/DLL31C.DLL"
+LoadInject "Inject/R3/DLL31C.txt"
+RunInject  "#dest/R3/31C/DLL31C.DLL"
+
+Copy "R3/256/1C.bin" "R3/31C/Map31C.bin"  Swap16
+
+Copy "R3/16U/1C.bin" "R3/31C/T31C.map" Swap16
+
+LoadFile "#dest/R3/31C/TCMP31C.cm"
+LoadInject "Inject/R3/TCMP31C.txt"
+RunInject  "#dest/R3/31C/TCMP31C.cm"
+Extern     mscompress "#dest\\R3\\31C\\TCMP31C.cm"
+
+;;;;
+; 1D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R3/Obj/Start1D.bin" "R3/Obj/XStart1D.bin" "R3/Obj/YStart1D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1D/0_1.bin" "#src/R3/Pal/PC/1D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1D/2.bin" "#src/R3/Pal/PC/1D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1D/3.bin" "#src/R3/Pal/PC/1D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1D/4.bin" "#src/R3/Pal/PC/1D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1D/5.bin" "#src/R3/Pal/PC/1D/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/1D/6.bin" "#src/R3/Pal/PC/1D/6.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R3/FG/1D.bin" "#src/R3/FGPC/1D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R3/BG/1D.bin" "#src/R3/BGPC/1D.bin"
+
+LoadFile "#dest/R3/31D/DLL31D.DLL"
+LoadInject "Inject/R3/DLL31D.txt"
+RunInject  "#dest/R3/31D/DLL31D.DLL"
+
+Copy "R3/256/1D.bin" "R3/31D/Map31D.bin"  Swap16
+
+Copy "R3/16U/1D.bin" "R3/31D/T31D.map" Swap16
+
+LoadFile "#dest/R3/31D/TCMP31D.cm"
+LoadInject "Inject/R3/TCMP31D.txt"
+RunInject  "#dest/R3/31D/TCMP31D.cm"
+Extern     mscompress "#dest\\R3\\31D\\TCMP31D.cm"
+
+;;;;
+; 2A
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R3/Obj/Start2A.bin" "R3/Obj/XStart2A.bin" "R3/Obj/YStart2A.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2A/0_1.bin" "#src/R3/Pal/PC/2A/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2A/2.bin" "#src/R3/Pal/PC/2A/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2A/3.bin" "#src/R3/Pal/PC/2A/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2A/4.bin" "#src/R3/Pal/PC/2A/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2A/5.bin" "#src/R3/Pal/PC/2A/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R3/FG/2A.bin" "#src/R3/FGPC/2A.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R3/BG/2A.bin" "#src/R3/BGPC/2A.bin"
+
+LoadFile "#dest/R3/32A/DLL32A.DLL"
+LoadInject "Inject/R3/DLL32A.txt"
+RunInject  "#dest/R3/32A/DLL32A.DLL"
+
+Copy "R3/256/2A.bin" "R3/32A/Map32A.bin"  Swap16
+
+Copy "R3/16U/2A.bin" "R3/32A/T32A.map" Swap16
+
+LoadFile "#dest/R3/32A/TCMP32A.cm"
+LoadInject "Inject/R3/TCMP32A.txt"
+RunInject  "#dest/R3/32A/TCMP32A.cm"
+Extern     mscompress "#dest\\R3\\32A\\TCMP32A.cm"
+
+;;;;
+; 2B
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R3/Obj/Start2B.bin" "R3/Obj/XStart2B.bin" "R3/Obj/YStart2B.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2B/0_1.bin" "#src/R3/Pal/PC/2B/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2B/2.bin" "#src/R3/Pal/PC/2B/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2B/3.bin" "#src/R3/Pal/PC/2B/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2B/4.bin" "#src/R3/Pal/PC/2B/4.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R3/FG/2B.bin" "#src/R3/FGPC/2B.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R3/BG/2B.bin" "#src/R3/BGPC/2B.bin"
+
+LoadFile "#dest/R3/32B/DLL32B.DLL"
+LoadInject "Inject/R3/DLL32B.txt"
+RunInject  "#dest/R3/32B/DLL32B.DLL"
+
+Copy "R3/256/2B.bin" "R3/32B/Map32B.bin"  Swap16
+
+Copy "R3/16U/2B.bin" "R3/32B/T32B.map" Swap16
+
+LoadFile "#dest/R3/32B/TCMP32B.cm"
+LoadInject "Inject/R3/TCMP32B.txt"
+RunInject  "#dest/R3/32B/TCMP32B.cm"
+Extern     mscompress "#dest\\R3\\32B\\TCMP32B.cm"
+
+;;;;
+; 2C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R3/Obj/Start2C.bin" "R3/Obj/XStart2C.bin" "R3/Obj/YStart2C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2C/0_1.bin" "#src/R3/Pal/PC/2C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2C/2.bin" "#src/R3/Pal/PC/2C/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2C/3.bin" "#src/R3/Pal/PC/2C/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2C/7.bin" "#src/R3/Pal/PC/2C/7.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2C/4.bin" "#src/R3/Pal/PC/2C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2C/5.bin" "#src/R3/Pal/PC/2C/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2C/6.bin" "#src/R3/Pal/PC/2C/6.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R3/FG/2C.bin" "#src/R3/FGPC/2C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R3/BG/2C.bin" "#src/R3/BGPC/2C.bin"
+
+LoadFile "#dest/R3/32C/DLL32C.DLL"
+LoadInject "Inject/R3/DLL32C.txt"
+RunInject  "#dest/R3/32C/DLL32C.DLL"
+
+Copy "R3/256/2C.bin" "R3/32C/Map32C.bin"  Swap16
+
+Copy "R3/16U/2C.bin" "R3/32C/T32C.map" Swap16
+
+LoadFile "#dest/R3/32C/TCMP32C.cm"
+LoadInject "Inject/R3/TCMP32C.txt"
+RunInject  "#dest/R3/32C/TCMP32C.cm"
+Extern     mscompress "#dest\\R3\\32C\\TCMP32C.cm"
+
+;;;;
+; 2D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R3/Obj/Start2D.bin" "R3/Obj/XStart2D.bin" "R3/Obj/YStart2D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2D/0_1.bin" "#src/R3/Pal/PC/2D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2D/2.bin" "#src/R3/Pal/PC/2D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2D/3.bin" "#src/R3/Pal/PC/2D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2D/4.bin" "#src/R3/Pal/PC/2D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2D/5.bin" "#src/R3/Pal/PC/2D/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/2D/6.bin" "#src/R3/Pal/PC/2D/6.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R3/FG/2D.bin" "#src/R3/FGPC/2D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R3/BG/2D.bin" "#src/R3/BGPC/2D.bin"
+
+LoadFile "#dest/R3/32D/DLL32D.DLL"
+LoadInject "Inject/R3/DLL32D.txt"
+RunInject  "#dest/R3/32D/DLL32D.DLL"
+
+Copy "R3/256/2D.bin" "R3/32D/Map32D.bin"  Swap16
+
+Copy "R3/16U/2D.bin" "R3/32D/T32D.map" Swap16
+
+LoadFile "#dest/R3/32D/TCMP32D.cm"
+LoadInject "Inject/R3/TCMP32D.txt"
+RunInject  "#dest/R3/32D/TCMP32D.cm"
+Extern     mscompress "#dest\\R3\\32D\\TCMP32D.cm"
+
+;;;;
+; 3C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R3/Obj/Start3C.bin" "R3/Obj/XStart3C.bin" "R3/Obj/YStart3C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/3C/0_1.bin" "#src/R3/Pal/PC/3C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/3C/2.bin" "#src/R3/Pal/PC/3C/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/3C/3.bin" "#src/R3/Pal/PC/3C/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/3C/7.bin" "#src/R3/Pal/PC/3C/7.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/3C/4.bin" "#src/R3/Pal/PC/3C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/3C/5.bin" "#src/R3/Pal/PC/3C/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/3C/6.bin" "#src/R3/Pal/PC/3C/6.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R3/FG/3C.bin" "#src/R3/FGPC/3C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R3/BG/3C.bin" "#src/R3/BGPC/3C.bin"
+
+LoadFile "#dest/R3/33C/DLL33C.DLL"
+LoadInject "Inject/R3/DLL33C.txt"
+RunInject  "#dest/R3/33C/DLL33C.DLL"
+
+Copy "R3/256/3C.bin" "R3/33C/Map33C.bin"  Swap16
+
+Copy "R3/16U/3C.bin" "R3/33C/T33C.map" Swap16
+
+LoadFile "#dest/R3/33C/TCMP33C.cm"
+LoadInject "Inject/R3/TCMP33C.txt"
+RunInject  "#dest/R3/33C/TCMP33C.cm"
+Extern     mscompress "#dest\\R3\\33C\\TCMP33C.cm"
+
+;;;;
+; 3D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R3/Obj/Start3D.bin" "R3/Obj/XStart3D.bin" "R3/Obj/YStart3D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/3D/0_1.bin" "#src/R3/Pal/PC/3D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/3D/2.bin" "#src/R3/Pal/PC/3D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/3D/3.bin" "#src/R3/Pal/PC/3D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/3D/4.bin" "#src/R3/Pal/PC/3D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/3D/5.bin" "#src/R3/Pal/PC/3D/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R3/Pal/3D/6.bin" "#src/R3/Pal/PC/3D/6.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R3/FG/3D.bin" "#src/R3/FGPC/3D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R3/BG/3D.bin" "#src/R3/BGPC/3D.bin"
+
+LoadFile "#dest/R3/33D/DLL33D.DLL"
+LoadInject "Inject/R3/DLL33D.txt"
+RunInject  "#dest/R3/33D/DLL33D.DLL"
+
+Copy "R3/256/3D.bin" "R3/33D/Map33D.bin"  Swap16
+
+Copy "R3/16U/3D.bin" "R3/33D/T33D.map" Swap16
+
+LoadFile "#dest/R3/33D/TCMP33D.cm"
+LoadInject "Inject/R3/TCMP33D.txt"
+RunInject  "#dest/R3/33D/TCMP33D.cm"
+Extern     mscompress "#dest\\R3\\33D\\TCMP33D.cm"
+
+;;;;;;
+; R4 ;
+;;;;;;
+
+;;;;
+; 1A
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R4/Obj/Start1A.bin" "R4/Obj/XStart1A.bin" "R4/Obj/YStart1A.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/1A/0_1.bin" "#src/R4/Pal/PC/1A/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/1A/2.bin" "#src/R4/Pal/PC/1A/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/1A/3.bin" "#src/R4/Pal/PC/1A/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/1A/4.bin" "#src/R4/Pal/PC/1A/4.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R4/FG/1A.bin" "#src/R4/FGPC/1A.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R4/BG/1A.bin" "#src/R4/BGPC/1A.bin"
+
+LoadFile "#dest/R4/41A/DLL41A.DLL"
+LoadInject "Inject/R4/DLL41A.txt"
+RunInject  "#dest/R4/41A/DLL41A.DLL"
+
+Copy "R4/256/1A.bin" "R4/41A/Map41A.bin"  Swap16
+
+Copy "R4/16U/1A.bin" "R4/41A/T41A.map" Swap16
+
+LoadFile "#dest/R4/41A/TCMP41A.cm"
+LoadInject "Inject/R4/TCMP41A.txt"
+RunInject  "#dest/R4/41A/TCMP41A.cm"
+Extern     mscompress "#dest\\R4\\41A\\TCMP41A.cm"
+
+;;;;
+; 1B
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R4/Obj/Start1B.bin" "R4/Obj/XStart1B.bin" "R4/Obj/YStart1B.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/1B/0_1.bin" "#src/R4/Pal/PC/1B/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/1B/2.bin" "#src/R4/Pal/PC/1B/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/1B/3.bin" "#src/R4/Pal/PC/1B/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/1B/4.bin" "#src/R4/Pal/PC/1B/4.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R4/FG/1B.bin" "#src/R4/FGPC/1B.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R4/BG/1B.bin" "#src/R4/BGPC/1B.bin"
+
+LoadFile "#dest/R4/41B/DLL41B.DLL"
+LoadInject "Inject/R4/DLL41B.txt"
+RunInject  "#dest/R4/41B/DLL41B.DLL"
+
+Copy "R4/256/1B.bin" "R4/41B/Map41B.bin"  Swap16
+
+Copy "R4/16U/1B.bin" "R4/41B/T41B.map" Swap16
+
+LoadFile "#dest/R4/41B/TCMP41B.cm"
+LoadInject "Inject/R4/TCMP41B.txt"
+RunInject  "#dest/R4/41B/TCMP41B.cm"
+Extern     mscompress "#dest\\R4\\41B\\TCMP41B.cm"
+
+;;;;
+; 1C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R4/Obj/Start1C.bin" "R4/Obj/XStart1C.bin" "R4/Obj/YStart1C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/1C/0_1.bin" "#src/R4/Pal/PC/1C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/1C/2.bin" "#src/R4/Pal/PC/1C/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/1C/3.bin" "#src/R4/Pal/PC/1C/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/1C/4.bin" "#src/R4/Pal/PC/1C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/1C/5.bin" "#src/R4/Pal/PC/1C/3.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R4/FG/1C.bin" "#src/R4/FGPC/1C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R4/BG/1C.bin" "#src/R4/BGPC/1C.bin"
+
+LoadFile "#dest/R4/41C/DLL41C.DLL"
+LoadInject "Inject/R4/DLL41C.txt"
+RunInject  "#dest/R4/41C/DLL41C.DLL"
+
+Copy "R4/256/1C.bin" "R4/41C/Map41C.bin"  Swap16
+
+Copy "R4/16U/1C.bin" "R4/41C/T41C.map" Swap16
+
+LoadFile "#dest/R4/41C/TCMP41C.cm"
+LoadInject "Inject/R4/TCMP41C.txt"
+RunInject  "#dest/R4/41C/TCMP41C.cm"
+Extern     mscompress "#dest\\R4\\41C\\TCMP41C.cm"
+
+;;;;
+; 1D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R4/Obj/Start1D.bin" "R4/Obj/XStart1D.bin" "R4/Obj/YStart1D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/1D/0_1.bin" "#src/R4/Pal/PC/1D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/1D/2.bin" "#src/R4/Pal/PC/1D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/1D/3.bin" "#src/R4/Pal/PC/1D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/1D/4.bin" "#src/R4/Pal/PC/1D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/1D/5.bin" "#src/R4/Pal/PC/1D/3.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R4/FG/1D.bin" "#src/R4/FGPC/1D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R4/BG/1D.bin" "#src/R4/BGPC/1D.bin"
+
+LoadFile "#dest/R4/41D/DLL41D.DLL"
+LoadInject "Inject/R4/DLL41D.txt"
+RunInject  "#dest/R4/41D/DLL41D.DLL"
+
+Copy "R4/256/1D.bin" "R4/41D/Map41D.bin"  Swap16
+
+Copy "R4/16U/1D.bin" "R4/41D/T41D.map" Swap16
+
+LoadFile "#dest/R4/41D/TCMP41D.cm"
+LoadInject "Inject/R4/TCMP41D.txt"
+RunInject  "#dest/R4/41D/TCMP41D.cm"
+Extern     mscompress "#dest\\R4\\41D\\TCMP41D.cm"
+
+;;;;
+; 2A
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R4/Obj/Start2A.bin" "R4/Obj/XStart2A.bin" "R4/Obj/YStart2A.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/2A/0_1.bin" "#src/R4/Pal/PC/2A/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/2A/2.bin" "#src/R4/Pal/PC/2A/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/2A/3.bin" "#src/R4/Pal/PC/2A/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/2A/4.bin" "#src/R4/Pal/PC/2A/4.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R4/FG/2A.bin" "#src/R4/FGPC/2A.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R4/BG/2A.bin" "#src/R4/BGPC/2A.bin"
+
+LoadFile "#dest/R4/42A/DLL42A.DLL"
+LoadInject "Inject/R4/DLL42A.txt"
+RunInject  "#dest/R4/42A/DLL42A.DLL"
+
+Copy "R4/256/2A.bin" "R4/42A/Map42A.bin"  Swap16
+
+Copy "R4/16U/2A.bin" "R4/42A/T42A.map" Swap16
+
+LoadFile "#dest/R4/42A/TCMP42A.cm"
+LoadInject "Inject/R4/TCMP42A.txt"
+RunInject  "#dest/R4/42A/TCMP42A.cm"
+Extern     mscompress "#dest\\R4\\42A\\TCMP42A.cm"
+
+;;;;
+; 2B
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R4/Obj/Start2B.bin" "R4/Obj/XStart2B.bin" "R4/Obj/YStart2B.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/2B/0_1.bin" "#src/R4/Pal/PC/2B/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/2B/2.bin" "#src/R4/Pal/PC/2B/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/2B/3.bin" "#src/R4/Pal/PC/2B/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/2B/4.bin" "#src/R4/Pal/PC/2B/4.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R4/FG/2B.bin" "#src/R4/FGPC/2B.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R4/BG/2B.bin" "#src/R4/BGPC/2B.bin"
+
+LoadFile "#dest/R4/42B/DLL42B.DLL"
+LoadInject "Inject/R4/DLL42B.txt"
+RunInject  "#dest/R4/42B/DLL42B.DLL"
+
+Copy "R4/256/2B.bin" "R4/42B/Map42B.bin"  Swap16
+
+Copy "R4/16U/2B.bin" "R4/42B/T42B.map" Swap16
+
+LoadFile "#dest/R4/42B/TCMP42B.cm"
+LoadInject "Inject/R4/TCMP42B.txt"
+RunInject  "#dest/R4/42B/TCMP42B.cm"
+Extern     mscompress "#dest\\R4\\42B\\TCMP42B.cm"
+
+;;;;
+; 2C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R4/Obj/Start2C.bin" "R4/Obj/XStart2C.bin" "R4/Obj/YStart2C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/2C/0_1.bin" "#src/R4/Pal/PC/2C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/2C/2.bin" "#src/R4/Pal/PC/2C/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/2C/3.bin" "#src/R4/Pal/PC/2C/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/2C/4.bin" "#src/R4/Pal/PC/2C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/2C/5.bin" "#src/R4/Pal/PC/2C/3.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R4/FG/2C.bin" "#src/R4/FGPC/2C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R4/BG/2C.bin" "#src/R4/BGPC/2C.bin"
+
+LoadFile "#dest/R4/42C/DLL42C.DLL"
+LoadInject "Inject/R4/DLL42C.txt"
+RunInject  "#dest/R4/42C/DLL42C.DLL"
+
+Copy "R4/256/2C.bin" "R4/42C/Map42C.bin"  Swap16
+
+Copy "R4/16U/2C.bin" "R4/42C/T42C.map" Swap16
+
+LoadFile "#dest/R4/42C/TCMP42C.cm"
+LoadInject "Inject/R4/TCMP42C.txt"
+RunInject  "#dest/R4/42C/TCMP42C.cm"
+Extern     mscompress "#dest\\R4\\42C\\TCMP42C.cm"
+
+;;;;
+; 2D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R4/Obj/Start2D.bin" "R4/Obj/XStart2D.bin" "R4/Obj/YStart2D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/2D/0_1.bin" "#src/R4/Pal/PC/2D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/2D/2.bin" "#src/R4/Pal/PC/2D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/2D/3.bin" "#src/R4/Pal/PC/2D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/2D/4.bin" "#src/R4/Pal/PC/2D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/2D/5.bin" "#src/R4/Pal/PC/2D/3.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R4/FG/2D.bin" "#src/R4/FGPC/2D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R4/BG/2D.bin" "#src/R4/BGPC/2D.bin"
+
+LoadFile "#dest/R4/42D/DLL42D.DLL"
+LoadInject "Inject/R4/DLL42D.txt"
+RunInject  "#dest/R4/42D/DLL42D.DLL"
+
+Copy "R4/256/2D.bin" "R4/42D/Map42D.bin"  Swap16
+
+Copy "R4/16U/2D.bin" "R4/42D/T42D.map" Swap16
+
+LoadFile "#dest/R4/42D/TCMP42D.cm"
+LoadInject "Inject/R4/TCMP42D.txt"
+RunInject  "#dest/R4/42D/TCMP42D.cm"
+Extern     mscompress "#dest\\R4\\42D\\TCMP42D.cm"
+
+;;;;
+; 3C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R4/Obj/Start3C.bin" "R4/Obj/XStart3C.bin" "R4/Obj/YStart3C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/3C/0_1.bin" "#src/R4/Pal/PC/3C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/3C/2.bin" "#src/R4/Pal/PC/3C/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/3C/3.bin" "#src/R4/Pal/PC/3C/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/3C/4.bin" "#src/R4/Pal/PC/3C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/3C/5.bin" "#src/R4/Pal/PC/3C/3.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R4/FG/3C.bin" "#src/R4/FGPC/3C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R4/BG/3C.bin" "#src/R4/BGPC/3C.bin"
+
+LoadFile "#dest/R4/43C/DLL43C.DLL"
+LoadInject "Inject/R4/DLL43C.txt"
+RunInject  "#dest/R4/43C/DLL43C.DLL"
+
+Copy "R4/256/3C.bin" "R4/43C/Map43C.bin"  Swap16
+
+Copy "R4/16U/3C.bin" "R4/43C/T43C.map" Swap16
+
+LoadFile "#dest/R4/43C/TCMP43C.cm"
+LoadInject "Inject/R4/TCMP43C.txt"
+RunInject  "#dest/R4/43C/TCMP43C.cm"
+Extern     mscompress "#dest\\R4\\43C\\TCMP43C.cm"
+
+;;;;
+; 3D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R4/Obj/Start3D.bin" "R4/Obj/XStart3D.bin" "R4/Obj/YStart3D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/3D/0_1.bin" "#src/R4/Pal/PC/3D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/3D/2.bin" "#src/R4/Pal/PC/3D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/3D/3.bin" "#src/R4/Pal/PC/3D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/3D/4.bin" "#src/R4/Pal/PC/3D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R4/Pal/3D/5.bin" "#src/R4/Pal/PC/3D/3.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R4/FG/3D.bin" "#src/R4/FGPC/3D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R4/BG/3D.bin" "#src/R4/BGPC/3D.bin"
+
+LoadFile "#dest/R4/43D/DLL43D.DLL"
+LoadInject "Inject/R4/DLL43D.txt"
+RunInject  "#dest/R4/43D/DLL43D.DLL"
+
+Copy "R4/256/3D.bin" "R4/43D/Map43D.bin"  Swap16
+
+Copy "R4/16U/3D.bin" "R4/43D/T43D.map" Swap16
+
+LoadFile "#dest/R4/43D/TCMP43D.cm"
+LoadInject "Inject/R4/TCMP43D.txt"
+RunInject  "#dest/R4/43D/TCMP43D.cm"
+Extern     mscompress "#dest\\R4\\43D\\TCMP43D.cm"
+
+;;;;;;
+; R5 ;
+;;;;;;
+
+;;;;
+; 1A
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R5/Obj/Start1A.bin" "R5/Obj/XStart1A.bin" "R5/Obj/YStart1A.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1A/0_1.bin" "#src/R5/Pal/PC/1A/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1A/2.bin" "#src/R5/Pal/PC/1A/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1A/3.bin" "#src/R5/Pal/PC/1A/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1A/4.bin" "#src/R5/Pal/PC/1A/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1A/5.bin" "#src/R5/Pal/PC/1A/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R5/FG/1A.bin" "#src/R5/FGPC/1A.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R5/BG/1A.bin" "#src/R5/BGPC/1A.bin"
+
+LoadFile "#dest/R5/51A/DLL51A.DLL"
+LoadInject "Inject/R5/DLL51A.txt"
+RunInject  "#dest/R5/51A/DLL51A.DLL"
+
+Copy "R5/256/1A.bin" "R5/51A/Map51A.bin"  Swap16
+
+Copy "R5/16U/1A.bin" "R5/51A/T51A.map" Swap16
+
+LoadFile "#dest/R5/51A/TCMP51A.cm"
+LoadInject "Inject/R5/TCMP51A.txt"
+RunInject  "#dest/R5/51A/TCMP51A.cm"
+Extern     mscompress "#dest\\R5\\51A\\TCMP51A.cm"
+
+;;;;
+; 1B
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R5/Obj/Start1B.bin" "R5/Obj/XStart1B.bin" "R5/Obj/YStart1B.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1B/0_1.bin" "#src/R5/Pal/PC/1B/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1B/2.bin" "#src/R5/Pal/PC/1B/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1B/3.bin" "#src/R5/Pal/PC/1B/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1B/4.bin" "#src/R5/Pal/PC/1B/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1B/5.bin" "#src/R5/Pal/PC/1B/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R5/FG/1B.bin" "#src/R5/FGPC/1B.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R5/BG/1B.bin" "#src/R5/BGPC/1B.bin"
+
+LoadFile "#dest/R5/51B/DLL51B.DLL"
+LoadInject "Inject/R5/DLL51B.txt"
+RunInject  "#dest/R5/51B/DLL51B.DLL"
+
+Copy "R5/256/1B.bin" "R5/51B/Map51B.bin"  Swap16
+
+Copy "R5/16U/1B.bin" "R5/51B/T51B.map" Swap16
+
+LoadFile "#dest/R5/51B/TCMP51B.cm"
+LoadInject "Inject/R5/TCMP51B.txt"
+RunInject  "#dest/R5/51B/TCMP51B.cm"
+Extern     mscompress "#dest\\R5\\51B\\TCMP51B.cm"
+
+;;;;
+; 1C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R5/Obj/Start1C.bin" "R5/Obj/XStart1C.bin" "R5/Obj/YStart1C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1C/0_1.bin" "#src/R5/Pal/PC/1C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1C/2.bin" "#src/R5/Pal/PC/1C/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1C/3.bin" "#src/R5/Pal/PC/1C/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1C/4.bin" "#src/R5/Pal/PC/1C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1C/5.bin" "#src/R5/Pal/PC/1C/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1C/6.bin" "#src/R5/Pal/PC/1C/6.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R5/FG/1C.bin" "#src/R5/FGPC/1C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R5/BG/1C.bin" "#src/R5/BGPC/1C.bin"
+
+LoadFile "#dest/R5/51C/DLL51C.DLL"
+LoadInject "Inject/R5/DLL51C.txt"
+RunInject  "#dest/R5/51C/DLL51C.DLL"
+
+Copy "R5/256/1C.bin" "R5/51C/Map51C.bin"  Swap16
+
+Copy "R5/16U/1C.bin" "R5/51C/T51C.map" Swap16
+
+LoadFile "#dest/R5/51C/TCMP51C.cm"
+LoadInject "Inject/R5/TCMP51C.txt"
+RunInject  "#dest/R5/51C/TCMP51C.cm"
+Extern     mscompress "#dest\\R5\\51C\\TCMP51C.cm"
+
+;;;;
+; 1D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R5/Obj/Start1D.bin" "R5/Obj/XStart1D.bin" "R5/Obj/YStart1D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1D/0_1.bin" "#src/R5/Pal/PC/1D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1D/2.bin" "#src/R5/Pal/PC/1D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1D/3.bin" "#src/R5/Pal/PC/1D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1D/4.bin" "#src/R5/Pal/PC/1D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1D/5.bin" "#src/R5/Pal/PC/1D/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/1D/6.bin" "#src/R5/Pal/PC/1D/6.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R5/FG/1D.bin" "#src/R5/FGPC/1D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R5/BG/1D.bin" "#src/R5/BGPC/1D.bin"
+
+LoadFile "#dest/R5/51D/DLL51D.DLL"
+LoadInject "Inject/R5/DLL51D.txt"
+RunInject  "#dest/R5/51D/DLL51D.DLL"
+
+Copy "R5/256/1D.bin" "R5/51D/Map51D.bin"  Swap16
+
+Copy "R5/16U/1D.bin" "R5/51D/T51D.map" Swap16
+
+LoadFile "#dest/R5/51D/TCMP51D.cm"
+LoadInject "Inject/R5/TCMP51D.txt"
+RunInject  "#dest/R5/51D/TCMP51D.cm"
+Extern     mscompress "#dest\\R5\\51D\\TCMP51D.cm"
+
+;;;;
+; 2A
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R5/Obj/Start2A.bin" "R5/Obj/XStart2A.bin" "R5/Obj/YStart2A.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2A/0_1.bin" "#src/R5/Pal/PC/2A/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2A/2.bin" "#src/R5/Pal/PC/2A/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2A/3.bin" "#src/R5/Pal/PC/2A/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2A/4.bin" "#src/R5/Pal/PC/2A/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2A/5.bin" "#src/R5/Pal/PC/2A/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R5/FG/2A.bin" "#src/R5/FGPC/2A.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R5/BG/2A.bin" "#src/R5/BGPC/2A.bin"
+
+LoadFile "#dest/R5/52A/DLL52A.DLL"
+LoadInject "Inject/R5/DLL52A.txt"
+RunInject  "#dest/R5/52A/DLL52A.DLL"
+
+Copy "R5/256/2A.bin" "R5/52A/Map52A.bin"  Swap16
+
+Copy "R5/16U/2A.bin" "R5/52A/T52A.map" Swap16
+
+LoadFile "#dest/R5/52A/TCMP52A.cm"
+LoadInject "Inject/R5/TCMP52A.txt"
+RunInject  "#dest/R5/52A/TCMP52A.cm"
+Extern     mscompress "#dest\\R5\\52A\\TCMP52A.cm"
+
+;;;;
+; 2B
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R5/Obj/Start2B.bin" "R5/Obj/XStart2B.bin" "R5/Obj/YStart2B.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2B/0_1.bin" "#src/R5/Pal/PC/2B/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2B/2.bin" "#src/R5/Pal/PC/2B/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2B/3.bin" "#src/R5/Pal/PC/2B/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2B/4.bin" "#src/R5/Pal/PC/2B/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2B/5.bin" "#src/R5/Pal/PC/2B/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R5/FG/2B.bin" "#src/R5/FGPC/2B.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R5/BG/2B.bin" "#src/R5/BGPC/2B.bin"
+
+LoadFile "#dest/R5/52B/DLL52B.DLL"
+LoadInject "Inject/R5/DLL52B.txt"
+RunInject  "#dest/R5/52B/DLL52B.DLL"
+
+Copy "R5/256/2B.bin" "R5/52B/Map52B.bin"  Swap16
+
+Copy "R5/16U/2B.bin" "R5/52B/T52B.map" Swap16
+
+LoadFile "#dest/R5/52B/TCMP52B.cm"
+LoadInject "Inject/R5/TCMP52B.txt"
+RunInject  "#dest/R5/52B/TCMP52B.cm"
+Extern     mscompress "#dest\\R5\\52B\\TCMP52B.cm"
+
+;;;;
+; 2C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R5/Obj/Start2C.bin" "R5/Obj/XStart2C.bin" "R5/Obj/YStart2C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2C/0_1.bin" "#src/R5/Pal/PC/2C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2C/2.bin" "#src/R5/Pal/PC/2C/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2C/3.bin" "#src/R5/Pal/PC/2C/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2C/4.bin" "#src/R5/Pal/PC/2C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2C/5.bin" "#src/R5/Pal/PC/2C/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2C/6.bin" "#src/R5/Pal/PC/2C/6.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R5/FG/2C.bin" "#src/R5/FGPC/2C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R5/BG/2C.bin" "#src/R5/BGPC/2C.bin"
+
+LoadFile "#dest/R5/52C/DLL52C.DLL"
+LoadInject "Inject/R5/DLL52C.txt"
+RunInject  "#dest/R5/52C/DLL52C.DLL"
+
+Copy "R5/256/2C.bin" "R5/52C/Map52C.bin"  Swap16
+
+Copy "R5/16U/2C.bin" "R5/52C/T52C.map" Swap16
+
+LoadFile "#dest/R5/52C/TCMP52C.cm"
+LoadInject "Inject/R5/TCMP52C.txt"
+RunInject  "#dest/R5/52C/TCMP52C.cm"
+Extern     mscompress "#dest\\R5\\52C\\TCMP52C.cm"
+
+;;;;
+; 2D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R5/Obj/Start2D.bin" "R5/Obj/XStart2D.bin" "R5/Obj/YStart2D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2D/0_1.bin" "#src/R5/Pal/PC/2D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2D/2.bin" "#src/R5/Pal/PC/2D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2D/3.bin" "#src/R5/Pal/PC/2D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2D/4.bin" "#src/R5/Pal/PC/2D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2D/5.bin" "#src/R5/Pal/PC/2D/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/2D/6.bin" "#src/R5/Pal/PC/2D/6.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R5/FG/2D.bin" "#src/R5/FGPC/2D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R5/BG/2D.bin" "#src/R5/BGPC/2D.bin"
+
+LoadFile "#dest/R5/52D/DLL52D.DLL"
+LoadInject "Inject/R5/DLL52D.txt"
+RunInject  "#dest/R5/52D/DLL52D.DLL"
+
+Copy "R5/256/2D.bin" "R5/52D/Map52D.bin"  Swap16
+
+Copy "R5/16U/2D.bin" "R5/52D/T52D.map" Swap16
+
+LoadFile "#dest/R5/52D/TCMP52D.cm"
+LoadInject "Inject/R5/TCMP52D.txt"
+RunInject  "#dest/R5/52D/TCMP52D.cm"
+Extern     mscompress "#dest\\R5\\52D\\TCMP52D.cm"
+
+;;;;
+; 3C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R5/Obj/Start3C.bin" "R5/Obj/XStart3C.bin" "R5/Obj/YStart3C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/3C/0_1.bin" "#src/R5/Pal/PC/3C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/3C/2.bin" "#src/R5/Pal/PC/3C/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/3C/3.bin" "#src/R5/Pal/PC/3C/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/3C/4.bin" "#src/R5/Pal/PC/3C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/3C/5.bin" "#src/R5/Pal/PC/3C/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/3C/6.bin" "#src/R5/Pal/PC/3C/6.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R5/FG/3C.bin" "#src/R5/FGPC/3C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R5/BG/3C.bin" "#src/R5/BGPC/3C.bin"
+
+LoadFile "#dest/R5/53C/DLL53C.DLL"
+LoadInject "Inject/R5/DLL53C.txt"
+RunInject  "#dest/R5/53C/DLL53C.DLL"
+
+Copy "R5/256/3C.bin" "R5/53C/Map53C.bin"  Swap16
+
+Copy "R5/16U/3C.bin" "R5/53C/T53C.map" Swap16
+
+LoadFile "#dest/R5/53C/TCMP53C.cm"
+LoadInject "Inject/R5/TCMP53C.txt"
+RunInject  "#dest/R5/53C/TCMP53C.cm"
+Extern     mscompress "#dest\\R5\\53C\\TCMP53C.cm"
+
+;;;;
+; 3D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R5/Obj/Start3D.bin" "R5/Obj/XStart3D.bin" "R5/Obj/YStart3D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/3D/0_1.bin" "#src/R5/Pal/PC/3D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/3D/2.bin" "#src/R5/Pal/PC/3D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/3D/3.bin" "#src/R5/Pal/PC/3D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/3D/4.bin" "#src/R5/Pal/PC/3D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/3D/5.bin" "#src/R5/Pal/PC/3D/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R5/Pal/3D/6.bin" "#src/R5/Pal/PC/3D/6.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R5/FG/3D.bin" "#src/R5/FGPC/3D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R5/BG/3D.bin" "#src/R5/BGPC/3D.bin"
+
+LoadFile "#dest/R5/53D/DLL53D.DLL"
+LoadInject "Inject/R5/DLL53D.txt"
+RunInject  "#dest/R5/53D/DLL53D.DLL"
+
+Copy "R5/256/3D.bin" "R5/53D/Map53D.bin"  Swap16
+
+Copy "R5/16U/3D.bin" "R5/53D/T53D.map" Swap16
+
+LoadFile "#dest/R5/53D/TCMP53D.cm"
+LoadInject "Inject/R5/TCMP53D.txt"
+RunInject  "#dest/R5/53D/TCMP53D.cm"
+Extern     mscompress "#dest\\R5\\53D\\TCMP53D.cm"
+
+;;;;;;
+; R6 ;
+;;;;;;
+
+;;;;
+; 1A
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R6/Obj/Start1A.bin" "R6/Obj/XStart1A.bin" "R6/Obj/YStart1A.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1A/0_1.bin" "#src/R6/Pal/PC/1A/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1A/2.bin" "#src/R6/Pal/PC/1A/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1A/3.bin" "#src/R6/Pal/PC/1A/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1A/4.bin" "#src/R6/Pal/PC/1A/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1A/5.bin" "#src/R6/Pal/PC/1A/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R6/FG/1A.bin" "#src/R6/FGPC/1A.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R6/BG/1A.bin" "#src/R6/BGPC/1A.bin"
+
+LoadFile "#dest/R6/61A/DLL61A.DLL"
+LoadInject "Inject/R6/DLL61A.txt"
+RunInject  "#dest/R6/61A/DLL61A.DLL"
+
+Copy "R6/256/1A.bin" "R6/61A/Map61A.bin"  Swap16
+
+Copy "R6/16U/1A.bin" "R6/61A/T61A.map" Swap16
+
+LoadFile "#dest/R6/61A/TCMP61A.cm"
+LoadInject "Inject/R6/TCMP61A.txt"
+RunInject  "#dest/R6/61A/TCMP61A.cm"
+Extern     mscompress "#dest\\R6\\61A\\TCMP61A.cm"
+
+;;;;
+; 1B
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R6/Obj/Start1B.bin" "R6/Obj/XStart1B.bin" "R6/Obj/YStart1B.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1B/0_1.bin" "#src/R6/Pal/PC/1B/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1B/2.bin" "#src/R6/Pal/PC/1B/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1B/3.bin" "#src/R6/Pal/PC/1B/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1B/4.bin" "#src/R6/Pal/PC/1B/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1B/5.bin" "#src/R6/Pal/PC/1B/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R6/FG/1B.bin" "#src/R6/FGPC/1B.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R6/BG/1B.bin" "#src/R6/BGPC/1B.bin"
+
+LoadFile "#dest/R6/61B/DLL61B.DLL"
+LoadInject "Inject/R6/DLL61B.txt"
+RunInject  "#dest/R6/61B/DLL61B.DLL"
+
+Copy "R6/256/1B.bin" "R6/61B/Map61B.bin"  Swap16
+
+Copy "R6/16U/1B.bin" "R6/61B/T61B.map" Swap16
+
+LoadFile "#dest/R6/61B/TCMP61B.cm"
+LoadInject "Inject/R6/TCMP61B.txt"
+RunInject  "#dest/R6/61B/TCMP61B.cm"
+Extern     mscompress "#dest\\R6\\61B\\TCMP61B.cm"
+
+;;;;
+; 1C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R6/Obj/Start1C.bin" "R6/Obj/XStart1C.bin" "R6/Obj/YStart1C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1C/0_1.bin" "#src/R6/Pal/PC/1C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1C/2.bin" "#src/R6/Pal/PC/1C/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1C/3.bin" "#src/R6/Pal/PC/1C/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1C/4.bin" "#src/R6/Pal/PC/1C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1C/5.bin" "#src/R6/Pal/PC/1C/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1C/6.bin" "#src/R6/Pal/PC/1C/6.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1C/BossCycl.bin" "#src/R6/Pal/PC/1C/BossCycl.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R6/FG/1C.bin" "#src/R6/FGPC/1C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R6/BG/1C.bin" "#src/R6/BGPC/1C.bin"
+
+LoadFile "#dest/R6/61C/DLL61C.DLL"
+LoadInject "Inject/R6/DLL61C.txt"
+RunInject  "#dest/R6/61C/DLL61C.DLL"
+
+Copy "R6/256/1C.bin" "R6/61C/Map61C.bin"  Swap16
+
+Copy "R6/16U/1C.bin" "R6/61C/T61C.map" Swap16
+
+LoadFile "#dest/R6/61C/TCMP61C.cm"
+LoadInject "Inject/R6/TCMP61C.txt"
+RunInject  "#dest/R6/61C/TCMP61C.cm"
+Extern     mscompress "#dest\\R6\\61C\\TCMP61C.cm"
+
+;;;;
+; 1D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R6/Obj/Start1D.bin" "R6/Obj/XStart1D.bin" "R6/Obj/YStart1D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1D/0_1.bin" "#src/R6/Pal/PC/1D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1D/2.bin" "#src/R6/Pal/PC/1D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1D/3.bin" "#src/R6/Pal/PC/1D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1D/4.bin" "#src/R6/Pal/PC/1D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1D/4.bin" "#src/R6/Pal/PC/1D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1D/5.bin" "#src/R6/Pal/PC/1D/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1D/6.bin" "#src/R6/Pal/PC/1D/6.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/1D/BossCycl.bin" "#src/R6/Pal/PC/1D/BossCycl.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R6/FG/1D.bin" "#src/R6/FGPC/1D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R6/BG/1D.bin" "#src/R6/BGPC/1D.bin"
+
+LoadFile "#dest/R6/61D/DLL61D.DLL"
+LoadInject "Inject/R6/DLL61D.txt"
+RunInject  "#dest/R6/61D/DLL61D.DLL"
+
+Copy "R6/256/1D.bin" "R6/61D/Map61D.bin"  Swap16
+
+Copy "R6/16U/1D.bin" "R6/61D/T61D.map" Swap16
+
+LoadFile "#dest/R6/61D/TCMP61D.cm"
+LoadInject "Inject/R6/TCMP61D.txt"
+RunInject  "#dest/R6/61D/TCMP61D.cm"
+Extern     mscompress "#dest\\R6\\61D\\TCMP61D.cm"
+
+;;;;
+; 2A
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R6/Obj/Start2A.bin" "R6/Obj/XStart2A.bin" "R6/Obj/YStart2A.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2A/0_1.bin" "#src/R6/Pal/PC/2A/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2A/2.bin" "#src/R6/Pal/PC/2A/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2A/3.bin" "#src/R6/Pal/PC/2A/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2A/4.bin" "#src/R6/Pal/PC/2A/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2A/5.bin" "#src/R6/Pal/PC/2A/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R6/FG/2A.bin" "#src/R6/FGPC/2A.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R6/BG/2A.bin" "#src/R6/BGPC/2A.bin"
+
+LoadFile "#dest/R6/62A/DLL62A.DLL"
+LoadInject "Inject/R6/DLL62A.txt"
+RunInject  "#dest/R6/62A/DLL62A.DLL"
+
+Copy "R6/256/2A.bin" "R6/62A/Map62A.bin"  Swap16
+
+Copy "R6/16U/2A.bin" "R6/62A/T62A.map" Swap16
+
+LoadFile "#dest/R6/62A/TCMP62A.cm"
+LoadInject "Inject/R6/TCMP62A.txt"
+RunInject  "#dest/R6/62A/TCMP62A.cm"
+Extern     mscompress "#dest\\R6\\62A\\TCMP62A.cm"
+
+;;;;
+; 2B
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R6/Obj/Start2B.bin" "R6/Obj/XStart2B.bin" "R6/Obj/YStart2B.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2B/0_1.bin" "#src/R6/Pal/PC/2B/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2B/2.bin" "#src/R6/Pal/PC/2B/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2B/3.bin" "#src/R6/Pal/PC/2B/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2B/4.bin" "#src/R6/Pal/PC/2B/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2B/5.bin" "#src/R6/Pal/PC/2B/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R6/FG/2B.bin" "#src/R6/FGPC/2B.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R6/BG/2B.bin" "#src/R6/BGPC/2B.bin"
+
+LoadFile "#dest/R6/62B/DLL62B.DLL"
+LoadInject "Inject/R6/DLL62B.txt"
+RunInject  "#dest/R6/62B/DLL62B.DLL"
+
+Copy "R6/256/2B.bin" "R6/62B/Map62B.bin"  Swap16
+
+Copy "R6/16U/2B.bin" "R6/62B/T62B.map" Swap16
+
+LoadFile "#dest/R6/62B/TCMP62B.cm"
+LoadInject "Inject/R6/TCMP62B.txt"
+RunInject  "#dest/R6/62B/TCMP62B.cm"
+Extern     mscompress "#dest\\R6\\62B\\TCMP62B.cm"
+
+;;;;
+; 2C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R6/Obj/Start2C.bin" "R6/Obj/XStart2C.bin" "R6/Obj/YStart2C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2C/0_1.bin" "#src/R6/Pal/PC/2C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2C/2.bin" "#src/R6/Pal/PC/2C/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2C/3.bin" "#src/R6/Pal/PC/2C/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2C/4.bin" "#src/R6/Pal/PC/2C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2C/5.bin" "#src/R6/Pal/PC/2C/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2C/6.bin" "#src/R6/Pal/PC/2C/6.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2C/BossCycl.bin" "#src/R6/Pal/PC/2C/BossCycl.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R6/FG/2C.bin" "#src/R6/FGPC/2C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R6/BG/2C.bin" "#src/R6/BGPC/2C.bin"
+
+LoadFile "#dest/R6/62C/DLL62C.DLL"
+LoadInject "Inject/R6/DLL62C.txt"
+RunInject  "#dest/R6/62C/DLL62C.DLL"
+
+Copy "R6/256/2C.bin" "R6/62C/Map62C.bin"  Swap16
+
+Copy "R6/16U/2C.bin" "R6/62C/T62C.map" Swap16
+
+LoadFile "#dest/R6/62C/TCMP62C.cm"
+LoadInject "Inject/R6/TCMP62C.txt"
+RunInject  "#dest/R6/62C/TCMP62C.cm"
+Extern     mscompress "#dest\\R6\\62C\\TCMP62C.cm"
+
+;;;;
+; 2D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R6/Obj/Start2D.bin" "R6/Obj/XStart2D.bin" "R6/Obj/YStart2D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2D/0_1.bin" "#src/R6/Pal/PC/2D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2D/2.bin" "#src/R6/Pal/PC/2D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2D/3.bin" "#src/R6/Pal/PC/2D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2D/4.bin" "#src/R6/Pal/PC/2D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2D/4.bin" "#src/R6/Pal/PC/2D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2D/5.bin" "#src/R6/Pal/PC/2D/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2D/6.bin" "#src/R6/Pal/PC/2D/6.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/2D/BossCycl.bin" "#src/R6/Pal/PC/2D/BossCycl.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R6/FG/2D.bin" "#src/R6/FGPC/2D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R6/BG/2D.bin" "#src/R6/BGPC/2D.bin"
+
+LoadFile "#dest/R6/62D/DLL62D.DLL"
+LoadInject "Inject/R6/DLL62D.txt"
+RunInject  "#dest/R6/62D/DLL62D.DLL"
+
+Copy "R6/256/2D.bin" "R6/62D/Map62D.bin"  Swap16
+
+Copy "R6/16U/2D.bin" "R6/62D/T62D.map" Swap16
+
+LoadFile "#dest/R6/62D/TCMP62D.cm"
+LoadInject "Inject/R6/TCMP62D.txt"
+RunInject  "#dest/R6/62D/TCMP62D.cm"
+Extern     mscompress "#dest\\R6\\62D\\TCMP62D.cm"
+
+;;;;
+; 3C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R6/Obj/Start3C.bin" "R6/Obj/XStart3C.bin" "R6/Obj/YStart3C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/3C/0_1.bin" "#src/R6/Pal/PC/3C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/3C/2.bin" "#src/R6/Pal/PC/3C/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/3C/3.bin" "#src/R6/Pal/PC/3C/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/3C/4.bin" "#src/R6/Pal/PC/3C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/3C/5.bin" "#src/R6/Pal/PC/3C/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/3C/6.bin" "#src/R6/Pal/PC/3C/6.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/3C/BossCycl.bin" "#src/R6/Pal/PC/3C/BossCycl.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R6/FG/3C.bin" "#src/R6/FGPC/3C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R6/BG/3C.bin" "#src/R6/BGPC/3C.bin"
+
+LoadFile "#dest/R6/63C/DLL63C.DLL"
+LoadInject "Inject/R6/DLL63C.txt"
+RunInject  "#dest/R6/63C/DLL63C.DLL"
+
+Copy "R6/256/3C.bin" "R6/63C/Map63C.bin"  Swap16
+
+Copy "R6/16U/3C.bin" "R6/63C/T63C.map" Swap16
+
+LoadFile "#dest/R6/63C/TCMP63C.cm"
+LoadInject "Inject/R6/TCMP63C.txt"
+RunInject  "#dest/R6/63C/TCMP63C.cm"
+Extern     mscompress "#dest\\R6\\63C\\TCMP63C.cm"
+
+;;;;
+; 3D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R6/Obj/Start3D.bin" "R6/Obj/XStart3D.bin" "R6/Obj/YStart3D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/3D/0_1.bin" "#src/R6/Pal/PC/3D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/3D/2.bin" "#src/R6/Pal/PC/3D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/3D/3.bin" "#src/R6/Pal/PC/3D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/3D/4.bin" "#src/R6/Pal/PC/3D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/3D/4.bin" "#src/R6/Pal/PC/3D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/3D/5.bin" "#src/R6/Pal/PC/3D/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/3D/6.bin" "#src/R6/Pal/PC/3D/6.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R6/Pal/3D/BossCycl.bin" "#src/R6/Pal/PC/3D/BossCycl.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R6/FG/3D.bin" "#src/R6/FGPC/3D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R6/BG/3D.bin" "#src/R6/BGPC/3D.bin"
+
+LoadFile "#dest/R6/63D/DLL63D.DLL"
+LoadInject "Inject/R6/DLL63D.txt"
+RunInject  "#dest/R6/63D/DLL63D.DLL"
+
+Copy "R6/256/3D.bin" "R6/63D/Map63D.bin"  Swap16
+
+Copy "R6/16U/3D.bin" "R6/63D/T63D.map" Swap16
+
+LoadFile "#dest/R6/63D/TCMP63D.cm"
+LoadInject "Inject/R6/TCMP63D.txt"
+RunInject  "#dest/R6/63D/TCMP63D.cm"
+Extern     mscompress "#dest\\R6\\63D\\TCMP63D.cm"
+
+;;;;;;
+; R7 ;
+;;;;;;
+
+;;;;
+; 1A
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R7/Obj/Start1A.bin" "R7/Obj/XStart1A.bin" "R7/Obj/YStart1A.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/1A/0_1.bin" "#src/R7/Pal/PC/1A/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/1A/2_3.bin" "#src/R7/Pal/PC/1A/2_3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/1A/4.bin" "#src/R7/Pal/PC/1A/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/1A/5.bin" "#src/R7/Pal/PC/1A/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R7/FG/1A.bin" "#src/R7/FGPC/1A.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R7/BG/1A.bin" "#src/R7/BGPC/1A.bin"
+
+LoadFile "#dest/R7/71A/DLL71A.DLL"
+LoadInject "Inject/R7/DLL71A.txt"
+RunInject  "#dest/R7/71A/DLL71A.DLL"
+
+Copy "R7/256/1A.bin" "R7/71A/Map71A.bin"  Swap16
+
+Copy "R7/16U/1A.bin" "R7/71A/T71A.map" Swap16
+
+LoadFile "#dest/R7/71A/TCMP71A.cm"
+LoadInject "Inject/R7/TCMP71A.txt"
+RunInject  "#dest/R7/71A/TCMP71A.cm"
+Extern     mscompress "#dest\\R7\\71A\\TCMP71A.cm"
+
+;;;;
+; 1B
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R7/Obj/Start1B.bin" "R7/Obj/XStart1B.bin" "R7/Obj/YStart1B.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/1B/0_3.bin" "#src/R7/Pal/PC/1B/0_3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/1B/4.bin" "#src/R7/Pal/PC/1B/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/1B/5.bin" "#src/R7/Pal/PC/1B/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R7/FG/1B.bin" "#src/R7/FGPC/1B.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R7/BG/1B.bin" "#src/R7/BGPC/1B.bin"
+
+LoadFile "#dest/R7/71B/DLL71B.DLL"
+LoadInject "Inject/R7/DLL71B.txt"
+RunInject  "#dest/R7/71B/DLL71B.DLL"
+
+Copy "R7/256/1B.bin" "R7/71B/Map71B.bin"  Swap16
+
+Copy "R7/16U/1B.bin" "R7/71B/T71B.map" Swap16
+
+LoadFile "#dest/R7/71B/TCMP71B.cm"
+LoadInject "Inject/R7/TCMP71B.txt"
+RunInject  "#dest/R7/71B/TCMP71B.cm"
+Extern     mscompress "#dest\\R7\\71B\\TCMP71B.cm"
+
+;;;;
+; 1C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R7/Obj/Start1C.bin" "R7/Obj/XStart1C.bin" "R7/Obj/YStart1C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/1C/0_1.bin" "#src/R7/Pal/PC/1C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/1C/2_3.bin" "#src/R7/Pal/PC/1C/2_3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/1C/4.bin" "#src/R7/Pal/PC/1C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/1C/5.bin" "#src/R7/Pal/PC/1C/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/1C/6.bin" "#src/R7/Pal/PC/1C/6.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R7/FG/1C.bin" "#src/R7/FGPC/1C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R7/BG/1C.bin" "#src/R7/BGPC/1C.bin"
+
+LoadFile "#dest/R7/71C/DLL71C.DLL"
+LoadInject "Inject/R7/DLL71C.txt"
+RunInject  "#dest/R7/71C/DLL71C.DLL"
+
+Copy "R7/256/1C.bin" "R7/71C/Map71C.bin"  Swap16
+
+Copy "R7/16U/1C.bin" "R7/71C/T71C.map" Swap16
+
+LoadFile "#dest/R7/71C/TCMP71C.cm"
+LoadInject "Inject/R7/TCMP71C.txt"
+RunInject  "#dest/R7/71C/TCMP71C.cm"
+Extern     mscompress "#dest\\R7\\71C\\TCMP71C.cm"
+
+;;;;
+; 1D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R7/Obj/Start1D.bin" "R7/Obj/XStart1D.bin" "R7/Obj/YStart1D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/1D/0_1.bin" "#src/R7/Pal/PC/1D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/1D/2.bin" "#src/R7/Pal/PC/1D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/1D/3.bin" "#src/R7/Pal/PC/1D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/1D/4.bin" "#src/R7/Pal/PC/1D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/1D/6.bin" "#src/R7/Pal/PC/1D/6.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R7/FG/1D.bin" "#src/R7/FGPC/1D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R7/BG/1D.bin" "#src/R7/BGPC/1D.bin"
+
+LoadFile "#dest/R7/71D/DLL71D.DLL"
+LoadInject "Inject/R7/DLL71D.txt"
+RunInject  "#dest/R7/71D/DLL71D.DLL"
+
+Copy "R7/256/1D.bin" "R7/71D/Map71D.bin"  Swap16
+
+Copy "R7/16U/1D.bin" "R7/71D/T71D.map" Swap16
+
+LoadFile "#dest/R7/71D/TCMP71D.cm"
+LoadInject "Inject/R7/TCMP71D.txt"
+RunInject  "#dest/R7/71D/TCMP71D.cm"
+Extern     mscompress "#dest\\R7\\71D\\TCMP71D.cm"
+
+;;;;
+; 2A
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R7/Obj/Start2A.bin" "R7/Obj/XStart2A.bin" "R7/Obj/YStart2A.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/2A/0_1.bin" "#src/R7/Pal/PC/2A/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/2A/2_3.bin" "#src/R7/Pal/PC/2A/2_3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/2A/4.bin" "#src/R7/Pal/PC/2A/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/2A/5.bin" "#src/R7/Pal/PC/2A/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R7/FG/2A.bin" "#src/R7/FGPC/2A.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R7/BG/2A.bin" "#src/R7/BGPC/2A.bin"
+
+LoadFile "#dest/R7/72A/DLL72A.DLL"
+LoadInject "Inject/R7/DLL72A.txt"
+RunInject  "#dest/R7/72A/DLL72A.DLL"
+
+Copy "R7/256/2A.bin" "R7/72A/Map72A.bin"  Swap16
+
+Copy "R7/16U/2A.bin" "R7/72A/T72A.map" Swap16
+
+LoadFile "#dest/R7/72A/TCMP72A.cm"
+LoadInject "Inject/R7/TCMP72A.txt"
+RunInject  "#dest/R7/72A/TCMP72A.cm"
+Extern     mscompress "#dest\\R7\\72A\\TCMP72A.cm"
+
+;;;;
+; 2B
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R7/Obj/Start2B.bin" "R7/Obj/XStart2B.bin" "R7/Obj/YStart2B.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/2B/0_3.bin" "#src/R7/Pal/PC/2B/0_3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/2B/4.bin" "#src/R7/Pal/PC/2B/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/2B/5.bin" "#src/R7/Pal/PC/2B/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R7/FG/2B.bin" "#src/R7/FGPC/2B.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R7/BG/2B.bin" "#src/R7/BGPC/2B.bin"
+
+LoadFile "#dest/R7/72B/DLL72B.DLL"
+LoadInject "Inject/R7/DLL72B.txt"
+RunInject  "#dest/R7/72B/DLL72B.DLL"
+
+Copy "R7/256/2B.bin" "R7/72B/Map72B.bin"  Swap16
+
+Copy "R7/16U/2B.bin" "R7/72B/T72B.map" Swap16
+
+LoadFile "#dest/R7/72B/TCMP72B.cm"
+LoadInject "Inject/R7/TCMP72B.txt"
+RunInject  "#dest/R7/72B/TCMP72B.cm"
+Extern     mscompress "#dest\\R7\\72B\\TCMP72B.cm"
+
+;;;;
+; 2C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R7/Obj/Start2C.bin" "R7/Obj/XStart2C.bin" "R7/Obj/YStart2C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/2C/0_1.bin" "#src/R7/Pal/PC/2C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/2C/2_3.bin" "#src/R7/Pal/PC/2C/2_3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/2C/4.bin" "#src/R7/Pal/PC/2C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/2C/5.bin" "#src/R7/Pal/PC/2C/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/2C/6.bin" "#src/R7/Pal/PC/2C/6.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R7/FG/2C.bin" "#src/R7/FGPC/2C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R7/BG/2C.bin" "#src/R7/BGPC/2C.bin"
+
+LoadFile "#dest/R7/72C/DLL72C.DLL"
+LoadInject "Inject/R7/DLL72C.txt"
+RunInject  "#dest/R7/72C/DLL72C.DLL"
+
+Copy "R7/256/2C.bin" "R7/72C/Map72C.bin"  Swap16
+
+Copy "R7/16U/2C.bin" "R7/72C/T72C.map" Swap16
+
+LoadFile "#dest/R7/72C/TCMP72C.cm"
+LoadInject "Inject/R7/TCMP72C.txt"
+RunInject  "#dest/R7/72C/TCMP72C.cm"
+Extern     mscompress "#dest\\R7\\72C\\TCMP72C.cm"
+
+;;;;
+; 2D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R7/Obj/Start2D.bin" "R7/Obj/XStart2D.bin" "R7/Obj/YStart2D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/2D/0_1.bin" "#src/R7/Pal/PC/2D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/2D/2.bin" "#src/R7/Pal/PC/2D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/2D/3.bin" "#src/R7/Pal/PC/2D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/2D/4.bin" "#src/R7/Pal/PC/2D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/2D/6.bin" "#src/R7/Pal/PC/2D/6.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R7/FG/2D.bin" "#src/R7/FGPC/2D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R7/BG/2D.bin" "#src/R7/BGPC/2D.bin"
+
+LoadFile "#dest/R7/72D/DLL72D.DLL"
+LoadInject "Inject/R7/DLL72D.txt"
+RunInject  "#dest/R7/72D/DLL72D.DLL"
+
+Copy "R7/256/2D.bin" "R7/72D/Map72D.bin"  Swap16
+
+Copy "R7/16U/2D.bin" "R7/72D/T72D.map" Swap16
+
+LoadFile "#dest/R7/72D/TCMP72D.cm"
+LoadInject "Inject/R7/TCMP72D.txt"
+RunInject  "#dest/R7/72D/TCMP72D.cm"
+Extern     mscompress "#dest\\R7\\72D\\TCMP72D.cm"
+
+;;;;
+; 3C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R7/Obj/Start3C.bin" "R7/Obj/XStart3C.bin" "R7/Obj/YStart3C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/3C/0_1.bin" "#src/R7/Pal/PC/3C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/3C/2_3.bin" "#src/R7/Pal/PC/3C/2_3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/3C/4.bin" "#src/R7/Pal/PC/3C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/3C/5.bin" "#src/R7/Pal/PC/3C/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/3C/6.bin" "#src/R7/Pal/PC/3C/6.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R7/FG/3C.bin" "#src/R7/FGPC/3C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R7/BG/3C.bin" "#src/R7/BGPC/3C.bin"
+
+LoadFile "#dest/R7/73C/DLL73C.DLL"
+LoadInject "Inject/R7/DLL73C.txt"
+RunInject  "#dest/R7/73C/DLL73C.DLL"
+
+Copy "R7/256/3C.bin" "R7/73C/Map73C.bin"  Swap16
+
+Copy "R7/16U/3C.bin" "R7/73C/T73C.map" Swap16
+
+LoadFile "#dest/R7/73C/TCMP73C.cm"
+LoadInject "Inject/R7/TCMP73C.txt"
+RunInject  "#dest/R7/73C/TCMP73C.cm"
+Extern     mscompress "#dest\\R7\\73C\\TCMP73C.cm"
+
+;;;;
+; 3D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R7/Obj/Start3D.bin" "R7/Obj/XStart3D.bin" "R7/Obj/YStart3D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/3D/0_1.bin" "#src/R7/Pal/PC/3D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/3D/2.bin" "#src/R7/Pal/PC/3D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/3D/3.bin" "#src/R7/Pal/PC/3D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/3D/4.bin" "#src/R7/Pal/PC/3D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R7/Pal/3D/6.bin" "#src/R7/Pal/PC/3D/6.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R7/FG/3D.bin" "#src/R7/FGPC/3D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R7/BG/3D.bin" "#src/R7/BGPC/3D.bin"
+
+LoadFile "#dest/R7/73D/DLL73D.DLL"
+LoadInject "Inject/R7/DLL73D.txt"
+RunInject  "#dest/R7/73D/DLL73D.DLL"
+
+Copy "R7/256/3D.bin" "R7/73D/Map73D.bin"  Swap16
+
+Copy "R7/16U/3D.bin" "R7/73D/T73D.map" Swap16
+
+LoadFile "#dest/R7/73D/TCMP73D.cm"
+LoadInject "Inject/R7/TCMP73D.txt"
+RunInject  "#dest/R7/73D/TCMP73D.cm"
+Extern     mscompress "#dest\\R7\\73D\\TCMP73D.cm"
+
+;;;;;;
+; R8 ;
+;;;;;;
+
+;;;;
+; 1A
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R8/Obj/Start1A.bin" "R8/Obj/XStart1A.bin" "R8/Obj/YStart1A.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1A/0_1.bin" "#src/R8/Pal/PC/1A/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1A/2.bin" "#src/R8/Pal/PC/1A/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1A/3.bin" "#src/R8/Pal/PC/1A/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1A/4.bin" "#src/R8/Pal/PC/1A/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1A/5.bin" "#src/R8/Pal/PC/1A/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R8/FG/1A.bin" "#src/R8/FGPC/1A.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R8/BG/1A.bin" "#src/R8/BGPC/1A.bin"
+
+LoadFile "#dest/R8/81A/DLL81A.DLL"
+LoadInject "Inject/R8/DLL81A.txt"
+RunInject  "#dest/R8/81A/DLL81A.DLL"
+
+Copy "R8/256/1A.bin" "R8/81A/Map81A.bin"  Swap16
+
+Copy "R8/16U/1A.bin" "R8/81A/T81A.map" Swap16
+
+LoadFile "#dest/R8/81A/TCMP81A.cm"
+LoadInject "Inject/R8/TCMP81A.txt"
+RunInject  "#dest/R8/81A/TCMP81A.cm"
+Extern     mscompress "#dest\\R8\\81A\\TCMP81A.cm"
+
+;;;;
+; 1B
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R8/Obj/Start1B.bin" "R8/Obj/XStart1B.bin" "R8/Obj/YStart1B.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1B/0_1.bin" "#src/R8/Pal/PC/1B/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1B/2.bin" "#src/R8/Pal/PC/1B/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1B/3.bin" "#src/R8/Pal/PC/1B/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1B/4.bin" "#src/R8/Pal/PC/1B/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1B/5.bin" "#src/R8/Pal/PC/1B/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R8/FG/1B.bin" "#src/R8/FGPC/1B.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R8/BG/1B.bin" "#src/R8/BGPC/1B.bin"
+
+LoadFile "#dest/R8/81B/DLL81B.DLL"
+LoadInject "Inject/R8/DLL81B.txt"
+RunInject  "#dest/R8/81B/DLL81B.DLL"
+
+Copy "R8/256/1B.bin" "R8/81B/Map81B.bin"  Swap16
+
+Copy "R8/16U/1B.bin" "R8/81B/T81B.map" Swap16
+
+LoadFile "#dest/R8/81B/TCMP81B.cm"
+LoadInject "Inject/R8/TCMP81B.txt"
+RunInject  "#dest/R8/81B/TCMP81B.cm"
+Extern     mscompress "#dest\\R8\\81B\\TCMP81B.cm"
+
+;;;;
+; 1C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R8/Obj/Start1C.bin" "R8/Obj/XStart1C.bin" "R8/Obj/YStart1C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1C/0_1.bin" "#src/R8/Pal/PC/1C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1C/2.bin" "#src/R8/Pal/PC/1C/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1C/3.bin" "#src/R8/Pal/PC/1C/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1C/4.bin" "#src/R8/Pal/PC/1C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1C/5.bin" "#src/R8/Pal/PC/1C/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1C/6.bin" "#src/R8/Pal/PC/1C/6.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1C/8_9.bin" "#src/R8/Pal/PC/1C/8_9.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1C/7.bin" "#src/R8/Pal/PC/1C/7.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1C/B.bin" "#src/R8/Pal/PC/1C/B.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R8/FG/1C.bin" "#src/R8/FGPC/1C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R8/BG/1C.bin" "#src/R8/BGPC/1C.bin"
+
+LoadFile "#dest/R8/81C/DLL81C.DLL"
+LoadInject "Inject/R8/DLL81C.txt"
+RunInject  "#dest/R8/81C/DLL81C.DLL"
+
+Copy "R8/256/1C.bin" "R8/81C/Map81C.bin"  Swap16
+
+Copy "R8/16U/1C.bin" "R8/81C/T81C.map" Swap16
+
+LoadFile "#dest/R8/81C/TCMP81C.cm"
+LoadInject "Inject/R8/TCMP81C.txt"
+RunInject  "#dest/R8/81C/TCMP81C.cm"
+Extern     mscompress "#dest\\R8\\81C\\TCMP81C.cm"
+
+;;;;
+; 1D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R8/Obj/Start1D.bin" "R8/Obj/XStart1D.bin" "R8/Obj/YStart1D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1D/0_1.bin" "#src/R8/Pal/PC/1D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1D/2.bin" "#src/R8/Pal/PC/1D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1D/3.bin" "#src/R8/Pal/PC/1D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1D/4.bin" "#src/R8/Pal/PC/1D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1D/A.bin" "#src/R8/Pal/PC/1D/A.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1D/5.bin" "#src/R8/Pal/PC/1D/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1D/8.bin" "#src/R8/Pal/PC/1D/8.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1D/9.bin" "#src/R8/Pal/PC/1D/9.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1D/7.bin" "#src/R8/Pal/PC/1D/7.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/1D/B.bin" "#src/R8/Pal/PC/1D/B.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R8/FG/1D.bin" "#src/R8/FGPC/1D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R8/BG/1D.bin" "#src/R8/BGPC/1D.bin"
+
+LoadFile "#dest/R8/81D/DLL81D.DLL"
+LoadInject "Inject/R8/DLL81D.txt"
+RunInject  "#dest/R8/81D/DLL81D.DLL"
+
+Copy "R8/256/1D.bin" "R8/81D/Map81D.bin"  Swap16
+
+Copy "R8/16U/1D.bin" "R8/81D/T81D.map" Swap16
+
+LoadFile "#dest/R8/81D/TCMP81D.cm"
+LoadInject "Inject/R8/TCMP81D.txt"
+RunInject  "#dest/R8/81D/TCMP81D.cm"
+Extern     mscompress "#dest\\R8\\81D\\TCMP81D.cm"
+
+;;;;
+; 2A
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R8/Obj/Start2A.bin" "R8/Obj/XStart2A.bin" "R8/Obj/YStart2A.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2A/0_1.bin" "#src/R8/Pal/PC/2A/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2A/2.bin" "#src/R8/Pal/PC/2A/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2A/3.bin" "#src/R8/Pal/PC/2A/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2A/4.bin" "#src/R8/Pal/PC/2A/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2A/5.bin" "#src/R8/Pal/PC/2A/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R8/FG/2A.bin" "#src/R8/FGPC/2A.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R8/BG/2A.bin" "#src/R8/BGPC/2A.bin"
+
+LoadFile "#dest/R8/82A/DLL82A.DLL"
+LoadInject "Inject/R8/DLL82A.txt"
+RunInject  "#dest/R8/82A/DLL82A.DLL"
+
+Copy "R8/256/2A.bin" "R8/82A/Map82A.bin"  Swap16
+
+Copy "R8/16U/2A.bin" "R8/82A/T82A.map" Swap16
+
+LoadFile "#dest/R8/82A/TCMP82A.cm"
+LoadInject "Inject/R8/TCMP82A.txt"
+RunInject  "#dest/R8/82A/TCMP82A.cm"
+Extern     mscompress "#dest\\R8\\82A\\TCMP82A.cm"
+
+;;;;
+; 2B
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R8/Obj/Start2B.bin" "R8/Obj/XStart2B.bin" "R8/Obj/YStart2B.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2B/0_1.bin" "#src/R8/Pal/PC/2B/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2B/2.bin" "#src/R8/Pal/PC/2B/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2B/3.bin" "#src/R8/Pal/PC/2B/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2B/4.bin" "#src/R8/Pal/PC/2B/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2B/5.bin" "#src/R8/Pal/PC/2B/5.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R8/FG/2B.bin" "#src/R8/FGPC/2B.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R8/BG/2B.bin" "#src/R8/BGPC/2B.bin"
+
+LoadFile "#dest/R8/82B/DLL82B.DLL"
+LoadInject "Inject/R8/DLL82B.txt"
+RunInject  "#dest/R8/82B/DLL82B.DLL"
+
+Copy "R8/256/2B.bin" "R8/82B/Map82B.bin"  Swap16
+
+Copy "R8/16U/2B.bin" "R8/82B/T82B.map" Swap16
+
+LoadFile "#dest/R8/82B/TCMP82B.cm"
+LoadInject "Inject/R8/TCMP82B.txt"
+RunInject  "#dest/R8/82B/TCMP82B.cm"
+Extern     mscompress "#dest\\R8\\82B\\TCMP82B.cm"
+
+;;;;
+; 2C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R8/Obj/Start2C.bin" "R8/Obj/XStart2C.bin" "R8/Obj/YStart2C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2C/0_1.bin" "#src/R8/Pal/PC/2C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2C/2.bin" "#src/R8/Pal/PC/2C/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2C/3.bin" "#src/R8/Pal/PC/2C/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2C/4.bin" "#src/R8/Pal/PC/2C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2C/5.bin" "#src/R8/Pal/PC/2C/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2C/6.bin" "#src/R8/Pal/PC/2C/6.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2C/8_9.bin" "#src/R8/Pal/PC/2C/8_9.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2C/7.bin" "#src/R8/Pal/PC/2C/7.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2C/B.bin" "#src/R8/Pal/PC/2C/B.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R8/FG/2C.bin" "#src/R8/FGPC/2C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R8/BG/2C.bin" "#src/R8/BGPC/2C.bin"
+
+LoadFile "#dest/R8/82C/DLL82C.DLL"
+LoadInject "Inject/R8/DLL82C.txt"
+RunInject  "#dest/R8/82C/DLL82C.DLL"
+
+Copy "R8/256/2C.bin" "R8/82C/Map82C.bin"  Swap16
+
+Copy "R8/16U/2C.bin" "R8/82C/T82C.map" Swap16
+
+LoadFile "#dest/R8/82C/TCMP82C.cm"
+LoadInject "Inject/R8/TCMP82C.txt"
+RunInject  "#dest/R8/82C/TCMP82C.cm"
+Extern     mscompress "#dest\\R8\\82C\\TCMP82C.cm"
+
+;;;;
+; 2D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R8/Obj/Start2D.bin" "R8/Obj/XStart2D.bin" "R8/Obj/YStart2D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2D/0_1.bin" "#src/R8/Pal/PC/2D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2D/2.bin" "#src/R8/Pal/PC/2D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2D/3.bin" "#src/R8/Pal/PC/2D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2D/4.bin" "#src/R8/Pal/PC/2D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2D/A.bin" "#src/R8/Pal/PC/2D/A.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2D/5.bin" "#src/R8/Pal/PC/2D/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2D/8.bin" "#src/R8/Pal/PC/2D/8.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2D/9.bin" "#src/R8/Pal/PC/2D/9.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2D/7.bin" "#src/R8/Pal/PC/2D/7.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/2D/B.bin" "#src/R8/Pal/PC/2D/B.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R8/FG/2D.bin" "#src/R8/FGPC/2D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R8/BG/2D.bin" "#src/R8/BGPC/2D.bin"
+
+LoadFile "#dest/R8/82D/DLL82D.DLL"
+LoadInject "Inject/R8/DLL82D.txt"
+RunInject  "#dest/R8/82D/DLL82D.DLL"
+
+Copy "R8/256/2D.bin" "R8/82D/Map82D.bin"  Swap16
+
+Copy "R8/16U/2D.bin" "R8/82D/T82D.map" Swap16
+
+LoadFile "#dest/R8/82D/TCMP82D.cm"
+LoadInject "Inject/R8/TCMP82D.txt"
+RunInject  "#dest/R8/82D/TCMP82D.cm"
+Extern     mscompress "#dest\\R8\\82D\\TCMP82D.cm"
+
+;;;;
+; 3C
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R8/Obj/Start3C.bin" "R8/Obj/XStart3C.bin" "R8/Obj/YStart3C.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/3C/0_1.bin" "#src/R8/Pal/PC/3C/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/3C/2.bin" "#src/R8/Pal/PC/3C/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/3C/3.bin" "#src/R8/Pal/PC/3C/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/3C/4.bin" "#src/R8/Pal/PC/3C/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/3C/5.bin" "#src/R8/Pal/PC/3C/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/3C/6.bin" "#src/R8/Pal/PC/3C/6.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/3C/8_9.bin" "#src/R8/Pal/PC/3C/8_9.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/3C/7.bin" "#src/R8/Pal/PC/3C/7.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/3C/B.bin" "#src/R8/Pal/PC/3C/B.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R8/FG/3C.bin" "#src/R8/FGPC/3C.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R8/BG/3C.bin" "#src/R8/BGPC/3C.bin"
+
+LoadFile "#dest/R8/83C/DLL83C.DLL"
+LoadInject "Inject/R8/DLL83C.txt"
+RunInject  "#dest/R8/83C/DLL83C.DLL"
+
+Copy "R8/256/3C.bin" "R8/83C/Map83C.bin"  Swap16
+
+Copy "R8/16U/3C.bin" "R8/83C/T83C.map" Swap16
+
+LoadFile "#dest/R8/83C/TCMP83C.cm"
+LoadInject "Inject/R8/TCMP83C.txt"
+RunInject  "#dest/R8/83C/TCMP83C.cm"
+Extern     mscompress "#dest\\R8\\83C\\TCMP83C.cm"
+
+;;;;
+; 3D
+;;;;
+
+Extern	"#Batch/CDPosFix" 1 "R8/Obj/Start3D.bin" "R8/Obj/XStart3D.bin" "R8/Obj/YStart3D.bin"
+
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/3D/0_1.bin" "#src/R8/Pal/PC/3D/0_1.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/3D/2.bin" "#src/R8/Pal/PC/3D/2.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/3D/3.bin" "#src/R8/Pal/PC/3D/3.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/3D/4.bin" "#src/R8/Pal/PC/3D/4.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/3D/A.bin" "#src/R8/Pal/PC/3D/A.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/3D/5.bin" "#src/R8/Pal/PC/3D/5.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/3D/8.bin" "#src/R8/Pal/PC/3D/8.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/3D/9.bin" "#src/R8/Pal/PC/3D/9.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/3D/7.bin" "#src/R8/Pal/PC/3D/7.bin"
+Extern  "#Batch/PCPalCon" 1 "#src/R8/Pal/3D/B.bin" "#src/R8/Pal/PC/3D/B.bin"
+
+Extern  "#Batch/PCLevCon" 1 "#src/R8/FG/3D.bin" "#src/R8/FGPC/3D.bin"
+Extern  "#Batch/PCLevCon" 1 "#src/R8/BG/3D.bin" "#src/R8/BGPC/3D.bin"
+
+LoadFile "#dest/R8/83D/DLL83D.DLL"
+LoadInject "Inject/R8/DLL83D.txt"
+RunInject  "#dest/R8/83D/DLL83D.DLL"
+
+Copy "R8/256/3D.bin" "R8/83D/Map83D.bin"  Swap16
+
+Copy "R8/16U/3D.bin" "R8/83D/T83D.map" Swap16
+
+LoadFile "#dest/R8/83D/TCMP83D.cm"
+LoadInject "Inject/R8/TCMP83D.txt"
+RunInject  "#dest/R8/83D/TCMP83D.cm"
+Extern     mscompress "#dest\\R8\\83D\\TCMP83D.cm"
+

@@ -1,0 +1,14 @@
+Sound_42_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$A1, ctPSG3, Sound_42_PSG3, $00+$0C, $00
+
+; PSG3 Data
+Sound_42_PSG3:
+	sNoisePSG	snWhitePSG3
+	sVolEnv		v17
+	dc.b nD0, $04
+	sModAMPS	$00, $01, $06, $07
+	dc.b nAb5, $10
+	sStop

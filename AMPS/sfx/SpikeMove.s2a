@@ -1,0 +1,17 @@
+SndB6_Spikes_Move_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$A1, ctPSG3, SndB6_Spikes_Move_PSG3, $00+$0C, $00
+
+; PSG3 Data
+SndB6_Spikes_Move_PSG3:
+	sModAMPS	$01, $01, $F0, $08
+	sNoisePSG	snWhitePSG3
+	dc.b nE5, $07
+
+SndB6_Spikes_Move_Loop00:
+	dc.b nA5, $01
+	saVol		$08
+	sLoop		$00, $0C, SndB6_Spikes_Move_Loop00
+	sStop

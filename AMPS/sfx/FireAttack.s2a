@@ -1,0 +1,17 @@
+Sound_43_Header:
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$A1, ctPSG3, Sound_43_PSG3, $00+$0C, $00
+
+; PSG3 Data
+Sound_43_PSG3:
+	sNoisePSG	snWhitePSG3
+	dc.b nD3, $15, sHold
+
+Sound_43_Loop00:
+	dc.b $02
+	saVol		$08
+	dc.b sHold
+	sLoop		$00, $10, Sound_43_Loop00
+	sStop

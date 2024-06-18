@@ -1,0 +1,64 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Knuckles' Chaotix (JU / 5) Options Injector File for ROMulan
+;
+; 2011-02-24 - Stealth - First Release
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;
+; Setup Directives ;
+;;;;;;;;;;;;;;;;;;;;
+
+MaxSize	$400000				;Maximum Genesis ROM size
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Manual Settings Segments ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;Game Header Information
+;;;
+
+StartSeg Big_Endian $000100 $8E
+
+	String	"SEGA 32X        "					;Console Name
+	String	"(C)SEGA 1995.FEB"					;Copyright Date
+	String  "CHAOTIX                                         "	;Domestic Game Name
+	String  "CHAOTIX                                         "	;Foreign Game Name
+	String	"GM MK-84503-00"					;Game Serial Number
+
+EndSeg
+
+;;;
+;Level Music Playlist
+;;;
+
+StartSeg Big_Endian $076ED0 7
+
+	BYTE	$05	;BBZ
+	BYTE	$03	;SSZ
+	BYTE	$07	;AAZ
+	BYTE	$02	;TTZ
+	BYTE	$04	;MMZ
+	BYTE	$01	;Intro/Training
+	BYTE	$11	;Tutorial
+
+EndSeg
+
+;;;
+;Cheat Codes
+;;;
+
+StartSeg Code_LevelSelectDebug Big_Endian $007A6A 4
+
+	DWORD	$19711004
+
+EndSeg
+
+StartSeg Code_AmyInSoundTest Big_Endian $007A7C 4
+
+	DWORD	$19710117
+
+EndSeg
+

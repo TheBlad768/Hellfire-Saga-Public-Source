@@ -1,0 +1,559 @@
+Snd_ShadowMaster_Header:
+	sHeaderInit
+	sHeaderTempo	$00DB
+	sHeaderCh	$05, $03
+	sHeaderDAC	Snd_ShadowMaster_DAC1
+	sHeaderDAC	Snd_ShadowMaster_DAC2,	$04
+	sHeaderFM	Snd_ShadowMaster_FM1,	$0C, $11
+	sHeaderFM	Snd_ShadowMaster_FM3,	$00, $24		; AF: SFX now use FM2
+	sHeaderFM	Snd_ShadowMaster_FM2,	$00, $22
+	sHeaderFM	Snd_ShadowMaster_FM4,	$F4, $13
+	sHeaderFM	Snd_ShadowMaster_FM5,	$EF, $13
+	sHeaderPSG	Snd_ShadowMaster_PSG1,	$00+$0C, $10, $00, vNone
+	sHeaderPSG	Snd_ShadowMaster_PSG2,	$00+$0C, $10, $00, vNone
+	sHeaderPSG	Snd_ShadowMaster_PSG3,	$FF+$0C, $18, $00, v09
+
+;	Voice $00
+;	$18
+;	$36, $30, $30, $30, 	$9E, $DC, $1C, $9C, 	$0D, $06, $04, $01
+;	$08, $0A, $03, $05, 	$B6, $B6, $36, $26, 	$2C, $22, $14, $80
+	spAlgorithm	$00
+	spFeedback	$03
+	spDetune	$03, $03, $03, $03
+	spMultiple	$06, $00, $00, $00
+	spRateScale	$02, $00, $03, $02
+	spAttackRt	$1E, $1C, $1C, $1C
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0D, $04, $06, $01
+	spDecayRt	$08, $03, $0A, $05
+	spSustainLv	$0B, $03, $0B, $02
+	spReleaseRt	$06, $06, $06, $06
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$2C, $14, $22, $00
+
+;	Voice $01
+;	$3F
+;	$10, $04, $12, $01, 	$1F, $1F, $1F, $1F, 	$00, $00, $00, $00
+;	$00, $00, $00, $00, 	$AF, $9F, $9F, $9F, 	$0F, $0A, $02, $02
+	spAlgorithm	$07
+	spFeedback	$07
+	spDetune	$01, $01, $00, $00
+	spMultiple	$00, $02, $04, $01
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$1F, $1F, $1F, $1F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $00, $00, $00
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$0A, $09, $09, $09
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$0F, $02, $0A, $02
+
+;	Voice $02
+;	$3A
+;	$32, $00, $02, $73, 	$9F, $DF, $4F, $4F, 	$0F, $0F, $0F, $0F
+;	$02, $02, $02, $02, 	$0F, $0F, $0F, $0E, 	$16, $1F, $17, $00
+	spAlgorithm	$02
+	spFeedback	$07
+	spDetune	$03, $00, $00, $07
+	spMultiple	$02, $02, $00, $03
+	spRateScale	$02, $01, $03, $01
+	spAttackRt	$1F, $0F, $1F, $0F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$0F, $0F, $0F, $0F
+	spDecayRt	$02, $02, $02, $02
+	spSustainLv	$00, $00, $00, $00
+	spReleaseRt	$0F, $0F, $0F, $0E
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$16, $17, $1F, $00
+
+;	Voice $03
+;	$3A
+;	$32, $40, $00, $31, 	$5F, $5F, $3C, $2F, 	$01, $02, $04, $03
+;	$02, $02, $03, $02, 	$5F, $1E, $5E, $1E, 	$19, $14, $0B, $00
+	spAlgorithm	$02
+	spFeedback	$07
+	spDetune	$03, $00, $04, $03
+	spMultiple	$02, $00, $00, $01
+	spRateScale	$01, $00, $01, $00
+	spAttackRt	$1F, $3C, $1F, $2F
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$01, $04, $02, $03
+	spDecayRt	$02, $03, $02, $02
+	spSustainLv	$05, $05, $01, $01
+	spReleaseRt	$0F, $0E, $0E, $0E
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$19, $0B, $14, $00
+
+;	Voice $04
+;	$3D
+;	$12, $02, $11, $00, 	$6D, $47, $47, $47, 	$00, $00, $00, $00
+;	$00, $00, $00, $00, 	$1F, $1F, $1F, $1F, 	$22, $04, $04, $04
+	spAlgorithm	$05
+	spFeedback	$07
+	spDetune	$01, $01, $00, $00
+	spMultiple	$02, $01, $02, $00
+	spRateScale	$01, $01, $01, $01
+	spAttackRt	$2D, $07, $07, $07
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$00, $00, $00, $00
+	spDecayRt	$00, $00, $00, $00
+	spSustainLv	$01, $01, $01, $01
+	spReleaseRt	$0F, $0F, $0F, $0F
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$22, $04, $04, $04
+
+;	Voice $05
+;	$32
+;	$59, $11, $4F, $22, 	$15, $1A, $17, $12, 	$13, $09, $04, $08
+;	$07, $02, $03, $12, 	$09, $09, $09, $09, 	$2E, $7F, $7F, $00
+	spAlgorithm	$02
+	spFeedback	$06
+	spDetune	$05, $04, $01, $02
+	spMultiple	$09, $0F, $01, $02
+	spRateScale	$00, $00, $00, $00
+	spAttackRt	$15, $17, $1A, $12
+	spAmpMod	$00, $00, $00, $00
+	spSustainRt	$13, $04, $09, $08
+	spDecayRt	$07, $03, $02, $12
+	spSustainLv	$00, $00, $00, $00
+	spReleaseRt	$09, $09, $09, $09
+	spSSGEG		$00, $00, $00, $00
+	spTotalLv	$2E, $7F, $7F, $00
+
+; FM1 Data
+Snd_ShadowMaster_FM1:
+	sVoice		$00
+	dc.b nF1, $60, nAb1, $12, nBb1, nFs1, $0C, nRst, $30
+
+Snd_ShadowMaster_Loop09:
+	sCall		Snd_ShadowMaster_Call0C
+	dc.b nD2, $12, nE2, nC2, $0C
+	sLoop		$00, $02, Snd_ShadowMaster_Loop09
+	sCall		Snd_ShadowMaster_Call0C
+	dc.b nA1, $12, nCs2, nG2, $0C
+	sCall		Snd_ShadowMaster_Call0D
+	dc.b nC2, $0C, nC3, nBb2, $06, nA2, nG2, nE2, nC2, nC2, nD2, $0C
+	dc.b nE2, nC2, nB1, $12, nBb1, nB1, nBb1, nB1, $0C, nCs2
+	sCall		Snd_ShadowMaster_Call0D
+	dc.b nG2, $18, nG3, nF3, $06, nF3, nE3, nD3, nC3, nBb2, nA2, nG2
+
+Snd_ShadowMaster_Loop0A:
+	dc.b nA2, $12, nG2, nA2, $3C
+	sLoop		$00, $03, Snd_ShadowMaster_Loop0A
+	dc.b $12, nG2, nA2, $24, nRst, $06, nC2, $12
+
+Snd_ShadowMaster_Loop0B:
+	sCall		Snd_ShadowMaster_Call0E
+	dc.b nBb1, $12, $0C, $06, nA1, $0C, $06, nRst, nG1, nRst, nA1, nRst
+	dc.b nC2, nRst, nF2
+	sLoop		$00, $03, Snd_ShadowMaster_Loop0B
+	sCall		Snd_ShadowMaster_Call0E
+	dc.b nAb1, $36, nBb1, $30, nB1, nG2, $06, nAb2, nG2, nF2, nG2, nF2
+	dc.b nEb2, nD2
+	sJump		Snd_ShadowMaster_Loop09
+
+Snd_ShadowMaster_Call0C:
+	dc.b nG1, $0C, nG1, nG1, $06, nG1, nG1, nF1, nG1
+
+Snd_ShadowMaster_Loop16:
+	dc.b nG1, nG1, $0C, $06, nG1, nG1, $0C
+	sLoop		$01, $02, Snd_ShadowMaster_Loop16
+	dc.b nBb1, $12, nC2, nF2, $0C, nG2, nG2, nG2, $06, nG2, nG2, $0C
+	dc.b nE2, $06, nF2, nF2, nF2, nE2, nD2, nC2, $0C, nA1, $06, nBb1
+	dc.b $0C, nBb1, nBb1, nBb1, $06
+	sRet
+
+Snd_ShadowMaster_Call0D:
+	dc.b nD2, $18, $06, nE2, nF2, nG2, nA2, $0C, nF2, nG2, nD2, nCs2
+	dc.b $18, $06, nD2, nE2, nF2, nG2, nG2, nRst, nA2, nBb2, nA2, nG2
+	dc.b nE2
+	sRet
+
+Snd_ShadowMaster_Call0E:
+	dc.b nD2, $0C, nD2, nD2, nD2, $06, $0C, $06, nC2, $0C, nBb1, $06
+	dc.b nA1, $0C
+	sRet
+
+; FM4 Data
+Snd_ShadowMaster_FM4:
+	sCall		Snd_ShadowMaster_Call09
+
+Snd_ShadowMaster_Jump03:
+	sCall		Snd_ShadowMaster_Call0A
+	dc.b nBb5, $06, nG5, nAb5, nF5, nE5, nCs6, nC6, nBb5
+	sVoice		$04
+	dc.b nA5, $60, $60, $60, nF5, $12, nF5, nF5, nF5, nF5, $0C, nG5
+	dc.b nA5, $60, $60, nF5
+	sCall		Snd_ShadowMaster_Call0B
+	dc.b nG5
+	saVol		$FC
+	dc.b nD6, $06, nEb6, nD6, nC6, nD6, nC6, nB5, nF5
+	saVol		$04
+	sJump		Snd_ShadowMaster_Jump03
+
+Snd_ShadowMaster_Call09:
+	sVoice		$02
+	dc.b nBb4, $06, nAb4, nBb4, $54, nCs5, $24, nB4, $0C, nRst, $30
+	saVol		$04
+	sRet
+
+Snd_ShadowMaster_Call0A:
+	sVoice		$01
+
+Snd_ShadowMaster_Loop15:
+	dc.b nG4, $60, nAb4, $30, nBb4, $12, nC5, nF5, $0C, nG5, $60, nF5
+	dc.b $30, nD5, $12, nE5, nC5, $0C
+	sLoop		$00, $02, Snd_ShadowMaster_Loop15
+	dc.b nG4, $60, nAb4, $30, nBb4, $12, nC5, nF5, $0C, nG5, $60, nF5
+	dc.b $12, nE5, nF5, $0C
+	sRet
+
+Snd_ShadowMaster_Call0B:
+	dc.b nA5, $18
+	saVol		$FD
+	dc.b sHold, $18
+	saVol		$FD
+	dc.b sHold, $0C
+	saVol		$FB
+	dc.b sHold, $24
+	saVol		$0B
+	saTranspose	$01
+	sLoop		$00, $03, Snd_ShadowMaster_Call0B
+	saTranspose	$FD
+	dc.b nC6, $18
+	saVol		$FC
+	dc.b $0C
+	saVol		$FA
+	dc.b $24, nRst, $06
+	sVoice		$01
+	dc.b nEb6, $01, nD6, nC6, nB5, nA5, nG5, nF5, nE5, nD5, nC5, nB4
+	dc.b nA4, nG4, nF4, nE4, nD4, nC4, nB3
+	saVol		$0A
+
+Snd_ShadowMaster_Loop14:
+	dc.b nF5, $12, $06, nRst, $18, nG5, $12, nF5, $06, nRst, $12, nD5
+	dc.b $36, nRst, $06, nC5, nRst, nD5, nRst, nF5, nRst, nG5
+	sLoop		$00, $03, Snd_ShadowMaster_Loop14
+	dc.b nF5, $12, $06, nRst, $18, nG5, $12, nF5, $06, nRst, $12, nG5
+	dc.b $36, $30
+	sRet
+
+; FM5 Data
+Snd_ShadowMaster_FM5:
+	sPan		spLeft, $00
+	sCall		Snd_ShadowMaster_Call09
+
+Snd_ShadowMaster_Jump02:
+	sCall		Snd_ShadowMaster_Call0A
+	saTranspose	$05
+	dc.b nG5, $06, nE5, nF5, nD5, nCs5, nBb5, nA5, nG5
+	sVoice		$04
+	dc.b nF5, $60, $60, $60, nD5, $12, nD5, nD5, nD5, nD5, $0C, nE5
+	dc.b nF5, $60, nF5, nD5
+	saTranspose	$FB
+	sCall		Snd_ShadowMaster_Call0B
+	saTranspose	$05
+	saVol		$FC
+	dc.b nD5, nB5, $06, nC6, nB5, nAb5, nB5, nAb5, nG5, nD5
+	saTranspose	$FB
+	saVol		$04
+	sJump		Snd_ShadowMaster_Jump02
+
+; FM2 Data
+Snd_ShadowMaster_FM2:
+	sCall		Snd_ShadowMaster_Call02
+	dc.b nB3, $06
+
+Snd_ShadowMaster_Jump01:
+	sModAMPS	$16, $03, $0A, $02
+	sCall		Snd_ShadowMaster_Call03
+	sCall		Snd_ShadowMaster_Call04
+	dc.b nG3, $2A, nA3, $30
+	sVoice		$01
+	sCall		Snd_ShadowMaster_Call08
+	dc.b nA4, nF4, nD4, nG4, $0C, nE4, $06, nC4, nF4, $0C, nD4, $06
+	dc.b nF4, nD4, nF4, nG4, nA4, nBb4
+
+Snd_ShadowMaster_Loop08:
+	dc.b nF4, $06, nD4, nBb3, nG4, nE4, nC4
+	sLoop		$00, $02, Snd_ShadowMaster_Loop08
+	dc.b nD4, nCs4, nD4, nE4
+	sCall		Snd_ShadowMaster_Call08
+	dc.b nA4, nG4, nF4, nE4, nBb4, nA4, nG4, nF4, nC5, nBb4, nA4, nG4
+	dc.b nE5, nCs5, nBb4, nG4
+	sVoice		$02
+	dc.b nA4, $12, nG4, nA4, $0C
+	sCall		Snd_ShadowMaster_Call05
+	dc.b nE4, $06
+	sModAMPS	$24, $02, $08, $02
+	sCall		Snd_ShadowMaster_Call06
+	dc.b nG5, $2A
+	sCall		Snd_ShadowMaster_Call07
+	dc.b nAb5, $06, nB5, nG5, nAb5, nF5, nG5, nEb5, nF5, nD5, nF5, $03
+	dc.b nFs5, nG5, $2A
+	sJump		Snd_ShadowMaster_Jump01
+
+Snd_ShadowMaster_Call02:
+	sVoice		$05
+
+Snd_ShadowMaster_Loop13:
+	sPan		spLeft, $00
+	dc.b nF4, $04, nAb4, nBb4, nC5, $06, nEb5
+	saVol		$FB
+	sPan		spRight, $00
+	dc.b nF4, $04, nAb4, nBb4, nC5, $06, nEb5
+	saVol		$FB
+	sPan		spCenter, $00
+	dc.b nF4, $04, nAb4, nBb4, nC5, $06, nEb5
+	saVol		$FB
+	sLoop		$00, $02, Snd_ShadowMaster_Loop13
+	sVoice		$02
+	saVol		$0E
+	dc.b nG4, $02, nAb4, $04, nG4, $06, nF4, nD4, nEb4, nC4, nF4
+	sRet
+
+Snd_ShadowMaster_Call03:
+	sVoice		$02
+	saTranspose	$0C
+
+Snd_ShadowMaster_Loop11:
+	dc.b nG2, $04, nBb2, nC3, nCs3, nC3, nBb2
+	sLoop		$00, $07, Snd_ShadowMaster_Loop11
+	dc.b nG2, nBb2, nC3, nD3, nF3, nG3
+
+Snd_ShadowMaster_Loop12:
+	dc.b nG3, $04, nBb3, nC4, nCs4, nC4, nBb3
+	sLoop		$00, $04, Snd_ShadowMaster_Loop12
+	saTranspose	$F4
+	sRet
+
+Snd_ShadowMaster_Call04:
+	dc.b nG4, $12, nF4, $06
+	sGate		$05
+	dc.b nF4, nE4, nE4, nC4
+	sGate		$00
+	dc.b nD4, nC4, nBb3, nF3, nG3, nBb3, nC4, nD4
+	sCall		Snd_ShadowMaster_Call11
+	dc.b nD5, $06, nC5, nD5, $3C, nC5, $06, nD5, nF5, nC5
+	sGate		$05
+	dc.b nD5, nD5, nCs5, nCs5, nC5, nC5, nBb4, nBb4
+	sGate		$00
+	dc.b nF4, nE4, $0C, nF4, $06, nE4, $0C, nBb4
+	sCall		Snd_ShadowMaster_Call11
+	dc.b nF4, $06, nE4, $2A, nD4, $06, nCs4, nRst, nC4, nRst, nBb3, nRst
+	dc.b nF3, nRst
+	sRet
+
+Snd_ShadowMaster_Call08:
+	dc.b nD4, $06, nE4, nF4, nD4, nE4, nF4, nG4, nE4, nF4, nG4, nA4
+	dc.b nBb4, nA4, nG4, nD4, nE4, nF4, nG4, nF4, nE4, nD4, nCs4, nD4
+	dc.b nE4, nF4, nD4, nG4, nE4, nA4, nF4, nBb4, nG4
+	sRet
+
+Snd_ShadowMaster_Call05:
+	dc.b nA4, $04, nBb4, nA4, nG4, $06, nF4, nE4, nD4, nD4
+	sRet
+
+Snd_ShadowMaster_Call06:
+	dc.b nA4, $12, nG4, nA4, $0C
+
+Snd_ShadowMaster_Loop10:
+	dc.b nE5, $06, nF5, nE5, nG5
+	sLoop		$00, $02, Snd_ShadowMaster_Loop10
+	dc.b nA4, $12, nG4, nA4, $0C
+	sGate		$05
+	dc.b nBb4, $06, nBb4, nA4, nA4, nAb4, nAb4, nG4, nG4
+	sGate		$00
+	dc.b nA4, $12, nBb4
+	sRet
+
+Snd_ShadowMaster_Call07:
+	sVoice		$03
+
+Snd_ShadowMaster_Loop0F:
+	dc.b nE5, $06, nF5, nC5, nD5, $48, nE5, $06, nF5, nG5, nF5, $4E
+	dc.b nRst, $06
+	sLoop		$00, $03, Snd_ShadowMaster_Loop0F
+	dc.b nE5, nF5, nC5, nD5, $48, nE5, $06, nF5, nRst, nG5, $0C, nAb5
+	dc.b $06, nG5, nF5, nEb5, nD5, nF5, nD5, nEb5, nD5, nC5, nF5, nEb5
+	dc.b nF5, nG5
+	sRet
+
+Snd_ShadowMaster_Call11:
+	dc.b nG4, $30, nF4, $10, nBb4, nF4, nG4, $30, nF4, $12, nBb4, nC5
+	dc.b $0C
+	sRet
+
+; FM3 Data
+Snd_ShadowMaster_FM3:
+	dc.b nRst, $04
+	sCall		Snd_ShadowMaster_Call02
+	dc.b nB3, $02
+	sPan		spRight, $00
+
+Snd_ShadowMaster_Jump00:
+	sModAMPS	$16, $02, $0C, $02
+	saTranspose	$FB
+	sCall		Snd_ShadowMaster_Call03
+	saTranspose	$05
+	dc.b nRst, $04
+	sCall		Snd_ShadowMaster_Call04
+	dc.b nG3, $26, nE3, $30
+	sVoice		$01
+	saVol		$FE
+	dc.b nRst, $60, nRst, nRst, nRst, $48, nF4, $06, nE4, nF4, nG4, nF4
+	dc.b nG4, nA4, nF4, nG4, nA4, nBb4, nG4, nA4, nBb4, nC5, nCs5, nD5
+	dc.b nC5, nG4, nA4, nA4, nBb4, nA4, nG4, nF4, nE4, nF4, nG4, nA4
+	dc.b nF4, nBb4, nG4, nCs5, nA4, nE5, nCs5, nC5, nBb4, nA4, nG4, nD5
+	dc.b nC5, nBb4, nA4, nE5, nD5, nC5, nBb4, nG5, nE5, nCs5, nBb4
+	sVoice		$02
+	dc.b nE4, $12, nD4, nE4, $0C
+	saVol		$02
+	dc.b nRst, $04
+	sCall		Snd_ShadowMaster_Call05
+	dc.b nE4, $02
+	saVol		$FE
+	saTranspose	$FB
+	sModAMPS	$24, $01, $08, $02
+	sCall		Snd_ShadowMaster_Call06
+	saTranspose	$05
+	dc.b nD5, $2A, nRst, $04
+	saVol		$02
+	ssDetune	$03
+	sCall		Snd_ShadowMaster_Call07
+	dc.b nAb5, $02
+	ssDetune	$00
+	saVol		$FE
+	dc.b nG5, $06, nEb5, nF5, nD5, nEb5, nB4, nD5, nB4, nD5, $03, nD5
+	dc.b nD5, $2A
+	saVol		$02
+	sJump		Snd_ShadowMaster_Jump00
+
+; PSG3 Data
+Snd_ShadowMaster_PSG3:
+	sNoisePSG	snWhitePSG3
+	dc.b nAb5, $60, $12, nAb5, nAb5, $3C
+
+Snd_ShadowMaster_Loop0C:
+	sCall		Snd_ShadowMaster_Call0F
+	sVolEnv		v09
+	dc.b nAb5, $12, nAb5, nAb5, $0C
+	sLoop		$01, $06, Snd_ShadowMaster_Loop0C
+	sCall		Snd_ShadowMaster_Call10
+	dc.b nAb5, $12, nAb5, nAb5, nAb5, $2A
+	sCall		Snd_ShadowMaster_Call10
+
+Snd_ShadowMaster_Loop0D:
+	dc.b nAb5, $12, nAb5, nAb5, $3C
+	sLoop		$00, $04, Snd_ShadowMaster_Loop0D
+
+Snd_ShadowMaster_Loop0E:
+	sCall		Snd_ShadowMaster_Call0F
+	sGate		$03
+	dc.b nRst, $06, nBb5, $0C, nBb5, nBb5, nBb5, $06
+	sGate		$00
+	sLoop		$01, $03, Snd_ShadowMaster_Loop0E
+	sVolEnv		v09
+	dc.b nAb5, $0C
+	sVolEnv		v07
+	dc.b nBb5, $18, nBb5, nBb5, $1E
+	sVolEnv		v09
+	dc.b nAb5
+	sVolEnv		v07
+	dc.b nBb5, $18, nBb5, nBb5, nBb5, nBb5
+	sVolEnv		v09
+	dc.b nAb5, $30
+	sJump		Snd_ShadowMaster_Loop0C
+
+Snd_ShadowMaster_Call0F:
+	dc.b nAb5, $0C, nBb5
+	sVolEnv		v07
+
+Snd_ShadowMaster_Loop18:
+	dc.b nRst, $0C, nBb5
+	sLoop		$00, $05, Snd_ShadowMaster_Loop18
+	sRet
+
+Snd_ShadowMaster_Call10:
+	sVolEnv		v07
+
+Snd_ShadowMaster_Loop17:
+	dc.b nBb5, $0C
+	sLoop		$00, $18, Snd_ShadowMaster_Loop17
+	sVolEnv		v09
+	sRet
+
+; DAC Data
+Snd_ShadowMaster_DAC2:
+	sPan		spCenter, $00
+	dc.b dSnare, $04, dSnare, dSnare, dSnare, $06, $4E, dKick, $12, dKick, dKick, $24
+	dc.b dSnare, $06, dSnare, dSnare, dSnare
+
+Snd_ShadowMaster_Loop00:
+	sCall		Snd_ShadowMaster_Call00
+	dc.b dKick, dSnare, dKick, $06, dKick, dSnare, $0C, $12, dSnare, dSnare, $06, dSnare
+	sLoop		$00, $05, Snd_ShadowMaster_Loop00
+	sCall		Snd_ShadowMaster_Call00
+	dc.b $06, dSnare, dSnare, dSnare, dKick, dSnare, $0C
+
+Snd_ShadowMaster_Loop01:
+	dc.b $06
+	sLoop		$00, $09, Snd_ShadowMaster_Loop01
+
+Snd_ShadowMaster_Loop02:
+	sCall		Snd_ShadowMaster_Call00
+	sLoop		$00, $03, Snd_ShadowMaster_Loop02
+
+Snd_ShadowMaster_Loop03:
+	dc.b dSnare, $0C, dKick, $06
+	sLoop		$00, $04, Snd_ShadowMaster_Loop03
+	dc.b dSnare, dSnare, dSnare, dSnare
+
+Snd_ShadowMaster_Loop04:
+	sCall		Snd_ShadowMaster_Call00
+	sLoop		$00, $03, Snd_ShadowMaster_Loop04
+	sCall		Snd_ShadowMaster_Call01
+	dc.b dSnare, $06, $0C, $06, dSnare, dSnare, dSnare, dSnare
+	sCall		Snd_ShadowMaster_Call01
+	dc.b dSnare
+
+Snd_ShadowMaster_Loop05:
+	dc.b $04
+	sLoop		$00, $09, Snd_ShadowMaster_Loop05
+	dc.b dSnare, $06, dSnare
+	sCall		Snd_ShadowMaster_Call01
+	dc.b dSnare
+
+Snd_ShadowMaster_Loop06:
+	dc.b $06
+	sLoop		$00, $08, Snd_ShadowMaster_Loop06
+	sCall		Snd_ShadowMaster_Call01
+	dc.b nRst, $0C, dKick, $06, dKick, dSnare, dSnare, dSnare, dSnare
+
+Snd_ShadowMaster_Loop07:
+	dc.b dKick, $0C, dSnare, dKick, $06, dKick, dSnare, dKick, $0C, $06, dSnare, $0C
+	dc.b dKick, $06, dKick, dSnare, dKick, $12, dSnare, $0C, dKick, $06, dKick, dSnare
+	dc.b $0C, dKick, $06, dSnare, $0C, dSnare, dSnare, dSnare, $06
+	sLoop		$00, $03, Snd_ShadowMaster_Loop07
+	dc.b dKick, $0C, dSnare, dKick, $06, dKick, dSnare, dKick, $0C, $06, dSnare, $0C
+	dc.b $06, dSnare, dSnare, dKick, $1E, $06, dSnare, $0C, $06, dSnare, dSnare, dSnare
+	dc.b $0C, $06, dSnare, dSnare, dSnare, dSnare, dKick, $0C, $06, dSnare, dKick, $0C
+	dc.b $06, dSnare, dSnare, dSnare, dSnare, dSnare, dSnare, dSnare, $0C
+	sJump		Snd_ShadowMaster_Loop00
+
+Snd_ShadowMaster_Call00:
+	dc.b dKick, $0C, dSnare, dKick, $06, dKick, dSnare, dKick, $0C, $06, dSnare, $0C
+	dc.b dKick, $06, dKick, dSnare, $0C
+	sRet
+
+Snd_ShadowMaster_Call01:
+	dc.b dSnare, $0C, dKick, $06, dSnare, $0C, dKick, $06, dSnare, $0C
+	sRet
+
+; PSG1 Data
+Snd_ShadowMaster_PSG1:
+; PSG2 Data
+Snd_ShadowMaster_PSG2:
+Snd_ShadowMaster_DAC1:
+	sStop

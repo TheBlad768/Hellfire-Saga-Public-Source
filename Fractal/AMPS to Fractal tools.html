@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript">
+		function getNum(str) {
+			const neg = str.startsWith("-");
+
+			if(str.substring(+neg).startsWith("$")) {
+				return (neg ? -1 : 1) * parseInt(str.substring(1 +neg), 16);
+			}
+
+			return (neg ? -1 : 1) * parseInt(str.substring(+neg), 10);
+		}
+
+		function getMod(str) {
+			const match = /^\s*(smodamps)?\s*(-?\$?[0-9a-f]{1,2}),\s*(-?\$?[0-9a-f]{1,2}),\s*(-?\$?[0-9a-f]{1,2}),\s*(-?\$?[0-9a-f]{1,2})$/.exec(str.toLowerCase());
+			if(!match) {
+				return null;
+			}
+
+			match.shift();
+			match.shift();
+
+			const ret = match.map(getNum);
+
+			if(ret.includes(NaN)) {
+				return null;
+			}
+
+			return ret;
+		}
+
+		function getNote(str) {
+			switch(str.toLowerCase()) {
+				case "nhihat": return (6*0xc) + 9;
+			}
+
+			const match = /^n([abcdefgs]{1,2})([0-9])$/.exec(str.toLowerCase());
+
+			if(!match) {
+				return -1;
+			}
+
+			let note = parseInt(match[2], 10) * 0xC;
+
+			switch(match[1]) {
+				case "c":	note += 0; break;
+				case "cs":	note += 1; break;
+				case "d":	note += 2; break;
+				case "ds":	note += 3; break;
+				case "eb":	note += 3; break;
+				case "e":	note += 4; break;
+				case "f":	note += 5; break;
+				case "fs":	note += 6; break;
+				case "g":	note += 7; break;
+				case "gs":	note += 8; break;
+				case "ab":	note += 8; break;
+				case "a":	note += 9; break;
+				case "as":	note += 10;break;
+				case "bb":	note += 10;break;
+				case "b":	note += 11;break;
+				default:	return -1;
+			}
+
+			return note;
+		}
+
+		function mod2vib(){
+			const note = getNote(store.note = document.getElementById("note").value);
+
+			if(note < 0) {
+				return document.getElementById("out").value = "Invalid note!";
+			}
+
+			const type = store.type = document.getElementById("type").value;
+
+			let freq = notesAMPS[type][note] ?? NaN;
+			freq += getNum(store.freq = document.getElementById("freq").value, 10);
+
+			const params = getMod(store.mod = document.getElementById("in").value);
+
+			if(!params) {
+				return document.getElementById("out").value = "Modulation command was invalid!";
+			}
+
+			const { min, max } = calcRange(params, freq);
+
+			if(max === Infinity || min === Infinity) {
+				return document.getElementById("out").value = "Modulation with count = 0 can not be calculated.";
+			}
+
+			const { speed, depth, } = getSpeedDepth(params, note, freq, type, min, max), dn = depth < 0 ? "-" : " ";
+
+			if(isNaN(speed) || isNaN(depth)) {
+				return document.getElementById("out").value = "Failed to calculate vibrato range values.";
+			}
+
+			document.getElementById("out").value = "\tsVibrato Name,\t\t"+
+				hex(2, params[0]) +", "+ hex(2, 0) +", "+ hex(4, speed) +","+ dn + hex(4, Math.abs(depth)) +", Triangle";
+		}
+
+		function hex(digits, value) {
+			return "$"+ value.toString(16).toUpperCase().padStart(digits, "0");
+		}
+
+		function getSpeedDepth(params, note, freq, type, min, max) {
+			const total = (Math.floor(params[3] / 2) || 1) + params[3];
+			const speed = Math.round(0x10000 / total / params[1]) & 0xFFFC;
+
+			const maxnote = getFrac(type, note, freq, max, 1);
+			const minnote = getFrac(type, note, freq, min, -1);
+			console.log("calc", hex(4, minnote), hex(4, note << 8), hex(4, maxnote))
+
+			if(isNaN(maxnote) || isNaN(minnote)) {
+				return { speed: NaN, depth: NaN, };
+			}
+
+			const depth = Math.round((maxnote - minnote) / 2);
+			return { speed, depth, };
+		}
+
+		function getFrac(type, note, basefreq, target, dir) {
+			const ndir = type === "psg" ? -dir : dir;
+
+			if(target < 0) {
+				return NaN;
+			}
+
+			if(type === "fm") {
+				if((0x7FF & target) < 0x284) {
+					target = Math.round((((0x7FF & target) - 0x284) * 1.87) + 0x508 - 0x800 + (target & 0xF800));
+				//	console.log("fmwrap<", target.toString(16))
+
+				} else if((0x7FF & target) > 0x508) {
+					target = Math.round((((0x7FF & target) - 0x508) / 1.87) + 0x284 + 0x800 + (target & 0xF800));
+				//	console.log("fmwrap>", target.toString(16))
+				}
+			}
+
+			const check = dir > 0 ?
+				(value) => value >= target :
+				(value) => value <= target;
+
+			while(true) {
+				const freq = notesFractal[type][note];
+
+				if(freq === undefined) {
+					console.log("error", note, type)
+					return NaN;
+				}
+
+				if(check(freq)) {
+					break;
+				}
+
+				note += ndir;
+			}
+
+			if(dir > 0) {
+				note -= ndir;
+			}
+
+			let diff = target - notesFractal[type][note];
+
+		/*	if(diff >= notesFractal[type +"sz"][note]) {
+				console.log("fmfix", diff.toString(16), notesFractal[type +"sz"][note].toString(16))
+				note ++;		// fm fix
+				diff = target - notesFractal[type][note];
+			}*/
+
+			return (note << 8) | Math.floor(0x100 * (diff / notesFractal[type +"sz"][note]));
+		}
+
+		function calcRange(params, freq) {
+			const range = { min: freq, max: freq, };
+
+			if(params[3] === 0) {
+				params[2] > 0 && (range.max = Infinity);
+				params[2] < 0 && (range.min = Infinity);
+				return range;
+			}
+
+			if(params[2] === 0) {
+				return range;
+			}
+
+			let count = Math.floor(params[3] / 2) || 1;
+			let step = params[2];
+			let speed = params[1];
+
+			for(let i = 2;i > 0;--i) {
+				for(;count !== 0;--count) {
+					freq += step;
+				}
+
+				count = params[3];
+				step = -step;
+
+				freq > range.max && (range.max = freq);
+				freq < range.min && (range.min = freq);
+			}
+
+			return range;
+		}
+
+		function detcvt() {
+			const note = getNote(store.note = document.getElementById("note").value);
+
+			if(note < 0) {
+				return document.getElementById("out").value = "Invalid note!";
+			}
+
+			const type = store.type = document.getElementById("type").value;
+			const det = getNum(store.freq = document.getElementById("freq").value, 10);
+			const freq = notesFractal[type +"sz"][note] ?? NaN;
+
+			let value = Math.round(0x100 * (det / freq));
+			const neg = value < 0;
+			neg && (value = -value);
+
+			document.getElementById("out").value = "\tsQuot\t\t"+ (neg ? "-" : "") + hex(2, value);
+		}
+
+		function cvtdetasm(e) {
+			const lines = e.value.split("\n");
+			const tokens = [];
+
+			for(let x of lines) {
+				if(x.startsWith(";")) {
+					x = x.substring(1);
+				}
+
+				x = x.trim();
+				let index = x.indexOf("\t");
+
+				let prefix = x, args = "";
+
+				if(index >= 0) {
+					prefix = x.substring(0, index).trim();
+					args = x.substring(index).trim();
+				}
+
+				switch(prefix.toLowerCase()) {
+					case "snote":
+						tokens.push([ 1, args.split(",").map((a) => a.trim()) ]);
+						break;
+
+					case "ssdetune":
+						tokens.push([ 2, args ]);
+						break;
+
+					case "":
+						tokens.push([ -1 ]);
+						break;
+
+					default:
+						tokens.push([ 0, prefix, args ]);
+						break;
+				}
+			}
+
+			let quotient = 0, index = 0, str = "", note = "";
+
+			for(;index < tokens.length;index ++) {
+				switch(tokens[index][0]) {
+					case 0:
+						str += "\n\t"+ tokens[index][1] +"\t"+ tokens[index][2];
+						break;
+
+					case 1:
+						args = tokens[index];
+						str += "\n\tsNote\t\t"+ tokens[index][1].join(", ");
+
+						for(const a of tokens[index][1]) {
+							if(a.toLowerCase().startsWith("n")) {
+								note = a;
+							}
+						}
+						break;
+
+					case 2:
+						let _note = "";
+
+						// find next note
+						for(let ix = index + 1;ix < tokens.length;ix++) {
+							if(tokens[ix][0] === 1) {
+								for(const a of tokens[ix][1]) {
+									if(a.toLowerCase().startsWith("n")) {
+										_note = a;
+										break;
+
+									} else if(a.toLowerCase().startsWith("s") || a.startsWith("$")) {
+										_note = "-"
+									}
+								}
+
+								if(_note !== "") {
+									break;
+								}
+							}
+						}
+
+						if(_note === "" || _note === "-") {
+							if(note === "") {
+								return document.getElementById("out").value = "Sequence does not have a root note!";
+							}
+
+							_note = note;
+						}
+
+						let nid = getNote(_note);
+
+						if(nid < 0) {
+							return document.getElementById("out").value = "Invalid note!";
+						}
+
+						const type = store.type = document.getElementById("type").value;
+						let target = getNum(tokens[index][1]);
+
+						if(target > 0x7F) {
+							target = -(0x100 - target);
+						}
+
+						let pos = 0, chg = target > 0 ? 1 : -1;
+						if(chg < 0) nid--;
+
+						const cmp = chg > 0 ?
+							() => target >= notesFractal[type +"sz"][nid] :
+							() => target <= -notesFractal[type +"sz"][nid];
+
+						while(cmp()) {
+							target -= chg * notesFractal[type +"sz"][nid];
+							pos += chg * 0x100;
+							nid += chg;
+						}
+
+						pos += chg * Math.floor(0x100 * (Math.abs(target) / notesFractal[type +"sz"][nid]));
+
+						let res = pos - quotient;
+						str += "\n\tsQuot\t\t"+ (res < 0 ? "-" : "") + hex(4, Math.abs(res)) +"\t\t; ssDetune "+ tokens[index][1];
+						quotient = pos;
+						break;
+
+					case -1:
+						str += "\n";
+						break;
+				}
+			}
+
+			document.getElementById("out").value = str.substring(1);
+		}
+
+		const notesAMPS = {
+			fm: [
+			//	0x025E,
+				0x0284,0x02AB,0x02D3,0x02FE,0x032D,0x035C,0x038F,0x03C5,0x03FF,0x043C,0x047C,0x0A5E,
+				0x0A84,0x0AAB,0x0AD3,0x0AFE,0x0B2D,0x0B5C,0x0B8F,0x0BC5,0x0BFF,0x0C3C,0x0C7C,0x125E,
+				0x1284,0x12AB,0x12D3,0x12FE,0x132D,0x135C,0x138F,0x13C5,0x13FF,0x143C,0x147C,0x1A5E,
+				0x1A84,0x1AAB,0x1AD3,0x1AFE,0x1B2D,0x1B5C,0x1B8F,0x1BC5,0x1BFF,0x1C3C,0x1C7C,0x225E,
+				0x2284,0x22AB,0x22D3,0x22FE,0x232D,0x235C,0x238F,0x23C5,0x23FF,0x243C,0x247C,0x2A5E,
+				0x2A84,0x2AAB,0x2AD3,0x2AFE,0x2B2D,0x2B5C,0x2B8F,0x2BC5,0x2BFF,0x2C3C,0x2C7C,0x325E,
+				0x3284,0x32AB,0x32D3,0x32FE,0x332D,0x335C,0x338F,0x33C5,0x33FF,0x343C,0x347C,0x3A5E,
+				0x3A84,0x3AAB,0x3AD3,0x3AFE,0x3B2D,0x3B5C,0x3B8F,0x3BC5,0x3BFF,0x3C3C,0x3C7C,
+			],
+			dac: [
+				0x0010,0x0011,0x0012,0x0013,0x0014,0x0015,0x0017,0x0018,0x0019,0x001B,0x001D,0x001E,
+				0x0020,0x0022,0x0024,0x0026,0x0028,0x002B,0x002D,0x0030,0x0033,0x0036,0x0039,0x003C,
+				0x0040,0x0044,0x0048,0x004C,0x0051,0x0055,0x005B,0x0060,0x0066,0x006C,0x0072,0x0079,
+				0x0080,0x0088,0x0090,0x0098,0x00A1,0x00AB,0x00B5,0x00C0,0x00CB,0x00D7,0x00E4,0x00F2,
+				0x0100,0x010F,0x011F,0x0130,0x0143,0x0156,0x016A,0x0180,0x0196,0x01AF,0x01C8,0x01E3,
+				0x0200,0x021E,0x023F,0x0261,0x0285,0x02AB,0x02D4,0x02FF,0x032D,0x035D,0x0390,0x03C7,
+				0x0400,0x043D,0x047D,0x04C2,0x050A,0x0557,0x05A8,0x05FE,0x0659,0x06BA,0x0721,0x078D,
+				0x0800,0x087A,0x08FB,0x0983,0x0A14,0x0AAE,0x0B50,0x0BFD,0x0CB3,0x0D74,0x0E41,0x0F1A,
+				0x0FFF,0x0FFF,0x0FFF,0x0FFF,0x0FFF,0x0FFF,0x0FFF,0x0FFF,0x0FFF,0x0FFF,0x0FFF,0x0FFF,
+				0x0FFF,0x0FFF,0x0FFF,0x0FFF,0x0FFF,0x0FFF,0x0FFF,0x0FFF,0x0FFF,0x0FFF,0x0FFF,0x0FFF,
+				0x0FFF,0x0FFF,0x0FFF,0x0FFF,0x0FFF,0x0FFF,0x0FFF,
+			],
+			psg: [
+				0x03FF,0x03FF,0x03FF,0x03FF,0x03FF,0x03FF,0x03FF,0x03FF,0x03FF,0x03F7,0x03BE,0x0388,
+				0x0356,0x0326,0x02F9,0x02CE,0x02A5,0x0280,0x025C,0x023A,0x021A,0x01FB,0x01DF,0x01C4,
+				0x01AB,0x0193,0x017D,0x0167,0x0153,0x0140,0x012E,0x011D,0x010D,0x00FE,0x00EF,0x00E2,
+				0x00D6,0x00C9,0x00BE,0x00B4,0x00A9,0x00A0,0x0097,0x008F,0x0087,0x007F,0x0078,0x0071,
+				0x006B,0x0065,0x005F,0x005A,0x0055,0x0050,0x004B,0x0047,0x0043,0x0040,0x003C,0x0039,
+				0x0036,0x0033,0x0030,0x002D,0x002B,0x0028,0x0026,0x0024,0x0022,0x0020,0x001F,0x001D,
+				0x001B,0x001A,0x0018,0x0017,0x0016,0x0015,0x0013,0x0012,0x0011,0x0000,
+			],
+		}
+
+		const notesFractal = {
+			fm: [
+				0x0284,0x02AA,0x02D3,0x02FE,0x032B,0x035B,0x038E,0x03C5,0x03FE,0x0438,0x0478,0x04BF,
+				0x0A84,0x0AAA,0x0AD3,0x0AFE,0x0B2B,0x0B5B,0x0B8E,0x0BC5,0x0BFE,0x0C38,0x0C78,0x0CBF,
+				0x1284,0x12AA,0x12D3,0x12FE,0x132B,0x135B,0x138E,0x13C5,0x13FE,0x1438,0x1478,0x14BF,
+				0x1A84,0x1AAA,0x1AD3,0x1AFE,0x1B2B,0x1B5B,0x1B8E,0x1BC5,0x1BFE,0x1C38,0x1C78,0x1CBF,
+				0x2284,0x22AA,0x22D3,0x22FE,0x232B,0x235B,0x238E,0x23C5,0x23FE,0x2438,0x2478,0x24BF,
+				0x2A84,0x2AAA,0x2AD3,0x2AFE,0x2B2B,0x2B5B,0x2B8E,0x2BC5,0x2BFE,0x2C38,0x2C78,0x2CBF,
+				0x3284,0x32AA,0x32D3,0x32FE,0x332B,0x335B,0x338E,0x33C5,0x33FE,0x3438,0x3478,0x34BF,
+				0x3A84,0x3AAA,0x3AD3,0x3AFE,0x3B2B,0x3B5B,0x3B8E,0x3BC5,0x3BFE,0x3C38,0x3C78,0x3CBF,
+			],
+			fmsz: [
+				0x0026,0x0029,0x002B,0x002D,0x0030,0x0033,0x0037,0x0039,0x003A,0x0040,0x0047,0x0049,
+				0x0026,0x0029,0x002B,0x002D,0x0030,0x0033,0x0037,0x0039,0x003A,0x0040,0x0047,0x0049,
+				0x0026,0x0029,0x002B,0x002D,0x0030,0x0033,0x0037,0x0039,0x003A,0x0040,0x0047,0x0049,
+				0x0026,0x0029,0x002B,0x002D,0x0030,0x0033,0x0037,0x0039,0x003A,0x0040,0x0047,0x0049,
+				0x0026,0x0029,0x002B,0x002D,0x0030,0x0033,0x0037,0x0039,0x003A,0x0040,0x0047,0x0049,
+				0x0026,0x0029,0x002B,0x002D,0x0030,0x0033,0x0037,0x0039,0x003A,0x0040,0x0047,0x0049,
+				0x0026,0x0029,0x002B,0x002D,0x0030,0x0033,0x0037,0x0039,0x003A,0x0040,0x0047,0x0049,
+				0x0026,0x0029,0x002B,0x002D,0x0030,0x0033,0x0037,0x0039,0x003A,0x0040,0x0047,0x0049,
+			],
+			dac: [
+				0x0010,0x0011,0x0012,0x0013,0x0014,0x0015,0x0017,0x0018,0x0019,0x001b,0x001d,0x001e,
+				0x0020,0x0022,0x0024,0x0026,0x0028,0x002b,0x002d,0x0030,0x0033,0x0036,0x0039,0x003c,
+				0x0040,0x0044,0x0048,0x004c,0x0051,0x0055,0x005b,0x0060,0x0066,0x006c,0x0072,0x0079,
+				0x0080,0x0088,0x0090,0x0098,0x00a1,0x00ab,0x00b5,0x00c0,0x00cb,0x00d7,0x00e4,0x00f2,
+				0x0100,0x010f,0x011f,0x0130,0x0143,0x0156,0x016a,0x0180,0x0196,0x01af,0x01c8,0x01e3,
+				0x0200,0x021e,0x023f,0x0261,0x0285,0x02ab,0x02d4,0x02ff,0x032d,0x035d,0x0390,0x03c7,
+				0x0400,0x043d,0x047d,0x04c2,0x050a,0x0557,0x05a8,0x05fe,0x0659,0x06ba,0x0721,0x078d,
+				0x0800,0x087a,0x08fb,0x0983,0x0a14,0x0aae,0x0b50,0x0bfd,0x0cb3,0x0d74,0x0e41,0x0f1a,
+			],
+			dacsz: [
+				0x0001,0x0001,0x0001,0x0001,0x0001,0x0002,0x0001,0x0001,0x0002,0x0002,0x0001,0x0002,
+				0x0002,0x0002,0x0002,0x0002,0x0003,0x0002,0x0003,0x0003,0x0003,0x0003,0x0003,0x0004,
+				0x0004,0x0004,0x0004,0x0005,0x0004,0x0006,0x0005,0x0006,0x0006,0x0006,0x0007,0x0007,
+				0x0008,0x0008,0x0008,0x0009,0x000A,0x000A,0x000B,0x000B,0x000C,0x000D,0x000E,0x000E,
+				0x000F,0x0010,0x0011,0x0013,0x0013,0x0014,0x0016,0x0016,0x0019,0x0019,0x001B,0x001D,
+				0x001E,0x0021,0x0022,0x0024,0x0026,0x0029,0x002B,0x002E,0x0030,0x0033,0x0037,0x0039,
+				0x003D,0x0040,0x0045,0x0048,0x004D,0x0051,0x0056,0x005B,0x0061,0x0067,0x006C,0x0073,
+				0x007A,0x0081,0x0088,0x0091,0x009A,0x00A2,0x00AD,0x00B6,0x00C1,0x00CD,0x00D9,0x00E5,
+			],
+			psg: [
+				0x03ff,0x03ff,0x03ff,0x03ff,0x03ff,0x03ff,0x03ff,0x03ff,0x03ff,0x03f7,0x03be,0x0388,
+				0x0356,0x0326,0x02f9,0x02ce,0x02a5,0x0280,0x025c,0x023a,0x021a,0x01fb,0x01df,0x01c4,
+				0x01ab,0x0193,0x017d,0x0167,0x0153,0x0140,0x012e,0x011d,0x010d,0x00fe,0x00ef,0x00e2,
+				0x00d6,0x00c9,0x00be,0x00b4,0x00a9,0x00a0,0x0097,0x008f,0x0087,0x007f,0x0078,0x0071,
+				0x006b,0x0065,0x005f,0x005a,0x0055,0x0050,0x004b,0x0047,0x0043,0x0040,0x003c,0x0039,
+				0x0036,0x0033,0x0030,0x002d,0x002b,0x0028,0x0026,0x0024,0x0022,0x0020,0x001f,0x001d,
+				0x001b,0x001a,0x0018,0x0017,0x0016,0x0015,0x0013,0x0012,0x0011,0x0000,
+			],
+			psgsz: [
+				0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0008,0x0039,0x0036,0x0032,
+				0x0030,0x002D,0x002B,0x0029,0x0025,0x0024,0x0022,0x0020,0x001F,0x001C,0x001B,0x0019,
+				0x0018,0x0016,0x0016,0x0014,0x0013,0x0012,0x0011,0x0010,0x000F,0x000F,0x000D,0x000C,
+				0x000D,0x000B,0x000A,0x000B,0x0009,0x0009,0x0008,0x0008,0x0008,0x0007,0x0007,0x0006,
+				0x0006,0x0006,0x0005,0x0005,0x0005,0x0005,0x0004,0x0004,0x0003,0x0004,0x0003,0x0003,
+				0x0003,0x0003,0x0003,0x0002,0x0003,0x0002,0x0002,0x0002,0x0002,0x0001,0x0002,0x0002,
+				0x0001,0x0002,0x0001,0x0001,0x0001,0x0002,0x0001,0x0001,0x0011,0x0000,
+			],
+		}
+
+		const tabs = [
+			`
+				<div class="fw"><label style="flex: 0 0 auto" for="in">Modulation command</label><input id="in" style="flex: 1 1 100%" type="text" onblur="mod2vib()"/></div>
+				<div class="fw">
+					<div class="fm">
+						<label for="type">Channel type</label>
+						<select id="type" onblur="mod2vib()">
+							<option value="fm">FM</option>
+							<option value="dac">DAC</option>
+							<option value="psg">PSG</option>
+						</select>
+					</div>
+					<div class="fm"><label for="note">Base note</label><input id="note" type="text" onblur="mod2vib()"/></div>
+					<div class="fm"><label for="freq">Frequency offset</label><input id="freq" type="text" onblur="mod2vib()"/></div>
+				</div>
+				<div class="fw"><label style="flex: 0 0 auto" for="out">Vibrato data</label><input id="out" style="flex: 1 1 100%" type="text" onblur="mod2vib()"/></div>
+			`, `
+				<div class="fw">
+					<div class="fm">
+						<label for="type">Channel type</label>
+						<select id="type" onblur="detcvt()">
+							<option value="fm">FM</option>
+							<option value="dac">DAC</option>
+							<option value="psg">PSG</option>
+						</select>
+					</div>
+					<div class="fm"><label for="note">Base note</label><input id="note" type="text" onblur="detcvt()"/></div>
+					<div class="fm"><label for="freq">Detune</label><input id="freq" type="text" onblur="detcvt()"/></div>
+				</div>
+				<div class="fw"><label style="flex: 0 0 auto" for="out">Result</label><input id="out" style="flex: 1 1 100%" type="text" onblur="detcvt()"/></div>
+			`, `
+				<div class="fw">
+					<div class="fm">
+						<label for="type">Channel type</label>
+						<select id="type" onblur="detcvt()">
+							<option value="fm">FM</option>
+							<option value="dac">DAC</option>
+							<option value="psg">PSG</option>
+						</select>
+					</div>
+				</div>
+				<textarea class="bigtext" style="border-right: 1px solid #555;" onchange="cvtdetasm(this)"></textarea>
+				<textarea class="bigtext" id="out" style="border-left: 1px solid #555;"></textarea>
+			`, `
+				<textarea class="bigtext" style="border-right: 1px solid #555;" onchange="cvtnoteasm(this)"></textarea>
+				<textarea class="bigtext" id="out" style="border-left: 1px solid #555;"></textarea>
+			`, `
+				<textarea class="bigtext" style="border-right: 1px solid #555;" onchange="cvtsampasm(this)"></textarea>
+				<textarea class="bigtext" id="out" style="border-left: 1px solid #555;"></textarea>
+			`
+		];
+
+		const store = {
+			type: "fm",
+			note: "nC3",
+			freq: "0",
+			mod: "sModAMPS $04, $01, $08, $09",
+		}
+
+		function init() {
+			loadTab(3, document.getElementById("firstbtn"));
+		}
+
+		function loadTab(id, btn) {
+			document.getElementById("navname").innerHTML = btn.innerText;
+			document.getElementById("inner").innerHTML = tabs[id];
+			tabFunc[id]();
+		}
+
+		const tabFunc = [
+			() => {
+				document.getElementById("note").value = store.note;
+				document.getElementById("freq").value = store.freq;
+				document.getElementById("type").value = store.type;
+				document.getElementById("in").value = store.mod;
+				mod2vib();
+			}, () => {
+				document.getElementById("note").value = store.note;
+				document.getElementById("freq").value = store.freq;
+				document.getElementById("type").value = store.type;
+				detcvt();
+			}, () => {
+				document.getElementById("type").value = store.type;
+			}, () => {
+
+			}, () => {
+
+			},
+		];
+
+		function cvtnoteasm(e) {
+			let tokens = [];
+
+			for(let l of e.value.split("\n")) {
+				if(l.includes("dc.b")) {
+					for(let s of l.split(",")) {
+						tokens.push("\1"+ s.replace("dc.b", "").trim());
+					}
+				} else {
+					tokens.push(l);
+				}
+			}
+
+			let text = "";
+			let last = undefined, tie = false;
+
+			for(let x of tokens) {
+				/*if(x.trim().length === 0) {
+					continue;
+
+				} else*/ if(x.startsWith("\1")) {
+					x = x.substring(1);
+
+					if(x.startsWith("$")) {
+						// val
+						const arr = [ x ];
+
+						if(last) {
+							arr.unshift(last);
+							last = undefined;
+						}
+
+						if(tie) {
+							arr.unshift("sHold");
+							tie = false;
+						}
+
+						text += cvtnoteid(arr);
+
+					} else if(x.toLowerCase() === "shold" || x.toLowerCase() === "stie") {
+						if(last) {
+							text += cvtnoteid(tie ? [ "sHold", last ] : [ last ]);
+							last = undefined;
+						}
+
+						tie = true;
+
+					} else {
+						if(last) {
+							text += cvtnoteid(tie ? [ "sHold", last ] : [ last ]);
+							tie = false;
+						}
+
+						last = x;
+					}
+
+				} else {
+					if(last) {
+						text += cvtnoteid(tie ? [ "sHold", last ] : [ last ]);
+						last = undefined;
+							tie = false;
+					}
+
+					text += "\n"+ x;
+				}
+			}
+
+			if(last) {
+				text += cvtnoteid(tie ? [ "sHold", last ] : [ last ]);
+			}
+
+			document.getElementById("out").value = text.substring(1);
+		}
+
+		function cvtnoteid(args) {
+			let text = "\tsNote\t\t";
+			let first = true;
+
+			for(let a of args) {
+				if(first) {
+					first = false;
+
+				} else {
+					text += ", ";
+				}
+
+				if(a.startsWith("$")) {
+					text += a;
+
+				} else {
+					text += cvtnotestr(a);
+				}
+			}
+
+			return "\n"+ text;
+		}
+
+		function cvtnotestr(s) {
+			const match = /n([abcdefgs]{1,2})([0-8])/.exec(s.toLowerCase());
+
+			if(!match) {
+				return s;
+			}
+
+			switch(match[1]) {
+				case "eb": return "nDs"+ match[2];
+				case "ab": return "nGs"+ match[2];
+				case "bb": return "nAs"+ match[2];
+			}
+
+			return s;
+		}
+
+		function cvtsampasm(e) {
+			const samp = (a) => "\tsSample\t\t"+ a.substring(1) +"\n";
+			const del = (a) => "\tsNote\t\t"+ a +"\n";
+
+			let tokens = [];
+
+			for(let l of e.value.split("\n")) {
+				for(let s of l.split(",")) {
+					tokens.push(s.replace("dc.b", "").trim());
+				}
+			}
+
+			let text = "";
+
+			for(let x of tokens) {
+				if(x.startsWith("$")) {
+					// val
+					text += del(x);
+
+				} else {
+					text += samp(x);
+				}
+			}
+
+			document.getElementById("out").value = text;
+		}
+	</script>
+	<style>
+		html, body {
+			margin: 1vh auto;
+			background-color: #222;
+			width: 90vw;
+			overflow: hidden;
+		}
+
+		label {
+			user-select: none;
+			color: #eee;
+			font-size: 16pt;
+			vertical-align: middle;
+		}
+
+		input, select {
+			user-select: text;
+			font-size: 14pt;
+			background-color: #2c2c2c;
+			border: 1px solid #505050;
+			color: #ddd;
+			margin-left: 6px;
+			outline: 0;
+			border-radius: 4px;
+		}
+
+		.text {
+			font-size: 13pt;
+			font-family: sans-serif;
+			color: #eee;
+			margin-top: 8px;
+		}
+
+		.fw {
+			width: 100%;
+			display: flex;
+			margin-bottom: 8px;
+		}
+
+		.fm {
+			width: 100%;
+			display: flex;
+		}
+
+		.fm > label {
+			flex: 0 0 auto;
+		}
+
+		.fm > input {
+			flex: 1 1 auto;
+		}
+
+		.fm > select {
+			flex: 0 0 100px;
+			width: 100px;
+		}
+
+		.fm:not(:last-child) > input {
+			margin-right: 10px;
+		}
+
+		#navname {
+			font-size: 22pt;
+			font-family: sans-serif;
+			margin: 10px 0;
+			color: #ddd;
+			font-weight: bold;
+			text-align: center;
+		}
+
+		#nav {
+			width: max-content;
+			margin: 0 auto;
+			margin-bottom: 15px;
+		}
+
+		#nav > button {
+			background: #404040;
+			color: #fff;
+			border: 3px solid #525252;
+			border-radius: 6px;
+			font-size: 15pt;
+			font-family: serif;
+			padding: 2px 8px;
+			margin: 0 5px;
+			cursor: pointer;
+		}
+
+		#nav > button:hover {
+			background: #505050;
+			border-color: #5F5F5F;
+		}
+
+		.bigtext {
+			background-color: #333;
+			height: 90vh;
+			width: 49.5%;
+			margin: 2px;
+			border: 0;
+			box-sizing: border-box;
+			display: inline;
+			resize: none;
+			color: #aaa;
+			font-size: 14pt;
+		}
+	</style>
+</head>
+<body onload="init()">
+	<div id="nav">
+		<button onclick="loadTab(0, this)">Modulation converter</button>
+		<button onclick="loadTab(1, this)">Detune calculator</button>
+		<button onclick="loadTab(2, this)">Detune converter</button>
+		<button onclick="loadTab(3, this)" id="firstbtn">Note converter</button>
+		<button onclick="loadTab(4, this)">Sample converter</button>
+	</div>
+	<div id="navname">
+
+	</div>
+	<div id="inner">
+
+	</div>
+</body>
+</html>

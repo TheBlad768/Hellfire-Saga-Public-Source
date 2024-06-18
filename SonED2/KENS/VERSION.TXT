@@ -1,0 +1,31 @@
+Version History
+---------------
+
+
+KENS V1.0
+- Initial Release
+
+
+KENS V1.0a
+- Just some size improvements
+
+
+KENS V1.1
+- Corrected a bug in the Moduled Kosinski compression algorithm (thanks to rika_chou for reporting it, thanks to Esrael for giving a hint on how to correct it)
+- Updated the Enigma decompressor with the last version of the algorithm kindly provided by Nemesis
+- Added the Delphi Unit made by Korama (amarokorama@msn.com), so Delphi programmers can Dynamic Link to the KENS library
+- Added a KENS.h file that groups the Kosniski.h, Enigma.h, Nemesis.h and Saxman.h C++ header files
+- Added some more info in the README.TXT file
+
+
+KENS V1.2
+- Added Game Maker wrapper functions, so that Game Maker users are able to use the KENS library
+- Completed the README.TXT file with info for Game Maker users
+
+
+KENS V1.3
+- Corrected a bug in the Game Maker wrapper functions. That bug prevented to use the decompression functions.
+- Added the Sonic 2 Sound Driver support to the Saxman compressor and decompressor.
+- Edited the headers and units to reflect the changes in the Saxman functions
+- Changed the info about the Saxman compression tools in the README.TXT file
+- Radically changed the copyright texts in the sources, so everybody who participated to the KENS Project is recognized for his work

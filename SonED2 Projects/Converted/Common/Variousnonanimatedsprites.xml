@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Namespace="SonED2.ZoneCommon" TypeName="Variousnonanimatedsprites" Language="cs" Name="Various non-animated sprites" Image="Image1" RememberState="false" Debug="false" xmlns="http://www.sonicretro.org">
+  <Images>
+    <ImageFromBitmap id="Image1" filename="Sprites/s3objsprite3-14.png" />
+    <ImageFromBitmap id="Image2" filename="Sprites/s3objsprite3-17.png" />
+    <ImageFromBitmap id="Image3" filename="Sprites/s3objsprite3-18.png" />
+    <ImageFromBitmap id="Image4" filename="Sprites/s3objsprite3-19.png" />
+    <ImageFromBitmap id="Image5" filename="Sprites/s3objsprite3-8.png" />
+    <ImageFromBitmap id="Image6" filename="Sprites/s3objsprite4-1.png" />
+    <ImageFromBitmap id="Image7" filename="Sprites/s3objsprite2-10.png" />
+    <ImageFromBitmap id="Image8" filename="Sprites/s3objsprite2-9.png" />
+    <ImageFromBitmap id="Image9" filename="Sprites/s3objsprite1-6.png" />
+    <ImageFromBitmap id="Image10" filename="Sprites/s3objsprite1-7.png" />
+    <ImageFromBitmap id="Image11" filename="Sprites/s3objsprite1-8.png" />
+    <ImageFromBitmap id="Image12" filename="Sprites/s3objsprite1-12.png" />
+    <ImageFromBitmap id="Image13" filename="Sprites/s3objsprite1-11.png" />
+    <ImageFromBitmap id="Image14" filename="Sprites/s3objsprite1-5.png" />
+    <ImageFromBitmap id="Image15" filename="Sprites/s3objsprite1-10.png" />
+  </Images>
+  <Properties>
+    <BitsProperty name="Property1" type="Enum1" startbit="0" length="6" />
+  </Properties>
+  <Enums>
+    <Enum name="Enum1">
+      <EnumMember name="Bridge Post - AIZ2" />
+      <EnumMember name="Rope Twist Tie Large - AIZ2" />
+      <EnumMember name="Rope Twist Tie Small - AIZ2" />
+      <EnumMember name="Zipline Rope Piece - AIZ2" />
+      <EnumMember name="BG Waterfall - AIZ2" />
+      <EnumMember name="Bridge Post (Different Palette) - AIZ2" />
+      <EnumMember name="Waterfall 128x128 - HCZ1" />
+      <EnumMember name="Waterfall 128x64 - HCZ1" />
+      <EnumMember name="Waterfall 128x32 - HCZ1" />
+      <EnumMember name="Waterfall Stagger Down - HCZ1" />
+      <EnumMember name="Waterfall Stagger Up - HCZ1" />
+      <EnumMember name="Signpost Left - MGZ" />
+      <EnumMember name="Signpost Right - MGZ" />
+      <EnumMember name="Signpost Up - MGZ" />
+      <EnumMember name="Signpost Down - MGZ" />
+      <EnumMember name="Tube Bend 1 - HCZ2" />
+      <EnumMember name="Tube Bend 2 - HCZ2" />
+      <EnumMember name="Tube Bend 3 - HCZ2" />
+      <EnumMember name="Tube Crossover - HCZ2" />
+      <EnumMember name="Bridge Post - HCZ2" />
+      <EnumMember name="Cup Elevator Pole Top - LBZ" />
+      <EnumMember name="Steel Girder (Low Priority) - LBZ" />
+      <EnumMember name="Steel Girder Large - LBZ" />
+      <EnumMember name="Steel Girder (High Priority) - LBZ" />
+      <EnumMember name="Single piece of grass on edge - MHZ" />
+      <EnumMember name="Two pieces of grass on edge - MHZ" />
+      <EnumMember name="Bits of grass on ground - MHZ" />
+      <EnumMember name="Bottom edge of wood - MHZ" />
+      <EnumMember name="Top edge of wood - MHZ" />
+      <EnumMember name="Vines holding mushroom parachute - MHZ" />
+      <EnumMember name="Diagonal spring pedestal" />
+      <EnumMember name="Horizontal Gear Rail Small - LRZ Unused" />
+      <EnumMember name="Horizontal Gear Rail Medium - LRZ Unused" />
+      <EnumMember name="Horizontal Gear Rail Large - LRZ Unused" />
+      <EnumMember name="Foreground Rock - LRZ" />
+      <EnumMember name="Gear Rail Top - LRZ1" />
+      <EnumMember name="Gear Rail Small - LRZ1" />
+      <EnumMember name="Gear Rail Large - LRZ1" />
+      <EnumMember name="Gear Rail Bottom - LRZ1" />
+      <EnumMember name="One Metal Hanger - FBZ" />
+      <EnumMember name="Two Metal Hangers - FBZ" />
+      <EnumMember name="Three Metal Hangers - FBZ" />
+      <EnumMember name="Four Metal Hangers - FBZ" />
+      <EnumMember name="Unknown" />
+      <EnumMember name="Spider Rail - FBZ2" />
+      <EnumMember name="Spider Rail (Low Priority) - FBZ2" />
+      <EnumMember name="Sloped Edge Used Indoors - SOZ" />
+      <EnumMember name="Sand Cork Holder - SOZ2" />
+      <EnumMember name="Horizontal Beam Platform Shooter - DEZ" />
+      <EnumMember name="Vertical Beam Platform Shooter - DEZ" />
+      <EnumMember name="Light Tunnel Countdown Post - DEZ" />
+      <EnumMember name="Invalid" />
+      <EnumMember name="Invalid2" />
+      <EnumMember name="Invalid3" />
+      <EnumMember name="Invalid4" />
+      <EnumMember name="Invalid5" />
+      <EnumMember name="Invalid6" />
+      <EnumMember name="Invalid7" />
+      <EnumMember name="Invalid8" />
+      <EnumMember name="Invalid9" />
+      <EnumMember name="Invalid10" />
+      <EnumMember name="Invalid11" />
+      <EnumMember name="Invalid12" />
+      <EnumMember name="Invalid13" />
+    </Enum>
+  </Enums>
+  <Display>
+    <DisplayOption>
+      <Condition property="Property1" value="Bridge Post - AIZ2" />
+      <ImageRef image="Image1">
+        <Offset X="-12" Y="-12" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Rope Twist Tie Large - AIZ2" />
+      <ImageRef image="Image2">
+        <Offset X="-16" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Rope Twist Tie Small - AIZ2" />
+      <ImageRef image="Image3">
+        <Offset X="-8" Y="-4" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Zipline Rope Piece - AIZ2" />
+      <ImageRef image="Image4">
+        <Offset X="-8" Y="-5" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="BG Waterfall - AIZ2" />
+      <ImageRef image="Image5">
+        <Offset X="-8" Y="-32" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Bridge Post (Different Palette) - AIZ2" />
+      <ImageRef image="Image1">
+        <Offset X="-12" Y="-12" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Waterfall 128x128 - HCZ1" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Bridge Post - AIZ2" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Waterfall 128x32 - HCZ1" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Waterfall Stagger Down - HCZ1" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Waterfall Stagger Up - HCZ1" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Signpost Left - MGZ" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Signpost Right - MGZ" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Signpost Up - MGZ" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Signpost Down - MGZ" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Tube Bend 1 - HCZ2" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Tube Bend 2 - HCZ2" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Tube Bend 3 - HCZ2" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Tube Crossover - HCZ2" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Bridge Post - HCZ2" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Cup Elevator Pole Top - LBZ" />
+      <ImageRef image="Image7">
+        <Offset X="-8" Y="-8" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Steel Girder (Low Priority) - LBZ" />
+      <ImageRef image="Image8">
+        <Offset X="-16" Y="-64" />
+      </ImageRef>
+      <ImageRef image="Image8">
+        <Offset X="-16" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Steel Girder Large - LBZ" />
+      <ImageRef image="Image8">
+        <Offset X="-16" Y="-128" />
+      </ImageRef>
+      <ImageRef image="Image8">
+        <Offset X="-16" Y="-64" />
+      </ImageRef>
+      <ImageRef image="Image8">
+        <Offset X="-16" />
+      </ImageRef>
+      <ImageRef image="Image8">
+        <Offset X="-16" Y="64" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Steel Girder (High Priority) - LBZ" />
+      <ImageRef image="Image8">
+        <Offset X="-16" Y="-64" />
+      </ImageRef>
+      <ImageRef image="Image8">
+        <Offset X="-16" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Single piece of grass on edge - MHZ" />
+      <ImageRef image="Image9">
+        <Offset X="-4" Y="-16" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Two pieces of grass on edge - MHZ" />
+      <ImageRef image="Image10">
+        <Offset X="-4" Y="-16" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Bits of grass on ground - MHZ" />
+      <ImageRef image="Image11">
+        <Offset X="-16" Y="1" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Bottom edge of wood - MHZ" />
+      <ImageRef image="Image12">
+        <Offset X="-15" Y="-8" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Top edge of wood - MHZ" />
+      <ImageRef image="Image13">
+        <Offset X="-14" Y="-4" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Vines holding mushroom parachute - MHZ" />
+      <ImageRef image="Image14">
+        <Offset X="-16" Y="-8" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Diagonal spring pedestal" />
+      <ImageRef image="Image15">
+        <Offset X="-8" Y="-8" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Horizontal Gear Rail Small - LRZ Unused" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Horizontal Gear Rail Medium - LRZ Unused" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Horizontal Gear Rail Large - LRZ Unused" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Foreground Rock - LRZ" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Gear Rail Top - LRZ1" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Gear Rail Small - LRZ1" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Gear Rail Large - LRZ1" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Gear Rail Bottom - LRZ1" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="One Metal Hanger - FBZ" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Two Metal Hangers - FBZ" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Three Metal Hangers - FBZ" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Four Metal Hangers - FBZ" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Unknown" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Spider Rail - FBZ2" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Spider Rail (Low Priority) - FBZ2" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Sloped Edge Used Indoors - SOZ" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Sand Cork Holder - SOZ2" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Horizontal Beam Platform Shooter - DEZ" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Vertical Beam Platform Shooter - DEZ" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+    <DisplayOption>
+      <Condition property="Property1" value="Light Tunnel Countdown Post - DEZ" />
+      <ImageRef image="Image6">
+        <Offset X="-8" Y="-7" />
+      </ImageRef>
+    </DisplayOption>
+  </Display>
+</ObjDef>

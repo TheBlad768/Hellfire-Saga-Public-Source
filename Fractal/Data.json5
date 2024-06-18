@@ -1,0 +1,548 @@
+{
+	// Data.json5 and Fractal Sound version
+	version: "0.11",
+
+	// misc variables
+	delaycount: 0x26,
+
+	// variables that help define how samples work within the driver. Do not modify if you don't know what these do
+	stopsize: 0x2000,
+	markersize: 0x180,
+	samplerate: 13750,
+
+	// global sample includes. For example, the ASM compiler uses these directly
+	samples: [
+		// hellfire saga samples
+		{ name: "Tom", file: "Fractal/Samples/TomNew.wav", },
+		{ name: "Kick", file: "Fractal/Samples/KickNew.wav", },
+		{ name: "Snare", file: "Fractal/Samples/SnareNew.wav", },
+		{ name: "Crash", file: "Fractal/Samples/KickNewCymb.wav", },
+		{ name: "SnareCymb", file: "Fractal/Samples/Snare Cymb.wav", },
+		{ name: "KickSnare", file: "Fractal/Samples/KickSnareNew.wav", },
+		{ name: "kick_2", file: "Fractal/Samples/kick_2.wav", },
+		{ name: "snare_1", file: "Fractal/Samples/snare_1.wav", },
+		{ name: "Vandalize_drum_split_by_lalalai", file: "Fractal/Samples/Vandalize_drum_split_by_lalalai.wav", },
+		{ name: "Vandalize_drum_split_by_lalalai", file: "Fractal/Samples/Vandalize_drum_split_by_lalalai.wav", },
+		{ name: "HighSeasHavocSnare", file: "Fractal/Samples/HighSeasHavocSnare.wav", },
+		{ name: "GalaxyForceIICrash", file: "Fractal/Samples/GalaxyForceIICrash.wav", },
+		{ name: "HighSeasHavocCrash", file: "Fractal/Samples/HighSeasHavocCrash.wav", },
+		{ name: "BattleManiaDaiginjouTom", file: "Fractal/Samples/BattleManiaDaiginjouTom.wav", },
+		{ name: "SkateTom2", file: "Fractal/Samples/Skate Tom 2.wav", },
+		{ name: "SkateTom3", file: "Fractal/Samples/Skate Tom 3.wav", },
+		{ name: "ComboCrash", file: "Fractal/Samples/Combo Crash.wav", },
+
+		// sample sfx
+		{ name: "GhostDeath", file: "Fractal/Samples/GhostDeath.swf", },
+		{ name: "GhoulDeath", file: "Fractal/Samples/GhoulDeath.swf", },
+		{ name: "WolfDeath", file: "Fractal/Samples/WolfDeath.swf", },
+		{ name: "RainPCM", file: "Fractal/Samples/RainPCM.swf", },
+		{ name: "RainPCM_S", file: "Fractal/Samples/RainPCM_S.wav", },
+		{ name: "CryPCM", file: "Fractal/Samples/CryPCM.swf", },
+		{ name: "UMK3PCM", file: "Fractal/Samples/UMK3PCM.swf", },
+		{ name: "Thunderclamp", file: "Fractal/Samples/Thunderclamp.swf", },
+		{ name: "AxeGhostDeath", file: "Fractal/Samples/AxeGhostDeath.swf", },
+		{ name: "WeaselDeath", file: "Fractal/Samples/WeaselDeath.swf", },
+		{ name: "ThunderLightning", file: "Fractal/Samples/ThunderLightning.swf", },
+		{ name: "ArcherArmorAtk", file: "Fractal/Samples/ArcherArmorAtk.wav", },
+		{ name: "WalkingArmorAtk", file: "Fractal/Samples/WalkingArmorAtk.swf", },
+		{ name: "PhantomHand", file: "Fractal/Samples/PhantomHand.wav", },
+
+		// boss sample sfx
+		{ name: "HoneyDeath", file: "Fractal/Samples/HoneyDeath.swf", },
+		{ name: "HoneyHurt", file: "Fractal/Samples/HoneyHurt.swf", },
+		{ name: "FireDeath", file: "Fractal/Samples/FrbrndDeath.swf", },
+		{ name: "FireHurt", file: "Fractal/Samples/FrbrndHurt.swf", },
+		{ name: "FireAtkFire", file: "Fractal/Samples/FireAtkFire.swf", },
+		{ name: "GluttonySpew", file: "Fractal/Samples/GluttonySpew.swf", },
+		{ name: "AstarothDeath", file: "Fractal/Samples/AstarothDeath.swf", },
+		{ name: "HeadlissAtk", file: "Fractal/Samples/HeadlissAtk.swf", },
+		{ name: "WolfAWoo", file: "Fractal/Samples/WolfAWoo.swf", },
+		{ name: "WolfJump", file: "Fractal/Samples/WolfJump.swf", },
+		{ name: "ShaftAttack", file: "Fractal/Samples/ShaftAttack.swf", },
+		{ name: "ShaftAttack2", file: "Fractal/Samples/ShaftAttack2.swf", },
+		{ name: "ShaftAttack3", file: "Fractal/Samples/ShaftAttack3.swf", },
+		{ name: "ShaftDeath", file: "Fractal/Samples/ShaftDeath.swf", },
+		{ name: "BossFlame", file: "Fractal/Samples/Flame.swf", },
+		{ name: "FireShield", file: "Fractal/Samples/FireShield.wav", },
+		{ name: "MechaDemon", file: "Fractal/Samples/MechaDemon.wav", },
+		{ name: "DeathWounded", file: "Fractal/Samples/DeathWounded.swf", },
+		{ name: "Phantom", file: "Fractal/Samples/Phantom.swf", },
+		{ name: "GluttonyDeath", file: "Fractal/Samples/GluttonyDeath.swf", },
+		{ name: "BatDeath", file: "Fractal/Samples/BatDeath.swf", },
+
+		// title screen sample sfx
+		{ name: "Mwahaha", file: "Fractal/Samples/ShaoKannLaugh.swf", },
+	],
+
+	// sample filter tables
+	filters: [
+		"Logarithmic"
+	],
+
+	// vibrato + tremolo tables
+	shapes: [
+		"Triangle",
+		"Sine",
+	],
+
+	// song presets. This allows using a complex set of variables for various functions, such as the optimizer, multiple times
+	presets: {
+		// preset that other presets can borrow from for their specific uses
+		production_general: {
+			optimizer: {
+				disable: false,						// if true, all optimizations are disabled
+				stackSize: 4,						// number of loop counts and stack items
+				removeUnused: false,				// if true, all unused items are removed
+				routineOrder: true,				// if true, allows routine order to be shuffled around
+				combineRoutines: true,				// if true, combines routines that are used only once
+				combineTies: false,					// if true, unnecessary ties are combined. DANGER: notes that don't have a delay can break!
+				mergeCommands: false,				// if true, merges commands and removes empty (no-ops) and repeated commands
+				optimizeNotes: false,				// if true, changes how notes are represented to remove any fluff
+				optimizeTailCall: true,				// if true, sCall (1 loop) + sRet pattern is replaced by sJump
+				optimizeJumpTo: true,				// if true, routines that are a simple jump-to (only has a jump command) will be removed
+				combineMatchRoutines: true,			// if true, combines matching routines
+				call: {
+					enabled: true,					// if true, call optimizations are enabled
+					entries: [ 						// array of [ minimum, shift ] entries to process. Minimum is the number of items, and shift is the amount of notes to transpose for the check. More entries = more cpu time used
+						[ 128, 0, ],
+						[ 64, 0, ],
+						[ 48, 0, ],
+						[ 16, 0, ],
+						[ 6, 0, ],
+					],
+				},
+				loop: {
+					enabled: true,					// if true, loop optimizations are enabled
+					minBytes: 7, 					// minimum number of bytes to optimize. Note: loops cost 5 bytes, so going lower than 6 is not worth it. Lower values sacrifise CPU time for ROM space
+				},
+				longNotes: {
+					enabled: true,					// if set, long note optimizations are enabled
+					minBytes: 8,					// minimum number of bytes for a long note to be optimized
+				},
+				omitUnused: {
+					voices: true,					// if true, unused voices are omitted
+					samples: true,					// if true, unused samples are omitted
+					envelopes: true,				// if true, unused envelopes are omitted
+					vibrato: true,					// if true, unused vibrato are omitted
+					routines: true,					// if true, unused routines are omitted
+					jumps: true,					// if true, jumps that aren't needed are omitted
+				},
+			},
+		},
+		// production environment for the furnace compiler
+		production_furnace: {
+			preset: [ "production_general", "settings_furnace", ],
+			optimizer: {
+				routineOrder: true,
+				combineRoutines: true,
+				mergeCommands: true,
+				combineTies: true,
+				optimizeNotes: true,
+			},
+		},
+		// production environment for the asm compiler
+		production_asm: {
+			preset: [ "production_general", ],
+			optimizer: {
+				combineTies: false,		// dangerous in asm
+				mergeCommands: false,	// dangerous in asm
+				optimizeNotes: false,	// dangerous in asm
+			}
+		},
+
+		// preset that other presets can borrow from for their specific uses
+		test_general: {
+			optimizer: {
+				disable: false,						// if true, all optimizations are disabled
+				stackSize: 4,						// number of loop counts and stack items
+				removeUnused: false,				// if true, all unused items are removed
+				routineOrder: false,				// if true, allows routine order to be shuffled around
+				combineRoutines: false,				// if true, combines routines that are used only once
+				combineTies: false,					// if true, unnecessary ties are combined. DANGER: notes that don't have a delay can break!
+				mergeCommands: false,				// if true, merges commands and removes empty (no-ops) and repeated commands
+				optimizeNotes: false,				// if true, changes how notes are represented to remove any fluff
+				optimizeTailCall: true,				// if true, sCall (1 loop) + sRet pattern is replaced by sJump
+				optimizeJumpTo: true,				// if true, routines that are a simple jump-to (only has a jump command) will be removed
+				combineMatchRoutines: false,		// if true, combines matching routines
+				call: {
+					enabled: false,					// if true, call optimizations are enabled
+					entries: [ ],					// array of [ minimum, shift ] entries to process. Minimum is the number of items, and shift is the amount of notes to transpose for the check. More entries = more cpu time used
+				},
+				loop: {
+					enabled: false,					// if true, loop optimizations are enabled
+					minBytes: 7, 					// minimum number of bytes to optimize. Note: loops cost 5 bytes, so going lower than 6 is not worth it. Lower values sacrifise CPU time for ROM space
+				},
+				longNotes: {
+					enabled: false,					// if set, long note optimizations are enabled
+					minBytes: 8,					// minimum number of bytes for a long note to be optimized
+				},
+				omitUnused: {
+					voices: false,					// if true, unused voices are omitted
+					samples: false,					// if true, unused samples are omitted
+					envelopes: false,				// if true, unused envelopes are omitted
+					vibrato: false,					// if true, unused vibrato are omitted
+					routines: false,				// if true, unused routines are omitted
+					jumps: false,					// if true, jumps that aren't needed are omitted
+				},
+			},
+		},
+		// production environment for the furnace compiler
+		test_furnace: {
+			preset: [ "test_general", "settings_furnace", ],
+			optimizer: {
+				routineOrder: true,
+				mergeCommands: true,
+				combineTies: true,
+				optimizeNotes: true,
+			},
+		},
+		// production environment for the asm compiler
+		test_asm: {
+			preset: [ "test_general", ],
+			optimizer: {
+				combineTies: false,		// dangerous in asm
+				mergeCommands: false,	// dangerous in asm
+				optimizeNotes: false,	// dangerous in asm
+			}
+		},
+
+		// various options for furnace files
+		settings_furnace: {
+			// maximum number of items for the macro data. mainly used for merging 2 looped macros.
+			maxMacroLength: 128,
+			// this affects arpeggio macros on PSG3 + PSG4. If inaccurateArpeggios are on, arpeggio macros won't interact correctly with noise mode and duty macro.
+			// If this is off, much larger filesizes are created.
+			// this doesn't fully work yet!!!
+			inaccurateArpeggios: false,
+			// list of sound id's that can be referred to with the 6Exx effect.
+			queue: [
+
+			],
+		},
+
+		// test ROM building environment for the furnace compiler
+		rom_furnace: {
+			preset: [ "production_furnace", ],
+		},
+		// test ROM building environment for the asm compiler
+		rom_asm: {
+			preset: [ "production_asm", ],
+		},
+	},
+
+	// define supported compilers
+	compilers: [
+		{
+			file: "./compilers/furnace/main.js",
+			defaultpreset: [ "production_furnace", ],
+			previewpreset: [ "rom_furnace", ],
+			extensions: [ ".fur", ],
+		},
+		{
+			file: "./compilers/asm/main.js",
+			defaultpreset: [ "production_asm", ],
+			previewpreset: [ "rom_asm", ],
+			extensions: [ ".asm", ],
+		},
+	],
+
+	// define sound ID's and configuration
+	sounds: [
+		// MUST BE PRESENT AS THE FIRST ENTRY. DO NOT REMOVE
+		{ file: null, songs: [
+			{ index: 0, id: "cmd_Null", routine: "dPlayCmd_Null", },
+		], },
+
+		// low priority sfx
+		{ file: "sfx/Low Priority.asm", songs: [
+			{ index: 4, id: "sfx_Leaves", },
+			{ index: 3, id: "sfx_OilSlide", },
+			{ index: 0, id: "sfx_Shake", },
+			{ index: 6, id: "sfx_Rumble", },
+			{ index: 7, id: "sfx_Rumble2", },
+			{ index: 1, id: "sfx_ScreenShake", },
+			{ index: 2, id: "sfx_SpecialRumble", },
+			{ index: 0x0A, id: "sfx_LavaFall", },
+			{ index: 5, id: "sfx_Helicopter", },
+			{ index: 8, id: "sfx_Saw", },
+			{ index: 9, id: "sfx_TrackLift", },
+		], },
+
+		// sample sfx
+		{ file: "sfx/Sample SFX.asm", songs: [
+			{ index: 0, id: "sfx_AstarothDeath", },
+			{ index: 1, id: "sfx_ArcherArmorAtk", },
+			{ index: 2, id: "sfx_AxeGhostDeath", },
+			{ index: 4, id: "sfx_BossFlame", },
+			{ index: 5, id: "sfx_CryPCM", },
+			{ index: 6, id: "sfx_GhostDeath", },
+			{ index: 7, id: "sfx_GhoulDeath", },
+			{ index: 8, id: "sfx_GluttonySpew", },
+			{ index: 9, id: "sfx_FireAtkFire", },
+			{ index: 0xA, id: "sfx_FireHurt", },
+			{ index: 0xB, id: "sfx_FireDeath", },
+			{ index: 0xC, id: "sfx_Fire_Shield", },
+			{ index: 0xD, id: "sfx_HoneyDeath", },
+			{ index: 0xE, id: "sfx_HeadlissAtk", },
+			{ index: 0xF, id: "sfx_HoneyHurt", },
+			{ index: 0x10, id: "sfx_Mwahaha", },
+			{ index: 0x11, id: "sfx_ShaftAttack", },
+			{ index: 0x12, id: "sfx_RainPCM", },
+			{ index: 0x13, id: "sfx_PhantomHand", },
+			{ index: 0x14, id: "sfx_ShaftDeath", },
+			{ index: 0x15, id: "sfx_ShaftAttack2", },
+			{ index: 0x16, id: "sfx_ShaftAttack3", },
+			{ index: 0x17, id: "sfx_UMK3PCM", },
+			{ index: 0x18, id: "sfx_ThunderLightning", },
+			{ index: 0x19, id: "sfx_Thunderclamp", },
+			{ index: 0x1A, id: "sfx_WolfJump", },
+			{ index: 0x1B, id: "sfx_WolfDeath", },
+			{ index: 0x1C, id: "sfx_WolfAwoo", },
+			{ index: 0x1D, id: "sfx_WeaselDeath", },
+			{ index: 0x1E, id: "sfx_WalkingArmorAtk", },
+			{ index: 0x1F, id: "sfx_MechaDemon", },
+			{ index: 0x20, id: "sfx_DeathWounded", },
+			{ index: 0x21, id: "sfx_Phantom", },
+			{ index: 0x22, id: "sfx_GluttonyDeath", },
+			{ index: 0x23, id: "sfx_BatDeath", },
+		], },
+
+		// player sound effects
+		{ file: "sfx/Ring.asm", songs: [
+			{ index: 3, id: "sfx_Register", },
+			{ index: 0, id: "sfx_RingLeft", },
+			{ index: 1, id: "sfx_RingRight", },
+			{ index: 2, id: "sfx_RingLoss", },
+		], },
+
+		{ file: "sfx/Player.asm", songs: [
+			{ index: 0x0C, id: "sfx_Flying", },
+			{ index: 0x0D, id: "sfx_FlyTired", },
+			{ index: 0x0F, id: "sfx_GlideLand", },
+			{ index: 0x10, id: "sfx_GroundSlide", },
+			{ index: 6, id: "sfx_Grab", },
+			{ index: 7, id: "sfx_KnucklesKick", },
+			{ index: 0x11, id: "sfx_Thump", },
+			{ index: 0x0C, id: "sfx_Teleport", },
+			{ index: 0x0B, id: "sfx_Spindash", },
+			{ index: 8, id: "sfx_Roll", },
+			{ index: 9, id: "sfx_Skid", },
+			{ index: 0, id: "sfx_Jump", },
+			{ index: 0x0A, id: "sfx_Splash", },
+			{ index: 5, id: "sfx_Bubble", },
+			{ index: 3, id: "sfx_DrownDing", },
+			{ index: 1, id: "sfx_Death", },
+			{ index: 2, id: "sfx_Drown", },
+			{ index: 4, id: "sfx_HitSpikes", },
+		], },
+
+		// high priority sfx
+		{ file: "sfx/Special.asm", songs: [
+			{ index: 3, id: "sfx_ActionBlock", },
+			{ index: 4, id: "sfx_Diamonds", },
+			{ index: 1, id: "sfx_Error", },
+			{ index: 0, id: "sfx_EnterSS", },
+			{ index: 2, id: "sfx_BigRing", },
+		], },
+
+		{ file: "sfx/Bosses.asm", songs: [
+			{ index: 0, id: "sfx_SpikeAttack", },
+			{ index: 1, id: "sfx_Arthur1", },
+			{ index: 2, id: "sfx_Arthur2", },
+			{ index: 3, id: "sfx_Boom", },
+			{ index: 4, id: "sfx_Tear", },
+			{ index: 5, id: "sfx_FireShow", },
+			{ index: 6, id: "sfx_FireShot", },
+			{ index: 8, id: "sfx_Squeak", },
+			{ index: 9, id: "sfx_Signal", },
+			{ index: 0x0A, id: "sfx_MickeyAss", },
+			{ index: 0x0B, id: "sfx_Raid", },
+			{ index: 7, id: "sfx_Electro", },
+			{ index: 0x0C, id: "sfx_Electro2", },
+			{ index: 0x0D, id: "sfx_Bounce", },
+			{ index: 0x0E, id: "sfx_HurtFire", },
+			{ index: 0x0F, id: "sfx_Attachment", },
+			{ index: 0x10, id: "sfx_Activation", },
+			{ index: 0x11, id: "sfx_LaserBeam", },
+			{ index: 0x12, id: "sfx_HitBoss", },
+			{ index: 0x13, id: "sfx_MechaSonic", },
+			{ index: 0x14, id: "sfx_Magic", },
+			{ index: 0x15, id: "sfx_Heart", },
+			{ index: 0x16, id: "sfx_Magnet", },
+			{ index: 0x17, id: "sfx_Fall", },
+			{ index: 0x18, id: "sfx_RocketLaunch", },
+		], },
+
+		{ file: "sfx/Items.asm", songs: [
+			{ index: 0x0A, id: "sfx_CutDown", },
+			{ index: 4, id: "sfx_Chain", },
+			{ index: 0x24, id: "sfx_Stomp", },
+			{ index: 3, id: "sfx_SpikeMove", },
+			{ index: 9, id: "sfx_Basaran", },
+			{ index: 0x22, id: "sfx_Flame", },
+			{ index: 0x23, id: "sfx_Fire", },
+			{ index: 7, id: "sfx_LavaBall", },
+			{ index: 2, id: "sfx_SpikeBall", },
+			{ index: 0, id: "sfx_Switch", },
+			{ index: 1, id: "sfx_Spring", },
+			{ index: 5, id: "sfx_PushBlock", },
+			{ index: 8, id: "sfx_Bumper", },
+			{ index: 0x1C, id: "sfx_TinyBumper", },
+			{ index: 0x1D, id: "sfx_LargeBumper", },
+			{ index: 0x12, id: "sfx_Electric", },
+			{ index: 0x17, id: "sfx_Zapper", },
+			{ index: 0x16, id: "sfx_LidPop", },
+			{ index: 0x1E, id: "sfx_Elevator", },
+			{ index: 0x1F, id: "sfx_SpikeRing", },
+			{ index: 0x21, id: "sfx_ArrowFire", },
+			{ index: 0x20, id: "sfx_ArrowStick", },
+			{ index: 6, id: "sfx_SlotMachine", },
+			{ index: 0x15, id: "sfx_LaunchSpring", },
+			{ index: 0x13, id: "sfx_Gloop", },
+			{ index: 0x14, id: "sfx_GloopDrop", },
+			{ index: 0x18, id: "sfx_QuickDoor", },
+			{ index: 0x19, id: "sfx_Door", },
+			{ index: 0x1A, id: "sfx_DrawBridgeDown", },
+			{ index: 0x1B, id: "sfx_DrawBridgeMove", },
+			{ index: 0x11, id: "sfx_Smash", },
+			{ index: 0x0D, id: "sfx_BreakWall", },
+			{ index: 0x0E, id: "sfx_BreakItem", },
+			{ index: 0x0F, id: "sfx_BreakBridge", },
+			{ index: 0x0C, id: "sfx_Explosion", },
+			{ index: 0x0B, id: "sfx_Bomb", },
+			{ index: 0x10, id: "sfx_Flipper", },
+		], },
+
+		{ file: "sfx/Shields.asm", songs: [
+			{ index: 0x10, id: "sfx_InstaShield", },
+			{ index: 0x11, id: "sfx_BlueShield", },
+			{ index: 1, id: "sfx_LightAttack", },
+			{ index: 3, id: "sfx_BubbleAttack", },
+			{ index: 5, id: "sfx_FireAttack", },
+			{ index: 0, id: "sfx_LightShield", },
+			{ index: 2, id: "sfx_BubbleShield", },
+			{ index: 4, id: "sfx_FireShield", },
+		], },
+
+		{ file: "sfx/Misc.asm", songs: [
+			{ index: 0x13, id: "sfx_Piff", },
+			{ index: 0x12, id: "sfx_Pump", },
+			{ index: 0x11, id: "sfx_SegaKick", },
+			{ index: 0x10, id: "sfx_PigmanWalk", },
+			{ index: 0x14, id: "sfx_Start", },
+			{ index: 0x0C, id: "sfx_PlatformKnock", },
+			{ index: 0x0D, id: "sfx_Lazer", },
+			{ index: 0x0E, id: "sfx_LargeLazer", },
+			{ index: 0x0F, id: "sfx_LazerFloor", },
+			{ index: 5, id: "sfx_Bonus", },
+			{ index: 2, id: "sfx_Lamppost", },
+			{ index: 0, id: "sfx_Signpost", },
+			{ index: 1, id: "sfx_Signpost2P", },
+			{ index: 3, id: "sfx_Transform", },
+			{ index: 9, id: "sfx_Swap", },
+			{ index: 4, id: "sfx_Continue", },
+			{ index: 0x0A, id: "sfx_Beep", },
+			{ index: 0x0B, id: "sfx_Sparkle", },
+		], },
+
+		// songs
+		{ file: "music/hellfire.fur", songs: [
+			{ index: 1, id: "mus_Hellfire", },
+		], },
+		{ file: "music/title.fur", songs: [
+			{ index: 1, id: "mus_Title", },
+		], },
+		{ file: "music/FDZ1.asm", songs: [
+			{ index: 0, id: "mus_FDZ1", },
+		], },
+		{ file: "music/queendarknight.fur", songs: [
+			{ index: 1, id: "mus_FDZ2", },
+		], },
+		{ file: "music/forest_of_monsters.fur", songs: [
+			{ index: 1, id: "mus_FDZ3", },
+		], },
+		{ file: "music/dracula_castle.fur", songs: [
+			{ index: 1, id: "mus_GMZ1", },
+		], },
+		{ file: "music/clock_tower.fur", songs: [
+			{ index: 1, id: "mus_GMZ2", },
+		], },
+		{ file: "music/GMZ3.asm", songs: [
+			{ index: 0, id: "mus_GMZ3", },
+		], },
+		{ file: "music/Casa.fur", songs: [
+			{ index: 1, id: "mus_SCZ1", },
+		], },
+		{ file: "music/cap_on.fur", songs: [
+			{ index: 1, id: "mus_SCZ2", },
+		], },
+		{ file: "music/SCZ3.asm", songs: [
+			{ index: 0, id: "mus_SCZ3", },
+		], },
+		{ file: "music/creatures_in_the_depth.fur", songs: [
+			{ index: 1, id: "mus_Microboss", },
+		], },
+		{ file: "music/miniboss.fur", songs: [
+			{ index: 1, id: "mus_Boss1", },
+		], },
+		{ file: "music/Boss2.asm", songs: [
+			{ index: 0, id: "mus_Boss2", },
+		], },
+		{ file: "music/Gloam1.asm", songs: [
+			{ index: 0, id: "mus_Gloam1", },
+		], },
+		{ file: "music/dark_imp_downgrade.fur", songs: [
+			{ index: 1, id: "mus_Gloam2", },
+		], },
+		{ file: "music/Invincible.fur", songs: [
+			{ index: 1, id: "mus_Invincible", },
+		], },
+		{ file: "music/Intro.asm", songs: [
+			{ index: 0, id: "mus_Intro", },
+		], },
+		{ file: "music/Notice.asm", songs: [
+			{ index: 0, id: "mus_Notice", },
+		], },
+		{ file: "music/Passed.fur", songs: [
+			{ index: 1, id: "mus_Through", },
+		], },
+		{ file: "music/ArthurDeath.asm", songs: [
+			{ index: 0, id: "mus_ArthurDeath", },
+		], },
+		{ file: "music/bfg.fur", songs: [
+			{ index: 1, id: "mus_MGZ3Boss", },
+		], },
+		{ file: "music/imhotep.fur", songs: [
+			{ index: 1, id: "mus_SCZ3Boss", },
+		], },
+		{ file: "music/vandalize.fur", songs: [
+			{ index: 1, id: "mus_Credits", },
+		], },
+		{ file: "music/ghost.fur", songs: [
+			{ index: 1, id: "mus_FBoss", },
+		], },
+		{ file: "music/final_results.fur", songs: [
+			{ index: 1, id: "mus_FinalResults", },
+		], },
+
+		// misc commands
+		{ file: null, songs: [
+			{ index: 1, id: "cmd_FadeIn", routine: "dxFadeInCmd", },
+			{ index: 2, id: "cmd_FadeOut", routine: "dxFadeOutCmd", },
+			{ index: 7, id: "cmd_FadeReset", routine: "dxFadeResetCmd", },
+			{ index: 3, id: "cmd_ShoesOff", routine: "dxShoesOffCmd", },
+			{ index: 4, id: "cmd_ShoesOn", routine: "dxShoesOnCmd", },
+			{ index: 5, id: "cmd_UnderwaterOff", routine: "dxUnderwaterOffCmd", },
+			{ index: 6, id: "cmd_UnderwaterOn", routine: "dxUnderwaterOnCmd", },
+		], },
+
+		// main commands
+		{ file: null, songs: [
+			{ index: 0, id: "cmd_Unpause", routine: "dPlayCmd_Unpause", },
+			{ index: 1, id: "cmd_Pause", routine: "dPlayCmd_Pause", },
+			{ index: 2, id: "cmd_StopMus", routine: "dPlayCmd_StopMus", },
+			{ index: 3, id: "cmd_StopSFX", routine: "dPlayCmd_StopSFX", },
+			{ index: 4, id: "cmd_Reset", routine: "dxReset", },
+		], },
+	],
+}

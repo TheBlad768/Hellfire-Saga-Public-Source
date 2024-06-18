@@ -1,0 +1,2 @@
+Columns:	8A0	8B0	8C0	8D0	; Columns along the X axis which need spriting
+Rows:		4 4 4 4 2 4 2 4			; sprite heights/row sizes from top to bottom

@@ -1,0 +1,8 @@
+	sHeaderInitSFX
+	sHeaderPrio	$80
+	sHeaderCh	$01
+	sHeaderSFX	$A0, ctDAC1, .DAC1, $00, $00
+
+.DAC1
+	dc.b dShaftDeath, $68
+	sStop
