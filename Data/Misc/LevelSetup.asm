@@ -1427,7 +1427,7 @@ GMZ2_BackgroundEvent:
 		clr.w	AstarothCompleted.w			; set all bosses as not completed
 		jsr	Restart_LevelData			; load various level related data
 		jsr	SaveZoneSRAM				; save zone/act to SRAM
-		jsr	Change_ActSizes				; make ABSOLUTELY sure the act boundaries are actually correct
+;		jsr	Change_ActSizes				; make ABSOLUTELY sure the act boundaries are actually correct
 		movem.l	(sp)+,d7-a0/a2-a3
 
 		clr.b	BackgroundEvent_flag.w			; disable transition flag

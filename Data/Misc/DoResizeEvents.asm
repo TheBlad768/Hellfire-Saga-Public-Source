@@ -2506,7 +2506,7 @@ Load_Centipede:
 +
 		move.b	#8,(Dynamic_resize_routine).w
 		clr.w	(Camera_min_X_pos).w
-		move.w	#$A00,(Camera_target_max_Y_pos).w
+		move.w	#$9A0,(Camera_target_max_Y_pos).w
 
 .return
 		rts
@@ -2596,7 +2596,7 @@ GMZ2_PostMiniBoss:
 		move.l	(sp)+,d7
 
 		addq.b	#2,(Dynamic_resize_routine).w
-		move.w	#$A00,(Camera_target_max_Y_pos).w
+		move.w	#$9A0,(Camera_target_max_Y_pos).w
 
 Load_ArmorFade:
 		cmp.w	#$300,Camera_Y_Pos.w		; check if we are low enough

@@ -77,7 +77,7 @@ VInt_Lag:
 		addq.w	#4,sp
 
 VInt_Lag_Main:
-		addq.b	#1,(Lag_frame_count).w
+		addq.w	#1,(Lag_frame_count).w
 
 		; branch if a level is running
 		cmpi.b	#$80+id_Level,(Game_mode).w
